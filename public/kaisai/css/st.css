@@ -1,0 +1,81 @@
+@charset "shift_jis";
+/* CSS Document */
+
+
+
+/* ▼▼▼スタ展、直前情報▼▼▼ */
+#st .cont_st { padding: 1px 0 0 0; }
+
+
+#st .ta_kyogi{ width:840px;}
+
+#st .ta_kyogi th.st01{width:45px; line-height: 15px;}
+#st .ta_kyogi th.name{width:130px;}
+#st .ta_kyogi th.time,
+#st .ta_kyogi th.weight{width:70px;}
+
+#st .ta_kyogi th.slit {width:240px;}
+
+#st .ta_kyogi td.class{font-size:18px;}
+
+#st .ta_kyogi td.choku_top {
+	border-bottom-color:#DDDDDD;	
+	font-size:18px;
+	font-weight:bold;
+	padding: 2px 0;
+}
+
+#st .ta_kyogi td.parts {
+	font-size:12px;
+	text-align:left;
+	line-height:140%;
+	padding:0 4px;
+}
+
+#st .ta_kyogi td.inout {
+	width: 30px;
+	border: none;
+}	
+#st .ta_kyogi td.inout.in { vertical-align: top;}
+#st .ta_kyogi td.inout.out { vertical-align: bottom; border-bottom: 1px solid #BBBBBB !important;}
+
+
+#st .ta_kyogi td.slit {
+	width:160px;
+	border-bottom:none;
+	border-right:none;
+	background:url(../images/st_back.png) right center no-repeat;
+	text-align:right;
+	height:64px;
+}
+
+#st .ta_kyogi td.slit_st {
+	width:40px;
+	font-weight:bold;
+	text-align:right;
+	padding-right:10px;
+	border-bottom:none;	
+	font-size:18px;
+}
+
+#st .ta_kyogi td.rate01 {
+	width:170px;
+	padding:0;
+	border-right:none;
+	border-bottom:1px solid #BBBBBB;
+	background:url(../images/st_back.png) right center no-repeat;
+	text-align:right;	
+}
+
+#st .ta_kyogi td.rate02 {
+	width:40px;
+	font-weight:bold;
+	text-align:right;
+	padding-right:10px;
+	border-bottom:1px solid #BBBBBB;	
+	font-size:18px;
+}
+#st .ta_kyogi td.slit_st span,
+#st .ta_kyogi td.rate02 span{color:#DC3C3C;}
+
+.nodata2{font-size:11px;}

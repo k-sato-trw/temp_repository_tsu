@@ -1,0 +1,1018 @@
+
+body {
+	font-family: Roboto, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+	line-height: 100%;
+}
+
+/*
+==========================================================
+
+			枠組み
+
+==========================================================
+*/
+#wrapper {
+	background:none;
+	height:100%;
+	}
+
+
+
+/*
+==========================================================
+
+		レース情報
+
+==========================================================
+*/
+#racedata_wrap{
+	background-image:url(/sp/images/top_bg.jpg);
+	background-position:top center;
+	background-repeat:no-repeat;
+}
+#racedata{
+	position:relative;
+	padding-top:366px;
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+
+#racedata h1{
+	width:358px;
+	height:90px;
+	text-indent:-9999px;
+	background-image:url(/sp/images/logo.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	position:absolute;
+	left:304px;
+	top:222px;
+}
+
+/*--------------------------------------
+本日の情報　[#today_info]
+--------------------------------------*/
+#today_info{
+	position:absolute;
+	left:122px;
+	top:32px;
+}
+
+/*-----日付-----*/
+#today_info .date {
+	width:158px;
+	height:158px;
+	text-align:center;
+	background-image:url(/images/today_info_bg.png);
+	background-repeat:no-repeat;
+	float:left;
+}
+/*年*/
+#today_info .date .d1 {
+	font-size:26px;
+	font-weight:bold;
+	padding-top:26px;
+}
+/*月日*/
+#today_info .date .d2 {
+	font-size:56px;
+	font-weight:bold;
+	padding-top:24px;
+	padding-bottom:24px;
+}
+/*曜日*/
+#today_info .date .d3 {
+	display:inline-block;
+	font-size:24px;
+	padding:4px;
+	border-bottom:1px solid;
+	border-top:1px solid;
+}
+
+	/*開催中*/
+	.kaisai #today_info .date {
+		color:#003399;
+		background-position:0 0;}
+	.kaisai #today_info .date .d3 { border-color:#003399;}
+	/*非開催*/
+	.hikaisai #today_info .date {
+		color:#FCD800;
+		background-position:-158px 0;}
+	.hikaisai #today_info .date .d3 { border-color:#FCD800;}
+
+
+/*-----開門時間-----*/
+#today_info dl{
+	width:140px;
+	padding-left:10px;
+	padding-top:170px;
+	font-weight:bold;
+	text-align:center;
+}
+#today_info dt{
+	width:100%;
+	height:30px;
+	line-height:33px;
+	border-radius:2em;
+}
+#today_info dd{
+	font-size:30px;
+	color:#FFFFFF;
+	padding:10px 0 14px;
+	text-shadow: 1px 1px 2px #000;
+	}
+
+/*開門*/
+#today_info dt.open {
+	color:#FFFFFF;
+	font-size:24px;
+	background-color:#003399;
+}
+#today_info dd.open {
+
+}
+/*スタ展*/
+#today_info dt.start {
+	color:#003399;
+	font-size:16px;
+	background-color:#DAE9E2;
+}
+#today_info dd.start {
+}
+
+
+
+/*--------------------------------------
+	ホットニュース[#hotnews]
+--------------------------------------*/
+#hotnews{background-color:#003399;}
+
+#hotnews h3 {
+	width:180px;
+	height:55px;
+	text-indent:-9999px;
+	padding-right:10px;
+	background-image:url(/images/hotnews_h3.png);
+	background-position: 20px center;
+	background-repeat:no-repeat;
+	float:left;
+}
+#hotnews #marquee {
+	/* required styles */
+	display: block;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 55px;
+	position: relative;
+	overflow: hidden;
+	width: 520px;
+	height: 55px;
+}
+
+#hotnews #marquee li {
+	position: absolute;
+	top: -999em;
+	left: 0;
+	display: block;
+	white-space: nowrap;
+	font-size:26px;
+}
+
+#hotnews #marquee li a { text-decoration:none;color:#FFFFFF;}
+#hotnews #marquee li a:hover {text-decoration:underline; color:#FCD900;}
+
+
+
+
+
+/*--------------------------------------
+本日の場外発売レース　[#today_jyogai]
+--------------------------------------*/
+#today_jyogai{
+	background-image:url(/sp/images/today_jyogai_bg.png);
+	background-position:left top;
+	background-repeat:no-repeat;
+	}
+
+/*見出し*/
+#today_jyogai h3 {
+	width:125px;
+	padding:20px 0 10px 0;
+	text-align: center;
+	font-size:26px;
+	line-height:1.2em;
+	font-weight:bold;
+	color:#FFFFFF;
+	float:left;
+}
+
+/*津インクル時間*/
+#today_jyogai .twinkuru {
+	width:100%;
+	height:36px;
+	line-height:36px;
+	color:#FFFFFF;
+	float:left;
+	text-align:right;
+	background-color:#00297A;
+}
+	#today_jyogai .twinkuru p {
+		padding-right:14px;
+		font-size:26px;
+	}
+	#today_jyogai .twinkuru p span {
+		background-image:url(/sp/images/time.png);
+		background-position:left center;
+		background-repeat:no-repeat;
+		font-size:22px;
+		padding-left:26px;
+		padding-right:10px;
+		}
+
+/*発売一覧*/
+#today_jyogai table{
+	width:594px;
+	float:left;
+	margin-top:10px;
+}
+#today_jyogai table th,
+#today_jyogai table td {
+	vertical-align:middle;
+	font-weight:bold;
+	padding:6px 0;
+	line-height:1em;
+	border-bottom:1px dotted #FFFFFF;
+}
+
+#today_jyogai table th {
+	width:100px;
+	font-size:24px;
+	text-align:center;
+	vertical-align:top;
+}
+	#today_jyogai table th span {
+		width:100%;
+		display:block;
+		padding:6px 0;
+		background-image:url(/sp/images/today_jyogai_th_bg.png);
+		background-position: center bottom;
+		background-repeat:no-repeat;
+	}
+#today_jyogai table td {
+	font-size:30px;
+	padding-left:5px;
+}
+	#today_jyogai table td p{
+		display:inline-block;
+		margin:2px 2px 4px 2px;
+		line-height:1em;
+	}
+	#today_jyogai table td p {padding:0;}
+
+	/*グレードマーク*/
+	#today_jyogai table td p span {
+		width:48px;
+		height:26px;
+		padding-left:2px;
+		display:inline-block;
+		text-indent:-9999px;
+		background-position:left center;
+		background-repeat:no-repeat;
+	}
+	#today_jyogai table td p.SG span {background-image:url(/sp/images/jyogai_SG.png);}
+	#today_jyogai table td p.G1 span {background-image:url(/sp/images/jyogai_G1.png);}
+	#today_jyogai table td p.G2 span {background-image:url(/sp/images/jyogai_G2.png);}
+	#today_jyogai table td p.G3 span {background-image:url(/sp/images/jyogai_G3.png);}
+	#today_jyogai table td p.G0 span {background-image:url(/sp/images/jyogai_G0.png);}
+
+	/*中止*/
+	#today_jyogai table td p.chushi {
+		filter:alpha(opacity=30);
+		-moz-opacity: 0.3;
+		opacity: 0.3;
+	}
+
+
+/*commonカラーリセット*/
+#today_jyogai .SG,
+#today_jyogai .G1,
+#today_jyogai .G2,
+#today_jyogai .G3,
+#today_jyogai .G0 {background:none;}
+
+
+
+
+
+/*--------------------------------------
+レース情報　[#race_info]
+--------------------------------------*/
+#race_info{}
+
+
+/*グレード、レース名、日付*/
+#race_info table {
+	width:100%;
+	}
+/*グレード*/
+#race_info table th {
+	width:126px;
+	text-indent:-9999px;
+	background-position:left top;
+	background-repeat:no-repeat;
+}
+	/*開催中用*/
+	.kaisai #race_info table th.sg{ background-image:url(/sp/images/r_info_sg.png);}
+	.kaisai #race_info table th.g1{ background-image:url(/sp/images/r_info_g1.png);}
+	.kaisai #race_info table th.g2{ background-image:url(/sp/images/r_info_g2.png);}
+	.kaisai #race_info table th.g3{ background-image:url(/sp/images/r_info_g3.png);}
+	.kaisai #race_info table th.g0{ background-image:url(/sp/images/r_info_g0.png);}
+	/*開催中用*/
+	.hikaisai #race_info table th.sg{ background-image:url(/sp/images/r_info_sg_h.png);}
+	.hikaisai #race_info table th.g1{ background-image:url(/sp/images/r_info_g1_h.png);}
+	.hikaisai #race_info table th.g2{ background-image:url(/sp/images/r_info_g2_h.png);}
+	.hikaisai #race_info table th.g3{ background-image:url(/sp/images/r_info_g3_h.png);}
+	.hikaisai #race_info table th.g0{ background-image:url(/sp/images/r_info_g0_h.png);}
+
+
+/*レース名*/
+#race_info table td.name {
+	height:80px;
+	vertical-align:middle;
+	font-size:36px;
+	font-weight:bold;
+	line-height:1em;
+	padding:16px 10px;
+	background:-moz-linear-gradient(top, #fff, #ccc);
+	background:-webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+}
+
+/*日付*/
+#race_info table td.date {
+	height:60px;
+	line-height:46px;
+	font-size:32px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-image:url(/sp/images/race_date_bg.png);
+	background-position:0 0;
+	background-repeat:repeat;
+}
+	#race_info table td.date img {margin-right:6px; margin-left:1px; vertical-align: middle;}
+	#race_info table td.date span.month {font-size:24px; margin-right:2px;}
+	#race_info table td.date span.today {
+		background-image:url(/images/date_today.png);
+		background-repeat:repeat;
+		display:inline-block;
+		padding-left:4px;
+		margin-right:2px;
+		height:100%;
+	}
+	/*中止*/
+	#race_info table td.date .chushi {
+		display:inline-block;
+		filter:alpha(opacity=30);
+		-moz-opacity: 0.3;
+		opacity: 0.3;
+	}
+
+
+
+
+/*---------------------------------------
+		iframe[電投、出走表]
+---------------------------------------*/
+#race_info iframe#race_info_data {
+	width:720px;
+	height:262px;
+	margin-top:-72px;
+	z-index:100;
+	}
+#race_info_kaisai,
+#race_info_end {width:720px;}
+
+
+	#race_info_head {
+		width:100%;
+		background-image:url(/sp/images/race_info_head_bg.png);
+		background-position: left bottom;
+		background-repeat:no-repeat;
+		padding-bottom:20px;
+	}
+	#race_info_end #race_info_head,
+	#race_info_memo #race_info_head {background:none;padding-bottom:0;}
+
+	/*発売中レース*/
+	#race_info_head #now_race {
+		width:126px;
+		height:112px;
+		background-color:#2E353C;
+		}
+	/*電投締切時間*/
+	#race_info_head #dento_time {
+		height:50px;
+		margin-top:-50px;
+		line-height:50px;
+		font-size:28px;
+		font-weight:bold;
+		color:#FFFFFF;
+		text-align: right;
+		padding-right:10px;
+		background-color:#2E353C;
+	}
+	/*レース終了後：翌日注目レース*/
+	#race_info_head #point_race {
+		width:100%;
+		height:50px;
+		line-height:48px;
+		margin-top:-50px;
+		font-size:28px;
+		font-weight:bold;
+		color:#FFFFFF;
+		text-indent:1em;
+		background-image:url(/sp/images/point_race.png);
+		background-position:0 0;
+		background-repeat:no-repeat;
+	}
+		#race_info_head #point_race dt {
+			font-size:30px;
+			width: auto;
+			padding-right:10px;
+			float:left;
+			}
+			#race_info_head #point_race dt span {font-size:24px;}
+
+		#race_info_head #point_race dd {
+			float:left;
+			color:#FCD800;
+			font-size:30px;
+			text-indent:0.4em;
+			background-image:url(/sp/images/point_race_icon.png);
+			background-position:0 center;
+			background-repeat:no-repeat;
+			}
+	/*中止*/
+	#race_info_memo #race_info_head p {
+		width:100%;
+		height:200px;
+		line-height:200px;
+		margin-top:-50px;
+		font-size:28px;
+		font-weight:bold;
+		text-align:center;
+		color:#FFFFFF;
+		background-image:url(/sp/images/point_race.png);
+		background-position:0 0;
+		background-repeat:no-repeat;
+	}
+	/*出走表*/
+	#race_info_kaisai a,
+	#race_info_end a  {text-decoration:none;}
+	#shusso {width:720px;}
+
+	#shusso li{
+		width:120px;
+		height:110px;
+		padding-bottom:20px;
+		float:left;
+		background-image:url(/sp/images/race_info_kaisai_syusso_bg.png);
+		background-repeat:no-repeat;
+		}
+	#shusso li.r1 {background-position:0 0; color:#000000;}
+	#shusso li.r2 {background-position:-120px 0; color:#FFFFFF;}
+	#shusso li.r3 {background-position:-240px 0; color:#FFFFFF;}
+	#shusso li.r4 {background-position:-360px 0; color:#FFFFFF;}
+	#shusso li.r5 {background-position:-480px 0; color:#000000;}
+	#shusso li.r6 {background-position:-600px 0; color:#FFFFFF;}
+
+		#shusso li dl {text-align:center;}
+		#shusso li dt {
+			height:30px;
+			line-height:30px;
+			font-size:20px;
+			}
+		#shusso li dd {
+			padding-top:4px;
+			line-height:1em;
+			font-weight:bold;
+			font-size:24px;}
+		#shusso li dd span {
+			display:block;
+			font-size:22px;
+			font-weight:normal;
+			}
+		/*女子*/
+		#shusso li .lady { width:16px;}
+
+
+	/*---------------------------------------
+			開催中のみ
+	---------------------------------------*/
+	/*競技情報ボタン*/
+	.kaisai #race_info #r_nav1,
+	.kaisai #race_info #r_nav2,
+	.kaisai #race_info #r_nav3 {
+		width:100%;
+	}
+		.kaisai #race_info #r_nav2 {background-color:#585D63;margin-top:-20px;}
+		.kaisai #race_info #r_nav3 {background-color:#2E353C;}
+
+	.kaisai #race_info #r_nav1 li,
+	.kaisai #race_info #r_nav1 li a,
+	.kaisai #race_info #r_nav2 li,
+	.kaisai #race_info #r_nav2 li a,
+	.kaisai #race_info #r_nav3 li,
+	.kaisai #race_info #r_nav3 li a {
+		width:240px;
+		display:block;
+		text-indent:-9999px;
+		background-image:url(/sp/images/r_nav_btn.png);
+		background-repeat:no-repeat;
+		position:relative;
+	}
+	.kaisai #race_info #r_nav1 li,
+	.kaisai #race_info #r_nav2 li,
+	.kaisai #race_info #r_nav3 li {float:left;}
+
+	.kaisai #race_info li.b1,
+	.kaisai #race_info li.b2,
+	.kaisai #race_info li.b3,
+	.kaisai #race_info li.b1 a,
+	.kaisai #race_info li.b2 a,
+	.kaisai #race_info li.b3 a {height:240px; z-index:200;}
+
+	.kaisai #race_info li.b1,
+	.kaisai #race_info li.b2,
+	.kaisai #race_info li.b3 {margin-top:-10px;}
+
+	.kaisai #race_info #r_nav2 li,
+	.kaisai #race_info #r_nav2 li a,
+	.kaisai #race_info #r_nav3 li,
+	.kaisai #race_info #r_nav3 li a {height:120px; z-index:100;}
+
+	.kaisai #race_info li.b4,
+	.kaisai #race_info li.b5,
+	.kaisai #race_info li.b6 {margin-top:-20px;}
+
+		/*ライブ*/
+		.kaisai #race_info li.b1 a {background-position:0 0;}
+		.kaisai #race_info li.b1   {background-position:0 -240px;}
+		/*競技情報予想*/
+		.kaisai #race_info li.b2 a {background-position:-240px 0;}
+		.kaisai #race_info li.b2   {background-position:-240px -240px;}
+		/*舟券投票*/
+		.kaisai #race_info li.b3 a {background-position:-480px 0;}
+		.kaisai #race_info li.b3   {background-position:-480px -240px;}
+		/*リプレイ*/
+		.kaisai #race_info li.b4 a {background-position:0 -480px;}
+		.kaisai #race_info li.b4   {background-position:0 -600px;}
+		/*出走表PDF*/
+		.kaisai #race_info li.b5 a {background-position:-240px -480px;}
+		.kaisai #race_info li.b5   {background-position:-240px -600px;}
+		/*得点率情報*/
+		.kaisai #race_info li.b6 a {background-position:-480px -480px;}
+		.kaisai #race_info li.b6   {background-position:-480px -600px;}
+		/*本日のレース結果*/
+		.kaisai #race_info li.b7 a {background-position:0 -720px;}
+		.kaisai #race_info li.b7   {background-position:0 -840px;}
+		/*モーター抽選結果*/
+		.kaisai #race_info li.b8 a {background-position:-240px -720px;}
+		.kaisai #race_info li.b8   {background-position:-240px -840px;}
+		/*結果検索*/
+		.kaisai #race_info li.b9 a {background-position:-480px -720px;}
+		.kaisai #race_info li.b9   {background-position:-480px -840px;}
+
+
+
+
+	/*---------------------------------------
+			非開催のみ
+	---------------------------------------*/
+	.hikaisai #race_info #r_nav {
+		width:720px;
+		height:455px;
+		margin-top:-10px;
+		padding-top:15px;
+		background-image:url(/sp/images/hikaisai_r_nav_bg.png);
+		background-position:0 0;
+		background-repeat:no-repeat;
+	}
+	/**/
+	.hikaisai #race_info #r_nav #r_nav1 {width:690px; margin:0px auto 10px;}
+		.hikaisai #race_info #r_nav #r_nav1 li,
+		.hikaisai #race_info #r_nav #r_nav1 li a {
+			width:335px;
+			height:80px;
+			font-size:30px;
+			font-weight:bold;
+			border-radius:10px;
+			line-height:1.1em;
+			display:table;
+			background-image:url(/sp/images/hikaisai_r_nav_icon.png);
+			background-position:95% center;
+			background-repeat:no-repeat;
+		}
+		.hikaisai #race_info #r_nav #r_nav1 li{
+			margin:0 5px 10px;
+			color:#AB9E42;
+			background-color:#FEED85;
+			float:left;
+		}
+		.hikaisai #race_info #r_nav #r_nav1 li a {
+			color:#333333;
+			background-color:#FEF7CC;
+			text-decoration:none;
+		}
+		.hikaisai #race_info #r_nav #r_nav1 li span {
+			display: table-cell;
+			vertical-align:middle;
+			text-align:center;
+			padding-right:10px;
+		}
+	/**/
+	.hikaisai #race_info #r_nav #r_nav2{
+		width:690px;
+		margin:0 auto;
+		}
+		.hikaisai #race_info #r_nav #r_nav2 li,
+		.hikaisai #race_info #r_nav #r_nav2 li a {
+			background-image:url(/sp/images/hikaisai_r_nav_btn.png);
+			background-repeat:no-repeat;
+			text-indent:-9999px;
+			display:block;
+		}
+		.hikaisai #race_info #r_nav #r_nav2 li {
+			float:left;
+		}
+		.hikaisai #race_info #r_nav #r_nav2 li.b5,
+		.hikaisai #race_info #r_nav #r_nav2 li.b6,
+		.hikaisai #race_info #r_nav #r_nav2 li.b6_2,
+		.hikaisai #race_info #r_nav #r_nav2 li.b7,
+		.hikaisai #race_info #r_nav #r_nav2 li.b5 a,
+		.hikaisai #race_info #r_nav #r_nav2 li.b6 a,
+		.hikaisai #race_info #r_nav #r_nav2 li.b6_2 a,
+		.hikaisai #race_info #r_nav #r_nav2 li.b7 a {
+			width:230px;
+			height:130px;
+		}
+		.hikaisai #race_info #r_nav #r_nav2 li.b8,
+		.hikaisai #race_info #r_nav #r_nav2 li.b9,
+		.hikaisai #race_info #r_nav #r_nav2 li.b8 a,
+		.hikaisai #race_info #r_nav #r_nav2 li.b9 a  {
+			width:345px;
+			height:130px;
+		}
+
+		/*開催日程*/
+		.hikaisai #race_info #r_nav #r_nav2 li.b5 {background-position:-422px 6px;}
+		.hikaisai #race_info #r_nav #r_nav2 li.b5 a {background-position:-77px 6px;}
+		/*リプレイ*/
+		.hikaisai #race_info #r_nav #r_nav2 li.b6 {background-position:-402px -124px;}
+		.hikaisai #race_info #r_nav #r_nav2 li.b6 a {background-position:-57px -124px;}
+			/*ライブリプレイ*/
+			.hikaisai #race_info #r_nav #r_nav2 li.b6_2 {background-position:-402px -644px;}
+			.hikaisai #race_info #r_nav #r_nav2 li.b6_2 a {background-position:-57px -644px;}
+		/*レース予想*/
+		.hikaisai #race_info #r_nav #r_nav2 li.b7 {background-position:-382px -254px;}
+		.hikaisai #race_info #r_nav #r_nav2 li.b7 a {background-position:-37px -254px;}
+		/*優勝戦プレイバック*/
+		.hikaisai #race_info #r_nav #r_nav2 li.b8 {background-position:-345px -384px;}
+		.hikaisai #race_info #r_nav #r_nav2 li.b8 a {background-position:0px -384px;}
+		/*レース結果検索*/
+		.hikaisai #race_info #r_nav #r_nav2 li.b9 {background-position:-345px -514px;}
+		.hikaisai #race_info #r_nav #r_nav2 li.b9 a {background-position:0px -514px;}
+
+
+
+
+/*
+==========================================================
+
+		スライダー
+
+==========================================================
+*/
+#slider_wrap {
+
+}
+#slider{
+	padding-top:10px;
+	padding-bottom:70px;
+	background-color:#EEEEEE;
+
+}
+
+
+/*
+==========================================================
+
+		インフォ関連
+
+==========================================================
+*/
+
+
+/*--------------------------------------
+インフォメーション　[#information]
+--------------------------------------*/
+#information{
+	width:680px;
+	margin:30px auto 40px;
+	padding-top:30px;
+}
+
+#information .header h3{
+	width:378px;
+	height:45px;
+	background-image:url(/sp/images/information_h3.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	text-indent:-9999px;
+	float:left;
+}
+#information .header a {
+	width:180px;
+	height:50px;
+	padding-right:10px;
+	line-height:50px;
+	color:#FFFFFF;
+	text-align:center;
+	text-decoration:none;
+	font-size:26px;
+	border-radius:2em;
+	display:block;
+	background-image:url(/sp/images/information_ichiran.png);
+	background-position:90% center;
+	background-repeat:no-repeat;
+	background-color:#0044A7;
+	float:right;
+}
+
+/*記事*/
+#information ul {
+	width:680px;
+	padding-top:12px;
+	padding-bottom:20px;
+}
+#information ul li {
+	width:100%;
+	font-size:24px;
+	display: table;
+	position:relative;
+	margin-bottom:10px;
+}
+#information ul li a {
+	text-decoration:none;
+	display:block;
+	width:100%;
+	color:#333333;
+	line-height:1.1em;
+	font-weight:bold;
+	background-position:0 0;
+	background-repeat:no-repeat;
+	}
+
+
+/*日付*/
+#information ul li dl {
+	display:table;
+	height:100px;
+	}
+#information ul li dl dt,
+#information ul li dl dd { display:table-cell; vertical-align:middle;}
+#information ul li dl dd {padding-right:20px;}
+
+#information ul li dl dt {
+	width:160px;
+	margin-right:10px;
+	text-align:center;
+	font-size:24px;
+}
+#information ul li dl dt span {
+	display:block;
+	font-size:26px;
+	padding:2px 0;
+}
+
+
+/*お知らせ*/
+#information ul li.news { background-image:url(/sp/images/info_news_bg.png);}
+#information ul li.news dt{ color:#05B4B4;}
+/*更新情報*/
+#information ul li.update { background-image:url(/sp/images/info_update_bg.png);}
+#information ul li.update dt{ color:#7496FF;}
+/*重要*/
+#information ul li.impo { background-image:url(/sp/images/info_impo_bg.png);}
+#information ul li.impo dt{ color:#FF0000;}
+
+/*NEWマーク*/
+#information ul li img {
+	position:absolute;
+	left:0px;
+	top:0;
+}
+
+
+
+/*
+==========================================================
+
+		トップナビゲーション
+
+==========================================================
+*/
+#top_nav{
+	width:100%;
+	background-color:#003399;
+	padding-top:30px;
+	padding-bottom:30px;
+}
+/*-----------------*/
+#top_nav_main {
+	width:670px;
+	margin:0 auto;
+}
+
+	#top_nav_main dt {
+		width:100%;
+		height:90px;
+		line-height:90px;
+		color:#FFFFFF;
+		font-size:34px;
+		font-weight:bold;
+		background-position:96% center;
+		background-repeat:no-repeat;
+	}
+	#top_nav_main dt span {
+		background-position:20px center;
+		background-repeat:no-repeat;
+		padding-left:120px;
+		display:block;
+	}
+	#top_nav_main dt.plus {background-image:url(/sp/images/nav_plus.png);}
+	#top_nav_main dt.minus {background-image:url(/sp/images/nav_minus.png);}
+
+
+	#top_nav_main dd {
+		background-color:#FFFFFF;
+		padding:10px 0;
+	}
+		#top_nav_main dd ul li {
+			height:70px;
+			line-height:70px;
+			font-size:34px;
+			text-indent:3.2em;
+			color:#CCCCCC;
+			background-image:url(/sp/images/b_nav0_li.png);
+			background-position:95% center;
+			background-repeat:no-repeat;
+			}
+		#top_nav_main dd ul li a {
+			display:block;
+			text-decoration:none;
+			color:#000000;
+			background-position:95% center;
+			background-repeat:no-repeat;
+		}
+		#top_nav_main dd ul li.small {font-size:30px; text-indent:3.6em;}
+
+	/*レース情報*/
+	#top_nav_main dt.nav1 { background-color:#666666;}
+	#top_nav_main dt.nav1 span {background-image:url(/sp/images/b_nav1.png);}
+	#top_nav_main dd.nav1 ul li a {background-image:url(/sp/images/b_nav1_li.png);}
+	/*データ集*/
+	#top_nav_main dt.nav2 { background-color:#000000;}
+	#top_nav_main dt.nav2 span {background-image:url(/sp/images/b_nav2.png);}
+	#top_nav_main dd.nav2 ul li a {background-image:url(/sp/images/b_nav2_li.png);}
+	/*結果サーチ*/
+	#top_nav_main dt.nav3 { background-color:#CC3333;}
+	#top_nav_main dt.nav3 span {background-image:url(/sp/images/b_nav3.png);}
+	#top_nav_main dd.nav3 ul li a {background-image:url(/sp/images/b_nav3_li.png);}
+	/*ファンサービス*/
+	#top_nav_main dt.nav4 { background-color:#2F5BB9;}
+	#top_nav_main dt.nav4 span {background-image:url(/sp/images/b_nav4.png);}
+	#top_nav_main dd.nav4 ul li a {background-image:url(/sp/images/b_nav4_li.png);}
+	/*交通＆施設*/
+	#top_nav_main dt.nav5 { background-color:#FE9901;}
+	#top_nav_main dt.nav5 span {background-image:url(/sp/images/b_nav5.png);}
+	#top_nav_main dd.nav5 ul li a {background-image:url(/sp/images/b_nav5_li.png);}
+	/*三重支部情報*/
+	#top_nav_main dt.nav6 { background-color:#3FBC7D;}
+	#top_nav_main dt.nav6 span {background-image:url(/sp/images/b_nav6.png);}
+	#top_nav_main dd.nav6 ul li a {background-image:url(/sp/images/b_nav6_li.png);}
+
+
+/*-----------------*/
+#top_sub_nav1{
+	width:670px;
+	margin:40px auto 0;}
+#top_sub_nav1 li {text-indent:-9999px;}
+
+#top_sub_nav1 li#facebook a {
+	width:670px;
+	height:98px;
+	display:block;
+	background-image:url(/sp/images/sub_nav1_fb.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	margin-bottom:24px;
+}
+#top_sub_nav1 li#twitter a {
+	width:670px;
+	height:98px;
+	display:block;
+	background-image:url(/sp/images/sub_nav1_twi.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	margin-bottom:24px;
+}
+
+#top_sub_nav1 li a {
+	width:160px;
+	height:70px;
+	display:block;
+	float:left;
+	border-radius:10px;
+	background-color:#DDDDDD;
+	background-image:url(/sp/images/sub_nav1_lan.png);
+}
+
+#top_sub_nav1 li#lan_en a { background-position:0 0; margin-right:10px;}
+#top_sub_nav1 li#lan_ch1 a { background-position:-160px 0; margin-right:10px;}
+#top_sub_nav1 li#lan_ch2 a {background-position:-320px 0; margin-right:10px;}
+#top_sub_nav1 li#lan_ko a {background-position:-480px 0;}
+
+
+/*-----------------*/
+#top_sub_nav2{
+	background-color:#5C7CBA;
+	color:#FFFFFF;
+	margin-top:40px;
+	padding:20px 50px 20px 50px;
+	}
+	#top_sub_nav2 li {
+		float:left;
+		height:50px;
+		line-height:50px;
+		text-indent:0.6em;
+		font-size:32px;
+		color:#9DB0D6;
+		background-image:url(/sp/images/sub_nav2_icon.png);
+		background-position:left center;
+		background-repeat:no-repeat;
+	}
+	#top_sub_nav2 li a {
+		display:block;
+		text-decoration:none;
+		color:#FFFFFF;}
+	#top_sub_nav2 li.b1,
+	#top_sub_nav2 li.b3 {width:374px;}
+	#top_sub_nav2 li.b2,
+	#top_sub_nav2 li.b4 {width:246px;}
+
+
+
+/*PCサイトへ*/
+#btn_pc a {
+	background-color:#CCD6EB;
+	width:680px;
+	height:80px;
+	line-height:80px;
+	margin:30px auto 0;
+	display:block;
+	border-radius:40px;
+	text-align:center;
+	text-indent:2em;
+	font-size:34px;
+	font-weight:bold;
+	text-decoration:none;
+	color:#333333;
+	background-image:url(/sp/images/icon_pc.png);
+	background-position:220px center;
+	background-repeat:no-repeat;
+}
+
+
+
+
+/*
+==========================================================
+
+		フッター
+
+==========================================================
+*/
+
+
+/*
+==========================================================
+
+		印刷用
+
+==========================================================
+*/
+@media print {
+}

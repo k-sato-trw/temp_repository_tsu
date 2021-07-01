@@ -1,0 +1,80 @@
+/*========================================
+ +header styles Custom
+========================================*/
+
+h2 { margin-bottom: 0px; }
+
+/*
+
+/*========================================
+ +main styles Custom
+========================================*/
+#main{ width: 720px; padding: 0 0 0 0; font-size:30px!important;}
+
+
+/*==========================================
+
+			06topic.htm
+
+==========================================
+*/
+
+#topi_hd {
+	height: 250px;
+	padding: 0 60px;
+	margin-bottom: 0px;
+	background: #FFF;
+
+	font-size: 24px;
+	line-height: 1.3em;
+}
+
+#topi_hd h3 {
+	background: url(../06topic/images/06topic_catch.gif) no-repeat center;
+	width: 100%;
+	height: 80px;
+	text-indent: -9999px;
+	margin: 15px 0 10px 0;
+	display: block;
+}
+
+#topi_title {
+	 width: 720px;
+	margin-bottom: 60px;
+}
+#topi_title2 {
+	width: 720px;
+	margin-bottom: 50px;
+}
+#topi_main {
+	margin: 0;
+
+}
+
+#topi_main .profile { padding-bottom: 40px;}
+
+/*
+==========================================
+
+			06topic_back.htm
+
+==========================================
+*/
+
+#topi_back_hd { padding: 50px 0  40px 0; text-align: center;}
+#topi_back_main {}
+#topi_back_main li { margin-bottom: 50px;}	
+
+#topi_back { padding: 0 0 50px 0; text-align: center; clear: both;}
+
+
+
+/*
+==========================================
+
+		àÛç¸óp
+
+==========================================
+*/
+@media print {
+}

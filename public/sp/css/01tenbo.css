@@ -1,0 +1,272 @@
+@charset "shift_jis";
+/* CSS Document */
+
+/*
+==========================================
+
+			01tenbo.htm
+
+==========================================
+*/
+
+#main {padding:50px;}
+#main a {
+	/*text-decoration:none;*/
+	/**/
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
+	}
+
+
+#tenbo_wrap{
+	width:100%;
+	}
+	
+	/*記事エリア*/
+	#tenbo_main {
+		width:100%;
+		}
+	
+	/*Race Indexエリア*/
+	#tenbo_nav {
+		width:100%;
+		}
+		
+
+
+#tenbo_wrap h2 {
+	width:720px;
+	font-size: 40px;
+	text-align: center;
+	line-height: 48px;
+	padding: 26px 0;
+	background: #2E353C;
+	margin-bottom: 0px !important;
+	color: #FFF;
+	font-weight: bold;}
+/*
+==========================================
+
+			リンク
+
+==========================================
+*/
+
+
+#tenbo_nav .select { height: 45px; background: #666 url(../01tenbo/images/rt_select_t.png) no-repeat 20px center ; text-indent: -9999px; display: block;}
+
+#tenbo_nav #celect_waku { background: #EEE;}
+
+
+#celect_waku .r_name {
+	padding: 45px 20px 10px 20px;
+	font-size: 28px;
+	line-height: 32px;
+	font-weight: bold;
+	color: #003399;
+	display: block;
+	}
+
+#celect_waku .r_day { font-size: 24px; padding: 0 20px 20px; display: block;}
+
+#celect_waku a { text-decoration: none;}
+
+#celect_waku .tenbo_b,#celect_waku .sensyu_b {
+	width: 339px;
+	font-size: 30px;
+	line-height: 80px;
+	color: #999;
+	padding: 0 10px 0 10px;
+	background: #DDDDDD;
+	display: inline-block;
+}
+#celect_waku .tenbo_b { float: left;}
+#celect_waku .sensyu_b { float: right;}
+#celect_waku a .tenbo_b {
+	float: left;
+	color: #FFF;
+	background: #08B4B4 url(../01tenbo/images/rt_b_ic.png) no-repeat 94% center;	
+}
+#celect_waku a .sensyu_b {
+	color: #FFF;
+	background: #003399 url(../01tenbo/images/rt_b_ic.png) no-repeat 94% center;	
+}
+#celect_waku a:hover .tenbo_b,#celect_waku a:hover .sensyu_b {
+	background: #777 url(../01tenbo/images/rt_b_ic.png) no-repeat 94% center;
+	}
+
+
+
+
+
+
+/*
+==========================================
+
+			header
+
+==========================================
+*/
+		
+#rt_header { width: 100%; padding-bottom: 45px;}
+#rt_header_s { width: 100%;}
+.h2_deco { background: url(../01tenbo/images/h2_ic.png) no-repeat; height: 19px; display: block;}
+
+#rt_header_l { width: 142px; float: left;}
+#rt_header_c { width: 560px; float: left;}
+#rt_header_r { width: 100%; clear: both;}
+
+.grade_00,.grade_sg,.grade_g1,.grade_g2,.grade_g3 { width: 130px; height: 130px; display: block; text-indent: -9999px;}
+.grade_00 { background: url(../01tenbo/images/grade_g0.png) no-repeat;}
+.grade_sg { background: url(../01tenbo/images/grade_sg.png) no-repeat;}
+.grade_g1 { background: url(../01tenbo/images/grade_g1.png) no-repeat;}
+.grade_g2 { background: url(../01tenbo/images/grade_g2.png) no-repeat;}
+.grade_g3 { background: url(../01tenbo/images/grade_g3.png) no-repeat;}
+
+#rt_header_c #race_n { font-size: 40px; line-height: 50px; color: #003399; font-weight: bold; padding-top: 20px; height: 100px; display: table;}
+#rt_header_c #race_n p{ display: table-cell; vertical-align: middle;}
+#rt_header_r #day { font-size: 30px; line-height: 1.4em; padding: 20px 0; text-align: center; display: block;}
+
+
+#rt_header_r #ta_data { width: 100%; height: 60px; background: #AAA; padding: 0; color: #FFF;}
+#rt_header_r #ta_data td { vertical-align: middle;}
+#rt_header_r #ta_data td.op { width: 230px; font-size: 26px; padding:  6px 14px; background: #AAA; text-align: left;}
+
+#rt_header_r #ta_data td.time { font-size: 40px; background: #003399; padding: 6px 24px;}
+#rt_header_r #ta_data td.time .tc { color: #7DFDE7;}
+#rt_header_r #ta_data td.bb { border-bottom: 2px dotted;}
+
+#rt_header_r #data { width: 720px; height: 60px; background: #AAA; padding: 0; text-align: right; display: block;}
+
+
+#tnb_wrap .sensyu_b2 {
+	width: 36%;
+	border-left: 10px solid #AAAAAA ;	
+	font-size: 30px;
+	line-height: 60px;
+	color: #999;
+	background: #DDDDDD;
+	padding-left: 10px;
+	margin-bottom: 20px;
+	float: right;
+	display: block;
+}
+#tnb_wrap a { text-decoration: none;}
+#tnb_wrap a .sensyu_b2 {
+	color: #FFF;
+	background: #003399 url(../01tenbo/images/rt_b_ic.png) no-repeat 94% center;	
+	}
+#tnb_wrap a:hover .sensyu_b2 {
+	color: #FFF;
+	background: #777 url(../01tenbo/images/rt_b_ic.png) no-repeat 94% center;	
+	}	
+	
+	
+/*
+==========================================
+
+			本文
+
+==========================================
+*/	
+	
+#tenbo_title { margin-bottom: 40px;}
+	
+#tenbo_title span { background: url(../01tenbo/images/h3_back01.gif) repeat-x; height: 40px; display: block;}
+
+#tenbo_title h3 { font-size: 40px; height: 180px; width: 670px; line-height: 50px; color: #FFF; background: url(../01tenbo/images/h3_back02.png) no-repeat #08B4B4; padding-left: 50px; display: table;}
+#tenbo_title h3 p { display: table-cell; vertical-align: middle;}	
+
+#tnb_wrap {}
+#tnb_wrap_l { }
+#tnb_wrap_r { }
+
+#tnb_wrap_l #text {
+	background: url(../01tenbo/images/text_back.jpg) no-repeat;
+	font-size: 30px;
+	line-height:1.6em;
+	padding: 30px;
+	margin-bottom: 60px;
+	clear: both
+	}
+#tnb_wrap_l #text .r_name { color: #068484;}
+#tnb_wrap_l #text .sub_t {
+	background: url(../01tenbo/images/h4_ic.png) no-repeat center ;
+	margin: 50px 0 40px 0;
+	padding: 40px 0 0 15px;
+	height: 50px;
+	text-align: center;
+	font-weight: bold;
+	display: block;
+	}
+
+	
+
+/*
+==========================================
+
+			pickupRACER エリア
+
+==========================================
+*/	
+#pur_title_6,#pur_title_4 { width: 720px; height: 196px; text-indent: -9999px;}
+#pur_title_6 { background: url(../01tenbo/images/pcr6_tit.png) no-repeat;}
+#pur_title_4 { background: url(../01tenbo/images/pcr4_tit.png) no-repeat;}
+
+
+#pur { width: 100%; margin-bottom: 40px; clear: both;}
+
+#pur_waku { width: 100%; margin-bottom: 50px;}
+
+#pur_head_m { width: 100%; background: #003399 url(../01tenbo/images/pcr6_name_back.png) no-repeat right top; margin-bottom: 20px;}
+#pur_head_w { width: 100%; background: #A20089 url(../01tenbo/images/pcr6_name_back.png) no-repeat right top; margin-bottom: 20px;}
+
+#pur_p{ width: 220px; padding-top: 20px; text-align: right; float: left; }
+#pur_p img { vertical-align: bottom;}
+#pur_head_r { float: right; width: 500px;}
+
+#pur_head_r .name {
+	font-size: 40px;
+	font-weight: bold;
+	line-height: 72px;
+	color: #FFF;
+	text-align: left;
+	background:url(../01tenbo/images/pcr6_ic01.png) no-repeat 20px center;
+	padding-left: 60px;
+	display: block;
+}
+
+#pur_head_r .data01 { background: #444; padding-left: 30px; color: #FFF; font-size: 28px; line-height: 60px; display: block;}
+#pur_head_r .data01 li { padding-right: 20px; margin-right: 20px; border-right: 2px dotted #888; float: left;}
+
+#catch { font-size: 40px; line-height: 1.2em; color: #003399; padding: 10px 10px 13px 20px; background: #FFFFDD;}
+
+
+
+#pur_waku .data02 {}
+
+.data02 .pur_tsu,#pur_waku .pur_all { height: 60px; text-indent: -9999px; margin-bottom: 20px; display: block;}
+
+.data02 .pur_tsu { background: url(../01tenbo/images/pcr6_tsu_t.png) no-repeat;}
+.data02 .pur_all { background: url(../01tenbo/images/pcr6_all_t.png) no-repeat;}
+
+.data02 ul { padding-bottom: 30px;}
+.data02 li { font-size: 28px; background: url(../01tenbo/images/rt_b_ic2.png) no-repeat 18px center; padding-left: 56px; line-height: 35px; margin-bottom: 10px;}
+
+.data02 li .gr { background: #EEE; padding: 0 5px; margin: 0 3px; display: inline-block;}
+.data02 li img { vertical-align: middle; padding-left: 2px;}
+
+
+
+
+#tnb_wrap_l .note { font-size: 24px; line-height: 40px; margin: 0 20px 10px 0; float: right;}
+#tnb_wrap_l .note .jun { background: url(../images/m_ic_01.gif)no-repeat 0px 2px; text-indent: -9999px; width: 24px; height: 26px; display: inline-block;}
+
+#tnb_wrap_l .note .yu { background: url(../images/m_ic_02.gif) no-repeat 0px 2px; text-indent: -9999px; width: 24px; height: 26px; display: inline-block;}
+
+
+
+
+

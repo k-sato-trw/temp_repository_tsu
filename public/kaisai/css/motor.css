@@ -1,0 +1,193 @@
+@charset "shift_jis";
+/* CSS Document */
+
+
+
+/* ▼▼▼MOTOR▼▼▼ */
+#motor {width: 965px;}
+
+/*---------------------------------------------------
+　　　     　　　モーター成績
+---------------------------------------------------*/
+
+#motor_main{background:#fff;overflow:hidden;}
+
+#motor_main h2,#motor_main2 h2 { width: 900px; height: 70px; background: url(../images/kaisai_motor_t.jpg) no-repeat; text-indent: -9999px; margin-bottom: 20px;}
+
+#motor_main #lead {
+	line-height:1.5em;
+	margin:10px 0 10px 0;
+	font-size:14px;
+	width:965px;
+	text-align: left;
+}
+#motor_main #lead .jun { background: url(../motor_img/m_ic_01.gif) no-repeat 0px 2px; text-indent: -9999px; width: 14px; height: 16px; display: inline-block;}
+
+#motor_main #lead .yu { background: url(../motor_img/m_ic_02.gif) no-repeat 0px 2px; text-indent: -9999px; width: 14px; height: 16px; display: inline-block;}
+
+#motor_main #table_wrapper {
+	background-position:left top;
+	width:965px;
+}
+
+#motor_main table#motor_head,table#motor {
+	width:965px;
+	text-align:center;
+	border-collapse:collapse;
+	background:#FFFFFF;
+}
+#motor_main table#motor_head { 
+border-top:#CCC 1px solid;
+border-left:#CCC 1px solid;
+border-right:#CCC 1px solid;
+}
+#motor_main table#motor_head th {
+	text-align:center;
+	background: url(../motor_img/th_line.png) repeat-y right top #333;
+	color:#FFF;
+	font-size:14px;
+	font-weight:normal;
+}
+
+
+
+
+#motor_main table#motor_head th a {
+	width:100%;
+	text-decoration:none;
+	display:block;
+	padding:10px 0;
+	font-size:14px;
+}
+#motor_main table#motor_head th a {color:#FFFFFF;}
+#motor_main table#motor_head th a:hover { background:url(../motor_img/th_line.png) repeat-y right top #060;color:#FFFF00;}
+
+
+table#motor_head th.plus a {
+	width:100%;
+	text-decoration:none;
+	display:block;
+	padding:10px 0;
+	font-size:14px;
+}
+table#motor_head .plus a {color:#FFFF00;}
+
+
+#motor_main table#motor_head th img {display:block; margin:0 auto;}
+#motor_main table#motor_head .sort {display:block; width:18px;height:18px;margin:2px auto 0; background:url(../motor_img/btn_sort.gif) no-repeat; border-radius: 3px;}
+#motor_main table#motor_head .sort_no {display:block; width:18px;height:18px;margin:2px auto 0;}
+
+#motor_main table#motor_head .data_th{
+	height:25px;
+	line-height:25px;
+	display:block;
+}
+#motor_main table#motor_head .st{ font-weight: bold; padding-right: 5px;}
+
+#motor_main table#motor_head th.select{background:url(../motor_img/th_line.png) repeat-y right top #7BE7EA;color:#000;}
+#motor_main table#motor_head th#mae01{background:url(../motor_img/th_line.png) repeat-y right top #0080FF;}
+#motor_main table#motor_head th#mae02{background:url(../motor_img/th_line.png) repeat-y right top #0055AA;}
+#motor_main table#motor_head th#mae03{background:url(../motor_img/th_line.png) repeat-y right top #003499;}
+
+
+
+
+
+/**/
+#motor_main table#motor{
+	font-size:14px;
+	text-align:center;
+	border:#CCC 1px solid;
+	
+}
+
+#motor_main table#motor .rank{
+	background-color:#999;
+	color:#FFF;
+	height:50px;
+	text-align:center;
+	border:#CCC 1px solid;
+	font-weight:bold;
+	font-size:16px;
+}
+#motor_main table#motor .m_no{
+	background-color:#00698C;
+	color:#FFF;
+	height:50px;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}
+
+#motor_main table#motor .odd{background-color:#fff;}
+#motor_main table#motor .even{background-color:#e9e9e9;}
+
+#motor_main table#motor td {
+	line-height:1.3em;
+	border-bottom:#CCC 1px solid;
+}
+#motor_main table#motor td img {
+	margin-left:1px;
+	vertical-align: middle;
+}
+
+
+
+.bg_even {background: #f2f2f2;}
+.bg_odd  {background: #fff;}
+
+
+
+#motor_main td.hover     {background-color: #DEF9FA;}
+#motor_main td.hoverrow  {background-color: #DEF9FA;}
+#motor_main td.hovercell {background-color: #7BE7EA;}
+
+
+
+#motor_main .name{
+	display:block; 
+	width:100%; 
+	border-bottom:1px dotted #CCC;
+	height:25px;
+	
+	line-height:25px;
+}
+#motor_main .data{
+	height:25px;
+	line-height:25px;
+	display:block;
+	font-weight:bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#motor_main .no {
+	display:block; 
+	line-height:1em; 
+	color: #666; 
+	padding-top:2px;
+}
+
+#motor_main .lady .no {
+	display:block; 
+	line-height:1em; 
+	color:#C0C;
+	padding-top:2px;
+}
+
+
+/*■■■データ無し等■■■*/
+#motor_main2{ width: 965px; background:#fff;overflow:hidden;}
+
+.ta_kyogi td.nodata {
+	width: 965px;
+	height: 540px;
+}
+.ta_kyogi td.cyushi {
+	color: #DC3C3C;
+	font-size: 16px;
+	width: 956px;
+	height: 540px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #EEE;
+}

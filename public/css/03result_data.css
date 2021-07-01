@@ -1,0 +1,290 @@
+/* CSS Document */
+
+/*
+======================================
+iframe-auto.jsと
+reset.cssの中のものとぶつかるので、削除している
+======================================*/
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3 ,p {
+    margin: 0; 
+    padding: 0;
+}
+html {
+	height: 100%;
+	width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-size: 100%; 
+    font-weight: normal;
+}
+ol, ul{
+    list-style:none;
+}
+fieldset, img{
+     border:0;
+}
+table{
+    border-collapse: collapse; 
+    border-spacing:0;
+}
+
+img {
+	vertical-align: middle;
+}
+a:focus {
+	outline:none;
+}
+.clear {
+	clear: both;
+}
+
+/*====================================*/
+
+
+
+body{
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic",Arial, Helvetica, sans-serif;
+}
+
+#header{height:17px;}
+#wrapper  {
+	width:800px;
+	background:url(../03result_tsu/images/h_bg.png);
+	margin:0 0 0 0;
+	padding:10px;
+	overflow:hidden;
+	font-size:14px;
+}
+
+
+
+/*
+=========================================
+レイアウト
+=========================================*/
+p.deco01{
+	position: absolute;
+	top: 0;
+	left: 38px;
+	background:url(../03result_tsu/images/deco01.png) no-repeat 0 0;
+	width:50px;
+	height:25px;
+	display:block;
+}
+
+
+/*
+===================================================
+レース結果・レース番号（左側）
+===================================================*/
+
+#ttl{
+	float:left;
+	width:105px;
+	text-align:center;
+	color:#fff;
+	padding:10px 0 0 0;
+	background:url(../03result_tsu/images/h_r_bg.png) no-repeat top left;
+}
+
+
+h1 {height:55px;}
+
+h2 {
+	text-align:center;
+	border:1px solid #000;
+	margin:3px 0 5px 0;
+	line-height:24px;
+	font-size:18px;
+	padding:10px 0;
+	color:#000;
+	background:#e9e9e9;
+}
+
+h1 p.r01,
+h1 p.r02,
+h1 p.r03,
+h1 p.r04,
+h1 p.r05,
+h1 p.r06,
+h1 p.r07,
+h1 p.r08,
+h1 p.r09,
+h1 p.r10,
+h1 p.r11,
+h1 p.r12{width:105px;height:40px;text-indent:-9999px;}
+
+h1 p.r01{background: url(../03result_tsu/images/h_r01.png) no-repeat center 5px;}
+h1 p.r02{background: url(../03result_tsu/images/h_r02.png) no-repeat center 5px;}
+h1 p.r03{background: url(../03result_tsu/images/h_r03.png) no-repeat center 5px;}
+h1 p.r04{background: url(../03result_tsu/images/h_r04.png) no-repeat center 5px;}
+h1 p.r05{background: url(../03result_tsu/images/h_r05.png) no-repeat center 5px;}
+h1 p.r06{background: url(../03result_tsu/images/h_r06.png) no-repeat center 5px;}
+h1 p.r07{background: url(../03result_tsu/images/h_r07.png) no-repeat center 5px;}
+h1 p.r08{background: url(../03result_tsu/images/h_r08.png) no-repeat center 5px;}
+h1 p.r09{background: url(../03result_tsu/images/h_r09.png) no-repeat center 5px;}
+h1 p.r10{background: url(../03result_tsu/images/h_r10.png) no-repeat center 5px;}
+h1 p.r11{background: url(../03result_tsu/images/h_r11.png) no-repeat center 5px;}
+h1 p.r12{background: url(../03result_tsu/images/h_r12.png) no-repeat center 5px;}
+
+
+
+
+/*
+===================================================
+レース結果・詳細（右側）
+===================================================*/
+#main{float:right;}
+
+/*天候条件*/
+.condition{width:660px;color:#000;overflow:hidden;margin:0 0 3px 0; display: block;}
+
+#weather { float: left;}
+		/*共通style[w1-w4]*/
+		#weather li {
+			height:32px;
+			line-height:30px;
+			color:#000;
+			font-size:12px;
+			float:left;
+			margin-right:30px;
+			}
+			#weather li span {
+				background-position: center right;
+				background-repeat:no-repeat;
+				padding-right:40px;
+				padding-top:4px;
+				padding-bottom:4px;
+				margin-right:2px;
+				}
+		/*天候*/
+			/*曇*/#weather li#w2 .kumori {background-image:url(../03result_tsu/images/w2_kumo.png);}
+			/*晴*/#weather li#w2 .hare   {background-image:url(../03result_tsu/images/w2_hare.png);}
+			/*雨*/#weather li#w2 .ame    {background-image:url(../03result_tsu/images/w2_ame.png);}
+			/*霧*/#weather li#w2 .kiri   {background-image:url(../03result_tsu/images/w2_kiri.png);}
+			/*雪*/#weather li#w2 .yuki   {background-image:url(../03result_tsu/images/w2_yuki.png);}
+			/*台風*/#weather li#w2 .taihu {background-image:url(../03result_tsu/images/w2_taihu.png);}
+		/*波高*/
+			#weather li#w3 span {background-image:url(../03result_tsu/images/w2_nami.png);}
+		/*風*/
+			#weather li#w4 span {background-image:url(../03result_tsu/images/w2_kaze.png);}	
+
+
+
+/*決まり手*/
+.win{ line-height:30px; font-size:12px; float:right; color:#000;}
+.win span { color:#003399; font-weight: bold;}
+
+/*返還*/
+.refund { text-align: right; padding: 0 0 10px 0; font-size: 13px;}
+.refund img { padding-left: 1px;}
+
+/*レース」結果*/
+#data01{padding:0 0 10px 0;}
+#data01 table{width:660px;text-align:center;border:1px #ccc solid;}
+#data01 table th{text-align:center;font-size:12px;padding:3px 0;border-right:1px #ccc solid;background:#000;color:#fff;}
+#data01 table td{text-align:center;font-size:14px;padding:1px 0;border-right:1px #ccc solid;}
+#data01 tr:nth-child(odd){background-color:#fff;}
+#data01 tr:nth-child(even){background-color:#e9e9e9;}
+
+#data01 .col-1{width:30px;}
+#data01 .col-2{width:30px}
+#data01 .col-3{}
+#data01 .col-4{}
+#data01 .col-5{}
+#data01 .col-6{}
+#data01 .col-7{}
+#data01 .col-8{}
+#data01 .col-9{}
+
+#data01 .t01{background:#DEE8EF;}
+#data01 .t02{background:#000;color:#fff;}
+#data01 .t03{background:#C00;color:#fff;}
+#data01 .t04{background:#36F;color:#fff;}
+#data01 .t05{background:#FFE600;}
+#data01 .t06{background:#090;color:#fff;}
+
+
+/*配当：3連単・3連複・2連単・2連複（上段）*/
+#m01{padding:0 0 10px 0;}
+#m01 table{width:660px;text-align:center;border:1px #ccc solid;}
+#m01 table th{text-align:center;font-size:14px;padding:3px 0;border-right:1px #ccc solid;color:#ff0;background:#666;}
+#m01 table td{text-align:center;font-size:14px;padding:3px 0;border-right:1px #ccc solid;}
+#m01 tr:nth-child(odd){background-color:#E6F7F7;}
+#m01 tr:nth-child(even){background-color:#FFF;}
+
+#m01 .col-1{width:34px;color:#333;font-size:12px;}
+#m01 .col-2{}
+#m01 .col-3{}
+#m01 .col-4{}
+#m01 .col-5{}
+#m01 .col-6{}
+#m01 .col-7{}
+#m01 .col-8{}
+#m01 .col-9{}
+
+
+/*配当：拡連複・単勝・複勝（下段）*/
+#m02{padding:0 0 0 0;}
+#m02 table{width:660px;text-align:center;border:1px #ccc solid;}
+#m02 table th{text-align:center;font-size:14px;padding:3px 0;border-right:1px #ccc solid;color:#ff0;background:#666;}
+#m02 table td{text-align:center;font-size:14px;padding:3px 0;border-right:1px #ccc solid;}
+#m02 tr:nth-child(odd){background-color:#E6F7F7;}
+#m02 tr:nth-child(even){background-color:#FFF;}
+
+#m02 .col-1{width:34px;color:#333;font-size:12px;}
+#m02 .col-2{}
+#m02 .col-3{}
+#m02 .col-4{}
+#m02 .col-5{}
+#m02 .col-6{}
+#m02 .col-7{}
+#m02 .col-8{}
+#m02 .col-9{}
+#m02 .col-10{}
+#m02 .col-11{}
+
+
+/*
+==========================================
+		6艇番カラー
+==========================================
+*/
+
+
+/* ▼▼▼共通▼▼▼ */
+.w1 {
+	background-color: #DEE8EF;
+	color: #000000;
+}
+.w2 {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+.w3 {
+	background-color: #CC0000;
+	color: #FFFFFF;
+}
+.w4 {
+	background-color: #3366FF;
+	color: #FFFFFF;
+}
+.w5 {
+	background-color: #FFE600;
+	color: #000000;
+}
+.w6 {
+	background-color: #009900;
+	color: #FFFFFF;
+}
+
+
+/* ▼▼▼フライング▼▼▼ */
+.st_f { color:#DC3C3C;}
+	
+
+/*フリーテキストスペース*/
+#txt{font-size:12px;color:#000;clear: both;line-heigth:18px;padding:5px 0;}
+

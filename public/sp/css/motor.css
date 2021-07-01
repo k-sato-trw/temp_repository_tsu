@@ -1,0 +1,298 @@
+/* CSS Document */
+
+
+ul,ol{list-style:none;}
+
+/*========================================
+ +motor_header styles
+========================================*/
+#notice { width: 660px;
+	margin: 0 30px 30px;
+	font-size: 26px;
+	line-height: 46px;
+	background-color: #E3E3E3;
+	text-align: center;
+	
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	
+	-webkit-box-shadow: 1px 1px 1px #999 inset;
+	-mozt-box-shadow: 1px 1px 1px #999 inset;
+	box-shadow: 1px 1px 1px #999 inset;
+}
+
+#lead {
+	width: 660px;
+	margin: 0 30px 30px 30px;
+	font-size: 26px;
+	line-height: 1.4em;
+}
+#lead .cl01 { color: #0055AA;}
+#lead .note { display: block;
+	border-top: dotted 2px #999999;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+
+/*========================================
+ +motor_btn styles
+========================================*/
+#table_btn { width: 680px;
+	padding: 15px 0;
+	margin:0 20px;
+}
+
+#table_btn ul { width: 680px;
+	padding: 0;
+}
+
+#table_btn li {
+	font-size: 30px;
+	line-height: 80px;
+	text-shadow: 1px 1px 2px #666;
+	text-align: left;
+	float: left;
+	
+	-webkit-box-shadow: 0 2px 4px #999;
+	-mozt-box-shadow: 0 2px 4px #999;
+	box-shadow: 0 2px 4px #999;
+}
+
+#table_btn li a {
+	margin:  0 10px;
+	color: #FFF;
+	text-decoration: none;
+	background: url(../motor/images/mot_ic01.png) no-repeat right center;
+	display: block;
+}
+
+
+/*égópé“*/
+#table_btn li.st00 { width: 210px;
+	margin-right: 10px;
+	padding: 0 20px;
+	font-size: 30px;
+	line-height: 80px;
+	text-align: left;
+	background:#060;
+			
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#060), to(#009D21));
+	background-image: -webkit-linear-gradient(#009D21,#060);
+	background-image:    -moz-linear-gradient(#009D21,#060);
+	background-image:         linear-gradient(#009D21,#060);
+
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	-webkit-box-shadow: 0 2px 4px #999;
+	-mozt-box-shadow: 0 2px 4px #999;
+	box-shadow: 0 2px 4px #999;
+}
+
+#table_btn li.t00 a { color: #FFF;
+	text-shadow: 1px 1px 2px #999;
+	text-decoration: none;
+	background: url(../motor/images/mot_ic01.png) no-repeat right center;
+	display: block;
+}
+
+#table_btn li.st01 {
+	width: 138px;
+	padding: 0;
+	border-right: #999 solid 1px;	
+	background:#0080FF;
+	
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0080FF), to(#0055AA));
+	background-image: -webkit-linear-gradient(#0080FF,#0055AA);
+	background-image:    -moz-linear-gradient(#0080FF,#0055AA);
+	background-image:         linear-gradient(#0080FF,#0055AA);
+	
+	-webkit-border-radius: 10px 0 0 10px;
+	-moz-border-radius: 10px 0 0 10px;
+	border-radius: 10px 0 0 10px;
+	
+	display: block;
+}
+
+#table_btn li.st02 {
+	 width: 138px;
+	padding: 0;
+	border-right: #999 solid 1px;	
+	background:#0080FF;
+	
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0062C4), to(#003499));
+	background-image: -webkit-linear-gradient(#0062C4,#003499);
+	background-image:    -moz-linear-gradient(#0062C4,#003499);
+	background-image:         linear-gradient(#0062C4,#003499);
+	
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+#table_btn li.st03 {
+	 width: 138px;
+	padding: 0;	
+	background:#0080FF;
+	
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#003499), to(#002557));
+	background-image: -webkit-linear-gradient(#003499,#002557);
+	background-image:    -moz-linear-gradient(#003499,#002557);
+	background-image:         linear-gradient(#003499,#002557);
+	
+	-webkit-border-radius: 0 10px 10px 0;
+	-moz-border-radius: 0 10px 10px 0;
+	border-radius: 0 10px 10px 0;
+}
+
+
+
+/*========================================
+ +motor_table styles
+========================================*/
+
+
+.tab_container {
+	overflow: hidden;
+	clear: both;
+	float: left;
+	background: #FFF;
+	width: 348px;
+	padding: 10px;
+	
+}
+
+
+
+#motor_header { width: 680px;}
+
+#motor { width: 680px; margin-left: 20px; margin-bottom: 50px;}
+#motor_l { width: 375px; float: left;}
+#motor_r { width: 305px; float: right;}
+
+
+table#motor_head01, table#motor01 { width:374px;}
+table#motor_head02, table#motor02 { width:305px;}
+
+
+
+table#motor_head01,table#motor_head02,table#motor01,table#motor02 {
+	font-size: 28px;
+	text-align:center;
+	border-collapse:collapse;
+	background:#FFFFFF;
+}
+
+table#motor_head01 th,table#motor_head02 th {
+	height: 85px;
+	padding: 10px 0;
+	text-align:center;
+	border-left:#CCC 1px solid;
+	border-top:#CCC 1px solid;
+	border-right:#CCC 1px solid;
+	color:#FC0;
+	font-weight:normal;
+	line-height:1em;
+	vertical-align: middle;
+	background: #333;
+
+}
+table#motor_head01 th a,table#motor_head02 th a { color:#FC0; text-decoration: none;}
+
+table#motor_head01 th#mae04 a,table#motor_head02 th#mae04 a  { color:#FFF; text-decoration: none;}
+
+table#motor_head01 th.select,table#motor_head02 th.select{
+	color: #000;
+	 background: #7BE7EA;
+	}
+table#motor01 .select2,table#motor02 .select2{
+	background: #7BE7EA !important;
+}
+	
+table#motor_head01 th#mae01,table#motor_head02 th#mae01{
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#0055AA), to(#0080FF));
+	background-image: -webkit-linear-gradient(#0055AA,#0080FF);
+	background-image:    -moz-linear-gradient(#0055AA,#0080FF);
+	background-image:         linear-gradient(#0055AA,#0080FF);
+		
+	color: #FFF;
+	}
+table#motor_head01 th#mae02,table#motor_head02 th#mae02{
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#003499), to(#0062C4));
+	background-image: -webkit-linear-gradient(#003499,#0062C4);
+	background-image:    -moz-linear-gradient(#003499,#0062C4);
+	background-image:         linear-gradient(#003499,#0062C4);
+		
+	color: #FFF;
+	}
+table#motor_head01 th#mae03,table#motor_head02 th#mae03{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#002557), to(#003499));
+	background-image: -webkit-linear-gradient(#002557,#003499);
+	background-image:    -moz-linear-gradient(#002557,#003499);
+	background-image:         linear-gradient(#002557,#003499);
+		
+	color: #FFF;
+	}
+	
+table#motor_head01 th#mae04,table#motor_head02 th#mae04{
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#060), to(#009D21));
+	background-image: -webkit-linear-gradient(#060,#009D21);
+	background-image:    -moz-linear-gradient(#060,#009D21);
+	background-image:         linear-gradient(#060,#009D21);
+	color: #FFF;
+	}
+
+
+table#motor01 .rank,table#motor02 .rank{
+	background-color:#999;
+	color:#FFF;
+	height:50px;
+	text-align:center;
+	border:#CCC 1px solid;
+	font-weight:bold;
+}
+table#motor01 .number,table#motor02 .number{ font-weight:bold;}
+
+
+table#motor01 td,table#motor02 td {
+	height: 78px;
+	line-height:1.3em;
+	border:#CCC 1px solid;
+	padding: 10px 0;
+	vertical-align: middle;
+	
+}
+table#motor02 td img, {  margin-left:2px; vertical-align: middle;}
+
+
+
+table tr:nth-child(even) td { background: #F8F7EF;}
+
+.name{
+	display:block; 
+	width:100%; 
+	border-bottom: 2px dotted #CCC;
+	margin-bottom: 4px;
+	height:30px;
+	line-height:30px;
+}
+.data{ height:25px;}
+.data img { vertical-align: -5px; padding: 0 1px;}
+.no {
+	display:block; 
+	line-height:1em; 
+	color: #666; 
+	padding-top:2px;
+}
+
+
+
+
+.jun { background: url(../motor/images/m_ic_01.gif) no-repeat 0px 5px; text-indent: -9999px; width: 26px; height: 29px; display: inline-block;}
+
+.yu { background: url(../motor/images/m_ic_02.gif) no-repeat 0px 5px; text-indent: -9999px; width: 26px; height: 29px; display: inline-block;}
+
+

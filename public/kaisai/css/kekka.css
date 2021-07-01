@@ -1,0 +1,345 @@
+@charset "shift_jis";
+/* CSS Document */
+
+
+/* ▼▼▼レース結果▼▼▼ */
+
+#kekka .cont_kekka { padding: 1px 0 0 0; }
+
+/*レーサー情報_スリット*/
+#kekka #kekka01{width:300px; float:left;}
+#kekka #kekka01_no{
+	width:300px; 
+	float:left;
+	color: #666666;
+	font-size: 16px;
+	line-height: 580px;
+	height: 584px;
+	vertical-align:middle;
+	text-align: center;
+	font-weight: bold;
+	background-color: #D4E1E8;}
+	
+#kekka #kekka01 .ta_kekka {width:300px;}
+
+/*テーブルスタイル_th*/
+.ta_kekka th {
+	color: #FFF;
+	background-color: #353535;
+	font-size: 13px;
+	text-align: center;
+	border: 1px solid #666666;
+	line-height: 110%;
+	padding-top:5px;}
+
+/*着*/
+.ta_kekka th.chaku {
+	font-size:13px;
+	background-color: #666666;
+	height: 36px;
+	border:1px solid #BBBBBB;}
+	
+/*ST*/	
+.ta_kekka th.ST {
+	border-right-style: none;
+	border-left-style: none;}
+
+/*テーブルスタイル_td*/
+.ta_kekka td {
+	text-align: center;
+	line-height: 100%;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #BBBBBB;
+	border-bottom-color: #BBBBBB;
+	border-left-color: #BBBBBB;
+}
+/*着*/
+.ta_kekka td.chaku {
+	font-size: 18px;
+	background-color: #666666;
+	font-weight: bold;
+	color: #FFF;
+	width: 22px;
+	height: 30px;
+	border-right-color: #BBBBBB;
+	border-bottom-color: #BBBBBB;
+	border-left-color: #BBBBBB;
+}
+/*枠*/
+.ta_kekka td.waku {
+	font-size: 18px;
+	font-weight: bold;
+	width: 22px;
+	border-right-color: #BBBBBB;
+	border-bottom-color: #BBBBBB;
+	border-left-color: #BBBBBB;
+}
+/*レーサー*/	
+.ta_kekka td.name {
+	font-size: 16px;
+	height:35px;
+	padding-top:3px;
+	font-weight: bold;
+}
+/*女子レーサー_名前6文字*/	
+.ta_kekka td.name6 {
+	font-size:14px;
+	height:35px;
+	padding-top:3px;
+	font-weight: bold;}
+/*進入*/	
+.ta_kekka td.sin {
+	font-size: 18px;
+	font-weight: bold;
+	width: 22px;	
+	background-color:#FFFFFF;}
+/*ST*/
+.ta_kekka td.ST1 {
+	font-size: 18px;
+	font-weight: bold;
+	width: 45px;	
+	background-color:#FFFFFF;}
+.ta_kekka td.ST1 span{
+	color: #DC3C3C;
+}
+
+/*レースタイム*/	
+.ta_kekka td.time {
+	font-size: 17px;
+	font-weight: bold;
+	width: 60px;	
+	border-right-color: #BBBBBB;
+	background-color:#FFFFFF;}
+
+
+/*返還_決まり手*/
+/*返還*/
+#kekka #kekka_sub { width:300px; }
+
+#kekka #kekka_sub #henkan {
+	float: left;
+	width: 45px;
+	min-height:20px;
+	font-size: 14px;
+	line-height:20px;
+	padding-top:10px;
+	margin-bottom:10px;
+	text-align:left;}
+
+#kekka #kekka_sub #henkan_num{
+	float: left;
+	width:90px;
+	min-height:20px;
+	font-size: 16px;
+	line-height:20px;
+	padding-top:7px;
+	margin-bottom:10px;
+	text-align:left;}
+
+#henkan_num .space{ width:100%; height:5px;}
+	
+/*決まり手*/
+#kekka #kekka_sub #kimari {
+	float:right;
+	min-height:20px;
+	font-size:14px;
+	line-height:20px;	
+	padding-top:10px;
+	margin-bottom:10px;
+}
+#kekka #kekka_sub #kimari span { font-weight:bold; }
+#kekka #kekka_sub #kimari .te_02 { padding-left: 70px;}
+
+/*天候_波高_風*/
+#kekka #weather {
+	width:300px;
+	background:#1A4E66;
+	color:#FFFFFF;
+	text-align:center;
+	font-size:12px;
+	height:30px;
+	line-height:30px;}
+#kekka #weather span {color:#E6F4FB;}
+
+#kekka #slit_img{
+	width:300px;
+	text-align:center;
+	font-size:16px;
+	line-height:204px;
+	background-color: #DDDDDD;}
+
+
+/*スリット*/
+#kekka #ta_st { width: 300px; height: 204px; background: #FFF;}
+
+#kekka #ta_st .inout { width: 40px; text-align: center;}
+
+#kekka #ta_st td.slit { text-align: right; background: url(../images/st_back02.png) no-repeat right center; width: 206px; height: 34px;}
+
+#kekka #ta_st td.slit_st { text-align: right; padding-right: 6px; font-size: 18px; font-weight: bold;}
+
+#kekka #ta_st td.slit_st span,
+#kekka #ta_st td.rate02 span{color:#DC3C3C;}
+#kekka #ta_st td .nodata2 { font-size: 12px; font-weight: bold; color: #DC3C3C;}
+
+
+/*払い戻し*/
+#kekka #kekka02{width:270px; margin:0 5px; float:left;}
+
+/*払い戻し_bottom_ライン*/
+.ta_kekka td.bottom {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #828CA0;}
+
+/*払い戻し_テーブルスタイル*/
+#kekka #kekka02 .ta_harai {width:270px; float: left;}
+	
+.ta_harai th {
+	color: #FFF;
+	background-color: #353535;
+	font-size: 14px;
+	text-align: center;
+	line-height: 110%;
+	height: 39px;
+	padding-top:4px;}
+/*人気*/
+.ta_harai th.ninki{
+	font-size:13px;
+	border-right:1px solid #353535;
+	border-left:1px solid #666666;}
+
+.ta_harai td {
+	text-align: center;
+	font-size: 13px;
+	line-height: 100%;
+	background-color: #FFF;
+	border: 1px solid #DDDDDD;}
+/*左_項目*/	
+.ta_harai td.class {
+	background-color: #666666;
+	width: 45px;
+	font-size:14px;
+	
+	color: #FFF;
+	border-top-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+	border-bottom-color: #BBBBBB;
+	border-left-color: #BBBBBB;}
+/*レース結果*/	
+.ta_harai td.kumi02 {
+	width: 90px;
+	border-left-color: #828CA0;
+	border-right-style: none;
+	text-align: left;
+	padding-left: 5px;}
+/*配当金_円*/
+.ta_harai td.value {	
+	text-align: right;
+	padding-right: 5px;
+	height: 53px;
+	border-left-style: none;}
+/*配当金*/	
+.ta_harai td.value span {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 3px;}
+/*人気*/	
+.ta_harai td.ninki {	
+	font-size:14px;
+	width: 30px;}
+/*テーブル_bottom_カラー指定*/
+.ta_harai td.bottom {
+	border-bottom-color: #AAAAAA;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;}
+
+
+
+/*本日のレース結果*/
+#kekka #kekka03{width:260px; float:left;}
+#kekka #kekka03 .ta_kekka_all{width:260px;}
+
+.ta_kekka_all th {
+	color: #FFF;
+	height:39px;
+	background-color:#002D59;
+	font-size: 14px;
+	text-align: center;
+	line-height: 100%;
+	padding-top:4px;
+	border-bottom:1px solid #AAAAAA;}
+
+.ta_kekka_all td {
+	text-align: center;
+	font-size: 14px;
+	line-height: 100%;
+	background-color: #FFF;
+	border-bottom:1px solid #BBBBBB;
+	border-right:1px solid #BBBBBB;}
+	
+/*レース番号*/	
+.ta_kekka_all td.race {
+	font-size: 18px;
+	background-color:#004488;	
+	font-weight: bold;
+	color: #FFF;
+	width: 35px;
+	height: 44px;
+	vertical-align: middle;}
+/*レース番号_R*/	
+.ta_kekka_all td.race span {font-size: 12px;}
+
+/*レース結果*/	
+.ta_kekka_all td.kumi3 {
+	font-size:14px;
+	border-right:none;}
+
+.ta_kekka_all td.nodata {font-size:16px;}
+
+/*配当金_円*/
+.ta_kekka_all td.harai3 {
+	font-size: 13x;
+	text-align: right;
+	padding-right: 2px;
+	background-color: #EAF0F5;
+	border-left:none;}
+/*配当金*/	
+.ta_kekka_all td.harai3 span {
+	font-size: 17px;	
+	font-weight: bold;
+	margin-right: 3px;}
+
+/*リプレイ_ボタン*/
+.ta_kekka_all th.replay{
+	width:35px;
+	border-left:1px solid #666666;
+	border-right:1px solid #0B3347;}
+	
+.ta_kekka_all td.replay a{
+	width: 24px;
+	height:24px;
+	display: block;
+	text-indent:-9999px;
+	text-decoration:none;
+	margin:0 auto;
+	background-image: url(../images/kekka_replay.png);
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+.ta_kekka_all td.replay a:hover {
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;}
+
+/*中止*/
+.ta_kekka_all td.cyushi {
+	color: #DC3C3C;
+	font-size: 15px;
+	font-weight: bold;}
+

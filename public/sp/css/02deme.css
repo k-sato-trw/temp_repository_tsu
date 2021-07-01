@@ -1,0 +1,258 @@
+
+
+/*
+==========================================
+
+			02deme.htm
+
+==========================================
+*/
+ul.tabs {}
+	
+	ul.tabs li {
+		width:204px;
+		height:110px;
+		float:left;
+		font-size:34px;
+		border-radius:10px 10px 0 0;
+	}
+	ul.tabs li a {
+		height:120px;
+		display: block;
+		color:#FFFFFF;
+		text-align:center;
+		
+		text-decoration:none;
+	}
+	ul.tabs li a span {
+		font-size:36px;
+		font-weight:bold;
+		display:block;
+		margin-bottom:6px;
+		padding-top:20px;
+	}
+	ul.tabs li.b2 { margin:0 18px;}
+	
+	
+	ul.tabs li.b1{
+		border-top:2px solid #00B2B2;
+		border-right:2px solid #00B2B2;
+		border-left:2px solid #00B2B2;
+		background: -moz-linear-gradient(linear, left top, left bottom, from(#00B2B2), color-stop(50%, #00B2B2), to(#A6E1EA));
+		background: -webkit-gradient(linear, left top, left bottom, from(#00B2B2), color-stop(50%, #00B2B2), to(#A6E1EA));}
+	ul.tabs li.b1.active{ background:#00B2B2;}
+	ul.tabs li.b2{
+		border-top:2px solid #0DA7D9;
+		border-right:2px solid #0DA7D9;
+		border-left:2px solid #0DA7D9;
+		background: -moz-linear-gradient(linear, left top, left bottom, from(#0DA7D9), color-stop(50%, #0DA7D9), to(#A6DEF1));
+		background: -webkit-gradient(linear, left top, left bottom, from(#0DA7D9), color-stop(50%, #0DA7D9), to(#A6DEF1));}
+	ul.tabs li.b2.active{ background:#0DA7D9;}
+	ul.tabs li.b3{
+		border-top:2px solid #F44F8C;
+		border-right:2px solid #F44F8C;
+		border-left:2px solid #F44F8C;
+		background: -moz-linear-gradient(linear, left top, left bottom, from(#F44F8C), color-stop(50%, #F44F8C), to(#F999BC));
+		background: -webkit-gradient(linear, left top, left bottom, from(#F44F8C), color-stop(50%, #F44F8C), to(#F999BC));}
+	ul.tabs li.b3.active{ background:#F44F8C;}
+		
+		
+/*
+---------------------------------
+
+　　★共通
+
+---------------------------------
+*/
+
+#rank_3ren,
+#rank_2ren,
+#rank_kohai {
+	background-position:left top;
+	background-repeat:repeat-x;
+	}
+	
+#rank_3ren { background-image:url(/sp/02deme/images/ttl_bg1.png);}
+#rank_2ren { background-image:url(/sp/02deme/images/ttl_bg2.png);}
+#rank_kohai{ background-image:url(/sp/02deme/images/ttl_bg3.png);}
+
+/*集計期間*/
+.kikan {
+	text-align:right;
+	padding-right:10px;
+	padding-top:15px;
+	padding-bottom:20px;
+	color:#FFFFFF;
+	font-size:26px;
+}
+
+/*テーブルまわり*/
+#rank_3ren table,
+#rank_2ren table {width:100%;}
+
+/*tr*/
+/*偶数行クラス*/
+#rank_3ren table .even,
+#rank_2ren table .even { background-color:#F0F0F0;}
+
+/*th*/
+#rank_3ren table th,
+#rank_2ren table th,
+#rank_kohai table th {
+	background-color:#585D63;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px dotted #999999;
+	color:#FFFFFF;
+	padding:10px 0;
+	vertical-align:middle;
+	text-align:center;
+	}
+table th.th2 {width:70px; border-right: none!important;}
+
+/*td*/
+#rank_3ren table td,
+#rank_2ren table td,
+#rank_kohai table td {
+	text-align:center;
+	vertical-align:middle;
+	padding:10px 0;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px dotted #999999;
+}
+#rank_3ren table td.kumi,
+#rank_2ren table td.kumi {width:230px;}
+#rank_3ren table td.sen,
+#rank_2ren table td.sen	{width:130px;}
+
+/*組*/
+.w1,.w2,.w3,.w4,.w5,.w6 {
+	width:40px;
+	height:40px;
+	line-height:40px;
+	display:inline-block;
+	text-align:center;
+	margin:0px 2px;
+	border:1px solid #585D63;
+}
+/*配当金*/
+td.haito {
+	text-align:right!important;
+	font-weight:bold;
+	font-size:34px;
+}
+	td.haito span {font-size:0.8em; padding-left:4px; padding-right:15px;}
+	
+#rank_3ren .haito,
+#rank_2ren .haito {border-right:1px solid #CCCCCC!important;}
+
+
+/*
+---------------------------------
+
+　　3連単出目ランキング
+
+---------------------------------
+*/
+
+#rank_3ren table {}
+#rank_3ren table th.th2 { background-color:#05B3B3;}
+
+/*
+---------------------------------
+
+　　2連単出目ランキング
+
+---------------------------------
+*/
+
+#rank_2ren table {}
+#rank_2ren table th.th2 { background-color:#2D95FF;}
+
+/*
+---------------------------------
+
+　　高配当ランキング
+
+---------------------------------
+*/
+
+#rank_kohai table { width:100%;}
+
+#rank_kohai table th { border-right:none; font-weight:bold; color:#F999BC;}
+
+/*金額*/
+#rank_kohai table td.value {
+	font-size:34px;
+	font-weight:bold;
+	width:200px;
+	border-right:none;
+}
+	#rank_kohai table td.value span {
+		font-size:28px;
+		font-weight:normal;
+	}
+/*開催日*/
+#rank_kohai table td.date {
+	border-left:none;
+	border-right:none;
+}
+/*勝舟*/
+#rank_kohai table td.kumi {
+	width:180px;
+	border-left:none;
+	border-right:none;
+	}
+/*レーサー枠*/
+#rank_kohai table td.racer {
+	padding:0 0 30px 0;
+	border:none;
+}
+
+/*1着～3着*/
+/*枠*/
+#rank_kohai table td.cyaku {
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+	padding:10px 0 0 0;
+	}
+	#rank_kohai table td.cyaku div {
+		width:40px;
+		height:60px;
+		line-height:60px;
+		font-size:24px;
+		background-color:#999999;
+		color:#FFFFFF;
+		border-radius:5px;
+	}
+/*選手名*/
+#rank_kohai table td.name {
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+	width:170px;
+	text-align:left;
+	padding-bottom:2px;
+	
+	}
+	#rank_kohai table td.name .name6{font-size:26px;}
+	#rank_kohai table td.name .lady{ color:#D00872;}
+
+/*登番*/
+#rank_kohai table td.number {
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+	text-align:left;
+	font-size:0.8em;
+	padding:0;
+	}
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

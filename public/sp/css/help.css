@@ -1,0 +1,160 @@
+
+
+/*
+==========================================
+
+			faq.htm
+
+==========================================
+*/
+#main {
+	font-size:30px;
+	line-height:1.5em;
+	}
+#main a {
+	}
+
+
+
+/*-------------------------------------*/
+#main .area{margin-bottom:50px;width:660px;}
+
+
+#main .item h3{
+	font-size:36px;
+	background-color:#003399;
+	color:#ffffff;
+	line-height:70px;
+	text-align:center;
+	margin-bottom:10px;
+	border:10px solid #007EFF;
+}
+#main .item h4{
+	font-size:32px;
+	background-color:#666666;
+	color:#ffffff;
+	line-height:60px;
+	text-align:center;
+	margin-bottom:10px;
+}
+#main .item h5{
+	font-size:30px;
+	background-color:#dedede;
+	color:#000000;
+	line-height:60px;
+	margin-top:16px;
+	text-align:center;
+}
+
+
+
+/*全体*/
+
+
+/*-----------------------------------------------*/
+.area #os p{
+	border-bottom:2px dotted #E84A4D;
+	text-align:center;
+	color:#E84A4D;
+	font-size:36px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.area #os .redsmall{
+	font-size: 24px;
+}
+.area #att_not01{
+	padding-left:1em;
+	text-indent:-1em;
+}
+.area #att_not02{
+	background-color:#E84A4D;
+	padding:20px;
+	color:#ffffff;
+	margin-top:10px;
+}
+
+
+
+/*大枠：area*/
+.area{
+	margin-bottom:50px;
+}
+.area .area_ul li{
+	margin-bottom:20px;
+	margin-left:30px;
+	list-style:circle;
+}
+
+/*中枠：set*/
+.area .set {
+	margin-bottom:50px;
+	margin-left:0;/*20px*/
+	line-height:1.4em;
+	}
+	
+.area .set_ul{margin-bottom:20px;}
+.area .set_ul li{
+	margin-bottom:20px;
+	margin-left:30px;
+	list-style:disc;
+}
+
+/**/
+.area .set img.seiseki{vertical-align: middle;width:30px;}
+.area .set img.mt{vertical-align: middle;width:30px;}
+.area .set img.hyo{vertical-align: middle;width:30px;}
+
+
+
+/*小枠：inside */
+.area .inside {
+	margin-top:20px;
+	}
+.area .inside ul.inside_ul,
+.area .inside ul.inside_ul_no{margin-bottom:10px;background:#f2f2f2;padding:10px;}
+
+.area .inside ul.inside_ul li {	margin-bottom:20px;margin-left:30px;list-style:disc;}
+.area .inside ul.inside_ul li.dia {text-indent:-1em;list-style:none;}
+.area .inside ul.inside_ul_no li {}
+
+
+/*その他*/
+.area .sonota {
+	margin-top:20px;
+	background:#f2f2f2;
+	padding:14px;
+	}
+.area .sonota ul.sonota_ul{margin-bottom:10px;}
+.area .sonota ul li {padding-left:1em;text-indent:-1em;}
+
+
+
+
+/*文字：特別指定*/
+.font_bold{font-weight:bold;}
+.font_small{font-size:32px; line-height:1.2em;display:block;padding-left:1em;text-indent:-1em;margin-bottom:2px;margin-top:2px;}
+.font_mini{font-size:28px; line-height:1.2em;display:block;}
+.font_big{font-size:34px; }
+.font_spe01{color:#DB0509; font-weight:bold;margin-bottom:10px;display:block;padding-left:1em;text-indent:-1em;}
+.font_spe02{color:#000000; margin-bottom:10px;display:block;padding-left:1em;text-indent:-1em;}
+
+/*文字色*/
+.font_blue{color:#3F64F0;}
+.font_bluebold{color:#00008C; font-weight:bold;}
+.font_red{color:#DB0509;}
+
+/*配置指定*/
+.font_bg_w{background-color:#ffffff;display:block;line-height:2em;margin-bottom:10px;}
+
+
+			
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

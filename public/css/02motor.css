@@ -1,0 +1,199 @@
+
+
+/*
+==========================================
+
+			02deme.htm
+
+==========================================
+*/
+#main {padding-top:20px;}
+
+
+
+/*注釈*/
+#memo {
+	width:1080px;
+	margin:0 auto;
+	margin-bottom:10px;
+	line-height:1.4em;
+}
+	#memo img {vertical-align:-2px;}
+	
+#memo .m1 {
+	background-color:#EEEEEE;
+	text-align:center;
+	padding:4px 0;
+	border-radius:2em;
+}
+
+#memo dl {
+	width:48%;
+	line-height:1.2em;
+	padding-right:2%;
+	padding-top:12px;
+	float:left;
+}
+#memo dt {
+	float:left;
+}
+#memo dd {
+	font-size:14px;
+	padding-left:100px;
+}
+#memo .bo dd {padding-left:80px;}
+#memo dd.mark {padding-left:10px; color:#666666; margin-top:2px;}
+	
+
+/*
+---------------------------------
+
+　　★共通
+
+---------------------------------
+*/
+#motor,#boat {
+	width:525px;
+	float:left;
+}
+#motor {margin-left:50px;}
+#boat {margin-left:30px;}
+
+#motor h3,#boat h3 {
+	background-position:left bottom;
+	background-repeat:no-repeat;
+	height:45px;
+	line-height:34px;
+	text-indent:2.5em;
+	font-size:20px;
+	font-weight:bold;
+}
+#motor h3{background-image:url(/02motor/images/h3_motor_bg.png);}
+#boat h3{background-image:url(/02motor/images/h3_boat_bg.png);}
+
+
+/*テーブル*/
+.data {width:100%;}
+.data th {
+	background-color:#333333!important;
+	color:#FFFFFF;
+	padding:10px 0 8px;
+	text-align:center;
+	line-height:1.2em;
+	border-right:1px solid #999999;
+}
+	
+.data td {
+	text-align:center;
+	padding:6px 0;
+	border-bottom:1px solid #CCCCCC;
+}
+
+	/*ヘッダー*/
+	.data th.head {
+		background-color:#FFFFFF!important;
+		border-right:1px solid #FFFFFF;
+		color:#000000;
+		padding:10px 0 0 0;
+		text-align:left;
+		line-height:none;
+	}
+	/*順位*/
+	.data .rank { width:30px!important;min-width: 30px!important; max-width: 30px!important;}
+	#motor .data td.rank,
+	#boat .data td.rank {background-color:#999999; color:#FFFFFF; font-weight:bold;}
+	/*No.*/
+	.data .number { width:35px!important;min-width: 35px!important; max-width: 35px!important;}
+	#motor .data td.number{ background-color:#00A2D7; color:#FFFFFF;font-weight:bold;}
+	#boat .data td.number{ background-color:#00AC82; color:#FFFFFF;font-weight:bold;}
+	/*出走回数*/
+	.data .syusso { width:50px!important;min-width: 50px!important; max-width: 50px!important;}
+	/*2連率*/
+	.data .ren { width:60px!important;min-width: 60px!important; max-width: 60px!important;}
+	#motor .data th.ren{color:#0DC2FF;font-weight:bold;}
+	#motor .data td.ren{color:#00769D; font-size:17px;}
+	#boat .data th.ren{color:#00D59F;font-weight:bold;}
+	#boat .data td.ren{color:#008262; font-size:17px;}
+	/*優出優勝*/
+	.data .yu { width:40px!important;min-width: 40px!important; max-width: 40px!important;}
+	/*前回成績*/
+	.data .seiseki {border-right:1px solid #CCCCCC;}
+	.data th.seiseki span { display:block; font-size:13px; padding-top:2px;}	
+		
+		/*成績上*/
+		.data .seiseki .top {
+			border-bottom:1px dotted #CCCCCC;
+			padding-bottom:4px;
+			margin-bottom:6px;
+			}
+			.data .seiseki .top span.non {text-align:center; display:block; font-size:13px;}
+			.data .seiseki .top p {
+				display: inline;
+				font-size:13px;
+				height:16px;
+				line-height:16px;
+				}
+			/*グレード*/
+			.data .seiseki p.SG,
+			.data .seiseki p.G1,
+			.data .seiseki p.G2,
+			.data .seiseki p.G3,
+			.data .seiseki p.G0 {
+				width:24px;
+				display:inline-block;
+				text-indent:-9999px;
+				border-radius:2px;
+				background-position:0 0;
+				background-repeat:no-repeat;
+			}
+			.data .seiseki p.SG{background-image:url(/02motor/images/kako_SG.png);}
+			.data .seiseki p.G1{background-image:url(/02motor/images/kako_G1.png);}
+			.data .seiseki p.G2{background-image:url(/02motor/images/kako_G2.png);}
+			.data .seiseki p.G3{background-image:url(/02motor/images/kako_G3.png);}
+			.data .seiseki p.G0{background-image:url(/02motor/images/kako_G0.png);}
+			/*日付*/
+			.data .seiseki p.data { padding-right:2px;}
+			/*名前*/
+			.data .seiseki p.name img {vertical-align: baseline; width:10px;}
+			
+		/*成績下*/
+		.data .seiseki .bot {font-weight:bold; font-size:15px;}
+		.data .seiseki .bot span.non {font-weight:normal; display: block; text-align:center;}
+		.data .seiseki .bot img {vertical-align:-2px; margin-left:1px;}
+
+
+/*奇数行色*/
+.odd { background-color:#F0F0F0;}
+
+/*モーター順位*/
+.mt_ic01,.mt_ic02,.mt_ic03{
+	width: 35px;
+	height: 23px;
+	line-height: 23px;
+	display: inline-block;
+	background-position:center;
+	background-repeat:no-repeat;
+	text-shadow: 0px 0px 3px #333;
+	}
+.mt_ic01 { background-image: url(/kaisai/images/mt_ic_01.png) ;}
+.mt_ic02 { background-image: url(/kaisai/images/mt_ic_02.png) ;}
+.mt_ic03 { background-image: url(/kaisai/images/mt_ic_03.png) ;}
+
+/*ホバー色*/
+#motor .hover {background-color:#CCECF7;}
+#motor .hoverrow {background-color:#CCECF7;}
+#motor .hovercell {background-color:#A3DAEF;}
+
+#boat .hover {background-color:#CCEEE6;}
+#boat .hoverrow {background-color:#CCEEE6;}
+#boat .hovercell {background-color:#A3DECF;}
+		
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

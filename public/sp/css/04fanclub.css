@@ -1,0 +1,140 @@
+/* CSS Document */
+
+
+/*========================================
+ +fanclub styles
+========================================*/
+#main #lead { width: 660px;
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 28px;
+	line-height: 1.4em;
+	color:#003399;
+	font-weight:bold;
+	text-align: center;
+}
+
+#main #fan {
+	width: 660px;
+	font-size: 28px;
+	line-height: 1.4em;
+}
+#main #fan #set {
+	padding-bottom:80px;
+	width: 660px;
+}
+#main #fan #set_non {
+	width: 660px;
+}
+
+#midashi{
+	height:70px;
+	font-size: 35px;
+	line-height: 2em;
+	text-align:center;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-image:url(../04fanclub/images/bk_bar.png);
+	background-repeat:no-repeat;
+	padding-bottom:20px;
+}
+#midashi_non{
+	height:70px;
+	font-size: 35px;
+	line-height: 2em;
+	text-align:center;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-image:url(../04fanclub/images/bk_bar.png);
+	background-repeat:no-repeat;
+}
+#point_waku{
+	width:635px;
+	border:#003399 3px solid;
+	padding:10px;
+	margin:10px 0 0;
+
+}
+#point_waku #point{
+	float:left;
+	width:140px;
+	font-size: 30px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-image:url(../04fanclub/images/bk_point.png);
+	background-repeat:no-repeat;
+
+	padding-top:5px;
+	padding-bottom:20px;
+	padding-left:20px;
+	clear:left;	
+}
+#point_waku #point_text {
+	float:right;
+	width:470px;
+	font-size: 30px;
+	line-height: 1.5em;
+	clear:right;
+	text-align:left;
+}
+
+#fan #set #waku {
+	width:650px;
+	border:#08B4B4 5px solid;
+	text-align:center;
+	padding:10px 0;
+	margin:0 0 50px;
+	font-size:32px;
+	line-height:1.5em;
+}
+
+h3 {
+	line-height: 50px;
+	font-weight:bold;
+	color: #000;
+	padding-top:15px;
+}
+.kaisoku {
+	
+	}
+.kaisoku ul{
+	padding-bottom:15px;
+	padding-left:100px;
+	
+		}
+.kaisoku ul li{
+	font-size:26px;
+	line-height:1.2em;
+	text-indent:-2.6em;
+	margin-top:5px;
+}
+
+.kaisoku ul li.small{
+	margin-left:5px;
+	text-indent:0;
+	padding-bottom:15px;
+}
+
+
+
+
+.font_bigbold{ font-size:34px; font-weight:bold; line-height:1.3em;}
+.font_bluebold{  font-weight:bold; color:#003399;}
+.font_bold{  font-weight:bold;}
+.font_small{ font-size:26px; line-height:1.3em;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

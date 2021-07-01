@@ -1,0 +1,782 @@
+
+
+/*
+==========================================
+
+			06meikan.htm
+
+==========================================
+*/
+
+
+#filtering-nav,
+#contentInner {
+	width:1120px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+/*----------------------
+		ボタン
+----------------------*/
+#filter_nav_area {
+	background-color:#B9DCFF;
+}
+	#filter_nav_area.fixed {
+		width:1180px;
+		position:fixed;
+		top:0;
+		z-index:200;
+	}
+	
+/*リード*/
+#filter_nav_area p#lead {padding:20px 0 0 40px;}
+
+
+/*ボタン*/
+#filtering-nav {
+	width:1110px;
+	margin:30px auto 0;
+}
+	#filtering-nav ul {float:left;}
+	#filtering-nav ul li {
+		text-align:center;
+		float:left;
+		position:relative;
+		color:#FFFFFF;
+		font-weight:bold;
+		background-image:url(/06meikan/images/nav_arr1.png);
+		background-repeat:no-repeat;
+		cursor:pointer;
+		}
+		/*人数*/
+		#filtering-nav ul li span {
+			position:absolute;
+			font-size:14px;
+			line-height:1em;
+			padding-left:16px;
+			color:#FFFFFF;
+			top:10px;
+			left:50%;
+			margin-left:-25px;
+			display:block;
+			background-image:url(/06meikan/images/people.png);
+			background-position:0 0;
+			background-repeat:no-repeat;
+			filter:alpha(opacity=70);
+			-moz-opacity: 0.7;
+			opacity: 0.7;
+		}
+		
+	#filtering-nav #filter2,
+	#filtering-nav #filter3,
+	#filtering-nav #filter4 {margin-left:20px;}
+		
+
+	/*********ALL*********/
+	#filter1 li.all {
+		width:122px;
+		height:100px;
+		line-height:105px;
+		background-position:center 80px;
+		background-color:#555555;
+		border-radius:5px 5px 0 0;
+		font-size:22px;}
+		
+		#filter1 li.all span { top:20px;}
+		
+	/*********級別*********/
+	#filter2 {
+		background-image:url(/06meikan/images/nav_ttl.png);
+		background-position:left top;
+		background-repeat:no-repeat;
+		padding-top:27px;
+		margin-top:-7px;
+	}
+	#filter2 li {
+		width:90px;
+		height:80px;
+		line-height:84px;
+		font-size:22px;
+		background-position:center 60px;
+		background-color:#08B4B4;
+	}
+	
+	#filter2 li.A1 {border-radius:5px 0 0 0;}
+	#filter2 li.B2 {border-radius:0 5px 0 0;}
+	#filter2 li.A1,
+	#filter2 li.A2,
+	#filter2 li.B1 {border-right:1px solid #B9DCFF;}
+	
+	/*********登番*********/
+	#filter3 {
+		background-image:url(/06meikan/images/nav_ttl.png);
+		background-position:right top;
+		background-repeat:no-repeat;
+		padding-top:27px;
+		margin-top:-7px;
+	}
+	#filter3 li {
+		height:80px;
+		line-height:84px;
+		background-position:center 60px;
+		background-color:#0C6DFC;
+		border-right:1px solid #B9DCFF;
+		
+		/*▼ボタン3つの時に適用▼*/
+		width:146px;
+		font-size:22px;
+		
+		/*▼ボタン4つの時に適用▼
+		width:108px;
+		font-size:18px;
+		*/
+	}
+	#filter3 li:first-child {border-radius:5px 0 0 0;}
+	#filter3 li:last-child {border-radius:0 5px 0 0;}
+	
+	/*********女子*********/	
+	#filter4 li {
+		width:122px;
+		height:100px;
+		line-height:105px;
+		background-position:center 80px;
+		background-color:#F05555;
+		border-radius:5px 5px 0 0;
+		font-size:18px;}
+		
+			#filter4 li.lady span {top:20px;}
+	
+	
+	
+/*選択時*/
+#filtering-nav li#active {cursor:default;}
+#filtering-nav li#active,
+#filtering-nav li:hover { background-color:#FFFFFF; color:#000000;}
+#filtering-nav li#active span,
+#filtering-nav li:hover span {	filter:alpha(opacity=100);-moz-opacity: 1;opacity: 1;}
+
+#filtering-nav li:hover {
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
+}
+
+	/*ALL*/
+	#filter1 li#active,
+	#filter1 li:hover{background-image:url(/06meikan/images/nav_arr2.png);}
+	#filter1 li#active span,
+	#filter1 li:hover span {color:#555555;background-position:0 -15px;}
+
+	/*級別*/
+	#filter2 li#active,
+	#filter2 li:hover{background-image:url(/06meikan/images/nav_arr3.png);}
+	#filter2 li#active span,
+	#filter2 li:hover span {color:#08B4B4;background-position:0 -30px;}
+
+	/*登番*/
+	#filter3 li#active,
+	#filter3 li:hover{background-image:url(/06meikan/images/nav_arr4.png);}
+	#filter3 li#active span,
+	#filter3 li:hover span {color:#0C6DFC;background-position:0 -45px;}
+
+	/*女子*/
+	#filter4 li#active,
+	#filter4 li:hover{background-image:url(/06meikan/images/nav_arr5.png);}
+	#filter4 li#active span,
+	#filter4 li:hover span {color:#F05555;background-position:0 -60px;}
+
+
+
+
+
+
+
+
+
+
+/*----------------------
+	レーサーリスト
+----------------------*/
+
+.wrap {
+	padding: 40px 0 50px 0;
+	clear: both;
+	margin: 0px;
+	overflow: hidden;
+}
+
+.box{
+	width: 250px;
+	margin:5px 0;
+	border:10px solid;
+	overflow:hidden;
+	position:relative;
+}
+.box.A1{height: 250px;border-color: #F87676;}
+.box.A2{height: 180px;border-color: #FFA74F;}
+.box.B1{height: 110px;border-color: #B59EF8;}
+.box.B2{height: 110px;border-color: #7AB9F8;}
+	
+	/*選手画像*/
+	.box img.photo {position:absolute; z-index:1;}
+	.box.A1 img.photo { width:250px; left:0; top:-20px;}
+	.box.A2 img.photo { width:210px; left:0; top:-30px;}
+	.box.B1 img.photo { width:170px; left:0; top:-40px;}
+	.box.B2 img.photo { width:170px; left:0; top:-40px;}
+	
+	/*名前まわり*/
+	.box dl.name {
+		position:absolute;
+		right:0;
+		bottom:0;
+		z-index:100;
+		text-align:right;}
+	
+	.box.A1 dl.name,.box.A2 dl.name {width:135px;}
+	.box.A1 dl.name {background-image:url(/06meikan/images/box_name_bg_a1.png);height:135px;}	
+	.box.A2 dl.name {background-image:url(/06meikan/images/box_name_bg_a2.png);height:180px;}
+	
+	.box.B1 dl.name,.box.B2 dl.name	{width:110px; height:110px;}
+	.box.B1 dl.name {background-image:url(/06meikan/images/box_name_bg_B1.png);}	
+	.box.B2 dl.name {background-image:url(/06meikan/images/box_name_bg_B2.png);}	
+	
+		/*級*/
+		.box dl.name dt {color:#FFFFFF;line-height:1em;text-shadow: 2px 2px 1px rgba(0,0,0,0.2);}
+		.box.A1 dl.name dt {font-size:40px;padding-top:45px;padding-left:75px;}
+		.box.A2 dl.name dt {font-size:40px;padding-top:90px;padding-left:75px;}
+		.box.B1 dl.name dt,.box.B2 dl.name dt {
+			font-size:30px;
+			padding-top:40px;
+			padding-left:50px;
+			}
+			
+			/*登番*/
+			.box dl.name dt span {
+				width:60px;
+				height:18px;
+				line-height:18px;
+				text-align:center;
+				background-color:#FFFFFF;
+				border-radius:2em;
+				font-weight:bold;
+				display:block;
+				margin:0 auto;
+				font-size:16px;
+				text-shadow: none;
+			}
+			.box.A1 dl.name dt span {color:#F87676;}
+			.box.A2 dl.name dt span {color:#FFA74F;}
+			.box.B1 dl.name dt span {color:#B59EF8;}
+			.box.B2 dl.name dt span {color:#7AB9F8;}
+		
+		/*名前*/
+		.box dl.name dd {font-weight:bold;color:#000000;}
+		.box.A1 dl.name dd,.box.A2 dl.name dd {font-size:22px;padding-top:10px;}
+		.box.B1 dl.name dd,.box.B2 dl.name dd {font-size:18px;padding-top:5px;}
+		
+
+	
+
+
+/**** Clearfixes ****/
+
+.wrap:after,
+#filtering-nav:after { 
+  content: ''; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+
+
+
+
+
+/*----------------------
+	データページ
+----------------------*/
+#racer_data {padding-top:680px;}
+
+#racer_data .data_box {
+	width:970px;
+	height:680px;
+	padding-left:20px;
+	margin-bottom:100px;
+	font-size:16px;
+	border-radius:5px;
+	background-color:#FFFFFF;
+}
+
+
+	/*-----パーソナルデータ-----*/
+	.data_box .personal {
+		 width:200px;
+		 height:100%;
+		 padding:0 20px;
+		 background-color:#08B4B4;
+		 float:left;
+	 }
+	 	/*級別*/
+		.personal ul.rank {
+			border-bottom:5px solid;
+			margin-top:20px;
+			}
+			.personal ul.rank.A1 { border-color:#F87676;}
+			.personal ul.rank.A2 { border-color:#FFA74F;}
+			.personal ul.rank.B1 { border-color:#B59EF8;}
+			.personal ul.rank.B2 { border-color:#7AB9F8;}
+			.personal ul.rank.A1 li.now {background-color:#F87676;}
+			.personal ul.rank.A2 li.now {background-color:#FFA74F;}
+			.personal ul.rank.B1 li.now {background-color:#B59EF8;}
+			.personal ul.rank.B2 li.now {background-color:#7AB9F8;}
+							
+			.personal ul.rank li {float:left;}
+			.personal ul.rank li span {display:block;}
+			
+			/*現在*/
+			.personal ul.rank li.now {
+				width:70px;
+				height:50px;
+				padding-top:10px;
+				border-radius:5px 5px 0 0;
+				text-align:center;
+				font-size:30px;
+				font-weight:bold;
+				line-height:0.8em;
+			}
+				.personal ul.rank li.now span {font-size:14px; color:#FFFFFF;}
+				
+			/*過去*/
+			.personal ul.rank li.past {
+				padding-left:14px;
+				background-image:url(/06meikan/images/racer_data_rank_arrow.png);
+				background-position:4px 25px;
+				background-repeat:no-repeat;
+			}
+				.personal ul.rank li.past p {
+					width:50px;
+					height:46px;
+					padding-top:4px;
+					margin-top:10px;
+					text-align:center;
+					font-size:18px;
+					color:#FFFFFF;
+					font-weight:bold;
+					border-radius:5px 5px 0 0;
+					background-color:#53CBCB;
+				}
+				.personal ul.rank li.past span {
+					font-size:12px;
+					font-weight:normal;
+					color:#444444;
+					line-height:1em;
+					margin-top:4px;}
+			
+	 	/*名前*/
+		.personal dl.name {margin:10px 0;}
+			.personal dl.name dt {
+				background-color:#000000;
+				color:#08B4B4;
+				text-align:center;
+				width:70px;
+				height:20px;
+				border-radius:2em;
+				line-height:20px;
+				font-size:18px;
+				margin:0 auto;
+			}
+			.personal dl.name dd {
+				border-top:3px solid #000000;
+				border-bottom:3px solid #000000;
+				text-align:center;
+				font-size:32px;
+				font-weight:bold;
+				color:#FFFFFF;
+				line-height:0.9em;
+				padding:18px 0 5px;
+				margin-top:-10px;
+			}
+				.personal dl.name dd span {
+					display:block;
+					font-size:14px;
+					font-weight:normal;
+				}
+		
+		/*プロフィール*/
+		.personal dl.profile{font-size:14px;}
+		.personal dl.profile dt {
+			width:80px;
+			background-color:#63D0D0;
+			text-align:center;
+			float:left;
+			clear:left;
+			padding:4px 0 2px;
+			margin-bottom:8px;
+		}
+		.personal dl.profile dd {
+			margin-bottom:8px;
+			padding:2px 0 2px 90px;
+			color:#FFFFFF;
+			font-weight:bold;
+			line-height:1.2em;
+		}
+		
+
+	/*-----成績1.2共通-----*/
+	.data_box h2 {
+		background:none;
+		margin:20px 0 0 0;
+		padding:0;
+		height:30px;
+		line-height:30px;
+		font-size:20px;
+		font-weight:bold;
+		padding-left:20px;
+		background-position:0px center;
+		background-repeat:no-repeat;
+	}	
+	
+	
+	/*-----成績1-----*/
+	.data_box .box1 {
+		width:240px;
+		margin:0 30px;
+		float:left;
+	}
+	.data_box .box1 h2 {
+		color:#003399;
+		background-image:url(/06meikan/images/racer_data_box1_h2.png);
+	}
+		/*2015年後期成績*/
+		.box1 ul.result {
+			background-color:#EEEEEE;
+			padding:10px 10px 15px 0;
+		}
+			.box1 ul.result li {
+				width:100px;
+				float:left;
+				text-align:right;
+				border-bottom:1px dotted #003399;
+				margin-left:10px;
+				padding-top:8px;
+				padding-right:5px;
+				padding-bottom:2px;
+			}
+				.box1 ul.result li span {
+					color:#003399;
+					font-size:14px;
+					font-weight:bold;
+					display:block;
+					float:left;
+					padding-left:10px;
+					background-image:url(/06meikan/images/racer_data_box1_re.png);
+					background-position:0 center;
+					background-repeat:no-repeat;
+				}
+				.box1 ul.result li span.small {font-size:12px;}
+				
+		/*通算優勝回数*/
+		.box1 p.att {font-size:13px; padding:0 0 4px 20px;}
+		.box1 table.grade_win{
+			width:100%;
+			table-layout:fixed;
+			text-align:center;
+			}
+		.box1 table.grade_win th {
+			text-align:center;
+			background-color:#003399;
+			border-bottom:5px solid;
+			border-left:1px solid #CCCCCC;
+			border-right:1px solid #CCCCCC;
+			padding:5px 0;
+			font-weight:bold;
+		}
+			.box1 table.grade_win th.SG {color:#FF4242; border-bottom-color:#FF4242;}
+			.box1 table.grade_win th.G1 {color:#FF860D; border-bottom-color:#FF860D;}
+			.box1 table.grade_win th.G2 {color:#8F69FF; border-bottom-color:#8F69FF;}
+			.box1 table.grade_win th.G3 {color:#00C694; border-bottom-color:#00C694;}
+			.box1 table.grade_win th.G0 {color:#2D95FF; border-bottom-color:#2D95FF;}
+			
+		.box1 table.grade_win td {
+			background-color:#EEEEEE;
+			border:1px solid #CCCCCC;
+			padding:5px 0;
+		}
+		
+		/*SG&G1獲得タイトル*/
+		.box1 h3 {
+			background-color:#003399;
+			color:#FFFFFF;
+			text-align:center;
+			padding:8px 0;
+		}
+			.box1 .grade_title {
+				height:350px;
+				background-color:#EEEEEE;
+				overflow:auto;
+			}
+
+			/*テーブル*/
+			.box1 .grade_title table {width:100%;}
+			.box1 .grade_title td {
+				font-size:14px;
+				border-bottom:1px dotted #666666;
+				padding:8px 0;
+				background-color:#EEEEEE;
+				vertical-align:middle;
+				}
+				/*日付*/
+				.box1 .grade_title td.date {
+					color:#000000;
+					padding-left:25px;
+					width:40px;
+					background-position:5px center;
+					background-repeat:no-repeat;
+				}
+				.box1 .grade_title td.SG {background-image:url(/06meikan/images/grade_title_sg.png);}
+				.box1 .grade_title td.G1 {background-image:url(/06meikan/images/grade_title_g1.png);}
+				/*場*/
+				.box1 .grade_title td.jyo {
+					text-align:center;
+					border-left:1px dotted #666666;
+					border-right:1px dotted #666666;
+					width:55px; }
+				/*レース名*/
+				.box1 .grade_title td.race { font-weight:bold; padding-left:5px}
+							
+	
+	/*-----成績2-----*/
+	.data_box .box2 {
+		width:380px;
+		float:left;
+	}
+	.data_box .box2 h2 {
+		color:#08B4B4;
+		background-image:url(/06meikan/images/racer_data_box2_h2.png);
+	}
+		/*直近3節成績*/
+		/*見出し*/
+		.data_box .box2 .assen_ttl {position:relative;}
+		.data_box .box2 .assen_ttl span {
+			color:#000000;
+			font-size:14px;
+			font-weight:normal;
+			text-align:right;
+			display:inline-block;
+			position:absolute;
+			right:0;
+			border:0;
+		}
+			.data_box .box2 .assen_ttl span img {vertical-align:-3px;}	
+			
+		/*テーブル*/	
+		.data_box .box2 table.result {width:100%;}
+		.data_box .box2 table.result td {
+			border-bottom:3px solid #FFFFFF;
+			vertical-align:middle;
+			font-size:14px;}
+			/*日付*/
+			.data_box .box2 table.result th {
+				width:125px;
+				background-color:#08B4B4;
+				color:#FFFFFF;
+				text-align:center;
+				height:31px;
+				vertical-align:middle;
+				font-size:14px;
+				border-bottom:3px solid #FFFFFF;
+			}
+			/*グレード*/
+			.data_box .box2 table.result td.grade {
+				width:40px;
+				background-color:#CCCCCC;
+				text-align:center;}
+			/*場*/
+			.data_box .box2 table.result td.jyo {
+				width:50px;
+				background-color:#DDDDDD;
+				text-align:center;}
+			/*成績*/
+			.data_box .box2 table.result td.data {
+				background-color:#EEEEEE;
+				padding-left:10px;
+				font-size:18px;
+				vertical-align:middle;
+			}
+				.data_box .box2 table.result td.data img { padding:0 0 3px 1px;}
+				
+				/*8日間*/
+				.data_box .box2 table.result td.data.day8{ font-size:14px;}
+			
+		/*あっせん情報*/
+		.data_box .box2 .assen {
+			height:450px;
+			overflow:auto;
+			background-color:#EEEEEE;
+		}
+		.data_box .box2 .assen table {width:100%;border-top:1px dotted #666666;}
+		.data_box .box2 .assen table td {
+			font-size:14px;
+			border-bottom:1px dotted #666666;
+			padding:5px 0;
+			vertical-align:middle;
+			}
+			/*日付*/
+			.data_box .box2 .assen table th {
+				width:90px;
+				background-color:#555555;
+				color:#FFFFFF;
+				text-align:center;
+				font-size:14px;
+				border-bottom:1px dotted #FFFFFF;
+				vertical-align:middle;
+			}
+			/*場*/
+			.data_box .box2 .assen table td.jyo {
+				width:45px;
+				background-color:#CCCCCC;
+				text-align:center;
+				font-size:13px;}
+			/*グレード*/
+			.assen .grade {
+				background-color:#EEEEEE;
+				text-align:center;
+				width:20px;
+				font-weight:bold;}
+			.assen .SG {color:#FF4242;}
+			.assen .G1 {color:#FF860D;}
+			.assen .G2 {color:#8F69FF;}
+			.assen .G3 {color:#00C694;}
+			.assen .G0 {color:#2D95FF;}
+			
+			/*レース名*/
+			.data_box .box2 .assen table td.race {
+				line-height:1.2em;
+				padding-left:8px;
+				background-color:#FFFFFF;
+				
+			}
+			/*津用*/
+			.data_box .box2 .assen table tr.tsu td.jyo {
+				background-image:url(/06meikan/images/assen_tsu_jyo.png);
+				color:#FFFFFF;} 
+			.data_box .box2 .assen table tr.tsu td.race,
+			.data_box .box2 .assen table tr.tsu td.grade {
+				background-image:url(/06meikan/images/assen_tsu_race.png);}
+
+
+
+
+/*----------------------
+		nodata
+----------------------*/
+
+.box1 .nodata,
+.box2 .assen .nodata {
+
+}
+
+/*SG&G1獲得タイトル*/
+.box1 .nodata {
+	width:240px;
+	height:380px;
+	margin:0 auto;
+	 background-color:#EEEEEE;
+	background-image:url(/06meikan/images/nodata2.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+
+/*あっせん情報*/
+.box2 .assen .nodata {
+	width:380px;
+	height:450px;
+	background-color:#DDDDDD;
+	font-size:14px;
+	color:#666666;
+	text-align:center;
+	line-height:1.4em;
+}
+.box2 .assen .nodata p {
+	width:340px;
+	height:300px;
+	margin:0 auto;
+	padding-top:130px;
+	background-image:url(/06meikan/images/nodata.png);
+	background-position:right bottom;
+	background-repeat:no-repeat;}
+
+
+
+/*----------------------
+		fancybox
+----------------------*/
+#fancybox-close {
+	width:64px!important;
+	height:64px!important;
+	background-image:url(/06meikan/images/fancy_close.png)!important;
+	background-position:0 0!important;
+	right:-32px!important;
+	top:-32px!important;
+}
+#fancybox-close:hover {background-position:0 -64px!important;}
+#fancybox-left:hover,
+#fancybox-right:hover {
+	filter:alpha(opacity=70);
+	-moz-opacity: 0.7;
+	opacity: 0.7;
+
+	-webkit-transition: 0.2s ease-in-out;
+	-moz-transition: 0.2s ease-in-out;
+	-o-transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
+	}
+	
+#fancybox-left {
+	background-image:url(/06meikan/images/fancy_back.png)!important;
+	background-position:left center!important;
+	background-repeat:no-repeat!important;
+	left:-100px!important;
+	width:100px!important;}
+	
+#fancybox-right {
+	background-image:url(/06meikan/images/fancy_next.png)!important;
+	background-position:right center!important;
+	background-repeat:no-repeat!important;
+	right:-100px!important;
+	width:100px!important;}
+	
+#fancybox-left-ico,
+#fancybox-right-ico {background:none!important;}
+	
+#fancybox-content {
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+	
+	
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+	#racer_data {padding-top:0px;}
+	#racer_data .data_box { page-break-after:always;}
+	.box1 .grade_title,
+	.data_box .box2 .assen { overflow:visible;}
+	#filter_nav_area.fixed {
+		position: absolute;
+		z-index:200;
+		top:-165px;
+	}
+	#contents_wrap {padding-top:1px;}
+	
+}

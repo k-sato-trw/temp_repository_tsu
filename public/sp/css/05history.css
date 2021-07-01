@@ -1,0 +1,159 @@
+
+
+/*
+==========================================
+
+			05history.htm
+
+==========================================
+*/
+#main {}
+
+
+#history,
+#winner {}
+
+h3 {
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	color:#FFFFFF;
+	font-weight:bold;
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+
+
+/**/
+#history {}
+
+#history h3{background-image:url(/sp/05history/images/his_h3_bg.png); margin-bottom:30px;}
+
+#history dl {}
+#history dt {
+	height:70px;
+	text-indent:-9999px;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+#history #his1 dt {background-image:url(/sp/05history/images/his1_dt.png);}
+#history #his2 dt {background-image:url(/sp/05history/images/his2_dt.png);}
+#history #his3 dt {background-image:url(/sp/05history/images/his3_dt.png);}
+
+#history #his1956 dt {background-image:url(/sp/05history/images/his1956_dt.png);}
+#history #his1969 dt {background-image:url(/sp/05history/images/his1969_dt.png);}
+#history #his1970 dt {background-image:url(/sp/05history/images/his1970_dt.png);}
+#history #his2000 dt {background-image:url(/sp/05history/images/his2000_dt.png);}
+#history #his2002 dt {background-image:url(/sp/05history/images/his2002_dt.png);}
+#history #his2005 dt {background-image:url(/sp/05history/images/his2005_dt.png);}
+#history #his2011 dt {background-image:url(/sp/05history/images/his2011_dt.png);}
+#history #his2013 dt {background-image:url(/sp/05history/images/his2013_dt.png);}
+
+
+#history dd {
+	padding-left:20px;
+	padding-right:20px;
+	background-image:url(/sp/05history/images/his_dd_bg.png);
+	background-position:0 0;
+	line-height:60px;
+	-webkit-text-size-adjust: 100%;
+}
+
+#history dd.tc { text-align: center;}
+
+#history dd img.right { float:right;margin-top:10px;}
+
+#history dd .img {text-align:center;}
+#history #his1 dd .img { padding-top:14px;}
+#history #his2 dd .img { padding-top:14px; margin-bottom:60px;}
+
+
+/*イメージ画像*/
+#history #p_img {
+	margin-top:-100px;
+	margin-left:-30px;
+	padding-bottom:90px;
+}
+
+
+/**/
+
+#winner h3{background-image:url(/sp/05history/images/win_h3_bg.png);}
+
+#winner ul {
+	margin:20px auto;
+	background-image:url(/sp/05history/images/winner_bg.png);
+	background-position:right bottom;
+	background-repeat: no-repeat;
+	}
+#winner ul li {}
+
+
+#winner ul li dt {
+	height:80px;
+	line-height:80px;
+	text-align:center;
+	font-weight:bold;
+	margin-top:10px;
+	background-position: 610px center;
+	background-repeat:no-repeat;
+	border:1px solid #CCCCCC;
+	background-color:#EEEEEE;
+	border-radius:10px;
+	background-image:url(/sp/05history/images/win_plus.png);
+}
+#winner ul li dt.open {
+	color:#FFFFFF;
+	border-radius:10px 10px 0 0;
+	background-color:#999999;
+	background-image:url(/sp/05history/images/win_minus.png);
+	}
+#winner ul li dd {
+	border:1px solid #CCCCCC;
+	background-color:#EEEEEE;
+	border-radius:0 0 10px 10px;
+	padding:10px 20px 20px;
+	margin-bottom:30px;
+	display:none;
+}
+
+/**/
+#winner table{
+	border-collapse: separate;
+	border-spacing: 0 10px;
+	width:100%;
+	}
+#winner table td {text-align:center; vertical-align:middle;}
+
+/*第●回*/
+#winner td.col-1 {
+	width:150px;
+	height:50px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#BD9417;
+	padding:6px 0;
+}
+/*年月日*/
+#winner td.col-2{
+	width:270px;
+	padding:0 4px;
+	border-bottom:2px dotted #BBBBBB;
+}
+
+/*名前*/
+#winner td.col-3{
+	font-size:32px;
+	font-weight:bold;
+	border-bottom:2px dotted #BBBBBB;
+}
+
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

@@ -1,0 +1,93 @@
+
+body {
+	font-family: Roboto, Arial, "メイリオ", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 14px;
+	line-height: 100%;
+	background: #FFF;
+}
+
+
+/*----------------------------------
+
+　　　色
+
+----------------------------------*/
+
+
+/* ▼▼▼共通▼▼▼ */
+.w1 {
+	background-color: #DEE8EF;
+	color: #000000;
+}
+.w2 {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+.w3 {
+	background-color: #CC0000;
+	color: #FFFFFF;
+}
+
+.w4 {
+	background-color: #0066CC;
+	color: #FFFFFF;
+}
+.w5 {
+	background-color: #FFE600;
+	color: #000000;
+}
+.w6 {
+	background-color: #009900;
+	color: #FFFFFF;
+}
+
+
+/* ▼▼▼フライング▼▼▼ */
+.st_f, .date_cyushi { color:#DC3C3C;}
+	
+
+
+/*----------------------------------
+
+　　　VPOWER予想_枠番（四角）
+
+----------------------------------*/
+
+span.waku_s{
+	font-size:18px;
+	padding:2px 5px;
+	border:1px solid #333333;
+	margin:2px;
+	font-weight:bold;
+}
+span.waku_s2{
+	font-size:22px;
+	padding:1px 8px;
+	border:1px solid #333333;
+	margin:2px 3px;
+	font-weight:bold;
+}
+span.waku_s3{
+	font-size:14px;
+	padding:1px 5px;
+	border:1px solid #333333;
+	margin:2px 1px;
+	display:inline-block;
+	font-weight:bold;
+}
+span.waku_s4{
+	font-size:16px;
+	padding:4px 6px;
+	border:1px solid #333333;
+	margin:2px 1px;
+	display:inline-block;
+	font-weight:bold;
+}
+
+/*--------------------------------
+			
+			印刷用
+			
+--------------------------------*/
+@media print {
+}

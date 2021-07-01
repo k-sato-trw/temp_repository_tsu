@@ -1,0 +1,292 @@
+
+/*
+==========================================
+
+			help.htm
+			
+==========================================
+*/
+#main {
+	padding-left:50px;
+	padding-right:50px;
+	padding-top:40px;
+	padding-bottom:50px;
+	font-size:16px;
+    line-height:1.5em;
+	}
+#main a {
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
+	}
+#main #help{overflow:hidden;}
+
+
+/*---------------------------------------------
+右側
+-----------------------------------------------*/
+#main #help .item{width:810px;float:left;}
+/*アンカー用*/
+#main #help #help01,
+#main #help #help02,
+#main #help #help03,
+#main #help #help04,
+#main #help #help05,
+#main #help #help06{padding-top:10px;margin-top:-10px;}
+
+#main .item a:link,
+#main .item a:visited {color:#00008C;}
+#main .item a:hover {color:#000040;}
+#main .item a:active {color:#000040;}
+
+/*---------------------------------------------
+左側
+-----------------------------------------------*/
+/*ボタン*/
+#main #help #help_nav{
+	width:240px;
+	float:right;
+	background-color:#003399;
+}
+#main #help #help_nav ul{
+	list-style:none;
+	padding:10px;
+	}
+#main #help #help_nav li{
+	color:#333333;
+	display:block;
+	text-decoration:none;
+	margin-bottom:8px;
+	background-color:#ffffff;
+	}
+#main #help #help_nav li a{
+	width:220px;
+	height:60px;
+	color:#333333;
+	display:block;
+	background-image:url(../help/images/btn_bk.png);
+	background-color:#ffffff;
+	text-decoration:none;
+	}
+#main #help #help_nav li a:hover{
+	background-color:#999999;
+	color:#ffffff;
+	}
+/*項目1行の場合「span」を利用*/
+#main #help #help_nav li  a span{
+	padding-top:20px;
+	display:block;
+	text-align:center;
+	}
+/*項目2行の場合「p」を利用*/
+#main #help #help_nav li  a p{
+	padding-top:10px;
+	display:block;
+	text-align:center;
+	line-height:1.3em;
+	}
+	
+#main .item a:link,
+#main .item a:visited {color:#00008C;text-decoration:none;border-bottom:1px dotted #000000;}
+#main .item a:hover {color:#000040;}
+#main .item a:active {color:#000040;}	
+
+
+
+
+
+/*-------------------------------------*/
+
+#main .item h3{
+	font-size:20px;
+	background-color:#003399;
+	color:#ffffff;
+	line-height:40px;
+	padding-left:20px;
+	margin-bottom:10px;	
+	font-weight:bold;
+}
+#main .item h4{
+	font-size:18px;
+	background-color:#666666;
+	color:#ffffff;
+	line-height:36px;
+	padding-left:10px;
+	margin-bottom:10px;	
+}
+#main .item h5{
+	font-size:18px;
+	background-color:#dedede;
+	color:#333333;
+	line-height:36px;
+	padding-left:10px;
+	margin-bottom:10px;	
+	margin-top:16px;	
+}
+#main .item h6{
+	font-size:18px;
+	background-color:#7B1E20;
+	color:#ffffff;
+	line-height:28px;
+	text-align:center;
+	margin-top:80px;
+}
+
+/*-------------------------------------*/
+
+/*大枠：area*/
+.area{
+	margin-bottom:50px;
+}
+.area .area_ul li{
+	margin-bottom:6px;
+	padding-left:22px;
+	background-image:url(../help/images/ic_list02.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+
+/*中枠：set*/
+.area .set {
+	margin-bottom:50px;
+	margin-left:20px;
+	line-height:1.4em;
+	}
+	
+.area .set_ul{margin-bottom:20px;}
+.area .set_ul li{
+	margin-bottom:6px;
+	padding-left:22px;
+	background-image:url(../help/images/ic_list01.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+
+/**/
+.area .set img.seiseki{vertical-align: middle;width:15px;}
+.area .set img.mt{vertical-align: middle;width:15px;}
+.area .set img.hyo{vertical-align: middle;width:14px;}
+
+
+
+/*小枠：inside */
+.inside {
+	margin-top:20px;
+	margin-left:50px;
+	}
+.inside ul.inside_ul{}
+.inside ul li {padding-left:1em;text-indent:-1em;}
+
+
+/*flash*/
+.flash {
+	border:#CCC 1px solid;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:100px;
+	padding-right:100px;
+	margin-top:10px;
+	margin-left:22px;
+	}
+.flash img {
+	height:42px;
+	float:right;
+	margin-top:10px;
+	}
+
+
+
+/*windwos8について*/
+.area ol.howto_win8{}
+.area ol.howto_win8 li{
+	padding-left:26px;
+	padding-bottom:10px;
+}
+.area ol.howto_win8 li.n01{
+	background-image:url(../help/images/ic_ht01.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+.area  ol.howto_win8 li.n02{
+	background-image:url(../help/images/ic_ht02.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+.area ol.howto_win8 li.n03{
+	background-image:url(../help/images/ic_ht03.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+.area  .win8 {
+	padding:12px;
+	margin-top:10px;
+	margin-bottom:10px;
+	background-color:#ECECEC;
+	text-align:center;
+	
+	-moz-border-radius: 5px;    /* 古いFirefox */
+    -webkit-border-radius: 5px; /* 古いSafari,Chrome */
+    border-radius: 5px;         /* CSS3 */
+	}
+.area .win8_image {text-align:center;padding-top:10px;padding-bottom:10px;}
+.area  .win8 p{text-align:left;}
+
+.area .win8_caution {
+	border:#DB0509 1px solid;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:2px;
+	padding-right:2px;
+	-moz-border-radius: 5px;    /* 古いFirefox */
+    -webkit-border-radius: 5px; /* 古いSafari,Chrome */
+    border-radius: 5px;         /* CSS3 */
+	}
+.area  ul.caut_win8{}
+.area  ul.caut_win8 li{
+	padding-left:14px;
+	background-image:url(../help/images/ic_list03.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+
+
+/*ご注意*/
+#caution {
+	border:#7B1E20 1px solid;
+	padding:10px;
+	margin-bottom:50px;
+	line-height:1.4em;
+	text-align:center;
+	}
+
+	
+
+
+
+/*文字：特別指定*/
+.font_bold{font-weight:bold;}
+.font_small{font-size:14px; line-height:1.2em;display:block;padding-left:1em;text-indent:-1em;margin-bottom:2px;margin-top:2px;}
+.font_mini{font-size:12px; line-height:1.2em;}
+.font_big{font-size:20px; }
+.font_spe01{color:#DB0509; font-weight:bold;display:block;padding-left:1em;text-indent:-1em;}
+.font_spe02{color:#000000; display:block;padding-left:1em;text-indent:-1em;}
+
+/*文字色*/
+.font_blue{color:#3F64F0;}
+.font_bluebold{color:#00008C; font-weight:bold;}
+.font_red{color:#DB0509;}
+
+/*配置指定*/
+.font_bg_w{background-color:#ffffff;display:block;line-height:2em;margin-bottom:10px;}
+.font_mb_small{margin-bottom:10px;}
+			
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

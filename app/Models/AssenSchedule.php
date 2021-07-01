@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class AssenSchedule extends Model
+{
+    use HasFactory;
+
+    protected $connection = 'mysql_kyotei';
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'あっせんスケジュールテーブル';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = ['場コード', '登録番号', ];
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        '場コード',
+        '登録番号',
+        'クラス',
+        'あっせん情報',
+    ];
+}

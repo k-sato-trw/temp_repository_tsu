@@ -1,0 +1,502 @@
+/* CSS Document */
+
+body {
+	font-family: Roboto, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+}
+
+#wrapper{ width:720px; margin: 0px; position:relative;
+overflow: hidden;}
+
+
+/*========================================
+ +header styles
+========================================*/
+#header_wrap{ width:720px; margin: 0px;}
+#header { background: url(../images/sp_in_header_bg.jpg) #007EFF no-repeat; width: 610px; height: 85px;
+padding: 25px 0 0 110px;
+}
+
+#header h1 { background: url(../images/sp_in_logo.png) no-repeat; width: 473px; height: 56px; text-indent: -9999px; line-height: 56px; margin: 0;}
+
+#header h1 a { display: block;}
+
+
+h2 {
+	width:720px;
+	font-size: 40px;
+	text-align: center;
+	line-height: 48px;
+	padding: 26px 0;
+	margin-bottom: 50px;
+	background: #2E353C;
+	color: #FFF;
+	font-weight: bold;}
+
+
+/*========================================
+ +navigation
+========================================*/
+#nav {
+	z-index:80000;
+	position: absolute;
+	left:0;
+	top:0;
+
+	}
+#nav #nav_btn {
+	width:100px;
+	height:110px;
+	background-color:#FFFFFF;
+	background-image:url(/sp/common_img/nav_btn.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	text-indent:-9999px;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:90002;
+	}
+	#nav #nav_btn.on { background-position:-100px 0;}
+	#nav #nav_fb {
+		position:absolute;
+		z-index:90001;
+		left:25px;
+		top:120px;
+		}
+#nav #nav_fb a{
+	width:50px;
+	height:50px;
+	display:block;
+	background-position:0 0;
+	background-repeat:no-repeat;
+	text-indent:-9999px;
+}
+#nav #nav_twi {
+	position:absolute;
+	z-index:90001;
+	left:25px;
+	top:180px;
+	}
+#nav #nav_twi a{
+width:50px;
+height:50px;
+display:block;
+background-position:0 0;
+background-repeat:no-repeat;
+text-indent:-9999px;
+}
+	/*トップだけ表示*/
+	#racedata_wrap #nav #nav_fb,#racedata_wrap #nav #nav_twi {opacity: 1;}
+	#racedata_wrap #nav #nav_fb a {background-image:url(/sp/images/nav_fb.png);}
+	#racedata_wrap #nav #nav_fb.on a {background-image:url(/sp/images/nav_fb_w.png);}
+	#racedata_wrap #nav #nav_twi a {background-image:url(/sp/images/nav_twi.png);}
+	#racedata_wrap #nav #nav_twi.on a {background-image:url(/sp/images/nav_twi_w.png);}
+
+	/*コンテンツ展開時表示*/
+	#nav #nav_fb, #nav #nav_twi{
+
+		opacity: 0;
+		}
+	#nav #nav_fb.on {opacity: 1;display:block;}
+	#nav #nav_fb.on a {background-image:url(/sp/images/nav_fb_w.png);}
+	#nav #nav_twi.on {opacity: 1;display:block;}
+	#nav #nav_twi.on a {background-image:url(/sp/images/nav_twi_w.png);}
+
+/*ナビメイン*/
+#nav #main_nav_wrap {
+	width:720px;
+	padding-bottom:20px;
+	background-image:url(/sp/common_img/main_nav_wrap_bg.png);
+	background-position:0 0;
+	background-repeat:repeat-y;
+	position:absolute;
+	left:0;
+    bottom: 2000px;
+	z-index:90000;
+	}
+/*ナビアニメーション*/
+.slideDown {
+	-webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+.slideUp {
+	-webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+
+/*------------------------------------
+ライブ系メニュー[main_nav1]
+------------------------------------*/
+ul#main_nav1{
+	width:580px;
+	height:200px;
+	padding-left:120px;
+	padding-top:20px;
+	padding-bottom:20px;
+	}
+	ul#main_nav1 li {float:left; text-align:center;}
+	ul#main_nav1 li a {display:block; height:100%; text-decoration:none;}
+
+	/*ボタン上部*/
+	ul#main_nav1 li.b1,
+	ul#main_nav1 li.b2,
+	ul#main_nav1 li.b3 {
+		width:192px;
+		height:88px;
+		padding-top:12px;
+		font-size:30px;
+		color:#4D7EAF;
+		line-height:1.2em;
+		background-color:#003399;
+		background-position:top right;
+		background-repeat:no-repeat;
+		}
+	ul#main_nav1 li.b2 {
+		border-left:2px solid #FFFFFF;
+		border-right:2px solid #FFFFFF;
+	}
+	ul#main_nav1 li.b1,
+	ul#main_nav1 li.b3 {background-image:url(/sp/common_img/main_nav1_b1.png);}
+	ul#main_nav1 li.b2 {background-image:url(/sp/common_img/main_nav1_b2.png);}
+
+	ul#main_nav1 li.b1 a,
+	ul#main_nav1 li.b2 a,
+	ul#main_nav1 li.b3 a {color:#FFFFFF;}
+
+	/*ボタン下部*/
+	ul#main_nav1 li.b4,
+	ul#main_nav1 li.b5 {
+		font-size:26px;
+		color:#6887C2;
+		background-color:#ADBFDD;
+		background-repeat:no-repeat;
+		}
+	ul#main_nav1 li.b4 {
+		width:249px;
+		height:80px;
+		padding: 20px 0 0 40px;
+		border-right:2px solid #FFFFFF;
+		background-image:url(/sp/common_img/main_nav1_b4.png);
+		background-position:26px center;
+		line-height:30px;
+	}
+	ul#main_nav1 li.b5 {
+		width:289px;
+		height:100px;
+		background-image:url(/sp/common_img/main_nav1_b5.png);
+		background-position:26px center;
+		text-indent:1.8em;
+		line-height:104px;
+	}
+
+	ul#main_nav1 li.b4 a,
+	ul#main_nav1 li.b5 a {color:#003399;}
+
+	/*角丸指定*/
+	ul#main_nav1 li.b1 {border-radius:6px 0 0 0;}
+	ul#main_nav1 li.b3 {border-radius:0 6px 0 0;}
+	ul#main_nav1 li.b4 {border-radius:0 0 0 6px;}
+	ul#main_nav1 li.b5 {border-radius:0 0 6px 0;}
+
+/*------------------------------------
+コンテンツメニュー[main_nav2]
+------------------------------------*/
+dl#main_nav2{padding-left:25px;}
+dl#main_nav2 dt {
+	width:100%;
+	height:80px;
+	line-height:80px;
+	text-indent:110px;
+	font-size:34px;
+	font-weight:bold;
+	color:#FFFFFF;
+	margin-bottom:10px;
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+	dl#main_nav2 dt span {
+		display:block;
+		background-repeat:no-repeat;
+		background-position:95% center;
+	}
+	dl#main_nav2 dt.plus span {background-image:url(/sp/common_img/main_nav_plus.png);}
+	dl#main_nav2 dt.minus span {background-image:url(/sp/common_img/main_nav_minus.png);}
+
+	/*各見出し背景画像*/
+	dl#main_nav2 dt.nav1 {background-image:url(/sp/common_img/main_nav1.png);}
+	dl#main_nav2 dt.nav2 {background-image:url(/sp/common_img/main_nav2.png);}
+	dl#main_nav2 dt.nav3 {background-image:url(/sp/common_img/main_nav3.png);}
+	dl#main_nav2 dt.nav4 {background-image:url(/sp/common_img/main_nav4.png);}
+	dl#main_nav2 dt.nav5 {background-image:url(/sp/common_img/main_nav5.png);}
+	dl#main_nav2 dt.nav6 {background-image:url(/sp/common_img/main_nav6.png);}
+
+/*中メニュー*/
+dl#main_nav2 dd {
+	font-size:36px;
+	line-height:1em;
+	margin-left:80px;
+}
+	dl#main_nav2 dd li {
+		color:#CCCCCC;
+		height:70px;
+		line-height:70px;
+		text-indent:1em;
+		background-image:url(/sp/common_img/main_nav_i0.png);
+		background-position:95% center;
+		background-repeat: no-repeat;
+
+	}
+		/*文字数多い用*/
+		dl#main_nav2 dd li.small {font-size:32px;}
+
+	dl#main_nav2 dd li a {
+		color:#000000;
+		text-decoration:none;
+		display:block;
+		background-position:95% center;
+		background-repeat: no-repeat;
+	}
+
+	/*各画像*/
+	dl#main_nav2 dd.nav1 li a {background-image:url(/sp/common_img/main_nav_i1.png);}
+	dl#main_nav2 dd.nav2 li a {background-image:url(/sp/common_img/main_nav_i2.png);}
+	dl#main_nav2 dd.nav3 li a {background-image:url(/sp/common_img/main_nav_i3.png);}
+	dl#main_nav2 dd.nav4 li a {background-image:url(/sp/common_img/main_nav_i4.png);}
+	dl#main_nav2 dd.nav5 li a {background-image:url(/sp/common_img/main_nav_i5.png);}
+	dl#main_nav2 dd.nav6 li a {background-image:url(/sp/common_img/main_nav_i6.png);}
+
+/*------------------------------------
+サブメニュー[main_nav3]
+------------------------------------*/
+ul#main_nav3 {padding-left:100px; padding-top:10px;}
+
+ul#main_nav3 li {
+	height:60px;
+	line-height:60px;
+	float:left;
+	font-size:30px;
+	background-image:url(/sp/common_img/main_nav3_icon.png);
+	background-position: 20px center;
+	background-repeat:no-repeat;
+	padding-left:40px;
+	}
+ul#main_nav3 li a {
+	display:block;
+	height:100%;
+	text-decoration:none;
+	color:#003399;
+	}
+
+ul#main_nav3 li.b1,ul#main_nav3 li.b3{width:310px;}
+ul#main_nav3 li.b2,ul#main_nav3 li.b4{ width:220px;}
+
+
+
+
+
+
+
+
+
+
+
+/*========================================
+ +footer styles
+========================================*/
+#footer_wrap { width: 100%; text-align: center;}
+
+
+#footer_wrap #ft_logo { width: 100%; height: 50px; background: url(../../sp/images/sp_ft_logo.png) no-repeat center #0044A7; padding: 20px 0; text-indent: -9999px;
+}
+#footer_wrap #ft_credit { width: 100%; line-height: 40px;
+font-size: 16px; font-weight: bold; color: #BAC5D5; background: #173D72;
+}
+
+/*========================================
+ +page up styles
+========================================*/
+#page_up {
+	position:fixed;
+    bottom: 60px;
+    right: 20px;
+}
+#page_up a {
+    width: 90px;
+	height: 90px;
+	background:url(../images/up_b.png) #BBBBBB no-repeat center;
+	overflow: hidden;
+	text-indent: 100%;
+    display: block;
+    border-radius: 10px;
+	padding: 0;
+	z-index:9999;
+}
+
+
+/*========================================
+ +main styles
+========================================*/
+#main{ width: 660px; padding: 0 30px 100px 30px; font-size:30px!important;}
+
+
+.red{ color:#C00;}
+
+
+#main #lead { width: 660px;
+	margin: 0 0 50px 0;
+	padding: 0;
+	font-size: 28px;
+	line-height: 1.4em;
+}
+
+
+/*--2020年6月5日追記--*/
+.chui{ margin: 0 auto 10px;
+padding: 10px; text-align: center; font-size: 28px;
+line-height: 1.6em; color: #FF0000; font-weight: bold;}
+
+.chui2{ margin: 0 auto 10px;
+	text-align: center;
+	font-size: 28px;
+	line-height: 1.6em;
+	color: #FF0000;
+	border: 1px solid #FF0000;
+	padding:20px;
+margin-bottom: 30px;}
+
+.f30{ font-size: 30px;}
+
+/*========================================
+ +data無し styles
+========================================*/
+#nodata {
+	width: 100%;
+	height: 540px;
+	line-height: 540px;
+	color: #666666;
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align:middle;
+	background: #D4E1E8;
+	}
+
+/*========================================
+ +ページの準備中
+========================================*/
+#comingsoon {
+	width:100%;
+	height:540px;
+	line-height:260px;
+	background-color:#EEEEEE;
+	border:1px solid #CCCCCC;
+	color:#666666;
+	margin:50px auto;
+	text-align:center;
+	background-image:url(/sp/common_img/coming.png);
+	background-position: 140px bottom;
+	background-repeat:no-repeat;
+}
+
+/*========================================
+ +td/モーター順位 styles
+========================================*/
+.mt_ic01 { width: 38px; height: 37px; line-height: 38px; background: url(../images/mt_ic_01.png) no-repeat center
+; display: inline-block;}
+.mt_ic02 { width: 38px; height: 37px; line-height: 38px; background: url(../images/mt_ic_02.png) no-repeat center
+; display: inline-block;}
+.mt_ic03 { width: 38px; height: 37px; line-height: 37px; background: url(../images/mt_ic_03.png) no-repeat center
+; display: inline-block;}
+
+
+/*========================================
+		6艇番カラー
+========================================*/
+
+
+/* ▼▼▼共通▼▼▼ */
+.w1 {
+	background-color: #DEE8EF;
+	color: #000000;
+}
+.w2 {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+.w3 {
+	background-color: #CC0000;
+	color: #FFFFFF;
+}
+.w4 {
+	background-color: #0066CC;
+	color: #FFFFFF;
+}
+.w5 {
+	background-color: #FFE600;
+	color: #000000;
+}
+.w6 {
+	background-color: #009900;
+	color: #FFFFFF;
+}
+
+
+/*
+==========================================
+
+	グレードカラー
+
+==========================================
+*/
+.SG{ background-color:#FF4242;}
+.G1{ background-color:#FF860D;}
+.G2{ background-color:#8F69FF;}
+.G3{ background-color:#00C694;}
+.G0{ background-color:#2D95FF;}
+
+/*
+==========================================
+
+	CMS装飾用
+
+==========================================
+*/
+/*赤*/.c_01 {color:#D80000;}
+/*エ*/.c_02 {color:#00FF00;}
+/*紫*/.c_03 {color:#7F00FF;}
+/*緑*/.c_04 {color:#008C22;}
+/*灰*/.c_05 {color:#999999;}
+/*茶*/.c_06 {color:#8C4600;}
+/*紺*/.c_07 {color:#00228C;}
+/*橙*/.c_08 {color:#FF3F00;}
+/*空*/.c_09 {color:#26C9FF;}
+/*桃*/.c_10 {color:#FF4CFF;}
+/*展*/.c_11 {color:#068484;}
+
+/*太*/.c_bold {font-weight:bold;}
+/*斜*/.c_obli {font-style:oblique; font-family:"ＭＳ ゴシック", "MS Gothic", "Osaka－等幅", Osaka-mono, monospace;}
+
+/*1*/.c_size1 {font-size:0.8em;}
+/*2*/.c_size2 {font-size:0.9em;}
+/*3*/.c_size3 {font-size:1.1em;}
+/*4*/.c_size4 {font-size:1.2em;}
+/*5*/.c_size5 {font-size:1.3em;}
+/*6*/.c_size6 {font-size:1.4em;}
+
+
+/*
+==========================================
+
+	カレンダー土曜、日曜（祝日）カラー
+
+==========================================
+*/
+/*土曜*/
+.sat { color:#11ACFF;}
+/*日曜*/
+.sun { color:#FF2626;}

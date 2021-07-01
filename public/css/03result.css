@@ -1,0 +1,341 @@
+/* CSS Document */
+
+/*
+==========================================
+
+			01result_tsu.htm
+
+==========================================
+*/
+
+#main { padding:10px 50px 50px 50px !important;}
+#main .text { font-size: 16px; padding: 18px 0 28px 0; display: block;}
+
+#result_wrap{
+	width:100%;
+	}
+	
+	/*記事エリア*/
+	#result_main {
+		width:820px;
+		float:left;
+		}
+		/*記事エリア*/
+	#result_main_2 {
+		width:820px;
+		margin: 0;
+		}
+	/*Race Indexエリア*/
+	#result_nav {
+		width:220px;
+		 margin-top: 0px;
+		float:right;
+		}
+		
+		
+		
+.st_f, .date_cyushi { color:#DC3C3C;}
+
+/*
+==================================================
+レース検索結果header
+===================================================*/
+#result_rn { width: 100%; padding-bottom: 10px; }
+#result_rn .grade_00,#result_rn .grade_sg,#result_rn .grade_g1,#result_rn .grade_g2,#result_rn .grade_g3 { width: 50px; height: 50px; display: block; text-indent: -9999px; float: left;}
+#result_rn .grade_00 { background: url(../03result_tsu/images/grade_g0_s.png) no-repeat;}
+#result_rn .grade_sg { background: url(../03result_tsu/images/grade_sg_s.png) no-repeat;}
+#result_rn .grade_g1 { background: url(../03result_tsu/images/grade_g1_s.png) no-repeat;}
+#result_rn .grade_g2 { background: url(../03result_tsu/images/grade_g2_s.png) no-repeat;}
+#result_rn .grade_g3 { background: url(../03result_tsu/images/grade_g3_s.png) no-repeat;}
+
+#result_rn .race_name {
+	width:760px;
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+
+	padding-left: 10px;
+	background: url(../03result_tsu/images/r_name_back.jpg) no-repeat;
+	float: left;
+	}
+#result_rn .race_name p { height: 50px;	vertical-align: middle; display: table-cell;}
+#result_rn .race_name p .tyushi { font-size: 14px; color: #DC3C3C; display: block; padding-top: 8px; font-weight: normal !important;}
+/*
+/*
+==================================================
+節間日付
+===================================================*/
+#result_main #race_date1{overflow:hidden;}
+
+#race_date1 .d04 li, #race_date1 .d04 li a{width:203px;padding:0;}
+#race_date1 .d05 li, #race_date1 .d05 li a{width:162px;padding:0;}
+#race_date1 .d06 li, #race_date1 .d06 li a{width:134px;padding:0;}
+#race_date1 .d07 li, #race_date1 .d07 li a{width:115px;padding:0;}
+#race_date1 .d08 li, #race_date1 .d08 li a{width:100px;padding:0;}
+
+#race_date1 li { margin-right: 2px;}
+#race_date1 li:last-child{ margin-right: 0px !important;}
+
+#race_date1 .d04 li,
+#race_date1 .d05 li,
+#race_date1 .d06 li,
+#race_date1 .d07 li,
+#race_date1 .d08 li{
+	float:left;
+	height:50px;
+	display: inline-block;
+	text-align:center;
+	background: #CCCCCC;
+	color:#999;
+	font-size:12px;
+	line-height:16px;
+	border-radius: 5px 5px 0 0;
+}
+#race_date1 .d04 li p,
+#race_date1 .d05 li p,
+#race_date1 .d06 li p,
+#race_date1 .d07 li p,
+#race_date1 .d08 li p{
+	padding:7px 0 0 0;
+	text-align:center;
+	font-size:18px;
+	line-height:22px;
+	font-weight: bold;
+}
+
+
+#race_date1 .d04 li a,
+#race_date1 .d05 li a,
+#race_date1 .d06 li a,
+#race_date1 .d07 li a,
+#race_date1 .d08 li a{
+	float:left;
+	height:50px;
+	background: url(../03result_tsu/images/day_b_back.png) no-repeat center bottom #003399;
+	text-align:center;
+	text-decoration: none;
+	color:#fff;
+	border-radius: 5px 5px 0 0;
+	display: inline-block;
+}
+
+
+#race_date1 .d04 li a:hover,
+#race_date1 .d05 li a:hover,
+#race_date1 .d06 li a:hover,
+#race_date1 .d07 li a:hover,
+#race_date1 .d08 li a:hover{ color:#FFFF00;}
+
+
+#race_date1 .d04 li .d_select a,
+#race_date1 .d05 li .d_select a,
+#race_date1 .d06 li .d_select a,
+#race_date1 .d07 li .d_select a,
+#race_date1 .d08 li .d_select a{
+	background: #08B4B4;
+	height:50px;
+	color:#FFF;
+	border-radius: 5px 5px 0 0;
+	}
+
+#race_date1 .dco1 { background: #08B4B4; height: 10px; clear: both; display: block;}
+.sub_text{ font-size: 12px; color:#333;padding:3px 10px;margin:0 0 0 0;text-align:right;}
+
+
+#result_txt{color:#c00;line-height:20px;}
+
+
+/*
+==================================================
+成績一覧    + + + 3連単・3連複・2連単・2連複
+===================================================*/
+#result_data table{
+	width:100%;
+	text-align:center;
+	border-left: 1px #DDDDDD solid;
+	border-right: 1px #DDDDDD solid;	
+	border-bottom: 1px #DDDDDD solid;	
+}
+
+
+#result_data .ttl01{
+	text-align:center;
+	background: #585D63;
+	color: #FFFFFF;
+}
+#result_data .ttl02, #result_data .ttl03, #result_data .ttl04, #result_data .ttl05{
+	background: url(../03result_tsu/images/kumi_back.gif) no-repeat right top #fff;
+	text-align:center;
+}
+#result_data th{
+	height:45px;	
+}
+#result_data td{
+	padding:3px 0;
+	font-size:14px;
+}
+
+#result_data td img { padding-top: 1px;}
+
+/* レース番号 */#result_data .col-1 { width:130px;border-right:1px #ccc solid;}
+/*3連単・組番*/#result_data .col-2  {}
+/*3連単・配当*/#result_data .col-3 { border-right:1px #ccc solid;}
+/*3連複・組番*/#result_data .col-4 {}
+/*3連複・組番*/#result_data .col-5{ border-right:1px #ccc solid;}
+/*2連単・組番*/#result_data .col-6  {}
+/*2連単・配当*/#result_data .col-7 { border-right:1px #ccc solid;}
+/*2連複・組番*/#result_data .col-8 {}
+/*2連複・組番*/#result_data .col-9{ border-right:1px #ccc solid;}
+
+/*3連単・組番*/#result_data .col-2 img  { margin:1px;}
+/*3連複・組番*/#result_data .col-4 img  { margin:1px;}
+/*2連単・組番*/#result_data .col-6 img  { margin:1px;}
+/*2連複・組番*/#result_data .col-8 img  { margin:1px;}
+
+/*背景用*/
+#result_data .odd_r{ background: #E6F7F7}
+#result_data .even_r{ background: #FFF}
+
+/*艇番*/
+#result_data .r01,
+#result_data .r02,
+#result_data .r03,
+#result_data .r04,
+#result_data .r05,
+#result_data .r06,
+#result_data .r07,
+#result_data .r08,
+#result_data .r09,
+#result_data .r10,
+#result_data .r11,
+#result_data .r12{
+	text-indent:-9999px;
+	width:48px;height:15px;
+	margin:3px 0 3px 40px;
+}
+#result_data .r01{ background: url(../03result_tsu/images/btn_r01.png) no-repeat 0 -29px;}
+#result_data .r02{ background: url(../03result_tsu/images/btn_r02.png) no-repeat 0 -29px;}
+#result_data .r03{ background: url(../03result_tsu/images/btn_r03.png) no-repeat 0 -29px;}
+#result_data .r04{ background: url(../03result_tsu/images/btn_r04.png) no-repeat 0 -29px;}
+#result_data .r05{ background: url(../03result_tsu/images/btn_r05.png) no-repeat 0 -29px;}
+#result_data .r06{ background: url(../03result_tsu/images/btn_r06.png) no-repeat 0 -29px;}
+#result_data .r07{ background: url(../03result_tsu/images/btn_r07.png) no-repeat 0 -29px;}
+#result_data .r08{ background: url(../03result_tsu/images/btn_r08.png) no-repeat 0 -29px;}
+#result_data .r09{ background :url(../03result_tsu/images/btn_r09.png) no-repeat 0 -29px;}
+#result_data .r10{ background: url(../03result_tsu/images/btn_r10.png) no-repeat 0 -29px;}
+#result_data .r11{ background: url(../03result_tsu/images/btn_r11.png) no-repeat 0 -29px;}
+#result_data .r12{ background: url(../03result_tsu/images/btn_r12.png) no-repeat 0 -29px;}
+
+#result_data .r01 a{ background: url(../03result_tsu/images/btn_r01.png) no-repeat 0 0;}
+#result_data .r02 a{ background: url(../03result_tsu/images/btn_r02.png) no-repeat 0 0;}
+#result_data .r03 a{ background: url(../03result_tsu/images/btn_r03.png) no-repeat 0 0;}
+#result_data .r04 a{ background: url(../03result_tsu/images/btn_r04.png) no-repeat 0 0;}
+#result_data .r05 a{ background: url(../03result_tsu/images/btn_r05.png) no-repeat 0 0;}
+#result_data .r06 a{ background: url(../03result_tsu/images/btn_r06.png) no-repeat 0 0;}
+#result_data .r07 a{ background: url(../03result_tsu/images/btn_r07.png) no-repeat 0 0;}
+#result_data .r08 a{ background: url(../03result_tsu/images/btn_r08.png) no-repeat 0 0;}
+#result_data .r09 a{ background :url(../03result_tsu/images/btn_r09.png) no-repeat 0 0;}
+#result_data .r10 a{ background: url(../03result_tsu/images/btn_r10.png) no-repeat 0 0;}
+#result_data .r11 a{ background: url(../03result_tsu/images/btn_r11.png) no-repeat 0 0;}
+#result_data .r12 a{ background: url(../03result_tsu/images/btn_r12.png) no-repeat 0 0;}
+
+#result_data .r01 a,
+#result_data .r02 a,
+#result_data .r03 a,
+#result_data .r04 a,
+#result_data .r05 a,
+#result_data .r06 a,
+#result_data .r07 a,
+#result_data .r08 a,
+#result_data .r09 a,
+#result_data .r10 a,
+#result_data .r11 a,
+#result_data .r12 a{ height: 15px; display: block;}
+
+#result_data .r01 a:hover,
+#result_data .r02 a:hover,
+#result_data .r03 a:hover,
+#result_data .r04 a:hover,
+#result_data .r05 a:hover,
+#result_data .r06 a:hover,
+#result_data .r07 a:hover,
+#result_data .r08 a:hover,
+#result_data .r09 a:hover,
+#result_data .r10 a:hover,
+#result_data .r11 a:hover,
+#result_data .r12 a:hover{ background-position: 0 -15px;}
+
+#result_data .bg_e{background: #F0F0F0;}
+#result_data .bg_o{background: #FFF;}
+
+
+/*
+==================================================
+結果詳細 iframe
+===================================================*/
+#result_main #result_data_view{ padding:0;}
+#result_main #result_data_view iframe{ width:100%;}
+
+
+/*
+==========================================
+
+			リンク
+
+==========================================
+*/
+
+
+#result_nav .st { height: 26px; background: url(../03result_tsu/images/rt_select_t.png) no-repeat; text-indent: -9999px; display: block;}
+
+#result_nav .year {
+	height: 34px;
+	font-size: 16px;
+	padding-left: 10px;
+	line-height: 34px;
+	color: #FFF;
+	font-weight: bold;
+	background: #003399;
+	display: block;
+	}
+
+#result_nav li {
+	width: 100%;
+	border-right: 1px #DDDDDD solid;
+	border-bottom: 1px #DDDDDD solid;
+	font-size: 13px;
+	
+	}
+#result_nav li a {
+	font-size: 13px;
+	line-height: 18px;
+	color: #003399;
+	
+	text-decoration: none; display: block;
+	
+	/**/
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
+	}
+	
+	
+#result_nav li.select,#result_nav li a:hover {
+	background: #E6F7F7;}
+
+#result_nav_waku {
+		background: url(../03result_tsu/images/select_b.gif) no-repeat;
+	height:35px;
+	padding: 10px 2px 5px 16px;
+	display: block;
+}
+
+#result_nav_waku .r_name {
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #003399;
+	}
+
+#result_nav_waku .r_day { font-size: 12px; color: #000; display: block;}

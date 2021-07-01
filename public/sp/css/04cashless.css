@@ -1,0 +1,234 @@
+/*
+==========================================
+
+			cashless.htm
+
+==========================================
+*/
+#main {
+	font-size:30px;
+	line-height:1.5em;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	}
+
+	
+#main .page_top{
+	width: 100%;
+	height: 546px;
+	margin-top: -50px;
+	background-image:url(../04cashless/images/cashless1.png);
+	background-repeat:no-repeat;
+	position: relative;
+	}
+
+#main .page_top .card{
+	width: 392px;
+	height: 280px;
+	background-image: url(../04cashless/images/card.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 248px;
+	right: 72px;
+	z-index: 1;
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	}
+#main .page_top .card2{
+	width: 220px;
+	height: 220px;
+	background-image: url(../04cashless/images/card2.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 270px;
+	right: 412px;
+	z-index: 2;
+	-webkit-animation-duration: 1.2s;
+	animation-duration: 1.2s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+	
+@-webkit-keyframes bounceIn {
+  from,
+  60%,
+  70%,
+  80%,
+  90%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0%,50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  60% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  70% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  80% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  90% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes bounceIn {
+  from,
+  60%,
+  70%,
+  80%,
+  90%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0%,50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  60% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  70% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  80% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  90% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
+	
+
+
+
+/*-------------------------------------*/
+.main_box {
+	margin-left:auto;
+	margin-right:auto;
+	}
+	
+
+#cash{
+	width: 100%;
+	height: 634px;
+	background-image: url(../04cashless/images/cashless2.png);
+	background-repeat: no-repeat;
+}
+#cash2{
+	width: 100%;
+	height: 680px;
+	background-image: url(../04cashless/images/cashless3.png);
+	background-repeat: no-repeat;
+}
+#cash3{
+	width: 100%;
+	height: 1115px;
+	background-image: url(../04cashless/images/cashless4.png);
+	background-repeat: no-repeat;
+}
+#cash4{
+	width: 100%;
+	height: /*588*/650px;
+	background-image: url(../04cashless/images/cashless5.png);
+	background-repeat: no-repeat;
+}
+#cash5{
+	width: 100%;
+	height: 1984px;
+	background-image: url(../04cashless/images/cashless6.png);
+	background-repeat: no-repeat;
+}
+
+/*
+==========================================
+
+		àÛç¸óp
+
+==========================================
+*/
+@media print {
+}

@@ -1,0 +1,90 @@
+
+
+.pagination {
+            font-size: 16px;
+			margin:0 auto;
+        }
+        
+.pagination a {
+    text-decoration: none;
+	color: #000;
+}
+.pagination a:hover { border-bottom: #15B 2px solid;}
+.pagination a, .pagination span {
+	font-size: 18px;
+	font-weight: bold;
+    display: inline-block;
+    padding: 0.4em 0em;
+    margin: 0 8px 0 8px;
+	min-width:1em;
+	text-align:center;
+}
+
+.pagination .current {
+    
+    color: #000;
+	border-bottom: #15B 2px solid;
+}
+.pagination .current_ft {
+    color: #646F79;
+}
+.pagination .current_ft.prev,.pagination .current_ft.next {
+    opacity: 0;
+}
+.pagination .prev,.pagination a.prev {
+	background: url(../03play_b/images/prev_b.png) no-repeat center 0;
+	text-indent: -99999px;
+	color:#999;
+	border: none;
+	width: 39px;
+	height: 50px;
+	position: absolute;
+	top: 50px;
+	left: 10px;
+	boder-bottom: non !important;
+}
+.pagination a.prev:hover{
+	background: url(../03play_b/images/prev_b.png) no-repeat center -66px !important;
+	boder-bottom: non !important;
+
+	
+}	
+.pagination .next, .pagination a.next{
+	background: url(../03play_b/images/next_b.png)  no-repeat center 0;
+	text-indent: -99999px;
+	color:#999;
+	border: none;
+	width: 39px;
+	height: 50px;
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	display: block;
+}
+
+.pagination a.next:hover{
+	background: url(../03play_b/images/next_b.png)  no-repeat center -66px !important;
+	text-indent: -99999px;
+	color:#999;
+	border: none;
+	width: 39px;
+	height: 50px;
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	display: block;
+}
+.pagination .current.prev, .pagination .current.next{
+	opacity: 0;
+}
+
+#Searchresult {
+	height: 110px;
+	margin:0 auto ;
+	padding:10px 0 0 0;
+  	width:1000px;
+	text-align: left;
+	position: relative;
+}
+
+

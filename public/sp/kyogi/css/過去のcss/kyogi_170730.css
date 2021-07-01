@@ -1,0 +1,4642 @@
+/* ▼▼▼ベース▼▼▼ */
+
+body {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 28px;
+	line-height: 100%;
+	color: #333;
+	background-color: #FFF;
+	-webkit-tap-highlight-color: rgba(10,150,220,0.3);
+}
+
+#wrapper {
+	width: 720px;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+}
+
+
+#dummy_box {
+	height: 500px;
+}
+
+
+/* ヘッダー */
+#header {
+	background-image: url(/sp/kyogi/images/header_top.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	position: relative;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	background-color: #FFF;
+}
+h1 {
+	height: 64px;
+	width: 382px;
+}
+h1 a {
+	display: block;
+	background-image: url(/sp/kyogi/images/logo.png);
+	background-repeat: no-repeat;
+	height: 64px;
+	width: 382px;
+}
+h1 a div {
+	text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#header_nav {
+	position: absolute;
+	top: 14px;
+	right: 6px;
+	width: 288px;
+}
+#header_nav li {
+	float: left;
+	height: 96px;
+	width: 96px;
+}
+#header_nav li a {
+	height: 96px;
+	width: 96px;
+	background-repeat: no-repeat;
+	display: block;
+	background-image: url(/sp/kyogi/images/header_nav.png);
+}
+#header_nav li a div {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-indent:-9999px;
+}
+#header_nav li#live a {
+	background-position: 0px 0px;
+}
+#header_nav li#replay a {
+	background-position: -96px 0px;
+}
+#header_nav li#replay a.on {
+	background-position: -96px -96px;
+}
+#header_nav li#vote a {
+	background-position: -192px 0px;
+}
+#replay_menu {
+	position: absolute;
+	top: 105px;
+	right: 10px;
+	z-index: 99999;
+	display: none;
+	background-image: url(/sp/kyogi/images/bubble_top.png);
+	background-repeat: no-repeat;
+	background-position: 290px 0px;
+	padding-top: 48px;
+}
+#replay_menu ul {
+	border-radius: 16px;
+	background-color: rgba(0,0,0,0.8);
+	padding-top: 20px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	box-shadow: 0px 10px 10px #333;
+	-webkit-box-shadow: 0px 10px 10px #333;  
+    -moz-box-shadow: 0px 10px 10px #333;
+}
+#replay_menu li {
+	padding: 10px;
+	width: 420px;
+}
+#replay_menu a {
+	font-size: 40px;
+	line-height: 100px;
+	text-decoration: none;
+	height: 100px;
+	color: #000;
+	width: 400px;
+	background: url(/sp/kyogi/images/arrow_replay.png), -moz-linear-gradient(top, #fff, #ccc);
+	background: url(/sp/kyogi/images/arrow_replay.png), -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	background-position: 95% center;
+	background-repeat:no-repeat;
+	text-shadow: rgba(255,255,255,1.0) 0px 2px 2px;
+	border-radius: 16px;
+	display: block;
+	padding-left: 20px;
+}
+#replay_menu a:hover {
+	background: url(/sp/kyogi/images/arrow_replay.png), -moz-linear-gradient(top, #999, #fff);
+	background: url(/sp/kyogi/images/arrow_replay.png), -webkit-gradient(linear, left top, left bottom, from(#999), to(#fff));
+	background-position: 95% center;
+	background-repeat: no-repeat;
+}
+#replay_back {
+	width: 80px;
+	height: 80px;
+	text-decoration: none;
+	display: block;
+	background: url(/sp/kyogi/images/header_back.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+#replay_back div {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+/* レース情報 */
+#main {
+	margin-bottom: 30px;
+}
+#race table {
+	width: 100%;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+#race td {
+	background: url(/sp/kyogi/images/border_1px_white.png), -moz-linear-gradient(top, #ccc, #fff 50%, #fff);
+	background: url(/sp/kyogi/images/border_1px_white.png), -webkit-gradient(linear, left top, left bottom, from(#ccc), color-stop(0.5, #fff), to(#fff));
+	background-position: 0px 0px;
+	border: 1px solid #CCC;
+	vertical-align: middle;
+}
+#race td.date {
+	width: 110px;
+	text-align: center;
+	border-left-style: none;
+	font-family: 'Roboto',  sans-serif;
+}
+#race td.date_final {
+	width: 180px;
+	text-align: center;
+	border-left-style: none;
+	line-height: 32px;
+}
+#race td.name {
+	border-right-style: none;
+	font-size: 32px;
+	line-height: 36px;
+	padding-top: 24px;
+	padding-right: 20px;
+	padding-bottom: 24px;
+	padding-left: 20px;
+}
+#race td.day {
+	width: 90px;
+	border-left-style: none;
+	text-align: center;
+	border-right-style: none;
+	background-position: center 0px;
+}
+
+#kikou {
+	width: 700px;
+	background-image: url(../images/bk_kikou.png);
+	background-repeat: no-repeat;
+	color:#FFF;
+	font-size: 24px;
+	line-height: 1.3em;
+	padding: 10px;
+}
+#kikou .kikou_left {
+	width: 540px;
+	float: left;
+}
+#kikou .kikou_right {
+	width: 160px;
+	float: right;
+	text-align: right;
+}
+#kikou .gray {
+	color: #999;
+}
+
+#race_select {
+	background:#333;
+	height: 82px;
+	color: #FFF;
+}
+#race_select #back,
+#race_select #next {
+	float: left;
+	width: 80px;
+	height: 80px;
+}
+#race_select #back {
+	background: url(../images/race_back_no.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#race_select #next {
+	background: url(../images/race_next_no.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#race_select #back a,
+#race_select #next a {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	display: block;
+}
+
+#race_select #back a {
+	background: url(../images/race_back.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#race_select #next a {
+	background: url(../images/race_next.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+#num_select {
+	float: left;
+	height: 80px;
+	width: 160px;
+}
+#num_final {
+	float: left;
+	width: 160px;
+	height: 80px;
+	font-weight: bold;
+	font-size: 60px;
+	text-shadow: 0px -2px 2px rgba(0,0,0,1.0);
+	line-height: 80px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+/* 表示ボタン */
+#num_select .select {
+	position: absolute;
+	width: 130px;
+	overflow: hidden;
+	font-weight: bold;
+	font-size: 60px;
+	text-shadow: 0px -2px 2px rgba(0,0,0,1.0);
+	line-height: 80px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	background-image: url(../images/drop.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 30px;
+	cursor: pointer;
+}
+
+#id_racenum_btn {
+	display: none;
+}
+
+/* ボタン開いた状態 */
+#racenum_btn ul {
+	font-weight: bold;
+	font-size: 60px;
+	line-height: 1.2em;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;	
+}
+#racenum_btn ul span {
+	font-size: 40px;
+}
+#racenum_btn li {
+	float: left;
+	width: 120px;
+}
+#racenum_btn li.sukima {
+	width: 720px;
+	height: 10px;
+}
+#racenum_btn li a {
+	height: 70px;
+	color: #007FFF;
+	text-decoration: none;
+	display: block;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #007FFF;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #007FFF;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #007FFF;
+	background: -moz-linear-gradient(top, #FFF, #DDD);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.2);
+}
+#racenum_btn li.end a {
+	height: 70px;
+	color: #A9D3FD;
+	background-color: #0080FF;
+	text-decoration: none;
+	display: block;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #A9D3FD;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #A9D3FD;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #A9D3FD;
+	background: -moz-linear-gradient(top, #0080FF, #75B5F5);
+	background: -webkit-gradient(linear, left top, left bottom, from(#0080FF), to(#75B5F5));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+#race_select table {
+	float: left;
+	width: 400px;
+	font-size: 28px;
+	line-height: 32px;
+	height: 80px;
+}
+#race_select td.class {
+	padding-right: 10px;
+	padding-left: 5px;
+	vertical-align: middle;
+}
+#race_select td.class.small {
+	font-size: 20px;
+}
+#race_select td.class.x-small {
+	font-size: 18px;
+	line-height: 22px;
+}
+#race_select td.class span {
+	color: #FC0;
+}
+#race_select td.dento {
+	text-align: center;
+	vertical-align: middle;
+	width: 52px;
+}
+#race_select td.dento span {
+	font-size: 20px;
+	line-height: 24px;
+	display: inline-block;
+	padding: 3px;
+	width: 50px;
+	background-color: #D2E8FE;
+	color:#0080FF;
+}
+#race_select td.time {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	padding-right: 10px;
+	padding-left: 10px;
+	width: 80px;
+}
+
+#race_select table.final {
+	float: left;
+	width: 560px;
+	font-size: 28px;
+	line-height: 32px;
+	height: 80px;
+}
+#race_select.final  td.class {
+	padding-right: 10px;
+	padding-left: 20px;
+	vertical-align: middle;
+}
+#race_select.final  td.dento {
+	text-align: center;
+	vertical-align: middle;
+	width: 52px;
+}
+#race_select.final  td.dento span {
+	font-size: 20px;
+	line-height: 24px;
+	display: inline-block;
+	padding: 3px;
+	border: 1px solid #FFF;
+	width: 50px;
+}
+
+#race_select.final  td.time {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	padding-right: 10px;
+	padding-left: 10px;
+	width: 80px;
+}
+
+
+
+/*本日のみどころ*/
+#today_tenbo {
+	width:720px;
+	margin:0 auto;
+	position:relative;
+	}
+
+#today_tenbo #backnumber_box {
+	width:720px;
+	background-image:url(../images/backnumber_bk.png);
+	background-repeat: repeat-x;
+	margin-top: 20px;
+
+}
+#today_tenbo #backnumber_box #backnumber {
+	width:720px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	z-index:100;
+
+}
+	#today_tenbo #backnumber_box #backnumber dt {
+		width:240px;
+		height:50px;
+		float: right;
+		line-height:50px;
+		color:#FFF;
+		font-size:32px;
+		background-image:url(../images/tenbo_bn_icon.png);
+		background-position:10px 50%;
+		background-repeat:no-repeat;
+		padding-left:46px;
+		cursor:pointer;
+		border-radius:5px 5px 0 0;
+	}
+	#today_tenbo #backnumber_box #backnumber dt.open {
+		color:#FFF;
+		background-color:#999;
+	}
+	#today_tenbo #backnumber_box #backnumber dd {
+		display:none;/**/
+		width:350px;
+		margin-top:50px;
+		background-color:#999;
+		margin-left: 370px;
+		
+
+	}
+		#today_tenbo #backnumber_box #backnumber dd li {
+			padding:20px 10px;
+			color:#FFF;
+			font-size:30px;
+			font-weight:bold;
+			text-align:center;
+			border-top:1px dotted #FFF;
+			cursor:pointer;
+		}
+	
+#today_tenbo #tenbo {
+	font-size:26px;
+	line-height:1.4em;
+	margin-bottom:50px;
+
+}
+#today_tenbo #tenbo .box.back {display:none;}
+/*中止*/
+#today_tenbo #tenbo .box.chushi {padding-top:30px;}
+#today_tenbo #tenbo .box.chushi p {
+	padding:150px 0;
+	text-align:center;
+	background-color:#EEEEEE;
+	}
+
+
+
+	/*見出し*/
+	#today_tenbo #tenbo .box #ttl {
+		width:720px;
+		min-height: 150px;
+		margin-top: 50px;
+		padding-top:25px;
+		background-image:url(../images/tenbo_ttl_bg.png);
+		background-repeat:no-repeat;
+		position:relative;
+		}
+		#today_tenbo #tenbo .box.back #ttl {background-image:url(../images/tenbo_ttl_bg2.png);}
+		
+	#today_tenbo #tenbo .box #ttl .ttl_1 {
+		width:720px;
+	
+		margin-bottom: 30px;
+		padding-top:20px;
+		text-align:center;
+		color:#FFF;
+		font-size:30px;
+		font-weight:bold;
+		line-height:1em;
+
+	}
+		#today_tenbo #tenbo .box #ttl .ttl_1 span { font-size:26px;}
+	#today_tenbo #tenbo .box #ttl .ttl_2 {
+		width:640px;
+		margin: 0 40px 30px;
+		color:#003399;
+		font-size:36px;
+		font-weight:bold;
+		line-height:1.4em;
+		text-align: center;
+	}
+		#today_tenbo #tenbo .box.back #ttl .ttl_2 {color:#414B5D;}
+/*記事*/
+	#today_tenbo #tenbo .box .racer {
+		width:640px;		
+		padding:0 40px;
+		font-size:32px;
+		line-height:52px;
+		background-image:url(../images/tenbo_dotted.png);
+		background-position:center 0;
+		background-repeat: repeat-y;
+}
+
+/*　今節予想結果　*/
+#top #konyoso {
+	width: 660px;
+	text-align: center;
+	background: #333;
+	padding: 10px 30px 20px;
+}
+#top #konyoso .tit {
+	height: 40px;
+	color: #FFF;
+	font: 32px;
+	line-height: 1.5em;
+	background-image:url(../images/konyoso_tit.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+}
+#top #konyoso #teki {
+	width: 660px;
+	height: 210px;
+	background-image:url(../images/konyoso_teki.png);
+	background-repeat: no-repeat;
+	padding-bottom: 10px;
+}
+#top #konyoso #man {
+	width: 660px;
+	height: 210px;
+	background-image:url(../images/konyoso_man.png);
+	background-repeat: no-repeat;
+	padding-bottom: 10px;
+}
+#konyoso .kisya {
+	font-size: 29px;
+	line-height: 1.7em;
+	font-weight: bold;
+	width: 200px;
+	float: left;
+	margin-top: 90px;
+	margin-left: 215px;
+}
+#konyoso .vpower {
+	font-size: 29px;
+	line-height: 1.7em;
+	font-weight: bold;
+	width: 200px;
+	float: left;
+	margin-top: 90px;
+	margin-left: 35px;
+}
+#konyoso span {
+	font-size: 50px;
+}
+#konyoso .caution {
+	font-size: 27px;
+	text-align: right;
+	color: #FFF;
+}
+
+/* ▼▼▼選手評価▼▼▼ */
+.hyoka{	width: 720px;
+	margin-bottom: 50px;
+}
+.hyoka th {padding:0;}
+.hyoka th span.top {display:block; padding-bottom:4px; border-bottom:1px dotted #CCCCCC;font-size:24px; }
+.hyoka th span.bot {display:block; padding-top:4px; font-size:24px;}
+
+.hyoka th.mark {background-color:#0086B2; color:#FFF; width:62px; padding:6px 0;}
+.hyoka td.mark {background-color:#9FE2E2; border-color:#999; padding:0 8px; /*height:120px*/}
+.hyoka td.mark_gr {background-color:#DBDBDB; border-color:#999; padding:0;	font-family: 'Roboto',  sans-serif; font-weight: bold;}
+.hyoka td.no1 {	background:url(../images/mot_no1.png);
+	background-repeat: no-repeat; background-position: center center;background-color:#DBDBDB;}
+.hyoka td.no2 {	background:url(../images/mot_no2.png);
+	background-repeat: no-repeat; background-position: center center;background-color:#DBDBDB;}
+.hyoka td.no3 {	background:url(../images/mot_no3.png);
+	background-repeat: no-repeat; background-position: center center;background-color:#DBDBDB;}
+
+.hyoka td.top { width:60px;}
+.hyoka td.bottom { border-right:none;}
+.hyoka td .name5 {font-size:32px;}
+
+
+/* ▼▼▼今節成績▼▼▼ */
+/* ▼▼▼全国過去▼▼▼ */
+/* ▼▼▼当地過去▼▼▼ */
+/* ▼▼▼モーター履歴▼▼▼ */
+/* ▼▼▼記者予想前夜版▼▼▼ */
+.konsetsu,
+.zen_kako,
+.tochi_kako,
+.motor_rireki,
+.yoso1{
+	width: 720px;
+	margin-bottom: 50px;
+}
+.motor_rireki td.mark_gr{ border-top-style: none;	
+	border-bottom-style: none;	background-color:#DBDBDB;  padding:0; font-family: 'Roboto',  sans-serif; font-weight: bold; font-size: 28px;}
+.yoso1 td.mark_gr{ border-top-style: none;	
+	border-bottom-style: none;	background-color:#DBDBDB;  padding:0; font-family: 'Roboto',  sans-serif; font-weight: bold; font-size: 28px; padding-bottom: 10px;}
+.motor_rireki td.no1,
+.yoso1 td.no1 {	background:url(../images/mot_no1s.png);
+	background-repeat: no-repeat; background-position: center center;background-color:#DBDBDB;}
+.motor_rireki td.no2,
+.yoso1 td.no2 {	background:url(../images/mot_no2s.png);
+	background-repeat: no-repeat; background-position: center center;background-color:#DBDBDB;}
+.motor_rireki td.no3,
+.yoso1 td.no3{	background:url(../images/mot_no3s.png);
+	background-repeat: no-repeat; background-position: center center;background-color:#DBDBDB;}
+.motor_rireki td.mot_bottom,
+.yoso1 td.yoso1_bottom{
+	border-top-style: none;		
+	font-size: 28px;
+
+}
+
+
+/* データリンク */
+#link {
+	margin-bottom: 20px;
+}
+#link .accordion_box dt {
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #CCC;
+	border-bottom-color: #CCC;
+	padding-left: 30px;
+	font-size: 40px;
+	line-height: 90px;
+	color: #333;
+	height: 90px;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+}
+#link .accordion_box dt.plus {
+	background: url(/sp/kyogi/images/plus.png), -moz-linear-gradient(top, #fff, #fff 33%, #ededed 66%, #ededed);
+	background: url(/sp/kyogi/images/plus.png), -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.33, #fff), color-stop(0.66, #ededed), to(#ededed));
+	background-position: 95% center;
+	background-repeat:no-repeat;
+}
+#link .accordion_box dt.minus {
+	background: url(/sp/kyogi/images/minus.png), -moz-linear-gradient(top, #fff, #fff 33%, #ededed 66%, #ededed);
+	background: url(/sp/kyogi/images/minus.png), -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.33, #fff), color-stop(0.66, #ededed), to(#ededed));
+	background-position: 95% center;
+	background-repeat:no-repeat;
+}
+#link .accordion_box li {
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFF;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+	background-color: #ededed;
+	height: 80px;
+	font-size: 30px;
+	line-height: 80px;
+}
+#link .accordion_box li a {
+	height: 100%;
+	background-image: url(/sp/kyogi/images/arrow_right.png);
+	background-repeat: no-repeat;
+	background-position: 94% center;
+	display: block;
+	text-decoration: none;
+	color: #333;
+	padding-left: 30px;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+}
+#link .accordion_box li a span {
+	font-size: 24px;
+}
+#link .accordion_box li a:hover {
+	background-color: #CCC;
+}
+
+
+.normal_link{
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #CCC;
+	border-bottom-color: #CCC;
+	font-size: 40px;
+	line-height: 90px;
+	color: #039;
+	height: 90px;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+	background: -moz-linear-gradient(top, #fff, #fff 33%, #ededed 66%, #ededed);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.33, #fff), color-stop(0.66, #ededed), to(#ededed));
+	color:#CCC;
+	padding-left: 30px;
+}
+.normal_link a {
+	display:block;
+	background: url(/sp/kyogi/images/arrow_link.png), -moz-linear-gradient(top, #fff, #fff 33%, #ededed 66%, #ededed);
+	background: url(/sp/kyogi/images/arrow_link.png), -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.33, #fff), color-stop(0.66, #ededed), to(#ededed));
+	background-repeat: no-repeat;
+	background-position: 94% center;
+	color: #333;
+	
+	text-decoration:none;
+}
+
+/* フッター */
+#footer {}
+#page_top {
+	height: 54px;
+	width: 220px;
+	margin-left: 470px;
+}
+#page_top a {
+	display: block;
+	height: 54px;
+	width: 220px;
+	text-align: center;
+	color: #333333;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #fff, #e6e6e6 50%, #e6e6e6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.5, #e6e6e6), to(#e6e6e6));
+	border-radius: 16px 16px 0px 0px;
+	font-size: 24px;
+	line-height: 54px;
+	border: 1px solid #e6e6e6;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+}
+#b_top {
+	background-color: #e6e6e6;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+#b_top a {
+	height: 68px;
+	width: 658px;
+	text-align: center;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 32px;
+	color: #333333;
+	line-height: 68px;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #fff,  #fff 33%, #e6e6e6 66%, #e6e6e6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.33, #fff), color-stop(0.66, #e6e6e6), to(#e6e6e6));
+	border: 1px solid #CCC;
+	border-radius: 16px;
+	padding-top: 4px;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+	box-shadow: 0px 1px 1px #999;
+	-webkit-box-shadow: 0px 1px 1px #999;
+	-moz-box-shadow: 0px 1px 1px #999;
+	margin-bottom: 10px;
+}
+#b_top a:hover {
+	background: -moz-linear-gradient(top, #e6e6e6, #e6e6e6 33%, #fff 66%, #fff);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), color-stop(0.33, #e6e6e6), color-stop(0.66, #fff), to(#fff));
+}
+#copyright {
+	height: 92px;
+	background-color: #098AD4;
+}
+#copyright a {
+	display: block;
+	width: 382px;
+	height: 92px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#copyright a div {
+	display: block;
+	background-image: url(/sp/kyogi/images/footer_logo.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 382px;
+	height: 92px;
+	text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#footer_space {
+	height: 110px;
+}
+
+
+/* ▼▼▼★共通★▼▼▼ */
+.page_tit {
+	height: 55px;
+	width: 720px;
+	background-color: #FFBF00;
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 1.8em;
+	color: #333;
+	display: block;
+}
+
+/* ▼▼▼トップページ▼▼▼ */
+#top {
+	width: 720px;
+	margin-bottom: 50px;
+}
+#top #top_btn {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#top #top_btn ul {
+	margin-right: 10px;
+	font-size: 30px;
+}
+#top #top_btn li {
+	float: right;
+	border-left: 2px solid #B3B3B3;
+	border-right: 2px solid #B3B3B3;
+	padding-left: 15px;
+	padding-right: 15px;
+	display: block;
+}
+#top #top_btn li.midokoro {
+	border-right:none;
+}
+#top #top_btn li a {
+	text-decoration: none;
+	color: #333;	
+}
+#top .arrow_green{
+	color: #0EB4B4;
+}
+#top #top_syusso{
+}
+#top #race_num{
+	width: 150px;
+	float: left;
+	text-align: center;
+}
+#top #race_num a {
+	color: #0080FF;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #fff, #ccc);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #E6E6E6;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    display: block;
+	width: 150px;
+	height: 118px;
+}
+#top #race_num .end a {
+	color:#A9D4FD;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #0080FF, #75B5F5);
+	background: -webkit-gradient(linear, left top, left bottom, from(#0080FF), to(#75B5F5));
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #0080FF;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #75B5F5;
+    display: block;
+	width: 150px;
+	height: 118px;
+}
+#top #race_num a:hover {
+	background-color: #EDEDED;
+}
+#top #race_num .end a:hover {
+	background-color: #060;
+}
+#race_num ul{
+	font-weight: bold;
+}
+#race_num li{
+	font-family: Arial, Helvetica, sans-serif;
+}
+#race_num li.end{
+}
+#race_num .num{
+	height: 50px;
+	font-size: 60px;
+	line-height: 1em;
+}
+#race_num .num span{
+	font-size: 40px;
+}
+#race_num .oshi{
+	height:32px;
+	background: url(../images/oshi.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin-top: 3px;
+}
+#race_num .oshi_non{
+	height:15px;
+
+}
+#race_num .time{
+	height: 23px;
+	font-size: 26px;
+	line-height: 1em;
+	background: url(../images/clock01.png);
+	background-position: 30px 5px;
+	background-repeat: no-repeat;
+	text-indent: 20px;
+	margin-top: 5px;
+}
+#race_num li.end .time{
+	height: 23px;
+	font-size: 26px;
+	line-height: 1em;
+	background: url(../images/clock02.png);
+	background-position: 30px 5px;
+	background-repeat: no-repeat;
+	text-indent: 20px;
+	margin-top: 5px;
+}
+#top #race_mem{
+	float: left;
+	width: 570px;
+	height: 118px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCC;
+}
+
+#race_mem table.top_mem{
+	width: 570px;
+	height: 118px;
+	font-size: 32px;
+}
+#race_mem td {
+	width: 110px;
+	height: 48px;
+	padding: 3px;
+	text-align: left;
+	border: 2px solid #FFF;
+}
+#race_mem td.check{
+	background-color:#FFE599;
+}
+#race_mem td.lady {
+	color:#D00872;
+}
+#race_mem td.waku {
+	font-size: 36px;
+	width: 25px;
+	text-align: center;
+}
+#race_mem td span {
+	font-size: 26px;
+}
+#top #kinkyu {
+	line-height: 1.3em;
+	text-align: center;
+	width: 694px;
+	color: #FF0000;
+	margin: 0 auto;
+	border: 3px #FF0000 solid;
+	padding: 10px;
+	background-color: #F9F1B7;
+}
+#top #caution {
+	padding-top: 10px;
+	font-size: 26px;
+	text-align: center;
+}
+#top #caution .oshi {
+	color: #FFC926;
+}
+#top #caution .check {
+	color:#FFE599;
+}
+
+
+
+
+/* ▼▼▼競技情報データ▼▼▼ */
+
+.data {
+	/*margin-bottom: 40px;*/
+	width: 720px;
+	color: #000;
+}
+	.cont_odds .data {margin-bottom: 40px;}
+.data h2 {
+	clear: both;
+	background:#333;
+	height: 60px;
+	color: #FFF;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.8);
+	text-align: center;
+	font-size: 32px;
+	line-height: 60px;
+	border-radius: 60px 60px 0px 0px;
+}
+
+
+/* テーブル 共通の指定 */
+.data table {
+	font-size: 32px;
+	background-color: #FFF;
+}
+.data th {
+	color: #FFFFFF;
+	text-align: center;
+	border: 1px solid #666666;
+	font-size: 22px;
+	line-height: 1em;
+	vertical-align: middle;
+	padding: 4px;
+}
+.data th.header1 {
+	background: -moz-linear-gradient(top, #666, #999 50%, #999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), color-stop(0.5, #999), to(#999));
+}
+.data th.header2 {
+	background: -moz-linear-gradient(top, #666, #999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#999));
+}
+.data th.header3 {
+	background-color: #999;
+}
+.data td {
+	vertical-align: middle;
+	border: 1px solid #666;
+	line-height: 1em;
+	text-align: center;
+}
+.data .gray {
+	background-color: #e6e6e6;
+}
+
+
+/* 選手名 */
+.name2,
+.name3,
+.name4,
+.name5 {
+	font-size: 36px;
+}
+.name6 {
+	font-size:28px;
+}
+
+
+/* 艇カラー */
+.r1, .r2, .r3, .r4, .r5, .r6 {
+	font-family: 'Roboto',  sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+	width: 50px;
+}
+.n1, .n2, .n3, .n4, .n5, .n6 {}
+.r1, .n1 {
+	background-color: #DEE8EF;
+	color: #000;
+}
+.r2, .n2 {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+.r3, .n3 {
+	background-color: #CC0000;
+	color: #FFFFFF;
+}
+.r4, .n4 {
+	background-color: #0066CC;
+	color: #FFFFFF;
+}
+.r5, .n5 {
+	background-color: #FFE600;
+	color: #000;
+}
+.r6, .n6 {
+	background-color: #009900;
+	color: #FFFFFF;
+}
+
+
+
+/* 選手リンク */
+.n1 a, .n2 a, .n3 a, .n4 a, .n5 a, .n6 a {
+	color: #fff;
+	display:block;
+	text-decoration: underline;
+	padding-top: 28px;
+	padding-bottom: 28px;
+	width: 200px;
+}
+.n1 a, .n5 a {
+	color: #000;
+}
+
+
+/* ▼▼▼出走表(共通)▼▼▼ */
+
+/* 出走表タブ */
+#shusso {
+	width: 720px;
+	/*margin-bottom: 20px;*/
+
+}
+
+#shusso table {
+	width: 720px;
+}
+#tab_index {
+	height: 110px;
+	width: 720px;
+	padding-top: 20px;
+}
+#tab_index li {
+	float: left;
+	width: 140px;
+	height: 100px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-left: 3px;
+	background-image: url(../images/tab_menu.png);
+	background-repeat: no-repeat;
+}
+#tab_index li.grayline{
+	height: 10px;
+	width: 720px;
+	background-color: #CCC;
+	margin-left: 0;
+}
+#tab_index #tab01 {
+	background-position: 0px 0px;
+}
+#tab_index #tab02 {
+	background-position: -140px 0px;
+}
+#tab_index #tab03 {
+	background-position: -280px 0px;
+}
+#tab_index #tab04 {
+	background-position: -420px 0px;
+}
+#tab_index #tab05 {
+	background-position: -560px 0px;
+}
+
+
+#tab_index .selected  {
+	background-image: url(../images/tab_menu.png);
+	background-repeat: no-repeat;
+}
+#tab_index .selected#tab01 {
+	background-position: 0px -100px;
+}
+#tab_index .selected#tab02 {
+	background-position: -140px -100px;
+}
+#tab_index .selected#tab03 {
+	background-position: -280px -100px;
+}
+#tab_index .selected#tab04 {
+	background-position: -420px -100px;
+}
+#tab_index .selected#tab05 {
+	background-position: -560px -100px;
+}
+
+#tab_index .hover#tab01 {
+	background-position: 0px -200px;
+}
+#tab_index .hover#tab02 {
+	background-position: -140px -200px;
+}
+#tab_index .hover#tab03 {
+	background-position: -280px -200px;
+}
+#tab_index .hover#tab04 {
+	background-position: -420px -200px;
+}
+#tab_index .hover#tab05 {
+	background-position: -560px -200px;
+}
+
+#tab_index .page1,
+#tab_index .page2,
+#tab_index .page3,
+#tab_index .page4,
+#tab_index .page5  {
+	background-repeat: no-repeat;
+	background-position: center 0px;
+	height: 17px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 75px;
+	width: 122px;
+}
+#tab_index .page1  {
+	background-image: url(../images/tab_page1.png);
+}
+#tab_index .page2  {
+	background-image: url(../images/tab_page2.png);
+}
+#tab_index .page3  {
+	background-image: url(../images/tab_page3.png);
+}
+#tab_index .page4  {
+	background-image: url(../images/tab_page4.png);
+}
+#tab_index .page5  {
+	background-image: url(../images/tab_page5.png);
+}
+#tab_index li.page_num1 .page1,
+#tab_index li.page_num1 .page2,
+#tab_index li.page_num1 .page3,
+#tab_index li.page_num1 .page4,
+#tab_index li.page_num1 .page5  {
+	background-position: center -17px;
+}
+#tab_index li.page_num2 .page1,
+#tab_index li.page_num2 .page2,
+#tab_index li.page_num2 .page3,
+#tab_index li.page_num2 .page4,
+#tab_index li.page_num2 .page5  {
+	background-position: center -34px;
+}
+#tab_index li.page_num3 .page1,
+#tab_index li.page_num3 .page2,
+#tab_index li.page_num3 .page3,
+#tab_index li.page_num3 .page4,
+#tab_index li.page_num3 .page5 {
+	background-position: center -51px;
+}
+#tab_index li.page_num4 .page1,
+#tab_index li.page_num4 .page2,
+#tab_index li.page_num4 .page3,
+#tab_index li.page_num4 .page4,
+#tab_index li.page_num4 .page5 {
+	background-position: center -68px;
+}
+#tab_index li.page_num5 .page1,
+#tab_index li.page_num5 .page2,
+#tab_index li.page_num5 .page3,
+#tab_index li.page_num5 .page4,
+#tab_index li.page_num5 .page5  {
+	background-position: center -85px;
+}
+
+
+/* ▼▼▼出走表(共通)▼▼▼ */
+
+.ta_shusso {
+	font-size: 32px;
+	background-color: #FFF;
+	font-family:  'Roboto',  sans-serif;
+}
+.ta_shusso th {
+	color: #FFF;
+	background-color: #555;
+	text-align: center;
+	border: 1px solid #ccc;
+	font-size: 26px;
+	line-height: 100%;
+	vertical-align: middle;
+	padding: 10px;
+}
+.ta_shusso th.header1 {
+	height: 67px;
+}
+.ta_shusso th.header2 {
+	height: 36px;
+}
+.ta_shusso th.header3 {
+	height: 22px;
+}
+.ta_shusso th.small {
+	font-size: 18px;
+	line-height: 18px;
+}
+.ta_shusso th.small2 {
+	font-size: 18px;
+	padding-top: 2px;
+}
+.ta_shusso th.small3 {
+	font-size: 20px;
+}
+.ta_shusso th.small4 {
+	font-size: 18px;
+	padding: 2px;
+	line-height: 18px;
+}
+.ta_shusso th.small5 {
+	font-size: 16px;
+	padding:12px 0 10px;
+}
+.ta_shusso th.small6 {
+	font-size: 18px;
+	padding:10px 0;
+}
+.ta_shusso th.large {
+	font-size: 26px;
+	line-height: 26px;
+}
+.ta_shusso th .small {
+	font-size: 20px;
+}
+.ta_shusso th.top_no_border {
+	border-top-style: none;
+}
+.ta_shusso th.bottom_no_border {
+	border-bottom-style: none;
+}
+.ta_shusso th.name {
+	font-size: 26px;
+}
+.ta_shusso th.name span {
+	font-size: 18px;
+	margin-top: 10px;
+}
+.ta_shusso th.F {
+	padding:12px 16px;
+	border-bottom:1px dotted #CCCCCC;
+}
+.ta_shusso th.L {
+	border-top:none;
+}
+.ta_shusso th.hyoka {
+	font-size: 24px;
+}
+.ta_shusso th.day {
+	width: 42px;
+	font-size:22px;
+	line-height:18px;
+	padding-top:16px;
+	padding-bottom:16px;
+	padding-left:0px;
+	padding-right:0px;
+
+}
+.ta_shusso th.day span {
+	font-size: 24px;
+}
+
+.ta_shusso th.setsu {
+	font-size: 24px;
+	width: 190px;
+	padding:14px 0;
+}
+.ta_shusso th.setsu span {
+	font-size: 30px;
+	line-height: 30px;
+}
+.ta_shusso th.zenritsu ,
+.ta_shusso th.tochiritsu {
+	font-size: 24px;
+	padding:12px 20px;
+}
+.ta_shusso th.mot_no {
+	font-size: 26px;
+	line-height: 28px;
+}
+.ta_shusso th.mot_ritsu {
+	border-top:none;
+	font-size: 24px;
+	padding:12px 20px;
+}
+.ta_shusso th.mot_boat {
+	width: 60px;
+	font-size: 24px;
+}
+
+
+
+
+
+.ta_shusso th.result {
+	font-size: 22px;
+	width: 30px;
+	padding:2px 10px;
+	border-top-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.ta_shusso th.result_b {
+	font-size: 22px;
+	width: 30px;
+	padding:0px 10px;
+	border-top-style: none;
+	border-left-style: none;
+}
+.ta_shusso th.cho_course {
+	background-color: #4A5260;
+	font-size: 20px;
+	line-height: 100%;
+}
+.ta_shusso th.cho_CG {
+	border-right-color: #646E82;
+}
+.ta_shusso th.cho_ST {
+	border-left-color: #646E82;
+}
+.ta_shusso th.cho_z_course {
+	border-left-color: #646E82;
+	font-size: 18px;
+	line-height: 100%;
+}
+.ta_shusso th.time_ikiashi {
+	color: #222;
+	background-color: #9CF;
+	font-weight: bold;
+	font-size: 26px;
+}
+.ta_shusso th.time_senkai {
+	color: #222;
+	background-color: #B4DC00;
+	font-weight: bold;
+	font-size: 26px;
+}
+.ta_shusso th.s_data {
+	font-size:18px;
+	line-height:18px;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:0px;
+	padding-right:0px;
+}
+.ta_shusso td {
+	vertical-align: middle;
+	border: 1px solid #ccc;
+	line-height: 100%;
+	text-align: center;
+}
+.ta_shusso td a {
+	display:block;
+}
+.ta_shusso td.top_no_border {
+	border-top-style: none;
+}
+.ta_shusso td.bottom_no_border {
+	border-bottom-style: none;
+}
+.ta_shusso td .name2,
+.ta_shusso td .name3,
+.ta_shusso td .name4,
+.ta_shusso td .name5  {
+	font-size: 35px;
+	width:100%;
+	padding-top:20px;
+	padding-bottom:0px;
+	display:block;
+}
+.ta_shusso td .name6 {
+	font-size:30px;
+	padding-top:20px;
+	padding-bottom:0px;
+	width:100%;
+	display:block;
+}
+.ta_shusso td .lady {
+	color:#D00872;
+}
+img.i_lady {vertical-align: baseline;}
+.ta_shusso td.number {
+	font-size: 20px;
+	padding-bottom:20px;
+}
+.ta_shusso td.cho_number {
+	font-size: 20px;
+	padding-top: 5px;
+}
+
+
+.ta_shusso td.hayami {
+	width: 55px;
+	height: 114px;
+
+}
+.ta_shusso td.hayami a {
+	color: #0080FF;
+	display:inline-block;
+	text-decoration:none;
+	border-bottom:3px solid #0080FF;
+}
+.ta_shusso td.hayami span {
+	font-size: 20px;
+
+}
+.ta_shusso td.top {
+	height: 33px;
+	border-bottom-style: none;
+	padding-top: 15px;
+}
+.ta_shusso td.bottom {
+	border-top-style: none;
+	height: 33px;
+	padding-bottom: 15px;
+}
+.ta_shusso td.bold {
+	font-weight: bold;
+}
+.ta_shusso td.gray {
+	color: #888;
+	background-color: #FFF;
+}
+
+.ta_shusso td.race {
+	font-size: 22px;
+	width: 52px;
+	height:26px;
+	border-top-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.ta_shusso td.shin {
+	font-size: 22px;
+	width: 52px;
+	height:26px;
+	font-weight: normal;
+	border-top-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.ta_shusso td.ST {
+	font-size: 22px;
+	width: 52px;
+	height:26px;
+	border-top-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+	.ta_shusso td.ST.st_top { background:url(../images/st_top.png) no-repeat center;}
+	
+.ta_shusso td.rank {
+	font-size: 26px;
+	width: 52px;
+	background-color:#00B2B2;
+	color:#FFFFFF;
+	font-weight:bold;
+	}
+.ta_shusso td.rank_top,
+.ta_shusso td.rank_bottom {
+	font-size: 30px;
+	width: 52px;
+	height:56px;
+	font-weight: bold;
+	background-color: #FFF;
+
+}
+.ta_shusso td.rank_top{
+	border-bottom-style: none;
+}
+.ta_shusso td.rank_bottom{
+	border-top-style: none;
+}
+
+.ta_shusso td.rank_top a,
+.ta_shusso td.rank_bottom a{
+	color:#0E1FD9;
+	height:56px;
+	line-height:56px;
+}
+.ta_shusso td.rank_no {
+	width: 52px;
+	height: 36px;
+	color: #FFF;
+	border-top-style: none;
+	border-left-style: none;
+}
+.ta_shusso td.jo {
+	font-size: 20px;
+	height: 58px;
+	border-bottom-style: none;
+	line-height: 44px;
+	padding-left: 4px;
+}
+.ta_shusso td.nodata {
+	font-size:20px;
+	height:114px;/*全過去のNoDataで訂正　112px*/
+	text-align:center;
+	vertical-align:middle;
+}
+.ta_shusso td.nodata .cyushi {
+	color: #FF0000;
+}
+.item .motor_txt,
+.item .kako_txt{
+	font-size:24px;
+	padding:10px 0;
+	background-color:#EEEEEE;
+}
+.ta_shusso td .jomei {
+	width: 60px;
+	float: left;
+	height: 44px;
+	line-height:44px;
+	color: #FFF;
+	background-color: #999;
+	font-size: 24px;
+	text-align: center;
+	border-radius: 3px;
+}
+.ta_shusso td .jomei2 {
+	width: 60px;
+	float: left;
+	height: 44px;
+	line-height: 44px;
+	color: #FFF;
+	background-color: #999;
+	font-size: 18px;
+	text-align: center;
+	border-radius: 3px;
+}
+
+.ta_shusso td .period {
+	width: 126px;
+	float: left;
+	text-align: center;
+}
+	.ta_shusso td .period.small { line-height:1.2em;}
+	
+.ta_shusso td .period2 {
+	width: 180px;
+	float: left;
+	text-align: center;
+}
+.ta_shusso td .period3 {
+	width: 190px;
+	float: left;
+	text-align: center;
+	font-size: 18px;
+}
+.ta_shusso td .period2 img {vertical-align:middle;}
+
+.ta_shusso td .G0,
+.ta_shusso td .G1,
+.ta_shusso td .G2,
+.ta_shusso td .G3,
+.ta_shusso td .SG {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	width: 50px;
+	float: left;
+	height: 44px;
+	line-height: 44px;
+	color: #FFF;
+	font-size: 18px;
+	text-align: center;
+	border-radius: 3px;
+	margin-right: 5px;
+}
+.ta_shusso td .G0 {
+	background-color: #2D95FF;
+}
+.ta_shusso td .G1 {
+	background-color: #FF860D;
+}
+.ta_shusso td .G2 {
+	background-color: #8F69FF;
+}
+.ta_shusso td .G3 {
+	background-color: #00C694;
+}
+.ta_shusso td .SG {
+	background-color: #FF4242;
+}
+
+/*モーター直近3節用*/
+.ta_shusso.motor td .G0,
+.ta_shusso.motor td .G1,
+.ta_shusso.motor td .G2,
+.ta_shusso.motor td .G3,
+.ta_shusso.motor td .SG{background-color:#CCCCCC; color:#333333;}
+
+
+.ta_shusso td .A1,
+.ta_shusso td .A2,
+.ta_shusso td .B1,
+.ta_shusso td .B2 {
+	font-size: 18px;
+	color: #FFF;
+	display:inline-block;
+	text-align: center;
+	word-break:break-all;
+	line-height: 100%;
+	padding: 2px 5px;
+	margin-left:4px;
+	border-radius: 3px;
+}
+
+.ta_shusso td .A1{background-color: #E16733;}
+.ta_shusso td .A2{background-color: #EA9470;}
+.ta_shusso td .B1{background-color: #219FB1;}
+.ta_shusso td .B2{background-color: #63BCC8;}
+
+
+.ta_shusso td.order {
+	font-weight: bold;
+	font-size: 34px;
+	height: 56px;
+
+	background-color: #EBF0F5;
+	border-top-style: none;
+	text-align: left;
+	padding-left: 4px;
+	font-family:  'Roboto',  sans-serif;
+}
+
+.ta_shusso td.order2 {
+	font-weight: bold;
+	font-size: 26px;
+	line-height: 50px;
+	height: 56px;
+	background-color: #EBF0F5;
+	border-top-style: none;
+	text-align: left;
+	padding-left: 2px;
+	font-family:  'Roboto',  sans-serif;
+}
+	
+.ta_shusso td.order3 {
+	font-weight: bold;
+	font-size: 22px;
+	line-height: 30px;
+	height: 56px;
+	background-color: #EBF0F5;
+	border-top-style: none;
+	text-align: left;
+	padding-left: 2px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+	/*モーター直近3節*/
+	.ta_shusso.motor td.order,
+	.ta_shusso.motor td.order2,
+	.ta_shusso.motor td.order3{background-color:#EDF5EB;}
+	
+	
+	
+.ta_shusso td.order span {
+	font-size: 28px;
+	margin-left: 1px;
+}
+.ta_shusso td.order3 span {
+	font-size: 22px;
+	margin-left: 1px;
+}
+
+.ta_shusso td.NO {
+	font-size: 34px;
+	width: 79px;
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+}
+.ta_shusso td.mo_rate_L {
+	font-size: 36px;
+	font-family:  'Roboto',  sans-serif;
+	border-bottom-color: #fff;
+	border-right: none;
+	padding-top: 6px;
+	height: 48px;
+	width: 120px;
+	line-height: 40px;
+}
+.ta_shusso td.mo_rate_R {
+	font-size: 36px;
+	font-family:  'Roboto',  sans-serif;
+	border-bottom-color: #fff;
+	border-right: none;
+	border-left-color: #D7DCE1;
+	padding-top: 6px;
+	width: 120px;
+	line-height: 40px;
+}
+.ta_shusso td.mo_2ren_L {
+	font-size: 32px;
+	font-family:  'Roboto',  sans-serif;
+	color: #646E82;
+	border-top: none;
+	border-right: none;
+	padding-bottom: 4px;
+	height: 48px;
+	line-height: 40px;
+}
+.ta_shusso td.mo_2ren_R {
+	font-size: 32px;
+	font-family:  'Roboto',  sans-serif;
+	color: #646E82;
+	border-top: none;
+	border-right: none;
+	border-left-color: #D7DCE1;
+	padding-bottom: 4px;
+	line-height: 40px;
+}
+.ta_shusso td.mo_rate_L img,
+.ta_shusso td.mo_rate_R img,
+.ta_shusso td.mo_2ren_L img,
+.ta_shusso td.mo_2ren_R img {
+	display: inline-block;
+	padding-left: 1px;
+	vertical-align: top;
+	margin-top: -8px;
+}
+.ta_shusso td.bo_rate {
+	font-size: 36px;
+	font-family:  'Roboto',  sans-serif;
+	padding-top: 6px;
+	border-bottom-color: #fff;
+	width: 96px;
+	line-height: 40px;
+}
+.ta_shusso td.bo_2ren {
+	font-size: 32px;
+	font-family:  'Roboto',  sans-serif;
+	color: #646E82;
+	padding-bottom: 4px;
+	border-top: none;
+	line-height: 40px;
+}
+.ta_shusso td.cho_waku {
+	width: 40px;
+	height: 114px;
+}
+
+.ta_shusso td.cho_time {
+	font-size: 36px;
+	font-family:  'Roboto',  sans-serif;
+	border-bottom-style: none;
+	padding-top: 8px;
+	width: 100px;
+}
+.ta_shusso td.cho_tilt {
+	font-family:  'Roboto',  sans-serif;
+	color: #646E82;
+	font-size: 32px;
+	border-top-style: none;
+	vertical-align: top;
+}
+.ta_shusso td.cho_tilt span {
+	color: #DC3C3C;
+}
+
+.ta_shusso td.cho_weight {
+	font-size: 36px;
+	font-family:  'Roboto',  sans-serif;
+	border-bottom-style: none;
+	width: 100px;
+	padding-top: 8px;
+}
+.ta_shusso td.cho_adjust {
+	font-family:  'Roboto',  sans-serif;
+	color: #646E82;
+	font-size: 32px;
+	border-top-style: none;
+	vertical-align: top;
+}
+.ta_shusso td.cho_adjust span {
+	color: #DC3C3C;
+}
+
+.ta_shusso td.cho_pera {
+	font-size: 32px;
+	width: 70px;
+}
+.ta_shusso td.cho_pera2 {
+	font-size: 30px;
+	width: 70px;
+	line-height: 24px;
+}
+.ta_shusso td.cho_pera2 span {
+	font-size: 22px;
+	color: #999999;
+	line-height: 22px;
+	vertical-align: top;
+}
+.ta_shusso td.cho_parts {
+	font-size: 26px;
+	text-align: left;
+}
+.ta_shusso td.cho_course {
+	color: #FFF;
+	background-color: #4A5260;
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+	width: 40px;
+	font-size: 40px;
+}
+.ta_shusso td.cho_ST {
+	width: 80px;
+	font-size: 36px;
+	font-family:  'Roboto',  sans-serif;
+}
+.ta_shusso td.cho_ST span {
+	color: #DC3C3C;
+
+}
+.ta_shusso td.cho_S {
+	width: 80px;
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+}
+.ta_shusso td.cho_SD {
+	width: 70px;
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-top-style: none;
+	font-size: 40px;
+}
+.ta_shusso td.cho_slitST {
+	width: 90px;
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-style: none;
+	font-size: 40px;
+}
+.ta_shusso td.cho_slitST span {
+	color: #DC3C3C;
+}
+.ta_shusso td.cho_slit {
+	background-image: url(/sp/kyogi/images/focus_slit_bg.png);
+	background-repeat: no-repeat;
+	height: 96px;
+	vertical-align: middle;
+	text-align: right;
+	line-height: 56px;
+	background-position: right center;
+	font-size: 56px;
+	padding-top: 4px;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-style: none;
+}
+.ta_shusso td.cho_slit img {
+	display: inline-block;
+}
+.ta_shusso td.cho_bottom {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #ccc;
+}
+.ta_shusso td.cho_kaisu {
+	width: 90px;
+	width: 120px;
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+	padding-top: 8px;
+	border-bottom-style: none;
+}
+.ta_shusso td.cho_jiko {
+	width: 90px;
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+	border-top-style: none;
+	vertical-align: top;
+}
+
+.ta_shusso td.cho_time2 {
+	width: 90px;
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+}
+.ta_shusso td.cho_z_R {
+	width: 60px;
+	font-size: 24px;
+	line-height: 100%;
+}
+.ta_shusso td.cho_z_R span {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+}
+
+.ta_shusso td.cho_z_course {
+	width: 65px;
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+	height: 100px;
+}
+.ta_shusso td.cho_z_ST {
+	width: 70px;
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+}
+.ta_shusso td.cho_z_ST span {
+	color: #DC3C3C;
+}
+.ta_shusso td.cho_z_seiseki {
+	width: 60px;
+	line-height: 100%;
+	font-size: 24px;
+}
+.ta_shusso td.cho_z_seiseki span {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+	font-weight: bold;
+
+}
+.ta_shusso td.cho_z_seiseki span.FL {
+	color: #DC3C3C;
+}
+.ta_shusso td.rep_rate {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 40px;
+	border-bottom-style: none;
+	vertical-align: bottom;
+}
+.ta_shusso td.rep_2ren {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+	color: #646E82;
+	border-top-style: none;
+	vertical-align: top;
+}
+.ta_shusso td.rep_mo {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 40px;
+	width: 115px;
+	border-bottom-style: none;
+	vertical-align: bottom;
+}
+.ta_shusso td.rep_mo_2ren {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+	color: #646E82;
+	border-top-style: none;
+	vertical-align: top;
+}
+.ta_shusso td.rep_bo {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 40px;
+	width: 115px;
+	border-bottom-style: none;
+	vertical-align: bottom;
+}
+.ta_shusso td.rep_bo_2ren {
+	font-family:  'Roboto',  sans-serif;
+	font-size: 36px;
+	color: #646E82;
+	border-top-style: none;
+	vertical-align: top;
+}
+
+.ta_shusso td.time_ikiashi {
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+	background-color: #F0F8FF;
+	font-size: 40px;
+}
+.ta_shusso td.time_senkai {
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+	background-color: #E6F0B4;
+	font-size: 40px;
+}
+.ta_shusso td.time_1syu {
+	font-family:  'Roboto',  sans-serif;
+	font-weight: bold;
+	background-color: #F0F0FF;
+	font-size: 40px;
+}
+.ta_shusso td.top1 {
+	color: #DC3C3C;
+}
+.ta_shusso td.top2 {
+	color: #0066CC;
+}
+.ta_shusso .time_plus {
+	margin: 0px;
+	padding: 0px;
+	border-right-style: none;
+	border-left-style: none;
+	background-color: #FFFFFF;
+	font-weight: bold;
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	font-size: 30px;
+}
+.ta_shusso .time_blank {
+	font-size: 1px;
+	margin: 0px;
+	padding: 0px;
+	width: 10px;
+	border-right-style: none;
+	border-left-style: none;
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	background-color: #FFF;
+}
+.ta_shusso .time_blank2 {
+	font-size: 1px;
+	margin: 0px;
+	padding: 0px;
+	width: 10px;
+	border-right-style: none;
+	border-left-style: none;
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	background-color: #FFF;
+}
+
+/*枠番別入着データ*/
+#waku_ritsu {
+}
+.ta_shusso th.first {
+	width: 300px;
+}
+.ta_shusso td.first_box {
+	vertical-align: top;
+	padding: 20px;
+}
+.ta_shusso td.percentage {
+	padding: 5px 0;
+}
+.ta_shusso td.waku_first{
+	padding-bottom: 50px;
+}
+#b_waku {
+	text-align: center;
+
+	margin-right: auto;
+	margin-left: auto;
+}
+#b_waku.b_waku1,
+#b_waku.b_waku5{
+	height: 80px;
+	width: 190px;
+	text-align: center;
+	display: block;
+	margin-top: 10px;
+	font-size: 42px;
+	line-height:2em;
+	text-decoration: none;
+	border: 1px solid #000;
+	border-radius: 16px;
+	color: #000;
+	background-image: url(../images/course_arrow_bk.png);
+	background-repeat: no-repeat;
+	background-position: 160px center;	
+}
+#b_waku.b_waku1 a,
+#b_waku.b_waku5 a{
+	height: 80px;
+	width: 190px;
+	color: #000;
+	text-decoration: none;
+}
+#b_waku.b_waku2,
+#b_waku.b_waku3,
+#b_waku.b_waku4,
+#b_waku.b_waku6{
+	height: 80px;
+	width: 190px;
+	text-align: center;
+	color: #FFF;
+	display: block;
+	margin-top: 10px;
+	font-size: 42px;
+	line-height:2em;
+	text-decoration: none;
+	border: 1px solid #FFF;
+	border-radius: 16px;
+	background-image: url(../images/course_arrow_w.png);
+	background-repeat: no-repeat;
+	background-position: 160px center;	
+}
+#b_waku.b_waku2 a,
+#b_waku.b_waku3 a,
+#b_waku.b_waku4 a,
+#b_waku.b_waku6 a{
+	height: 80px;
+	width: 190px;
+	color: #FFF;
+	text-decoration: none;
+}
+#b_waku.b_waku1 {
+	color: #000;
+	background-color: #DEE8EF;
+}
+#b_waku.b_waku2 {
+	background-color: #000;
+}
+#b_waku.b_waku3 {
+	background-color:#CC0000;
+}
+#b_waku.b_waku4 {
+	background-color:#0066CC;
+}
+#b_waku.b_waku5 {
+	color: #000;
+	background-color:#FFE600;
+}
+#b_waku.b_waku6 {
+	color: #FFF;
+	background-color:#009900;
+}
+#b_waku.b_waku1.non,
+#b_waku.b_waku2.non,
+#b_waku.b_waku3.non,
+#b_waku.b_waku4.non,
+#b_waku.b_waku5.non
+#b_waku.b_waku6.non{
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  -ms-filter: "alpha(opacity=60)";
+} 
+
+
+
+
+/*出走表近況節成績*/
+.kinkyo td.waku {
+	font-size:32px;
+	width:40px;
+}
+.kinkyo td .name2 ,
+.kinkyo td .name3,
+.kinkyo td .name4,
+.kinkyo td .name5 {
+	font-size: 28px;
+}
+.kinkyo td .name6 {
+	font-size:24px;
+}
+
+.owl-item {padding-bottom:20px;}
+
+
+
+
+/* ▼▼▼予想▼▼▼ */
+/*記者前夜版*/
+#zenya_push {
+	width:260px;
+	height:60px;
+	padding-left:310px;
+	padding-top:10px;
+	margin:0 auto;
+	background-image:url(../images/tukky_push_bg.png);
+	background-position:0 0;
+	background-repeat: no-repeat;
+	position:relative;
+}
+#zenya_push .race_no {
+	width:244px;
+	height:48px;
+	padding-top:2px;
+	text-align:center;
+	line-height:0.9em;
+	color:#F9BA00;
+	font-weight:bold;
+	font-size:26px;
+	font-family: 'Roboto',  sans-serif;
+	display:inline-block;
+	display:table-cell;
+	vertical-align:middle;
+
+}
+#zenya_push .race_no span {font-size:20px;}
+
+
+/*色分け*/
+#yoso .yoso1 {border-top:10px solid #0086B2;}
+#yoso .yoso2 {border-top:10px solid #E48401;}
+#yoso .yoso3 {border-top:10px solid #4400D2;}
+#yoso .yoso4 {border-top:10px solid #1B98EB;}
+
+/*data見出し*/
+#yoso h3 {
+	font-size:32px;
+	font-weight:bold;
+	color:#FFF;
+	padding:20px 0;
+	text-align:center;
+	margin-top:50px;/*50px*/
+	border-bottom: 10px solid #666;
+	}
+#yoso.yoso1 h3{ background-color:#0EB6B6;}
+#yoso.yoso2 h3{ background-color:#E48401;}
+#yoso.yoso3 h3{ background-color:#370186;}
+/*dataテキスト*/
+#yoso p {padding:30px 40px; line-height:1.2em; font-size:30px;}
+
+/*--------------
+
+　　記者前夜版
+
+--------------*/
+.yoso1 th {padding:0;}
+.yoso1 th span.top {display:block; padding-top:2px;padding-bottom:4px; border-bottom:1px dotted #CCCCCC;font-size:24px; }
+.yoso1 th span.bot {display:block; padding-top:4px; font-size:24px;}
+.yoso1 th span.f{ padding-bottom: 10px;}
+.yoso1 th span.l{ padding-top: 10px;}
+
+.yoso1 th.mark {background-color:#0086B2; color:#FFF; width:75px; padding:8px 0;}
+.yoso1 th.mark_thin {background-color:#0086B2; color:#FFF; height:32px; vertical-align: middle;}
+.yoso1 td.mark {background-color:#9FE2E2; border-color:#999; padding:0 8px; /*height:120px*/}
+
+.yoso1 td.top { width:100px;}
+.yoso1 td.bottom{ border-right:none;}
+.yoso1 td.f { width:60px;}
+.yoso1 td .name5 {font-size:32px;}
+.yoso1 td .hayami {width:30px;}
+
+/*記者イチオシレース*/
+.yoso1 .ichioshi {
+	width:540px;
+	margin:10px auto 0;
+	border:5px solid #FFBF00;
+	border-radius:10px;
+	text-align:center;
+	}
+.yoso1 .ichioshi dt{ background-color:#FFBF00; color:#333; font-size:30px; padding:6px 0;}
+.yoso1 .ichioshi dd{ color:#0EB6B6; font-size:45px;font-family: 'Roboto',  sans-serif; height:60px; line-height:60px; text-align: center; font-weight: bold;}
+
+
+/*進入予想*/
+.yoso1 .slit {
+	width:440px;
+	padding-left:100px;
+	margin:30px auto;
+	padding-bottom: 27px;
+	background-image:url(../images/yoso_slit_bg.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+.yoso1 #ta_shusso.start .ST,
+.yoso1 #ta_shusso.start .slit_img {
+	border:none;
+	font-family: 'Roboto',  sans-serif;
+	font-weight:bold;
+	font-size:40px;
+	background-position:right top;
+}
+.yoso1 #ta_shusso.start .slit_img { width:410px;}
+.yoso1 #ta_shusso.start .ST {width:30px;}
+.yoso1 #ta_shusso.start {width:440px;}
+
+/*自信度*/
+.yoso1 .jisin {
+	width:540px;
+	margin:10px auto 0;
+	border:5px solid #666666;
+	border-radius:10px;
+	text-align:center;
+	}
+.yoso1 .jisin dt{ background-color:#666666; color:#FFF; font-size:34px; padding:10px 0;}
+.yoso1 .jisin dd{ color:#0EB6B6; font-size:60px;font-family: 'Roboto',  sans-serif; height:60px; line-height:60px;}
+	.yoso1 .jisin dd span { font-size:40px;}
+
+
+/*--------------
+
+　　記者展示直後
+
+--------------*/
+.yoso2 th.mark {background-color:#E48401; color:#FFF; padding:0; height:96px;}
+.yoso2 td.mark {background-color:#EFB567; border-left-color:#666; border-top-color:#666; border-bottom-color:#666; width:55px; font-weight:bold; font-size:36px; color:#333; height:114px;}
+.yoso2 .weight,
+.yoso2 .adjust { width:110px; padding:6px 0;}
+.yoso2 .parts_left { padding:0; font-size:25px; padding:10px 0;}
+.yoso2 .parts_right {font-size:24px; text-align:left; padding-left:10px; width:350px;}
+/*スタ展示*/
+.yoso2 #ta_shusso.start {width:680px; margin:20px auto 0;}
+.yoso2 #ta_shusso.start th.header1 {padding-top:10px;}
+.yoso2 #ta_shusso.start th.header3 {width:36px;}
+.yoso2 #ta_shusso.start .slit_img {width:482px;}
+.yoso2 #ta_shusso.start .FL {font-size:28px;}
+/*フォーカス*/
+.yoso2 h4 {
+	width:640px;
+	height:50px;
+	line-height:50px;
+	font-size:34px;
+	text-align:center;
+	color:#E48401;
+	margin:20px auto;
+	border-radius:2em;
+}
+.yoso2 h4.honmei {background-color:#333333;}
+.yoso2 h4.ana {background-color:#DDDDDD; color:#333333;}
+
+.yoso2 .focus {
+	width:660px;
+	margin:0 auto;
+}
+#yoso table.ta_kumi {
+	width:180px;
+	margin:0 20px 20px;
+	float:left;
+}
+#yoso table.ta_kumi td {border:none;}
+#yoso table.ta_kumi .kumi {width:40px;}
+#yoso table.ta_kumi .kumi img { margin:2px 0;}
+
+#yoso table.ta_kumi .ozz { color: #333; font-size:30px; padding:10px 0; font-family: 'Roboto',  sans-serif;}
+#yoso table.tekityu { background-color:#FFFF7C;
+	font-weight: bold;}
+
+.yoso2 .kekka {
+	width:500px;
+	margin:20px auto 0;
+	font-size: 40px;
+	line-height: 42px;
+	font-weight: bold;
+	text-align: right;
+	 font-family: 'Roboto',  sans-serif;
+}
+.yoso2 .kekka span {
+	font-size: 30px;
+}
+.yoso2 .focus2 table.ta_kumi2{
+	width:120px!important;
+	margin:0 30px 10px!important;
+	}
+.yoso2 .caution_bottom {
+	width: 640px;
+	line-height: 38px;
+	margin: 20px auto 60px;
+	padding: 10px;
+	text-align: left;
+    background-color: #EEEEEE;}
+
+
+
+/*--------------
+
+　　V-POWER
+
+--------------*/
+.yoso3 th.mark {background-color:#4400D2; color:#FFF; height:76px; }
+.yoso3 td.mark {background-color:#E7DEFF; height:114px; }
+
+/*フォーカス*/
+.yoso3 h4 {
+	width:640px;
+	height:50px;
+	line-height:50px;
+	font-size:34px;
+	font-weight:bold;
+	text-align:center;
+	color:#370186;
+	margin:20px auto;
+	background-color:#E7DEFF;
+	border-radius:2em;
+	font-family: 'Roboto',  sans-serif;
+}
+.yoso3 .focus3 {
+	width:660px;
+	margin:0 auto;
+}
+.yoso3 .focus3 table.ta_kumi{
+	width:180px;
+	margin:0 20px 20px!important;
+	float:left;
+}
+.yoso3 .caution_img {
+	padding-top: 20px;
+	padding-bottom: 60px;
+}
+.yoso3 .caution_bottom {
+	width: 640px;
+	line-height: 38px;
+	margin: 30px auto 30px;
+	padding: 10px;
+	text-align: left;
+    background-color: #EEEEEE;}
+.yoso3 .focus2 {
+	width:540px;
+	margin:0 auto 20px;
+}
+.yoso3 .kekka {
+	width:500px;
+	margin:20px auto 0;
+	font-size: 40px;
+	line-height: 42px;
+	font-weight: bold;
+	text-align: right;
+	 font-family: 'Roboto',  sans-serif;
+}
+.yoso3 .kekka span {
+	font-size: 30px;
+}
+.yoso3 .focus2 table.ta_kumi,
+.yoso3 .focus2 table.ta_kumi2{
+	width:120px!important;
+	margin:0 30px 20px!important;
+	}
+.yoso3 .focus2 table.space{
+	margin:0 50px 20px!important;
+	}
+.focus2 table.ta_kumi td,
+.kekka table.ta_kumi td{border:none;}
+.focus2 table.ta_kumi .kumi{width:40px;}
+.ta_kumi2 {width:16px;}
+.focus2 table.ta_kumi .kumi img,
+.kekka table.ta_kumi .kumi img{ margin:2px 0;}
+
+/*nodata*/
+.yoso1 #nodata,
+.yoso2 #nodata,
+.yoso3 #nodata,
+.yoso4 #nodata{
+	width:100%;
+	height:414px;
+	padding-top:300px;
+	line-height:1.2em;
+	background-color:#EEEEEE;
+}
+
+/* ▼▼▼直前＆スタ展▼▼▼ */
+
+#ta_shusso.choku {
+	width: 100%;
+	margin-bottom:40px;
+}
+#ta_shusso.choku .parts_left {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 22px;
+	line-height: 1.2em;
+	background: -moz-linear-gradient(top, #777, #999 50%, #999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#777), color-stop(0.5, #999), to(#999));
+	width: 80px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+#ta_shusso.choku .n1,
+#ta_shusso.choku .n2,
+#ta_shusso.choku .n3,
+#ta_shusso.choku .n4,
+#ta_shusso.choku .n5,
+#ta_shusso.choku .n6{
+	border-bottom-style: none;
+	vertical-align: bottom;
+}
+#ta_shusso.choku .address,
+#ta_shusso.choku .age {
+	font-size:20px;
+	width:210px;
+	border-top-style: none;
+	border-bottom:1px solid #666;
+	padding-bottom:10px;
+	vertical-align:middle;
+}
+
+
+#ta_shusso.choku .parts_right {
+	text-align: left;
+	padding-right: 10px;
+	padding-left: 10px;
+	font-size: 26px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	word-break: break-all;
+	width: 340px;
+}
+#ta_shusso.choku .top {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	height:60px;
+}
+#ta_shusso.choku .weight {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCC;
+}
+#ta_shusso.choku .adjust {
+	border-left: none;
+}
+#ta_shusso.choku .top.time {
+	background-color: #e6e6e6;
+	width: 140px;
+}
+#ta_shusso.start {
+	width: 100%;
+}
+.data #ta_shusso.start th.header3 {
+	font-size:36px;
+	font-family: 'Roboto',  sans-serif;
+	font-weight:bold;
+	}
+
+#ta_shusso.start .ST {
+	width: 100px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom:none;
+	border-left:none;
+	border-top:none;
+}
+#ta_shusso.start .ST2 {
+	width: 100px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border:none;
+}
+#ta_shusso.start .kimari {
+	font-size:24px;
+	border-left:none;
+	border-bottom:none;
+	border-top:none;
+
+	}
+#ta_shusso.start .FL {
+	color: #FF503C;
+}
+#ta_shusso.start .slit_img {
+	border-bottom-style:none;
+	border-top-style:none;
+	border-right:none;
+	width:520px;
+	height:66px;
+	text-align:right;
+	background:url(../images/st_back.png) 0 -66px no-repeat;
+}
+	#ta_shusso.start .slit_img.in {background-position:0 0;}
+	#ta_shusso.start .slit_img.out {background-position:0 -132px;}
+	
+#ta_shusso.start .bottom {
+	border-bottom:1px solid #333;
+}
+#ta_shusso #no_image {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 24px;
+	line-height: 360px;
+	background: -moz-linear-gradient(top, #e6e6e6, #ccc);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#ccc));
+	height: 360px;
+	width: 500px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.2);
+	margin-right: auto;
+	margin-left: auto;
+}
+/*--------------
+
+　マイデータ予想
+
+--------------*/
+.yoso4 {
+
+}
+.yoso4 .note {
+	width: 680px;
+	text-align:center;
+	font-size:32px;
+	line-height:1.5em;
+	margin:0 auto;
+	padding-top:10px;
+}
+.yoso4 .caution {
+	font-size:26px;
+	line-height: 30px;
+	color: #444;
+	text-align: center;
+	width: 680px;
+	margin: 0px auto;
+	padding-top:10px;
+	padding-bottom:30px;
+	border-top: #666666 2px dotted;
+}
+.yoso4 .mydata {
+	margin-right: auto;
+	margin-left: auto;
+	width: 680px;
+}
+
+
+/**項目**/
+
+.yoso4 .mydata .header {
+	color: #FFF;
+	font-size:32px;
+	line-height: 1.8em;
+	height: 60px;
+	border-radius: 20px 20px 0px 0px;
+	text-align: center;
+	background-color: #1387D5;
+
+	}
+.yoso4 th.mark {background-color:#1387D5; color:#FFF; width:62px; padding:8px 0;}
+.yoso4 td.mark {background-color:#1387D5; border-color:#999; padding:0 8px; /*height:120px*/}
+
+.yoso4 .mydata .header span {
+	font-size: 30px;
+}
+.yoso4 .mydata .priority {
+	text-align: center;
+	margin-bottom: 20px;
+	border-radius: 0px 0px 0px 0px;
+	background-color: #ECECEC;
+	
+}
+.yoso4 .mydata .priority li {
+	float: left;
+	width: 132px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #1387D5;
+}
+.yoso4 .mydata .priority li:first-child {
+	border-left-style: none;
+}
+.yoso4 .mydata label {
+	font-size: 50px;
+	font-weight: bold;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+	line-height: 60px;
+	cursor:pointer;
+	color: #666;
+	display: block;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+#box_select_y{
+	padding-top:10px;
+	padding-bottom:30px;
+}
+#box_select_y .search a{
+	width:350px;
+	height:80px;
+	text-decoration:none;
+	display:block;
+	line-height:80px;
+	font-size:40px;
+	font-weight:bold;
+	color:#FFF;
+	text-align:center;
+	margin:20px auto 0;
+	border:1px solid #FFF;
+	border-radius:2em;
+	cursor:pointer;
+	background: -moz-linear-gradient(top, #333, #000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#000));
+	}
+.yoso4 .kekka_y{
+	margin-top:20px;
+	}
+.yoso4 .kekka_y .arrow{
+	height:85px;
+	background-image: url(../images/arrow_yoso.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	}
+.yoso4 .mydata .caution {
+	font-size:28px;
+	color: #444;
+	text-align: center;
+	width: 680px;
+	margin: 0px auto 5px;
+	padding-top:5px;
+}
+.jyuyo { line-height:1.2em; font-size:30px;padding:20px;}
+.jyuyo .bold { font-weight:bold; font-size:34px;}
+
+#yoso4_top {
+	height: 65px;
+	width: 300px;
+	margin: 0 auto;
+	padding-bottom:40px;
+}
+#yoso4_top a {
+	display: block;
+	height: 65px;
+	width: 300px;
+	text-align: center;
+	color: #333333;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #fff, #e6e6e6 50%, #e6e6e6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(0.5, #e6e6e6), to(#e6e6e6));
+	border-radius: 16px 16px 16px 16px;
+	font-size: 30px;
+	line-height: 65px;
+	border: 3px solid #1B98EB;
+
+}
+#yoso4 .caution_bottom {
+	width: 640px;
+	line-height: 38px;
+	margin: 0 auto 80px;
+	padding: 10px;
+	text-align: left;
+    background-color: #EEEEEE;}
+
+/* ラジオボタン指定 */	
+.yoso4 .mydata input.radio {display:inline-block; width:20px; height:30px; vertical-align:top;}
+.yoso4 .mydata label.priority {display:inline-block; width:45%; height:50px; line-height:50px; background:#FFF; border:1px solid #CCC; padding-left:20px;}
+
+ 
+.yoso4 .mydata input[type="radio"] {
+    position: relative;
+    -webkit-appearance: button;
+    appearance: button;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+	margin-right:10px;
+    content: "";
+    background-color: #FFFFFF;
+    border: 1px solid #999999;
+    -webkit-border-radius: 24px;
+    border-radius: 24px;
+    -webkit-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.2);
+    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.2);
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked:after {
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #039;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+}
+
+.yoso_comment {
+	font-size:24px;
+	padding:10px 0;
+	color:#F10004;
+
+}
+
+.yoso4 h4 {
+	width:640px;
+	height:50px;
+	line-height:50px;
+	font-size:34px;
+	text-align:center;
+	color:#1387D5;
+	font-weight: bold;
+
+	margin:20px auto;
+	border-radius:2em;
+    background-color:#68DEFE;}
+
+.yoso4 .focus3 {
+	width:660px;
+	margin:0 auto;
+}
+.yoso4 .focus3 table.ta_kumi{
+	width:180px;
+	margin:0 20px 20px!important;
+	float:left;
+}
+#yoso4 table.ta_kumi {
+	width:180px;
+	margin:0 20px 20px;
+	text-align: center;
+
+}
+#yoso4 table.ta_kumi td {border:none;}
+#yoso4 table.ta_kumi .kumi {width:40px;}
+#yoso4 table.ta_kumi .kumi img { margin:2px 0;}
+#yoso4 table.ta_kumi .ozz { color: #333;  font-size:30px; font-family: 'Roboto',  sans-serif; padding:10px 0;}
+
+/*優先度*/
+.yoso4 .yusen {
+	width:660px;
+	margin:0 auto 50px;
+	border:4px solid #666666;
+	text-align: center;
+	color: #333;
+	}
+.yoso4 .yusen dt{ background-color:#666666; color:#FFF; font-size:26px; padding:10px 0;}
+.yoso4 .yusen dd{ color:#333; line-height:40px; margin: 10px;}
+	.yoso4 .yusen dd span { font-size:34px;  font-family: 'Roboto',  sans-serif; font-weight: bold;}
+
+
+
+/* ▼▼▼オッズ▼▼▼ */
+
+#tab_odds01,
+#tab_odds02 {
+	width: 684px;
+	margin-right: auto;
+	margin-bottom: 40px;
+	margin-left: auto;
+	margin-top: 40px;
+}
+#tab_odds01 li#ren3,
+#tab_odds02 li#ren3 {
+	float: left;
+	height: 100px;
+	width: 228px;
+	text-align: center;
+	font-size: 40px;
+	color: #FFF;
+	line-height: 100px;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #09f, #039);
+	background: -webkit-gradient(linear, left top, left bottom, from(#09f), to(#039));
+	border-radius: 2em 0px 0px 2em;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#tab_odds01 li#ren3_box,
+#tab_odds02 li#ren3_box {
+	float: left;
+	height: 100px;
+	width: 228px;
+	text-align: center;
+	font-size: 40px;
+	color: #FFF;
+	line-height: 74px;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #09f, #039);
+	background: -webkit-gradient(linear, left top, left bottom, from(#09f), to(#039));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+	#tab_odds01 li#ren3_box span,
+	#tab_odds02 li#ren3_box span {
+		display:block;
+		font-size:22px;
+		line-height:0em;
+		}
+#tab_odds01 li#ren2,
+#tab_odds02 li#ren2 {
+	float: right;
+	height: 82px;
+	width: 228px;
+	padding-top:18px;
+	text-align: center;
+	font-size: 26px;
+	color: #FFF;
+	line-height: 30px;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #09f, #039);
+	background: -webkit-gradient(linear, left top, left bottom, from(#09f), to(#039));
+	border-radius: 0px 2em 2em 0px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#tab_odds01 li#ren2 span,
+#tab_odds02 li#ren2 span {font-size:14px; display:inline-block; vertical-align:top;}
+
+
+#tab_odds01 li#ren3.selected,
+#tab_odds01 li#ren3_box.selected,
+#tab_odds01 li#ren2.selected,
+#tab_odds02 li#ren3.selected,
+#tab_odds02 li#ren3_box.selected,
+#tab_odds02 li#ren2.selected {
+	background: -moz-linear-gradient(top, #999, #fff);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#ededed));
+	color: #333;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.0), 0px 2px 2px rgba(0, 0, 0, 0.4) inset;
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.0), 0px 2px 2px rgba(0, 0, 0, 0.4) inset;  
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.0), 0px 2px 2px rgba(0, 0, 0, 0.4) inset;
+}
+
+
+/* ▼▼▼オッズ(3連単)▼▼▼ */
+
+#ta_3rentan {
+	width:719px;
+}
+
+#ta_3rentan .n1,
+#ta_3rentan .n2,
+#ta_3rentan .n3,
+#ta_3rentan .n4,
+#ta_3rentan .n5,
+#ta_3rentan .n6 {
+	text-align: left;
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#ta_3rentan .r1,
+#ta_3rentan .r2,
+#ta_3rentan .r3,
+#ta_3rentan .r4,
+#ta_3rentan .r5,
+#ta_3rentan .r6 {
+	font-size: 26px;
+}
+#ta_3rentan .value {
+	font-size:28px;
+	text-align: right;
+	width: 12%;
+	padding-top: 15px;
+	padding-right: 3px;
+	padding-bottom: 15px;
+	padding-left: 3px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+
+
+/* ▼▼▼オッズ(3連単ランキング)▼▼▼ */
+
+#ta_3rentan_rank_name {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#ta_3rentan_rank_name .n1,
+#ta_3rentan_rank_name .n2,
+#ta_3rentan_rank_name .n3,
+#ta_3rentan_rank_name .n4,
+#ta_3rentan_rank_name .n5,
+#ta_3rentan_rank_name .n6 {
+	width: 28%;
+	padding: 15px 0px;
+}
+#ta_3rentan_rank {
+	width: 49%;
+	float: left;
+}
+#ta_3rentan_rank.right {
+	float: right !important;
+}
+#ta_3rentan_rank td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 32px;
+}
+#ta_3rentan_rank th {
+	background-color: #333333; 
+	border: 1px #999999 solid; 
+	text-align: center; 
+	color: #FFFFFF; 
+	font-size: 26px; 
+	width: 15%;
+	padding: 3px 0;
+}
+#ta_3rentan_rank .value {
+	width: 30%;
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+
+
+/* ▼▼▼オッズ(3連複)▼▼▼ */
+#ta_3renpuku {
+	width: 49%;
+	float: left;
+	height: 280px;
+}
+#ta_3renpuku.right {
+	float: right;
+}
+#ta_3renpuku .value,
+#ta_3renpuku .value_gray {
+	width: 55%;
+	font-size: 32px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: right;
+	padding-right: 30px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_3renpuku .value_gray {
+	background-color: #DEDEDE;
+}
+
+
+/* ▼▼▼オッズ(3連単流し検索)▼▼▼ */
+
+#ta_3rentan_nagashi_name {
+	width: 100%;
+}
+#ta_3rentan_nagashi_name .n1,
+#ta_3rentan_nagashi_name .n2,
+#ta_3rentan_nagashi_name .n3,
+#ta_3rentan_nagashi_name .n4,
+#ta_3rentan_nagashi_name .n5,
+#ta_3rentan_nagashi_name .n6 {
+	width: 28%;
+	padding: 15px 0px;
+}
+
+
+/*艇選択set*/
+#nagashi_select{
+	background-color:#0053A6;
+	border-top:10px solid #333333;
+	border-bottom:10px solid #333333;
+	padding:20px;
+}
+#nagashi_select .set{ border-bottom:6px solid #0053A6;}
+/*着見出し*/
+#nagashi_select .set .left {
+	background-color:#FFF;
+	width:68px;
+	height:146px;
+	float:left;
+	background-position: center center;
+	background-repeat:no-repeat;
+	text-indent:-9999px;
+}
+	/*1着*/
+	#nagashi_select .set.no1 .left {
+		border-radius: 5px 0 0 0;
+		background-image:url(../images/nagashi_no1.png);}
+	#nagashi_select .set.no1 .right{border-radius: 0 5px 0 0;}
+	/*2着*/
+	#nagashi_select .set.no2 .left {
+		background-image:url(../images/nagashi_no2.png);
+		}
+	#nagashi_select .set.no2 {border-top:1px solid #B3CBE5;}
+	/*3着*/
+	#nagashi_select .set.no3 {border-top:1px solid #B3CBE5;}
+	#nagashi_select .set.no3 .left {
+		border-radius: 0 0 0 5px;
+		background-image:url(../images/nagashi_no3.png);}
+	#nagashi_select .set.no3 .right{border-radius: 0 0 5px 0;}
+	
+	
+/*ボタンset*/
+#nagashi_select .set .right {
+	height:140px;
+	background-color:#80A9D3;
+	padding:6px 26px 0 26px;
+	float:left;
+}
+#nagashi_select .set .right .btn1 {
+	width:450px;
+	float:left;
+}
+#nagashi_select .set .right .btn1 li {
+	width:140px;
+	height:64px;
+	line-height:64px;
+	text-align:center;
+	border-radius: 2em;
+	margin:0 10px 6px 0;
+	float:left;
+}
+	#nagashi_select .set .right .btn1 li:hover,
+	#nagashi_select .set .right .btn1 li.on{
+		width:130px;
+		height:54px;
+		line-height:54px;
+		border:solid 5px #FF7373;
+		cursor:pointer;
+		}
+/*欠場*/
+#nagashi_select .set .right .btn1 li.no_select {opacity:0.3;}
+#nagashi_select .set .right .btn1 li:hover.no_select {
+	cursor:default;
+	width:140px;
+	height:64px;
+	line-height:64px;
+	border:none;}
+
+	/*段落ち防止*/
+	#nagashi_select .set .right .r4 { clear:both;}
+
+/*全通り*/
+#nagashi_select .set .right .btn2 {
+	width:110px;
+	height:134px;
+	line-height:134px;
+	background-color:#666666;
+	color:#FFF;
+	text-align:center;
+	border-radius: 10px;
+	float:left;
+}
+	#nagashi_select .set .right .btn2:hover,
+	#nagashi_select .set .right .btn2.on {
+		width:100px;
+		height:124px;
+		line-height:124px;
+		border:solid 5px #FF7373;
+		cursor:pointer;
+		}
+/*検索ボタンset*/
+#nagashi_select .bot {margin-top:10px;}
+#nagashi_select .bot .att {
+	width:370px;
+	line-height:1.2em;
+	padding-left:1em;
+	text-indent:-1em;
+	color:#FFF;
+	float:left;
+	}
+#nagashi_select .bot .search a {
+	width:240px;
+	height:80px;
+	line-height:80px;
+	text-decoration:none;
+	font-size:40px;
+	font-weight:bold;
+	color:#333;
+	text-align:center;
+	float:right;
+	border:1px solid #FFF;
+	border-radius:2em;
+	cursor:pointer;
+	background: -moz-linear-gradient(top, #FFF, #CCC);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CCC));
+	}
+
+/*結果*/
+#nagashi_kekka {
+	background:url(../images/odds_kekka_bg.png) center top no-repeat #333;
+	padding:40px 20px 20px;
+	margin-top:-10px;
+	}
+#ta_nagashi_kekka {
+	width: 48%;
+	margin:0 auto;
+}
+#ta_nagashi_kekka.left {
+	float:left;
+	margin:0;
+}
+#ta_nagashi_kekka.right {
+	float: right;
+	margin:0;
+}
+#ta_nagashi_kekka .value,
+#ta_nagashi_kekka .value_gray {
+	font-size: 32px;
+	width:50%;
+	text-align: right;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_nagashi_kekka .value_gray {
+	background-color: #DEDEDE;
+}
+#ta_nagashi_kekka .value.small,
+#ta_nagashi_kekka .value_gray.small {font-size:26px;}
+
+
+/* ▼▼▼オッズ(3連単ボックス検索)▼▼▼ */
+
+#ta_3rentan_box_name {
+	width: 100%;
+}
+#ta_3rentan_box_name .n1,
+#ta_3rentan_box_name .n2,
+#ta_3rentan_box_name .n3,
+#ta_3rentan_box_name .n4,
+#ta_3rentan_box_name .n5,
+#ta_3rentan_box_name .n6 {
+	width: 28%;
+	padding: 15px 0px;
+}
+
+	
+/*艇選択set*/
+#box_select {
+	border-top:10px solid #333333;
+	border-bottom:10px solid #333333;
+	padding:80px 20px 20px 20px;
+	background:url(../images/box_mida.png) center 20px no-repeat #0053A6;
+}
+
+#box_select .set {
+	background-color:#80A9D3;
+	border-radius:5px;
+	padding:0 25px 6px;
+}
+#box_select .set li {
+	width:200px;
+	height:64px;
+	line-height:64px;
+	border-radius:2em;
+	margin:6px 5px 0 5px;
+	text-align:center;
+	float:left;
+}
+	#box_select .set li:hover,
+	#box_select .set li.on {
+		width:190px;
+		height:54px;
+		line-height:54px;
+		border:solid 5px #FF7373;
+		cursor:pointer;
+	}
+	
+	/*欠場*/
+	#box_select .set li.no_select {opacity:0.3;}
+	#box_select .set li:hover.no_select {
+		cursor:default;
+		width:200px;
+		height:64px;
+		line-height:64px;
+		border:none;}
+	/*段落ち防止*/
+	#box_select .set .r4 { clear:both;}
+	
+#box_select .search a{
+	width:240px;
+	height:80px;
+	text-decoration:none;
+	display:block;
+	line-height:80px;
+	font-size:40px;
+	font-weight:bold;
+	color:#333;
+	text-align:center;
+	margin:20px auto 0;
+	border:1px solid #FFF;
+	border-radius:2em;
+	cursor:pointer;
+	background: -moz-linear-gradient(top, #FFF, #CCC);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CCC));
+	}
+/*結果*/
+#box_kekka {
+	background:url(../images/odds_kekka_bg.png) center top no-repeat #333;
+	padding:40px 20px 20px;
+	margin-top:-10px;
+	}
+#ta_box_kekka {
+	width: 48%;
+	margin:0 auto;
+}
+#ta_box_kekka.left {
+	float:left;
+	margin:0 0 20px 0;
+}
+#ta_box_kekka.right {
+	float: right;
+	margin:0 0 20px 0;
+}
+#ta_box_kekka .value,
+#ta_box_kekka .value_gray {
+	font-size: 32px;
+	width:50%;
+	text-align: right;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_box_kekka .value_gray {
+	background-color: #DEDEDE;
+}
+#ta_box_kekka .value.small,
+#ta_box_kekka .value_gray.small {font-size:26px;}
+
+
+
+
+
+
+/* ▼▼▼オッズ(2連単)▼▼▼ */
+
+#ta_2rentan{
+	width:719px;
+}
+
+#ta_2rentan .n1,
+#ta_2rentan .n2,
+#ta_2rentan .n3,
+#ta_2rentan .n4,
+#ta_2rentan .n5,
+#ta_2rentan .n6 {
+	width: 29%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: left;
+	padding-left: 10px;
+}
+#ta_2rentan .r1,
+#ta_2rentan .r2,
+#ta_2rentan .r3,
+#ta_2rentan .r4,
+#ta_2rentan .r5,
+#ta_2rentan .r6 {
+	width: 40px;
+}
+#ta_2rentan .value {
+	font-size: 32px;
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 30px;
+	padding-bottom: 15px;
+	width: 20%;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+
+/* ▼▼▼オッズ(2連単ランキング)▼▼▼ */
+
+#ta_2rentan_rank_name {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#ta_2rentan_rank_name .n1,
+#ta_2rentan_rank_name .n2,
+#ta_2rentan_rank_name .n3,
+#ta_2rentan_rank_name .n4,
+#ta_2rentan_rank_name .n5,
+#ta_2rentan_rank_name .n6 {
+	width: 28%;
+	padding: 15px 0px;
+}
+#ta_2rentan_rank {
+	width: 49%;
+	float: left;
+}
+#ta_2rentan_rank.right {
+	float: right !important;
+}
+#ta_2rentan_rank td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 32px;
+}
+#ta_2rentan_rank th {
+	background-color: #333333; 
+	border: 1px #999999 solid; 
+	text-align: center; 
+	color: #FFFFFF; 
+	font-size: 26px; 
+	width: 15%;
+	padding: 3px 0;
+}
+#ta_2rentan_rank .value {
+	width: 30%;
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+
+/* ▼▼▼オッズ(2連複)▼▼▼ */
+
+#ta_2renpuku_name {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#ta_2renpuku_name .n1,
+#ta_2renpuku_name .n2,
+#ta_2renpuku_name .n3,
+#ta_2renpuku_name .n4,
+#ta_2renpuku_name .n5,
+#ta_2renpuku_name .n6 {
+	width: 28%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#ta_2renpuku {
+	width: 49%;
+	float: left;
+}
+#ta_2renpuku.right {
+	float: right;
+}
+#ta_2renpuku .value,
+#ta_2renpuku .value_gray {
+	font-size: 32px;
+	width: 50%;
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 30px;
+	padding-bottom: 15px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_2renpuku .value_gray {
+	background-color: #DEDEDE;
+}
+
+/* ▼▼▼オッズ(単勝)▼▼▼ */
+
+#ta_tan_name {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#ta_tan_name .n1,
+#ta_tan_name .n2,
+#ta_tan_name .n3,
+#ta_tan_name .n4,
+#ta_tan_name .n5,
+#ta_tan_name .n6 {
+	width: 28%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#ta_tan {
+	width: 49%;
+	float: left;
+}
+#ta_tan.right {
+	float: right;
+}
+#ta_tan .value,
+#ta_tan .value_gray {
+	font-size: 32px;
+	width: 50%;
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 30px;
+	padding-bottom: 15px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_tan .value_gray {
+	background-color: #DEDEDE;
+}
+
+/* ▼▼▼オッズ(複勝)▼▼▼ */
+
+#ta_fuku_name {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#ta_fuku_name .n1,
+#ta_fuku_name .n2,
+#ta_fuku_name .n3,
+#ta_fuku_name .n4,
+#ta_fuku_name .n5,
+#ta_fuku_name .n6 {
+	width: 28%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#ta_fuku {
+	width: 49%;
+	float: left;
+}
+#ta_fuku.right {
+	float: right;
+}
+#ta_fuku .value,
+#ta_fuku .value_gray {
+	font-size: 32px;
+	width: 50%;
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_fuku .value_gray {
+	background-color: #DEDEDE;
+}
+#ta_fuku .value.small,
+#ta_fuku .value_gray.small { font-size:26px;}
+
+/* ▼▼▼オッズ(拡連複)▼▼▼ */
+
+#ta_kakurenpuku_name {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#ta_kakurenpuku_name .n1,
+#ta_kakurenpuku_name .n2,
+#ta_kakurenpuku_name .n3,
+#ta_kakurenpuku_name .n4,
+#ta_kakurenpuku_name .n5,
+#ta_kakurenpuku_name .n6 {
+	width: 28%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#ta_kakurenpuku {
+	width: 49%;
+	float: left;
+}
+#ta_kakurenpuku.right {
+	float: right;
+}
+#ta_kakurenpuku .value,
+#ta_kakurenpuku .value_gray {
+	font-size: 32px;
+	width:50%;
+	text-align: right;
+	padding-top: 15px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	font-weight: bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_kakurenpuku .value_gray {
+	background-color: #DEDEDE;
+}
+#ta_kakurenpuku .value.small,
+#ta_kakurenpuku .value_gray.small {font-size:26px;}
+
+/* ▼▼▼結果一覧▼▼▼ */
+
+#ta_kekka_all {
+	text-align: center;
+	width: 100%;
+}
+#ta_kekka_all th { font-size:28px;}
+#ta_kekka_all td {}
+#ta_kekka_all .gray {
+	text-align: right;
+	padding-right: 3px;
+	padding-left: 3px;
+	font-family: 'Roboto',  sans-serif;
+}
+.r_syousai {
+	width:80px;
+	height: 80px;
+}
+.r_syousai a {
+	display: block;
+	background: #039;
+	background: url(/sp/kyogi/images/arrow_kekka.png), -moz-linear-gradient(top, #09F, #039);
+	background: url(/sp/kyogi/images/arrow_kekka.png), -webkit-gradient(linear, left top, left bottom, from(#09F), to(#039));
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 80px;
+}
+.r_no {
+	font-family: 'Roboto',  sans-serif;
+	color: #CCC;
+	height:82px;
+	background: -moz-linear-gradient(top, #999, #333);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#333));
+}
+.r_no a {
+	color:#FFF;
+	/*padding: 15px 0;*/
+	display: block;
+}
+
+
+/* ▼▼▼結果▼▼▼ */
+
+#ta_result {
+	width: 100%;
+	margin-top: 10px;
+}
+#ta_result td   {
+	padding: 15px 10px;
+	font-size: 34px;
+}
+	#ta_result td.r1,
+	#ta_result td.r2,
+	#ta_result td.r3,
+	#ta_result td.r4,
+	#ta_result td.r5,
+	#ta_result td.r6 {font-size:40px;}
+#ta_result2 td {
+	padding: 15px 10px;
+	font-size: 32px;
+}
+#ta_result th,
+#ta_result2 th {
+	padding: 10px 0;
+	font-size:26px;
+}
+#ta_result .chaku {
+	background-color: #777;
+	color: #FFF;
+	width: 10%;
+	font-size: 40px;
+	font-weight:bold;
+	font-family: 'Roboto',  sans-serif;
+}
+#ta_result .waku {
+	width: 10%;
+}
+#ta_result .name {
+	width: 40%;
+	font-size: 36px;
+}
+#ta_result .FL,
+.cyushi {
+	color: #FF503C;
+}
+#re_bottom {
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+#re_kimari {
+	line-height: 40px;
+	font-size: 28px;
+	font-weight:bold;
+	float: right;
+	padding-left: 10px;
+	text-align: right;
+}
+#re_henkan {
+	padding-right: 10px;
+	font-size: 28px;
+	line-height: 40px;
+	float: left;
+}
+#re_henkan img {
+	margin-right: 5px;
+	vertical-align: top;
+}
+
+
+/*払戻し*/
+#ta_result2 {
+	width: 100%;
+	margin-bottom: 20px;
+}
+#ta_result2 td {border-bottom:1px solid #DDDDDD;}
+#ta_result2 .shurui {
+	color: #FFF;
+	background-color: #777;
+	width: 30%;
+}
+#ta_result2 .kumi_tan {
+	text-align: left;
+	padding: 0 10px;
+	border-right-style: none;
+	line-height: 1.3em;
+}
+#ta_result2 .kumi_fuku {
+	text-align: left;
+	padding: 0 10px;
+	border-right-style: none;
+	line-height: 1.3em;
+}
+
+#ta_result2 .bottom {border-bottom:1px solid #666;}
+
+#ta_result2 .harai {
+	text-align: right;
+	font-weight: bold;
+	padding-right: 8px;
+	border-left-style: none;
+	font-size: 36px;
+}
+#ta_result2 .ninki {
+	width: 15%;
+}
+#ta_result2 .fusei {
+	text-align: center;
+}
+
+
+/*天気*/
+#ta_weather {
+	width: 100%;
+	margin-bottom: 20px;
+	margin-top:20px;
+}
+#ta_weather th {
+	background-color: #333;
+	color:#FFF;
+	width:40px;
+	padding:10px 0;
+	font-size: 22px;
+}
+#ta_weather td {
+	font-size: 26px;
+	width: 200px;
+	color:#FFF;
+	background-color: #666;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	vertical-align:middle;
+}
+#ta_weather td span {
+	padding-left:44px;
+	display:inline-block;
+	height:42px;
+	line-height:42px;
+	background-repeat:no-repeat;
+	background-position: left center;
+}
+		#ta_weather td span.nami { background-image:url(../images/w_nami.png);}
+		#ta_weather td span.kaze { background-image:url(../images/w_kaze.png);}
+		/*天候*/
+			/*曇*/#ta_weather td span.kumori {background-image:url(../images/w_kumo.png);}
+			/*晴*/#ta_weather td span.hare   {background-image:url(../images/w_hare.png);}
+			/*雨*/#ta_weather td span.ame    {background-image:url(../images/w_ame.png);}
+			/*霧*/#ta_weather td span.kiri   {background-image:url(../images/w_kiri.png);}
+			/*雪*/#ta_weather td span.yuki   {background-image:url(../images/w_yuki.png);}
+			/*台風*/#ta_weather td span.taihu {background-image:url(../images/w_taihu.png);}
+			
+			
+			
+/*スタート写真*/
+#ta_start {
+	width: 100%;
+}
+#ta_start h3 {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 22px;
+	line-height: 1em;
+	vertical-align: middle;
+	padding: 10px;
+	background: -moz-linear-gradient(top, #666, #999 50%, #999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), color-stop(0.5, #999), to(#999));
+}
+#ta_start #no_image {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 24px;
+	line-height: 480px;
+	background: -moz-linear-gradient(top, #e6e6e6, #ccc);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#ccc));
+	height: 480px;
+	width: 720px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ▼▼▼データ無し▼▼▼ */
+
+#nodata {
+	font-size: 32px;
+	color: #666;
+	text-align: center;
+	min-height:400px;
+	background:url(../images/nodata.png) top center;
+	background-repeat: no-repeat;
+	background-color:#EEEEEE;
+	
+}
+#nodata td {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding-top: 250px;
+}
+
+
+/* ▼▼▼リプレイ▼▼▼ */
+
+#replay_title {
+	color: #FFF;
+	font-size: 32px;
+	line-height: 60px;
+	text-align: center;
+	background: #333333;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 1.0);
+}
+#replay_index {
+	margin-bottom: 30px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #999;
+}
+#replay_index ul {
+	width: 680px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 10px;
+}
+#replay_index li {
+	padding: 10px 0px;
+}
+#replay_index a {
+	font-size: 40px;
+	line-height: 120px;
+	text-decoration: none;
+	height: 120px;
+	color: #FFF;
+	background: url(/sp/kyogi/images/slide_next2.png), -moz-linear-gradient(top, #0A96DC,#0981BB);
+	background: url(/sp/kyogi/images/slide_next2.png), -webkit-gradient(linear, left top, left bottom, from(#0A96DC), to(#0981BB));
+	background-position: 97% center;
+	background-repeat:no-repeat;
+	text-shadow: rgba(0,0,0,0.4) 0px -2px 2px;
+	border-radius: 16px;
+	display: block;
+	padding-left: 20px;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+/*リプレイリスト*/
+#replay_list {
+	margin-bottom: 40px;
+}
+#replay_list .accordion_box dt {
+	color: #fff;
+	font-size: 32px;
+	line-height: 1em;
+	height: 130px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+	clear: both;
+}
+#replay_list .accordion_box dt.plus {
+	background: url(/sp/kyogi/images/plus.png), -moz-linear-gradient(top, #0A96DC,#0981BB);
+	background: url(/sp/kyogi/images/plus.png), -webkit-gradient(linear, left top, left bottom, from(#0A96DC), to(#0981BB));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+#replay_list .accordion_box dt.minus {
+	background: url(/sp/kyogi/images/minus.png), -moz-linear-gradient(top, #0981BB,#0A96DC);
+	background: url(/sp/kyogi/images/minus.png), -webkit-gradient(linear, left top, left bottom, from(#0981BB), to(#0A96DC));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;
+}
+#replay_list .accordion_box dt .date {
+	font-size: 26px;
+	line-height: 60px;
+	height: 60px;
+	width: 190px;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: left;
+	background: #333333;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+	border-radius: 0px 30px 30px 0px;
+	margin-top: 35px;
+}
+#replay_list .accordion_box dt .name {
+	height: 130px;
+	width: 460px;
+	float: left;
+}
+#replay_list .accordion_box dt .name td {
+	padding-left: 10px;
+	line-height: 40px;
+	height: 130px;
+	vertical-align: middle;
+}
+#replay_list .accordion_box .day {
+	clear: both;
+}
+#replay_list .accordion_box .day dt {
+	color: #039;
+	font-size: 32px;
+	line-height: 90px;
+	height: 90px;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.8);
+	clear: both;
+	padding-left: 20px;
+	border: none;
+}
+#replay_list .accordion_box .day dt.plus {
+	background: url(/sp/kyogi/images/plus.png), -moz-linear-gradient(top, #fff, #ccc);
+	background: url(/sp/kyogi/images/plus.png), -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+#replay_list .accordion_box .day dt.minus {
+	background: url(/sp/kyogi/images/minus.png), -moz-linear-gradient(top, #666, #999);
+	background: url(/sp/kyogi/images/minus.png), -webkit-gradient(linear, left top, left bottom, from(#666), to(#999));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	color: #fff;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset, 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset, 0px -4px 4px rgba(0, 0, 0, 0.1) inset;  
+    -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset, 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+}
+#replay_list .accordion_box .replay_num {
+	background: #ccc;
+	padding: 10px;
+	box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1) inset;  
+    -moz-box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+}
+#replay_list .accordion_box .replay_num li {
+	float: left;
+	height: 100px;
+	width: 175px;
+	text-align: center;
+}
+#replay_list .accordion_box .replay_num a {
+	display: block;
+	height: 80px;
+	width: 155px;
+	color: #FFF;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #0A96DC,#0981BB);
+	background: -webkit-gradient(linear, left top, left bottom, from(#0A96DC), to(#0981BB));
+	margin-right: auto;
+	margin-left: auto;
+	font-family: 'Roboto',  sans-serif;
+	font-size: 40px;
+	line-height: 80px;
+	font-weight: bold;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#replay_list .accordion_box .replay_num a:hover {
+	background: -moz-linear-gradient(top, #06c, #39f);
+	background: -webkit-gradient(linear, left top, left bottom, from(#06c), to(#39f));
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2) inset
+}
+#replay_list .accordion_box .replay_num a:visited {
+}
+#replay_list .accordion_box .replay_num .off {
+	display: block;
+	height: 80px;
+	width: 155px;
+	color: #ccc;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #aaa, #bbb);
+	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#bbb));
+	margin-right: auto;
+	margin-left: auto;
+	font-family: 'Roboto',  sans-serif;
+	font-size: 40px;
+	line-height: 80px;
+	font-weight: bold;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+
+/*優勝戦リスト*/
+#replay_final {
+	margin-bottom: 40px;
+}
+#replay_final .accordion_box dt {
+	color: #fff;
+	font-size: 40px;
+	line-height: 110px;
+	height: 110px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+	clear: both;
+	padding-left: 20px;
+}
+#replay_final .accordion_box dt.plus {
+	background: url(/sp/kyogi/images/plus.png), -moz-linear-gradient(top, #0A96DC,#0981BB);
+	background: url(/sp/kyogi/images/plus.png), -webkit-gradient(linear, left top, left bottom, from(#0A96DC), to(#0981BB));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+#replay_final .accordion_box dt.minus {
+	background: url(/sp/kyogi/images/minus.png), -moz-linear-gradient(top, #0981BB, #0A96DC);
+	background: url(/sp/kyogi/images/minus.png), -webkit-gradient(linear, left top, left bottom, from(#0981BB), to(#0A96DC));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;
+}
+#replay_final .accordion_box .year {
+	clear: both;
+}
+#replay_final .accordion_box .year dt {
+	color: #039;
+	font-size: 32px;
+	line-height: 90px;
+	height: 90px;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.8);
+	clear: both;
+	padding-left: 20px;
+	border: none;
+}
+#replay_final .accordion_box .year dt.plus {
+	background: url(/sp/kyogi/images/plus.png), -moz-linear-gradient(top, #fff, #ccc);
+	background: url(/sp/kyogi/images/plus.png), -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+#replay_final .accordion_box .year dt.minus {
+	background: url(/sp/kyogi/images/minus.png), -moz-linear-gradient(top, #666, #999);
+	background: url(/sp/kyogi/images/minus.png), -webkit-gradient(linear, left top, left bottom, from(#666), to(#999));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	color: #fff;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset, 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset, 0px -4px 4px rgba(0, 0, 0, 0.1) inset;  
+    -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset, 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+}
+#replay_final .accordion_box .year a {
+	background: url(/sp/kyogi/images/arrow_right2.png), -moz-linear-gradient(top, #0A96DC, #0981BB);
+	background: url(/sp/kyogi/images/arrow_right2.png), -webkit-gradient(linear, left top, left bottom, from(#0A96DC), to(#0981BB));
+	background-position: 97% center;
+	background-repeat: no-repeat;
+	color: #fff;
+	height: 130px;
+	display:block;
+	clear: both;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+	text-decoration: none;
+}
+#replay_final .accordion_box .year .date {
+	font-size: 28px;
+	color: #fff;
+	line-height: 50px;
+	height: 50px;
+	width: 90px;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: left;
+	background: -moz-linear-gradient(top, #666, #999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#999));
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+	border-radius: 0px 25px 25px 0px;
+	margin-top: 40px;
+}
+#replay_final .accordion_box .year .name {
+	height: 130px;
+	width: 560px;
+	float: left;
+}
+#replay_final .accordion_box .year .name td {
+	padding-left: 10px;
+	font-size: 32px;
+	line-height: 40px;
+	height: 130px;
+	vertical-align: middle;
+}
+
+
+/*ムービー*/
+#replay_movie {
+	width: 100%;
+}
+#replay_movie #tab_movie {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 680px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#replay_movie #tab_movie a {
+	text-decoration: none;
+}
+#replay_movie #tab_movie li {
+	float: left;
+	background: #039;
+	background: url(/sp/kyogi/images/play.png), -moz-linear-gradient(top, #0A96DC,#0981BB);
+	background: url(/sp/kyogi/images/play.png), -webkit-gradient(linear, left top, left bottom, from(#0A96DC), to(#0981BB));
+	background-position: 7% center;
+	background-repeat: no-repeat;
+	width: 230px;
+	height: 80px;
+	font-size: 36px;
+	text-decoration: none;
+	color: #FFF;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 100px;
+	border-radius: 10px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#replay_movie #tab_movie li.selected {
+	background: #333;
+	background: url(/sp/kyogi/images/play_stop.png), -moz-linear-gradient(top, #000, #666);
+	background: url(/sp/kyogi/images/play_stop.png), -webkit-gradient(linear, left top, left bottom, from(#000), to(#666));
+	background-position: 7% center;
+	background-repeat: no-repeat;
+}
+#replay_movie #tab_movie #race {
+	line-height: 80px;
+	font-size: 48px;
+	float: left;
+	text-decoration: none;
+}
+#replay_movie #tab_movie #race2 {
+	background-position: 17% center;
+	line-height: 80px;
+	font-size: 48px;
+	width: 260px;
+	margin-left: 120px;
+	padding-left: 180px;
+}
+#replay_movie #tab_movie #interview {
+	line-height: 80px;
+	float: right;
+}
+#replay_movie #tab_movie #race.off,
+#replay_movie #tab_movie #interview.off {
+	background: url(/sp/kyogi/images/play_off.png), -moz-linear-gradient(top, #999, #e6e6e6);
+	background: url(/sp/kyogi/images/play_off.png), -webkit-gradient(linear, left top, left bottom, from(#999), to(#e6e6e6));
+	background-position: 7% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+}
+#replay_movie #tab_movie #race2.off {
+	background: url(/sp/kyogi/images/play_off.png), -moz-linear-gradient(top, #999, #e6e6e6);
+	background: url(/sp/kyogi/images/play_off.png), -webkit-gradient(linear, left top, left bottom, from(#999), to(#e6e6e6));
+	background-position: 17% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+}
+#replay_movie .cont_movie {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #000;
+}
+#replay_movie #movie,
+#replay_movie #movie2 {
+	height: 520px;
+	width: 720px;
+}
+
+
+/*レース結果*/
+#replay_kekka {
+	width: 100%;
+}
+#replay_kekka #tab_kekka {}
+#replay_kekka #tab_kekka #shusso,
+#replay_kekka #tab_kekka #kekka {
+	padding:0;
+	margin:0;
+}
+#replay_kekka #tab_kekka li {
+	float: left;
+	background: #039;
+	background: -moz-linear-gradient(top, #666, #000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#000));
+	float: left;
+	width: 50%;
+	height: 80px;
+	font-size: 40px;
+	text-decoration: none;
+	color: #FFF;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 1.0);
+	line-height: 80px;
+	text-align: center;
+}
+#replay_kekka #tab_kekka li.selected {
+	background: #039;
+	background: -moz-linear-gradient(top, #999, #e6e6e6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#e6e6e6));
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	color: #333;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;  
+    -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2) inset;
+}
+#replay_kekka .cont_kekka {
+	background: -moz-linear-gradient(top, #e6e6e6, #fff 50%, #fff);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), color-stop(0.5, #fff), to(#fff));
+	padding-top: 20px;
+	margin-bottom:40px;
+}
+#ta_result.replay .address {
+	width: 20%;
+}
+
+
+/* ▼▼▼動画▼▼▼ */
+
+#movie_play {
+	width: 100%;
+	height: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#movie_play object {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	height: 510px;
+	width: 680px;
+}
+#movie_play video {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	height: 510px;
+	width: 680px;
+}
+#movie_btn {
+	width: 680px;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+#movie_btn li {
+	width: 100px;
+	float: right;
+	margin-left: 20px;
+}
+#movie_btn a {
+	width: 100px;
+	height: 100px;
+	text-decoration: none;
+	color: #FFF;
+	border-radius: 10px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	display: block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#movie_btn #refresh a {
+	background: url(/sp/kyogi/images/refresh.png), -moz-linear-gradient(top, #999, #333);
+	background: url(/sp/kyogi/images/refresh.png), -webkit-gradient(linear, left top, left bottom, from(#999), to(#333));
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#movie_btn #back a {
+	background: url(/sp/kyogi/images/back.png), -moz-linear-gradient(top, #999, #333);
+	background: url(/sp/kyogi/images/back.png), -webkit-gradient(linear, left top, left bottom, from(#999), to(#333));
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#movie_btn #refresh a:hover {
+	background: url(/sp/kyogi/images/refresh.png), -moz-linear-gradient(top, #333, #999);
+	background: url(/sp/kyogi/images/refresh.png), -webkit-gradient(linear, left top, left bottom, from(#333), to(#999));
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#movie_btn #back a:hover {
+	background: url(/sp/kyogi/images/back.png), -moz-linear-gradient(top, #333, #999);
+	background: url(/sp/kyogi/images/back.png), -webkit-gradient(linear, left top, left bottom, from(#333), to(#999));
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#no_movie {
+	color: #ccc;
+	text-align: center;
+	font-size: 24px;
+	line-height: 510px;
+	background: -moz-linear-gradient(top, #666, #333);
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333));
+	height: 510px;
+	width: 680px;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+/* ▼▼▼下部余白▼▼▼ */
+#bottom_movie {
+	height: 450px;
+}
+#bottom_replay {
+	height: 300px;
+}
+#bottom_replay_final {
+	height: 350px;
+}
+
+/*■■■緊急メッセージ■■■*/
+#kinkyu{
+	line-height: 1.3em;
+	width: 694px;
+	color: #FF0000;
+	margin: 0 auto;
+	border: 3px #FF0000 solid;
+	padding: 10px;
+	background-color: #F9F1B7;
+
+}
+/*■■■記者用メッセージ■■■*/
+#message01 ul.marquee {
+	/* required styles */
+	display: block;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 1;
+	position: relative;
+	overflow: hidden;
+	/* optional styles for appearance */
+	width: 720px;
+	height: 62px; /* height should be included to reserve visual space for the marquee */
+	color: #FF6666;
+	background-color: #FFDCDC;
+}
+#message01 ul.marquee li {
+	/* required styles */
+	position: absolute;
+	top: -999em;
+	left: 0;
+	display: block;
+	white-space: nowrap; /* keep all text on a single line */
+	/* optional styles for appearance */
+	font-size: 34px;
+	font-weight: bold;
+	line-height: 60px;
+	padding-top: 2px;
+	padding-left: 10px;
+}
+
+
+
+
+.cf:before,
+.cf:after {
+	content:"";
+	display:table;
+}
+
+.cf:after {
+	clear:both;
+}
+
+
+
+
+/*========================================
+ +attention styles
+========================================*/
+
+
+#header.att {
+	padding-left:0px;
+	background-color:transparent;
+}
+#header_wrapper {
+	background: url(/sp/help/images/h_img.png) no-repeat 470px 10px ;
+}
+#header.att h1 {
+	padding-left:60px;
+	padding-bottom:20px;
+}
+#h2_wrapper {
+	background: url(/sp/kyogi/images/border_1px_white.png), -moz-linear-gradient(top, #ccc, #fff 50%, #fff);
+	background: url(/sp/kyogi/images/border_1px_white.png), -webkit-gradient(linear, left top, left bottom, from(#ccc), color-stop(0.5, #fff), to(#fff));
+	background-position: 0px 0px;
+	border-bottom: 1px solid #CCC;
+	border-top: 1px solid #CCC;
+	margin-bottom:10px;
+}
+#h2_wrapper h2 {
+	font-size: 36px;
+	height:70px;
+	line-height:70px;
+	text-shadow: 0 2px 2px #CCC;
+	text-align:center;
+}
+#att_tit01 {
+	width: 676px;
+	height: 78px;
+	margin:0 auto 30px;
+	font-size: 34px;
+	line-height: 78px;
+	color: #FFF;
+	text-shadow: 2px 2px 2px #000;
+	text-align: center;
+	border: solid 2px #CCC;
+
+	-webkit-border-radius: 39px;
+	-moz-border-radius: 39px;
+	border-radius: 39px;
+	
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#666));
+	background-image: -webkit-linear-gradient(#333,#666);
+	background-image:    -moz-linear-gradient(#333,#666);
+	background-image:         linear-gradient(#333,#666);
+}
+
+#att_tit02 {
+	width: 676px;
+	height: 78px;
+	margin:0 auto 30px;
+	font-size: 34px;
+	line-height: 78px;
+	color: #000;
+	text-shadow: 2px 2px 2px #999;
+	text-align: center;
+	border: solid 2px #CCC;
+
+	-webkit-border-radius: 39px;
+	-moz-border-radius: 39px;
+	border-radius: 39px;
+		
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#E3E3E3));
+	background-image: -webkit-linear-gradient(#FFF,#E3E3E3);
+	background-image:    -moz-linear-gradient(#FFF,#E3E3E3);
+	background-image:         linear-gradient(#FFF,#E3E3E3);
+}
+#os {
+	width: 620px;
+	text-align: center;
+	line-height: 1.4em;
+	margin:0 auto 30px;
+	font-size: 34px;
+	color: #900;
+}
+#os p {
+	border-bottom: 2px dotted #000;
+	margin: 0 0 20px;
+	font-size: 30px;
+}
+
+#att_not01 {
+	width: 620px;
+	padding: 0;
+	margin:0 auto 30px;
+	font-size: 30px;
+	line-height: 1.6em;
+	color: #078AD2;
+}
+
+#att_not02 {
+	width: 620px;
+	margin:0 auto 100px;
+	padding: 20px 30px;
+	background-color: #078AD2;
+	color: #FFF;
+	font-size: 24px;
+	line-height: 1.6em;
+	
+	
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+#att_not03 {
+	width: 680px;
+	margin:0 auto 100px;
+	padding: 20px 0;
+	border-top: dotted 2px #999;
+	color: #078AD2;
+	font-size: 24px;
+	line-height: 1.6em;
+}
+
+#att {
+	width: 620px;
+	margin:0 auto 50px;
+	font-size: 30px;
+	line-height: 1.6em;
+}
+
+#att li {
+	background: url(/sp/help/images/arrow.gif) no-repeat 0px 10px ;
+	text-indent: 20px;
+	padding-bottom: 30px;
+}

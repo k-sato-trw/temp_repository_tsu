@@ -1,0 +1,1127 @@
+@charset "shift_jis";
+/* CSS Document */
+
+body {
+	font-family: Roboto, Arial, "メイリオ", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 16px;
+	line-height: 100%;
+	background: #FFF;
+}
+
+
+#wrapper { width: 980px; margin: 0 auto; padding-bottom: 40px;}
+
+.fs20px { font-size: 20px;}
+.fs12 { font-size: 12px;}
+
+. note { font-size: 12px; padding: 10px; color: #D90000;}
+.hl { font-weight: bold;}
+/*----------------------------------
+
+　　　ヘッダー
+
+----------------------------------*/
+#header { width: 980px; margin: 0 auto;}
+	
+#menu {
+	width: 840px;
+	height: 50px;
+	background: #003598;
+	border-radius: 0 0 10px 10px;
+	padding: 20px 0 0 20px;
+	margin-right: 22px;
+	float: left;
+}
+
+#menu_tit li { float:left; height:30px; text-indent:-9999px; padding-right: 28px;}
+
+#menu_tit li.mn01 { width:171px; background: url(../images/menu_01.png) no-repeat 0 0;}
+#menu_tit li.mn02 { width:113px; background: url(../images/menu_02.png) no-repeat 0 0;}
+#menu_tit li.mn03 { width:133px; background: url(../images/menu_03.png) no-repeat 0 0;}
+#menu_tit li.mn04 { width:112px; background: url(../images/menu_04.png) no-repeat 0 0;}
+#menu_tit li.mn05 { width:171px; background: url(../images/menu_05.png) no-repeat 0 0;}
+
+#menu_tit li.mn01.select { width:171px; background: url(../images/menu_01.png) no-repeat 0 -44px;}
+#menu_tit li.mn02.select { width:113px; background: url(../images/menu_02.png) no-repeat 0 -44px;}
+#menu_tit li.mn03.select { width:133px; background: url(../images/menu_03.png) no-repeat 0 -44px;}
+#menu_tit li.mn04.select { width:112px; background: url(../images/menu_04.png) no-repeat 0 -44px;}
+#menu_tit li.mn05.select { width:171px; background: url(../images/menu_05.png) no-repeat 0 -44px;}
+
+#menu_tit li a{ display:block; height:30px;}
+#menu_tit li:hover{ background-position:0 -44px; cursor: pointer;}
+
+#back_b {
+	width: 98px;
+	height: 70px;
+	float: left;
+}
+#back_b a {
+	width: 98px;
+	height: 70px;
+	color: #FFF;
+	line-height: 70px;
+	background: #666;
+	text-align: center;
+	border-radius: 0 0 10px 10px;
+	display: block;
+	float: right;
+}
+#back_b a:hover { opacity: 0.7;}
+
+.new_tit,.open_tit,.save_tit,.end_tit {
+	width: 980px;
+	text-align: center;
+	font-size: 26px;
+	line-height: 44px;
+	letter-spacing: 5px;
+	color: #FFF;
+	margin: 18px 0 30px;
+}
+.new_tit { background: #00A3D9 url(../images/new_d_back.gif);}
+.open_tit { background: #D90000 url(../images/open_d_back.gif);}
+.save_tit { background: #00B259 url(../images/save_d_back.gif);}
+.end_tit { background: #333333 url(../images/end_d_back.gif);}
+
+
+#header2 { width: 980px; margin: 0 auto; padding-bottom: 20px; position: relative;}
+#day { width: 218px; float: left;}
+#race_name { width: 762px; float:left;}
+
+#day .day_tit {
+	background: url(../images/day_back.gif) no-repeat;
+	padding-left: 5px;
+	padding-top: 5px;
+	width: 35px;
+	height: 35px;
+	display: inline-block;
+}
+#day #day_select{
+	width: 140px;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 2px;
+	position: absolute;
+	top: 8px;
+	}
+#race_name .race_n_tit { padding-right: 10px;}
+#race_name .race_n { font-size: 16px; background: #EEE; padding: 8px 4px; border: 3px solid #BBB; width: 670px; display: inline-block; font-weight: bold;}
+
+#info01 {
+	width: 970px;
+	background: #FFEFBF;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+h2 { font-size: 18px; font-weight: bold;}
+/*----------------------------------
+
+　　　フッター
+
+----------------------------------*/
+
+#footer {
+	padding: 25px 0;
+	width: 100%;
+	background: #003598;
+	}
+#footer_in { width: 980px; margin: 0 auto;}
+
+#footer_in_l { float: left; width: 660px;}
+#footer_in_r { float: right; width: 320px;}
+#footer_in li { float: left;}
+#footer_in li.save input {
+	width: 114px;
+	height: 114px;
+	font-size: 30px;
+	color: #FFF;
+	background: #00B2B2;
+	border-radius: 57px;
+	margin-right: 10px;
+	text-align: center;
+	line-height: 114px;
+	border-style: none;
+}
+	
+#footer_in li.save input:hover { background: #2693FF;}
+
+#footer_in li.preview {
+	width: 98px;
+	height: 78px;
+	background: #DDD;
+	color: #003598;
+	line-height: 78px;
+	border-radius: 69px 0 0 69px;
+	margin-right: 5px;
+	margin-top: 18px;
+	text-align: center;
+}
+
+#footer_in li.pv_b a {
+	width: 130px;
+	height: 78px;
+	font-size: 24px;
+	line-height: 78px;
+	color: #FFF;
+	background: #00B2B2;
+	margin-right: 5px;
+	margin-top: 18px;
+	display: block;
+	text-align: center
+}
+
+#footer_in li.pv_b a:hover { background: #2693FF;}
+
+#footer_in_l_km { float: left; width: 700px;}
+#footer_in_r_km { float: right; width: 260px;}
+#footer_in li.pv_time {
+	height: 78px;
+	font-size: 18px;
+	line-height: 78px;
+	color: #FFF;
+	background: #00B2B2;
+	margin-right: 5px;
+	margin-top: 18px;
+	padding: 0 5px 0 0;
+	display: block;
+	text-align: center
+}
+
+
+
+#footer_in li.pv_time input {
+	width: 70px;
+	height: 22px;
+	font-size: 16px;
+	font-weight: bold;
+	margin:3px 0 0 3px;	
+	padding: 4px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+}
+
+
+
+
+#action_a {
+	width: 154px;
+	background: #FFFF99;
+	text-align: center;
+	padding: 0 0 20px 0;
+	border-radius: 15px;	
+	margin-right: 10px;
+	float: left;
+}
+
+#action_b {
+	width: 154px;
+	background: #FFF;
+	text-align: center;
+	padding: 0 0 20px 0;
+	border-radius: 15px;
+	float: left;
+}
+
+#action_c {
+	width: 154px;	
+	background: #FFFF99;
+	text-align: center;
+	padding: 30px 0 30px 0;
+	border-radius: 15px;	
+	margin-right: 10px;
+	float: left;
+}
+
+#action_a h3,#action_b h3 { color: #003598; border-bottom: dotted 2px #003598;
+line-height: 20px;
+margin: 10px 0 10px 0;
+}
+
+
+.open_b input,.close_b input {
+	width: 58px;
+	height: 58px;
+	line-height: 58px;
+	text-align: center;
+	color: #FFF;
+	font-weight: bold;
+	border-radius: 10px;
+	border-style: none;
+	display: inline-block;
+	float: left;
+}
+
+.open_b input { background: #D90000; margin: 0 8px 0 15px;}
+.close_b input { background: #006DD9;}
+.open_b input:hover,.close_b input:hover { opacity: 0.7;}
+
+.pt24 { padding-top: 24px;}
+
+/*----------------------------------
+
+　　　色
+
+----------------------------------*/
+
+
+/* ▼▼▼共通▼▼▼ */
+.w1 {
+	background-color: #DEE8EF;
+	color: #000000;
+}
+.w2 {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+.w3 {
+	background-color: #CC0000;
+	color: #FFFFFF;
+}
+
+.w4 {
+	background-color: #0066CC;
+	color: #FFFFFF;
+}
+.w5 {
+	background-color: #FFE600;
+	color: #000000;
+}
+.w6 {
+	background-color: #009900;
+	color: #FFFFFF;
+}
+
+
+/* ▼▼▼フライング▼▼▼ */
+.st_f, .date_cyushi { color:#DC3C3C;}
+	
+/* ▼▼▼文字オーバー▼▼▼ */
+.tx_over { color:#DC3C3C;}
+
+
+
+/*========================================
+ +td/モーター順位 styles
+========================================*/
+
+.mt_ic01 { width: 23px; height: 25px; line-height: 25px; background: url(../images/mt_ic_01.png) no-repeat top center 
+; display: inline-block;}
+.mt_ic02 { width: 23px; height: 25px; line-height: 25px; background: url(../images/mt_ic_02.png) no-repeat top center 
+; display: inline-block;}
+.mt_ic03 { width: 23px; height: 25px; line-height: 25px; background: url(../images/mt_ic_03.png) no-repeat top center 
+; display: inline-block;}
+
+
+/*----------------------------------
+
+　　　▼▼▼index▼▼▼
+
+----------------------------------*/
+
+#index_header { width: 100%; height: 70px; background: #555; margin:0 auto 144px;}
+#index_tit { width: 980px; margin: auto; text-align: left;}
+
+#wrapper_index {
+	margin: 0 auto;
+	padding: 0px;
+	width: 980px;
+	text-align: center;
+	}
+#link { width: 650px; margin: 0 auto 80px;}
+
+.index_b01 a {
+	width: 650px;
+	height: 150px;
+	background: #003598;
+	font-size: 42px;
+	color: #FFF;
+	line-height: 150px;
+	display: block;
+	border-radius: 20px;
+	margin-bottom: 50px;
+}
+
+
+.index_b02 a {
+	width: 284px;
+	height: 186px;
+	background: #00B2B2;
+	font-size: 42px;
+	line-height: 50px;
+	color: #FFF;	
+	float: left;
+	border-radius: 20px;
+	padding-top: 90px;
+	margin-right: 82px;
+}
+
+.index_b03 a {
+	width: 284px;
+	height: 186px;
+	background: #F38E43;
+	font-size: 42px;
+	line-height: 50px;
+	color: #FFF;
+	display: block;
+	float: left;
+	border-radius: 20px;
+	padding-top: 90px;
+}
+
+.index_b01 a:hover,.index_b02 a:hover,.index_b03 a:hover { opacity: 0.7;}
+
+
+#wrapper_index #footer { padding: 40px 0; background:#DDD; margin-top: 80px;}
+#wrapper_index #footer #note {
+	width: 610px;
+	padding: 30px 20px;
+	background: #FFF;
+	border-radius: 10px;
+	color: #777;
+	line-height: 1.6em;
+	text-align: left;
+	margin: auto;
+	}
+#wrapper_index #footer #note h2 { font-size: 20px; padding-bottom: 20px;}
+
+
+
+
+
+/*----------------------------------
+
+　　　出足・伸足評価
+
+----------------------------------*/
+
+#ta_deashi {
+	width: 980px;
+	margin-bottom: 20px;
+	border: 1px solid #777;
+	}
+
+
+#ta_deashi th {
+	background: #353535;
+	color: #FFF;
+	border: 1px solid #777;
+	padding: 2px;
+	text-align: center;
+	font-size: 12px;
+	}
+#ta_deashi th.deashi,#ta_deashi td.deashi { background: #00B0CA;}
+#ta_deashi th.deashi2 { background: #007788; width: 230px; text-align: left; padding: 8px 0 8px 16px;}
+
+#ta_deashi th.nobiashi,#ta_deashi td.nobiashi { background: #3C80FF;}
+#ta_deashi th.nobiashi2 { background: #003598; width: 230px; text-align: left; padding: 8px 0 8px 16px;}
+
+#ta_deashi td {
+	border: 1px solid #BBB;
+	padding: 2px;
+	text-align: center;
+	font-size: 14px;
+	}
+#ta_deashi td .fm_kt { font-size: 12px;}
+
+#ta_deashi td.no,#ta_deashi td.shibu,#ta_deashi td.class { background: #E1E1E1;}
+#ta_deashi td.name,#ta_deashi td.kiban { background: #E1E1E1; font-size: 15px; font-weight: bold;}
+
+#ta_deashi td.deashi2,#ta_deashi td.nobiashi2 { text-align: left; padding: 3px 0 3px 20px;}
+#ta_deashi td.deashi2 img,#ta_deashi td.nobiashi2 img { padding-right: 20px;}
+
+#ta_deashi tr.info01 { background: #FFEFBF;}
+
+
+
+
+.fm_deashi_yoso_pd { font-size: 24px; width: 50px; text-align: center; }
+
+.fm_deashi_yoso_pd_bt { font-size: 14px; line-height: 26px; 
+width: 100px; background: #000; border-radius: 13px; border-style: none; color: #FFF; margin-left: 10px;}
+
+.fm_deashi_yoso_pd_bt:hover { color: #EEF407;}
+
+.fm_tuika01 {
+	font-size: 14px;
+	padding: 4px;
+	margin: 10px 10px 0 10px;
+	border: 3px solid #BBB;
+	color: #BBB;
+	width: 90px;}
+	
+.fm_tuika02 {
+	font-size: 14px;
+	padding: 4px;
+	margin: 10px 10px 0 0;
+	border: 3px solid #BBB;
+	color: #BBB;
+	width: 90px;}
+
+
+.ic_a,.ic_b,.ic_c {
+	display: inline-block;
+	text-indent: -9999px;
+	width: 29px;
+	height: 29px;
+	margin-right: 20px;
+	vertical-align: middle;
+	}
+.ic_a { background: url(../images/ic_yoso01_b.png) no-repeat;}
+.ic_b { background: url(../images/ic_yoso02_b.png) no-repeat;}
+.ic_c { background: url(../images/ic_yoso03_b.png) no-repeat;}
+
+
+
+/*----------------------------------
+
+　　　前夜予想
+
+----------------------------------*/
+
+
+/*** レースボタン ***/
+#race_btn { margin-bottom: 20px; margin-top: 20px;}
+#race_btn li {
+	float:left;
+	background: #BBB;
+	font-size: 20px;
+	line-height: 46px;
+	width: 78px;
+	margin-right: 3px;
+	color: #FFF;
+	border-radius: 7px;
+	text-align: center;
+}
+#race_btn li a { display:block; background: #666; color: #FFF; border-radius: 7px;}
+#race_btn li a:hover,
+#race_btn li.select a,
+#race_btn li.non a:hover {display:block; background: #00B2B2;}
+#race_btn li.non a {display:block; background: #BBB;}
+#race_btn li:last-child { margin-right: 0px;}
+
+#zenya { width: 980px;}
+#zenya_l { width: 180px; float: left;}
+#zenya_c { width: 500px; float: left;}
+#zenya_r { width: 250px; padding-left: 30px; float: left;}
+
+#oshi { width: 250px; padding-top: 5px;}
+#check_b { width: 60px; margin: 2px 0 0 10px; float: left;}
+#check_r { width: 150px; float: left; font-size: 12px;}
+#check_r span { background: #EEE; padding: 5px 10px;
+width: 120px; display:block; font-size: 15px; line-height: 22px; font-weight: bold;}
+
+.fm_deashi_yoso_pd2 { font-size: 24px; width: 50px; text-align: center; }
+
+.fm_shinnyu{
+	font-size: 16px;
+	padding: 4px;
+	margin: 6px 10px 0 10px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+	width: 110px;
+	}
+
+.fm_memo{
+	font-size: 16px;
+	line-height: 1.4em;
+	padding: 4px;
+	margin: 3px 10px 0 10px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+	width: 460px;
+	}
+
+.fm_jishin{
+	font-size: 16px;
+	padding: 4px;
+	margin: 3px 10px 30px 10px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+	width: 60px;
+	}
+
+
+
+#oshi #check_b label {
+	display: block;
+	cursor: pointer;	
+	background: url(../images/checkbox.gif) no-repeat left top;
+	width: 32px;
+	height: 32px;
+}
+#oshi #check_b label.c_on {
+	background-position:left bottom;
+}
+#oshi #check_b label input[type="checkbox"] {
+	filter: alpha(opacity=0); -moz-opacity:0; opacity:0;	
+	width: 36px;
+	height: 36px;
+}
+
+
+.hyodai { float: left;}
+.letters { font-size: 18px; float: right; padding-right: 5px;}
+.letters span,.letters2 span { font-size: 12px;}
+
+
+
+
+
+
+
+
+
+/* ▼▼▼出走表▼▼▼ */
+
+/*** テーブル ***/ 
+.ta_kyogi {width: 970px; margin-bottom: 30px; background-color: #FFF;}
+/*** テーブル/th ***/ 
+.ta_kyogi th {
+	color: #FFF;
+	background-color: #353535;
+	font-size: 13px;
+	text-align: center;
+	border: 1px solid #777;
+	padding: 2px 0px 1px 0px;
+	line-height: 100%;
+}
+
+.ta_kyogi th.small {font-size: 10px;}
+.ta_kyogi th.small2 {font-size: 12px; line-height: 12px; padding-top: 2px;}
+.ta_kyogi th .large {font-size: 14px; line-height: 20px;}
+.ta_kyogi th.name {padding-top: 5px; width: 120px; height: 46px;}
+.ta_kyogi th.level {font-size: 10px; line-height: 12px;}
+.ta_kyogi th.name .small{font-size: 10px; line-height: 18px;
+}
+
+
+.ta_kyogi th.setsukan { font-size: 12px;line-height: 12px; padding: 2px 0;}
+.ta_kyogi th.kinsetsu {font-size: 12px; line-height: 12px;}
+.ta_kyogi th.seiseki  {width: 12px;}
+.ta_kyogi th.seiseki_8 {width: 12px;}
+
+
+.ta_kyogi th.th_syoritu { border-bottom: 1px dotted #777;}
+.ta_kyogi th.th_syoritu_no { border-top: none; white-space: nowrap;}
+
+
+/*** テーブル/F･L･平均ST ***/ 
+#heikin { width: 100%; height:60px; border-style: none;}
+#heikin th {
+	border-top-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right: 1px dotted #777;}
+#heikin th.br_no {border-right-style: none;}	 
+#heikin td {
+	font-size: 12px;
+	padding: 1px 0;
+	border-top: 1px dotted #777;
+	border-bottom-style: none;
+	border-right-style: none;
+	}
+
+
+
+.ta_kyogi th.hyoka { background: #007788 url(../images/hyoka01_back.gif);}
+.ta_kyogi th.hyoka2 { background: #A95101 url(../images/hyoka02_back.gif);}
+.ta_kyogi td.hyoka { background: #FFFFD7; border-left: 1px solid #BBB;}
+.ta_kyogi td.hyoka1 { background: #7BE7EA; border-bottom: 1px solid #BBB;}
+.ta_kyogi td.hyoka2 { background: #F38E43; border-bottom: 1px solid #BBB; font-size: 24px; color: #FFF;}
+
+
+/*** テーブル/td/ ***/ 
+.ta_kyogi td {
+	font-size: 13px;
+	text-align: center;
+	border-bottom: 1px solid #BBBBBB;
+	border-right: 1px solid #BBBBBB;
+}
+.ta_kyogi td.yoso { width: 26px;height: 64px;}
+.ta_kyogi td.waku {
+	width: 22px;
+	height:64px;	
+	font-weight: bold;
+	font-size: 18px;
+}
+/*** td/選手名 ***/ 
+.ta_kyogi td .name {
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 12px;
+	height: 20px;
+}
+
+
+/*** td/選手名6文字以上 ***/ 
+.ta_kyogi td .name6 {
+	font-size: 17px;
+	font-weight: bold;
+	padding-top: 12px;
+	height: 20px;
+}
+/*** td/選手情報 ***/
+.ta_kyogi td.number { font-size: 12px;}
+/*** td/級別 ***/
+.ta_kyogi td.class {
+	width: 20px;	
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+/*** td/F・L・ST ***/
+.ta_kyogi td.F {
+	width: 20px;	
+	font-weight: bold;
+	border-right: dotted 1px #BBBBBB;
+	border-bottom: dotted 1px #BBBBBB;
+}
+.ta_kyogi td.L {
+	width: 20px;	
+	font-weight: bold;
+	border-bottom: dotted 1px #BBBBBB;
+}
+.ta_kyogi td.ST {}
+
+/*** td/勝率・No ***/
+.ta_kyogi td.rate01 {
+	width: 35px;	
+	font-weight: bold;
+	font-size: 15px;
+	padding-top: 5px;
+	border-bottom: dotted 1px #BBBBBB;
+	border-righ-colort: #BBBBBB;
+}
+/*** td/2連率 ***/
+.ta_kyogi td.rate02 {	
+	font-size: 15px;
+	border-top-style: none;
+	padding-bottom: 5px;
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+/*** td/節間成績/着・R・進 ***/
+.ta_kyogi td.seiseki {
+	font-size: 10px;
+	color: #FFF;
+	background-color: #353535;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+/*** td/節間成績/ST ***/
+.ta_kyogi td.seiseki_bottom {
+	font-size: 10px;
+	color: #FFF;
+	background-color: #353535;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+}
+/*** td/ボーダースタイル ***/
+.ta_kyogi td.left {
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+.ta_kyogi td.right {
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+.ta_kyogi td.btm {
+	border-bottom: #BBBBBB 1px solid !important;
+}
+/*** td/節間成績・6日/R・データ ***/
+.ta_kyogi td.s_race {
+	width: 30px;	
+	height: 15px;
+	border-bottom-style: none;
+	padding-top: 1px;
+}
+/*** td/節間成績・8日/R・データ ***/
+.ta_kyogi td.s_race_8 {
+	width: 26px;	
+	height: 15px;
+	border-bottom-style: none;
+	padding-top: 1px;
+}
+/*** td/節間成績/進・データ ***/
+.ta_kyogi td.s_sin {	
+	font-weight: bold;
+	height: 16px;
+	border-top-style: none;
+	border-bottom-style: none;
+}
+/*** td/節間成績/ST・データ ***/
+.ta_kyogi td.s_ST {
+	height: 16px;
+	border-bottom-style: none;
+	vertical-align: middle;
+	padding-top: 2px;
+}
+/*** td/節間成績・スタートトップタイム ***/
+.ta_kyogi td.st_top { background: url(../images/st_top.gif) no-repeat center;}
+
+/*** td/節間成績/着・データ ***/
+.ta_kyogi td.s_cyaku {	
+	font-weight: bold;
+	color:#FFF;
+	background-color: #00B2B2;
+	height: 16px;
+	border-top-style: none;		
+}
+.ta_kyogi td.s_cyaku_no {
+	font-weight: bold;
+	color: #FFF;
+	height: 16px;
+	border-top-style: none;	
+}
+
+/*** td/早見 ***/
+.ta_kyogi td.hayami {	
+	font-size: 14px;
+	line-height: 12px;
+	font-weight: bold;
+	width:22px;
+}
+.ta_kyogi td.hayami a {
+	width: 22px;
+	margin:0 auto;
+	color: #00B2B2;
+	background-image: url(../images/b_hayami.png);
+	background-repeat: no-repeat;
+	background-position: -5px 35px;
+	display: block;
+	text-decoration: none;
+	font-size: 14px;
+	height: 48px;
+	padding-top: 10px;
+}
+.ta_kyogi td.hayami a:hover {
+	color: #009393;
+	background-position: -35px 35px;
+}
+
+
+
+
+
+
+/*----------------------------------
+
+　　　展示後評価
+
+----------------------------------*/
+.ta_kyogi th.st01{width:45px; line-height: 15px;}
+.ta_kyogi th.name{ width: 130px;}
+.ta_kyogi th.time,
+.ta_kyogi th.weight{width:70px;}
+.ta_kyogi th.slit{width:220px;}
+
+
+.ta_kyogi td.slit {
+	width:170px;
+	border-bottom:none;
+	border-right:none;
+	background:url(../images/st_back.png) right center no-repeat;
+	text-align:right;
+	height:64px;
+
+
+
+}
+
+
+.ta_kyogi td.slit_st {
+	width:40px;
+	font-weight:bold;
+	text-align:right;
+	padding-right:10px;
+	border-bottom:none;	
+	font-size:18px;	
+	
+}
+
+
+.ta_kyogi td.slit_st span,
+.ta_kyogi td.rate02 span{color:#DC3C3C;}
+
+
+.ta_kyogi td.tj_class{font-size:18px;}
+
+.ta_kyogi td.choku_top {
+	border-bottom-color:#DDDDDD;	
+	font-size:18px;
+	font-weight:bold;
+	padding: 2px 0;
+}
+
+
+.fm_tenji_yoso_pd { font-size: 24px; width: 50px; text-align: center; }
+
+
+#tenji_go { width: 600px; margin: 0 auto 50px;}
+
+.fm_tenji{
+	font-size: 16px;
+	line-height: 1.4em;
+	padding: 4px;
+	margin: 5px 10px 0 10px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+	width: 560px;
+	}
+	
+	
+#focus_t { width: 980px;}
+
+/***▼ アコーディオン ▼***/
+div .category {
+	width: 950px;
+	border: #BBB 3px solid;
+	border-radius: 20px;
+	font-size: 20px;
+	line-height: 40px;
+	display: block;
+	text-align: center;
+	margin-bottom: 30px;
+	padding-left: 30px;
+	cursor:pointer;
+	}
+	
+div .focus_info {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 28px;	
+	width: 28px;
+	height: 28px;
+	border-radius: 14px;
+	background: #CCC;
+	color: #FFF;
+	margin-left: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	}
+
+div .open .focus_info  { background: #000;}
+
+	
+.focus_text { width: 980px; text-align: center; margin-bottom: 20px;}
+
+/***▲ アコーディオン ▲***/
+
+#focus_waku { width: 812px; margin: 0 auto; }
+
+.focus_t2 {
+	background: #000;
+	font-size: 20px;
+	line-height: 40px;
+	display: block;
+	text-align: center;
+	color: #FFF;
+	font-weight: bold;
+	margin-bottom: 30px;
+	}
+
+#focus_waku_l {
+	width: 356px;
+	background: #EEE;
+	margin-right: 100px;
+	float: left;
+	}
+#focus_waku_r {
+	width: 356px;
+	background: #EEE;
+	float: left;
+	}
+
+#ta_focus {
+	width: 280px;
+	margin-left: 38px;
+	margin-bottom:60px;
+	}
+#ta_focus td {text-align: center;}
+#ta_focus td.kumi{ width: 37px; height: 37px; border: 3px solid #BBB; background: #FFFFD7; font-size: 18px;}
+#ta_focus td.kumi_no{ width: 37px; height: 37px; background:  #EEE;}
+#ta_focus td.sct{ width: 80px;}
+
+
+.fm_f-waku { width: 30px; font-size: 28px; background: #FFFFD7; border-style: none; text-align: center;}
+
+.focus_note { font-size: 12px; padding: 20px 0 0 0; color: #D90000; text-align: center; display: block;}
+
+/*----------------------------------
+
+　　　みどころ
+
+----------------------------------*/
+#midokoro { width: 980px; margin-bottom: 40px; margin-top: 40px;}
+#midokoro_l { width: 640px; float: left;}
+#midokoro_r { width: 200px; margin-left: 50px; float: left;}
+
+
+#midokoro p { margin: 40px 0;}
+
+.fm_head {
+	font-size: 18px;
+	line-height: 22px;
+	width: 600px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+	margin-left: 10px;
+	padding: 10px;
+	}
+
+.fm_text {
+	font-size: 16px;
+	line-height: 24px;
+	width: 600px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+	margin-left: 10px;
+	padding: 10px;
+	}
+
+.fm_photo {
+	font-size: 16px;
+	width: 100px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;	
+	padding: 5px;
+	color: #AAA;
+	}
+
+.letters2 { font-size: 14px; margin-left: 20px; display: inline-block;}
+
+#photo { margin-left: 10px; padding-top: 10px;}
+#photo li { padding-bottom: 40px;}
+
+#photo li .no_p { font-size: 12px; margin-left: 24px; margin-top: 8px;}
+
+
+
+/*----------------------------------
+
+　　　メッセージ表示
+
+----------------------------------*/
+
+.fm_all_clear { float: right;}
+
+#msg { width: 980px; margin-bottom: 40px; margin-top: 40px;}
+
+#msg_l { width:200px; padding-top: 10px; float: left;}
+#msg_r { width:700px; float: left;}
+
+#msg_l .msg_time { color: #D80000; border-bottom: dotted; }
+#msg_r .date01 {
+	margin-left: 40px;
+	padding:10px;
+	width: 200px;
+	background-color: #EEE;
+	font-size: 16px;
+	}
+#msg_r p { padding: 20px 0 0 0; font-size: 14px; line-height: 26px;}
+#msg_r .sample_tx { font-size: 12px; display: block;}
+
+#msg_cb01 { width: 100px; text-align: center; font-size: 20px; margin: 30px 0  0 30px;}
+#msg_cb01 p { font-size: 12px; padding-bottom: 10px;}
+
+
+/***▼ チェックボックス１ ▼***/
+#msg_r label {
+	display: inline-block;
+	cursor: pointer;	
+	background: url(../images/checkbox.gif) no-repeat left top;
+	width: 32px;
+	height: 32px;
+	margin: 0 20px 0 10px;
+	vertical-align: middle;
+
+}
+#msg_r label.c_on {
+	background-position:left bottom;
+}
+#msg_r label input[type="checkbox"] {
+	filter: alpha(opacity=0); -moz-opacity:0; opacity:0;	
+	width: 36px;
+	height: 36px;
+}
+/***▲ チェックボックス１ ▲***/
+
+
+
+
+.fm_date {
+	font-size: 16px;
+	width: 120px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;	
+	padding: 5px;
+	}
+
+.fm_msg {
+	font-size: 16px;
+	line-height: 24px;
+	width: 670px;
+	border: 3px solid #BBB;
+	background: #FFFFD7;
+	padding: 10px;
+	overflow: hidden;
+	}
+
+.fm_txno {
+	font-size: 16px;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	border: 3px solid #BBB;
+	background: #FFFFD7;	
+	padding: 5px;
+
+	}
+
+
+
+
+/*■■■データ無し等■■■*/
+
+.yoso_nodata {
+	color: #666666;
+	font-size: 18px;
+	width: 940px;
+	height: 540px;
+	text-align: center;
+	line-height: 540px;
+	font-weight: bold;
+	background-color: #D4E1E8;
+	margin: auto;
+}
+
+
+
+.ta_kyogi td.cyushi {
+	color: #DC3C3C;
+	font-size: 16px;
+	height: 540px;
+	width: 840px;
+	font-weight: bold;
+}
+
+
+p.fast {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 10px;	
+}
+p.fast .ic { color: #FFC926; font-size: 16px;}
+p.notice {
+	color: #DC3C3C;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.ta_kekka_all td.cyushi {
+	color: #DC3C3C;
+	font-size: 15px;
+	font-weight: bold;
+}

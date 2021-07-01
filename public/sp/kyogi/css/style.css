@@ -1,0 +1,121 @@
+@font-face {
+	font-family: 'BoatRace';
+	src:url('fonts/BoatRace.eot?3fxui5');
+	src:url('fonts/BoatRace.eot?#iefix3fxui5') format('embedded-opentype'),
+		url('fonts/BoatRace.woff?3fxui5') format('woff'),
+		url('fonts/BoatRace.ttf?3fxui5') format('truetype'),
+		url('fonts/BoatRace.svg?3fxui5#BoatRace') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon_"], [class*=" icon_"] {
+	font-family: 'BoatRace';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon_y_2:before {
+	content: "\e600";
+}
+.icon_j_2:before {
+	content: "\e601";
+}
+.icon_y_3:before {
+	content: "\e602";
+}
+.icon_j_3:before {
+	content: "\e603";
+}
+.icon_y_4:before {
+	content: "\e604";
+}
+.icon_j_4:before {
+	content: "\e605";
+}
+.icon_j_5:before {
+	content: "\e606";
+}
+.icon_y_5:before {
+	content: "\e607";
+}
+.icon_j_6:before {
+	content: "\e608";
+}
+.icon_y_6:before {
+	content: "\e609";
+}
+.icon_y_7:before {
+	content: "\e60a";
+}
+.icon_j_7:before {
+	content: "\e60b";
+}
+.icon_j_8:before {
+	content: "\e60c";
+}
+.icon_y_8:before {
+	content: "\e60d";
+}
+.icon_y_9:before {
+	content: "\e60e";
+}
+.icon_j_9:before {
+	content: "\e60f";
+}
+.icon_y_10:before {
+	content: "\e610";
+}
+.icon_j_10:before {
+	content: "\e611";
+}
+.icon_j_11:before {
+	content: "\e612";
+}
+.icon_y_11:before {
+	content: "\e613";
+}
+.icon_y_1:before {
+	content: "\e614";
+}
+.icon_y_12:before {
+	content: "\e615";
+}
+.icon_j_12:before {
+	content: "\e616";
+}
+.icon_y_13:before {
+	content: "\e617";
+}
+.icon_j_13:before {
+	content: "\e618";
+}
+.icon_y_14:before {
+	content: "\e619";
+}
+.icon_j_14:before {
+	content: "\e61a";
+}
+.icon_j_15:before {
+	content: "\e61b";
+}
+.icon_y_15:before {
+	content: "\e61c";
+}
+.icon_j_1:before {
+	content: "\e61d";
+}
+.icon_y_16:before {
+	content: "\e61e";
+}
+.icon_j_16:before {
+	content: "\e61f";
+}

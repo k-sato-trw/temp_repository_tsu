@@ -1,0 +1,89 @@
+
+/*
+==========================================
+
+			06topic.htm
+
+==========================================
+*/
+#topi_hd {
+	height: 100px;
+	padding: 16px 50px 0 30px;
+	margin-bottom: 15px;
+	background: #EEE;
+}
+#topi_hd_l {
+	width: 850px;
+	float: left;
+	line-height: 1.4em;
+}
+#topi_hd_l h3 {
+	background: url(../06topic/images/06topic_catch.png) no-repeat;
+	width: 405px;
+	height: 32px;
+	text-indent: -9999px;
+}
+
+#topi_hd_r {
+	padding-top: 20px;
+	float: right;
+}
+
+#topi_back_n a {
+	width: 186px;
+	height: 40px;
+	background: url(../06topic/images/b_back_n.png) no-repeat 0 0;
+	display: block;
+	text-indent: -999999px;
+}
+#topi_back_n a:hover { background-position: 0 -46px;}
+
+#topi_back a {
+	width: 100px;
+	height: 40px;
+	background: url(../06topic/images/b_back.png) no-repeat 0 0;
+	display: block;
+	text-indent: -999999px;
+}
+#topi_back a:hover { background-position: 0 -46px;}
+
+#topi_title {
+	margin-bottom: 70px;
+}
+#topi_title h1 {}
+
+#topi_main {
+	margin: 0 50px;
+	font-family:  "ÉqÉâÉMÉmäpÉS Pro W3", "Hiragino Kaku Gothic Pro", "ÉÅÉCÉäÉI",Roboto, Arial, Meiryo, sans-serif; 
+}
+
+#topi_maine #profile {
+	width: 100%;
+	padding-top: 20px;
+	text-align: right;
+}
+
+
+/*
+==========================================
+
+			06topic_back.htm
+
+==========================================
+*/
+
+#topi_back_hd { padding: 40px 0  30px 0;}
+#topi_back_main {}
+#topi_back_main li { float: left; margin-bottom: 40px;}	
+#topi_back_main li:nth-child(odd){  margin-right: 35px;} 
+
+
+/*
+==========================================
+
+		àÛç¸óp
+
+==========================================
+*/
+@media print {
+}

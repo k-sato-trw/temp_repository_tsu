@@ -1,0 +1,239 @@
+@charset "shift_jis";
+/* CSS Document */
+
+
+/* ▼▼▼節間レース結果▼▼▼ */
+#setsu_kekka_main{
+	width:965px;}
+
+#setsu_kekka_main h2 { width: 900px; height: 81px; background: url(../images/kaisai_setukan-kekka_t.jpg) no-repeat; text-indent: -9999px; margin-bottom: 20px;}
+
+
+
+
+
+#s_kekka_btn { width: 960px; padding: 5px 0 9px 5px; height: 56px; background: url(../images/setu_kekka_b_back01.jpg) no-repeat bottom left;}
+
+#s_kekka_btn li {
+	width: 118px;
+	height: 56px;
+	margin-right: 1px;
+	background: url(../images/setu_kekka_b_back04.gif) repeat-x bottom left;
+	text-align: center;
+	line-height: 56px;
+	color: #FFF;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 10px;	
+	float: left;}
+
+#s_kekka_btn li a { background: url(../images/setu_kekka_b_back03.gif) repeat-x bottom left;
+display: block;
+border-radius: 10px;
+color: #FFF;
+text-decoration: none;
+}
+
+#s_kekka_btn li a:hover { color: #FFFF00;}
+
+#s_kekka_btn li.select {  background: url(../images/setu_kekka_b_back02.gif) repeat-x bottom left;
+display: block;
+border-radius: 10px;
+color: #FFF;
+}
+#s_kekka_btn li.select a {  background: url(../images/setu_kekka_b_back02.gif) repeat-x bottom left;
+display: block;
+border-radius: 10px;
+color: #FFF;
+}
+#s_kekka_btn li.select  a:hover { color: #FFFF00;
+}
+
+#setsu_kekka_main th{
+	background-color:#333333;
+	color:#ffffff;
+	height:39px;
+	padding-top:4px;
+	line-height:120%;
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	border-right:1px solid #999999;}
+
+/* リプレイ */
+#setsu_kekka_main th span{
+	font-size:14px;}	
+
+
+#setsu_kekka_main td{
+	border-right:1px solid #999999;}	
+
+/* レース番号 */
+#setsu_kekka_main td.rk_race{
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+	width:50px;
+	min-height:48px;
+	border-left:1px solid #999999;
+	}
+
+
+   /* レース番号_Firefox */
+@-moz-document url-prefix() {
+	td.rk_race{
+		height:48px;
+	}
+}
+   /* レース番号_Google Chrome、Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0){
+	#setsu_kekka_main td.rk_race{
+		height:48px;
+	}
+}
+
+
+	
+/* 3連単 */	
+#setsu_kekka_main td.rk_3ren{
+	text-align:center;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:3px;
+	width:200px;
+	font-size:16px;}
+
+/* 2連単 */
+#setsu_kekka_main td.rk_2ren{
+	text-align:center;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:3px;
+	width:160px;
+	font-size:16px;
+	}
+
+/* 選手名 */
+#setsu_kekka_main td.rk_name{
+	text-align:center;
+	width:135px;
+	font-size:16px;}
+
+#setsu_kekka_main td.bb_no { border-bottom: none !important;}	
+	
+	
+			
+/* 枠番 */
+#setsu_kekka_main td.waku_d{
+	width:25px;
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	height:48px;}
+
+/* 枠番_同着あり */
+#setsu_kekka_main td.waku_d2{
+	width:25px;
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	height:36px;}
+
+/* 枠番_スタイル */
+#setsu_kekka_main span.waku_s{
+	display:inline-block;}
+	
+/* リプレイ */
+#setsu_kekka_main td.replay{
+	font-size:18px;
+	text-indent:-9999px;
+	text-align:center;}
+
+#setsu_kekka_main td.replay a{
+	display:block;
+	margin:0 auto;
+	width:50px;
+	height:40px;
+	text-decoration:none;
+	background-image: url(/kaisai/images/kekka_replay.png);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#setsu_kekka_main td.replay a:hover {
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+	}
+
+
+/* 背景色_パターン */
+#setsu_kekka_main tr.ta_bg{
+	/*background-color:#F0FDFF;*/
+	background-color:#F2F2F2;
+}	
+
+#setsu_kekka_main tr.ta_bg td,tr.ta_bg2 td{
+	border-bottom:1px solid #999999;}	
+
+
+/* 配当金_円 */
+#setsu_kekka_main .haito{
+	text-align:right;
+	width:95px;
+	margin-left:0px;
+	float:right;
+	}
+
+/* 配当金 */
+#setsu_kekka_main .haito span{
+	font-size:20px;
+	font-weight:bold;
+	padding-top:3px;
+	margin-right:2px;
+	display:inline-block;}
+
+/* 中止パターン */
+#setsu_kekka_main td.tyusi{
+	font-size:18px;
+	text-align:center;
+	color:#DC3C3C;
+	background-color:#ffffff !important;}		
+	
+	
+/*■■■中止■■■*/	
+	
+.tyushi {
+	height: 20px;
+	font-size: 16px;
+	color: #DC3C3C;
+	position: absolute;
+	top: 60px;
+	left: 105px;
+}
+	
+	
+	
+/*■■■データ無し等■■■*/
+
+.ta_kyogi td.nodata {
+	color: #666666;
+	font-size: 18px;
+	width: 965px;
+	height: 540px;
+	text-align: center;
+	vertical-align:middle;
+	font-weight: bold;
+	background-color: #D4E1E8;
+	border-style: none !important;
+}
+
+
+.ta_kyogi td.cyushi {
+	color: #DC3C3C;
+	font-size: 16px;
+	width: 956px;
+	height: 540px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #EEE;
+}

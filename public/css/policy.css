@@ -1,0 +1,52 @@
+
+
+/*
+==========================================
+
+			policy.htm
+
+==========================================
+*/
+#main {
+	padding:50px;
+	font-size:16px;
+    line-height:1.5em;
+	}
+#main a {
+	/*text-decoration:none;*/
+	/**/
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
+	}
+
+#po-tit {
+	width:1060px;
+	color:#003399;
+	font-weight:bold;
+	line-height:110%;
+	/*background-color:#C4E1FF;*/
+	margin-top:50px;
+	margin-bottom:10px;
+	border-bottom:#003399 2px solid;
+	padding:5px;
+	}
+#po-right {
+	width:1060px;
+	text-align:right;
+	padding-bottom:30px;
+	/*bbackground-image:url(../policy/images/img.png);
+	background-repeat:no-repeat;
+	background-position:bottom left;*/
+	}
+			
+/*
+==========================================
+
+		àÛç¸óp
+
+==========================================
+*/
+@media print {
+}

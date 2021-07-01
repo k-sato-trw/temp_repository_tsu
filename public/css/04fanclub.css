@@ -1,0 +1,216 @@
+
+
+/*
+==========================================
+
+			fanclub.htm
+
+==========================================
+*/
+#main {
+	padding:20px 50px 50px 50px;
+	font-size:16px;
+    line-height:1.5em;
+	
+	}
+#main a {
+	/*text-decoration:none;*/
+	/**/
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
+	}
+#fun{ height: 650px; position: relative;}	
+.boat { width: 1000px; height: 203px; position: absolute; top: 475px; left: -50px;}
+
+#catch {
+	color:#003399;
+	font-weight:bold;
+	font-size:1.5em;
+	margin-bottom:20px;
+	text-align: center;
+}
+
+#left,
+#right {
+	width:510px;
+	height:510px;
+	border:#003399 5px solid;
+	padding-bottom:10px;
+	text-align:center;
+	line-height:1.5em;
+	}
+	
+#left {
+	float:left;
+}
+
+#right {
+	float:right;
+	}
+
+#midashi {
+	width:510px;
+	height:60px;
+	background-image:url(../04fanclub/images/bk_midashi.png);
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-size:22px;
+	text-align:center;
+	padding-top:12px;
+
+	}
+
+#pickup {
+	width:440px;
+	height:45px;
+	background-image:url(../04fanclub/images/bk_pickup.png);
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-size:18px;
+	text-align:center;
+	padding-top:8px;
+	margin-top:15px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-bottom:15px;
+	}
+#box_center {
+	width:440px;
+	margin:0 auto 30px;
+	}
+#box_left {
+	width:440px;
+	margin:0 auto 10px;
+	text-align:center;
+	}
+#box_right {
+	width:440px;
+	text-align:left;
+	margin:0 auto 10px;
+	}
+.caution {
+	font-size:0.9em;
+	padding-left:18px;
+	line-height:1.2em;
+
+	}
+#no_tit_1,
+#no_tit_2,
+#no_tit_3  {
+	width:450px;
+	height:30px;
+	text-align:left;
+	color:#003399;
+	font-size:20px;
+	font-weight:bold;
+	line-height:1.2em;
+	padding-left:30px;
+	margin-left:10px;
+	padding-top:3px;
+	background-repeat:no-repeat;
+	}
+	
+	
+#no_tit_1 {
+	background-image:url(../04fanclub/images/1.png);
+}
+#no_tit_2 {
+	background-image:url(../04fanclub/images/2.png);
+}
+#no_tit_3 {
+	background-image:url(../04fanclub/images/3.png);
+}
+
+#area {
+	width:440px;
+	height:70px;
+	background-image:url(../04fanclub/images/bk_area.png);
+	background-repeat:no-repeat;
+	font-size:18px;
+	font-weight:bold;
+	text-align:center;
+	padding-top:10px;
+	margin-left:auto;
+	margin-right:auto;
+	}
+	
+.bigbold{ font-size:28px; font-weight:bold;}
+.bold{ font-weight:bold;}
+.red{ color:#FC0004;}
+.blue{ color:#003399;}
+.small{ font-size:14px; line-height:1em;}
+
+
+
+#btn_kaisoku  {
+	width:400px;
+	height:40px;
+	margin:30px auto 0;
+	background-image:url(../04fanclub/images/btn_kaisoku.png);
+	background-repeat:no-repeat;
+	text-indent: -9999px;
+	display: block;
+	}
+#btn_kaisoku:hover{
+	background-image:url(../04fanclub/images/btn_kaisoku_on.png);
+	background-repeat:no-repeat;
+	}
+	
+#btn_kaisoku.open {
+	background-image:url(../04fanclub/images/btn_kaisoku_close.png);
+	background-repeat:no-repeat;
+	}
+	
+#btn_kaisoku.open:hover {
+	background-image:url(../04fanclub/images/btn_kaisoku_close_on.png);
+	background-repeat:no-repeat;
+	}
+	
+	
+.rules {
+	width:840px;
+	background-color:#FFF;
+	padding:40px 80px 40px;
+	margin-top:30px;
+	border:#ECECEC 30px solid;
+	
+	display:none;/**/
+
+	}
+
+.rules h3 {
+	font-weight:bold;
+	margin-top:20px;
+	margin-bottom:0;
+	color: #000;
+}
+.rules ul {
+	padding-left:60px;
+}
+.rules ul li {
+	text-indent:-2.6em;
+	margin-top:5px;
+}
+.rules ul li.k_small {
+	text-indent:0em;
+}
+.rules ul.normal{
+	padding-left:20px;
+}
+
+
+
+			
+/*
+==========================================
+
+		àÛç¸óp
+
+==========================================
+*/
+@media print {
+}

@@ -1,0 +1,269 @@
+
+
+/*
+==========================================
+
+			02suimen.htm
+
+==========================================
+*/
+h2 { margin-bottom:20px;}
+#main { width:720px;padding-left:0; padding-right:0; }
+
+/*注釈*/
+#memo {
+	width:680px;
+	margin:0 auto 30px;
+	font-size:26px;
+	line-height:1.2em;
+}
+#memo img { vertical-align:-2px;}
+
+#memo .m1 {
+	padding:10px 0;
+	margin-bottom:20px;
+	text-align:center;
+	background-color:#EEEEEE;
+	border-radius:2em;
+}
+
+#memo dl { padding-bottom:20px;}
+
+#memo dl dt {
+	float:left;
+	vertical-align:middle;
+	color: #0055AA;
+
+}
+#memo dl dd {padding-left:210px;}
+#memo dl.bo dd {padding-left:180px;}
+
+#memo dl dd.mark {
+	padding-left:40px;
+	font-size:24px;
+	line-height:1.2em;
+	text-indent:-1em;
+	padding-top:4px;
+	}
+#memo p.note {
+	display: block;
+	border-top: dotted 2px #999999;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+/*タブボタン*/
+
+ul.tabs {
+	width:660px;
+	margin:0 auto;
+	}
+	
+	ul.tabs li {
+		width:318px;
+		height:96px;
+		font-size:34px;
+		border-top:2px solid #CCCCCC;
+		border-right:2px solid #CCCCCC;
+		border-left:2px solid #CCCCCC;
+		border-radius:10px 10px 0 0;
+		background: -moz-linear-gradient(top, #CCCCCC, #FFFFFF);
+		background: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#FFFFFF));
+	}
+	ul.tabs li.active {
+		background: -moz-linear-gradient(top, #FFFFFF, #CCCCCC);
+		background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#CCCCCC));
+	}
+	ul.tabs li a {
+		height:96px;
+		line-height:96px;
+		display: block;
+		color:#FFFFFF;
+		text-align:center;
+		font-weight:bold;
+		text-decoration:none;
+	}
+	ul.tabs li a span {
+		padding-left:46px;
+		background-position:left center;
+		background-repeat:no-repeat;
+	}
+	ul.tabs li.b1 a span {background-image:url(/sp/02motor/images/b1_icon.png);}
+	ul.tabs li.b2 a span {background-image:url(/sp/02motor/images/b2_icon.png);} 
+
+	ul.tabs li.b1{
+		float:left;
+		border-top:2px solid #0DA7D9;
+		border-right:2px solid #0DA7D9;
+		border-left:2px solid #0DA7D9;
+		background: -moz-linear-gradient(linear, left top, left bottom, from(#0DA7D9), color-stop(50%, #0DA7D9), to(#CCECF7));
+		background: -webkit-gradient(linear, left top, left bottom, from(#0DA7D9), color-stop(50%, #0DA7D9), to(#CCECF7));}
+	ul.tabs li.b1.active{ background:#0DA7D9;}
+	ul.tabs li.b2{
+		float:right;
+		border-top:2px solid #00AC82;
+		border-right:2px solid #00AC82;
+		border-left:2px solid #00AC82;
+		background: -moz-linear-gradient(linear, left top, left bottom, from(#00AC82), color-stop(50%, #00AC82), to(#CCEEE6));
+		background: -webkit-gradient(linear, left top, left bottom, from(#00AC82), color-stop(50%, #00AC82), to(#CCEEE6));}
+	ul.tabs li.b2.active{ background:#00AC82;}
+
+/*
+---------------------------------
+
+　　★共通
+
+---------------------------------
+*/
+#motor,#boat {
+	width:660px;
+	margin:0 auto;
+	background-position:left top;
+	background-repeat:repeat-x;
+	padding-top:40px;
+}
+
+#motor {background-image:url(/sp/02motor/images/ttl_bg1.png);}
+#boat {background-image:url(/sp/02motor/images/ttl_bg2.png);}
+
+
+
+/*テーブル*/
+.data {width:100%;}
+.data th {
+	background-color:#333333!important;
+	color:#FFFFFF;
+	padding:10px 0 8px;
+	text-align:center;
+	line-height:1.2em;
+	border-right:1px solid #999999;
+	vertical-align:middle;
+}
+	
+.data td {
+	text-align:center;
+	padding:6px 0;
+	vertical-align:middle;
+	border-bottom:1px solid #CCCCCC;
+}
+	/*上下データ*/
+	.data td .top {
+			height:30px;
+			border-bottom:1px dotted #CCCCCC;
+			padding-bottom:8px;
+			margin-bottom:6px;
+			}
+	.data td .bot {height:30px;}
+
+	/*順位*/
+	.data .rank { width:50px!important;min-width: 50px!important; max-width: 50px!important;}
+	#motor .data td.rank,
+	#boat .data td.rank {background-color:#999999; color:#FFFFFF; font-weight:bold;}
+	/*No.*/
+	.data .number { width:50px!important;min-width: 50px!important; max-width: 50px!important;}
+	#motor .data td.number{ background-color:#00A2D7; color:#FFFFFF;font-weight:bold;}
+	#boat .data td.number{ background-color:#00AC82; color:#FFFFFF;font-weight:bold;}
+
+	/*2連率*/
+	.data .ren { width:120px!important;min-width: 120px!important; max-width: 120px!important;}
+	#motor .data th.ren{color:#0DC2FF;font-weight:bold;}
+	#motor .data td.ren .top{color:#00769D;}
+	.data td.ren {border-right:1px solid #CCCCCC;}
+	#boat .data th.ren{color:#00D59F;font-weight:bold;}
+	#boat .data td.ren .top{color:#008262;}
+	/*出走回数*/
+	.data .syusso {
+		border-top:1px dotted #CCCCCC;
+		width:120px!important;
+		min-width: 120px!important;
+		max-width: 120px!important;}
+	
+	/*優出優勝*/
+	.data .yusyo,
+	.data .yushu {
+		width:80px!important;
+		min-width: 80px!important;
+		max-width: 80px!important;}
+	.data .yushu {border-top:1px dotted #CCCCCC;}
+	.data td.yusyo{border-right:1px solid #CCCCCC;}
+		
+	/*前回成績*/
+	.data .seiseki {border-right:1px solid #CCCCCC; padding:0;width:356px!important;min-width: 356px!important; max-width: 356px!important;}
+	.data td.seiseki {text-align:left;}
+	.data th.seiseki span { display:block; font-size:22px; padding-top:2px;}	
+		
+		/*成績上*/
+			.data .seiseki .top p {
+				display: inline;
+				font-size:24px;
+				}
+				.data .seiseki .top span.non {
+					text-align:center;
+					font-size:22px;
+					display:block;
+					line-height:1.6em;}
+			/*グレード*/
+			.data .seiseki p.SG,
+			.data .seiseki p.G1,
+			.data .seiseki p.G2,
+			.data .seiseki p.G3,
+			.data .seiseki p.G0 {
+				width:20px;
+				height: 30px;
+				font-size: 18px;
+				font-weight:bold;
+				color: #FFF;
+				display:inline-block;
+				border-radius:2px;
+				text-align: center;
+				word-break:break-all;
+				line-height: 0.9em;
+				padding: 4px 0 4px;
+				margin-left:4px;
+				margin-top:-2px;
+				vertical-align:middle;
+			}
+			.data .seiseki p.G0 { line-height:0.8em;}
+
+			
+			/*日付*/
+			.data .seiseki p.data { padding-right:2px; font-size:22px;}
+			/*名前*/
+			.data .seiseki p.name { font-size:22px;}
+			.data .seiseki p.name .lady {color:#D00872;}
+			
+		/*成績下*/
+		.data .seiseki .bot{font-weight:bold; font-size:26px; line-height:1.2em; margin-left:2px;}
+		.data .seiseki .bot span {font-size:24px;}
+		.data .seiseki .bot span.non {font-weight:normal; text-align:center; display:block;}
+		.data .seiseki .bot img {vertical-align:-2px; margin-left:1px;}
+
+
+/*奇数行色*/
+.odd { background-color:#F0F0F0;}
+
+/*モーター順位*/
+.mt_ic01,.mt_ic02,.mt_ic03{
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	display: inline-block;
+	background-position:center;
+	background-repeat:no-repeat;
+	text-shadow: 0px 0px 3px #333;
+	}
+.mt_ic01 { background-image: url(/sp/images/mt_ic_01.png) ;}
+.mt_ic02 { background-image: url(/sp/images/mt_ic_02.png) ;}
+.mt_ic03 { background-image: url(/sp/images/mt_ic_03.png) ;}
+
+
+		
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

@@ -1,0 +1,234 @@
+@charset "shift_jis";
+/* CSS Document */
+
+
+/*
+==========================================
+
+			05facility.htm
+
+==========================================
+*/
+
+#main {padding:0px;}
+
+#facility_wrap{
+	width:100%;
+	}
+	
+	/*記事エリア*/
+	#facility_main {
+		width:720px;
+		
+		}
+	
+	/*FLOOR Indexエリア*/
+	#facility_nav {
+		width:640px;
+		 margin: 20px 40px;
+		
+		}
+
+h2 { margin-bottom: 0px !important;}
+
+/*
+==========================================
+
+			パノラマフォト
+
+==========================================
+*/
+
+#p_photo {
+	text-indent: -9999px;
+	margin-bottom: 20px;
+}
+ 
+#p_photo a {
+	width: 720px;
+	height: 352px;
+	background: url(../05facility/images/b_p_photo.png) no-repeat 0 0;
+	display: block;
+}
+#p_photo a:hover {
+	background:url(../05facility/images/b_p_photo.png) no-repeat 0 -357px;}
+	
+/*
+==========================================
+
+			本文
+
+==========================================
+*/
+
+#fg_title {
+	width: 720px;
+	height: 56px;
+	background: url(../05facility/images/fg_title.jpg) no-repeat;
+	text-indent: -9999px;
+	display: block;
+}
+.tab_content { margin-bottom: 50px;}
+#facility_main #map { padding-bottom: 20px;}
+#facility_main #fg_ic { padding-bottom: 20px;}
+#facility_main #pickup { padding-bottom: 0px;}
+#pickup.pattem_a {
+	background: url(../05facility/images/pickup_back1.gif) repeat-x #FFEFBF;
+}
+#pickup.pattem_b {
+	background: url(../05facility/images/pickup_back2.gif) repeat-x #FFECE6;
+}
+
+#pickup_l { width: 128px; float: left;}
+#pickup_r { padding-top: 40px; padding-bottom: 0px; float: right;}
+
+#pickup img { display: block;}
+
+
+#notice { margin-top: 20px;}
+#notice_l,#notice_r {
+	width: 660px;
+	margin: 0 auto 40px;
+}
+
+#notice h4 {
+	height: 60px;
+	font-size: 30px;
+	color: #003399;
+	line-height: 60px;
+	font-weight: bold;
+	border: 4px #003399 solid;
+	border-radius: 30px;
+	margin-bottom: 40px;
+	padding-left: 30px;
+}
+#notice h4 span,#notice li span {
+	font-size: 24px;
+	color: #000;
+	font-weight: normal;
+}
+
+#notice li {
+	padding-left: 38px;
+	padding-bottom: 30px;
+	background: url(../05facility/images/ic.gif) no-repeat;
+	font-size: 26px;
+	line-height: 36px;
+}
+
+
+#pickup_r #seat {width: 530px; float: right;margin-right: 24px;}
+#pickup_r #seat_b,#pickup_r #seat_a {}
+
+
+#pickup_r #seat_b h4,#pickup_r #seat_a h4, #pickup_r #seat_c h4 {
+	font-size: 40px;
+	line-height: 60px;
+	height: 60px;
+	padding-left: 30px;
+	margin-top: 30px;
+}
+
+#pickup_r #seat_b h4 {
+	background: #D3CA18;
+}
+#pickup_r #seat_a h4 {
+	background: #D7A6D5;
+}
+#pickup_r #seat_c h4 {
+	background: #FF7373;
+}
+
+
+
+#seat .fee_l {
+	width: 130px;
+	height: 48px;
+	line-height: 48px;
+	background: #777;
+	font-size: 26px;
+	color: #FFF;
+	text-align: center;
+	display: block;
+	margin-bottom: 20px;
+
+}
+#seat .fee_r {
+	font-size: 30px;
+	line-height: 38px;
+	margin-bottom: 20px;
+
+}
+#seat .fee_r li {
+	background: url(../05facility/images/ic_02.png) no-repeat left 5px;
+	padding-left: 30px;
+	}
+#seat .fee_r li p { font-weight: bold; display: inline-block;}
+#seat #text {
+	font-size: 30px;
+	line-height: 40px;
+	padding-bottom: 20px;
+}
+#seat #text p { font-size: 26px; line-height: 36px; padding-top: 30px;}
+
+
+#pickup #cn { float: right; margin-top: 20px;}
+
+
+
+
+/*
+==========================================
+
+			タブリンク
+
+==========================================
+*/
+
+#facility_nav li{
+	width: 140px;
+	height: 100px;
+	margin: 0 10px 20px 10px;
+	text-indent: -9999px;
+	display: block;
+	background-position: 0 0;
+	cursor:pointer;
+	float: left;
+}
+
+#facility_nav li:hover { background-position: -140px 0;}
+
+
+#facility_nav .f1 {
+	background: url(../05facility/images/f01.png);
+}
+#facility_nav .f2{
+	background: url(../05facility/images/f02.png);
+}
+#facility_nav .f3{
+	background: url(../05facility/images/f03.png);
+}
+#facility_nav .f4 {
+	background: url(../05facility/images/f04.png);
+}
+
+
+#family{
+	width: 94%;
+	margin: 0 auto;
+	line-height: 140%;
+	padding-top: 10px;
+	font-size: 28px;
+}
+
+#family h4{
+	height: 40px;
+	line-height: 40px;
+	background-color: #666666;
+	color: #FFFFFF;
+	border-radius: 20px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	text-align: center;
+}
+

@@ -1,0 +1,112 @@
+@charset "shift_jis";
+/* CSS Document */
+
+html,body{ height:100%;}
+body {
+	font-family: Roboto, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+	font-size: 14px; /*標準は16px*/
+	line-height: 100%;
+	min-width:1080px;
+}
+
+
+/*
+==========================================
+
+			枠組み
+
+==========================================
+*/
+#wrapper {min-height: 100%;}
+	
+#wrapper,
+#header_wrap,
+#contents_wrap,
+#footer_wrap {
+	width:100%;
+	clear: both;
+}
+
+#header,
+#contents,
+#footer{
+	min-width:1080px;/*モニタサイズ1280のスクロールバー分-30px*/
+	max-width:1110px;
+	margin:0 auto;
+}
+/*
+==========================================
+
+			header
+
+==========================================
+*/
+
+#header { height: 73px; width: 1080px; position: relative;}
+
+#header .logo { width: 165px; height: 26px; position: absolute;
+top: 25px; right: 25px;}
+#header a { display: block;}
+#header a:hover { opacity: 0.8;}
+
+
+/*
+==========================================
+
+			footer
+
+==========================================
+*/
+
+#footer { padding: 10px 0; background: #444; text-align: center; clear: both;}
+
+
+/*
+==========================================
+
+			本文
+
+==========================================
+*/
+
+#title { height: 396px; position: relative;}
+#title_l { width: 520px; height: 396px; float: left;}
+#title_l .photo { height: 519px position: absolute; top: 0; left: 0;}
+#title_r { padding-top: 60px; text-align: center; float: left;}
+#title_r p { font-size: 16px; line-height: 26px; width: 420px; margin: 16px auto; text-align: left;}
+
+#quiz { background: #FFFFBF; padding: 15px 0; margin-bottom: 30px;}
+#quiz_l { float: left;}
+#quiz_l table { width: 540px; margin: 0 20px 0 40px;}
+
+#quiz_l th { background: #003399; color: #FFF; text-align: center; padding: 10px; white-space: nowrap;
+border-bottom: #FFFFBF 1px dotted; }
+#quiz_l th img { margin-bottom: 5px;}
+#quiz_l td { background: #FFF; color: #000;}
+
+#quiz_l td.text1 { padding: 10px 20px; font-size: 16px; line-height: 24px; border-bottom: #BBB 1px dotted; }
+#quiz_l td.text1 .bl { font-weight: bold;}
+#quiz_l td.text1 .cl { color: #008C68;}
+#quiz_l td.text1 .note { font-size: 12px; padding-top: 5px; color:#006DD9; display:block;}
+
+
+
+#quiz_l td.text2 { padding: 10px 20px; font-size: 24px; line-height: 30px; font-weight: bold; color: #003399;
+border-bottom: #BBB 1px dotted;}
+#quiz_l td.text3 { padding: 10px 20px; font-size: 24px; line-height: 30px; font-weight: bold; color: #D80000;}
+
+#quiz_r { width: 462px; float: left; text-align: center;}
+#quiz_r img {}
+#quiz_r a { display: block;}
+#quiz_r a:hover { opacity: 0.8;}
+
+#plize { width: 1000px; margin: 0 auto 50px; text-align: center; clear: both;}
+#plize #title2 { width: 100%; text-align: center; margin-bottom: 20px;}
+
+#plize #title2 img { padding-bottom: 20px;}
+#plize #title2 .ic { font-size: 18px; font-weight: bold; color: #BBB;}
+
+#plize_l { padding-right: 40px; float: left;}
+#plize_r { width: 550px; padding-top: 20px; text-align: left; float: left;}
+#plize_r li { background: url(../04quiz/images/prz_ic.gif) no-repeat 0 6px; padding: 8px 0 8px 20px;}
+#plize_r li img { vertical-align: -3px; padding-left: 5px;}

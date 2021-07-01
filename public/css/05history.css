@@ -1,0 +1,147 @@
+
+
+/*
+==========================================
+
+			05history.htm
+
+==========================================
+*/
+#main {
+	padding-top:50px;
+	background-image:url(/05history/images/history_bg.png);
+	background-position:right 760px;
+	background-repeat:no-repeat;}
+
+
+#history,
+#winner {
+	width:1080px;
+	margin:0 auto 40px;
+}
+
+h3 {
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	color:#FFFFFF;
+	font-size:22px;
+	font-weight:bold;
+	background-position:0 0;
+	background-repeat:no-repeat;
+	margin-bottom: 40px;
+}
+
+
+/**/
+
+#history h3{background-image:url(/05history/images/his_h3_bg.png);}
+
+#history dl {margin-bottom:20px;}
+#history dt {
+	width:134px;
+	height:138px;
+	float:left;
+	text-indent:-9999px;
+	background-position:left center;
+	background-repeat:no-repeat;
+}
+#history #his1 dt {background-image:url(/05history/images/his1_dt.png); padding-top:70px;}
+#history #his1956 dt {background-image:url(/05history/images/his1956_dt.png);}
+#history #his2 dt {background-image:url(/05history/images/his2_dt.png);}
+#history #his1969 dt {background-image:url(/05history/images/his1969_dt.png); padding-top: 40px;}
+#history #his3 dt {background-image:url(/05history/images/his3_dt.png);}
+#history #his1970 dt {background-image:url(/05history/images/his1970_dt.png);}
+#history #his2000 dt {background-image:url(/05history/images/his2000_dt.png);}
+#history #his2002 dt {background-image:url(/05history/images/his2002_dt.png);}
+#history #his2005 dt {background-image:url(/05history/images/his2005_dt.png);}
+#history #his2011 dt {background-image:url(/05history/images/his2011_dt.png);}
+#history #his2013 dt {background-image:url(/05history/images/his2013_dt.png);}
+
+
+#history dd {
+	padding-left:20px;
+	margin-left:154px;
+	background-image:url(/05history/images/his_dd_bg.png);
+	background-position:0 0;
+	line-height:34px;
+}
+#history dd img {float:right;padding-left:20px;}
+
+
+#history #his1 dd { width:890px;}
+#history #his1956 dd { width:430px;}
+#history #his2 dd { width:580px; padding-right:10px;}
+#history #his1969 dd { width:360px; padding-right:10px;}
+#history #his3 dd { width:360px; padding-right:10px;}
+#history #his1970 dd { width:370px;}
+#history #his2000 dd { width:400px; padding-right:10px;}
+#history #his2002 dd { width:430px;}
+#history #his2005 dd { width:430px;}
+#history #his2011 dd { width:600px; padding-right:10px;}
+#history #his2013 dd { width:430px;}
+
+/**/
+
+#winner h3{background-image:url(/05history/images/win_h3_bg.png);}
+
+#winner ul {
+	width:1040px;
+	margin:20px auto;
+	background-image:url(/05history/images/winner_bg.png);
+	background-position:right bottom;
+	background-repeat: no-repeat;
+	}
+#winner ul li {
+	float:left;
+}
+#winner ul li#data1,
+#winner ul li#data2,
+#winner ul li#data3 {margin-right:40px;}
+#winner ul li#data1,#winner ul li#data2 { width:190px;}
+#winner ul li#data3,#winner ul li#data4 { width:270px;}
+
+
+#winner ul li dt {display:none;}
+
+
+/**/
+#winner table{
+	border-collapse: separate;
+	border-spacing: 0 5px;
+	width:100%;
+	}
+#winner table td {text-align:center;}
+
+/*ëÊÅúâÒ*/
+#winner td.col-1 {
+	width:60px;
+	font-size:14px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#BD9417;
+	padding:6px 0;
+}
+/*îNåéì˙*/
+#winner td.col-2{
+	font-size:14px;
+	padding:0 4px;
+	border-bottom:1px dotted #BBBBBB;
+}
+
+/*ñºëO*/
+#winner td.col-3{
+	font-size:15px;
+	font-weight:bold;
+	border-bottom:1px dotted #BBBBBB;
+}
+
+/*
+==========================================
+
+		àÛç¸óp
+
+==========================================
+*/
+@media print {
+}

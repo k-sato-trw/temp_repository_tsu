@@ -1,0 +1,161 @@
+/*
+===============================================
+slider内・カスタム
+===============================================*/
+.bx-wrapper {
+     position: relative;
+     margin: 0 auto 30px;
+     padding: 0;
+     *zoom: 1;
+     height:140px;
+}
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+     position: absolute;
+     width: 100%;
+}
+
+/* Pager部分 */
+
+.bx-wrapper .bx-pager {
+     text-align: center;
+     font-size: .85em;
+     font-family: Arial;
+     font-weight: bold;
+     color: #666;
+     padding-top: 5px;
+}
+
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+     display: inline-block;
+     *zoom: 1;
+     *display: inline;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a {
+     background: #fba4c1;
+     text-indent: -9999px;
+     display: block;
+     width: 20px;
+     height:20px;
+     margin: 0 10px;
+     outline: 0;
+     -moz-border-radius:10px;
+     -webkit-border-radius: 10px;
+     border-radius: 10px;
+}
+
+
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+     background: #de094f;
+}
+
+/*「Next」と「Prev」 */
+
+.bx-wrapper .bx-prev {
+     left: -20px;
+     padding-left:0px;
+}
+
+.bx-wrapper .bx-next {
+     right: -20px;
+     padding-left:0px;
+}
+
+.bx-wrapper .bx-prev:hover {
+     background-position: 0 0;
+}
+
+.bx-wrapper .bx-next:hover {
+     background-position: -43px 0;
+}
+
+.bx-wrapper .bx-controls-direction a {
+     position: absolute;
+     outline: 0;
+     width:20px;
+	 margin-top:20px;
+     height: 100px;
+     top:0;
+     text-decoration: none;
+     line-height: 120px;
+     font-size: 15px;
+     color:#898989;
+     z-index: 9999;
+     background: #999999;
+}
+
+.bx-wrapper .bx-controls-direction a.disabled {
+     display: none;
+}
+
+
+
+
+/*
+===============================================
+slider外装
+===============================================*/
+#main #topics_slider{
+	width:1060px;
+	height:160px;
+	margin-left:auto;
+	margin-right:auto;
+	background:#ffff00;
+	}
+/*
+===============================================
+slider外装
+===============================================*/
+#main #topics_slider .bxslider{
+	width:1060px;
+	height:160px;
+	text-align:center;
+	overflow:hidden;
+}
+#main #topics_slider .bxslider li{
+	overflow:hidden;
+	margin-top:10px;
+	width:1050px;
+}
+#main #topics_slider .bxslider li img{
+	margin-left:8px;
+	
+	display:inline-block;
+	*display: inline;
+	zoom: 1;
+}
+#main #topics_slider .bxslider li a{}
+#main #topics_slider .bxslider li  a:hover{
+	opacity:0.5;
+}
+/*#main #topics_slider .bxslider .size1 img{width:340px;height:140px;}
+#main #topics_slider .bxslider .size2 img{width:692px;height:140px;}
+#main #topics_slider .bxslider .size3 img{width:1050px;height:140px;}*/
+
+
+
+
+
+#main #topics_slider .bxslider_no{
+	width:1060px;
+	height:160px;
+	text-align:center;
+}
+#main #topics_slider .bxslider_no li{
+	padding-top:10px;
+	width:1050px;
+}
+#main #topics_slider .bxslider_no li img{
+	margin-left:8px;
+	
+	display:inline-block;
+	*display: inline;
+	zoom: 1;
+}
+#main #topics_slider .bxslider_no li a{}
+#main #topics_slider .bxslider_no li  a:hover{
+	opacity:0.5;
+}

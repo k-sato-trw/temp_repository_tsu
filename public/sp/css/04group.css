@@ -1,0 +1,350 @@
+
+
+/*
+==========================================
+
+			group.htm
+
+==========================================
+*/
+#main {
+	font-size:30px;
+	line-height:1.5em;
+	}
+#main a {
+	}
+
+
+
+	
+#main .page_top{
+	background-image:url(../04group/images/bk_top.png);
+	background-repeat:repeat-x;
+	}
+#main .page_top .lead{
+	background-image:url(../04group/images/bk_top_photo.png);
+	background-repeat:no-repeat;
+	margin-bottom:30px;
+	}
+#main .page_top h3{
+	background-image:url(../04group/images/page_ttl.png);
+	background-repeat:no-repeat;
+	text-indent:-9999px;
+	height:240px;
+}
+	
+
+
+
+/*-------------------------------------*/
+.main_box {
+	margin-left:auto;
+	margin-right:auto;
+	}
+	
+/*----------------------------------------------------------------------
+			申込条件
+----------------------------------------------------------------------*/
+.main_box .box01 {
+	margin-bottom:30px;
+	overflow:hidden;
+	}
+	
+.main_box .box01 .midashi {
+	line-height:50px;
+	margin-bottom:20px;
+	background-image:url(../04group/images/bk_midashi01.png);
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-align:center;
+	}
+
+
+.main_box .box01 .m01 {
+	overflow:hidden;
+	margin-bottom:20px;
+	
+	padding-bottom:150px;
+	background-image:url(../04group/images/bk_illust01.png);
+	background-repeat:no-repeat;
+	background-position:bottom center;
+}
+.main_box .box01 .m02 {
+	overflow:hidden;
+	
+	padding-bottom:150px;
+	background-image:url(../04group/images/bk_illust02.png);
+	background-repeat:no-repeat;
+	background-position:bottom center;
+}	
+
+.main_box .box01 .m01 span,
+.main_box .box01 .m02 span{
+border-bottom:2px dotted #999999;
+	}
+.main_box .box01 .m01 .mida_ic {
+	background-image:url(../04group/images/ic_m01.png);
+	background-repeat:no-repeat;
+	background-position:4px 4px;
+	
+	width:50px;
+	height:50px;
+	text-indent:-9999px;
+	float:left;
+	}
+.main_box .box01 .m02  .mida_ic{
+	background-image:url(../04group/images/ic_m02.png);
+	background-repeat:no-repeat;
+	background-position:4px 4px;
+	
+	width:40px;
+	height:50px;
+	text-indent:-9999px;
+	float:left;
+	}
+.main_box .box01 .text{
+	float:right;
+	width:610px;
+	font-size:34px;
+	line-height:1.6em;
+	/*text-shadow: 0 1px 0px #333333;  
+	-moz-box-shadow:0 1px 0px #333333;  
+	-webkit-box-shadow: 0 1px 0px #333333;  */
+	}
+.main_box .box01 .m01 br,
+.main_box .box01 .m02 br  {display:none;}
+
+	
+/*----------------------------------------------------------------------
+			特典
+----------------------------------------------------------------------*/
+.main_box .box02 {
+	margin-bottom:30px;
+	overflow:hidden;
+	}
+	
+.main_box .box02 .midashi {
+	line-height:50px;
+	margin-bottom:20px;
+	background-image:url(../04group/images/bk_midashi01.png);
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-align:center;
+	}
+
+.main_box .box02 .m01,
+.main_box .box02 .m02{
+	overflow:hidden;
+	display:block;
+	margin-bottom:20px;
+	}
+	
+.main_box .box02 .m01 .mida_ic,
+.main_box .box02 .m02 .mida_ic {
+	float:left;
+	background-image:url(../04group/images/ic_tokuten.png);
+	background-repeat:no-repeat;
+	background-position:0 4px;
+	
+	width:80px;
+	height:60px;
+	text-indent:-9999px;
+	}
+
+.main_box .box02  .text{
+	float:right;
+	width:580px;
+	font-size:34px;
+	line-height:1.3em;
+	}
+.main_box .box02  .text p{
+	font-size:26px;
+	line-height:1.5em;
+	font-weight:normal;
+	padding-left:1em;
+	text-indent:-1em;
+	}
+
+	
+/*グレードアップ*/
+.main_box .box02 .text .tokuten{
+	background-color:#90D5D5;
+	padding-bottom:10px;
+	}
+.main_box .box02  .text .tokuten h4{
+	background-image:url(../04group/images/tokuten01.png);
+	background-repeat:no-repeat;
+	
+	height:440px;
+	text-indent:-9999px;	
+	}
+	
+.main_box .box02 .text .tokuten .omi{
+	background-color:#4CC4C4;
+	
+	margin-left:20px;
+	margin-right:20px;
+	margin-bottom:10px;
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	}
+.main_box .box02  .text .tokuten li{
+	font-size:28px;
+	line-height:1.4em;
+	font-weight:normal;
+	display:block;
+	
+	padding-left:20px;
+	padding-right:2px;
+	
+	background-image:url(../04group/images/tokuten_list.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+	}
+.main_box .box02  .text .tokuten li span{
+	font-size:24px;
+	line-height:1.4em;
+	}
+	
+.main_box .box02  .text .tokuten .left{}
+.main_box .box02  .text .tokuten .left li{}
+.main_box .box02  .text .tokuten .left  p.ttl_omi{
+	background-image:url(../04group/images/tokuten_a.png);
+	background-repeat:no-repeat;
+	background-position:90px 0;
+	display:block;
+	font-size:28px;
+	line-height:40px;
+	font-weight:bold;
+}
+
+
+.main_box .box02  .text .tokuten .right{}	
+.main_box .box02  .text .tokuten .right li{}
+.main_box .box02  .text .tokuten .right  p.ttl_omi{
+	background-image:url(../04group/images/tokuten_b.png);
+	background-repeat:no-repeat;
+	background-position:90px 0;
+	display:block;
+	font-size:28px;
+	line-height:40px;
+	font-weight:bold;
+}
+
+
+
+/*----------------------------------------------------------------------
+			申込方法
+----------------------------------------------------------------------*/
+.main_box .box03 {
+	border:#003399 5px solid;
+	background-color:#003399;
+	padding-bottom:10px;
+	overflow:hidden;
+	color:#ffffff;
+	}
+	
+.main_box .box03 .midashi {
+	line-height:50px;
+	margin-bottom:10px;
+	background-image:url(../04group/images/bk_midashi02.png);
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+	text-align:center;
+	}
+
+.main_box .box03 .m01 {overflow:hidden;}
+.main_box .box03 .m01 p {
+	padding-bottom:6px;
+	padding-left:10px;
+	padding-right:10px;
+	color:#ffff00;
+	font-size:36px;
+}
+
+
+
+.main_box .box03 .m01 ul{
+	color:#00194C;
+	padding-left:10px;
+}
+
+.main_box .box03 .m01 li{
+	overflow:hidden;
+	display:block;
+	padding-bottom:6px;
+	color:#ffffff;
+	line-height:50px;
+	font-size:28px;
+}
+.main_box .box03 .m01 li a{
+	line-height:50px;
+	padding-left:40px;
+	display:block;
+	float:left;
+	color:#ffffff;
+	text-decoration:none;
+	background-image:url(../04group/images/entry01_btn.png);
+	background-repeat:no-repeat;
+	background-position:left center;
+}
+.main_box .box03 .m01 li .mida{
+	width:120px;
+	line-height:50px;
+	padding-right:6px;
+	display:block;
+	font-size:26px;
+	color:#003399;
+	text-align:center;
+	float:left;
+}
+.main_box .box03 .m01 li .text{width:510px;float:right;}
+.main_box .box03 .m01 li span{float:left;margin-right:30px;}
+.main_box .box03 .m01 li br{}
+
+
+.main_box .box03 .m01 li.ent01 {
+	background-image:url(../04group/images/bk_entry01.png);
+	background-repeat:no-repeat;	
+	font-size:36px;
+}
+.main_box .box03 .m01 li.ent02 {
+	background-image:url(../04group/images/bk_entry01.png);
+	background-repeat:no-repeat;	
+}
+.main_box .box03 .m01 li.ent03 {
+	background-image:url(../04group/images/bk_entry01.png);
+	background-repeat:no-repeat;	
+}
+
+
+
+.main_box .box03 .m02 {
+	overflow:hidden;
+	font-size:26px;
+	line-height:1.5em;
+	padding-left:10px;
+	padding-top:30px;
+}	
+.main_box .box03 .m02 li{
+	background-image:url(../04group/images/ic_list01.png);
+	background-repeat:no-repeat;
+	padding-left:20px;
+	}
+	
+
+
+
+			
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

@@ -1,0 +1,250 @@
+
+
+/*
+==========================================
+
+			info.htm
+
+==========================================
+*/
+#main a {text-decoration:none;}
+
+/*
+---------------------------------
+
+　　★ナビゲーション部分
+
+---------------------------------
+*/
+
+#info_nav{
+	width:100%;
+	height:90px;
+	margin-top:-30px;
+	margin-bottom:25px;
+	background-image:url(/sp/info/images/info_nav_bg.png);
+	background-position:190px bottom;
+	background-repeat:no-repeat;
+	}
+	
+	/*西暦見出し*/
+	#info_nav h3 {
+		line-height:114px;
+		font-size:80px;
+		color:#003399;
+		font-weight:bold;
+		float:left;
+	}
+	
+	/*西暦ボタン*/
+	#info_nav ul#btn {
+		background-image:url(/sp/info/images/info_nav_backnumber.png);
+		background-position: right top;
+		background-repeat:no-repeat;
+		padding-top:30px;
+		padding-left:50px;
+		float:right;
+	}
+		#info_nav ul#btn li{
+			width:130px;
+			float:left;
+			margin-left:5px;
+			background-image:url(/sp/info/images/info_nav_btn_bg.png);
+			background-position:right bottom;
+			background-repeat:no-repeat;
+			}
+		#info_nav ul#btn li a {
+			width:126px;
+			height:60px;
+			line-height:60px;
+			background-image:url(/sp/info/images/info_nav_btn_icon.png);
+			background-position:110px center;
+			background-repeat:no-repeat;
+			background-color:#003399;
+			border-radius:10px;
+			display:block;
+			text-align:center;
+			color:#FFFFFF;
+			font-size:30px;
+			font-weight:bold;
+
+			}
+		#info_nav ul#btn li a:hover {background-color:#FCD900; color:#003399;}
+
+/*
+---------------------------------
+
+　　★記事部分
+
+---------------------------------
+*/
+#info_wrap {
+	width:100%;
+}
+	/*NEW*/
+	#info_wrap .new {
+		width:50px;
+		height:32px;
+		background-image:url(/sp/info/images/new.png);
+		background-position:0 0;
+		background-repeat:no-repeat;
+		text-indent:-9999px;
+		position:absolute;
+		left:110px;
+		top:-2px;
+		}
+
+	#info_wrap .box_wrap {
+		background-position:left top;
+		background-repeat:no-repeat;
+		margin-bottom:10px;
+		position:relative;
+		}
+		
+	#info_wrap .box {
+		background-position:right bottom;
+		background-repeat:no-repeat;
+		
+		}
+		
+		#info_wrap .box dl {
+			width:100%;
+			min-height:40px;
+			padding:30px 0;
+			background-position:0 center;
+			background-repeat:no-repeat;
+			clear:both;
+			display:table;
+			}
+		#info_wrap .box dl dt,
+		#info_wrap .box dl dd {display:table-cell; vertical-align:middle;}
+		
+		/*日付*/
+		#info_wrap .box dt {
+			width:100px;
+			color:#666666;
+			font-size:28px;
+			font-weight:bold;
+			text-align:center;
+			padding-left:86px;
+			}
+			#info_wrap .box dt span {font-size:20px; margin-left:2px; vertical-align:0.1em; display:block;}
+
+			
+		/*タイトル*/
+		#info_wrap .box dd {
+			font-size:17px;
+			padding-left:10px;
+			padding-right:80px;
+			color:#333333;
+			line-height:1.3em;
+			font-size:32px;
+			border-left-style:solid;
+			border-left-width:1px;
+			background-position: 94% center;
+			background-repeat:no-repeat;
+			}
+			#info_wrap a .box dd {color:#314A7B;padding-right:20px;}
+			
+		/*記事用*/
+		#info_wrap .box .txt {
+			display:none;
+			font-size:28px;
+			line-height:1.6em;
+			padding:10px 80px 40px;
+			background-position:10px 0;
+			background-repeat:repeat-y;
+		}
+		#info_wrap .box .txt a {text-decoration:underline; color:#414FE5;}
+		#info_wrap .box .txt a:hover {text-decoration: none;}
+			
+			/*写真*/
+			#info_wrap .box .txt p.photo {
+				width:200px;
+				margin:0 auto;
+			}
+			#info_wrap .box .txt p.photo a {
+				display:block;
+				position:relative;
+				margin-bottom:6px;
+				}
+				#info_wrap .box .txt p.photo span {
+					width:34px;
+					height:34px;
+					display:block;
+					position:absolute;
+					background-image:url(/sp/info/images/zoom.png);
+					background-position:0 0;
+					background-repeat:no-repeat;
+					text-indent:-9999px;
+					right:4px;
+					bottom:10px;
+					}
+			/*テキスト*/
+			#info_wrap .box .txt p.txt_main {
+				word-wrap:break-word;
+				
+			}
+		
+
+/**/
+a .cate_news,
+a .cate_update,
+a .cate_important {background-color:#FFFFFF;}
+
+
+/*リンクホバー、記事用背景色*/
+.cate_news,
+a:hover .cate_news {background-color:#E6F7F7;}
+.cate_update,
+a:hover .cate_update {background-color:#EBF0FF;}
+.cate_important,
+a:hover .cate_important {background-color:#FFE5E5;}
+
+/*左上大枠背景画像*/
+.cate_news {background-image:url(/sp/info/images/news_bg_left_top.png);}
+.cate_update {background-image:url(/sp/info/images/update_bg_left_top.png);}
+.cate_important {background-image:url(/sp/info/images/impo_bg_left_top.png);}
+
+/*リンクver右下背景画像*/
+a .cate_news .box {background-image:url(/sp/info/images/news_bg_right_bottom.png);}
+a .cate_update .box {background-image:url(/sp/info/images/update_bg_right_bottom.png);}
+a .cate_important .box {background-image:url(/sp/info/images/impo_bg_right_bottom.png);}
+
+/*記事ver右下背景画像*/
+.cate_news .box {background-image:url(/sp/info/images/news_bg2_right_bottom.png);}
+.cate_update .box {background-image:url(/sp/info/images/update_bg2_right_bottom.png);}
+.cate_important .box {background-image:url(/sp/info/images/impo_bg2_right_bottom.png);}
+
+/*各見出し画像*/
+.cate_news dl {background-image:url(/sp/info/images/c_news_mida.png);}
+.cate_update dl{background-image:url(/sp/info/images/c_update_mida.png);}
+.cate_important dl{background-image:url(/sp/info/images/c_impo_mida.png);}
+
+/*タイトルプラスマイナス画像*/
+.cate_news dd {background-image: url(/sp/info/images/news_plus.png);}
+.cate_update dd{background-image: url(/sp/info/images/update_plus.png);}
+.cate_important dd{background-image: url(/sp/info/images/impo_plus.png);}
+	/*open時*/
+	.cate_news dl.open dd {background-image: url(/sp/info/images/news_minus.png);}
+	.cate_update dl.open dd{background-image: url(/sp/info/images/update_minus.png);}
+	.cate_important dl.open dd{background-image: url(/sp/info/images/impo_minus.png);}
+	/*リンクありのときは画像なし*/
+	a .cate_news dd,a .cate_update dd,a .cate_important dd {background-image:none;}
+
+/*タイトル左ボーダー色*/
+.cate_news dd {border-left-color:#05B4B4;}
+.cate_update dd{border-left-color:#7496FF;}
+.cate_important dd{border-left-color:#FF0000;}
+
+/*テキスト左ライン画像*/
+.cate_news .txt {background-image:url(/sp/info/images/news_txt_bg.png);}
+.cate_update .txt {background-image:url(/sp/info/images/update_txt_bg.png);}
+.cate_important .txt {background-image:url(/sp/info/images/impo_txt_bg.png);}
+
+
+
+
+
+
+

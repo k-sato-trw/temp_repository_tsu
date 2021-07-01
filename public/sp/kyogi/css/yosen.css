@@ -1,0 +1,221 @@
+
+#yosen_title {
+	width: 720px;
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+	font-size: 40px;
+	letter-spacing: 3px;
+	font-weight: bold;
+	}
+
+
+#yosen {
+	width: 720px;
+	padding-bottom: 20px;
+}
+#yosen #gender {
+	width: 700px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 20px;
+	height: 80px;
+	position: relative;
+	z-index: 999;
+	margin-bottom: 30px;
+}
+#yosen #gender li {
+	float: left;
+	width: 340px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#yosen #gender li a {
+	width: 340px;
+	display: block;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #FFF;
+	text-decoration: none;
+	text-align: center;
+	line-height: 80px;
+	border-radius: 40px;
+}
+#yosen #gender li#gender_male a {
+	background-color: #0BB5B5;
+}
+#yosen #gender li#gender_female a {
+	background-color: #EB496D;
+}
+#yosen h3 {
+	font-size: 40px;
+	font-weight: bold;
+	color: #4A5260;
+	line-height: 40px;
+	margin-bottom: 10px;
+	clear: both;
+	display: inline-block;
+	margin-top: -120px;
+	padding-top: 120px;
+}
+#yosen p {
+	font-size: 24px;
+	text-align: right;
+	color: #646C7F;
+	padding-right: 5px;
+	line-height: 180%;
+}
+#yosen p.yosen {
+	font-size: 32px;
+	text-align: left;
+	color: #CC0000;
+	font-weight: bold;
+	padding-left: 5px;
+	line-height: 200%;
+}
+
+#yosen p.yosen .date { font-size: 26px; padding: 0 5px;}
+
+#yosen table {
+	font-size: 30px;
+	line-height: 100%;
+	width: 719px;
+	margin-bottom: 5px;
+	clear: both;
+}
+#yosen th {
+	line-height: 100%;
+	font-size: 26px;
+	background-color: #00799E;
+	color: #FFF;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #828CA0;
+}
+#yosen th.T {
+	height: 30px;
+}
+#yosen th.B {
+	height: 30px;
+	font-size: 20px;
+}
+#yosen td {
+	height: 40px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #828CA0;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Arial, Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #D7DCE1;
+}
+#yosen td.rank {
+	width: 36px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26px;
+	font-weight: bold;
+	color: #FFF;
+	background-color: #333;
+	border-top-color: #828CA0;
+	border-right-color: #828CA0;
+	border-bottom-color: #828CA0;
+	border-left-color: #828CA0;
+}
+#yosen td.number {
+	width: 80px;
+}
+#yosen td.name {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	
+}
+#yosen td.name6 {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 26px;
+}
+#yosen td.class {
+	width: 50px;
+}
+#yosen td.class.A1 {
+	color: #F60;
+}
+#yosen td.class.A2 {
+	color: #36C;
+}
+#yosen td.rate {
+	width: 90px;
+	font-size: 36px;
+	font-weight: bold;
+	background-color: #E1F0FF;
+}
+#yosen td.rate.syoujo {
+	font-size: 30px;
+	font-weight: normal;
+}
+#yosen td.seiseki_T {
+	width: 40px;
+	font-size: 32px;
+	border-bottom-style: none;
+	height: 34px;
+	vertical-align: bottom;
+	line-height: 34px;
+}
+#yosen td.seiseki_B {
+	font-size: 32px;
+	border-top-style: none;
+	height: 34px;
+	vertical-align: top;
+	line-height: 34px;
+}
+#yosen td.D
+ {
+	font-weight: bold;
+	color: #DC3C3C;
+	font-size: 33px;
+}
+#yosen td.T
+  {
+	font-weight: bold;
+	color: #3C78F0;
+	font-size: 33px;
+}
+#yosen td.border {
+	background-color: #FF4262;
+	font-size: 1px;
+	height: 5px;
+	border-top-color: #FF4262;
+	border-right-color: #FF4262;
+	border-bottom-color: #FF4262;
+	border-left-color: #FF4262;
+	line-height: 1px;
+}
+#yosen p .D {
+	color: #DC3C3C;
+}
+#yosen p .T {
+	color: #3C78F0;
+}
+#yosen p#note {
+	width: 640px;
+	font-size: 28px;
+	line-height: 120%;
+	color: #666;
+	padding-top: 20px;
+	padding-right: 40px;
+	padding-bottom: 20px;
+	padding-left: 40px;
+	background-color: #DDD;
+	text-align: left;
+}
+
+#yosen p.memo { font-size: 28px; color: #666; text-align: center; margin-bottom: 30px;}
+
+/*　準優・優出　*/
+#yosen #memo { float: right; text-align: left;
+margin-bottom: 10px; padding-right: 20px; font-size: 26px; }
+#yosen #memo .jun { background: url(/sp/images/m_ic_01.gif) no-repeat 0px 2px; text-indent: -9999px; width: 26px; height: 29px; display: inline-block;}
+
+#yosen #memo .yu { background: url(/sp/images/m_ic_02.gif) no-repeat 0px 2px; text-indent: -9999px; width: 26px; height: 29px; display: inline-block;}

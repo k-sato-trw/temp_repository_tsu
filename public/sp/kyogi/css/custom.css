@@ -1,0 +1,436 @@
+/* ▼▼▼ベース▼▼▼ */
+
+body {
+	-webkit-tap-highlight-color: rgba(0,102,204,0.40);
+}
+
+/* フライング */
+.st_f { color:#DC3C3C;}
+
+/* データリンク */
+#link .accordion_box li a {
+	background-image: url(../images/arrow_link.png);
+}
+
+
+/* レース情報 */
+#race table {
+	color: #333;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+/* トップ枠番指定 */
+#race_mem .r1,
+#race_mem .r2,
+#race_mem .r3,
+#race_mem .r4,
+#race_mem .r5, 
+#race_mem .r6 {
+	font-family: 'Roboto',  sans-serif;
+	font-weight: bold;
+}
+#race_mem .n1,
+#race_mem .n2,
+#race_mem .n3,
+#race_mem .n4,
+#race_mem .n5,
+#race_mem .n6 {}
+
+#race_mem .r1,
+#race_mem .n1 {
+	background-color: #DEE8EF;
+	color: #000;
+}
+#race_mem .r2,
+#race_mem .n2 {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+#race_mem .r3,
+#race_mem .n3 {
+	background-color: #CC0000;
+	color: #FFFFFF;
+}
+#race_mem .r4,
+#race_mem .n4 {
+	background-color: #0066CC;
+	color: #FFFFFF;
+}
+#race_mem .r5,
+#race_mem .n5 {
+	background-color: #FFE600;
+	color: #000;
+}
+#race_mem .r6,
+#race_mem .n6 {
+	background-color: #009900;
+	color: #FFFFFF;
+}
+#race_mem .ketsu {
+	color: #666;
+}
+
+#race_num {
+	border-top-color: #0080FF;
+}
+#race_num a {
+	color: #0080FF;
+	background: -moz-linear-gradient(top, #fff, #ccc);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #999;
+	border-bottom-color: #999;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #E6E6E6;
+	border-left-color: #E6E6E6;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#race_num .end a {
+	color:#A9D4FD;
+	text-decoration: none;
+	background: -moz-linear-gradient(top, #0080FF, #75B5F5);
+	background: -webkit-gradient(linear, left top, left bottom, from(#0080FF), to(#75B5F5));
+	box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2) inset;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #0080FF;
+	border-bottom-color: #0080FF;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #75B5F5;
+	border-left-color: #75B5F5;
+}
+#race_num a:hover {
+	background-color: #EDEDED;
+	box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2) inset;
+}
+#race_num .end a:hover {
+	background-color: #060;
+	box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.4) inset;
+	-webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.4) inset;
+    -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.4) inset;
+}
+#race_num .num {
+	text-shadow: rgba(255,255,255,1.0) 0px 2px 2px;
+}
+#race_num .end .num  {
+	text-shadow: none;
+}
+#race_select {
+	background: -moz-linear-gradient(top, #75B5F5, #0080FF);
+	background: -webkit-gradient(linear, left top, left bottom, from(#75B5F5), to(#0080FF));
+}
+#num_final {
+	text-shadow: 0px -2px 2px rgba(0,0,0,0.4);
+}
+#num_select .select {
+	text-shadow: 0px -2px 2px rgba(0,0,0,0.4);
+}
+#weather {
+	color: #0080FF;
+}
+
+
+/*直前記者予想*/
+#btn_yoso a {
+	width:550px;
+	height:100px;
+	display:block;
+	line-height:104px;
+	padding-left:130px;
+	font-size:36px;
+	background-image: url(/sp/kyogi/images/btn_yoso.png);
+	background-repeat: no-repeat;
+	background-position:center;
+	background-color:#0080FF;
+	margin:30px auto 80px;
+	border-radius: 10px;
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+/*V-POWER予想*/
+#btn_Vpower a {
+	width:300px;
+	height:100px;
+	display:block;
+	line-height:104px;
+	padding-left:380px;
+	font-size:36px;
+	background-image: url(/sp/kyogi/images/btn_Vpower.png);
+	background-repeat: no-repeat;
+	background-position:center;
+	margin:0 auto 30px;
+	border-radius: 10px;
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+
+/* データリンク */
+#link .accordion_box dt {
+	color: #333;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+}
+
+
+/* フッター */
+#page_top a {
+	color: #333;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+}
+#b_top a {
+	color: #0080FF;
+	text-shadow: 0px 2px 2px rgba(255, 255, 255, 1.0);
+}
+#copyright {
+	background-color: #0080FF;
+}
+
+
+
+/* ▼▼▼競技情報データ▼▼▼ */
+
+.data h2 {
+	background: -moz-linear-gradient(top, #003468, #0054A8);
+	background: -webkit-gradient(linear, left top, left bottom, from(#003468), to(#0054A8));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+}
+.data h2.top_space {
+	margin-top: 20px;
+}
+
+
+/* 選手リンク */
+.n2 a:hover, .n3 a:hover, .n4 a:hover, .n6 a:hover  {
+	color: #FFF;
+}
+.n1 a:hover, .n5 a:hover {
+	color: #000;
+}
+
+
+/* ▼▼▼出走表▼▼▼ */
+
+#ta_shusso .replay_top a:hover,
+#ta_shusso .replay_bottom a:hover,
+#ta_shusso .replay_top a:visited,
+#ta_shusso .replay_bottom a:visited {
+	color: #666;
+}
+
+/* 出走表スライド
+#slide_next {
+	background: url(../images/arrow_right.png) no-repeat 95% center, -moz-linear-gradient(top, #6c0, #060);
+	background: url(../images/arrow_right.png) no-repeat 95% center, -webkit-gradient(linear, left top, left bottom, from(#6c0), to(#060));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+}
+#slide_next:hover {
+	background: url(../images/arrow_right.png) no-repeat 95% center, -moz-linear-gradient(top, #333, #999);
+	background: url(../images/arrow_right.png) no-repeat 95% center, -webkit-gradient(linear, left top, left bottom, from(#333), to(#999));
+}
+#slide_back {
+	background: url(../images/arrow_left.png) no-repeat 5% center, -moz-linear-gradient(top, #6c0, #060);
+	background: url(../images/arrow_left.png) no-repeat 5% center, -webkit-gradient(linear, left top, left bottom, from(#6c0), to(#060));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+}
+#slide_back:hover {
+	background: url(../images/arrow_left.png) no-repeat 5% center, -moz-linear-gradient(top, #333, #999);
+	background: url(../images/arrow_left.png) no-repeat 5% center, -webkit-gradient(linear, left top, left bottom, from(#333), to(#999));
+}
+ */
+
+
+/*今節8日間*/
+.kon_day8 td a.name2 ,
+.kon_day8 td a.name3,
+.kon_day8 td a.name4,
+.kon_day8 td a.name5 {
+	font-size: 28px;
+}
+.kon_day8 td a.name6 {
+	font-size:24px;
+}
+
+
+/* ▼▼▼オッズ▼▼▼ */
+
+#tab_odds01 li#ren3,
+#tab_odds02 li#ren3,
+#tab_odds01 li#ren3_box,
+#tab_odds02 li#ren3_box,
+#tab_odds01 li#ren2,
+#tab_odds02 li#ren2 {
+	background: -moz-linear-gradient(top, #0054A8, #003468);
+	background: -webkit-gradient(linear, left top, left bottom,  from(#0054A8), to(#003468));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ▼▼▼結果一覧▼▼▼ */
+
+.r_syousai a {
+	background: url(../images/arrow_kekka.png), -moz-linear-gradient(top, #0054A8, #003468);
+	background: url(../images/arrow_kekka.png), -webkit-gradient(linear, left top, left bottom, from(#0054A8), to(#003468));
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+
+
+/* ▼▼▼リプレイ▼▼▼ */
+
+#replay_index a {
+	background: url(../images/slide_next.png), -moz-linear-gradient(top, #0054A8, #003468);
+	background: url(../images/slide_next.png), -webkit-gradient(linear, left top, left bottom, from(#0054A8), to(#003468));
+	background-position: 97% center;
+	background-repeat:no-repeat;
+	text-shadow: rgba(0,0,0,0.4) 0px -2px 2px;
+}
+
+
+/*リプレイリスト*/
+#replay_list .accordion_box dt.plus {
+	background: url(../images/plus.png), -moz-linear-gradient(top, #0054A8, #003468);
+	background: url(../images/plus.png), -webkit-gradient(linear, left top, left bottom, from(#0054A8), to(#003468));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+#replay_list .accordion_box dt.minus {
+	background: url(../images/minus.png), -moz-linear-gradient(top, #0054A8, #003468);
+	background: url(../images/minus.png), -webkit-gradient(linear, left top, left bottom, from(#0054A8), to(#003468));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+#replay_list .accordion_box .day dt {
+	color: #0080FF;
+}
+#replay_list .accordion_box .replay_num {
+	background: #ccc;
+	padding: 10px;
+	box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1) inset;  
+    -moz-box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1) inset;
+}
+#replay_list .accordion_box .replay_num li {
+	float: left;
+	height: 100px;
+	width: 175px;
+	text-align: center;
+}
+#replay_list .accordion_box .replay_num a {
+	background: -moz-linear-gradient(top, #75B5F5, #0080FF);
+	background: -webkit-gradient(linear, left top, left bottom, from(#75B5F5), to(#0080FF));
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+}
+#replay_list .accordion_box .replay_num a:hover {
+	background: -moz-linear-gradient(top, #0080FF, #75B5F5);
+	background: -webkit-gradient(linear, left top, left bottom, from(#0080FF), to(#75B5F5));
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+#replay_list .accordion_box .replay_num a:visited {
+	color: #FFFFFF;
+}
+
+
+/*優勝戦リスト*/
+#replay_final .accordion_box dt.plus {
+	background: url(../images/plus.png), -moz-linear-gradient(top, #0054A8, #003468);
+	background: url(../images/plus.png), -webkit-gradient(linear, left top, left bottom, from(#0054A8), to(#003468));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+}
+#replay_final .accordion_box dt.minus {
+	background: url(../images/minus.png), -moz-linear-gradient(top, #003468, #0054A8);
+	background: url(../images/minus.png), -webkit-gradient(linear, left top, left bottom, from(#003468), to(#0054A8));
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+#replay_final .accordion_box .year dt {
+	color: #0080FF;
+}
+#replay_final .accordion_box .year a {
+	background: url(../images/arrow_right.png), -moz-linear-gradient(top, #75B5F5, #0080FF);
+	background: url(../images/arrow_right.png), -webkit-gradient(linear, left top, left bottom, from(#75B5F5), to(#0080FF));
+	background-position: 97% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+}
+#replay_final .accordion_box .year .date {
+	background: -moz-linear-gradient(top, #666, #999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#999));
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+
+/*ムービー*/
+#replay_movie #tab_movie li {
+	background: url(../images/play.png), -moz-linear-gradient(top, #0054A8, #003468);
+	background: url(../images/play.png), -webkit-gradient(linear, left top, left bottom, from(#0054A8), to(#003468));
+	background-position: 7% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.4);
+}
+
+/*展示リプレイボタン*/
+/*ムービー*/
+#btn_tenji_replay {
+	width: 500px;
+	height: 60px;
+	margin:16px auto 10px;
+	font-size: 36px;
+	text-align:center;
+	line-height:60px;
+	text-indent:50px;
+	color:#666666;
+	border-radius: 2em;
+	background: url(/sp/kyogi/images/play_off_s.png), -moz-linear-gradient(top, #999, #e6e6e6);
+	background: url(/sp/kyogi/images/play_off_s.png), -webkit-gradient(linear, left top, left bottom, from(#999), to(#e6e6e6));
+	background-position: 24% center;
+	background-repeat: no-repeat;
+	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+}
+#btn_tenji_replay a {
+	background: #039;
+	background: url(/sp/kyogi/images/play_s.png), -moz-linear-gradient(top, #0054A8,#003468);
+	background: url(/sp/kyogi/images/play_s.png), -webkit-gradient(linear, left top, left bottom, from(#0054A8), to(#003468));
+	background-position: 24% center;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 60px;
+	text-indent:50px;
+	display:block;
+	text-decoration: none;
+	color: #FFF;
+	border-radius: 2em;
+	text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+	-moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4), 0px 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+
+/*========================================
+ +td/モーター順位 styles
+========================================*/
+.mt_ic01 { width: 38px; height: 37px; line-height: 38px; background: url(../images/mt_ic_01.png) no-repeat top 
+; display: inline-block;}
+.mt_ic02 { width: 38px; height: 37px; line-height: 38px; background: url(../images/mt_ic_02.png) no-repeat center 
+; display: inline-block;}
+.mt_ic03 { width: 38px; height: 37px; line-height: 37px; background: url(../images/mt_ic_03.png) no-repeat center 
+; display: inline-block;}

@@ -1,0 +1,696 @@
+@charset "shift_jis";
+
+/*
+==========================================
+
+			05access.htm
+
+==========================================
+*/
+
+
+/*--------------------
+　マップエリア
+--------------------*/
+
+
+/*津詳細*/
+#map dl#tsu {
+	height:180px;
+	text-align:center;
+	background-image:url(/sp/05access/images/dl_tsu_bg.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+	#map dl#tsu dt {
+		width:340px;
+		height:50px;
+		margin:0 auto;
+		padding-top:30px;
+		text-indent:-9999px;
+		background-image:url(/sp/05access/images/dt_tsu_logo.png);
+		background-position:center bottom;
+		background-repeat:no-repeat;
+	}
+	#map dl#tsu dd p {
+		display:inline-block;
+		margin:0 10px;
+		padding-top:8px;
+		color:#FFFFFF;
+		font-weight:bold;
+	}
+		#map dl#tsu dd p span {
+			font-weight:bold;
+			color:#08B4B4;
+			margin-right:8px;
+			padding:2px 4px ;
+			height:32px;
+			line-height:34px;
+			background-color:#FFFFFF;
+			display: inline-block;
+		}
+
+/*津インクル詳細*/
+#soto {padding-top:60px;}
+#soto #head {
+	height:100px;
+	background-image:url(/sp/05access/images/dl_soto_bg.png);
+	background-position: center bottom;
+	background-repeat:no-repeat;
+}
+	#soto #soto_logo {
+		width:300px;
+		height:90px;
+		line-height:1.2em;
+		margin:0 auto;
+		padding-top:10px;
+		padding-left:290px;
+		background-image:url(/sp/05access/images/dt_soto_logo.png);
+		background-position:0 10px;
+		background-repeat:no-repeat;
+		color:#FFFFFF;
+		font-weight: bold;
+	}
+
+	/*津インクルとは*/
+	#detail{
+			position:relative;
+			padding:20px 40px;
+			background-color:#EEEEEE;
+		}
+		/**/
+		#detail p#txt {
+			font-size:28px;
+			font-weight:bold;
+			line-height:1.4em;
+			margin-bottom:20px;
+			}
+			#detail p#txt span {color: #003399;display:block; text-align:center; padding:10px 0;}
+			#detail p#txt a {
+				color: #FF6700;
+				text-decoration:none;
+				border-bottom:1px dotted #003399;
+			}
+		/**/
+		#detail #tsu_img {padding:30px 0 20px;}
+		/**/
+		#detail ul li {
+			width:180px;
+			margin-right:10px;
+			text-align:center;
+			font-size:26px;
+			font-weight:bold;
+			color:#003399;
+			float:left;
+		}
+			#detail ul li span {
+				width:180px;
+				height:30px;
+				margin-bottom:10px;
+				line-height:30px;
+				padding-top:2px;
+				text-align:center;
+				color:#FFFFFF;
+				border-radius:5px;
+				display:inline-block;
+				background-color:#003399;
+			}
+			#detail ul li span.bot {margin-bottom:20px;}
+			#detail ul li span.subdata {
+				display:inline;
+				background:none;
+				font-weight:normal;
+				font-size:24px;
+				color:#003399;
+			}
+			/**/
+			#detail dl#other {
+				width:100%;
+				margin:20px 0;
+				border-radius:5px;
+				background-color:#FCFCFC;
+			}
+				#detail dl#other dt {
+					text-align:center;
+					padding:10px 0;
+					border-bottom:2px dotted #333333;
+				}
+				#detail dl#other dd {
+					font-size:24px;
+					color:#333333;
+					line-height:1.4em;
+					padding:20px;
+				}
+
+
+
+
+
+
+/*マップ読込*/
+#map{
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+	position: relative;
+	border-bottom:40px solid #08B4B4;
+}
+#map #map_canvas {
+	width: 100%;
+	height: 420px;
+}
+
+
+
+
+
+
+/*--------------------
+　アクセス方法
+--------------------*/
+
+
+#access {
+	margin:50px auto 40px;
+}
+
+	#access #btn {}
+
+	#access #btn dt.b1,
+	#access #btn dt.b2,
+	#access #btn dt.b3,
+	#access #btn dt.b4 {
+		width:654px;
+		height:74px;
+		line-height:80px;
+		font-weight:bold;
+		border:3px solid #CCCCCC;
+		border-radius:10px;
+		background-color:#EEEEEE;
+		background-position:0 0;
+		background-repeat:no-repeat;
+		text-indent:120px;
+		font-size:34px;
+		margin-top:10px;
+	}
+	#access #btn dt.b1.active,
+	#access #btn dt.b2.active,
+	#access #btn dt.b3.active,
+	#access #btn dt.b4.active {
+		color:#FFFFFF;
+		background-color:#003399;
+		border-color:#003399;
+		background-position:0 -80px;
+		border-radius:10px 10px 0 0;
+	}
+	#access #btn dt.b1 {background-image:url(/sp/05access/images/btn_train.png);}
+	#access #btn dt.b2 {background-image:url(/sp/05access/images/btn_bus.png);}
+	#access #btn dt.b3 {background-image:url(/sp/05access/images/btn_car.png);}
+	#access #btn dt.b4 {background-image:url(/sp/05access/images/btn_ship.png);}
+
+
+	#access #btn dd#train,
+	#access #btn dd#bus,
+	#access #btn dd#car,
+	#access #btn dd#ship {
+		position:relative;
+		border:3px solid #003399;
+		border-radius: 0 0 10px 10px;
+		margin-bottom:30px;
+		padding:30px 0 40px;
+	}
+
+
+	/*電車*/
+	#train {text-align:center; position:relative;}
+
+		#train a#btn_time{
+		width:264px;
+		height:50px;
+		display:block;
+		margin:0 auto;
+		background-image:url(/sp/05access/images/car_bus_btn.png);
+		background-position:0 0;
+		background-repeat:no-repeat;
+		text-indent:-9999px;
+		z-index:100;
+		}
+
+	/*車*/
+	#car{ text-align:center;}
+
+		#car a#btn_parking{
+		width:236px;
+		height:36px;
+		display:block;
+		margin:20px auto;
+		background-image:url(/sp/05access/images/car_p_btn.png);
+		background-position:0 0;
+		background-repeat:no-repeat;
+		text-indent:-9999px;
+		z-index:100;
+		}
+
+	/*船*/
+	#ship{ text-align:center;}
+
+
+	/*バス*/
+	#access #btn dd#bus {padding-bottom:0px;}
+#bus1,#bus2,#bus3 {width:600px; margin:0 auto; /*場外専売日あり padding-bottom:30px;*/}
+
+	#bus h4 {
+		margin-bottom:20px;
+		text-align:center;
+		font-weight:bold;
+		border-radius:2em;
+		padding:10px 0;
+		color:#FFFFFF;
+		background-color:#08B4B4;
+	}
+		#bus h4 p {
+			display:inline;
+			padding-left:40px;
+			background-image:url(/sp/05access/images/bus_h4_icon.png);
+			background-position:0 center;
+			background-repeat:no-repeat;
+		}
+
+	#bus2 h4 p{line-height: 32px;}
+	 #bus h4 span {color:#FFFF00; font-size:24px;}
+
+	 	/*市内サービスバス*/
+		/*2019/1/26路線バス#bus3追加*/
+		#bus1 .text,
+		#bus3 .text{
+			line-height:1.4em;
+			padding:0 20px;
+			}
+
+		#bus1 #bus_map,
+		#bus3 #bus_map {
+			width:560px;
+			margin:0 auto 30px;
+		}
+			#bus1 #bus_map dt,
+			#bus3 #bus_map dt {
+				width:100%;
+				height:60px;
+				text-align:center;
+				color:#002CB2;
+				font-size:28px;
+			}
+			#bus1 #bus_map dt li,
+			#bus3 #bus_map dt li{
+				width:270px;
+				height:60px;
+				color:#666666;
+				line-height:60px;
+				display:block;
+				background-color:#CCCCCC;
+				border-radius:10px 10px 0 0;
+			}
+			#bus1 #bus_map dt li.active,
+			#bus3 #bus_map dt li.active {
+				color:#FFFFFF;
+				background-color:#4D71B8;
+				}
+				#bus1 #bus_map dt li.b1,
+				#bus3 #bus_map dt li.b3 {float:left;}
+				#bus1 #bus_map dt li.b2,
+				#bus3 #bus_map dt li.b4 {float:right;}
+
+
+			#bus1 #bus_map dd,
+			#bus3 #bus_map dd {
+				border:3px solid #4D71B8;
+				width:554px;
+				height:240px;
+			}
+			#bus1 #bus_map iframe,
+			#bus3 #bus_map iframe {
+				width:554px;
+				height:240px;
+				}
+
+
+
+
+		/*時刻表テーブル*/
+		#bus1 h5 {
+			background-color:#2E353C;
+			color:#FFFFFF;
+			text-align:center;
+			padding:10px 0;
+			margin-bottom:20px;
+		}
+		#bus1 #honjyo { background-color:#FF7373; padding-bottom:30px; margin-bottom:40px;}
+		#bus1 #jyogai { background-color:#2D95FF; padding-bottom:30px;}
+
+		/*ボタン*/
+		#bus1 .start,
+		#bus1 .bus_time_btn {
+			width:500px;
+			margin:0 auto;
+		}
+		#bus1 .start {
+			color:#FFFFFF;
+			text-align:center;
+			padding:10px 0;
+			line-height:1.2em;
+			margin-top:30px;
+		}
+#bus1 .start.tyoku{
+	margin-top: 0px!important;
+	background-color: #FFB8B8!important;
+	    font-size: 26px;
+	color: #000;
+	height: 90px;
+	border-top: solid 1px #000;
+	    background-image: url(/sp/05access/images/bus_icon1.png);
+    background-position: center 80px;
+    background-repeat: no-repeat;
+}
+#bus1 .start.tyoku.active{
+	    background-image: url(/sp/05access/images/bus_icon2.png);
+    background-color: #994545!important;
+    color: #FFFF00!important;
+}
+#bus1 .start.tyoku span{
+	font-size: 24px;
+}
+			#bus1 #honjyo .start {background-color:#994545;}
+			#bus1 #jyogai .start {background-color:#1B5999;}
+
+		#bus1 .start_btn{
+			background-image:url(/sp/05access/images/bus_icon3.png);
+			background-position:center 60px;
+			background-repeat:no-repeat;
+			padding:10px 0 50px;
+			}
+
+		#bus1 .bus_time_btn {
+			background-image:url(/sp/05access/images/bus_time_btn_line.png);
+			background-position:top center;
+			background-repeat:repeat-y;
+			background-color:#FFB8B8;
+		}
+		#bus1 .bus_time_btn li {
+			width:50%;
+			height:70px;
+			padding-top:10px;
+			line-height:1.2em;
+			font-size:26px;
+			float:left;
+			text-align:center;
+			background-image:url(/sp/05access/images/bus_icon1.png);
+			background-position:center 50px;
+			background-repeat:no-repeat;
+		}
+		#bus1 .bus_time_btn li.b1{
+			background-size: 30px;
+			    background-position: center;
+		}
+		#bus1 .bus_time_btn li.active {
+			background-image:url(/sp/05access/images/bus_icon2.png);
+			background-color:#994545;
+			color:#FFFF00;}
+
+		/*詳細部分*/
+		#bus1 .bus_time_cont {
+			width:500px;
+			margin:0 auto;
+			background-color:#FFFFFF;
+		}
+#bus1 .bus_time_cont2 {
+			width:500px;
+			margin:0 auto;
+			background-color:#FFFFFF;
+		}
+
+
+			/*往路復路*/
+			#bus1 .bus_time_cont dl{padding:20px 30px 10px;}
+			#bus1 .bus_time_cont dl dt{
+				background-color:#585D63;
+				color:#FFFFFF;
+				width:70px;
+				height:70px;
+				line-height:70px;
+				text-align:center;
+				float:left;
+				clear:both;
+				margin-bottom:20px;
+				}
+				#bus1 .bus_time_cont dl dd {
+					margin-bottom:20px;
+					height:70px;
+					line-height:1.2em;
+					padding-left:80px;
+					}
+				#bus1 .bus_time_cont dl dd.tyui{
+	padding-left: 0px!important;
+	font-size: 26px;
+
+}
+				#bus1 .bus_time_cont dl dd p { line-height:70px;}
+				#bus1 .bus_time_cont dl dd span {
+					padding-left:10px;
+					font-size:24px;
+					color:#666666;}
+
+			/*バス停*/
+			#bus1 .bus_time_cont .place {
+				background-color:#EEEEEE;
+				text-align:center;
+				padding:20px 0;
+				line-height:1.2em;
+				}
+				#bus1 .bus_time_cont .place span {display:block;}
+				#bus1 #honjyo .bus_time_cont .place span { color:#FF7272;}
+				#bus1 #jyogai .bus_time_cont .place span { color:#2D95FF;}
+				#bus1  .bus_time_cont .place span.tyui { color:#666666!important; font-size: 24px;}
+
+
+/*往路復路*/
+			#bus1 .bus_time_cont2 dl{padding:20px 30px 10px;}
+			#bus1 .bus_time_cont2 dl dt{
+				background-color:#585D63;
+				color:#FFFFFF;
+				width:70px;
+				height:70px;
+				line-height:70px;
+				text-align:center;
+				float:left;
+				clear:both;
+				margin-bottom:20px;
+				}
+				#bus1 .bus_time_cont2 dl dd {
+					margin-bottom:20px;
+					height:70px;
+					line-height:1.2em;
+					padding-left:80px;
+					}
+				#bus1 .bus_time_cont2 dl dd.tyui{
+	padding-left: 0px!important;
+	font-size: 26px;
+
+}
+				#bus1 .bus_time_cont2 dl dd p { line-height:70px;}
+				#bus1 .bus_time_cont2 dl dd span {
+					padding-left:10px;
+					font-size:24px;
+					color:#666666;}
+
+			/*バス停*/
+			#bus1 .bus_time_cont2 .place {
+				background-color:#EEEEEE;
+				text-align:center;
+				padding:20px 0;
+				line-height:1.2em;
+				}
+				#bus1 .bus_time_cont2 .place span {display:block;}
+				#bus1 #honjyo .bus_time_cont2 .place span { color:#FF7272;}
+				#bus1 #jyogai .bus_time_cont2 .place span { color:#2D95FF;}
+
+
+		/*注釈*/
+		#bus1 .ta_memo {
+			font-size:24px;
+			line-height:1.4em;
+			padding:0 20px 20px 20px;
+			margin-top:-10px;}
+			#bus1 .ta_memo span {color:#666666;}
+
+.add_memo{
+	    margin-top: -30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+.add_memo2{
+	padding-top: 6px;
+    font-size: 24px;
+		margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+	 	/*郊外サービスバス*/
+		#bus2 {margin-top:40px;}
+		#bus2 .text { margin-bottom:20px; line-height:1.4em;}
+
+		#bus2 .box {}
+
+			#bus2 .box h5 {
+				height:50px;
+				line-height:50px;
+				background-image:url(/sp/05access/images/bus_box_h5_bg.png);
+				background-position:0 0;
+				background-repeat: repeat;
+				text-align:center;
+				color:#333333;
+				font-weight:bold;
+			}
+			#bus2 .box table {
+				width:100%;
+				border:1px solid #585D63;
+				margin-bottom:30px;
+			}
+			#bus2 .box table th {
+				width:400px;
+				background-color:#585D63;
+				color:#FFFFFF;
+				text-align:left;
+				line-height:1.4em;
+				padding:6px 0 6px 10px;
+				border-bottom:1px solid #CCCCCC;
+			}
+				#bus2 .box table th span {color:#51F9F9; padding-right:5px;}
+
+			#bus2 .box table td {
+				border-bottom:1px solid #CCCCCC;
+				text-align:center;
+				font-weight:bold;
+				vertical-align:middle;
+			}
+			#bus2 .box table th.bot,
+			#bus2 .box table td.bot {border-bottom:none;}
+
+			/*終着:津*/
+			#bus2 .box table th.end {
+				text-align:center;
+				border-bottom:none;
+				color:#FFFFFF;
+				border:1px solid #585D63;
+				background-color:#08B4B4;
+				font-weight:bold;
+				}
+
+				#bus2 dl#other {
+				width:100%;
+				margin:20px 0;
+				border-radius:5px;
+				background-color:#E9E8E1;
+			}
+				#bus2 dl#other dt {
+					text-align:center;
+					padding:10px 0;
+					border-bottom:2px dotted #333333;
+				}
+				#bus2 dl#other dd {
+					font-size:24px;
+					color:#333333;
+					line-height:1.4em;
+					padding:20px;
+				}
+
+				/*2019/1/26追加 路線バス　#bus1と共通はその箇所に記載*/
+				#bus span.price{
+					background: #FF0;
+					color: #08B4B4;
+					padding: 3px 5px;
+					margin-left: 5px;
+					vertical-align: 2px;
+				}
+				#bus3 span.price{background: #FF9326; color: #FF0;}
+				#bus3 .text b{font-weight: bold;}
+				#bus3 .text span{font-weight: bold; color: #FF7373;}
+				#bus3 #bus_map{margin-top: 30px;}
+				#bus3 #bus_map dt{height: 80px;}
+				#bus3 #bus_map dt li{
+					height: 70px;
+					padding-top: 10px;
+					line-height: 110%;
+				}
+				#bus3 #bus_map dt li.b3{
+					height: 55px;
+					padding-top: 25px;
+				}
+				#bus3 table {
+					width: 560px;
+					margin: 20px auto;
+					border:2px solid #2E353C;
+				}
+				#bus3 table th{
+					background-color:#2E353C;
+					text-align:center;
+					color:#FFFFFF;
+					font-size:20px;
+					font-weight:bold;
+					padding:10px 0 14px;
+					font-size: 30px;
+					}
+				#bus3 table td{
+					width: 25%;
+					text-align:center;
+					padding:10px 0;
+					font-size: 26px;
+				}
+				#bus3 table td.sta1{
+					background-color:#EEEEEE;
+					line-height:1.4em;
+					vertical-align:top;
+				}
+				#bus3 table td.time1 {
+					border:1px dotted #585D63;
+					background-color:#EEEEEE;
+					font-weight: bold;
+					line-height: 1.4em;
+				}
+				#bus3 table td.mida{
+					background-color:#999;
+					color:#FFFFFF;
+					font-weight:bold;
+					width: 148px;
+				}
+				#bus3 table td:nth-child(3){border-left: 2px solid #2E353C;}
+				#bus3 a#btn_time{
+					width: 264px;
+			    height: 50px;
+			    display: block;
+			    margin: 0 auto 30px;
+			    background-image: url(/sp/05access/images/car_bus_btn.png);
+			    background-position: 0 0;
+			    background-repeat: no-repeat;
+			    text-indent: -9999px;
+			    z-index: 100;
+				}
+
+
+
+
+
+
+
+/*==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

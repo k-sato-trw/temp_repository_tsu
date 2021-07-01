@@ -1,0 +1,357 @@
+/* CSS Document */
+
+
+#main {width:680px; margin:0 auto; padding:0;-webkit-text-size-adjust: 100%;}
+
+/*========================================
+ +cal_head styles
+========================================*/
+#cal { width: 680px; margin:0 auto;}
+
+#hd { width: 680px; margin: 0; padding: 0;}
+#hd_l { width: 398px;/*width: 680px;*/ float: left;
+	background-color:#666; 
+	
+	-webkit-box-shadow: 1px 0px 3px 3px #CCC;
+	-mozt-box-shadow: 1px 0px 3px 3px #CCC;
+	box-shadow: 1px 0px 3px 3px #CCC;	
+	
+	-webkit-border-radius: 20px 20px 0 0;
+	-moz-border-radius: 20px 20px 0 0;
+	border-radius: 20px 20px 0 0;
+}
+#hd_r { width: 246px; float: right;}
+
+
+#mo {
+	width: 398px;
+	/*width:680px;*/
+	padding: 0;
+}
+
+#mo_l { width: 80px;
+height: 60px;
+	padding: 30px 0 0 0;
+	text-align: center;
+	float: left;
+	border-right: #999 solid 1px;
+}
+#mo_m {
+	width: 236px;
+	/*width:518px;*/
+	padding: 10px 0 0 0;
+	font-size: 50px;
+	line-height: 80px;
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px #999;
+	text-align: center;
+	float: left;
+}
+#mo_r { width: 80px;
+height: 60px;
+	padding: 30px 0 0 0;
+
+	text-align: center;
+	float: right;
+	border-left: #999 solid 1px;
+}
+
+#mo a { padding: 30px;}
+
+#sotomuke { 
+width: 210px;
+	 margin: 0;
+	 padding: 10px;
+	 font-size: 30px;
+	 text-align: left;
+	 line-height:60px;
+	 
+	 background-image: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#CCC));
+	 background-image: -webkit-linear-gradient(#EFEFEF,#CCC);
+	 background-image:    -moz-linear-gradient(#EFEFEF,#CCC);
+	 background-image:         linear-gradient(#EFEFEF,#CCC);
+	
+	 -webkit-box-shadow: 1px 1px 2px #999;
+	 -mozt-box-shadow: 1px 1px 2px #999;
+	 box-shadow: 1px 1px 2px #999;	
+	
+	 -webkit-border-radius: 16px;
+	 -moz-border-radius: 16px;
+	 border-radius: 16px;
+}
+
+#sotomuke a { 
+background: url(../01cal/images/com_ic05.png) no-repeat right center;
+	color: #000;
+	display: block;
+	text-decoration: none;
+}
+
+#sotomuke li.st00 p {
+	font-size:30px;
+	line-height:36px;
+	display:block;
+	padding-left:14px;
+	text-align: left;
+}
+
+#sotomuke li.st00 span {
+	font-size:24px;
+	line-height:1.2em;
+	display:block;
+	padding-left:20px;
+}
+
+
+
+
+ 
+/*========================================
+ +cal_note styles
+========================================*/
+#note {
+		width: 630px;
+		margin: 0;
+		padding: 10px 25px;
+		font-size: 26px;
+		line-height: 1.2em;
+		color: #000;
+		background: #EFEFEF;
+		position:relative;
+		}
+
+#note img { vertical-align: -6px;}
+
+
+#note #monthly,
+#note #monthly a {
+	width:230px;
+	height:70px;
+	text-indent:-9999px;
+	display:block;
+	background-image:url(../01cal/images/sp_btn_monthly.png);
+	background-repeat:no-repeat;
+	float:right;
+
+}
+#note #monthly {
+	position:absolute;
+	top:20px;
+	right:16px;
+	background-position:0 -70px;}
+#note #monthly a{background-position:0 0;}
+
+
+/*========================================
+ +cal_table styles
+========================================*/
+
+
+#note .sg { color: #FF4242;}
+#note .g1 { color: #FF860D;}
+#note .g2 { color: #8F69FF;}
+#note .g3 { color: #00C694;}
+#note .g0 { color: #2D95FF;}
+#note .gf { color: #F69;}
+
+
+.tab_container {
+	overflow: hidden;
+	clear: both;
+	float: left;
+	background: #FFF;
+	width: 348px;
+	padding: 10px;
+}
+
+
+#cal_l { width: 680px; float: left;}
+#cal_r { width: 350px; float: right;}
+
+
+/*========================================
+ +本場
+========================================*/
+#ta_hon { width: 680px; margin: 0; padding: 0;}
+
+#ta_hon th{ font-size: 28px; color: #FFF; background: #333; padding: 10px; border: 1px solid #999; text-align: center;}
+#ta_hon td{ border: 1px solid #999; font-size: 28px; line-height: 1.4em; text-align: center; vertical-align: middle; padding: 10px 0;height: 50px;}
+
+#ta_hon td a {display:block;color:#FFF;text-decoration: underline;}
+#ta_hon td a img {margin-right:5px;}
+
+/*-----------------------------------------------------------------------
+ +本場 場間場外
+------------------------------------------------------------------------*/
+#ta_hon .gai { width: 110px;}
+#ta_hon .gai3 { width: 90px;}
+#ta_hon .gai4 { width: 74px;}
+
+#ta_hon .tv { width: 50px; background-color: #F2F2F2; color: #000;}
+
+#ta_hon .tv_c {background-color:#666; color: #FFF;}
+/*
+#ta_hon .tv5-6 { background-color: #333; color: #FFF;}
+#ta_hon .tv240 { background-color: #60F; color: #FFF;}
+#ta_hon .tv015 { background-color: #066; color: #FFF;}
+*/
+
+
+/*========================================
+ +外向
+========================================*/
+#ta_sot { width: 680px; margin: 0; padding: 0;}
+
+#ta_sot th{ font-size: 28px; color: #FFF; background: #333; padding: 10px; border: 1px solid #999; text-align: center;}
+#ta_sot td{ border: 1px solid #999; font-size: 28px; line-height: 1.4em; text-align: center; vertical-align: middle; padding: 10px 0;height: 50px;}
+
+
+#ta_sot .sot { width: 142px;}
+#ta_sot .sot6 { width: 96px;}
+#ta_sot .sot7 { width: 82px;}
+#ta_sot .sot8 { width: 72px;}
+#ta_sot .sot9 { width: 64px;}
+#ta_sot .sot10 { width: 58px;}
+
+#ta_sot td img { vertical-align:bottom; }
+
+#ta_sot td a {text-decoration: underline;display:block;color:#FFF;}
+#ta_sot td a img {margin-right:5px;}
+
+/*------------------------------------------------------------------------
+　テキスト：「本場・外向」共通
+--------------------------------------------------------------------------*/
+#ta_hon .day, #ta_sot .day { width: 45px; background-color: #F2F2F2; color: #000;}
+#ta_hon .hon, #ta_sot .hon { font-size: 34px;}
+
+#ta_hon .sat, #ta_sot .sat { color: #36F;}
+#ta_hon .sun,#ta_sot .sun { color: #C00;}
+
+#ta_hon .sg ,#ta_sot .sg,
+#ta_hon .g1 ,#ta_sot .g1,
+#ta_hon .g2 ,#ta_sot .g2,
+#ta_hon .g3 ,#ta_sot .g3,
+#ta_hon .g0 ,#ta_sot .g0 { font-size: 34px; color: #000; }
+
+#ta_hon .jsg ,#ta_sot .jsg,
+#ta_hon .jg1 ,#ta_sot .jg1,
+#ta_hon .jg2 ,#ta_sot .jg2,
+#ta_hon .jg3 ,#ta_sot .jg3,
+#ta_hon .jg0 ,#ta_sot .jg0 { font-size: 28px; color: #000;line-height:1em; }
+
+
+/*中止*/
+#ta_hon .stop, #ta_sot .stop { font-size: 34px;color: #FFF;}
+#ta_hon .jstop, #ta_sot .jstop { font-size: 24px; color: #FFF;}
+#ta_hon .tsmall, #ta_sot .tsmall {font-size:24px;}
+
+/*休館*/
+#ta_hon .close, #ta_sot .close { font-size: 34px;color: #FFF;}
+
+/*------------------------------------------------------------------------
+　グレードレースカラー：「本場・外向」共通
+--------------------------------------------------------------------------*/
+#ta_hon .sg, #ta_hon .jsg, #ta_sot .sg, #ta_sot .jsg { background-color: #FF4242; color:#FFFFFF; }
+#ta_hon .g1, #ta_hon .jg1, #ta_sot .g1, #ta_sot .jg1 { background-color: #FF860D; color:#FFFFFF; }
+#ta_hon .g2, #ta_hon .jg2, #ta_sot .g2, #ta_sot .jg2 { background-color: #8F69FF; color:#FFFFFF; }
+#ta_hon .g3, #ta_hon .jg3, #ta_sot .g3, #ta_sot .jg3 { background-color: #00C694; color:#FFFFFF; }
+#ta_hon .g0, #ta_hon .jg0, #ta_sot .g0, #ta_sot .jg0 { background-color: #2D95FF; color:#FFFFFF; }
+
+/*中止*/
+#ta_hon .stop, #ta_sot .stop,
+#ta_hon .jstop, #ta_sot .jstop{background-color:#333333; color:#FF4D4D; line-height:1.2em;}
+
+/*休館*/
+#ta_hon .close, #ta_sot .close{background-color:#999;}
+
+
+/*------------------------------------------------------------------------
+　フリー
+--------------------------------------------------------------------------*/
+#ta_hon .free, 
+#ta_sot .free {background-color: #fff;font-size: 28px;color: #0C3;}
+
+
+
+
+
+
+
+/*========================================
+ +notice styles
+========================================*/
+#notice { width: 680px;
+	padding: 10px;
+	font-size: 22px;
+	line-height: 1.6em;
+	/*color: #900;*/
+}
+
+/*========================================
+ +cal_tv styles
+========================================*/
+#tv { width: 680px;
+	margin: 20px 0 50px ;
+	text-align: left;	
+}
+
+#tv ul.navi {
+	width:680px;
+	margin: 0 0 0 0;
+	padding: 0;
+	font-size: 28px;
+	line-height: 70px;
+	list-style: none;
+}
+
+#tv ul.navi li { 
+	margin: 0;
+	padding: 0;
+	color: #FFF;
+		
+	background-color:#666;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;	
+}
+
+#tv div.category {
+	margin:0 20px 0 0;
+	text-indent:30px;
+	background: url(../01cal/images/ic_n_05.png) no-repeat right;
+	cursor:pointer;
+}
+
+#tv div.open {
+	background: url(../01cal/images/ic_n_06.png) no-repeat right;
+	color: #fff;	
+}
+
+#tv ul.menu {
+	margin: 0;
+	padding: 0;	
+	list-style: none;
+	background: #F2F2F2;
+}
+
+#tv ul.menu li{ 
+	padding: 20px;
+	font-size: 24px!important;
+	line-height: 1.6em;
+	color: #333;
+	background: #F2F2F2;
+	
+	-webkit-border-radius: 0 0 0 0 !important;
+	-moz-border-radius: 0 0 0 0 !important;
+	border-radius: 0 0 0 0 !important;	
+}
+
+#tv a {
+	text-decoration:none;
+}
+
+#tv .tv0-4 { color: #666;}
+#tv .tv5-6 { color: #333;}
+#tv .tv240 { color: #60F;}
+#tv .tv015 { color: #066;}

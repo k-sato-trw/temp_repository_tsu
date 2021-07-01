@@ -1,0 +1,201 @@
+body {
+	font-size: 15px;
+	line-height: 100%;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color: #333;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	background-color: #eee;
+}
+input::-ms-clear {
+    display: none;
+}
+
+
+#login {
+	background-color: #99cc00;
+	width: 100%;
+	height: 270px;
+	margin-top: -160px;
+	top: 50%;
+	position: absolute;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+#login #login_main {
+	height: 270px;
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#login #left {
+	float: left;
+	height: 270px;
+	width: 350px;
+}
+#login #right {
+	float: right;
+	height: 250px;
+	width: 320px;
+	background-color: #eee;
+	padding-right: 40px;
+	padding-left: 40px;
+	padding-top: 20px;
+}
+#login h1 {
+	margin-bottom: 85px;
+	font-size: 32px;
+	line-height: 40px;
+	font-weight: bold;
+	text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.2);
+	margin-top: 0px;
+	color: #FFF;
+}
+#login h1 span {
+	font-size: 28.5px;
+}
+#login h1 span.CMS {
+	font-size: 105px;
+	line-height: 80px;
+	font-family: "Arial Black", Gadget, sans-serif;
+}
+#login #copyright {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3);
+	color: #FFF;
+}
+#login label {
+	font-size: 14px;
+	display: block;
+	line-height: 14px;
+	color: #333;
+}
+#login input.id_pass {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	width: 300px;
+	padding: 10px;
+	font-size: 24px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 15px;
+	line-height: 100%;
+	display: block;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) inset;
+	border: 1px solid #666;
+	ime-mode: inactive;
+}
+#login input.id_pass:focus {
+	border: 1px solid #3CC;
+	-webkit-box-shadow: 0px 0px 4px rgba(51, 204, 153, 1.0);
+	-moz-box-shadow: 0px 0px 4px rgba(51, 204, 153, 1.0);
+	box-shadow: 0px 0px 4px rgba(51, 204, 153, 1.0);
+	background-color: #fff;
+}
+#login input.login {
+	border: 0px;
+	width: 150px;
+	height: 50px;
+	margin-top: 0px;
+	margin-left: 170px;
+	background-image: url(b_login.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	cursor: pointer;
+	text-indent:-9999px;
+    font-size: 0px;
+    line-height: 0px;
+}
+#login input.login:hover {
+	background-position: 0px -50px;
+}
+
+#header {
+	width: 98%;
+	height: 30px;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	font-size: 18px;
+	line-height: 30px;
+	background-color: #333;
+	font-weight: bold;
+	color: #FFF;
+	padding-left: 2%;
+}
+
+#portal {
+	padding-top: 60px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 880px;
+}
+#portal ul {
+	width: 400px;
+	padding-right: 20px;
+	padding-left: 20px;
+	float: left;
+}
+#portal ul h1 {
+	font-size: 20px;
+	font-weight: bold;
+	color: #666;
+	text-align: center;
+	margin-bottom: 20px;
+
+}
+
+#portal li {
+	width: 400px;
+	height: 60px;
+	margin-bottom: 20px;
+}
+
+#portal li a {
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFF;
+	display: block;
+	text-align: center;
+	line-height: 60px;
+	text-decoration: none;
+	height: 60px;
+	width: 400px;
+	border-radius: 6px;
+	background-color: #39F;
+	box-shadow: 0px 6px #0055AA;
+}
+#portal a.gama {
+	background-color: #66F;
+	box-shadow: 0px 6px #0000D9;
+}
+#portal a.kisya {
+	background-color: #6C3;
+	box-shadow: 0px 6px #37711C;
+}
+#portal a.takahashi {
+	background-color: #3CC;
+	box-shadow: 0px 6px #1C7171;
+}
+#portal a.JLC {
+	background-color: #F90;
+	box-shadow: 0px 6px #9F6000;
+}
+#portal a.TRW {
+	background-color: #36C;
+	box-shadow: 0px 6px #224388;
+}
+#portal a:hover {
+	background-color: #999;
+	box-shadow: 0px 6px #666;
+}
+#portal a:active {
+	background-color: #666;
+	box-shadow: 0px 6px #333;
+}

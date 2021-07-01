@@ -1,0 +1,13 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#mobile_wrap { width:1080px; padding: 50px;}
+
+#sp { margin-bottom: 50px;}
+
+#ap { background: url(../01mobile/images/ap_back.gif) repeat-x #EEE; text-align: center;}
+
+.sb {}
+.note {}
+.sb24 { padding-bottom:20px; display: block;}
+.mark { padding: 20px 0 0 0; background: #FFF; display: block;}

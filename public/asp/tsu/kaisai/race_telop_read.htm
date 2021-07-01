@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<title></title>
+
+<link href="/kaisai/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/kaisai/css/common.css" rel="stylesheet" type="text/css">
+<link href="/kaisai/css/kaisai.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="/kaisai/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+
+function load(){
+
+	var strSrc1;
+	var objRequest1 = new XMLHttpRequest();
+
+	objRequest1.open("GET", "/asp/kyogi/09/pc/race_telop.htm");
+
+	objRequest1.setRequestHeader('Pragma', 'no-cache'); // HTTP/1.0 における汎用のヘッダフィールド
+	objRequest1.setRequestHeader('Cache-Control', 'no-cache'); // HTTP/1.1 におけるキャッシュ制御のヘッダフィールド
+	objRequest1.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT'); // 指定日時以降に更新があれば内容を返し、更新がなければ304ステータスを返す
+
+	//20150730 sukenaga ロード方法変更
+	objRequest1.onreadystatechange = function(){
+
+		if (objRequest1.readyState === 4 && objRequest1.status === 200){
+
+			strSrc1 = objRequest1.responseText;
+			
+			document.getElementById("item1").innerHTML = strSrc1;
+		}
+
+	};
+	objRequest1.send();
+
+	/*
+	objRequest1.onload = function(){
+		strSrc1 = objRequest1.response;
+		
+		document.getElementById("item1").innerHTML = strSrc1;
+
+	};
+	objRequest1.send();
+	*/
+
+	setTimeout( 'load()' , 30000 )
+
+}
+
+</script>
+
+</head>
+
+<body onload="load();">
+
+<div id="ifm_telop">
+
+<div class="item" id="item1">
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+
+
+/*
+==========================================
+
+			faq.htm
+
+==========================================
+*/
+#main {
+	font-size:30px;
+	line-height:1.5em;
+	}
+#main a {
+	}
+
+
+
+/*-------------------------------------*/
+#main .area{margin-bottom:30px;width:660px;}
+#main .area h3{
+	font-size:34px;
+	line-height:60px;
+	color:#ffffff;
+	padding-left:10px;
+	margin-bottom:20px;
+	background-color:#08B4B4;
+}
+/*#main .area li{margin-bottom:4px;}*/
+
+
+
+/*全体*/
+.box_wrap{}
+.box_wrap .box{}
+
+
+/*-----------------------------------------------
+質問
+-------------------------------------------------*/
+.box_wrap .box .questions{
+	display:block;
+	margin-bottom:10px;
+	
+	color:#057878;
+	padding-left:50px;
+	padding-top:2px;
+	padding-bottom:2px;
+	background-image:url(../faq/images/ic_quest.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+
+/*プラスマイナス画像*/
+.box_wrap .box ul{
+	width:610px;
+	padding-right:50px;
+	background-image: url(../faq/images/ic_plus.png);
+	background-repeat:no-repeat;
+	background-position:620px center;
+	background-color:#f2f2f2;
+}
+	/*open時*/
+.box_wrap .box ul.open {
+	background-image: url(../faq/images/ic_minus.png);
+	background-repeat:no-repeat;
+	background-position:620px center;
+}
+
+/*-----------------------------------------------
+回答
+-------------------------------------------------*/
+.box_wrap .box .txt{
+	background:#ffffff;
+	width:610px;
+	display:block;
+	padding-left:50px;
+	padding-bottom:20px;
+	margin-top:10px;
+	line-height:1.5em;
+	overflow:hidden;
+	word-break: break-all;
+	
+	background-image:url(../faq/images/ic_ans.png);
+	background-repeat:no-repeat;
+	background-position:0 0px;
+}
+
+
+
+.box_wrap .box .txt   br{clear:both;}
+.box_wrap .box .txt  p{float:left;}
+
+
+.box_wrap .box  .number{padding-right:40px;margin-bottom:10px;}
+.box_wrap .box .number span{
+	text-align:center;
+	background-color:#333333;
+	color:#ffffff;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:6px;
+	font-size:26px;
+	line-height:1.5em;
+	float:left;
+}
+.box_wrap .box .number .tel_width{
+	padding-left:40px;
+	padding-right:40px;
+	margin-right:10px;
+}
+.box_wrap .box .number .time_width{
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:10px;
+}
+
+.box_wrap .box .txt a{
+	color:#0040FF;
+	padding-left:40px;
+	text-decoration:none;
+	border-bottom:2px dotted #333333;
+	display:block;
+	
+	background-image:url(../faq/images/ic_btn01.png);
+	background-repeat:no-repeat;
+	background-position:0px 2px;
+	}
+.box_wrap .box .txt a:hover{
+	color:#333333;
+	background-image:url(../faq/images/ic_btn01_on.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+	}
+
+	
+.box_wrap .box .txt .set{padding-bottom:20px;}
+.box_wrap .box .txt .set_ttl{font-size:26px;text-align:center;border:1px solid #999999;}
+.box_wrap .box .txt .set_text{}
+.box_wrap .box .txt .set_text li{line-height:1.3em;	padding-left:1em;text-indent:-1em;}
+
+
+
+
+
+.box_wrap .box .txt  {display:none;}/*チェック時は消すと良い*/
+.box_wrap .box .font_small {padding-left:1em;text-indent:-1em;display:block;}
+			
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

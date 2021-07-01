@@ -1,0 +1,34 @@
+/* CSS Document */
+
+
+/*========================================
+ +policy styles
+========================================*/
+
+
+#main #midashi {
+	width: 660px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #369;
+	padding-bottom: 15px;
+	border-bottom: 2px #369 solid;
+	margin-bottom: 20px;
+}
+
+#main #notice {
+	width: 660px;
+	font-size: 28px;
+	line-height: 1.4em;
+}
+#main #center {
+	width: 660px;
+	font-size: 28px;
+	line-height: 1.4em;
+	text-align:center;
+}
+
+
+
+
+

@@ -1,0 +1,101 @@
+
+
+/*
+==========================================
+
+			sitemap.htm
+
+==========================================
+*/
+#main {
+	padding-top:50px;}
+
+#main a {
+	text-decoration:none;
+	color:#000000;
+}
+#main a:hover {
+	color:#999999;
+}
+
+#sitemap{
+	width:1080px;
+	margin:0 auto;
+}
+
+
+/**/
+
+#sitemap dl{
+	width:330px;
+	float:left;
+	padding-bottom:40px;
+}
+
+	#sitemap dt {
+		font-size:20px;
+		font-weight:bold;
+		height:40px;
+		line-height:40px;
+		color:#FFFFFF;
+		text-indent:1.5em;
+		background-image:url(/sitemap/images/dt_bg.png);
+		background-position:0 0;
+		background-repeat:no-repeat;
+	}
+	
+	#menu1,#menu2,#menu4,#menu5,#menu7{
+		margin-right:45px;
+	}
+	
+	#sitemap dd {
+		width:270px;
+		margin:0 auto;
+		padding:15px 0 10px;
+		text-indent:1em;
+		color:#CCCCCC;
+		border-bottom:1px dotted #999999;
+		background-image:url(/sitemap/images/dd_icon.png);
+		background-position:left center;
+		background-repeat:no-repeat;
+	}
+	#sitemap dd a {display:block;}
+	
+	
+/*多言語サイト*/
+#sub_menu1 {
+	width:410px;
+	float:right;
+	padding-top:80px;
+	}
+
+#sub_menu1 li {
+	width:80px;
+	float:left;
+	margin-right:20px;
+	margin-top:20px;
+	padding-bottom:4px;
+	text-indent:1.3em;
+	border-bottom:1px dotted #003399;
+	background-image:url(/sitemap/images/sub1_icon.png);
+	background-position:10px 1px;
+	background-repeat:no-repeat;
+	}
+	#sub_menu1 li a {
+		display:block;
+		color:#003399;
+	}
+	
+	#sub_menu1 li.samll {width:66px;}
+
+
+	
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

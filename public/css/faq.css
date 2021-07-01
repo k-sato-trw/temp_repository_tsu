@@ -1,0 +1,180 @@
+
+
+/*
+==========================================
+
+			group.htm
+
+==========================================
+*/
+#main {
+	padding-left:50px;
+	padding-right:50px;
+	padding-top:30px;
+	font-size:16px;
+    line-height:1.5em;
+	}
+#main a {
+	/*text-decoration:none;*/
+	/**/
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
+	}
+
+#main #faq {
+	padding-left:90px;
+	padding-right:90px;
+	}
+#main span.title {
+	color: #057878;;
+	font-weight: bold;
+}
+#main span.small {
+	font-size: 13px;
+}
+#main span.blue {
+	color:#6633FF;
+}
+#main span.blue2 {
+	color:#0099CC;
+}
+/*-------------------------------------*/
+#main .area{margin-bottom:30px;width:900px;}
+#main .area h3{
+	font-size:20px;
+	line-height:40px;
+	color:#ffffff;
+	padding-left:40px;
+	padding-bottom:10px;
+	background-image:url(../faq/images/bk_midashi01.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+/*#main .area li{margin-bottom:4px;}*/
+
+
+
+/*全体*/
+.box_wrap{}
+.box_wrap .box{}
+
+
+/*-----------------------------------------------
+質問
+-------------------------------------------------*/
+.box_wrap .box .questions{
+	display:block;
+	margin-bottom:4px;
+	padding-right:50px;
+	
+	color:#057878;
+	padding-left:30px;
+	padding-top:2px;
+	padding-bottom:2px;
+	background-image:url(../faq/images/ic_quest.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+
+/*プラスマイナス画像*/
+.box_wrap .box ul{
+	width:900px;
+	background-image: url(../faq/images/ic_plus.png);
+	background-repeat:no-repeat;
+	background-position:860px center;
+	background-color:#f2f2f2;
+}
+	/*open時*/
+.box_wrap .box ul.open {
+	background-image: url(../faq/images/ic_minus.png);
+	background-repeat:no-repeat;
+	background-position:860px center;
+}
+
+/*-----------------------------------------------
+回答
+-------------------------------------------------*/
+.box_wrap .box .txt{
+	background:#ffffff;
+	width:780px;
+	display:block;
+	margin-left:60px;
+	padding-left:30px;
+	padding-bottom:20px;
+	padding-top:2px;
+	line-height:1.5em;
+	overflow:hidden;
+	
+	background-image:url(../faq/images/ic_ans.png);
+	background-repeat:no-repeat;
+	background-position:0 0px;
+}
+
+
+
+.box_wrap .box .txt   br{clear:both;}
+.box_wrap .box .txt  p{float:left;margin-right:10px;}
+
+
+.box_wrap .box  .number{float:left;padding-right:40px;}
+.box_wrap .box .number span{
+	text-align:center;
+	background-color:#333333;
+	color:#ffffff;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:6px;
+	font-size:14px;
+}
+
+
+.box_wrap .box .txt a{
+	color:#0040FF;
+	padding:0 0 0 22px;
+	text-decoration:none;
+	border-bottom:1px dotted #333333;
+	display:block;
+	
+	background-image:url(../faq/images/ic_btn01.png);
+	background-repeat:no-repeat;
+	background-position:0px 2px;
+	}
+.box_wrap .box .txt a:hover{
+	color:#333333;
+	background-image:url(../faq/images/ic_btn01_on.png);
+	background-repeat:no-repeat;
+	background-position:0 2px;
+	}
+
+	
+.box_wrap .box .txt .set{overflow:hidden;padding-bottom:4px;width:740px;}
+.box_wrap .box .txt .set_ttl{float:left;width:120px;font-size:14px;text-align:center;background-color:#f2f2f2;border:1px solid #999999;}
+.box_wrap .box .txt .set_text{float:right;width:600px;}
+.box_wrap .box .txt .set_text li{line-height:1.3em;	padding-left:1em;text-indent:-1em;}
+
+
+.box_wrap .box .txt .bold {
+    font-weight: bold;
+}
+
+
+.box_wrap .box .txt  {display:none;}/*チェック時は消すと良い*/
+.box_wrap .box .txt .font_small {padding-left:1em;text-indent:-1em;}
+.box_wrap .box .txt .font_smallsize {font-size: 14px;}
+
+/*ul.accordion ul {display:none;}テスト用不要*/
+
+
+
+			
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

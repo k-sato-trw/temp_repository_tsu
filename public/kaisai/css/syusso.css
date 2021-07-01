@@ -1,0 +1,627 @@
+@charset "shift_jis";
+/* CSS Document */
+
+
+
+/* ▼▼▼メインメニュー▼▼▼ */
+#main_menu { width: 965px; background: url(../images/race_b_back.gif) no-repeat bottom right;}
+
+/*** 開催日ボタン ***/
+#main_menu #date_btn { width: 195px; margin-left: 15px; float: left;}
+#main_menu #date { width: 181px; height: 54px; background: url(../images/send1_back.jpg) no-repeat;}
+
+#date_l,#date_l a { width: 43px; height: 54px; background: url(../images/btn_send1.png) no-repeat; float: left; text-indent:-9999px;}
+#date_l { background-position: 0px -108px; }
+#date_l a { background-position: 0px 0px ; display:block; }
+#date_l a:hover { background-position: 0px -54px;}
+
+#date_r,#date_r a { width: 43px; height: 54px; background: url(../images/btn_send1.png) no-repeat; float: right; text-indent:-9999px;}
+#date_r { background-position: -43px -108px; }
+#date_r a { background-position: -43px 0 ; display:block; }
+#date_r a:hover { background-position: -43px -54px;}
+
+#main_menu #date_c { width: 95px; font-size: 20px; font-weight: bold;  text-align: center; float: left; line-height: 20px; padding-top: 8px;}
+#main_menu #date_c .date {font-size: 14px; display: block;}
+
+/*** レースボタン ***/
+#main_menu #race_btn {width:755px; height:60px; float: right;}
+#main_menu #race_btn li {float:left;text-indent:-9999px;}
+#main_menu #race_btn li a{display:block;height:60px;}
+#main_menu #race_btn li:hover,
+#main_menu #race_btn li.non:hover {background-position: 0 -60px; cursor:pointer;}
+#main_menu #race_btn li.select{display:block;height:60px;background-position: 0 -60px; cursor:default;}
+#main_menu #race_btn li.non {background-position: 0 -120px;}
+
+#r1 {width:66px;}
+#r12 {width:65px;}
+#r2,#r4,#r6,#r7,#r9,#r11{width:62px;}
+#r3,#r5,#r8,#r10{width:63px;}
+
+#r1{background:url(../images/btn_1r.png) 0 0 no-repeat;}
+#r2{background:url(../images/btn_2r.png) 0 0 no-repeat;}
+#r3{background:url(../images/btn_3r.png) 0 0 no-repeat;}
+#r4{background:url(../images/btn_4r.png) 0 0 no-repeat;}
+#r5{background:url(../images/btn_5r.png) 0 0 no-repeat;}
+#r6{background:url(../images/btn_6r.png) 0 0 no-repeat;}
+#r7{background:url(../images/btn_7r.png) 0 0 no-repeat;}
+#r8{background:url(../images/btn_8r.png) 0 0 no-repeat;}
+#r9{background:url(../images/btn_9r.png) 0 0 no-repeat;}
+#r10{background:url(../images/btn_10r.png) 0 0 no-repeat;}
+#r11{background:url(../images/btn_11r.png) 0 0 no-repeat;}
+#r12{background:url(../images/btn_12r.png) 0 0 no-repeat;}
+
+/* ▼▼▼レース名・電投締切・推しレースアイコン▼▼▼ */
+#race_info {
+	width:901px;
+	height:44px;
+	margin:0;
+	padding: 14px 0 0 61px;
+	background: #EEE;
+	
+}
+/*** レース名 ***/
+#race_info #name {
+	font-size:18px;
+	line-height: 37px;
+	height:34px;
+	color:#000;
+	font-weight:bold;
+	background: #FFF;
+	padding: 0 30px;
+	text-align: center;
+	float:left;
+
+	margin-right: 20px;
+	border-radius: 18px;
+}
+/*** 電投締切 ***/
+#race_info #time {
+	float:left;
+	color:#000;
+	padding-left:20px;
+	font-size:14px;
+	line-height: 34px;
+	height:34px;
+	background: url(../images/clock.gif) left center no-repeat;
+}
+#race_info #time span {
+	background: url(../images/clock2.gif) left center no-repeat;
+	margin-left: 10px;
+	padding-left: 10px; 
+}
+
+/*** 記者の推しレース01 ***/
+#race_info #oshi { width: 168px; float: right; position: relative; top: -8px; right: 0;
+}
+
+
+/* ▼▼▼コンテンツ/枠▼▼▼ */
+#main_race{ 
+	width:962px;
+	margin:0;
+	padding: 0 0 40px 0;
+	background: #EEE;
+	
+}
+
+#main_race_tn{ 
+	width:962px;
+	margin:0;
+	padding: 0 0 0 0;
+	background: #EEE;
+}
+/*** 左ボタン ***/ 
+#main_race_l { width: 45px; margin: 300px 8px 0 8px; text-align: center;  float: left; text-indent:-9999px;}
+#main_race_l,#main_race_l a { background: url(../images/btn_send2.gif) no-repeat;height: 92px;} 
+#main_race_l { background-position: 0 92px;}
+#main_race_l a { height: 92px; background-position: 0 0 ; display:block; }
+#main_race_l a:hover { background-position: 0 -92px;}
+
+/*** 右ボタン ***/ 
+#main_race_r { width: 45px; height: 92px; margin: 300px 8px 0 8px; text-align: center; background: url(../images/btn_send2.gif) no-repeat; float: right; text-indent:-9999px;}
+#main_race_r,#main_race_r a {  background: url(../images/btn_send2.gif) no-repeat; height: 92px;}
+#main_race_r { background-position: -45px 92px;}
+#main_race_r a { background-position: -45px 0 ; display:block; }
+#main_race_r a:hover { background-position: -45px -92px;}
+
+/*** コンテンツ ***/ 
+#syusso,#odds,#yoso,#st,#kekka { width: 840px; float: left;}
+
+/*** コンテンツメニュー ***/ 
+
+#main_race #race_btn_main,#main_race_tn #race_btn_main { width: 840px; height:44px; margin: 0;}
+#main_race #race_btn_main li,#main_race_tn #race_btn_main li { float:left; text-indent:-9999px; height:44px;}
+#main_race #race_btn_main li a,#main_race_tn #race_btn_main li a{ display:block; height:44px;}
+#main_race #race_btn_main li:hover,#main_race_tn #race_btn_main li:hover {background-position:0 -44px; cursor:pointer;}
+#main_race #race_btn_main li.select,#main_race_tn #race_btn_main li.select {display:block; background-position:0 -44px; cursor:default;}
+
+#btn01,#btn02,#btn03,#btn04,#btn05{ width:168px; margin:0 ;}
+#btn01 {background:url(../images/menu01.png) 0 0 no-repeat;}
+#btn02 {background:url(../images/menu02.png) 0 0 no-repeat;}
+#btn03 {background:url(../images/menu03.png) 0 0 no-repeat;}
+#btn04 {background:url(../images/menu04.png) 0 0 no-repeat;}
+#btn05 {background:url(../images/menu05.png) 0 0 no-repeat;}
+
+/*** コンテンツサブメニュー ***/ 
+#tab { width:840px;
+	padding-top: 10px;
+	margin: 0;
+	background: url(../images/menu_back.gif) repeat-x #00468C;}
+
+#tab_syusso { font-size: 16px; padding-left: 380px;}
+
+#tab_yoso { font-size: 16px; padding-left: 600px;}
+
+#tab_syusso li,#tab_odds li,#tab_yoso li 
+{ float: left; margin-right: 20px;}
+#tab_syusso li a,#tab_odds li a,#tab_yoso li a 
+{line-height: 30px; color: #FFF; text-decoration: none; display: block;}
+#tab_syusso li a:hover,#tab_odds li a:hover,#tab_yoso li a:hover 
+{ color: #FFFF00; border-bottom: 4px solid #FFFF00; line-height: 30px;}
+#tab_syusso li.select,#tab_odds li.select,#tab_yoso li.select 
+{ color: #FFFF00; border-bottom: 4px solid #FFFF00; line-height: 30px; display: block;}
+
+
+/* ▼▼▼出走表▼▼▼ */
+
+/*** テーブル ***/ 
+.ta_kyogi {width: 840px; background-color: #FFF;}
+/*** テーブル/th ***/ 
+.ta_kyogi th {
+	color: #FFF;
+	background-color: #353535;
+	font-size: 13px;
+	text-align: center;
+	border: 1px solid #777;
+	padding: 2px 0px 1px 0px;
+	line-height: 100%;
+}
+
+.ta_kyogi th.small {font-size: 10px;}
+.ta_kyogi th.small2 {font-size: 12px; line-height: 12px; padding-top: 2px;}
+.ta_kyogi th .large {font-size: 14px; line-height: 20px;}
+.ta_kyogi th.name {padding-top: 5px; width: 120px; height: 46px;}
+.ta_kyogi th.level {font-size: 10px; line-height: 12px;}
+.ta_kyogi th.name .small{font-size: 10px; line-height: 18px;
+}
+
+
+.ta_kyogi th.setsukan { font-size: 12px;line-height: 12px; padding: 2px 0;}
+.ta_kyogi th.kinsetsu {font-size: 12px; line-height: 12px;}
+.ta_kyogi th.seiseki  {width: 12px;}
+.ta_kyogi th.seiseki_8 {width: 12px;}
+
+
+.ta_kyogi th.th_syoritu { border-bottom: 1px dotted #777;}
+.ta_kyogi th.th_syoritu_no { border-top: none; white-space: nowrap;}
+
+
+/*** テーブル/F･L･平均ST ***/ 
+#heikin { width: 100%; height:60px; border-style: none;}
+#heikin th {
+	border-top-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right: 1px dotted #777;}
+#heikin th.br_no {border-right-style: none;}	 
+#heikin td {
+	font-size: 12px;
+	padding: 1px 0;
+	border-top: 1px dotted #777;
+	border-bottom-style: none;
+	border-right-style: none;
+	}
+
+
+/*** テーブル/td/ ***/ 
+.ta_kyogi td {
+	font-size: 13px;
+	text-align: center;
+	border-bottom: 1px solid #BBBBBB;
+	border-right: 1px solid #BBBBBB;
+}
+.ta_kyogi td.yoso { width: 26px;height: 64px;}
+.ta_kyogi td.waku {
+	width: 22px;
+	height:64px;	
+	font-weight: bold;
+	font-size: 18px;
+}
+/*** td/選手名 ***/ 
+.ta_kyogi td .name {
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 12px;
+	height: 20px;
+}
+
+
+/*** td/選手名6文字以上 ***/ 
+.ta_kyogi td .name6 {
+	font-size: 17px;
+	font-weight: bold;
+	padding-top: 12px;
+	height: 20px;
+}
+/*** td/選手情報 ***/
+.ta_kyogi td.number { font-size: 12px;}
+/*** td/級別 ***/
+.ta_kyogi td.class {
+	width: 20px;	
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+/*** td/F・L・ST ***/
+.ta_kyogi td.F {
+	width: 20px;	
+	font-weight: bold;
+	border-right: dotted 1px #BBBBBB;
+	border-bottom: dotted 1px #BBBBBB;
+}
+.ta_kyogi td.L {
+	width: 20px;	
+	font-weight: bold;
+	border-bottom: dotted 1px #BBBBBB;
+}
+.ta_kyogi td.ST {}
+
+/*** td/勝率・No ***/
+.ta_kyogi td.rate01 {
+	width: 35px;	
+	font-weight: bold;
+	font-size: 15px;
+	padding-top: 0px;
+	border-bottom: dotted 1px #BBBBBB;
+	border-righ-colort: #BBBBBB;
+	position: relative;
+	}
+/*** td/2連率 ***/
+.ta_kyogi td.rate02 {	
+	font-size: 15px;
+	border-top-style: none;
+	padding-bottom: 0px;
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+
+/*** td/モーター順位 ***/
+.ta_kyogi td .mt_ic01 { width: 23px; height: 22px; line-height: 25px; background: url(../images/mt_ic_01.png) no-repeat center 
+; display: inline-block;}
+.ta_kyogi td .mt_ic02 { width: 23px; height: 22px; line-height: 25px; background: url(../images/mt_ic_02.png) no-repeat center 
+; display: inline-block;}
+.ta_kyogi td .mt_ic03 { width: 23px; height: 22px; line-height: 25px; background: url(../images/mt_ic_03.png) no-repeat center 
+; display: inline-block;}
+
+
+/*** td/節間成績/着・R・進 ***/
+.ta_kyogi td.seiseki {
+	font-size: 10px;
+	color: #FFF;
+	background-color: #353535;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+/*** td/節間成績/ST ***/
+.ta_kyogi td.seiseki_bottom {
+	font-size: 10px;
+	color: #FFF;
+	background-color: #353535;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+}
+/*** td/ボーダースタイル ***/
+.ta_kyogi td.left {
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+.ta_kyogi td.right {
+	border-left-color: #BBBBBB;
+	border-right-color: #BBBBBB;
+}
+/*** td/節間成績・6日/R・データ ***/
+.ta_kyogi td.s_race {
+	width: 30px;	
+	height: 15px;
+	border-bottom-style: none;
+	padding-top: 1px;
+}
+/*** td/節間成績・8日/R・データ ***/
+.ta_kyogi td.s_race_8 {
+	width: 24px;	
+	height: 15px;
+	border-bottom-style: none;
+	padding-top: 1px;
+}
+/*** td/節間成績/進・データ ***/
+.ta_kyogi td.s_sin {	
+	font-weight: bold;
+	height: 16px;
+	border-top-style: none;
+	border-bottom-style: none;
+}
+/*** td/節間成績/ST・データ ***/
+.ta_kyogi td.s_ST {
+	height: 16px;
+	border-bottom-style: none;
+	vertical-align: middle;
+	padding-top: 2px;
+}
+/*** td/節間成績・スタートトップタイム ***/
+.ta_kyogi td.st_top { background: url(../images/st_top.gif) no-repeat center;}
+
+
+/*** td/節間成績/着・データ ***/
+.ta_kyogi td.s_cyaku {	
+	font-weight: bold;
+	color:#FFF;
+	background-color: #00B2B2;
+	height: 16px;
+	border-top-style: none;		
+}
+.ta_kyogi td.s_cyaku_no {
+	font-weight: bold;
+	color: #FFF;
+	height: 16px;
+	border-top-style: none;	
+}
+
+/*** td/早見 ***/
+.ta_kyogi td.hayami {	
+	font-size: 14px;
+	line-height: 12px;
+	font-weight: bold;
+	width:22px;
+}
+.ta_kyogi td.hayami a {
+	width: 22px;
+	margin:0 auto;
+	color: #00B2B2;
+	background-image: url(../images/b_hayami.png);
+	background-repeat: no-repeat;
+	background-position: -5px 35px;
+	display: block;
+	text-decoration: none;
+	font-size: 14px;
+	height: 48px;
+	padding-top: 10px;
+}
+.ta_kyogi td.hayami a:hover {
+	color: #009393;
+	background-position: -35px 35px;
+}
+
+#setsukan { width: 840px;}
+#setsukan .note_l { float: left;}
+#setsukan .note_r { float: right; text-align: right;}
+
+
+/***▼ 全国・当地過去3節 ▼ ***/
+.ta_kyogi th.setsu .small{font-size: 10px;}
+.ta_kyogi th.setsu .small .seiseki { color: #E1F0FB;
+}
+/*** td/節 ***/
+.ta_kyogi td.setsu {
+	width: 144px;
+	height: 22px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-bottom-style: none;
+	font-size: 12px;
+}
+
+.ta_kyogi td.setsu2 {
+	width: 144px;
+	height: 22px;
+	padding-top: 1px;
+	padding-bottom: 1px;	
+	font-size: 12px;
+}
+
+/*** td/節/グレード ***/
+.ta_kyogi td.setsu .G0,
+.ta_kyogi td.setsu .G1,
+.ta_kyogi td.setsu .G2,
+.ta_kyogi td.setsu .G3,
+.ta_kyogi td.setsu .SG {
+	width: 24px;
+	background-repeat: no-repeat;
+	height: 16px;
+	display:inline-block;
+	margin-right: 2px;
+	border-radius: 3px;
+	vertical-align:middle;
+}
+.ta_kyogi td.setsu .G0 { background-image: url(../images/kako_G0.gif);}
+.ta_kyogi td.setsu .G1 { background-image: url(../images/kako_G1.gif);}
+.ta_kyogi td.setsu .G2 { background-image: url(../images/kako_G2.gif);}
+.ta_kyogi td.setsu .G3 { background-image: url(../images/kako_G3.gif);}
+.ta_kyogi td.setsu .SG { background-image: url(../images/kako_SG.gif);}
+
+
+/***▼ モーター直近成績 ▼ ***/
+
+/*** td/節/グレード ***/
+.ta_kyogi td.setsu .G0_m,
+.ta_kyogi td.setsu .G1_m,
+.ta_kyogi td.setsu .G2_m,
+.ta_kyogi td.setsu .G3_m,
+.ta_kyogi td.setsu .SG_m {
+	width: 24px;
+	background-repeat: no-repeat;
+	height: 16px;
+	display:inline-block;
+	margin-right: 2px;
+	border-radius: 3px;
+	vertical-align:middle;
+}
+.ta_kyogi td.setsu .G0_m { background-image: url(../images/kako_G0_m.gif);}
+.ta_kyogi td.setsu .G1_m { background-image: url(../images/kako_G1_m.gif);}
+.ta_kyogi td.setsu .G2_m { background-image: url(../images/kako_G2_m.gif);}
+.ta_kyogi td.setsu .G3_m { background-image: url(../images/kako_G3_m.gif);}
+.ta_kyogi td.setsu .SG_m { background-image: url(../images/kako_SG_m.gif);}
+
+
+
+
+/*** td/節/場 ***/
+.ta_kyogi td.setsu .jo {
+	width: 42px;
+	font-size: 12px;
+	line-height: 16px;
+	color: #FFF;
+	background-color: #666666;
+	text-align: center;
+	height: 15px;
+	display:inline-block;
+	border-radius: 3px;
+	vertical-align:middle;
+	margin-right: 2px;
+}
+
+/*** td/節/期間 ***/
+.ta_kyogi td.setsu .kikan {
+	font-size: 11px;
+	line-height: 13px;
+	height: 13px;
+	display:inline-block;	
+}
+.ta_kyogi td.setsu .kikan2 {
+	font-size: 10px;
+	line-height: 13px;
+	height: 13px;
+	display:inline-block;
+}
+/*** td/節/選手名 ***/
+.ta_kyogi td.setsu .s_name {
+display:inline-block;
+	padding:0;
+	font-size: 14px;
+	line-height: 30px;
+	height: 30px;
+}
+/*** td/節/級 ***/
+.ta_kyogi td.setsu .a1,
+.ta_kyogi td.setsu .a2,
+.ta_kyogi td.setsu .b1,
+.ta_kyogi td.setsu .b2 {
+	width:20px;
+	font-size:12px;
+	height:16px;
+	line-height:16px;
+	margin-left:4px;
+	background:#6178B5;
+	display:inline-block;
+	*display: inline;  
+    *zoom: 1;  
+	text-indent:-9999px;
+	border-radius: 3px;
+}
+.ta_kyogi td.setsu .a1 {background-image: url(../images/moto_a1.gif);}
+.ta_kyogi td.setsu .a2 {background-image: url(../images/moto_a2.gif);}
+.ta_kyogi td.setsu .b1 {background-image: url(../images/moto_b1.gif);}
+.ta_kyogi td.setsu .b2 {background-image: url(../images/moto_b2.gif);}
+
+/*** td/節/結果 ***/
+.ta_kyogi td.kekka  {
+	font-size: 14px;
+	line-height: 15px;
+	height: 15px;
+	text-align: left;
+	padding-left: 2px;
+	
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	background-color: #E1F0FB;
+	color: #1E273B;
+	border-top-style: none;
+}
+.ta_kyogi td.kekka2 {
+	font-size: 15px;
+	line-height: 15px;
+	height: 15px;
+	text-align: left;
+	padding-left: 2px;
+	
+	font-weight: bold;
+	background-color: #E1F0FB;
+	color: #1E273B;
+	border-top-style: none;
+}
+.ta_kyogi td.kekka3  {
+	font-size: 13px;
+	line-height: 15px;
+	height: 15px;
+	text-align: left;
+	padding-left: 2px;
+	
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	background-color: #E1F0FB;
+	color: #1E273B;
+	border-top-style: none;
+}
+/*** td/節/結果・アイコン ***/
+.ta_kyogi td.kekka img {
+	display: inline-block;
+	padding-bottom: 1px;
+	margin-right: 1px;
+}
+.ta_kyogi td.kekka2 img {
+	display: inline-block;
+	padding-bottom: 2px;
+	margin-right: 1px;
+}
+
+
+
+
+
+
+/*■■■データ無し等■■■*/
+
+.ta_kyogi td.nodata {
+	color: #666666;
+	font-size: 18px;
+	width: 840px;
+	height: 540px;
+	vertical-align:middle;
+	font-weight: bold;
+	background-color: #D4E1E8;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.ta_kyogi td.cyushi {
+	color: #DC3C3C;
+	font-size: 16px;
+	height: 540px;
+	width: 840px;
+	font-weight: bold;
+}
+
+
+p.fast {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 10px;	
+}
+p.fast .ic { color: #FFC926; font-size: 16px;}
+p.notice {
+	color: #DC3C3C;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+p.notice2 {
+	color: #000;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.ta_kekka_all td.cyushi {
+	color: #DC3C3C;
+	font-size: 15px;
+	font-weight: bold;
+}

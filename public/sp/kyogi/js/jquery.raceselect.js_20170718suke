@@ -1,0 +1,13 @@
+
+$(function(){
+  $("#id_num_select").click(function(){
+	  
+	  //console.log('aaa');
+	  
+    $($(this).next("#racenum_btn")).animate(
+      {height: "toggle", opacity: "toggle"},
+
+      "nomal"
+    );
+  });
+});

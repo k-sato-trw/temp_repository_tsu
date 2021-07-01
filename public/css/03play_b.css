@@ -1,0 +1,678 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#contents #main { background: #7B7B7F url(../03play_b/images/pb_back.gif) !important;}
+
+
+#play_b_wrap {}
+
+
+#pb_list {
+	height: 145px;
+	text-align: center;
+	padding: 20px;
+	background: #F4F5F7;
+	position: relative;
+	}
+
+#pb_list li {
+
+	font-size: 16px;
+	line-height: 18px;
+	float: left;
+	border: #DDE3EC 10px solid;
+	margin-left: 5px;
+	margin-right: 5px;
+	position: relative;
+	}
+
+#pb_list li a {
+	width: 163px;
+	height: 84px;
+	padding: 0 0 0 7px;
+	color: #000;
+	
+	text-decoration: none;
+	display: block;
+}
+
+#pb_list li p {
+	height: 50px;
+	vertical-align: middle;
+	display: table-cell;
+	}
+	
+#pb_list li a:hover { background: #FFF;}
+
+#pb_list li .day {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #000; padding-bottom: 5px; display: block;}
+
+#pb_list li .day .gr_g0,
+#pb_list li .day .gr_g1,
+#pb_list li .day .gr_g2,
+#pb_list li .day .gr_g3,
+#pb_list li .day .gr_sg
+ {
+	 width: 40px;
+	 height: 20px;
+	 
+	 text-align: center;
+	color: #FFF;
+	background: #46A3FF;
+	margin-left: 5px;
+	border-radius: 0 0 5px 5px;
+	display: inline-block;
+}
+
+#pb_list li .day .gr_g0 {background: #46A3FF; font-size: 14px; line-height: 22px !important;}
+#pb_list li .day .gr_g1 {background: #FF860D; font-size: 16px;}
+#pb_list li .day .gr_g2 {background: #8F69FF; font-size: 16px;}
+#pb_list li .day .gr_g3 {background: #00C694; font-size: 16px;}
+#pb_list li .day .gr_sg {background: #FF4242; font-size: 16px;}
+
+
+
+#pb_list li .gr_g0_con,
+#pb_list li .gr_g1_con,
+#pb_list li .gr_g2_con,
+#pb_list li .gr_g3_con,
+#pb_list li .gr_sg_con
+ { width: 45px; height:45px; position: absolute; right: -10px; bottom: -10px;}
+
+#pb_list li .gr_g0_con { background: url(../03play_b/images/g0_corner.png) no-repeat;}
+#pb_list li .gr_g1_con { background: url(../03play_b/images/g1_corner.png) no-repeat;}
+#pb_list li .gr_g2_con { background: url(../03play_b/images/g2_corner.png) no-repeat;}
+#pb_list li .gr_g3_con { background: url(../03play_b/images/g3_corner.png) no-repeat;}
+#pb_list li .gr_sg_con { background: url(../03play_b/images/sg_corner.png) no-repeat;}
+
+
+
+#pb_list li.race {}
+
+
+
+
+iframe#pb_mov{
+	width:100%;
+	height:580px;
+	background: #003399;
+	box-shadow: 0 1px 4px #3B3F6F;
+	
+	}
+
+
+
+/*
+==========================================
+
+		映像 #movie
+
+==========================================
+*/
+
+
+#pb_mov_main { background: #003399;}
+
+#pb_mov_header {
+	background: #555555;
+	height: 70px;
+
+	
+	}
+
+
+/*
+--------------
+左右振り分け
+--------------
+*/
+#contents_left  {
+	float:left;
+	width:740px;
+	margin-right:10px;
+	}
+#contents_right {
+	float:left;
+	width:380px;
+	min-height:430px;
+	background-image:url(/kaisai/images/contents_right_bg.png);
+	background-position:0;
+	background-repeat:repeat;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	}
+
+/*
+--------------
+レース情報
+--------------
+*/
+#race_data_wrap{
+	height:70px;
+	padding:0;
+	}
+	#race_data_wrap .date,
+	#race_data_wrap .name {float:left; height:70px;}
+	#race_data_wrap .date {width:250px; position:relative;}
+	#race_data_wrap .name {}
+	
+	/*共通style[d1-d3]*/
+	#race_data_wrap .date span {
+		display:inline-block;
+		line-height:70px;
+		
+	}
+	/*日付*/
+	#race_data_wrap .date .d1 {
+		width:144px;
+		}
+	#race_data_wrap .date .d1 span { padding-left: 5px; vertical-align: -1px;}
+	/*年*/
+	#race_data_wrap .date .d2 {
+		width:70px;
+		text-align:center;
+		border-right:1px solid #999999;
+		margin-right: 5px;
+		font-size: 22px;
+		color:#FFFFFF;
+		}
+	/*グレード*/
+	#race_data_wrap .date .d3 {
+		width:70px;
+		height:70px;
+		text-indent:-9999px;
+		background-image:url(/kaisai/images/d3_no.png);
+		background-position:0;
+		background-repeat:no-repeat;
+		background-color: transparent;
+		position:absolute;
+		top:0;
+		right:-25px;
+		}
+		#race_data_wrap .date .SG {background-image: url(../03play_b/images/grade_m_sg.png);}
+		#race_data_wrap .date .G1 {background-image:url(../03play_b/images/grade_m_g1.png);}
+		#race_data_wrap .date .G2 {background-image:url(../03play_b/images/grade_m_g2.png);}
+		#race_data_wrap .date .G3 {background-image:url(../03play_b/images/grade_m_g3.png);}
+		#race_data_wrap .date .G0 {background-image:url(../03play_b/images/grade_m_g0.png);}
+	
+	/*レース名*/
+	#race_data_wrap .name span {
+		height:70px;
+		padding-left:40px;
+		line-height:70px;
+		font-size:22px;
+		
+		color:#FFFFFF;
+		display:block;
+		}
+		/*文字数小さい用*/
+		#race_data_wrap .name span.small {font-size:12px;}
+		
+
+/*
+--------------
+映像エリア
+--------------
+*/
+#race_movie_wrap {
+	width:720px;
+	padding:5px;
+	background-color:#000000;
+	position: relative;
+	z-index:1
+	}
+	/*メッセージ*/
+	#message{
+		background-color:#FFDCDC;
+		color:#D90000;
+		margin-left:100px;
+		font-weight:bold;
+		padding:6px 10px;
+		}
+	
+	/*映像
+	iframe#race_movie{ width:720px; height:405px; position:relative; z-index:1;}
+	*/
+	
+	/*天気
+	iframe#race_sub,
+	#weather{ width:720px; height:32px;}
+	*/
+
+
+/*ムービー右下Replayマーク*/
+#race_movie_wrap #replay_mark{
+	width:114px;
+	height:40px;
+	background-image:url(/kaisai/images/replay_mark.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	position:absolute;
+	right:14px;
+	bottom:2px;
+	text-indent:-9999px;
+	z-index:1000;
+	}
+
+	/*--------------
+		天候
+	--------------*/
+	#weather {
+		background-image:url(/kaisai/images/race_sub_bg.png);
+		background-position:0;
+		background-repeat:no-repeat;
+		margin-top: 2px;
+		padding-left: 40px;
+		}
+		/*共通style[w1-w4]*/
+		#weather li {
+			height:32px;
+			line-height:34px;
+			color:#FFFFFF;
+			font-size:12px;
+			float:left;
+			margin-right:30px;
+			}
+			#weather li span {
+				background-position: center right;
+				background-repeat:no-repeat;
+				padding-right:40px;
+				padding-top:4px;
+				padding-bottom:4px;
+				margin-right:2px;
+				}
+		/*○R終了時点*/
+		#weather li#w1 {width:100px; font-size:14px; line-height:40px;}
+		/*天候*/
+			/*曇*/#weather li#w2 .kumori {background-image:url(/kaisai/images/w2_kumo.png);}
+			/*晴*/#weather li#w2 .hare   {background-image:url(/kaisai/images/w2_hare.png);}
+			/*雨*/#weather li#w2 .ame    {background-image:url(/kaisai/images/w2_ame.png);}
+			/*霧*/#weather li#w2 .kiri   {background-image:url(/kaisai/images/w2_kiri.png);}
+			/*雪*/#weather li#w2 .yuki   {background-image:url(/kaisai/images/w2_yuki.png);}
+			/*台風*/#weather li#w2 .taihu {background-image:url(/kaisai/images/w2_taihu.png);}
+		/*波高*/
+			#weather li#w3 span {background-image:url(/kaisai/images/w2_nami.png);}
+		/*風*/
+			#weather li#w4 span {background-image:url(/kaisai/images/w2_kaze.png);}			
+				
+				
+/*映像はございません
+#no_movie {
+	width:720px;
+	height:405px;
+	background-image:url(/kaisai/images/no_movie.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+#no_movie p{
+	color: #FFFFFF;
+	background-image: url(/kaisai/images/no_movie.jpg);
+	font-size: 18px;
+	text-shadow: 0px 0px 3px rgba(0,0,0,1.0);
+}
+*/
+
+
+/*
+----------------------------
+データ（リプレイエリア）
+----------------------------
+*/
+	
+	/*---リプレイ出走表共通style---*/
+	
+	
+		/*リプレイ出走表テーブル*/
+		table#ta_tenji {
+			width:100%;
+			font-size:13px;
+			border-left:2px solid #333333;
+			border-right:2px solid #333333;
+			border-bottom:2px solid #333333;
+			background-color:#FFFFFF;
+			}
+			
+			table#ta_tenji th{
+				height:30px;
+				background-color:#666666;
+				color:#FFFFFF;
+				text-align:center;
+				border-left:1px dotted #999999;
+				border-right:1px dotted #999999;
+				}
+				
+			table#ta_tenji td{
+				height:45px;
+				font-size:15px;
+				text-align:center;
+				border-left:1px dotted #999999;
+				border-right:1px dotted #999999;
+				border-top:1px solid #333333;
+				border-bottom:1px solid #333333;	
+				}
+				
+			/*枠*/
+			table#ta_tenji th.waku {
+				width:34px;
+				border-left:1px solid #999999;
+				border-right:1px solid #999999;
+				}
+				table#ta_tenji td.waku {
+					font-size:18px;
+					font-weight:bold;
+					}
+
+					
+			/*選手名*/
+			table#ta_tenji th.name {
+				border-left:1px solid #999999;
+				border-right:1px solid #999999;
+				}
+				table#ta_tenji td.name {
+					border-left:1px solid #999999;
+					border-right:1px solid #999999;
+					}
+					table#ta_tenji td .name {font-size:16px; font-weight:bold; padding:2px 0;} 
+					table#ta_tenji td .name img {vertical-align:top;}
+					
+			/*データ部分*/
+			table#ta_tenji th.sin,
+			table#ta_tenji th.st,
+			table#ta_tenji th.time,
+			table#ta_tenji th.tilt { width:40px;}
+			
+			table#ta_tenji th.st {font-size:14px;}
+			table#ta_tenji th.sin,
+			table#ta_tenji th.time,
+			table#ta_tenji th.tilt {font-size:11px;}
+
+
+
+
+	/*---リプレイヘッダー（共通）---*/
+	#replay_header{}
+	
+	#replay_header,
+	#replay_syusso{
+		width:360px;
+		margin:0 auto;
+		}
+		
+
+			
+		/*リプレイページ移動ボタン*/
+		#replay_header #btn {border-bottom:10px solid #08090B;}
+			#replay_header #btn li,
+			#replay_header #btn li a {
+				width:120px;
+				height:30px;
+				display:block;
+				float:left;
+				text-indent:-9999px;
+				}
+			#replay_header #btn li {background-position:0 -60px;}
+			#replay_header #btn li a {background-position:0 0;}
+			#replay_header #btn li.active a,
+			#replay_header #btn li a:hover {background-position:0 -30px;}
+			/*出走表*/
+			#replay_header #btn .b1,
+			#replay_header #btn .b1 a{ background-image:url(/kaisai/images/replay_btn1.png);}
+			/*払い戻し*/
+			#replay_header #btn .b2,
+			#replay_header #btn .b2 a{ background-image:url(/kaisai/images/replay_btn2.png);}
+			/*結果詳細*/
+			#replay_header #btn .b3,
+			#replay_header #btn .b3 a{ background-image:url(/kaisai/images/replay_btn3.png);}
+			
+
+
+	/*---リプレイ払い戻し---*/
+	#replay_harai{
+		width:360px;
+		margin:0 auto;
+		}
+		#replay_harai table {
+			width:100%;
+			}
+			
+		/*ヘッダー*/
+		#replay_harai table th {
+			text-align:center;
+			background-color:#666666;
+			color:#FFFFFF;
+			font-size:12px;
+			padding:5px 0;
+			}
+		#replay_harai table th.th2 {
+			background-color:#444444;
+			border:1px solid #333333;
+			width:76px;
+			}
+		/*組番*/
+		#replay_harai table th.kumi{}
+		/*払戻金*/
+		#replay_harai table th.harai{
+			width:110px;
+			border-right: 1px dotted #CCCCCC;
+			border-left: 1px dotted #CCCCCC;
+			}
+		/*人気*/
+		#replay_harai table th.ninki{width:60px;}	
+		
+		
+		/*中身*/
+		#replay_harai table td {
+			border-top:1px solid #333333;
+			border-bottom:1px solid #333333;
+			padding:4px 0;
+			background-color:#FFFFFF;
+		}
+		/*組番*/
+		#replay_harai table td.kumi{
+			text-align:left;
+			padding-left:15px;
+			}
+			#replay_harai table td.kumi span {
+				width:16px;
+				height:16px;
+				line-height:16px;
+				text-align:center;
+				display:inline-block;
+				border:1px solid #000000;
+				margin:0 1px;
+				font-size:12px;
+				font-weight:bold;
+				}
+			#replay_harai table td.kumi span.l1,
+			#replay_harai table td.kumi span.l2 {
+				width:6px;
+				height:16px;
+				text-indent:-9999px;
+				background-position:center;
+				background-repeat:no-repeat;
+				border:none;
+			}
+			#replay_harai table td.kumi span.l1{ background-image:url(/kaisai/images/kumi_line1.png);}
+			#replay_harai table td.kumi span.l2{ background-image:url(/kaisai/images/kumi_line2.png);}
+			
+			
+			
+		/*払戻金*/
+		#replay_harai table td.harai{
+			background-color:#E8FFFF;
+			text-align:right;
+			padding-right:5px;
+			font-weight:bold;
+			font-size:16px;
+			border-left:1px dotted #666666;
+			border-right:1px dotted #666666;
+			}
+			#replay_harai table td.harai span {font-size:0.8em; font-weight:normal; margin-left:4px;}
+		/*人気*/
+		#replay_harai table td.ninki{ text-align:center;}
+		
+		/*返還*/
+		#replay_harai dl#henkan {
+			width:160px;
+			float:left;
+			padding-top:2px;
+		}
+			#replay_harai dl#henkan dt{
+				color:#FFFFFF;
+				float:left;
+				padding-top:2px;
+				}
+			#replay_harai dl#henkan dd{
+				float:left;
+				}
+				#replay_harai dl#henkan dd span {
+					display:inline-block;
+					width:14px;
+					height:14px;
+					font-size:13px;
+					line-height:15px;
+					border: 1px solid #000000;
+					text-align:center;
+					margin:0 1px;
+				}
+		
+		/*決まり手*/
+		#replay_harai dl#kimari {
+			width:200px;
+			/*height:19px;*/
+			line-height:1em;
+			padding:2px 0;
+			font-size:13px;
+			font-weight:bold;
+			background-image:url(/kaisai/images/kimari_bg.png);
+			background-position:0 0;
+			background-repeat:no-repeat;
+			text-align:center;
+			float:right;
+			position:relative;
+		}
+			#replay_harai #kimari dt{
+				color:#FCD900;
+				width:90px;
+				height:15px;
+				line-height:15px;
+				position: absolute;
+				top:50%;
+				left:0;
+				margin-top:-8px;
+				padding-left:10px;
+				}
+			#replay_harai #kimari dd{
+				color:#444444;
+				width:100px;
+				float:right;
+			}
+
+
+
+	/*---リプレイ結果---*/
+	#replay_kekka{
+		width:360px;
+		margin:0 auto;
+		}
+		
+		#replay_kekka table {background: none;}
+		#replay_kekka table#ta_tenji.left {width:230px; float:left;}
+		#replay_kekka table#ta_tenji.right {width:120px; float:right;}
+		#replay_kekka table th {border-top:1px solid #333333;}
+		/*枠*/
+		#replay_kekka table th.waku {width:25px;}
+		/*着*/
+		#replay_kekka table .th2 {
+			background-color:#444444;
+			border:1px solid #333333;
+			width:25px;
+			font-weight:bold;
+			}
+			#replay_kekka table td.th2 { font-size:18px; color:#FFFFFF;}
+		
+		/*レースタイム*/
+		#replay_kekka table th.time {
+			font-size:11px;
+			border-right:2px solid #333333;
+			line-height:1.2em;
+			}
+		#replay_kekka table td.time {
+			background-color:#FFFFFF;
+			padding:0 4px;
+			border-right:2px solid #333333;
+			}
+		/*隙間*/
+		#replay_kekka table th.non,
+		#replay_kekka table td.non{ background:none; border:none; width:8px;}
+		/*進入*/
+		#replay_kekka table th.sin{border-left:2px solid #333333;}
+		#replay_kekka table td.sin{
+			background-color:#FFFFFF;
+			width:32px;
+			border-left:2px solid #333333;
+			border-right: none;
+			}
+			#replay_kekka table td.sin span {
+				width:16px;
+				height:16px;
+				line-height:16px;
+				text-align:center;
+				display:block;
+				margin:0 auto;
+				border:1px solid #000000;
+				}
+		/*ST*/
+		#replay_kekka table td.ST{
+			width:32px;
+			background-color:#FFFFFF;
+			border-left:none;
+			border-right:none;
+			font-weight:bold;
+			border-left:1px dotted #999999;
+			border-right:1px dotted #999999;
+			}
+		/*決まり手*/
+		#replay_kekka table th.kimari {font-size:11px; line-height:1.2em;}
+		#replay_kekka table td.kimari{
+			background-color:#FFFFFF;
+			border-left:none;
+			border-right:none;
+			font-weight:bold;
+			font-size:13px;
+			}
+			
+		/*データございません
+		#replay_kekka_no {
+			width:356px;
+			height:300px;
+			line-height:300px;
+			color:#FFFFFF;
+			text-align:center;
+			margin:0 auto;
+			border:2px solid #000000;
+			background-color:#335199;
+		}
+			*/
+
+
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+
+}
+
+
+	
+

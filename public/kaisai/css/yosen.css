@@ -1,0 +1,237 @@
+
+#yosen { width:965px;}
+#yosen2 { width:965px;}
+
+#yosen h2,#yosen2 h2 {
+	width: 900px;
+	height: 70px;
+	background: url(../images/kaisai_yosen_t.jpg) no-repeat;
+	text-indent: -9999px;
+	margin-bottom: 30px;}
+
+#yosen h3 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #4A5260;
+	width: 200px;
+	padding-bottom: 10px;
+}
+
+#yosen #gender {
+	width: 364px;
+	float: right;
+
+
+}
+#yosen #gender li {
+	float: left;
+	width: 180px;
+	margin-left: 2px;
+}
+#yosen #gender li a {
+	width: 180px;
+	display: block;
+	height: 30px;
+	text-indent: -9999px;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+#yosen #gender li a:hover {
+	background-position: 0px -30px;
+}
+#yosen #gender li#gender_male a {
+	background-image: url(../images/yosen_male.png);
+}
+#yosen #gender li#gender_female a {
+	background-image: url(../images/yosen_female.png);
+}
+#yosen p.yosen {
+	font-size: 16px;
+	text-align: left;
+	margin-bottom: 5px;
+	color: #CC0000;
+	font-weight: bold;
+	float: left;
+	padding-top: 2px;
+	display: inline-block;
+}
+#yosen p.note {
+	font-size: 14px;
+	text-align: left;
+	margin-bottom: 5px;
+	color: #666;
+	float: right;
+	display: inline-block;
+	padding-top: 2px;
+}
+#yosen p.yosen .daet { font-size: 14px; padding: 0 2px;}
+
+
+#yosen table {
+	font-size: 14px;
+	line-height: 100%;
+	width: 965px;
+	clear: both;
+	margin-bottom: 20px;
+}
+#yosen tr {
+	background-color: #FFF;
+}
+#yosen tr:hover {
+	background-color: #E1F0FF;
+}
+#yosen th {
+	line-height: 120%;
+	font-size: 12px;
+	background-color: #00799E;
+	color: #FFF;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #828CA0;
+}
+#yosen th.T {
+	height: 18px;
+}
+#yosen th.B {
+	height: 18px;
+}
+#yosen td {
+	height: 24px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #828CA0;
+	border-right-color: #D7DCE1;
+	border-bottom-color: #828CA0;
+	border-left-color: #D7DCE1;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Arial, Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+#yosen td.rank {
+	width: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	background-color: #333;
+	border-top-color: #828CA0;
+	border-right-color: #828CA0;
+	border-bottom-color: #828CA0;
+	border-left-color: #828CA0;
+}
+#yosen td.number {
+	width: 44px;
+}
+#yosen td.name {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	
+}
+#yosen td.class {
+	width: 32px;
+}
+#yosen td.class.A1 {
+	color: #F60;
+}
+#yosen td.class.A2 {
+	color: #36C;
+}
+#yosen td.rate {
+	width: 60px;
+	font-size: 18px;
+	font-weight: bold;
+}
+#yosen td.kaisu {
+	width: 36px;
+}
+#yosen td.ten {
+	width: 34px;
+}
+#yosen td.time {
+	width: 52px;
+}
+#yosen td.seiseki_L {
+	width: 24px;
+	font-size: 16px;
+	border-right-style: none;
+}
+#yosen td.seiseki_R {
+	width: 24px;
+	font-size: 16px;
+	border-left-style: none;
+}
+#yosen td.D {
+	font-weight: bold;
+	color: #DC3C3C;
+}
+#yosen td.T {
+	font-weight: bold;
+	color: #3C78F0;
+}
+#yosen td.biko01 {
+	width: 114px;
+	font-size: 12px;
+	text-align: left;
+	padding-right: 4px;
+	padding-left: 4px;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+#yosen td.biko02 {
+	width: 36px;
+	font-size: 12px;
+	border-right-color: #828CA0;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+#yosen td.border {
+	background-color: #FF4262;
+	font-size: 1px;
+	height: 2px;
+	border-top-color: #FF4262;
+	border-right-color: #FF4262;
+	border-bottom-color: #FF4262;
+	border-left-color: #FF4262;
+	line-height: 1px;
+}
+
+#yosen #memo { float: right; text-align: left;
+margin-bottom: 50px; }
+#yosen #memo .jun { background: url(../images/m_ic_01.gif) no-repeat 0px -1px; text-indent: -9999px; width: 14px; height: 14px; display: inline-block;}
+
+#yosen #memo .yu { background: url(../images/m_ic_02.gif) no-repeat 0px -1px; text-indent: -9999px; width: 14px; height: 14px; display: inline-block;}
+
+
+
+#yosen #note {
+	font-size: 11px;
+	color: #FFF;
+	line-height: 100%;
+	background-color: #646E82;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	clear: both;
+}
+#yosen .day7 td.seiseki_L,
+#yosen .day7 td.seiseki_R {
+	width: 26px;
+}
+#yosen .day8 td.seiseki_L,
+#yosen .day8 td.seiseki_R {
+	width: 22px;
+}
+
+
+
+
+/*■■■データ無し等■■■*/
+#yosen2 .ta_kyogi td.nodata {
+	width: 965px;
+	height: 540px;
+	
+}

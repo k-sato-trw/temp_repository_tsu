@@ -1,0 +1,513 @@
+
+
+/*
+==========================================
+
+			01cal.htm
+
+==========================================
+*/
+
+/*
+---------------------------------
+
+　　★ナビゲーション部分
+
+---------------------------------
+*/
+
+#cal_nav{
+	width:100%;
+	background-image:url(../01cal/images/cal_nav_bg.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	/*background-color:#FFFFFF;*/
+	padding-bottom:50px;
+	}
+	#cal_nav.fixed {
+		width:1180px;
+		background-image:url(../01cal/images/cal_nav_bg2.png);
+		position:fixed;
+		top:0;
+	}
+
+/*
+---------------------------------
+　　　月ボタン
+---------------------------------
+*/
+#cal_nav ul#btn {
+	width:580px;
+	float:left;
+	padding-left:60px;
+	padding-top:20px;
+}
+	#cal_nav.fixed ul#btn { padding-top:10px;}
+	
+	#cal_nav ul#btn li,
+	#cal_nav ul#btn li a {
+		width:125px;
+		height:90px;
+		line-height:1.4em;
+		display:block;
+		font-size:50px;
+		text-align:center;
+		font-weight:bold;
+		background-image:url(../01cal/images/cal_nav_li_bg.png);
+		background-color:#FFFFFF;
+		background-repeat:no-repeat;
+		text-decoration:none;
+		}
+	
+	#cal_nav ul#btn li {
+		margin-left:20px;
+		float:left;
+		color:#CCCCCC;
+		background-position:0 -90px;
+	}
+	#cal_nav ul#btn li a {
+		background-position:0 0;
+		color:#003399;
+			/**/
+			-webkit-transition: 0.2s ease-in-out;
+			-moz-transition: 0.2s ease-in-out;
+			-o-transition: 0.2s ease-in-out;
+			transition: 0.2s ease-in-out;
+	}
+	#cal_nav ul#btn li a:hover {
+		background-color:#003399;
+		color:#FFFFFF;
+		}
+		
+	/*月サイズ調整*/
+	#cal_nav ul#btn li span.mon{
+		font-size:30px;
+		}
+	#cal_nav ul#btn li span.mon2{
+		font-size:16px;
+		font-weight:normal;
+		margin-top:-22px;
+		display:block;
+		height:20px;
+		line-height:20px;
+		}
+	#cal_nav ul#btn li a span.mon2{color:#99ADD6;}
+
+
+/*
+---------------------------------
+　　　右側色々
+---------------------------------
+*/
+#memo{
+	width:460px;
+	height:60px;
+	padding-left:25px;
+	padding-top:50px;
+	float:left;
+	}
+#memo img {float:left; margin-bottom:5px;}
+
+/*
+---------------------------------
+　　　アイコン説明
+---------------------------------
+*/
+#cal_nav ul#icon{
+	width:220px;
+	height:40px;
+	padding-top:4px;
+	}
+
+#cal_nav ul#icon li{
+	width:90px;
+	height:20px;
+	padding-left:18px;
+	font-size:12px;
+	float:left;
+	background-position:0 0;
+	background-repeat:no-repeat;
+	
+}
+#cal_nav ul#icon li.i_night{ background-image:url(/01cal/images/memo_i_night.png);}
+#cal_nav ul#icon li.i_jyoshi{ background-image:url(/01cal/images/memo_i_jyoshi.png);}
+#cal_nav ul#icon li.i_hakubo{ background-image:url(/01cal/images/memo_i_hakubo.png);}
+#cal_nav ul#icon li.i_tenbo{ background-image:url(/01cal/images/memo_i_tenbo.png);}
+
+/*
+---------------------------------
+　　　TVボタン
+---------------------------------
+*/
+#cal_nav ul#tv {
+	width:240px;
+	float:right;
+	margin-top:-44px;
+	/*float:right;*/
+	/*padding-right:50px;*/
+	/*padding-top:120px;*/
+}
+	#cal_nav ul#tv li {
+		height:60px;
+		border-radius:5px 5px 0 0;
+		text-align:center;
+		font-weight:bold;
+		margin-left:10px;
+		color:#666666;
+		background-image:url(../01cal/images/tv_mark.png);
+		background-position:center 46px;
+		background-repeat:no-repeat;
+		background-color:#FFFFFF;
+		float:left;
+		cursor:pointer;
+			/**/
+			-webkit-transition: 0.1s ease-in-out;
+			-moz-transition: 0.1s ease-in-out;
+			-o-transition: 0.1s ease-in-out;
+			transition: 0.1s ease-in-out;
+	}
+		#cal_nav ul#tv li:hover {background-color:#999999; color:#FFFFFF;}
+		#cal_nav ul#tv li.active {
+			background-color:#EEEEEE;
+			color:#666666;
+			padding-bottom:5px;
+			border-color:#EEEEEE;
+			border-bottom:none;
+			border-radius:5px 5px 0 0;
+			}
+	#cal_nav ul#tv li#tv1 {
+		width:76px;
+		height:50px;
+		padding-top:10px;
+		line-height:1.2em;
+		font-size:13px;
+		
+		}
+	#cal_nav ul#tv li#tv2 {
+		width:136px;
+		line-height:48px;
+		font-size:14px;
+		}
+		
+/*テレビ詳細*/
+.tv_con {
+	width:100%;
+	padding:15px 0;
+	background-image:url(/01cal/images/cal_tv_bg.png);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	padding-bottom:30px;
+	display:none;
+	margin-bottom:10px;
+
+	}
+	/*有料中継詳細*/
+#tv1_main ul{margin-left: 280px;}
+
+	#tv1_main ul li{
+		width:108px;
+		height:40px;
+		float:left;
+		margin-left:20px;
+
+		}
+		#tv1_main ul li dl dt {
+			width:24px;
+			height:24px;
+			margin:8px 6px 8px 0;
+			line-height:24px;
+			display:inline-block;
+			background-color:#8DA4D2;
+			color:#FFFFFF;
+			font-weight:bold;
+			font-size:16px;
+			text-align:center;
+			float:left;
+			}
+		#tv1_main ul li dl dd {
+			color:#666666;
+			font-size:15px;
+			font-weight:bold;
+			line-height:40px;
+			float:left;
+		}
+		#tv1_main ul li dl dd.line2{line-height:1.2em;}
+		
+	/*津オフィシャル番組*/
+	#tv2_main {
+		text-align:center;
+		position:relative;
+		padding:20px 0px 40px;}
+		
+		/*番組ボタン*/
+		#tv2_main .btn a{
+			width:160px;
+			height:21px;
+			display:block;
+			background-image:url(../01cal/images/tv2_main_btn.png);
+			background-position:0 0;
+			background-repeat:no-repeat;
+			position:absolute;
+			text-indent:-9999px;
+		}
+		#tv2_main .btn a:hover {background-position:0 -21px;}
+		#tv2_main .btn.b1 a {left:100px; top:328px;}
+		#tv2_main .btn.b2 a {left:710px; top:310px;}
+		
+
+
+/*
+---------------------------------
+
+　　★カレンダー部分
+
+---------------------------------
+*/
+#cal_wrap {
+	width:1080px;
+	margin:0 auto;
+}
+.cal {
+	padding-bottom:40px;
+	margin-top:-200px;/*アンカー用*/
+    padding-top:200px;/*アンカー用*/
+	}
+
+/*タイトル（月）*/
+.cal h3 {
+	height:60px;
+	line-height:60px;
+	margin-top:-20px;
+	padding-left:20px;
+	font-size:60px;
+	color:#333333;
+	font-weight:bold;
+}
+	.cal h3 p {font-size:30px; display:inline-block;}
+	.cal h3 p span { font-weight:normal;font-size:18px; margin-left:10px;}
+
+
+
+/*テーブル*/
+.cal table {}
+.cal table th { width:; text-align:center; font-weight:bold;}
+.cal table td { width:29px; text-align:center;word-break: break-all}
+
+/*テーブル幅*/
+/*31日用*/.cal table.day31 { width:1080px;}
+/*30日用*/.cal table.day30 { width:1050px;}
+/*29日用*/.cal table.day29 { width:1020px;}
+/*28日用*/.cal table.day28 { width:990px;}
+
+
+/*日付上　青ライン*/
+.cal tr.cal_top td {
+	background-color:#003399;
+	height:10px;
+	font-size:0;
+	line-height:0;
+}
+/*本場、場外の間の空き調整*/
+.cal th.space {
+	height:20px;
+	font-size:0;
+	line-height:0;
+	}
+/*注釈*/
+.cal tr.attention td { text-align:right; color:#333; padding-top:10px;}
+	
+/*
+---------------------------------
+　　　thスタイル
+---------------------------------
+*/
+/*本場*/
+th.honjyo {
+	background-color:#003399;
+	color:#FCD900;
+	font-size:20px;
+	padding:30px 0;
+	background-image:url(../01cal/images/th_honjyo_bg.png);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+}
+/*有料中継*/
+tr.tv th {
+	height:25px;
+	color:#728CC6;
+	font-weight:normal;
+	background-color:#E8F3FF;
+	border:1px solid #CCCCCC;
+}
+/*場外発売*/
+tr.race_name th.tajyo_all {
+	width:30px;
+	background-color:#666666;
+	color:#FFFFFF;
+	line-height:1.2em;
+	}
+/*本場内、津インクル*/
+th.tajyo_sub {
+	color:#444444;
+	background-color:#EEEEEE;
+	font-size:16px;
+	line-height:1.2em;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	}
+	/*[外向発売所]*/
+	th.tajyo_sub span {
+		display:block;
+		font-size:13px;
+		font-weight:normal!important;
+		}
+
+
+/*
+---------------------------------
+　　マンスリーボートレース
+---------------------------------
+*/
+tr.cal_top th {
+	background-image:url(../01cal/images/monthly_bg.png);
+	background-position:right bottom;
+	background-repeat: no-repeat;
+	}
+tr.cal_top th div,
+tr.cal_top th div a {
+	text-indent:-9999px;
+	display:block;
+	width:118px;
+	height:35px;
+	margin:0 auto;
+	background-image:url(../01cal/images/btn_monthly.png);
+	background-repeat:no-repeat;
+}
+tr.cal_top th div {background-position:0 -70px;}
+tr.cal_top th div a {
+	background-position:0 0;
+		/**/
+		-webkit-transition: 0.1s ease-in-out;
+		-moz-transition: 0.1s ease-in-out;
+		-o-transition: 0.1s ease-in-out;
+		transition: 0.1s ease-in-out;
+	}
+tr.cal_top th div a:hover {background-position:0 -35px;}
+
+
+
+/*
+---------------------------------
+　　　日付
+---------------------------------
+*/
+tr.date td {
+	color:#555555;
+	padding:6px 0;
+	vertical-align:middle;
+	font-size:16px;
+	font-weight:bold;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	}
+/*場外*/
+tr.jyogai.date td {
+	font-size:13px;
+	color:#333333;
+	background-color:#EEEEEE;
+	padding:2px 0 0 0;
+	line-height:1em;
+	font-weight: normal;
+}
+
+/*
+---------------------------------
+　　　曜日
+---------------------------------
+*/
+tr.day td {
+	color:#666666;
+	padding-bottom:6px;
+	vertical-align:middle;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	}
+/*場外*/
+tr.jyogai.day td {
+	font-size:11px;
+	color:#333333;
+	background-color:#EEEEEE;
+	padding-bottom:0;
+}
+
+
+/*
+---------------------------------
+　　　　有料中継
+---------------------------------
+*/
+tr.tv td {
+	border:1px solid #CCCCCC;
+	background-color:#E8F3FF;
+	}
+tr.tv td.tv {
+	font-size:16px;
+	font-weight:bold;
+	background-color:#8DA4D2;
+	color:#FFFFFF;
+	border-left-color:#FFFFFF!important;
+	border-right-color:#FFFFFF!important;
+	}
+
+
+
+/*
+---------------------------------
+　　　　レース名
+---------------------------------
+*/
+
+tr.race_name td {
+	color:#FFFFFF;
+	padding:6px 0;
+	line-height:1.4em;
+	vertical-align:middle;
+	border:1px solid #CCCCCC;
+	
+	}
+	tr.race_name td img {vertical-align: text-bottom;}
+	
+/*場外*/
+tr.jyogai.race_name td {font-size:13px;line-height:1em;}
+
+/*リンク*/
+tr.race_name td a {color:#FFF;}
+tr.race_name td a:hover {color:#FCD900; text-decoration:none;}
+
+/*カラー設定*/
+/*グレードカラーはcomonn.cssへ*/
+.kyukan{ background-color:#999999;line-height:1.1em!important;}
+.chushi{ background-color:#333333; color:#FF4D4D!important; line-height:1.2em!important;}
+	/*場外中止*/tr.jyogai.race_name td.chushi{font-size:11px!important;}
+
+.SG,.G1,.G2,.G3,.G0,.kyukan,.chushi {
+	}
+
+
+
+
+			
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+	body {margin-top:0!important;}
+		#cal_nav.fixed {
+		background-image:url(../01cal/images/cal_nav_bg.png);
+		position: relative;
+	}
+}

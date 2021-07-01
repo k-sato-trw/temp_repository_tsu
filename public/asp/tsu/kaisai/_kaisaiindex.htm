@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="/asp/ga_tag/ga_tag_09_pc.js"></script>
+<meta charset="shift_jis">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta name="format-detection" content="telephone=no">
+
+<title>ボートレース津｜レースライブ&amp;リプレイ</title>
+
+<meta name="Keywords" content="BOAT RACE津,ボートレース,津,ライブ,リプレイ,予想,動画">
+<meta name="Description" content="BOAT RACE津が開催するレースの動画（ライブおよびリプレイ）をはじめ出走表など各種情報、予想に役立つデータを掲載しています。">
+<meta name="viewport" content="width=1280px">
+
+<link href="/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/css/common.css" rel="stylesheet" type="text/css">
+<link href="/kaisai/css/kaisai.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript" src="/kaisai/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+
+<!--iframe-auto-height-->
+<script type="text/javascript" src="/kaisai/js/jquery.iframe-auto-height.js"></script>
+
+<!--コンテンツメニューjs-->
+<script type="text/javascript" src="/js/contents_navi_slide.js"></script>
+<script type="text/javascript" src="/js/contents_navi_main.js"></script>
+
+<!--ヘッダーメニューjs-->
+<script type="text/javascript" src="/js/header_navi.js"></script>
+
+<!--リプレイメニュー用-->
+<script type="text/javascript" src="/kaisai/js/jquery.replay.js"></script>
+
+<script type="text/javascript">
+	var intautoheight = 0;
+	function func_autoheight(){
+		if( intautoheight == 0 ){
+			jQuery('iframe.auto-height').iframeAutoHeight({debug: true});
+			intautoheight = 1;
+		}
+	}
+</script>
+<!--fancybox-->
+<script type="text/javascript" src="/kaisai/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="/kaisai/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="/kaisai/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript">
+function funcExec(){
+	$(document).ready(function() {
+		$("a.TenjiMovie").fancybox({
+			'width' : 735,
+			'height' : 420,
+			'overlayShow'	: true,
+			'centerOnScroll':	true,
+			'transitionIn'	: 'elastic',
+			'transitionOut'	: 'elastic',
+			'type'			: 'iframe',
+			'speedIn'       : 100,
+			'speedOut'       : 100
+		});
+	});
+}
+function funcFancyClick(argIDData )
+{// fancybox実行関数
+	if( argIDData != '' )
+	{
+		$(argIDData).click();
+	}
+}
+function funcTenjiMovie( argIDData , argMovieid )
+{// fancybox実行関数
+	document.getElementById("TenjiMovie").href = 'tenji_movie.htm?movieid=' + argMovieid;
+		if( window.parent.race_movie.location.href.indexOf('?') >= 0 ){
+			document.getElementById("race_movie").src = window.parent.race_movie.location.href + "&stop";
+		}else{
+			document.getElementById("race_movie").src = window.parent.race_movie.location.href + "?stop";
+		}
+	if( argIDData != '' )
+	{
+		funcFancyClick(argIDData);
+	}
+}
+function func_onload(){
+	funcExec();
+	if( intPage == 1 ){
+		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/highlight/highlight_20210603.htm";
+		func_syussobtn( 1 );
+		location.hash ='';
+		location.hash ='kyogi';
+	}
+	else if( intPage == 2 ){
+		document.getElementById("id_kyogi_data").src = "/kaisai/s_pdf.htm";
+		func_syussobtn( 1 );
+		location.hash ='';
+		location.hash ='kyogi';
+	}
+	else if( intPage == 3 ){
+		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/motor/motor04.htm";
+		func_syussobtn( 1 );
+		location.hash ='';
+		location.hash ='kyogi';
+	}
+	else if( intPage == 4 ){
+		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/yosen.htm";
+		func_syussobtn( 1 );
+		location.hash ='';
+		location.hash ='kyogi';
+	}
+	else if( intPage == 5 ){
+		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/setu_kekka/setu_kekka01.htm";
+		func_syussobtn( 1 );
+		location.hash ='';
+		location.hash ='kyogi';
+	}
+	else if( intPage == 6 ){
+		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/yoso01/yoso0101_20210603.htm";
+		location.hash ='';
+		location.hash ='kyogi';
+	}
+}
+	function func_replaylink(argurl,argurl2,argurl3,argtype){
+		document.getElementById("race_movie").src = argurl;
+		document.getElementById("race_sub").src = argurl2;
+		document.getElementById("race_data").src = argurl3;
+		if( argtype == 1 ){
+			$("#id_close").click();
+			document.getElementById('id_close').style.display = '';
+			document.getElementById('wrapper').className = 'replay';
+			document.getElementById('replay_mark').style.display = '';
+			location.hash ='';
+			location.hash ='wrapper';
+		}
+	}
+function func_syussobtn( argdata ){
+	if( document.getElementById("span_syussobtn") ){
+		if( argdata == 1 ){
+			document.getElementById("span_syussobtn").innerHTML = '<a href="/asp/kyogi/09/pc/syusso_jumper.htm" target="kyogi_data" onclick="func_syussobtn( 0 );">出走表を表示</a>';
+		}else{
+			document.getElementById("span_syussobtn").innerHTML = '出走表を表示';
+		}
+	}
+}
+	var intPage;
+	//html版 引数取得javascript
+	var intData = "";
+	var arg = location.search; //引数を取得
+
+	//URL を ? で分割
+	var aSplit1 = arg.split("?");
+	if( aSplit1.length > 1 ){
+		//URL を &で分割
+		var aSplit2 = aSplit1[1].split("&");
+		var i;
+		var iMax = aSplit2.length;
+
+		// &で分割した物を = で分割
+		for( i = 0; i< iMax; i++ ){
+			if( i < 1 ){
+				aSplit3 = aSplit2[i].split("=");
+				intData += aSplit3[1];
+			}
+		}
+	}
+	if( intData !== "" ){
+		if( intData === "1" ){
+			intPage=1;
+		}else if( intData === "2" ){
+			intPage=2;
+		}else if( intData === "3" ){
+			intPage=3;
+		}else if( intData === "4" ){
+			intPage=4;
+		}else if( intData === "5" ){
+			intPage=5;
+		}else if( intData === "6" ){
+			intPage=6;
+		}else{
+			intPage=0;
+		}
+	}else{
+		intPage=0;
+	}
+
+</script>
+</head>
+
+
+
+
+
+<body onload="func_onload();">
+
+
+<div id="insertTenjiMovie"><a class="TenjiMovie" id="TenjiMovie" href="#"></a></div>
+<div id="wrapper">
+
+
+
+
+<div id="header_wrap">
+    <div id="header">
+    <div id="header_img">
+    	
+        <h1><a href="/">BOATRACE 津 #09</a></h1>
+        <h2>レースライブ&amp;リプレイ</h2>
+        
+        <div id="nav">
+			<script type="text/javascript">
+            funcTsuMenu();
+            </script>
+        </div><!--/#nav-->
+        
+        <ul id="header_nav">
+            <script type="text/javascript">
+            funcTsuHeaderMenu();
+	function funcAnc(  ){
+		location.hash ='';
+		location.hash ='kyogi';
+	}
+            </script>
+        </ul><!--/#header_nav-->
+    
+    </div><!--/#header_img-->
+    </div><!--/#header-->
+</div><!--/#header_wrap-->
+
+
+
+
+<!--◆◆◆映像◆◆◆-->
+
+<div id="movie_wrap">
+    <div id="movie">
+ 
+    
+        <div id="contents_left">
+            <div id="race_data_wrap">
+                <div class="date">
+                	<span class="d1"><img src="/kaisai/images/d1_6.png"><img src="/kaisai/images/d1_sla.png"><img src="/kaisai/images/d1_3.png"><img src="/kaisai/images/d1_thu.png"></span>
+                    <span class="d2"><img src="/kaisai/images/d2_day4.png"></span>
+                    <span class="d3 G0">一般</span>
+                </div><!--/date-->
+                <div class="name">
+            <span>サンケイスポーツ杯</span><!-- class="small" でサイズ小 -->
+                    <iframe src="race_telop_read.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_telop" id="race_telop"></iframe>
+                </div><!--/name-->
+                <div class="clear"></div>
+            </div><!--/#race_data_wrap-->
+            
+            <div class="redzone">競走場、場外発売場の発売状況は各競走場等のサイトをご確認下さい</div>
+            <div id="race_movie_wrap">
+                <iframe src="/asp/kyogi/09/pc/race_movie.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_movie" id="race_movie" allowfullscreen></iframe>
+                <iframe src="race_sub_read.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_sub" id="race_sub"></iframe>
+            </div><!--/#race_movie_wrap-->
+            
+            <div class="clear"></div>
+        </div><!--/#contents_left-->
+        
+        
+    	<div id="contents_right">
+        	<iframe src="race_data_read.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_data" id="race_data" class="auto-height"></iframe>
+        </div><!--/#contents_right-->
+        
+        
+        <!--◆◆◆リプレイ◆◆◆-->
+        <div id="replay_wrap">
+            
+            <div id="btn_rep" onclick="parent.replay_list.load();">レースリプレイ</div>
+            
+            <div id="replay_main">
+            
+            	<div class="left">
+                	<p class="ttl">レースリプレイ</p>
+                    <p class="close" id="id_close">閉じる</p>
+                </div><!--/left-->
+                
+                <div class="right">
+                	<iframe src="/asp/tsu/kaisai/replay_list_read.htm" frameborder="0" allowtransparency="true" scrolling="no" name="replay_list"></iframe>
+				</div><!--/right-->
+                
+                <div class="clear"></div>
+            </div><!--/#replay_main-->
+            
+        </div><!--/#replay_wrap-->
+        
+        
+        <div class="clear"></div>
+        
+        <!--ムービー下に表示-->
+        <div id="replay_mark" style="display:none;">Replay</div>
+        
+    </div><!--/#movie-->
+</div><!--/#movie_wrap-->
+
+
+
+
+
+
+
+
+<!--◆◆◆競技情報◆◆◆-->
+
+<div id="kyogi_wrap">
+    <div id="kyogi">
+    
+        <div id="kyogi_data">
+            <iframe src="/asp/kyogi/09/pc/syusso01/syusso0101_20210603.htm" frameborder="0" allowtransparency="true" scrolling="no" name="kyogi_data" id="id_kyogi_data" class="auto-height"></iframe>
+        </div><!--/#kyogi_data-->
+        
+        <div id="kyogi_subnav">
+        <ul>
+        	<!--初日[day1]、2日目[day2]、3日目[day3]、4日目[day4]、5日目[day5]、6日目[day6]、7日目[day7]、最終日[day0]-->
+            <li class="b1 day4"><a href="/asp/kyogi/09/pc/highlight/highlight_20210603.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">4日目の見どころ</a></li>
+            <li class="b2"><a href="/kaisai/s_pdf.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">出走表PDF</a></li>
+            <li class="b3"><a href="/asp/kyogi/09/pc/motor/motor04.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">モーター抽選結果&amp;前検タイム</a></li>
+            <li class="b4">得点率情報</li>
+            <li class="b5"><a href="/asp/kyogi/09/pc/setu_kekka/setu_kekka01.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">節間レース結果</a></li>
+        </ul>
+        
+        <div class="back"><span id="span_syussobtn">出走表を表示</span></div>
+        </div><!--/#kyogi_subnav-->
+        
+        <div class="clear"></div>
+    
+        <div id="page_top"><a href="#wrapper">UP</a></div>    
+    </div><!--/#kyogi-->
+</div><!--/#kyogi_wrap-->
+
+
+
+
+<div id="footer_wrap">
+    <div id="footer">
+    
+    	<iframe src="/footer.htm" frameborder="0" allowtransparency="true" scrolling="no" name="footer"></iframe>
+        
+    </div><!--/#footer-->
+</div><!--/#footer_wrap-->
+
+
+
+</div><!--/#wrapper-->
+
+
+
+<!--iframe-auto-height-->
+<script>
+  jQuery('iframe.auto-height').iframeAutoHeight({debug: true});
+</script>
+<!--iframe-auto-height-->
+
+</body>
+</html>

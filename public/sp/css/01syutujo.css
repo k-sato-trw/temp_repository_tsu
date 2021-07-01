@@ -1,0 +1,214 @@
+@charset "shift_jis";
+/* CSS Document */
+
+
+/*　▼▼▼出場予定選手▼▼▼　*/
+#syutu_title {}
+#syutu_title span { background: url(../01tenbo/images/h3_back01.gif) repeat-x; height: 40px; display: block;}
+
+
+
+
+/****タブリンク****/
+
+#hd_r { width: 196px; float: right; padding-top:20px;}
+
+#touchi { width: 160px;
+	 margin: 0;
+	 padding: 0 18px;
+	 font-size: 26px;
+	 line-height: 70px;
+	 text-align: left;	
+	 background-image: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#CCC));
+	 background-image: -webkit-linear-gradient(#EFEFEF,#CCC);
+	 background-image:    -moz-linear-gradient(#EFEFEF,#CCC);
+	 background-image:         linear-gradient(#EFEFEF,#CCC);
+	 -webkit-box-shadow: 1px 1px 2px #999;
+	 -mozt-box-shadow: 1px 1px 2px #999;
+	 box-shadow: 1px 1px 2px #999;	
+	-webkit-border-radius: 16px;
+	 -moz-border-radius: 16px;
+	 border-radius: 10px;}
+
+#touchi a {
+	background: url(../01tenbo/images/com_ic05.png) no-repeat right center;
+	color: #000;
+	display: block;
+	text-decoration: none;}
+
+#racer .lady, #mem .lady {color:#CC0066;}
+
+/**/
+
+#mem_term {
+	width:480px;
+	font-size: 24px;
+	line-height: 1.4em;
+    margin:20px 0 10px 0;}
+
+#mem_term .jun { background: url(../images/m_ic_01.gif) no-repeat 0px 5px; text-indent: -9999px; width: 26px; height: 29px; display: inline-block;}
+#mem_term .yu { background: url(../images/m_ic_02.gif) no-repeat 0px 5px; text-indent: -9999px; width: 26px; height: 29px; display: inline-block;}	
+
+
+
+
+
+.ta_mem th {
+	height:33px;
+	border: 1px solid #FFF;
+	text-align: center;
+	font-size: 23px;
+	background-color:#333;
+	vertical-align: middle;
+	color:#FFFFFF;}
+
+.ta_mem td {
+	text-align: center;
+	font-size: 28px;
+	height:53px;
+	vertical-align: middle;}
+
+.ta_mem th.num {width: 95px;}
+.ta_mem th.mem {}
+.ta_mem th.age {width: 58px;}
+.ta_mem th.kyu {width: 58px;}
+.ta_mem th.zen {color:#FFF; background-color:#003499;}
+.ta_mem th.syoz {color:#FFF; width: 60px; background-color:#003499;}
+.ta_mem th.renz {color:#FFF; width: 70px; background-color:#003499;}
+.ta_mem th.kaiz {color:#FFF; width: 60px; background-color:#003499;}
+
+.ta_mem th.tou {color:#FFF; width: 60px; background-color:#0080FF;}
+.ta_mem th.syot {color:#FFF; width: 75px; background-color:#0080FF;}
+
+.ta_mem th.rent {color:#FFF; width: 75px; background-color:#0080FF;}
+.ta_mem th.kait {color:#FFF; width: 85px; background-color:#0080FF;}
+.ta_mem th.syut {color:#FFF; width: 50px; background-color:#0080FF;}
+.ta_mem th.sout {color:#FFF; width: 60px; background-color:#0080FF;}
+
+table tr:nth-child(even) td { background: #F0F0F0;}
+
+td.no{text-align:right;} 
+
+
+/* 成績 */
+#zen {
+	color: #000;
+	font-size: 28px;
+	margin:20px 0 0 0;
+	vertical-align: middle;}
+	
+#zen_bd {
+	font-size: 24px;
+    margin:20px 0 0 0;}
+
+#zen_bd  span { color:#36C;}
+
+#zen_term {
+	font-size: 24px;
+	line-height: 1.6em;
+    margin:20px 0 0 0;}
+
+#zen_cau {
+	font-size: 22px;
+	line-height:1.3em;
+	margin:10px 0 20px 0;}
+	
+#zenm_cau li {padding:5px 0 10px 0;}
+
+#tou {
+	color: #000;
+	font-size: 28px;
+	margin:20px 0 0 0;
+	vertical-align: middle;}
+
+
+.ta_zen th {
+	height:33px;
+	border: 1px solid #FFF;
+	text-align: center;
+	font-size: 25px;
+	background-color:#CCC;
+	vertical-align: middle;}
+
+.ta_zen td {
+	text-align: center;
+	font-size: 28px;
+	height:53px;
+	vertical-align: middle;}
+
+td.no{text-align:right;} 
+
+.ta_tou th {
+	height:33px;
+	border: 1px solid #FFF;
+	text-align: center;
+	font-size: 25px;
+	background-color:#CCC;
+	vertical-align: middle;}
+
+.ta_tou td {
+	text-align: center;
+	font-size: 28px;
+	height:53px;
+	vertical-align: middle;}
+
+
+#mem {width: 720px; margin-bottom: 20px;}
+#mem_l { width: 280px; float: left;}
+#mem_r { width: 440px; float: right;}
+
+#ta_mem  {width: 280px;}
+#ta_zen, #ta_tou {width: 440px; margin:0 0 0 -2px;}
+
+#ta_zen .bd_no_l{ border-left-style:none;}
+#mem_l .bd_no_r{ border-right-style:none;}
+
+
+/*-- グレード --*/
+
+#ta_tou .sg { background-color: #FF4242;}
+#ta_tou .g1 { background-color: #FF860D;}
+#ta_tou .g2 { background-color: #8F69FF;}
+#ta_tou .g3 { background-color: #00C694;}
+#ta_tou .g0 { background-color: #2D95FF;}
+
+#ta_tou .sg,
+#ta_tou .g1,
+#ta_tou .g2,
+#ta_tou .g3,
+#ta_tou .gf,
+#ta_tou .s0 {font-size: 20px; color:#FFF;}
+
+#ta_tou .g0 {font-size: 16px; color:#FFF;}
+
+.sml{ font-size:20px; padding-top:2px;}
+
+.lady {color: #FF5588;}
+
+/*-------着順------- */
+.junyu{ color:#0A96DC;}
+.yusyo{ color:#00C87F;}
+
+
+
+
+
+
+
+
+.L {color: #D00872;}
+
+
+
+
+p#comment {
+	width: 680px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 100px;
+	padding-top: 40px;
+	font-size: 24px;
+	line-height: 150%;
+}
+
+

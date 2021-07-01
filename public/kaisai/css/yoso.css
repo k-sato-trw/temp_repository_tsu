@@ -1,0 +1,306 @@
+@charset "shift_jis";
+/* CSS Document */
+
+.cont_yoso {}
+
+
+
+
+/* ▼▼▼ツッキーナビ▼▼▼ */
+
+#tsukky {width: 840px;}
+#tsukky .ta_kyogi {  border: 1px solid #BBB; }
+
+.ta_kyogi th.hyoka { background: #007788 url(../images/hyoka01_back.gif); width: 30px;}
+.ta_kyogi th.hyoka2 { background: #A95101 url(../images/hyoka02_back.gif); width: 30px;}
+.ta_kyogi td.hyoka1 { background: #7BE7EA; border-bottom: 1px solid #BBB;}
+.ta_kyogi td.hyoka2 { background: #F38E43; border-bottom: 1px solid #BBB; border-left: 1px solid #BBB; color: #FFF; font-size: 30px; font-weight: bold;}
+
+#tsukky .ta_kyogi th.name{width:126px;}
+#tsukky .ta_kyogi th.setsukan { font-size: 12px;line-height: 12px; padding: 2px 0;}
+
+#tsukky .ta_kyogi th.seiseki { width: 12px;}
+#tsukky .ta_kyogi th.seiseki_8 { width: 12px;}
+
+
+/*** td/節間成績・6日/R・データ ***/
+#tsukky .ta_kyogi td.s_race {
+	width: 26px;
+	height: 15px;
+	border-bottom-style: none;
+	padding-top: 1px;
+}
+/*** td/節間成績・8日/R・データ ***/
+#tsukky .ta_kyogi td.s_race_8 {
+	width: 23px;	
+	height: 15px;
+	border-bottom-style: none;
+	padding-top: 1px;
+}
+
+/*----------------------------------
+
+　　　展示後評価（テーブル）
+
+----------------------------------*/
+#tsukky .ta_kyogi th.st01{width:42px; line-height: 15px;}
+#tsukky .ta_kyogi th.time,
+#tsukky .ta_kyogi th.weight{width:58px;}
+
+
+#tsukky .ta_kyogi td.slit {
+	width:170px;
+	border-bottom:none;
+	border-right:none;
+	background:url(../images/st_back.png) right center no-repeat;
+	text-align:right;
+	height:64px;
+}
+
+#tsukky .ta_kyogi td.slit_st {
+	width:45px;
+	font-weight:bold;
+	text-align:right;
+	padding-right:10px;
+	border-bottom:none;	
+	font-size:18px;
+}
+
+#tsukky .ta_kyogi td.slit_st span,
+#tsukky .ta_kyogi td.rate02 span{color:#DC3C3C;}
+
+
+#tsukky .ta_kyogi td.tj_class{font-size:18px;}
+
+#tsukky .ta_kyogi td.choku_top {
+	border-bottom-color:#DDDDDD;	
+	font-size:18px;
+	font-weight:bold;
+	padding: 2px 0;
+}
+
+
+/*----------------------------------
+
+　　　切り替えボタン（テーブル）
+
+----------------------------------*/	
+
+#tsukky_btn {width: 498px; height: 70px; background: #EEE url(../images/t_navi.png) no-repeat 0 15px; text-align: right; padding-left: 464px;}
+
+#tsukky_btn li {float: left; text-align: left;}
+
+#tsukky_btn li.tsukky_btn_01 { width: 218px; height: 40px; display: block; text-indent: -9999px; background: url(../images/t_navi_b01.png) no-repeat;}
+
+#tsukky_btn li.tsukky_btn_01on a { width: 218px; height: 40px; text-indent: -9999px;  background: url(../images/t_navi_b01_on.png) no-repeat 0 0; display: block;}
+#tsukky_btn li.tsukky_btn_01on  a:hover {  background: url(../images/t_navi_b01_on.png) no-repeat 0 -41px;}
+
+#tsukky_btn li.tsukky_btn_02 { width: 218px; height: 40px; text-indent: -9999px; background: url(../images/t_navi_b02.png) no-repeat; display: block;}
+
+#tsukky_btn li.tsukky_btn_02on  a { width: 218px; height: 40px; text-indent: -9999px; background: url(../images/t_navi_b02_on.png) no-repeat 0 0; display: block;}
+#tsukky_btn li.tsukky_btn_02on  a:hover { background: url(../images/t_navi_b02_on.png) no-repeat 0 -41px;}
+
+
+/*----------------------------------
+
+　　　本文
+
+----------------------------------*/	
+
+#t_navi_title { width: 965px; height: 72px; margin-bottom: 20px;}
+
+
+#t_navi_main { width: 917px; margin-left: 48px; padding-bottom: 50px;}
+#t_navi_main_l { width: 390px; float: left;}
+#t_navi_main_r { width: 420px; float: right; padding-right: 10px;}
+
+
+
+<!-- ▼前日▼ -->
+#zenjitsu { width: 390px;}
+#zenjitsu_l { width: 200px; float: left; padding-right: 30px;}
+#zenjitsu_r { float: left; width: 158px;}
+
+#zenjitsu .ta_sinnyu { width: 200px; background: #FFF;}  
+.ta_sinnyu td.slit { height: 36px; background: url(../images/st_back02.png) no-repeat -70px center; text-align: left;}
+.ta_sinnyu td.slit_st { width: 34px;}
+.ta_sinnyu td.slit_cm { height: 25px;}
+
+#zenjitsu_l h4 { background: url(../images/zenjitsu_tit01.jpg) no-repeat top center; text-indent: -9999px; width: 200px; height: 34px; padding-bottom: 0px;}
+
+#zenjitsu_r h4 { background: url(../images/zenjitsu_tit02.jpg) no-repeat; text-indent: -9999px; width: 158px; height: 34px; padding-bottom: 18px;}
+
+#zenjitsu_r .text{ width: 158px; font-size: 14px; line-height: 27px; background: url(../images/zenjitsu_line.gif) repeat-y; text-align: left; word-wrap: break-word;}
+
+#confidence { width: 239px; height: 73px; padding-top: 32px; text-align: center; color: #FFF; background: url(../images/zenjitsu_jishin_back.jpg) no-repeat; margin:20px auto 0; clear: both;}
+#confidence .percent { font-size: 30px; line-height: 40px; font-weight: bold;}
+
+
+<!-- ▼展示後▼ -->
+#focus { width: 420px;}
+#focus_l { width: 210px; float: left; text-align: center;}
+#focus_r { width: 210px; float: left; text-align: center;}
+
+#focus .hon {
+	width: 210px;
+	height: 52px;
+	text-indent: -9999px;
+	background: url(../images/honmei.jpg) no-repeat top center ;
+}
+#focus .ana {
+	width: 210px;
+	height: 52px;
+	text-indent: -9999px;
+	background: url(../images/ana.jpg) no-repeat top center ;
+}
+
+#focus_waku { width: 92px; margin: 0 auto;}
+
+#focus_waku .ta_kumi { width: 92px; height: 70px; text-align: center; margin-bottom: 20px;}
+
+#focus_waku .ta_kumi td.kumi { width: 20px;}
+#focus_waku .ta_kumi td.kumi2 { width: 16px;}
+#focus_waku .ta_kumi td.kumi img { padding-bottom: 2px;}
+
+#t_navi_main_r .text { width: 420px; font-size: 14px; line-height: 28px; border-bottom: dotted 1px #000; }
+
+
+#t_navi_main_r .no_data { width: 420px; height: 260px; background: url(../images/focus_no.jpg) no-repeat  center; text-indent: -9999px;}
+
+
+
+
+
+/* ▼▼▼VPOWER▼▼▼ */
+#vpower {width: 840px;}
+
+#vp{width:530px !important;}
+
+
+/*** テーブル/F･L･平均ST ***/ 
+#heikin_vp { width: 100%; height:64px; border-style: none;}
+#heikin_vp th {
+	border-top-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right: 1px dotted #777;}
+#heikin_vp th.br_no {border-right-style: none;}	 
+#heikin_vp td {
+	font-size: 12px;
+	padding: 1px 0;
+	border-top: 1px dotted #777;
+	border-bottom-style: none;
+	border-right-style: none;
+	}
+
+
+/*予想_左データ*/
+.cont_vpower_l{width:530px; float:left;}
+
+/*予想_フォーカス*/
+.cont_vpower_r{
+	width:300px;
+	float:right;
+	background-color:#FFF;
+	padding-bottom: 45px;
+	}
+
+th.vpower{background-color:#4400D2;}
+
+
+/*予想マーク*/
+th.yoso_v {width: 35px;}
+
+/*順位*/
+th.vpower01{background-color:#4400D2;}
+	
+/*スコア*/
+th.vpower02{background-color:#4400D2;}
+
+/*順位_スコア_td*/
+td.vp{
+	background-color:#E7DEFF;
+	color:#000000;
+	font-size:20px;
+	font-weight:bold;
+	width: 58px;
+	}
+
+/*予想フォーカス見出し*/
+#vp_yoso_h{
+	height:70px;
+	font-size:24px;
+	text-align:center;
+	line-height:70px;
+	color:#ffffff;
+	font-weight:bold;
+	background: url(../images/vp_focus_back.jpg) repeat-x #4400D2; }
+
+/*3連単、2連単見出し*/
+.vp_yoso_tit{
+	width:260px;
+	height:40px;
+	font-size:22px;
+	line-height:42px;
+	margin:20px auto 10px;
+	background-color: #E7DEFF;
+	text-align:center;
+	color:#2C3E93;
+	font-weight:bold;
+	border-radius:20px; 
+    -webkit-border-radius:20px; 
+    -moz-border-radius:20px; }
+	
+/*組み合わせ*/
+.vp_yoso{width:280px; margin:0 auto;}
+	
+	/*3連単用*/
+	ul li.ren3{
+		padding: 10px 10px;
+		float:left;
+		list-style:none;
+		}
+	/*2連単用*/
+	ul li.ren2{
+		padding: 10px 8px;
+		float:left;
+		list-style:none;
+		}	
+
+
+.waku_s00{
+	margin-top:-4px;
+	margin-left:3px;
+	padding:15px 16px 15px 15px;
+	background-color:#DDDDDD;
+	float:left;
+	display: block;
+
+	}
+
+
+/*組み無し
+.waku_s00{
+	margin-top:-8px;
+	margin-left:2px;
+	width: 32px;
+	height: 32px;
+	background-color:#DDDDDD;
+	display: block;
+	float: left;
+	}*/
+	/*組み無し用ハイフン*/
+	.hp{
+		width:7px;
+		padding-top:2px;
+		text-align:right;
+		float:left;}
+
+/*フッダー_VPOWER説明*/
+#vp_foot{
+	width:530px;
+	height:87px;
+	margin-top:10px;
+	background:url(../images/vp_foot.png) no-repeat bottom left;}	
+
+

@@ -1,0 +1,249 @@
+@charset "shift_jis";
+/* CSS Document */
+
+/*
+==========================================
+
+			枠組み
+
+==========================================
+*/
+#wrapper {
+	width:920px !important;
+	background-image: none;
+	background-color:#FFF;
+	margin:0 auto;
+	}
+	
+#wrapper,
+#header_wrap,
+#contents_wrap,
+#footer_wrap {
+	width:100%
+}
+
+#header,
+#contents,
+#footer{
+	min-width:920px;/*モニタサイズ1280のスクロールバー分-30px*/
+	max-width:950px;
+	margin:0 auto;
+	position:relative;
+}
+
+#footer{ display: none;}
+
+/*背景色指定*/
+#header_wrap,
+#contents_wrap {background-color:#FFF;}
+
+
+
+/*
+==========================================
+
+		ヘッダー
+
+==========================================
+*/
+/*背景画像指定*/
+#header_wrap,
+#header {
+	width:920px !important;
+	background-image: none;
+	}
+#header { height: 50px !important;}
+#header_img {background-image: none;}
+	
+	/*津ロゴ*/
+	h1 a{ display: none;}
+
+			
+	/*ページタイトル*/
+	h2{
+		height:50px;
+		line-height:50px;
+		font-size:26px;
+		font-weight:bold;
+		color:#FFFFFF;
+		background-color:#2E353C;
+		margin-left:150px;
+		padding-left:30px;
+		 width: 920px;
+		}
+
+
+/*--------------------------------------
+ヘッダー右上ナビ　[#header_nav]
+--------------------------------------*/
+ul#header_nav{ display: none;}
+
+
+
+/*--------------------------------------
+　　　メインナビ[ #nav ]
+--------------------------------------*/
+
+#nav{ display: none;}
+
+
+#contents #main {
+	background-color:#FFFFFF;
+	margin-left:0px !important;
+	padding-bottom:20px;
+}
+
+/*
+==========================================
+			リンク
+==========================================
+*/
+
+
+#tenbo_nav{ display: none;}
+
+#rt_header_r{ display: none;}
+
+/*UPボタン*/
+#page_top {
+	width:100% !important;
+	height:60px;
+	margin:0 auto;
+	padding-top:20px;
+	clear:both;
+}
+
+/*
+==========================================
+　　▲▲▲▲特設用カスタマイズ▲▲▲▲　
+==========================================
+*/
+
+
+/*
+==========================================
+　　　　▼▼▼出場予定選手▼▼▼　
+==========================================
+*/
+.note { font-size: 14px; line-height: 20px; display: block;}
+.note .jun { background: url(../01tenbo/images/m_ic_01.gif) no-repeat 0px 1px; text-indent: -9999px; width: 14px; height: 15px; display: inline-block;}
+.note .yu { background: url(../01tenbo/images/m_ic_02.gif) no-repeat 0px 1px; text-indent: -9999px; width: 14px; height: 15px; display: inline-block;}
+
+
+#ta_sensyu {
+	width: 100%;
+}
+
+#ta_sensyu th {
+	border: 1px solid #CCC;
+	color: #FFFFFF;
+	text-align: center;
+	background-color: #333;
+	font-size: 13px;
+}
+#ta_sensyu tr.top th {
+	font-size: 13px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+#ta_sensyu th a {
+	display: block;
+	width: 100%;
+	height: 36px;
+	background: url(../01tenbo/images/btn_sort.gif) no-repeat center 22px;
+	text-decoration: none;
+	color: #FFFFFF;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#ta_sensyu th a:hover {
+	background: url(../01tenbo/images/btn_sort.gif) no-repeat center 22px #060; color:#FFFF00;}
+
+
+#ta_sensyu th.select a { background: url(../01tenbo/images/btn_sort.gif) no-repeat center 22px #7BE7EA; color: #000000;}
+
+
+#ta_sensyu td {
+	border: 1px solid #CCC;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+#ta_sensyu td.B-1,
+#ta_sensyu td.B-2,
+#ta_sensyu td.B-3,
+#ta_sensyu td.B-4,
+#ta_sensyu td.B-5 {
+	background-color: #F8F8F8;
+}
+#ta_sensyu .B-1 {
+	width: 50px;
+}
+#ta_sensyu .B-2 {}
+#ta_sensyu .B-3,
+#ta_sensyu .B-4,
+#ta_sensyu .B-5 {
+	width: 45px;
+}
+#ta_sensyu .Z-1,
+#ta_sensyu .Z-2,
+#ta_sensyu .Z-3,
+#ta_sensyu .Z-4 {
+	width: 45px;
+}
+#ta_sensyu .H-1,
+#ta_sensyu .H-2 {
+	width: 45px;/*background:#5DB7E9;*/
+}
+#ta_sensyu .H-4,
+#ta_sensyu .H-5 {
+	width: 35px;/*background:#9DE127*/
+}
+#ta_sensyu .H-123 {}
+
+
+
+#ta_sensyu .Z {
+	background-color: #003499;
+}
+#ta_sensyu .H {
+	background-color: #0080FF;
+}
+#ta_sensyu .L {
+	color: #FF5588;
+}
+
+#ta_sensyu td.hover     {background-color: #DEF9FA;}
+#ta_sensyu td.hoverrow  {background-color: #DEF9FA;}
+#ta_sensyu td.hovercell {background-color: #7BE7EA;}
+
+
+#ta_sensyu span.yoso {
+	font-weight: bold;
+	font-size: 16px;
+	margin-right: 4px;
+}
+
+
+p#comment {
+	font-size: 14px;
+	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 120%;
+	padding-top: 10px;
+}
+
+#ta_sensyu .odd{ background-color:#fff;}
+#ta_sensyu .even{ background-color:#e9e9e9;}
+
+
+
+/*-------グレード------- */
+#ta_sensyu td.sg { color:#FF4242; font-weight:bold;}
+#ta_sensyu td.g1 { color:#FF860D; font-weight:bold;}
+#ta_sensyu td.g2 { color:#8F69FF; font-weight:bold;}
+#ta_sensyu td.g3 { color:#00C694; font-weight:bold;}
+#ta_sensyu td.g0 { color:#2D95FF; font-weight:bold; font-size: 12px;}

@@ -1,0 +1,247 @@
+
+
+/*
+==========================================
+
+			02suimen.htm
+
+==========================================
+*/
+
+
+/*
+---------------------------------
+
+　　★共通
+
+---------------------------------
+*/
+
+#suimen,
+#sinnyu {
+	margin:0 auto;
+	margin-bottom:50px;
+	background-image:url(/sp/02suimen/images/ttl_bg.png);
+	background-position:left top;
+	background-repeat:repeat-x;
+	padding-top:70px;
+	} 
+
+ul.tabs {}
+	
+	ul.tabs li {
+		width:318px;
+		height:96px;
+		font-size:34px;
+		border-top:2px solid #CCCCCC;
+		border-right:2px solid #CCCCCC;
+		border-left:2px solid #CCCCCC;
+		border-radius:10px 10px 0 0;
+		background: -moz-linear-gradient(top, #CCCCCC, #FFFFFF);
+		background: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#FFFFFF));
+	}
+	ul.tabs li.active {
+		background: -moz-linear-gradient(top, #FFFFFF, #CCCCCC);
+		background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#CCCCCC));
+	}
+	ul.tabs li a {
+		height:96px;
+		line-height:96px;
+		display: block;
+		color:#333333;
+		text-align:center;
+		font-weight:bold;
+		text-decoration:none;
+	}
+	ul.tabs li a span {
+		padding-left:28px;
+		background-image:url(/sp/02suimen/images/02suimen_r2_c6.png);
+		background-position:left center;
+		background-repeat:no-repeat;
+	}
+	ul.tabs li.b1 {float:left;}
+	ul.tabs li.b2 {float:right; font-size:30px;}
+	
+
+/*
+---------------------------------
+
+　　水面特性
+
+---------------------------------
+*/
+#suimen{}
+
+#suimen dl {}
+#suimen dl dt {
+	background-color:#05B3B3;
+	color:#FFFFFF;
+	font-weight:bold;
+	padding:17px 0 14px;
+	margin-top:30px;
+	margin-bottom:20px;
+	text-indent:1em;
+	}
+	#suimen dl dt span {font-size:0.8em;}
+	
+	#suimen dl dt span.right { display:block; font-weight: normal; padding-top:10px;}
+	
+#suimen dl dd {
+	line-height:1.6em;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+}
+	#suimen dl dd p {
+		
+		color:#003399;
+		font-weight:bold;
+		border-bottom:2px dotted #003399;
+		margin-bottom:10px;
+		}
+	
+	
+	/*必勝パターン8ヶ条*/
+		/*中見出し*/
+		#suimen dl dd.d3 dl {
+			width:620px;
+			height:60px;
+			margin-bottom:10px;
+			text-align:center;
+			display:table;
+			padding:0;
+			background-image:url(/sp/02suimen/images/suimen_dd_bg.png);
+			background-position:0 0;
+			background-repeat:no-repeat;
+			color:#FFFFFF;
+		}
+			#suimen dl dd.d3 dl dt{
+				background: none;
+				display:inline-block;
+				text-indent:0;
+				display: table-cell;
+				vertical-align:middle;
+				margin:0;
+				padding:2px 0 0 0;
+				}
+				#suimen dl dd.d3 dl dt span {font-size:32px;}
+			#suimen dl dd.d3 dl dd {
+				width:470px;
+				padding:2px 0 0 0;
+				display: table-cell;
+				vertical-align:middle;
+				color:#003399;
+				font-weight:normal;
+				margin:0;
+			}
+			#suimen dl dd.d3 dl dd span {font-size:0.7em; margin:0;}
+			
+		#suimen dl dd.d3_1 dl dd,
+		#suimen dl dd.d3_3 dl dd,
+		#suimen dl dd.d3_4 dl dd,
+		#suimen dl dd.d3_5 dl dd,
+		#suimen dl dd.d3_6 dl dd,
+		#suimen dl dd.d3_7 dl dd {text-indent:-1em;}
+
+
+/*
+---------------------------------
+
+　　進入コース別入着率
+
+---------------------------------
+*/
+#sinnyu{}
+
+#spring,#summer,#autumn,#winter{ width:100%; margin-bottom:40px;}
+
+
+/*見出し*/
+#sinnyu dl{
+	padding:10px 0 0 65px;
+	background-position:left center;
+	background-repeat:no-repeat;
+	clear:both;
+	}
+	/*日付漢字*/
+	#spring dl{ background-image:url(/02suimen/images/sinnyu_spring.png);}
+	#summer dl{ background-image:url(/02suimen/images/sinnyu_summer.png);}
+	#autumn dl{ background-image:url(/02suimen/images/sinnyu_autumn.png);}
+	#winter dl{ background-image:url(/02suimen/images/sinnyu_winter.png);}
+	
+	/*季節英語*/
+	#sinnyu dt {
+		width:150px;
+		float:left;
+		text-align:left;
+		}
+		#spring dt {color:#FFC6C6;}
+		#summer dt {color:#C0DFFF;}
+		#autumn dt {color:#EBDFB9;}
+		#winter dt {color:#DDD2FF;}
+	
+	/*日付*/
+	#sinnyu dd {
+		text-align:right;
+		color:#666666;
+		padding:10px 0 6px;
+		}
+		
+
+/*テーブル*/
+#sinnyu table {
+	width:100%;
+	table-layout:fixed;
+}
+#sinnyu table th {
+	padding:10px 0;
+	text-align:center;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+	#sinnyu table th.th1 {background:url(/02suimen/images/sinyu_th_bg.png) left top no-repeat;}
+	#sinnyu table th.th2 {border-bottom:1px solid #999999;}
+	
+#sinnyu table td {
+	text-align:center;
+	background-color:#EEEEEE;
+	border-bottom:1px solid #999999;
+}
+
+#sinnyu table th.border {border-left:1px dotted #CCCCCC; border-right:1px dotted #CCCCCC;}
+#sinnyu table td.border {border-left:1px dotted #999999; border-right:1px dotted #999999;}
+
+	/*-----各色-----*/
+	/*春*/
+	#spring table th {background-color:#FF4242;}
+	#spring table th.th1 {background-color:#EE3D3D;}
+	#spring table th.th2 {background-color:#F88787;}
+	/*夏*/
+	#summer table th {background-color:#2D95FF;}
+	#summer table th.th1 {background-color:#2A8BEE;}
+	#summer table th.th2 {background-color:#7AB9F8;}
+	/*秋*/
+	#autumn table th {background-color:#BD9417;}
+	#autumn table th.th1 {background-color:#B08A15;}
+	#autumn table th.th2 {background-color:#D1B86D;}
+	/*冬*/
+	#winter table th {background-color:#8F69FF;}
+	#winter table th.th1 {background-color:#8562EE;}
+	#winter table th.th2 {background-color:#B59EF8;}
+	
+	
+	
+	
+	
+	
+	
+		
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}

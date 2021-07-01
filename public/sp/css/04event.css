@@ -1,0 +1,292 @@
+
+
+/*
+==========================================
+
+			04event.htm
+
+==========================================
+*/
+
+#event_wrap{
+	width:100%;
+	}
+	
+	/*記事エリア*/
+	#event_main {
+		width:100%;
+		float:left;
+		}
+
+
+/*
+---------------------------------
+		記事エリア
+---------------------------------
+*/
+#event_main .box {
+	background-color:#EEEEEE;
+	margin-bottom:20px;
+	}
+	
+/*------------------------
+	　レース名まわり
+------------------------*/
+#event_main .box .race_name{
+	width:100%;
+	min-height:40px;
+	padding:20px 0;
+	color:#FFF;
+	background-image:url(/sp/04event/images/eve_plus.png);
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	display:table;
+	position:relative;
+	border-radius:10px;
+	}
+	/*open時*/
+	#event_main .box .race_name.open {
+		border-radius:10px 10px 0 0;
+		background-image:url(/sp/04event/images/eve_minus.png);
+		}
+/*グレード別背景色*/
+.SG .race_name{ background-color:#FF4242;}
+.G1 .race_name{ background-color:#FF860D;}
+.G2 .race_name{ background-color:#8F69FF;}
+.G3 .race_name{ background-color:#00C694;}
+.G0 .race_name{ background-color:#2D95FF;}
+.other .race_name{ background-color:#BD9417;}
+	
+	/*グレードマーク*/
+	#event_main .box .race_name .grade{
+		width:80px;
+		height:65px;
+		position:absolute;
+		left:10px;
+		top:-2px;
+		text-indent:-9999px;
+		}
+		/*グレード別画像*/
+		.SG .grade{ background-image:url(/sp/04event/images/grade_sg.png);}
+		.G1 .grade{ background-image:url(/sp/04event/images/grade_g1.png);}
+		.G2 .grade{ background-image:url(/sp/04event/images/grade_g2.png);}
+		.G3 .grade{ background-image:url(/sp/04event/images/grade_g3.png);}
+		.G0 .grade{ background-image:url(/sp/04event/images/grade_g0.png);}
+		.other .grade{ background-image:url(/sp/04event/images/grade_other.png);}
+		
+	/*レース名*/
+	#event_main .box .race_name .race{
+		padding-left:100px;
+		padding-right:30px;
+		font-size:30px;
+		font-weight:bold;
+		word-wrap:break-word;
+		line-height:1em;
+		}
+	
+	/*日付*/
+	#event_main .box .race_name .kikan{
+		padding-left:100px;
+		font-size:28px;
+		margin-top:6px;
+		}
+		#event_main .box .race_name .kikan p {
+			display:inline-block;
+			background-image:url(/sp/04event/images/race_name_p_bg.png);
+			background-position:left center;
+			background-repeat:no-repeat;
+			padding-left:12px;
+			padding-right:10px;
+			}
+		#event_main .box .race_name .kikan span { font-size:24px;}
+
+
+
+/*------------------------
+	　登録記事まわり
+------------------------*/
+#event_main .box .set {display:none;}
+
+/*見出し枠*/
+#event_main .box .day_wrap{
+	width:98%;
+	font-size:36px;
+	margin-top:20px;
+	background-image:url(/sp/04event/images/day_bg1.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	}
+	#event_main .box .day{
+		height:50px;
+		font-weight:bold;
+		line-height:50px;
+		padding-left:30px;
+		padding-right:70px;
+		display:inline-block;
+		background-image:url(/sp/04event/images/day_bg2.png);
+		background-position:top right;
+		background-repeat:no-repeat;
+		}
+		#event_main .box .day p{
+			padding-left:16px;
+			color:#FFF;
+			background-image:url(/sp/04event/images/day_p.png);
+			background-position:0 center;
+			background-repeat:no-repeat;
+			}
+
+		
+		#event_main .box .day span {font-size:26px; margin-left:4px; vertical-align:0.1em;}
+
+
+/*記事枠*/
+#event_main .box dl{
+	padding-left:50px;
+	padding-right:50px;
+	padding-top:50px;
+	margin-top:10px;
+	background-position:0 0;
+	background-repeat:no-repeat;
+	}
+	#event_main .box dl.eve_box{background-image:url(/sp/04event/images/eve_box_bg.png);}
+	#event_main .box dl.service_box{background-image:url(/sp/04event/images/service_box_bg.png);}
+
+	/*タイトル*/
+	#event_main .box dt{
+		font-size:30px;
+		line-height:1.1em;
+		border-bottom-width:10px;
+		border-bottom-style:solid;
+		background-position:0 16px;
+		background-repeat:no-repeat;
+		margin-bottom:6px;
+		padding:8px 0 6px 18px;
+		}
+		/*イベントstyle*/
+		#event_main .box .eve_box dt {
+			color:#05B3B3;
+			border-bottom-color:#BFE2E2;
+			background-image:url(/sp/04event/images/eve_box_dt_eve.png);}
+		/*ファンサービスstyle*/
+		#event_main .box .service_box dt {
+			color:#3769FF;
+			border-bottom-color:#C9D3F1;
+			background-image:url(/sp/04event/images/eve_box_dt_service.png);}
+	
+	/*本文*/
+	#event_main .box dd{
+		font-size:28px;
+		color:#000;
+		padding-left:18px;
+		padding-bottom:20px;
+		line-height:1.5em;
+		}
+		#event_main .box dd a { color:#414FE5;}
+		#event_main .box dd a:hover { text-decoration:none;}
+		
+		/*画像*/
+		#event_main .box dd .photo {
+			width:300px;
+			margin:10px auto 0;
+			}
+			#event_main .box dd .photo img {margin-bottom:6px;}
+
+
+
+
+
+
+/*
+---------------------------------
+		Race Indexエリア
+---------------------------------
+*/
+#event_nav {margin-bottom:50px;}
+#event_nav li a {text-decoration:none;}
+#event_nav li {
+	width:220px;
+	margin-bottom:10px;
+	background-position:left top;
+	background-repeat:no-repeat;
+	}
+	/*グレード別背景*/
+	#event_nav li.b_sg {
+		background-image:url(/sp/04event/images/side_sg_bg_left_top.png);
+		background-color:#FFECEC;}
+	#event_nav li.b_g1 {
+		background-image:url(/sp/04event/images/side_g1_bg_left_top.png);
+		background-color:#FFF3E6;}
+	#event_nav li.b_g2 {
+		background-image:url(/sp/04event/images/side_g2_bg_left_top.png);
+		background-color:#F4F0FF;}
+	#event_nav li.b_g3 {
+		background-image:url(/sp/04event/images/side_g3_bg_left_top.png);
+		background-color:#E5F9F4;}
+	#event_nav li.b_g0 {
+		background-image:url(/sp/04event/images/side_g0_bg_left_top.png);
+		background-color:#EAF4FF;}
+	#event_nav li.b_other {
+		background-image:url(/sp/04event/images/side_other_bg_left_top.png);
+		background-color:#F2EAD1;}
+	
+	/*グレード別ホバー*/
+	#event_nav li:hover.b_sg {background-color:#FFCACA;}
+	#event_nav li:hover.b_g1 {background-color:#FFDDBB;}
+	#event_nav li:hover.b_g2 {background-color:#E0D5FF;}
+	#event_nav li:hover.b_g3 {background-color:#B7EFE1;}
+	#event_nav li:hover.b_g0 {background-color:#C4E1FF;}
+	#event_nav li:hover.b_other {background-color:#E7D9AC;}
+	
+
+	#event_nav li dl {
+		width:100%;
+		min-height:100px;
+		background-position:right bottom;
+		background-repeat:no-repeat;
+		}
+		/*グレード別画像*/
+		#event_nav li.b_sg dl {background-image:url(/sp/04event/images/side_sg_bg_right_bottom.png);}
+		#event_nav li.b_g1 dl {background-image:url(/sp/04event/images/side_g1_bg_right_bottom.png);}
+		#event_nav li.b_g2 dl {background-image:url(/sp/04event/images/side_g2_bg_right_bottom.png);}
+		#event_nav li.b_g3 dl {background-image:url(/sp/04event/images/side_g3_bg_right_bottom.png);}
+		#event_nav li.b_g0 dl {background-image:url(/sp/04event/images/side_g0_bg_right_bottom.png);}
+		#event_nav li.b_other dl {background-image:url(/sp/04event/images/side_other_bg_right_bottom.png);}
+		
+	/*日付*/
+	#event_nav li dt {
+		width:134px;
+		height:32px;
+		color:#666;
+		font-size:15px;
+		font-weight:bold;
+		padding-top:10px;
+		padding-left:74px;
+		padding-right:12px;
+		text-align:center;
+		display:table-cell;
+		vertical-align:middle;
+		}
+		
+		/*曜日*/
+		#event_nav li dt span { font-size:12px;}
+		
+	/*レース名*/
+	#event_nav li dd {
+		padding:10px 16px 16px;
+		font-size:14px;
+		font-weight:bold;
+		color:#333333;
+		line-height:1.2em;
+		}
+
+
+			
+/*
+==========================================
+
+		印刷用
+
+==========================================
+*/
+@media print {
+}
