@@ -1087,10 +1087,14 @@ class ExportSpKaisaiService
                 //欠場情報
                 $ozz_info = $this->TbBoatOzzinfo->getFirstRecordByPK($jyo,$target_date,$race_num);
                 $ozz_info_array = [1=>'',2=>'',3=>'',4=>'',5=>'',6=>''];
-                if($ozz_info){
-                    for($i = 1; $i <= 6; $i++){
-                        $prop_name = "KETUJO_HENKAN".$i;
+                $ketujyo_teiban_list = [];
+                if($ozz_info) {
+                    for ($i = 1; $i <= 6; $i++) {
+                        $prop_name = "KETUJO_HENKAN" . $i;
                         $ozz_info_array[$i] = $ozz_info->$prop_name;
+                        if ($ozz_info->$prop_name == 2) {
+                            $ketujyo_teiban_list[] = $i;
+                        }
                     }
                 }
                 $data['ozz_info_array'] = $ozz_info_array;
@@ -1154,10 +1158,6 @@ class ExportSpKaisaiService
                 $shimekiri_jikoku = $race_header->$prop_name;
                 $data['shimekiri_jikoku'] = $shimekiri_jikoku;
             }
-
-            
-
-            
         }
 
         return $data;
@@ -1186,6 +1186,10 @@ class ExportSpKaisaiService
         if($kaisai_master){
             $syussou = $this->KyogiCommon->create_syussou_array($jyo,$target_date,$race_num);    
             $data['syussou'] = $syussou;
+
+            //動画情報取得
+            $vod_manegiment = $this->TbVodManagement->getFirstRecordByMovieId($jyo,$target_date."99".$jyo.str_pad($race_num, 2, '0', STR_PAD_LEFT));
+            $data['vod_manegiment'] = $vod_manegiment;
 
             $yoso_tenji = $this->TbTsuYosoTenji->getFirstRecordByDate($target_date,$race_num);
             $data['yoso_tenji'] = $yoso_tenji;
@@ -1437,10 +1441,14 @@ class ExportSpKaisaiService
                 //欠場情報
                 $ozz_info = $this->TbBoatOzzinfo->getFirstRecordByPK($jyo,$target_date,$race_num);
                 $ozz_info_array = [1=>'',2=>'',3=>'',4=>'',5=>'',6=>''];
-                if($ozz_info){
-                    for($i = 1; $i <= 6; $i++){
-                        $prop_name = "KETUJO_HENKAN".$i;
+                $ketujyo_teiban_list = [];
+                if($ozz_info) {
+                    for ($i = 1; $i <= 6; $i++) {
+                        $prop_name = "KETUJO_HENKAN" . $i;
                         $ozz_info_array[$i] = $ozz_info->$prop_name;
+                        if ($ozz_info->$prop_name == 2) {
+                            $ketujyo_teiban_list[] = $i;
+                        }
                     }
                 }
                 $data['ozz_info_array'] = $ozz_info_array;
@@ -1505,6 +1513,118 @@ class ExportSpKaisaiService
                 $data['shimekiri_jikoku'] = $shimekiri_jikoku;
             }
 
+
+            {
+                //本命・穴系の処理
+                $neer_kekka_race_number = $this->KyogiCommon->getNeerKekkaRaceNumber($jyo,$target_date);
+                $data['neer_kekka_race_number'] = $neer_kekka_race_number;
+
+                $tyokuzen = $this->TbBoatTyokuzen->getRecentTenjiRecord($jyo,$target_date);
+                $neer_start_exhibition = $tyokuzen->RACE_NUMBER ?? 0;
+                $data['neer_start_exhibition'] = $neer_start_exhibition;
+
+                //3連単着順有のレースで抽出
+                //初期化
+                $strTempData = "000";		//枠番
+                $strTempData2 = "000";	//枠番同着
+                $intTempData = 0;			//払い戻し金
+                $intTempData2 = 0;		//払い戻し金同着
+
+                $kekka_info = $this->TbBoatKekkainfo->getRecordForKishaTenji($jyo,$target_date,$race_num);
+                
+                $data['kekka_info'] = $kekka_info;
+
+                if($kekka_info){
+                    if(strpos($kekka_info->SANRENTAN1 , 'MS') !== false){
+                        //不成立
+                        $strTempData = "999";
+                    }else{
+                        //成立
+
+                        $strTempData = $kekka_info->SANRENTAN1;
+                        $intTempData = $kekka_info->SANRENTAN_MONEY1;
+
+                        //同着加味
+                        if($kekka_info->SANRENTAN2){
+                            $strTempData2 = $kekka_info->SANRENTAN2;
+                            $intTempData2 = $kekka_info->SANRENTAN_MONEY2;
+                        }
+
+                    }
+                }
+
+                $data['strTempData'] = $strTempData;
+                $data['strTempData2'] = $strTempData2;
+                $data['intTempData'] = $intTempData;
+                $data['intTempData2'] = $intTempData2;
+
+
+                //3連単変換用の処理
+                $strAryTenjiEvaluation =[];
+                $strAryYosoMark =[];
+                $strAryYoso =[];
+                if($yoso_tenji){
+                   
+                    for($intLoopCount2 = 1;$intLoopCount2 <= 6;$intLoopCount2++){
+                        $prop_name = 'EVALUATION'.$intLoopCount2;
+                        $strAryTenjiEvaluation[$intLoopCount2] = $yoso_tenji->$prop_name;
+                    }
+
+                    $strComment = $yoso_tenji->COMMENT;
+
+                    for($intLoopCount2 = 1;$intLoopCount2 <= 2;$intLoopCount2++){
+
+                        for($intLoopCount3 = 1;$intLoopCount3 <= 2;$intLoopCount3++){
+
+                            $intLoopCount4 = 1;
+                            $prop_name = 'FAVOLITE_MARK'.$intLoopCount2.$intLoopCount3;
+                            $strAryYosoMark[$intLoopCount2][$intLoopCount3][$intLoopCount4] = $yoso_tenji->$prop_name;
+
+                            $intLoopCount4 = 2;
+                            $prop_name = 'RICH_MARK'.$intLoopCount2.$intLoopCount3;
+                            $strAryYosoMark[$intLoopCount2][$intLoopCount3][$intLoopCount4] = $yoso_tenji->$prop_name;
+
+                        }
+
+                        for($intLoopCount3 = 1;$intLoopCount3 <= 3;$intLoopCount3++){
+
+                            for($intLoopCount4 = 1;$intLoopCount4 <= 3;$intLoopCount4++){
+
+                                $intLoopCount5 = 1;
+                                $prop_name = 'FAVOLITE'.$intLoopCount2.$intLoopCount3.$intLoopCount4;
+                                $strAryYoso[$intLoopCount2][$intLoopCount3][$intLoopCount4][$intLoopCount5] = $yoso_tenji->$prop_name;
+                                
+                                $intLoopCount5 = 2;
+                                $prop_name = 'RICH'.$intLoopCount2.$intLoopCount3.$intLoopCount4;
+                                $strAryYoso[$intLoopCount2][$intLoopCount3][$intLoopCount4][$intLoopCount5] = $yoso_tenji->$prop_name;
+
+                            }
+
+                        }
+                    }
+                   
+                }
+
+                $data['strAryYoso'] = $strAryYoso;
+                $data['strAryYosoMark'] = $strAryYosoMark;
+                $data['strAryTenjiEvaluation'] = $strAryTenjiEvaluation;
+                $data['strAryYosoKumi'] = [];
+
+                {
+                    $ozz_3rentan = $this->TbBoatOzz->getRecord($data['jyo'],$data['target_date'],$data['race_num'], 3);
+    
+                    $bairitu_3rentan = [];
+                    foreach ($ozz_3rentan as $item) {
+                        if (in_array($item->NUMBER1, $ketujyo_teiban_list) || in_array($item->NUMBER2, $ketujyo_teiban_list) || in_array($item->NUMBER3, $ketujyo_teiban_list)) {
+                            $bairitu_3rentan[$item->NUMBER1][$item->NUMBER2][$item->NUMBER3] = "-";
+                        } else {
+                            $bairitu_3rentan[$item->NUMBER1][$item->NUMBER2][$item->NUMBER3] = $item->BAIRITU;
+                        }
+                    }
+                    $data['bairitu_3rentan'] = $bairitu_3rentan;
+                }
+
+            }
             
         }
 

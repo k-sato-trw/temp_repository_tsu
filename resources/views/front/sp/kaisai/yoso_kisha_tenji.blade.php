@@ -1,3 +1,4 @@
+@inject('FuncYoso3RentanChangeService', 'App\Services\FuncYoso3RentanChangeService')
 <div class="page_tit">記者展示直後@if($tomorrow_flg)（明日）@endif</div>
 @if( ($chushi_junen->中止開始レース番号 ?? 99) <= $race_num )
     @if($chushi_junen->中止開始レース番号 > 0 )
@@ -117,9 +118,9 @@
 
 <!-- リプレイボタン -->
 <div id="replay_movie_yoso">
-    @if($vod_manegiment)
-    <iframe src="Movie.asp?MovieID=2{{$target_date}}9909{{str_pad($race_num, 2, '0', STR_PAD_LEFT)}}" frameborder="0" allowtransparency="true" scrolling="no" name="movie2" id="movie" allowfullscreen style="display:none;" class="class_android"></iframe>
-    <a href="Movie_Tenji.asp?MovieID={{$target_date}}9909{{str_pad($race_num, 2, '0', STR_PAD_LEFT)}}"><img src="/sp/kyogi/images/iphone_mov.jpg" class="class_ios" style="display:none;"></a>
+@if($vod_manegiment ?? false)
+    <iframe src="Movie.asp?MovieID={{$target_date}}9909{{str_pad($race_num, 2, '0', STR_PAD_LEFT)}}" frameborder="0" allowtransparency="true" scrolling="no" name="movie2" id="movie" allowfullscreen style="display:none;" class="class_android"></iframe>
+    <a href="Movie_Tenji.asp?MovieID={{$target_date}}9909{{str_pad($race_num, 2, '0', STR_PAD_LEFT)}}"><img src="/sp/kyogi/images/iphone_mov.jpg" style="display:none;" class="class_ios" ></a>
 
     @if($neer_start_exhibition < $race_num)
         {{--スタート展示データなしの時--}}
@@ -144,80 +145,167 @@
 
 
 <h3>フォーカス</h3>
-<h4 class="honmei">本命</h4>
-<div class="focus cf">
-  <table class="ta_kumi tekityu">
-    <tr>
-      <td class="kumi"><img src="/sp/kyogi/images/num1.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num5.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num4.png"></td>
-    </tr>
-    <tr>
-      <td colspan="5" class="ozz">26.1</td>
-      </tr>
-  </table>
-  <table class="ta_kumi">
-    <tr>
-      <td class="kumi"><img src="/sp/kyogi/images/num1.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num5.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num2.png"></td>
-    </tr>
-    <tr>
-      <td colspan="5" class="ozz">17.8</td>
-      </tr>
-  </table>
-  <table class="ta_kumi">
-    <tr>
-      <td class="kumi"><img src="/sp/kyogi/images/num1.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num4.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num5.png"></td>
-    </tr>
-    <tr>
-      <td colspan="5" class="ozz">25.2</td>
-      </tr>
-  </table>
-  <table class="ta_kumi">
-    <tr>
-      <td class="kumi"><img src="/sp/kyogi/images/num1.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num4.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num2.png"></td>
-    </tr>
-    <tr>
-      <td colspan="5" class="ozz">31.7</td>
-      </tr>
-  </table>
-</div><!--/focus-->
-<div class="caution_bottom" cf>※オッズはページアクセス時点のものです。<br>
-  確定オッズではありません。</div>
+{{---本命・穴の処理↓　(aspを模写)--}}
+@if($yoso_tenji)
+    {{--予想展示直後データ有--}}
+    <?php
+        //初期化 サービス側で処理
+        /*
+        $strTempData = "000";		//枠番
+        $strTempData2 = "000";	//枠番同着
+        $intTempData = 0;			//払い戻し金
+        $intTempData2 = 0;		//払い戻し金同着
+        */
+    ?>
 
-<h3 class="kekka">レース結果</h3>
-<div class="kekka focus2">
-  <table class="ta_kumi">
-    <tr>
-      <td class="kumi"><img src="/sp/kyogi/images/num1.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num5.png"></td>
-      <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
-      <td class="kumi"><img src="/sp/kyogi/images/num4.png"></td>
-    </tr>
-  </table>
-2,610<span>円</span>
-</div><!--/focus-->
+    @if($neer_kekka_race_number >= $race_num)
 
-@if($yoso_tenji->COMMENT)
-    <h3>展示後とれたて情報！</h3>
-    <p class="txt">
-        {!! nl2br($yoso_tenji->COMMENT); !!}
-    </p>
+        {{--3連単着順有のレースで抽出--}}
+        
+    @endif
+
+    {{--本命、穴どちらか表示したかフラグとして使用--}}
+    <?php $intTempCount = 0; ?>
+
+    @for($intLoopCount3 = 1 ;$intLoopCount3 <= 2 ;$intLoopCount3++)
+        {{--本命、穴--}}
+
+        {{--++++++++++++++++++++++++++--}}
+        {{--3連単出目変換!!!--}}
+        <?php
+            $strAryYosoKumi = $FuncYoso3RentanChangeService->FuncYoso3RentanChange( $intLoopCount3 , $strAryYoso , $strAryYosoMark ,$strAryYosoKumi);
+        ?>
+        {{--3連単出目変換!!!--}}
+        {{--++++++++++++++++++++++++++--}}
+
+        @if( !count($strAryYosoKumi[$intLoopCount3] ?? []) )
+            {{--デフォルトデータ（データ無)--}}
+        @else
+            <?php
+
+                //データ有
+				$intTempCount = 1;
+
+                //:::区切りで配列化 →元々配列なので、該当レコードのみ抽出
+                $strAryTempData = $strAryYosoKumi[$intLoopCount3];
+            ?>
+
+            @if($intLoopCount3 == 1)
+                <h4 class="honmei">本命</h4>
+            @else
+                <h4 class="ana">穴</h4>
+            @endif
+
+            <div class="focus cf">
+
+            @for($intLoopCount2 = 0;$intLoopCount2 < count($strAryTempData); $intLoopCount2++)
+                {{--配列分ループ--}}
+                
+                @if($strAryTempData[$intLoopCount2])
+                    {{--データ有の時--}}
+
+                    @if($strAryTempData[$intLoopCount2] == $strTempData || $strAryTempData[$intLoopCount2] == $strTempData2)
+                        <table class="ta_kumi tekityu">
+                    @else
+                        <table class="ta_kumi">
+                    @endif
+
+                        <tr>
+                            <td class="kumi"><img src="/sp/kyogi/images/num{{ substr($strAryTempData[$intLoopCount2],0,1) }}.png"></td>
+                            <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
+                            <td class="kumi"><img src="/sp/kyogi/images/num{{ substr($strAryTempData[$intLoopCount2],1,1) }}.png"></td>
+                            <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
+                            <td class="kumi"><img src="/sp/kyogi/images/num{{ substr($strAryTempData[$intLoopCount2],2,1) }}.png"></td>
+                        </tr>
+
+                        {{--結果取得後も表示--}}
+                        <tr>
+                            <td colspan="5" class="ozz">{{$bairitu_3rentan[substr($strAryTempData[$intLoopCount2],0,1)][substr($strAryTempData[$intLoopCount2],1,1)][substr($strAryTempData[$intLoopCount2],2,1)]}}</td>
+                        </tr>
+                    </table>
+
+                @endif
+
+            @endfor
+
+            </div><!--/focus-->
+
+        @endif
+
+    @endfor
+
+    @if($intTempCount == 1)
+        <div class="caution_bottom" >※オッズはページアクセス時点のものです。<br>確定オッズではありません。</div>
+    @endif
+
+    
+    @if($strTempData != '000')
+        {{--デフォルトデータ（結果データ無）でないとき--}}
+        <h3 class="kekka">レース結果</h3>
+
+        @if($strTempData == '999')
+            <!--不成立-->
+            <div class="fuseiritsu">不成立</div><!--/focus-->
+
+        @else
+
+            <div class="kekka focus2">
+              <table class="ta_kumi">
+                <tr>
+                  <td class="kumi"><img src="/sp/kyogi/images/num{{substr($strTempData,0,1)}}.png"></td>
+                  <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
+                  <td class="kumi"><img src="/sp/kyogi/images/num{{substr($strTempData,1,1)}}.png"></td>
+                  <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
+                  <td class="kumi"><img src="/sp/kyogi/images/num{{substr($strTempData,2,1)}}.png"></td>
+                </tr>
+              </table>
+              {{ number_format($intTempData) }}<span>円</span>
+            </div><!--/focus-->
+
+        @endif
+
+        {{--同着表示--}}
+        @if($strTempData2 != "000")
+            {{--デフォルトデータ（結果データ無）ではない時--}}
+            <div class="kekka focus2">
+
+              <table class="ta_kumi">
+                <tr>
+
+            {{--同着側のデータは不成立にはならないためそのまま表示--}}
+                  <td class="kumi"><img src="/sp/kyogi/images/num{{substr($strTempData2,0,1)}}.png"></td>
+                  <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
+                  <td class="kumi"><img src="/sp/kyogi/images/num{{substr($strTempData2,2,1)}}.png"></td>
+                  <td class="ta_kumi2"><img src="/sp/kyogi/images/vp_focus.png"></td>
+                  <td class="kumi"><img src="/sp/kyogi/images/num{{substr($strTempData2,3,1)}}.png"></td>
+
+                </tr>
+              </table>
+              {{ number_format($intTempData2) }}<span>円</span>
+
+            </div><!--/focus-->
+
+        @endif
+
+    @endif
+
+    @if($yoso_tenji->COMMENT)
+        <h3>展示後とれたて情報！</h3>
+        <p class="txt">
+            {!! nl2br($yoso_tenji->COMMENT); !!}
+        </p>
+    @endif
+
+    @if($neer_start_exhibition >= $race_num)
+        <span id="id_yoso_tenji_dataok"></span>
+    @endif
+@else
+    
+    <div id="nodata" class="yoso2 cf"><p>ただいま予想中…</p></div>
+
 @endif
-<span id="id_yoso_tenji_dataok"></span>
+
+{{---本命・穴の処理↑--}}
+
 
 </div><!-- data end -->

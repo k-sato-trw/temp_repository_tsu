@@ -236,6 +236,25 @@ class TbBoatKekkainfoRepository implements TbBoatKekkainfoRepositoryInterface
                     ->where('TARGET_DATE','<=',$end_date)
                     ->orderBy('TARGET_DATE')
                     ->get();
+    }
+
+
+    /**
+     * 3連単着順有のレースで抽出
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @var string $race_num
+     * @return object
+     */
+    public function getRecordForKishaTenji($jyo,$target_date,$race_num)
+    {
+        return $this->TbBoatKekkainfo
+                    ->where('JYO','=',$jyo)
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->where('RACE_NUMBER','=',$race_num)
+                    ->where('SANRENTAN1','!=','')
+                    ->first();
 
     }
 

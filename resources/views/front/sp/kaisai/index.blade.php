@@ -462,11 +462,11 @@ strAgent = funcJsLiveSmartAgentGetter();
 				{!! file_get_contents(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/yoso_kishatenji'.str_pad($race_num, 2, '0', STR_PAD_LEFT).'.htm') !!}
 			@endif
 		</div>
-		@if($tomorrow_flg || (830 > (int)$target_time ) || !$kaisai_master )
+		@if($tomorrow_flg || (830 > (int)$target_time ) || !$kaisai_master  )
 		@else
 			<script type="text/javascript">
 				//記者展示直後読み込み
-				Read_yoso_kishatenji( '{{str_pad($race_num, 2, '0', STR_PAD_LEFT)}}' );
+				Read_yoso_kishatenji('{{str_pad($race_num, 2, '0', STR_PAD_LEFT)}}');
 			</script>
 		@endif
 	</div>

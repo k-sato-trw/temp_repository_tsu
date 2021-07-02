@@ -1,0 +1,3869 @@
+
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript" src="/asp/ga_tag/ga_tag_09_sp.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="viewport" content="width=720px">
+
+
+<title>競技情報｜ボートレース津</title>
+<meta name="Keywords" content="BOAT RACE津,ボートレース,津,ライブ,リプレイ,予想,動画" />
+<meta name="Description" content="BOAT RACE津が開催するレースの動画（ライブおよびリプレイ）をはじめ出走表など各種情報、予想に役立つデータを掲載しています。" />
+
+<link rel="apple-touch-icon-precomposed" href="/sp/apple-touch-icon-precomposed.png" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/sp/kyogi/css/reset.css" />
+<link rel="stylesheet" href="/sp/kyogi/css/kyogi.css" />
+<link rel="stylesheet" href="/sp/kyogi/css/style.css" />
+<link rel="stylesheet" href="/sp/kyogi/css/custom.css" />
+
+<script type="text/javascript" src="/sp/kyogi/js/jquery-1.8.3.min.js"></script>
+
+<!-- 共通 -->
+<script type="text/javascript" src="/sp/kyogi/js/common.js"></script>
+
+<!-- アコーディオン -->
+<script type="text/javascript" src="/sp/kyogi/js/jquery.accordion.js"></script>
+
+<!-- ボタン表示1～12R -->
+<script type="text/javascript" src="/sp/kyogi/js/jquery.raceselect.js"></script>
+
+<!--バックナンバーまわり-->
+<script type="text/javascript" src="/sp/kyogi/js/jquery.tabs_midkoro.js"></script>
+
+<!-- スライド -->
+<script type="text/javascript" src="/sp/kyogi/js/jquery.slide.js"></script>
+
+<!-- メッセージ -->
+<script type="text/javascript" src="/sp/kyogi/js/jquery.marquee.js"></script>
+<script>
+    $(document).ready(function (){
+  $("#marquee").marquee({
+	  scrollSpeed: 6,
+	  showSpeed: 1000,
+	  pauseSpeed: 1000
+	  });
+});
+</script>
+
+
+<!-- フリック -->
+<script type="text/javascript" src="/sp/kyogi/js/FlickReady.js"></script>
+<link rel="stylesheet" href="/sp/kyogi/css/owl.carousel.css" />
+<link rel="stylesheet" href="/sp/kyogi/css/owl.theme.css" />
+
+
+<script type="text/javascript" src="/sp/kyogi/js/owl.carousel_index.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#slide").owlCarousel({
+			navigation : false,
+			pagination : false,
+			slideSpeed : 300,
+			paginationSpeed : 300,
+			singleItem : true,
+			autoHeight : true,
+			lazyLoad : true // 画像読み込み時にローディングアイコンを表示
+		});
+
+		
+		var g_oldMainPage = "";
+		var g_oldSubPage  = "";
+
+		
+		function postCurrentPage(data1, data2) {
+
+			
+			var $selectedNode = $("#tab_index").find(".selected");
+
+			
+			var selectedClasses = $selectedNode.attr("class").split(" ");
+
+			
+			var selectedClass = "";
+			for(var i = 0; i < selectedClasses.length; i++) {
+				selectedClass = selectedClasses[i];
+				if (selectedClass.indexOf("page_num") > -1) {
+					// 「page_num」がclass名に含まれていた場合、ループ抜ける
+					break;
+				}
+			}
+
+			
+			var mainPage = $selectedNode.attr("id").slice(-1);
+
+			
+			var subPage  = selectedClass.slice(-1);
+
+			
+			if ((g_oldMainPage == mainPage)
+				&&(g_oldSubPage == subPage)) {
+				
+				return false;
+			}
+
+			
+			g_oldMainPage = mainPage;
+			g_oldSubPage  = subPage;
+
+			var isFinishedRace = false;
+
+			
+			if (mainPage == "4") {
+				var elem = $("#tab04").children(".page4").attr("class");
+
+				// classが「page4」のときはレース終了後
+				if (elem == "page4") {
+					isFinishedRace = true;
+				}
+			}
+
+			
+			$.ajax({
+				type: "POST",
+				url: "http://" + document.domain + "/asp/tsu/sp/kyogi/Logger.asp",
+				data: {
+					"mainpage": mainPage,	
+					"subpage" : subPage,	
+					"isFinishedRace" : isFinishedRace	
+				}
+			});
+		}
+
+		
+		var observer = new MutationObserver(postCurrentPage);
+
+		
+		const observeTarget = document.getElementById("tab_index");
+		const observeConfig = {
+			childList : true,
+			attributes: true,
+			subtree: true
+		};
+
+		
+		observer.observe(observeTarget, observeConfig);
+
+		
+		setTimeout(function(){
+				postCurrentPage(null,null);
+			}
+			,1000
+		);
+    });
+
+
+
+
+</script>
+
+<!-- 下部メニュー -->
+<script type="text/javascript" src="/sp/js/data_navi.js"></script>
+
+<!-- system共通js読み込み -->
+<script type="text/javascript" src="/asp/tsu/sp/kyogi/common.js"></script>
+
+<!--  -->
+<script type="text/javascript" src="/asp/videoplayer/common/LiveSmartAgentGetter.js"></script>
+<script type="text/javascript">
+var strAgent;
+strAgent = funcJsLiveSmartAgentGetter();
+</script>
+<script type="text/javascript">
+//計算用
+	//初期読み込み
+	function funcCalcload(){
+		//基準日取得
+		var strCalcDate = window.localStorage.getItem('CalcDate');
+		var strOddsKumi = ''
+		if( strCalcDate ){
+		//データ有
+			if( strCalcDate !== '20210611' ){
+			//基準日が表示日付と異なる時のデータ時削除
+				for( var intLoopCount = 1 ; intLoopCount <= 12 ; intLoopCount++ ){
+				//12R分
+					//組データ
+					strOddsKumi = window.localStorage.getItem('OddsKumi' + ("0"+intLoopCount).slice(-2) + '');
+					if( strOddsKumi ){
+					//データ有
+						//組データ削除
+						window.localStorage.removeItem('OddsKumi' + ("0"+intLoopCount).slice(-2) + '');
+					}
+				}
+				//削除
+				window.localStorage.removeItem('CalcDate');
+			}else{
+			//削除しない時,選択している組合せにクラス付与
+				funcCalcAddClass();
+			}
+		}
+		//基準日記憶させる
+		window.localStorage.setItem('CalcDate', '20210611' );
+	}
+	//保存データにクラス付与と同時にオッズ計算フォームの値操作
+	function funcCalcAddClass(){
+		//組データ
+		var strOddsKumi = window.localStorage.getItem('OddsKumi11');
+		var strAryOddsKumi = '';
+		var strTempClass = '';
+		//フォームデータ操作
+		var intKumiCount = 0;		//組数カウント
+		var strJs = '';				//フォームデータ用js生成
+		if( strOddsKumi ){
+		//データ有
+			//配列に
+			strAryOddsKumi = strOddsKumi.split(':::');
+			for( var intLoopCount = 0 ; intLoopCount < ( strAryOddsKumi.length ); intLoopCount++ ){
+				//調整
+				strTempClass = strAryOddsKumi[ intLoopCount ];
+				strTempClass = strTempClass.replace( '[' , '' );
+				strTempClass = strTempClass.replace( ']' , '' );
+				if( strTempClass !== '' ){
+					//クラス付与
+					$('.class_' + strTempClass + '').addClass("select");
+					//組数カウント
+					intKumiCount++;
+					strJs = strJs + '<input type=\"hidden\" name=\"Odds_Kumi' + intKumiCount + '\" value=\"' + strTempClass + '\">\n';
+				}
+			}
+		}
+		if( document.getElementById("id_Calc_form") ){
+		//idが存在した
+			//組合せ総数代入
+			document.ozzCalcform.Odds_Kumi_Count.value = intKumiCount;
+			//値代入
+			document.getElementById("id_Calc_form").innerHTML = strJs;
+		}
+	}
+	//組番ほりこむと保存、削除
+	function funcCalcToggle( argKumi ){
+		var strOddsKumi = window.localStorage.getItem('OddsKumi11');
+		//デフォルトは保存
+		var boolSaveflg = true;
+		if( strOddsKumi ){
+		//データ有
+			//すでに存在しているか確認
+			if( strOddsKumi.indexOf( '[' + argKumi + ']' ) >= 0 ){
+				//削除する
+				boolSaveflg = false;
+			}
+		}else{
+			//初期値代入
+			strOddsKumi = '';
+		}
+		if( boolSaveflg ){
+		//保存
+			strOddsKumi = strOddsKumi + '[' + argKumi + ']:::'
+		}else{
+		//削除
+			//置換で削除する
+			strOddsKumi = strOddsKumi.replace( '[' + argKumi + ']:::' , '' );
+			$('.class_' + argKumi + '').removeClass("select");
+		}
+		//再度記憶させる
+		window.localStorage.setItem('OddsKumi11', strOddsKumi );
+		//保存データにクラス付与
+		funcCalcAddClass();
+	}
+</script>
+
+
+</head>
+
+
+<body onload="funcLoad('11');">
+
+
+<div id="wrapper"><!-- wrapper start -->
+
+<div id="header"><!-- header start -->
+<h1><a href="/sp/"><div>BOAT RACE 津 09#</div></a></h1>
+<ul id="header_nav">
+<li id="live"><a href="movie_live.asp?jyo=09"><div>ライブ</div></a></li>
+<li id="replay"><a href="/sp/kyogi/replay.htm"><div>リプレイ</div></a></li>
+<li id="vote"><a href="/asp/log/tsu_sp_kyogi.asp" target="_blank"><div>投票する</div></a></li>
+</ul>
+</div><!-- header end -->
+
+<div id="main"><!-- main start -->
+
+<div id="race">
+<table>
+<tr>
+<td class="date">6/11</</td>
+
+
+
+<td class="name">レディオキューブFM三重カップ</td>
+<td class="day">3日目</td>
+</tr>
+</table>
+</div><!-- race end -->
+
+<div id="kikou" class="cf">
+<div class="kikou_left"><span class="gray">天候</span>:くもり　<span class="gray">波高:</span>2cm　<span class="gray">風:</span>追い風 3m/秒</div>
+<div class="kikou_right">9R終了時点</div>
+</div><!-- kikou end -->
+<div id="race_select" class="cf">
+<div id="back"><a href="javascript:Race_btn('09','10');">back</a></div>
+<div id="num_select">
+<div class="select" id="id_num_select">11R</div>
+</div>
+<div id="next"><a href="javascript:Race_btn('09','12');">next</a></div>
+<table>
+<tr>
+<td class="class">予選特選</td>
+<td class="dento"><span>発売<br>締切</span></td>
+<td class="time">15:36</td>
+</tr>
+</table>
+
+
+<!-- ボタン展開 -->
+<div id="id_racenum_btn">
+<div id="racenum_btn">
+<ul>
+
+<div id="id_Read_racenum_btn"></div>
+<script type="text/javascript">
+	//レース番号選択読み込み
+	Read_racenum_btn();
+</script>
+
+<li class="sukima"></li></ul>
+
+</div><!-- racenum_btn end -->
+
+</div><!-- id_racenum_btn end -->
+
+</div><!-- race_select end -->
+
+
+
+<div id="shusso" class="cf">
+
+<ul id="tab_index" class="cf">
+<li id="tab01" class="tap"><div class="page1"></div></li>
+<li id="tab02" class="tap"><div class="page5"></div></li>
+<li id="tab03" class="tap"><div class="page4"></div></li>
+
+<li id="tab04" class="tap"><div class="page5"></div></li>
+
+<li id="tab05" class="tap"><div class="page1"></div></li>
+
+<li class="grayline"><img src="/sp/kyogi/images/bk_tab.png" width="720" height="14" alt=""/></li>
+</ul>
+<!-- slide start-->
+<div id="slide" class="owl-carousel owl-theme">
+
+<!--スタ展 表示合わせる用-->
+<div class="item cf">
+<div class="page_tit"></div>
+</div><!-- item end -->
+
+
+
+<!--トップ①-->
+<div class="item cf" id="top">
+<div class="page_tit">トップ</div>
+<div id="top_btn" class="cf">
+<ul>
+<li><a href="javascript:$('#id_kekkalist').trigger('click');">レース結果一覧</a></li>
+<li class="midokoro">
+  <a href="javascript:funcMidokoroButton();"><span class="arrow_green">▼</span>3日目のみどころ</a>
+</li>
+</ul>
+</div><!-- top_btn end -->
+
+
+<!--1R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=1&page=16">
+<div class="oshi"></div>
+<div class="num">1<span>R</span></div>
+<div class="time">10:30</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>角谷<span>健</span></td>
+<td class="waku r2">2</td>
+<td>松浦<span>勝</span></td>
+<td class="waku r3">3</td>
+<td>木幡<span>純</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td class="lady">久保田<span>美</span></td>
+<td class="waku r5">5</td>
+<td>滝沢<span>崚</span></td>
+<td class="waku r6">6</td>
+<td>芝田<span>京</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--2R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=2&page=16">
+<div class="oshi_non"></div>
+<div class="num">2<span>R</span></div>
+<div class="time">10:57</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>宇留田<span>翔</span></td>
+<td class="waku r2">2</td>
+<td>神田<span>達</span></td>
+<td class="waku r3">3</td>
+<td>黒崎<span>竜</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td>牟田<span>奨</span></td>
+<td class="waku r5">5</td>
+<td>杢野<span>誓</span></td>
+<td class="waku r6">6</td>
+<td class="lady">金子<span>七</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--3R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=3&page=16">
+<div class="oshi_non"></div>
+<div class="num">3<span>R</span></div>
+<div class="time">11:24</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>中里<span>昌</span></td>
+<td class="waku r2">2</td>
+<td>伯母<span>芳</span></td>
+<td class="waku r3">3</td>
+<td>奥平<span>拓</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td>春園<span>功</span></td>
+<td class="waku r5">5</td>
+<td>中村<span>裕</span></td>
+<td class="waku r6">6</td>
+<td>吉田<span>隆</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--4R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=4&page=16">
+<div class="oshi_non"></div>
+<div class="num">4<span>R</span></div>
+<div class="time">11:52</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>牧原<span>崇</span></td>
+<td class="waku r2">2</td>
+<td>鈴木<span>賢</span></td>
+<td class="waku r3">3</td>
+<td>吉村<span>誠</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td class="check">鈴木<span>智</span></td>
+<td class="waku r5">5</td>
+<td class="lady">蜂須<span>瑞</span></td>
+<td class="waku r6">6</td>
+<td class="lady">廣中<span>智</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--5R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=5&page=16">
+<div class="oshi_non"></div>
+<div class="num">5<span>R</span></div>
+<div class="time">12:19</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>山谷<span>央</span></td>
+<td class="waku r2">2</td>
+<td class="lady">久保田<span>美</span></td>
+<td class="waku r3">3</td>
+<td>外崎<span>悟</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td>岸本<span>雄</span></td>
+<td class="waku r5">5</td>
+<td>相馬<span>翔</span></td>
+<td class="waku r6">6</td>
+<td class="lady">吉田<span>彩</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--6R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=6&page=16">
+<div class="oshi"></div>
+<div class="num">6<span>R</span></div>
+<div class="time">12:46</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>牟田<span>奨</span></td>
+<td class="waku r2">2</td>
+<td>滝沢<span>崚</span></td>
+<td class="waku r3">3</td>
+<td>池田<span>雄</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td class="lady">飯塚<span>響</span></td>
+<td class="waku r5">5</td>
+<td class="check">山田<span>哲</span></td>
+<td class="waku r6">6</td>
+<td>後藤<span>隼</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--7R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=7&page=16">
+<div class="oshi_non"></div>
+<div class="num">7<span>R</span></div>
+<div class="time">13:14</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>中村<span>裕</span></td>
+<td class="waku r2">2</td>
+<td class="lady">平田<span>さ</span></td>
+<td class="waku r3">3</td>
+<td>宇留田<span>翔</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td>松浦<span>勝</span></td>
+<td class="waku r5">5</td>
+<td class="check">坂元<span>浩</span></td>
+<td class="waku r6">6</td>
+<td>都築<span>正</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--8R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=8&page=16">
+<div class="oshi"></div>
+<div class="num">8<span>R</span></div>
+<div class="time">13:48</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>飯島<span>誠</span></td>
+<td class="waku r2">2</td>
+<td class="check">中野<span>次</span></td>
+<td class="waku r3">3</td>
+<td>吉田<span>隆</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td>杉田<span>篤</span></td>
+<td class="waku r5">5</td>
+<td class="lady">金子<span>七</span></td>
+<td class="waku r6">6</td>
+<td class="lady">蜂須<span>瑞</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--9R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li class="end"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=9&page=16">
+<div class="oshi_non"></div>
+<div class="num">9<span>R</span></div>
+<div class="time">14:23</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>伯母<span>芳</span></td>
+<td class="waku r2">2</td>
+<td>山谷<span>央</span></td>
+<td class="waku r3">3</td>
+<td>神田<span>達</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td>芝田<span>京</span></td>
+<td class="waku r5">5</td>
+<td class="lady">廣中<span>智</span></td>
+<td class="waku r6">6</td>
+<td>野澤<span>大</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--10R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=10&page=2">
+<div class="oshi"></div>
+<div class="num">10<span>R</span></div>
+<div class="time">14:59</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td class="lady">平田<span>さ</span></td>
+<td class="waku r2">2</td>
+<td>木幡<span>純</span></td>
+<td class="waku r3">3</td>
+<td>相馬<span>翔</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td class="check">山田<span>哲</span></td>
+<td class="waku r5">5</td>
+<td>奥平<span>拓</span></td>
+<td class="waku r6">6</td>
+<td>吉村<span>誠</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--11R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&page=2">
+<div class="oshi_non"></div>
+<div class="num">11<span>R</span></div>
+<div class="time">15:36</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td>杉田<span>篤</span></td>
+<td class="waku r2">2</td>
+<td>後藤<span>隼</span></td>
+<td class="waku r3">3</td>
+<td>春園<span>功</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td class="check">坂元<span>浩</span></td>
+<td class="waku r5">5</td>
+<td>鈴木<span>賢</span></td>
+<td class="waku r6">6</td>
+<td>外崎<span>悟</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<!--12R-->
+<div id="top_syusso" class="cf">
+<div id="race_num">
+<ul>
+<li><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=12&page=2">
+<div class="oshi"></div>
+<div class="num">12<span>R</span></div>
+<div class="time">16:15</div>
+</a></li>
+</ul>
+</div>
+<div id="race_mem" class="cf">
+<table class="top_mem">
+<tr>
+<td class="waku r1">1</td>
+<td class="check">中野<span>次</span></td>
+<td class="waku r2">2</td>
+<td>角谷<span>健</span></td>
+<td class="waku r3">3</td>
+<td>都築<span>正</span></td>
+ </tr>
+<tr>
+<td class="waku r4">4</td>
+<td>中里<span>昌</span></td>
+<td class="waku r5">5</td>
+<td>川尻<span>泰</span></td>
+<td class="waku r6">6</td>
+<td class="check">鈴木<span>智</span></td>
+ </tr>
+</table>
+</div> 
+</div><!-- top_syusso end -->
+<div id="caution">
+<span class="oshi">★</span>:記者の推しレース　<span class="check">■</span>:記者の注目選手 </div>
+
+
+</div><!-- item end -->
+
+<!--出走データ①-->
+<div class="item cf data hyoka">
+
+<div class="page_tit">選手評価</div>
+<table class="ta_shusso">
+    <tr>
+      <th rowspan="2">枠<br>
+        番</th>
+      <th rowspan="2" class="name">選手名<br>
+        <span>登番 / 支部 / 年齢 / 級</span></th>
+      <th class="F">F</th>
+      <th rowspan="2">平均<br>
+        ST</th>
+      <th rowspan="2" class="mark">記者<br>
+        評価</th>
+      <th colspan="3" class="mark">モーター評価</th>
+      <th rowspan="2">早<br>
+        見</th>
+    </tr>
+    <tr>
+      <th class="L">L</th>
+      <th class="mark">No.</th>
+      <th class="mark">出足</th>
+      <th class="mark">伸足</th>
+    </tr>
+    <tr>
+      <td rowspan="2" class="r1">1</td>
+      <td class="bottom_no_border"><span class="name4">杉田 篤光</span></td>
+      <td class="top">　</td>
+      <td rowspan="2">.18</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_2.png"/></td>
+      <td rowspan="2" class="mark_gr no3">20</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_1.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=8&page=2">8<span>R</span></a></td>
+    </tr>
+    <tr>
+      <td class="number top_no_border">4076 / 静岡 / 42 / A2</td>
+      <td class="bottom">&nbsp;</td>
+      </tr>
+    <tr>
+      <td rowspan="2" class="r2">2</td>
+      <td class="bottom_no_border"><span class="name4">後藤 隼之</span></td>
+      <td class="top">　</td>
+      <td rowspan="2">.17</td>
+      <td rowspan="2" class="mark"></td>
+      <td rowspan="2" class="mark_gr">45</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=6&page=2">6<span>R</span></a></td>
+    </tr>
+    <tr>
+      <td class="number top_no_border">4676 / 東京 / 33 / A2</td>
+      <td class="bottom">&nbsp;</td>
+      </tr>
+    <tr>
+      <td rowspan="2" class="r3">3</td>
+      <td class="bottom_no_border"><span class="name4">春園 功太</span></td>
+      <td class="top">　</td>
+      <td rowspan="2">.16</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_3.png"/></td>
+      <td rowspan="2" class="mark_gr">22</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=3&page=2">3<span>R</span></a></td>
+    </tr>
+    <tr>
+      <td class="number top_no_border">4796 / 三重 / 29 / A2</td>
+      <td class="bottom">&nbsp;</td>
+      </tr>
+    <tr>
+      <td rowspan="2" class="r4">4</td>
+      <td class="bottom_no_border"><span class="name4">坂元 浩仁</span></td>
+      <td class="top">　</td>
+      <td rowspan="2">.16</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_4.png"/></td>
+      <td rowspan="2" class="mark_gr">19</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=7&page=2">7<span>R</span></a></td>
+    </tr>
+    <tr>
+      <td class="number top_no_border">4409 / 愛知 / 35 / A1</td>
+      <td class="bottom">&nbsp;</td>
+      </tr>
+    <tr>
+      <td rowspan="2" class="r5">5</td>
+      <td class="bottom_no_border"><span class="name4">鈴木 賢一</span></td>
+      <td class="top">　</td>
+      <td rowspan="2">.16</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_5.png"/></td>
+      <td rowspan="2" class="mark_gr">73</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_3.png"></td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_1.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=4&page=2">4<span>R</span></a></td>
+    </tr>
+    <tr>
+      <td class="number top_no_border">3664 / 埼玉 / 51 / A2</td>
+      <td class="bottom">&nbsp;</td>
+      </tr>
+    <tr>
+      <td rowspan="2" class="r6">6</td>
+      <td class="bottom_no_border"><span class="name3">外崎 悟</span></td>
+      <td class="top">　</td>
+      <td rowspan="2">.16</td>
+      <td rowspan="2" class="mark"></td>
+      <td rowspan="2" class="mark_gr">72</td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_3.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=5&page=2">5<span>R</span></a></td>
+    </tr>
+    <tr>
+      <td class="number top_no_border">4809 / 埼玉 / 32 / B1</td>
+      <td class="bottom">&nbsp;</td>
+      </tr>
+  </table>
+
+
+</div><!-- item end -->
+
+<!--出走データ②-->
+<div class="item konsetsu cf">
+
+
+<div id="id_syusso_seiseki">
+<div class="page_tit">今節成績</div>
+<table id="nodata">
+<tr>
+<td>ページ読み込み中…</td>
+</tr>
+</table>
+</div>
+</div><!-- item end -->
+
+<!--出走データ③-->
+<div class="item zen_kako cf">
+
+<div id="id_syusso_allpast">
+<div class="page_tit">全国過去2節</div>
+<table id="nodata">
+<tr>
+<td>ページ読み込み中…</td>
+</tr>
+</table>
+</div>
+</div><!-- item end -->
+
+<!--出走データ④/-->
+<div class="item tochi_kako cf">
+
+<div id="id_syusso_herepast">
+<div class="page_tit">当地過去2節</div>
+<table id="nodata">
+<tr>
+<td>ページ読み込み中…</td>
+</tr>
+</table>
+</div>
+</div><!-- item end -->
+
+<!--出走データ⑤/-->
+<div class="item motor_rireki">
+
+<div id="id_syusso_motor">
+<div class="page_tit">モーター履歴</div>
+<table id="nodata">
+<tr>
+<td>ページ読み込み中…</td>
+</tr>
+</table>
+</div>
+</div><!-- item end -->
+
+
+<!--予想①/-->
+<div class="item yoso1 cf" id="yoso1">
+<div class="page_tit">記者前夜版</div>
+<table class="ta_shusso yoso1">
+<tr>
+  <th rowspan="2" class="mark">記者<br>
+    評価</th>
+  <th rowspan="2">枠<br>番</th>
+<th rowspan="2" class="name">選手名<br>
+  <span>登番 / 支部 / 年齢 / 級</span></th>
+<th rowspan="2"><span class="top f">F</span><span class="bot l">L</span></th>
+<th colspan="3" class="mark_thin">モーター</th>
+<th rowspan="2">早<br>
+  見</th>
+</tr>
+<tr>
+  <th class="mark_thin"><span class="top">No.</span><span class="bot">2連率</span></th>
+  <th class="mark">出足</th>
+  <th class="mark">伸足</th>
+  </tr>
+<tr>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_2.png"/></td>
+  <td rowspan="2" class="r1">1</td>
+  <td class="bottom_no_border"><span class="name4">杉田 篤光</span></td>
+      <td class="top f">　</td>
+  <td class="top mark_gr no3">20</td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_1.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=8&page=7">8<span>R</span></a></td>
+  </tr>
+<tr>
+<td class="number top_no_border">4076 / 静岡 / 42 / A2</td>
+      <td class="bottom">　</td>
+<td class="yoso1_bottom gray bold">45.6</td>
+</tr>
+<tr>
+  <td rowspan="2" class="mark"></td>
+  <td rowspan="2" class="r2">2</td>
+  <td class="bottom_no_border"><span class="name4">後藤 隼之</span></td>
+      <td class="top f">　</td>
+  <td class="top mark_gr">45</td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=6&page=7">6<span>R</span></a></td>
+  </tr>
+<tr>
+<td class="number top_no_border">4676 / 東京 / 33 / A2</td>
+      <td class="bottom">　</td>
+<td class="yoso1_bottom gray bold">34.8</td>
+</tr>
+<tr>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_3.png"/></td>
+  <td rowspan="2" class="r3">3</td>
+  <td class="bottom_no_border"><span class="name4">春園 功太</span></td>
+      <td class="top f">　</td>
+  <td class="top mark_gr">22</td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=3&page=7">3<span>R</span></a></td>
+  </tr>
+<tr>
+<td class="number top_no_border">4796 / 三重 / 29 / A2</td>
+      <td class="bottom">　</td>
+<td class="yoso1_bottom gray bold">36.9</td>
+</tr>
+<tr>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_4.png"/></td>
+  <td rowspan="2" class="r4">4</td>
+  <td class="bottom_no_border"><span class="name4">坂元 浩仁</span></td>
+      <td class="top f">　</td>
+  <td class="top mark_gr">19</td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=7&page=7">7<span>R</span></a></td>
+  </tr>
+<tr>
+<td class="number top_no_border">4409 / 愛知 / 35 / A1</td>
+      <td class="bottom">　</td>
+<td class="yoso1_bottom gray bold">42.3</td>
+</tr>
+<tr>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/hyoka_5.png"/></td>
+  <td rowspan="2" class="r5">5</td>
+  <td class="bottom_no_border"><span class="name4">鈴木 賢一</span></td>
+      <td class="top f">　</td>
+  <td class="top mark_gr">73</td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_3.png"></td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_1.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=4&page=7">4<span>R</span></a></td>
+  </tr>
+<tr>
+<td class="number top_no_border">3664 / 埼玉 / 51 / A2</td>
+      <td class="bottom">　</td>
+<td class="yoso1_bottom gray bold">41.3</td>
+</tr>
+<tr>
+  <td rowspan="2" class="mark"></td>
+  <td rowspan="2" class="r6">6</td>
+  <td class="bottom_no_border"><span class="name3">外崎 悟</span></td>
+      <td class="top f">　</td>
+  <td class="top mark_gr">72</td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_2.png"></td>
+  <td rowspan="2" class="mark"><img src="/sp/kyogi/images/motor_3.png"></td>
+      <td rowspan="2" class="hayami"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=5&page=7">5<span>R</span></a></td>
+  </tr>
+<tr>
+<td class="number top_no_border">4809 / 埼玉 / 32 / B1</td>
+      <td class="bottom">　</td>
+<td class="yoso1_bottom gray bold">36.2</td>
+</tr>
+</table>
+
+
+
+<div class="data yoso1" id="yoso">
+
+<dl class="ichioshi">
+<dt>記者イチオシレース</dt>
+<dd>1R / 6R / 8R / 10R / 12R</dd>
+</dl>
+
+
+<h3>進入予想</h3>
+<div class="slit">
+<table id="ta_shusso" class="start">
+<tr>
+  <td class="ST">S</td>
+  <td class="slit_img"><img src="/sp/kyogi/images/st01.png" width="62" height="52" alt="1" style="margin-right:160px;"></td>
+</tr>
+<tr>
+  <td class="ST">S</td>
+  <td class="slit_img"><img src="/sp/kyogi/images/st02.png" width="62" height="52" alt="1" style="margin-right:160px;"></td>
+</tr>
+<tr>
+  <td class="ST">S</td>
+  <td class="slit_img"><img src="/sp/kyogi/images/st03.png" width="62" height="52" alt="1" style="margin-right:160px;"></td>
+</tr>
+<tr>
+  <td class="ST">D</td>
+  <td class="slit_img"><img src="/sp/kyogi/images/st04.png" width="62" height="52" alt="1" style="margin-right:280px;"></td>
+</tr>
+<tr>
+  <td class="ST">D</td>
+  <td class="slit_img"><img src="/sp/kyogi/images/st05.png" width="62" height="52" alt="1" style="margin-right:280px;"></td>
+</tr>
+<tr>
+  <td class="ST">D</td>
+  <td class="slit_img"><img src="/sp/kyogi/images/st06.png" width="62" height="52" alt="1" style="margin-right:280px;"></td>
+</tr>
+</table>
+</div>
+
+<h3>記者's メモ</h3>
+<p class="txt">杉田は伸び型だがいい仕上がりだ。インでパンチの利いた走りを見せる。春園は連日の快スタート、ゼロ台に呼吸は合っておりここも強気に握っていくか。坂元のまくり戦も迫力満点。
+</p>
+
+<dl class="jisin">
+<dt>自信度</dt>
+<dd>65<span>%</span></dd>
+</dl>
+</div><!-- data end -->
+
+</div><!-- item end -->
+
+<!--予想②/-->
+<div class="item yoso2">
+<div id="id_yoso_kishatenji">
+<div class="page_tit">記者展示直後</div>
+<table class="ta_shusso yoso2">
+<tr>
+  <th>評<br>価</th>
+  <th>枠<br>番</th>
+  <th class="mark">展示<br>評価</th>
+  <th>体重</th>
+  <th>調整</th>
+  <th>展示<br>
+    タイム</th>
+  <th>チルト</th>
+  </tr>
+<tr>
+  <td rowspan="2"><img src="/sp/kyogi/images/hyoka_2.png"/></td>
+  <td rowspan="2" class="r1">1</td>
+  <td rowspan="2" class="mark"></td>
+  <td class="weight">52.5</td>
+  <td class="adjust">　</td>
+  <td class="time">　</td>
+  <td class="">0.0</td>
+  </tr>
+<tr>
+  <th class="parts_left">部品交換</th>
+  <td colspan="3" class="parts_right"></td>
+  </tr>
+<tr>
+  <td rowspan="2"></td>
+  <td rowspan="2" class="r2">2</td>
+  <td rowspan="2" class="mark"></td>
+  <td class="weight">52.1</td>
+  <td class="adjust">　</td>
+  <td class="time">　</td>
+  <td class="">0.0</td>
+  </tr>
+<tr>
+  <th class="parts_left">部品交換</th>
+  <td colspan="3" class="parts_right"></td>
+  </tr>
+<tr>
+  <td rowspan="2"><img src="/sp/kyogi/images/hyoka_3.png"/></td>
+  <td rowspan="2" class="r3">3</td>
+  <td rowspan="2" class="mark"></td>
+  <td class="weight">51.5</td>
+  <td class="adjust">0.5</td>
+  <td class="time">　</td>
+  <td class="">-0.5</td>
+  </tr>
+<tr>
+  <th class="parts_left">部品交換</th>
+  <td colspan="3" class="parts_right"></td>
+  </tr>
+<tr>
+  <td rowspan="2"><img src="/sp/kyogi/images/hyoka_4.png"/></td>
+  <td rowspan="2" class="r4">4</td>
+  <td rowspan="2" class="mark"></td>
+  <td class="weight">54.1</td>
+  <td class="adjust">　</td>
+  <td class="time">　</td>
+  <td class="">0.0</td>
+  </tr>
+<tr>
+  <th class="parts_left">部品交換</th>
+  <td colspan="3" class="parts_right"></td>
+  </tr>
+<tr>
+  <td rowspan="2"><img src="/sp/kyogi/images/hyoka_5.png"/></td>
+  <td rowspan="2" class="r5">5</td>
+  <td rowspan="2" class="mark"></td>
+  <td class="weight">55.0</td>
+  <td class="adjust">　</td>
+  <td class="time">　</td>
+  <td class="">0.0</td>
+  </tr>
+<tr>
+  <th class="parts_left">部品交換</th>
+  <td colspan="3" class="parts_right"></td>
+  </tr>
+<tr>
+  <td rowspan="2"></td>
+  <td rowspan="2" class="r6">6</td>
+  <td rowspan="2" class="mark"></td>
+  <td class="weight">52.0</td>
+  <td class="adjust">　</td>
+  <td class="time">　</td>
+  <td class="">0.0</td>
+  </tr>
+<tr>
+  <th class="parts_left">部品交換</th>
+  <td colspan="3" class="parts_right"></td>
+  </tr>
+</table>
+
+
+
+
+<div class="data yoso2" id="yoso">
+
+<!-- リプレイボタン -->
+<div id="replay_movie_yoso">
+<!-- 展示リプレイ（映像なし）-->
+<div class="tenji_nomovie"></div>
+
+
+</div><!-- replay_movie -->
+
+
+
+
+
+
+<h3>フォーカス</h3>
+<div id="nodata" class="yoso2 cf"><p>ただいま予想中…</p></div>
+
+</div><!-- data end -->
+
+</div>
+<script type="text/javascript">
+	//記者展示直後読み込み
+	Read_yoso_kishatenji( '11' );
+</script>
+
+
+
+
+</div><!-- item end -->
+
+<!--予想③/-->
+<div class="item yoso3">
+
+<div id="id_yoso_vpower">
+<div class="page_tit">V-POWER</div>
+<table id="nodata">
+<tr>
+<td>ページ読み込み中…</td>
+</tr>
+</table>
+</div>
+</div><!-- item end -->
+
+<!--予想④/-->
+<div class="item yoso4 cf" id="yoso4">
+<div class="page_tit">マイデータ予想</div>
+<div id="mydata_yoso">
+
+<div class="note">マイデータ予想でデータの重要度を選択してください。</div>
+
+<div class="caution">※優先度1（高い）から優先度5（低い）まで各項目で設定できます。</div>
+
+<form class="mydata" name="myyosoform" action="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&page=10" method="post">
+
+<div class="header">全国勝率</div>
+<ul class="priority">
+<li><label><input type="radio" name="priority01" value="1" checked="checked"/>1</label></li>
+<li><label><input type="radio" name="priority01" value="2" />2</label></li>
+<li><label><input type="radio" name="priority01" value="3" />3</label></li>
+<li><label><input type="radio" name="priority01" value="4" />4</label></li>
+<li><label><input type="radio" name="priority01" value="5" />5</label></li>
+<div class="clear"></div>
+</ul>
+
+<div class="header">津勝率</div>
+<ul class="priority">
+<li><label><input type="radio" name="priority02" value="1" checked="checked"/>1</label></li>
+<li><label><input type="radio" name="priority02" value="2" />2</label></li>
+<li><label><input type="radio" name="priority02" value="3" />3</label></li>
+<li><label><input type="radio" name="priority02" value="4" />4</label></li>
+<li><label><input type="radio" name="priority02" value="5" />5</label></li>
+<div class="clear"></div>
+</ul>
+
+<div class="header">モーター2連率</div>
+<ul class="priority">
+<li><label><input type="radio" name="priority03" value="1" checked="checked"/>1</label></li>
+<li><label><input type="radio" name="priority03" value="2" />2</label></li>
+<li><label><input type="radio" name="priority03" value="3" />3</label></li>
+<li><label><input type="radio" name="priority03" value="4" />4</label></li>
+<li><label><input type="radio" name="priority03" value="5" />5</label></li>
+<div class="clear"></div>
+</ul>
+
+<div class="header">平均ST</div>
+<ul class="priority">
+<li><label><input type="radio" name="priority04" value="1" checked="checked"/>1</label></li>
+<li><label><input type="radio" name="priority04" value="2" />2</label></li>
+<li><label><input type="radio" name="priority04" value="3" />3</label></li>
+<li><label><input type="radio" name="priority04" value="4" />4</label></li>
+<li><label><input type="radio" name="priority04" value="5" />5</label></li>
+<div class="clear"></div>
+</ul>
+
+<div class="header">津進入コース別成績</div>
+<ul class="priority">
+<li><label><input type="radio" name="priority05" value="1" checked="checked"/>1</label></li>
+<li><label><input type="radio" name="priority05" value="2" />2</label></li>
+<li><label><input type="radio" name="priority05" value="3" />3</label></li>
+<li><label><input type="radio" name="priority05" value="4" />4</label></li>
+<li><label><input type="radio" name="priority05" value="5" />5</label></li>
+<div class="clear"></div>
+</ul>
+
+<div id="box_select_y">
+<div class="search"><a href="javascript:document.myyosoform.submit();">予想する</a></div>
+</div><!--/#box_select-->
+</form>
+
+
+</div><!-- data end -->
+
+<span id="id_myyoso"></span>
+</div><!-- item end -->
+
+
+<!--オッズ結果①/-->
+<div class="item data cont_odds cf">
+
+<div id="id_odds_3rentanpuku">
+<div class="page_tit">3連単・複</div>
+<div class="odds_read">オッズをタップすると色が変わり、オッズ計算ページにタップした組み合わせが反映されます。</div>
+<h2 class="top_space">3連単</h2>
+<table id="ta_3rentan">
+  <tr>
+    <td class="r1">1</td>
+    <td colspan="2" class="r1_nocolor">杉田 篤光</td>
+    </tr>
+  <tr>
+    <td colspan="3" class="r1 thin_bar"></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td class="r3">3</td>
+    <td class="value class_1-2-3"><a href="javascript:funcCalcToggle( '1-2-3' );">11.5</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_1-2-4"><a href="javascript:funcCalcToggle( '1-2-4' );">13.3</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_1-2-5"><a href="javascript:funcCalcToggle( '1-2-5' );">22.3</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_1-2-6"><a href="javascript:funcCalcToggle( '1-2-6' );">92.8</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td class="r2">2</td>
+    <td class="value class_1-3-2"><a href="javascript:funcCalcToggle( '1-3-2' );">14.8</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_1-3-4"><a href="javascript:funcCalcToggle( '1-3-4' );">10.2</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_1-3-5"><a href="javascript:funcCalcToggle( '1-3-5' );">35.1</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_1-3-6"><a href="javascript:funcCalcToggle( '1-3-6' );">78.2</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td class="r2">2</td>
+    <td class="value class_1-4-2"><a href="javascript:funcCalcToggle( '1-4-2' );">11.7</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_1-4-3"><a href="javascript:funcCalcToggle( '1-4-3' );">10.3</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_1-4-5"><a href="javascript:funcCalcToggle( '1-4-5' );">22.7</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_1-4-6"><a href="javascript:funcCalcToggle( '1-4-6' );">71.8</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td class="r2">2</td>
+    <td class="value class_1-5-2"><a href="javascript:funcCalcToggle( '1-5-2' );">22.9</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_1-5-3"><a href="javascript:funcCalcToggle( '1-5-3' );">76.5</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_1-5-4"><a href="javascript:funcCalcToggle( '1-5-4' );">48.7</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_1-5-6"><a href="javascript:funcCalcToggle( '1-5-6' );">248.7</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td class="r2">2</td>
+    <td class="value class_1-6-2"><a href="javascript:funcCalcToggle( '1-6-2' );">79.1</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_1-6-3"><a href="javascript:funcCalcToggle( '1-6-3' );">224.6</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_1-6-4"><a href="javascript:funcCalcToggle( '1-6-4' );">188.2</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_1-6-5"><a href="javascript:funcCalcToggle( '1-6-5' );">199.0</a></td>
+    </tr>
+</table>
+<table id="ta_3rentan">
+  <tr>
+    <td class="r2">2</td>
+    <td colspan="2" class="r2_nocolor">後藤 隼之</td>
+    </tr>
+  <tr>
+    <td colspan="3" class="r2 thin_bar"></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r1">1</td>
+    <td class="r3">3</td>
+    <td class="value class_2-1-3"><a href="javascript:funcCalcToggle( '2-1-3' );">108.8</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_2-1-4"><a href="javascript:funcCalcToggle( '2-1-4' );">95.4</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_2-1-5"><a href="javascript:funcCalcToggle( '2-1-5' );">224.6</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_2-1-6"><a href="javascript:funcCalcToggle( '2-1-6' );">278.6</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td class="r1">1</td>
+    <td class="value class_2-3-1"><a href="javascript:funcCalcToggle( '2-3-1' );">161.9</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_2-3-4"><a href="javascript:funcCalcToggle( '2-3-4' );">232.1</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_2-3-5"><a href="javascript:funcCalcToggle( '2-3-5' );">348.2</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_2-3-6"><a href="javascript:funcCalcToggle( '2-3-6' );">386.9</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td class="r1">1</td>
+    <td class="value class_2-4-1"><a href="javascript:funcCalcToggle( '2-4-1' );">107.1</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_2-4-3"><a href="javascript:funcCalcToggle( '2-4-3' );">193.4</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_2-4-5"><a href="javascript:funcCalcToggle( '2-4-5' );">217.6</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_2-4-6"><a href="javascript:funcCalcToggle( '2-4-6' );">302.8</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td class="r1">1</td>
+    <td class="value class_2-5-1"><a href="javascript:funcCalcToggle( '2-5-1' );">290.2</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_2-5-3"><a href="javascript:funcCalcToggle( '2-5-3' );">464.3</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_2-5-4"><a href="javascript:funcCalcToggle( '2-5-4' );">302.8</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_2-5-6"><a href="javascript:funcCalcToggle( '2-5-6' );">535.7</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td class="r1">1</td>
+    <td class="value class_2-6-1"><a href="javascript:funcCalcToggle( '2-6-1' );">773.9</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_2-6-3"><a href="javascript:funcCalcToggle( '2-6-3' );">580.4</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_2-6-4"><a href="javascript:funcCalcToggle( '2-6-4' );">535.7</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_2-6-5"><a href="javascript:funcCalcToggle( '2-6-5' );">580.4</a></td>
+    </tr>
+</table>
+<table id="ta_3rentan" class="last">
+  <tr>
+    <td class="r3">3</td>
+    <td colspan="2" class="r3_nocolor">春園 功太</td>
+    </tr>
+  <tr>
+    <td colspan="3" class="r3 thin_bar"></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r1">1</td>
+    <td class="r2">2</td>
+    <td class="value class_3-1-2"><a href="javascript:funcCalcToggle( '3-1-2' );">89.2</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_3-1-4"><a href="javascript:funcCalcToggle( '3-1-4' );">31.5</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_3-1-5"><a href="javascript:funcCalcToggle( '3-1-5' );">82.9</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_3-1-6"><a href="javascript:funcCalcToggle( '3-1-6' );">183.2</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td class="r1">1</td>
+    <td class="value class_3-2-1"><a href="javascript:funcCalcToggle( '3-2-1' );">126.6</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_3-2-4"><a href="javascript:funcCalcToggle( '3-2-4' );">96.7</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_3-2-5"><a href="javascript:funcCalcToggle( '3-2-5' );">154.7</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_3-2-6"><a href="javascript:funcCalcToggle( '3-2-6' );">240.1</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td class="r1">1</td>
+    <td class="value class_3-4-1"><a href="javascript:funcCalcToggle( '3-4-1' );">39.1</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_3-4-2"><a href="javascript:funcCalcToggle( '3-4-2' );">133.9</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_3-4-5"><a href="javascript:funcCalcToggle( '3-4-5' );">88.1</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_3-4-6"><a href="javascript:funcCalcToggle( '3-4-6' );">148.1</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td class="r1">1</td>
+    <td class="value class_3-5-1"><a href="javascript:funcCalcToggle( '3-5-1' );">158.3</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_3-5-2"><a href="javascript:funcCalcToggle( '3-5-2' );">409.7</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_3-5-4"><a href="javascript:funcCalcToggle( '3-5-4' );">240.1</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_3-5-6"><a href="javascript:funcCalcToggle( '3-5-6' );">348.2</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td class="r1">1</td>
+    <td class="value class_3-6-1"><a href="javascript:funcCalcToggle( '3-6-1' );">497.5</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_3-6-2"><a href="javascript:funcCalcToggle( '3-6-2' );">302.8</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_3-6-4"><a href="javascript:funcCalcToggle( '3-6-4' );">348.2</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_3-6-5"><a href="javascript:funcCalcToggle( '3-6-5' );">497.5</a></td>
+    </tr>
+</table>
+<!--3連単人気TOP20-->
+<div class="data cf">
+<table id="ta_3rentan" class="bottom_space">
+  <tr>
+    <td class="r4">4</td>
+    <td colspan="2" class="r4_nocolor">坂元 浩仁</td>
+    </tr>
+  <tr>
+    <td colspan="3" class="r4 thin_bar"></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r1">1</td>
+    <td class="r2">2</td>
+    <td class="value class_4-1-2"><a href="javascript:funcCalcToggle( '4-1-2' );">52.7</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_4-1-3"><a href="javascript:funcCalcToggle( '4-1-3' );">32.5</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_4-1-5"><a href="javascript:funcCalcToggle( '4-1-5' );">48.7</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_4-1-6"><a href="javascript:funcCalcToggle( '4-1-6' );">78.2</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td class="r1">1</td>
+    <td class="value class_4-2-1"><a href="javascript:funcCalcToggle( '4-2-1' );">128.9</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_4-2-3"><a href="javascript:funcCalcToggle( '4-2-3' );">188.2</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_4-2-5"><a href="javascript:funcCalcToggle( '4-2-5' );">112.3</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_4-2-6"><a href="javascript:funcCalcToggle( '4-2-6' );">204.8</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td class="r1">1</td>
+    <td class="value class_4-3-1"><a href="javascript:funcCalcToggle( '4-3-1' );">47.0</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_4-3-2"><a href="javascript:funcCalcToggle( '4-3-2' );">199.0</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_4-3-5"><a href="javascript:funcCalcToggle( '4-3-5' );">80.9</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_4-3-6"><a href="javascript:funcCalcToggle( '4-3-6' );">232.1</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td class="r1">1</td>
+    <td class="value class_4-5-1"><a href="javascript:funcCalcToggle( '4-5-1' );">95.4</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_4-5-2"><a href="javascript:funcCalcToggle( '4-5-2' );">126.6</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_4-5-3"><a href="javascript:funcCalcToggle( '4-5-3' );">131.4</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_4-5-6"><a href="javascript:funcCalcToggle( '4-5-6' );">211.0</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td class="r1">1</td>
+    <td class="value class_4-6-1"><a href="javascript:funcCalcToggle( '4-6-1' );">154.7</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_4-6-2"><a href="javascript:funcCalcToggle( '4-6-2' );">267.8</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_4-6-3"><a href="javascript:funcCalcToggle( '4-6-3' );">278.6</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_4-6-5"><a href="javascript:funcCalcToggle( '4-6-5' );">435.3</a></td>
+    </tr>
+</table>
+<table id="ta_3rentan" class="bottom_space">
+  <tr>
+    <td class="r5">5</td>
+    <td colspan="2" class="r5_nocolor">鈴木 賢一</td>
+    </tr>
+  <tr>
+    <td colspan="3" class="r5 thin_bar"></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r1">1</td>
+    <td class="r2">2</td>
+    <td class="value class_5-1-2"><a href="javascript:funcCalcToggle( '5-1-2' );">148.1</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_5-1-3"><a href="javascript:funcCalcToggle( '5-1-3' );">217.6</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_5-1-4"><a href="javascript:funcCalcToggle( '5-1-4' );">248.7</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_5-1-6"><a href="javascript:funcCalcToggle( '5-1-6' );">199.0</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td class="r1">1</td>
+    <td class="value class_5-2-1"><a href="javascript:funcCalcToggle( '5-2-1' );">290.2</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_5-2-3"><a href="javascript:funcCalcToggle( '5-2-3' );">535.7</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_5-2-4"><a href="javascript:funcCalcToggle( '5-2-4' );">193.4</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_5-2-6"><a href="javascript:funcCalcToggle( '5-2-6' );">278.6</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td class="r1">1</td>
+    <td class="value class_5-3-1"><a href="javascript:funcCalcToggle( '5-3-1' );">257.9</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_5-3-2"><a href="javascript:funcCalcToggle( '5-3-2' );">696.5</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_5-3-4"><a href="javascript:funcCalcToggle( '5-3-4' );">248.7</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_5-3-6"><a href="javascript:funcCalcToggle( '5-3-6' );">409.7</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td class="r1">1</td>
+    <td class="value class_5-4-1"><a href="javascript:funcCalcToggle( '5-4-1' );">302.8</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_5-4-2"><a href="javascript:funcCalcToggle( '5-4-2' );">240.1</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_5-4-3"><a href="javascript:funcCalcToggle( '5-4-3' );">257.9</a></td>
+    </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_5-4-6"><a href="javascript:funcCalcToggle( '5-4-6' );">302.8</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td class="r1">1</td>
+    <td class="value class_5-6-1"><a href="javascript:funcCalcToggle( '5-6-1' );">409.7</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_5-6-2"><a href="javascript:funcCalcToggle( '5-6-2' );">535.7</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_5-6-3"><a href="javascript:funcCalcToggle( '5-6-3' );">696.5</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_5-6-4"><a href="javascript:funcCalcToggle( '5-6-4' );">773.9</a></td>
+    </tr>
+</table>
+<table id="ta_3rentan" class="last bottom_space">
+  <tr>
+    <td class="r6">6</td>
+    <td colspan="2" class="r6_nocolor">外崎 悟</td>
+    </tr>
+  <tr>
+    <td colspan="3" class="r6 thin_bar"></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r1">1</td>
+    <td class="r2">2</td>
+    <td class="value class_6-1-2"><a href="javascript:funcCalcToggle( '6-1-2' );">290.2</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_6-1-3"><a href="javascript:funcCalcToggle( '6-1-3' );">211.0</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_6-1-4"><a href="javascript:funcCalcToggle( '6-1-4' );">696.5</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_6-1-5"><a href="javascript:funcCalcToggle( '6-1-5' );">535.7</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td class="r1">1</td>
+    <td class="value class_6-2-1"><a href="javascript:funcCalcToggle( '6-2-1' );">497.5</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_6-2-3"><a href="javascript:funcCalcToggle( '6-2-3' );">366.5</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_6-2-4"><a href="javascript:funcCalcToggle( '6-2-4' );">366.5</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_6-2-5"><a href="javascript:funcCalcToggle( '6-2-5' );">409.7</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td class="r1">1</td>
+    <td class="value class_6-3-1"><a href="javascript:funcCalcToggle( '6-3-1' );">331.6</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_6-3-2"><a href="javascript:funcCalcToggle( '6-3-2' );">773.9</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_6-3-4"><a href="javascript:funcCalcToggle( '6-3-4' );">633.2</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_6-3-5"><a href="javascript:funcCalcToggle( '6-3-5' );">696.5</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td class="r1">1</td>
+    <td class="value class_6-4-1"><a href="javascript:funcCalcToggle( '6-4-1' );">435.3</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_6-4-2"><a href="javascript:funcCalcToggle( '6-4-2' );">580.4</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_6-4-3"><a href="javascript:funcCalcToggle( '6-4-3' );">464.3</a></td>
+    </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_6-4-5"><a href="javascript:funcCalcToggle( '6-4-5' );">348.2</a></td>
+    </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td class="r1">1</td>
+    <td class="value class_6-5-1"><a href="javascript:funcCalcToggle( '6-5-1' );">633.2</a></td>
+    </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_6-5-2"><a href="javascript:funcCalcToggle( '6-5-2' );">535.7</a></td>
+    </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_6-5-3"><a href="javascript:funcCalcToggle( '6-5-3' );">331.6</a></td>
+    </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_6-5-4"><a href="javascript:funcCalcToggle( '6-5-4' );">696.5</a></td>
+    </tr>
+</table>
+
+<!--選手名-->
+<h2>3連単 人気ランキング</h2>
+<table id="ta_3rentan_rank">
+<tr>
+<th>1</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"></td><td class="value class_1-3-4"><a href="javascript:funcCalcToggle( '1-3-4' );"">10.2</a></td></tr>
+<tr>
+<tr>
+<th>2</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td><td class="value class_1-4-3"><a href="javascript:funcCalcToggle( '1-4-3' );"">10.3</a></td></tr>
+<tr>
+<tr>
+<th>3</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td><td class="value class_1-2-3"><a href="javascript:funcCalcToggle( '1-2-3' );"">11.5</a></td></tr>
+<tr>
+<tr>
+<th>4</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td><td class="value class_1-4-2"><a href="javascript:funcCalcToggle( '1-4-2' );"">11.7</a></td></tr>
+<tr>
+<tr>
+<th>5</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"></td><td class="value class_1-2-4"><a href="javascript:funcCalcToggle( '1-2-4' );"">13.3</a></td></tr>
+<tr>
+<tr>
+<th>6</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td><td class="value class_1-3-2"><a href="javascript:funcCalcToggle( '1-3-2' );"">14.8</a></td></tr>
+<tr>
+<tr>
+<th>7</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td><td class="value class_1-2-5"><a href="javascript:funcCalcToggle( '1-2-5' );"">22.3</a></td></tr>
+<tr>
+<tr>
+<th>8</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td><td class="value class_1-4-5"><a href="javascript:funcCalcToggle( '1-4-5' );"">22.7</a></td></tr>
+<tr>
+<tr>
+<th>9</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td><td class="value class_1-5-2"><a href="javascript:funcCalcToggle( '1-5-2' );"">22.9</a></td></tr>
+<tr>
+<tr>
+<th>10</th>
+<td><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"></td><td class="value class_3-1-4"><a href="javascript:funcCalcToggle( '3-1-4' );"">31.5</a></td></tr>
+<tr>
+</table>
+<table id="ta_3rentan_rank" class="right">
+<tr>
+<th>11</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td><td class="value class_4-1-3"><a href="javascript:funcCalcToggle( '4-1-3' );"">32.5</a></td></tr>
+<tr>
+<tr>
+<th>12</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td><td class="value class_1-3-5"><a href="javascript:funcCalcToggle( '1-3-5' );"">35.1</a></td></tr>
+<tr>
+<tr>
+<th>13</th>
+<td><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"></td><td class="value class_3-4-1"><a href="javascript:funcCalcToggle( '3-4-1' );"">39.1</a></td></tr>
+<tr>
+<tr>
+<th>14</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"></td><td class="value class_4-3-1"><a href="javascript:funcCalcToggle( '4-3-1' );"">47.0</a></td></tr>
+<tr>
+<tr>
+<th>15</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td><td class="value class_4-1-5"><a href="javascript:funcCalcToggle( '4-1-5' );"">48.7</a></td></tr>
+<tr>
+<tr>
+<th>15</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"></td><td class="value class_1-5-4"><a href="javascript:funcCalcToggle( '1-5-4' );"">48.7</a></td></tr>
+<tr>
+<tr>
+<th>17</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td><td class="value class_4-1-2"><a href="javascript:funcCalcToggle( '4-1-2' );"">52.7</a></td></tr>
+<tr>
+<tr>
+<th>18</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num6.png" alt="6"></td><td class="value class_1-4-6"><a href="javascript:funcCalcToggle( '1-4-6' );"">71.8</a></td></tr>
+<tr>
+<tr>
+<th>19</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td><td class="value class_1-5-3"><a href="javascript:funcCalcToggle( '1-5-3' );"">76.5</a></td></tr>
+<tr>
+<tr>
+<th>20</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num6.png" alt="6"></td><td class="value class_4-1-6"><a href="javascript:funcCalcToggle( '4-1-6' );"">78.2</a></td></tr>
+<tr>
+</table>
+
+</div>
+
+
+
+<!--3連複-->
+<div class="data cf">
+
+<h2>3連複</h2>
+
+<!--選手名-->
+<table id="ta_3renpuku_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田 篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤 隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園 功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元 浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木 賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎 悟</td>
+</tr>
+</table>
+<!--選手名-->
+
+
+<table id="ta_3renpuku">
+<tr>
+<td rowspan="10" class="r1">1</td>
+<td rowspan="4" class="r2">2</td>
+<td class="r3">3</td>
+<td class="value class_1_2_3"><a href="javascript:funcCalcToggle( '1_2_3' );">7.1</a></td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="value class_1_2_4"><a href="javascript:funcCalcToggle( '1_2_4' );">6.2</a></td>
+</tr>
+<tr>
+<td class="r5">5</td>
+<td class="value class_1_2_5"><a href="javascript:funcCalcToggle( '1_2_5' );">13.6</a></td>
+</tr>
+<tr>
+<td class="r6">6</td>
+<td class="value class_1_2_6"><a href="javascript:funcCalcToggle( '1_2_6' );">13.6</a></td>
+</tr>
+<tr>
+<td rowspan="3" class="r3">3</td>
+<td class="r4">4</td>
+<td class="value class_1_3_4"><a href="javascript:funcCalcToggle( '1_3_4' );">3.9</a></td>
+</tr>
+<tr>
+<td class="r5">5</td>
+<td class="value class_1_3_5"><a href="javascript:funcCalcToggle( '1_3_5' );">11.3</a></td>
+</tr>
+<tr>
+<td class="r6">6</td>
+<td class="value class_1_3_6"><a href="javascript:funcCalcToggle( '1_3_6' );">17.0</a></td>
+</tr>
+<tr>
+<td rowspan="2" class="r4">4</td>
+<td class="r5">5</td>
+<td class="value class_1_4_5"><a href="javascript:funcCalcToggle( '1_4_5' );">8.0</a></td>
+</tr>
+<tr>
+<td class="r6">6</td>
+<td class="value class_1_4_6"><a href="javascript:funcCalcToggle( '1_4_6' );">19.5</a></td>
+</tr>
+<tr>
+<td rowspan="1" class="r5">5</td>
+<td class="r6">6</td>
+<td class="value class_1_5_6"><a href="javascript:funcCalcToggle( '1_5_6' );">45.5</a></td>
+</tr>
+</table>
+
+<table id="ta_3renpuku" class="right">
+<tr>
+<td rowspan="6" class="r2">2</td>
+<td rowspan="3" class="r3">3</td>
+<td class="r4">4</td>
+<td class="value class_2_3_4"><a href="javascript:funcCalcToggle( '2_3_4' );">19.5</a></td>
+</tr>
+<tr>
+<td class="r5">5</td>
+<td class="value class_2_3_5"><a href="javascript:funcCalcToggle( '2_3_5' );">45.5</a></td>
+</tr>
+<tr>
+<td class="r6">6</td>
+<td class="value class_2_3_6"><a href="javascript:funcCalcToggle( '2_3_6' );">45.5</a></td>
+</tr>
+<tr>
+<td rowspan="2" class="r4">4</td>
+<td class="r5">5</td>
+<td class="value class_2_4_5"><a href="javascript:funcCalcToggle( '2_4_5' );">27.3</a></td>
+</tr>
+<tr>
+<td class="r6">6</td>
+<td class="value class_2_4_6"><a href="javascript:funcCalcToggle( '2_4_6' );">68.2</a></td>
+</tr>
+<tr>
+<td rowspan="1" class="r5">5</td>
+<td class="r6">6</td>
+<td class="value class_2_5_6"><a href="javascript:funcCalcToggle( '2_5_6' );">0.0</a></td>
+</tr>
+<tr>
+<td rowspan="3" class="r3">3</td>
+<td rowspan="2" class="r4">4</td>
+<td class="r5">5</td>
+<td class="value class_3_4_5"><a href="javascript:funcCalcToggle( '3_4_5' );">15.1</a></td>
+</tr>
+<tr>
+<td class="r6">6</td>
+<td class="value class_3_4_6"><a href="javascript:funcCalcToggle( '3_4_6' );">45.5</a></td>
+</tr>
+<tr>
+<td rowspan="1" class="r5">5</td>
+<td class="r6">6</td>
+<td class="value class_3_5_6"><a href="javascript:funcCalcToggle( '3_5_6' );">34.1</a></td>
+</tr>
+<tr>
+<td rowspan="1" class="r4">4</td>
+<td rowspan="1" class="r5">5</td>
+<td class="r6">6</td>
+<td class="value class_4_5_6"><a href="javascript:funcCalcToggle( '4_5_6' );">45.5</a></td>
+</tr>
+</table>
+
+
+</div><!-- data end -->
+
+</div>
+<script type="text/javascript">
+	//オッズ 3連単複読み込み
+	Read_odds_3rentanpuku( '11' );
+</script>
+
+
+
+
+</div><!-- item end -->
+
+
+
+<!--オッズ結果②/-->
+<div class="item cont_odds">
+
+<div class="page_tit">検索</div>
+<div class="odds_read">オッズをタップすると色が変わり、オッズ計算ページにタップした組み合わせが反映されます。</div>
+<!--3連単 流し検索-->
+<div class="data cf">
+
+<h2 class="top_space">3連単 流し検索</h2>
+
+<!--選手名-->
+<table id="ta_3rentan_nagashi_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎悟</td>
+</table>
+<!--選手名-->
+
+<!--艇選択-->
+<div id="nagashi_select">
+
+    <div class="set no1 cf">
+        <div class="left">1着</div>
+        <div class="right cf">
+            <ul class="btn1 cf">
+                <li id="id_nagashi11" class="r1" onclick="javascript:funcOdds_NagashiSearch('1','1');">1</li>
+                <li id="id_nagashi12" class="r2" onclick="javascript:funcOdds_NagashiSearch('1','2');">2</li>
+                <li id="id_nagashi13" class="r3" onclick="javascript:funcOdds_NagashiSearch('1','3');">3</li>
+                <li id="id_nagashi14" class="r4" onclick="javascript:funcOdds_NagashiSearch('1','4');">4</li>
+                <li id="id_nagashi15" class="r5" onclick="javascript:funcOdds_NagashiSearch('1','5');">5</li>
+                <li id="id_nagashi16" class="r6" onclick="javascript:funcOdds_NagashiSearch('1','6');">6</li>
+            </ul>
+            <div id="id_nagashi10" class="btn2" onclick="javascript:funcOdds_NagashiSearch('1','0');">全通り</div>
+        </div>
+    </div><!--/#set-->
+
+    <div class="set no2 cf">
+        <div class="left">2着</div>
+        <div class="right cf">
+            <ul class="btn1 cf">
+                <li id="id_nagashi21" class="r1" onclick="javascript:funcOdds_NagashiSearch('2','1');">1</li>
+                <li id="id_nagashi22" class="r2" onclick="javascript:funcOdds_NagashiSearch('2','2');">2</li>
+                <li id="id_nagashi23" class="r3" onclick="javascript:funcOdds_NagashiSearch('2','3');">3</li>
+                <li id="id_nagashi24" class="r4" onclick="javascript:funcOdds_NagashiSearch('2','4');">4</li>
+                <li id="id_nagashi25" class="r5" onclick="javascript:funcOdds_NagashiSearch('2','5');">5</li>
+                <li id="id_nagashi26" class="r6" onclick="javascript:funcOdds_NagashiSearch('2','6');">6</li>
+            </ul>
+            <div id="id_nagashi20" class="btn2" onclick="javascript:funcOdds_NagashiSearch('2','0');">全通り</div>
+        </div>
+    </div><!--/#set-->
+
+    <div class="set no3 cf">
+        <div class="left">3着</div>
+        <div class="right cf">
+            <ul class="btn1 cf">
+                <li id="id_nagashi31" class="r1" onclick="javascript:funcOdds_NagashiSearch('3','1');">1</li>
+                <li id="id_nagashi32" class="r2" onclick="javascript:funcOdds_NagashiSearch('3','2');">2</li>
+                <li id="id_nagashi33" class="r3" onclick="javascript:funcOdds_NagashiSearch('3','3');">3</li>
+                <li id="id_nagashi34" class="r4" onclick="javascript:funcOdds_NagashiSearch('3','4');">4</li>
+                <li id="id_nagashi35" class="r5" onclick="javascript:funcOdds_NagashiSearch('3','5');">5</li>
+                <li id="id_nagashi36" class="r6" onclick="javascript:funcOdds_NagashiSearch('3','6');">6</li>
+            </ul>
+            <div id="id_nagashi30" class="btn2" onclick="javascript:funcOdds_NagashiSearch('3','0');">全通り</div>
+        </div>
+    </div><!--/#set-->
+
+<form id="ozzNagashiform" name="ozzNagashiform" action="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&type=1&page=12" method="post">
+<Input type="hidden" name="select1" value="7">
+<Input type="hidden" name="select2" value="7">
+<Input type="hidden" name="select3" value="7">
+</form>
+
+<div class="bot cf">
+	<div class="att">※1着、2着、3着とも全通りを選ぶことはできません。</div>
+    <div class="search"><a href="javascript:funcOdds_NagashiSearchExe();">検索</a></div>
+</div>
+
+
+</div><!--/#nagashi_select-->
+<!--艇選択-->
+
+</div>
+
+
+
+
+<!--3連単 ボックス検索-->
+<div class="data cf">
+
+<h2>3連単 ボックス検索</h2>
+
+<!--選手名-->
+<table id="ta_3rentan_box_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎悟</td>
+</table>
+<!--選手名-->
+
+<!--艇選択-->
+<div id="box_select">
+
+<ul class="set cf">
+    <li id="id_box1" class="r1" onclick="javascript:funcOdds_BoxSearch('1');">1</li>
+    <li id="id_box2" class="r2" onclick="javascript:funcOdds_BoxSearch('2');">2</li>
+    <li id="id_box3" class="r3" onclick="javascript:funcOdds_BoxSearch('3');">3</li>
+    <li id="id_box4" class="r4" onclick="javascript:funcOdds_BoxSearch('4');">4</li>
+    <li id="id_box5" class="r5" onclick="javascript:funcOdds_BoxSearch('5');">5</li>
+    <li id="id_box6" class="r6" onclick="javascript:funcOdds_BoxSearch('6');">6</li>
+</ul>
+
+<form id="ozzBoxform" name="ozzBoxform" action="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&type=2&page=13" method="post">
+<Input type="hidden" name="boxselect1" value="0">
+<Input type="hidden" name="boxselect2" value="0">
+<Input type="hidden" name="boxselect3" value="0">
+<Input type="hidden" name="boxselect4" value="0">
+<Input type="hidden" name="boxselect5" value="0">
+<Input type="hidden" name="boxselect6" value="0">
+</form>
+<div class="search"><a href="javascript:funcOdds_BoxSearchExe();">検索</a></div>
+
+</div><!--/#box_select-->
+<!--艇選択-->
+
+
+</div><!-- data end -->
+
+
+<span id="id_oddsSearch"></span>
+</div><!-- item end -->
+
+
+
+<!--オッズ結果③/-->
+<div class="item cont_odds">
+
+
+<div id="id_odds_2rentanpuku">
+<div class="page_tit">2連単・複・単勝・複勝・拡連複</div>
+<div class="odds_read">オッズをタップすると色が変わり、オッズ計算ページにタップした組み合わせが反映されます。</div>
+<!--2連単-->
+<div class="data cf">
+
+<h2 class="top_space">2連単</h2>
+
+<table id="ta_2rentan">
+  <tr>
+    <td class="r1">1</td>
+    <td colspan="2" class="r1_nocolor">杉田 篤光</td>
+    <td class="r2">2</td>
+    <td colspan="2" class="r2_nocolor">後藤 隼之</td>
+    <td class="r3">3</td>
+    <td colspan="2" class="r3_nocolor">春園 功太</td>
+    </tr>
+  <tr>
+    <td rowspan="5" class="r1">&ensp;</td>
+    <td class="r2">2</td>
+    <td class="value class_1-2"><a href="javascript:funcCalcToggle( '1-2' );">10.1</a></td>
+    <td rowspan="5" class="r2">&ensp;</td>
+    <td class="r1">1</td>
+    <td class="value class_2-1"><a href="javascript:funcCalcToggle( '2-1' );">76.9</a></td>
+    <td rowspan="5" class="r3">&ensp;</td>
+    <td class="r1">1</td>
+    <td class="value class_3-1"><a href="javascript:funcCalcToggle( '3-1' );">24.0</a></td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_1-3"><a href="javascript:funcCalcToggle( '1-3' );">5.8</a></td>
+    <td class="r3">3</td>
+    <td class="value class_2-3"><a href="javascript:funcCalcToggle( '2-3' );">76.9</a></td>
+    <td class="r2">2</td>
+    <td class="value class_3-2"><a href="javascript:funcCalcToggle( '3-2' );">96.1</a></td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="value class_1-4"><a href="javascript:funcCalcToggle( '1-4' );">1.5</a></td>
+    <td class="r4">4</td>
+    <td class="value class_2-4"><a href="javascript:funcCalcToggle( '2-4' );">128.2</a></td>
+    <td class="r4">4</td>
+    <td class="value class_3-4"><a href="javascript:funcCalcToggle( '3-4' );">22.6</a></td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_1-5"><a href="javascript:funcCalcToggle( '1-5' );">48.0</a></td>
+    <td class="r5">5</td>
+    <td class="value class_2-5"><a href="javascript:funcCalcToggle( '2-5' );">76.9</a></td>
+    <td class="r5">5</td>
+    <td class="value class_3-5"><a href="javascript:funcCalcToggle( '3-5' );">38.4</a></td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_1-6"><a href="javascript:funcCalcToggle( '1-6' );">42.7</a></td>
+    <td class="r6">6</td>
+    <td class="value class_2-6"><a href="javascript:funcCalcToggle( '2-6' );">0.0</a></td>
+    <td class="r6">6</td>
+    <td class="value class_3-6"><a href="javascript:funcCalcToggle( '3-6' );">96.1</a></td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td colspan="2" class="r4_nocolor">坂元 浩仁</td>
+    <td class="r5">5</td>
+    <td colspan="2" class="r5_nocolor">鈴木 賢一</td>
+    <td class="r6">6</td>
+    <td colspan="2" class="r6_nocolor">外崎 悟</td>
+    </tr>
+  <tr>
+    <td rowspan="5" class="r4">&ensp;</td>
+    <td class="r1">1</td>
+    <td class="value class_4-1"><a href="javascript:funcCalcToggle( '4-1' );">29.5</a></td>
+    <td rowspan="5" class="r5">&ensp;</td>
+    <td class="r1">1</td>
+    <td class="value class_5-1"><a href="javascript:funcCalcToggle( '5-1' );">0.0</a></td>
+    <td rowspan="5" class="r6">&ensp;</td>
+    <td class="r1">1</td>
+    <td class="value class_6-1"><a href="javascript:funcCalcToggle( '6-1' );">192.3</a></td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="value class_4-2"><a href="javascript:funcCalcToggle( '4-2' );">76.9</a></td>
+    <td class="r2">2</td>
+    <td class="value class_5-2"><a href="javascript:funcCalcToggle( '5-2' );">76.9</a></td>
+    <td class="r2">2</td>
+    <td class="value class_6-2"><a href="javascript:funcCalcToggle( '6-2' );">384.7</a></td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="value class_4-3"><a href="javascript:funcCalcToggle( '4-3' );">25.6</a></td>
+    <td class="r3">3</td>
+    <td class="value class_5-3"><a href="javascript:funcCalcToggle( '5-3' );">76.9</a></td>
+    <td class="r3">3</td>
+    <td class="value class_6-3"><a href="javascript:funcCalcToggle( '6-3' );">54.9</a></td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="value class_4-5"><a href="javascript:funcCalcToggle( '4-5' );">54.9</a></td>
+    <td class="r4">4</td>
+    <td class="value class_5-4"><a href="javascript:funcCalcToggle( '5-4' );">128.2</a></td>
+    <td class="r4">4</td>
+    <td class="value class_6-4"><a href="javascript:funcCalcToggle( '6-4' );">384.7</a></td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="value class_4-6"><a href="javascript:funcCalcToggle( '4-6' );">54.9</a></td>
+    <td class="r6">6</td>
+    <td class="value class_5-6"><a href="javascript:funcCalcToggle( '5-6' );">0.0</a></td>
+    <td class="r5">5</td>
+    <td class="value class_6-5"><a href="javascript:funcCalcToggle( '6-5' );">192.3</a></td>
+  </tr>
+</table>
+
+</div>
+
+
+<!--2連単人気TOP10-->
+<div class="data cf">
+
+<h2>2連単 人気ランキング</h2>
+
+<!--選手名-->
+<table id="ta_2rentan_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田 篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤 隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園 功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元 浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木 賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎 悟</td>
+</table>
+<!--選手名-->
+
+<table id="ta_2rentan_rank">
+<tr>
+<th>1</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td><td class="value class_1-3"><a href="javascript:funcCalcToggle( '1-3' );">5.8</a></td></tr>
+<tr>
+<tr>
+<th>2</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td><td class="value class_1-2"><a href="javascript:funcCalcToggle( '1-2' );">10.1</a></td></tr>
+<tr>
+<tr>
+<th>3</th>
+<td><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"></td><td class="value class_3-4"><a href="javascript:funcCalcToggle( '3-4' );">22.6</a></td></tr>
+<tr>
+<tr>
+<th>4</th>
+<td><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"></td><td class="value class_3-1"><a href="javascript:funcCalcToggle( '3-1' );">24.0</a></td></tr>
+<tr>
+<tr>
+<th>5</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td><td class="value class_4-3"><a href="javascript:funcCalcToggle( '4-3' );">25.6</a></td></tr>
+<tr>
+</table>
+<table id="ta_2rentan_rank" class="right">
+<tr>
+<th>6</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"></td><td class="value class_4-1"><a href="javascript:funcCalcToggle( '4-1' );">29.5</a></td></tr>
+<tr>
+<tr>
+<th>7</th>
+<td><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td><td class="value class_3-5"><a href="javascript:funcCalcToggle( '3-5' );">38.4</a></td></tr>
+<tr>
+<tr>
+<th>8</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num6.png" alt="6"></td><td class="value class_1-6"><a href="javascript:funcCalcToggle( '1-6' );">42.7</a></td></tr>
+<tr>
+<tr>
+<th>9</th>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td><td class="value class_1-5"><a href="javascript:funcCalcToggle( '1-5' );">48.0</a></td></tr>
+<tr>
+<tr>
+<th>10</th>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td><td class="value class_4-5"><a href="javascript:funcCalcToggle( '4-5' );">54.9</a></td></tr>
+<tr>
+</table>
+</div>
+
+
+<!--2連複-->
+<div class="data cf">
+
+<h2>2連複</h2>
+<table id="ta_2renpuku_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田 篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤 隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園 功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元 浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木 賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎 悟</td>
+</table>
+<table id="ta_2renpuku">
+  <tr>
+<td rowspan="5" class="r1">1</td>
+<td class="r2">2</td>
+<td class="value class_1_2"><a href="javascript:funcCalcToggle( '1_2' );">6.4</a></td>
+</tr>
+  <tr>
+<td class="r3">3</td>
+<td class="value class_1_3"><a href="javascript:funcCalcToggle( '1_3' );">4.6</a></td>
+</tr>
+  <tr>
+<td class="r4">4</td>
+<td class="value class_1_4"><a href="javascript:funcCalcToggle( '1_4' );">6.4</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value class_1_5"><a href="javascript:funcCalcToggle( '1_5' );">8.0</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value class_1_6"><a href="javascript:funcCalcToggle( '1_6' );">16.1</a></td>
+</tr>
+  <tr>
+<td rowspan="4" class="r2">2</td>
+<td class="r3">3</td>
+<td class="value class_2_3"><a href="javascript:funcCalcToggle( '2_3' );">16.1</a></td>
+</tr>
+  <tr>
+<td class="r4">4</td>
+<td class="value class_2_4"><a href="javascript:funcCalcToggle( '2_4' );">16.1</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value class_2_5"><a href="javascript:funcCalcToggle( '2_5' );">0.0</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value class_2_6"><a href="javascript:funcCalcToggle( '2_6' );">0.0</a></td>
+</tr>
+</table>
+
+
+<table id="ta_2renpuku" class="right">
+  <tr>
+<td rowspan="3" class="r3">3</td>
+<td class="r4">4</td>
+<td class="value class_3_4"><a href="javascript:funcCalcToggle( '3_4' );">3.2</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value class_3_5"><a href="javascript:funcCalcToggle( '3_5' );">0.0</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value class_3_6"><a href="javascript:funcCalcToggle( '3_6' );">0.0</a></td>
+</tr>
+  <tr>
+<td rowspan="2" class="r4">4</td>
+<td class="r5">5</td>
+<td class="value class_4_5"><a href="javascript:funcCalcToggle( '4_5' );">8.0</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value class_4_6"><a href="javascript:funcCalcToggle( '4_6' );">16.1</a></td>
+</tr>
+  <tr>
+<td rowspan="1" class="r5">5</td>
+<td class="r6">6</td>
+<td class="value class_5_6"><a href="javascript:funcCalcToggle( '5_6' );">0.0</a></td>
+</tr>
+</table>
+
+
+</div><!-- data end -->
+
+
+<!--単勝-->
+<div class="data cf">
+
+<h2>単勝</h2>
+<table id="ta_tan_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田 篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤 隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園 功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元 浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木 賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎 悟</td>
+</table>
+<table id="ta_tan">
+  <tr>
+<td class="r1">1</td>
+<td class="value class_1"><a href="javascript:funcCalcToggle( '1' );">5.2</a></td>
+</tr>
+  <tr>
+<td class="r2">2</td>
+<td class="value class_2"><a href="javascript:funcCalcToggle( '2' );">5.2</a></td>
+</tr>
+  <tr>
+<td class="r3">3</td>
+<td class="value class_3"><a href="javascript:funcCalcToggle( '3' );">5.2</a></td>
+</tr>
+</table>
+
+<table id="ta_tan" class="right">
+  <tr>
+<td class="r4">4</td>
+<td class="value class_4"><a href="javascript:funcCalcToggle( '4' );">2.6</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value class_5"><a href="javascript:funcCalcToggle( '5' );">5.2</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value class_6"><a href="javascript:funcCalcToggle( '6' );">5.2</a></td>
+</tr>
+</table>
+
+</div><!-- data end -->
+
+
+<!--複勝-->
+<div class="data cf">
+
+<h2>複勝</h2>
+<table id="ta_fuku_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田 篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤 隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園 功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元 浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木 賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎 悟</td>
+</table>
+<table id="ta_fuku">
+  <tr>
+<td class="r1">1</td>
+<td class="value"><a href="javascript:void(0);">1.0～1.2</a></td>
+</tr>
+  <tr>
+<td class="r2">2</td>
+<td class="value"><a href="javascript:void(0);">3.0～4.5</a></td>
+</tr>
+  <tr>
+<td class="r3">3</td>
+<td class="value"><a href="javascript:void(0);">3.0～4.5</a></td>
+</tr>
+</table>
+
+<table id="ta_fuku" class="right">
+  <tr>
+<td class="r4">4</td>
+<td class="value"><a href="javascript:void(0);">1.2～1.7</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value"><a href="javascript:void(0);">3.0～4.5</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value"><a href="javascript:void(0);">3.0～4.5</a></td>
+</tr>
+</table>
+
+</div><!-- data end -->
+
+
+<!--拡連複-->
+<div class="data cf">
+
+<h2>拡連複</h2>
+<table id="ta_kakurenpuku_name">
+<tr>
+<td class="r1">1</td>
+<td class="n1_nocolor">杉田 篤光</td>
+<td class="r2">2</td>
+<td class="n2_nocolor">後藤 隼之</td>
+<td class="r3">3</td>
+<td class="n3_nocolor">春園 功太</td>
+</tr>
+<tr>
+<td class="r4">4</td>
+<td class="n4_nocolor">坂元 浩仁</td>
+<td class="r5">5</td>
+<td class="n5_nocolor">鈴木 賢一</td>
+<td class="r6">6</td>
+<td class="n6_nocolor">外崎 悟</td>
+</table>
+<table id="ta_kakurenpuku">
+  <tr>
+<td rowspan="5" class="r1">1</td>
+<td class="r2">2</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+  <tr>
+<td class="r3">3</td>
+<td class="value"><a href="javascript:void(0);">1.0～2.2</a></td>
+</tr>
+  <tr>
+<td class="r4">4</td>
+<td class="value"><a href="javascript:void(0);">1.1～3.7</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+  <tr>
+<td rowspan="4" class="r2">2</td>
+<td class="r3">3</td>
+<td class="value"><a href="javascript:void(0);">3.5～11.2</a></td>
+</tr>
+  <tr>
+<td class="r4">4</td>
+<td class="value"><a href="javascript:void(0);">3.5～11.2</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+</table>
+
+
+<table id="ta_kakurenpuku" class="right">
+  <tr>
+<td rowspan="3" class="r3">3</td>
+<td class="r4">4</td>
+<td class="value"><a href="javascript:void(0);">1.3～5.6</a></td>
+</tr>
+  <tr>
+<td class="r5">5</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+  <tr>
+<td rowspan="2" class="r4">4</td>
+<td class="r5">5</td>
+<td class="value"><a href="javascript:void(0);">1.8～3.7</a></td>
+</tr>
+  <tr>
+<td class="r6">6</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+  <tr>
+<td rowspan="1" class="r5">5</td>
+<td class="r6">6</td>
+<td class="value"><a href="javascript:void(0);">0.0～0.0</a></td>
+</tr>
+</table>
+
+
+</div><!-- data end -->
+
+</div>
+<script type="text/javascript">
+	//オッズ 2連単複読み込み
+	Read_odds_2rentanpuku( '11' );
+</script>
+
+
+
+</div><!-- item end -->
+
+
+
+<!--オッズ結果④/-->
+<div class="item data calculate cf">
+<span id="id_oddsCalc"></span>
+
+<div class="page_tit">オッズ計算</div>
+<div class="odds_read">各オッズページでオッズ選択すると組み合わせが反映されます。</div>
+
+
+
+<form name="ozzCalcform" action="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&page=14" method="post" class="box_calculate">
+
+
+<div id="box_calculate" class="cf">
+<table id="ta_calculate">
+  <tr>
+    <th class="hai">&nbsp;</th>
+    <td class="price"><input name="field_shikin1" type="tel" id="field_shikin" maxlength="6" value=""><span>円</span></td>
+    </tr>
+</table>
+
+<table id="ta_calculate">
+  <tr>
+    <th class="one">&nbsp;</th>
+    <td class="price"><input name="field_shikin2" type="tel" id="field_shikin" maxlength="6" value=""><span>円</span></td>
+  </tr>
+</table>
+<div class="caution">
+  <p>※資金配分もしくは1点購入額どちらかを入力</p>
+  <p>※入力金額は999,900円まで</p>
+</div>
+<div class="bt_calculate"><a href="javascript:funcOdds_CalcExe();">計算する</a></div>
+<div class="bt_reset"><a href="javascript:funcOdds_CalcReset();">リセット</a></div>
+</div><!--/#box_calculate-->
+
+<div class="caution_bottom">※予想配当金額は、オッズ計算を利用した時点のオッズをもとに算出しています。<br>
+※実際の配当金額とは異なります。<br>
+※資金配分合計額未満になる場合がございます。</div>
+
+<input type="hidden" name="Odds_Kumi_Count" value="0">
+<span id="id_Calc_form"></span>
+
+</form>
+
+
+</div><!-- item end -->
+
+
+
+<!--オッズ結果⑤/-->
+<div class="item data cf">
+<span id="id_kekkalist"></span>
+
+<div class="page_tit">結果一覧</div>
+<div id="kekka_race">
+<span>3</span>日目 [ 6/11 ]
+</div>
+
+
+<!---結果一覧--->
+<table id="ta_kekka_all">
+<tr>
+<th class="header1" rowspan="2">ﾚｰｽ</th>
+<th class="header2" colspan="2">3連単</th>
+<th class="header2" colspan="2">2連単</th>
+<th class="header1" rowspan="2">詳細</th>
+</tr>
+<tr>
+  <th class="header3">組合せ</th>
+  <th class="header3">払戻金</th>
+  <th class="header3">組合せ</th>
+<th class="header3">払戻金</th>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=1&page=2">1R</a></td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td>
+<td class="gray">2,250円</td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td>
+<td class="gray">570円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=1&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=2&page=2">2R</a></td>
+<td><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td>
+<td class="gray">710円</td>
+<td><img src="/sp/kyogi/images/num3.png" alt="3"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"></td>
+<td class="gray">360円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=2&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=3&page=2">3R</a></td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td>
+<td class="gray">1,600円</td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"></td>
+<td class="gray">430円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=3&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=4&page=2">4R</a></td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num4.png" alt="4"></td>
+<td class="gray">1,440円</td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td>
+<td class="gray">500円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=4&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=5&page=2">5R</a></td>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td>
+<td class="gray">8,430円</td>
+<td><img src="/sp/kyogi/images/num4.png" alt="4"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"></td>
+<td class="gray">1,620円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=5&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=6&page=2">6R</a></td>
+<td><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num6.png" alt="6"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td>
+<td class="gray">1,360円</td>
+<td><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num6.png" alt="6"></td>
+<td class="gray">570円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=6&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=7&page=2">7R</a></td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num5.png" alt="5"></td>
+<td class="gray">870円</td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td>
+<td class="gray">350円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=7&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=8&page=2">8R</a></td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num3.png" alt="3"></td>
+<td class="gray">2,510円</td>
+<td><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num2.png" alt="2"></td>
+<td class="gray">750円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=8&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=9&page=2">9R</a></td>
+<td><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num6.png" alt="6"></td>
+<td class="gray">9,140円</td>
+<td><img src="/sp/kyogi/images/num5.png" alt="5"><img src="/sp/kyogi/images/num.png" alt="-"><img src="/sp/kyogi/images/num1.png" alt="1"></td>
+<td class="gray">5,970円</td>
+<td class="r_syousai"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=9&page=16"></a></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=10&page=2">10R</a></td>
+<td>&ensp;</td>
+<td class="gray">&ensp;</td>
+<td>&ensp;</td>
+<td class="gray">&ensp;</td>
+<td class="r_syousai"></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&page=2">11R</a></td>
+<td>&ensp;</td>
+<td class="gray">&ensp;</td>
+<td>&ensp;</td>
+<td class="gray">&ensp;</td>
+<td class="r_syousai"></td>
+</tr>
+<tr>
+<td class="r_no"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=12&page=2">12R</a></td>
+<td>&ensp;</td>
+<td class="gray">&ensp;</td>
+<td>&ensp;</td>
+<td class="gray">&ensp;</td>
+<td class="r_syousai"></td>
+</tr>
+</table>
+
+
+
+
+<div id="kekka_race_bt">
+<ul>
+<li><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&kekkayd=20210610&page=15"><span>2日目</span> [ 6/10 ] </a></li>
+<li><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=11&kekkayd=20210609&page=15"><span>初日</span> [ 6/9 ] </a></li>
+</ul>
+</div>
+
+
+</div><!-- item end -->
+
+
+
+<!--スタ展①/-->
+<div class="item data choku cf">
+
+<div id="id_cyoku">
+<div class="page_tit">直前情報＆スタ展</div>
+<!-- 展示リプレイ-->
+<div id="replay_movie_choku">
+<!-- 展示リプレイ（映像なし）-->
+<div class="tenji_nomovie"></div>
+	
+</div><!-- replay_movie -->
+
+
+<!--直前情報-->
+<table id="ta_shusso" class="choku">
+<tr>
+  <th class="header1">枠番</th>
+  <th class="header1">選手名<br>登番 / 支部 / 年齢</th>
+  <th class="header1">体重</th>
+  <th class="header1">調整</th>
+  <th class="header1">展示<br>タイム</th>
+  <th class="header1">チルト</th>
+</tr>
+<tr>
+<td rowspan="2" class="r1">1</td>
+<td class="n1_nocolor">杉田 篤光</td>
+  <td class="top weight">52.5</td>
+  <td class="top adjust">　</td>
+  <td class="top time">　</td>
+  <td class="top">0.0</td>
+</tr>
+<tr>
+<td class="n1_nocolor address">4076 / 静岡 / 42</td>
+<td class="parts_left">部品<br>交換</td>
+<td colspan="3" class="parts_right"></td>
+</tr>
+<tr>
+<td rowspan="2" class="r2">2</td>
+<td class="n2_nocolor">後藤 隼之</td>
+  <td class="top weight">52.1</td>
+  <td class="top adjust">　</td>
+  <td class="top time">　</td>
+  <td class="top">0.0</td>
+</tr>
+<tr>
+<td class="n2_nocolor address">4676 / 東京 / 33</td>
+<td class="parts_left">部品<br>交換</td>
+<td colspan="3" class="parts_right"></td>
+</tr>
+<tr>
+<td rowspan="2" class="r3">3</td>
+<td class="n3_nocolor">春園 功太</td>
+  <td class="top weight">51.5</td>
+  <td class="top adjust">0.5</td>
+  <td class="top time">　</td>
+  <td class="top">-0.5</td>
+</tr>
+<tr>
+<td class="n3_nocolor address">4796 / 三重 / 29</td>
+<td class="parts_left">部品<br>交換</td>
+<td colspan="3" class="parts_right"></td>
+</tr>
+<tr>
+<td rowspan="2" class="r4">4</td>
+<td class="n4_nocolor">坂元 浩仁</td>
+  <td class="top weight">54.1</td>
+  <td class="top adjust">　</td>
+  <td class="top time">　</td>
+  <td class="top">0.0</td>
+</tr>
+<tr>
+<td class="n4_nocolor address">4409 / 愛知 / 35</td>
+<td class="parts_left">部品<br>交換</td>
+<td colspan="3" class="parts_right"></td>
+</tr>
+<tr>
+<td rowspan="2" class="r5">5</td>
+<td class="n5_nocolor">鈴木 賢一</td>
+  <td class="top weight">55.0</td>
+  <td class="top adjust">　</td>
+  <td class="top time">　</td>
+  <td class="top">0.0</td>
+</tr>
+<tr>
+<td class="n5_nocolor address">3664 / 埼玉 / 51</td>
+<td class="parts_left">部品<br>交換</td>
+<td colspan="3" class="parts_right"></td>
+</tr>
+<tr>
+<td rowspan="2" class="r6">6</td>
+<td class="n6_nocolor">外崎 悟</td>
+  <td class="top weight">52.0</td>
+  <td class="top adjust">　</td>
+  <td class="top time">　</td>
+  <td class="top">0.0</td>
+</tr>
+<tr>
+<td class="n6_nocolor address">4809 / 埼玉 / 32</td>
+<td class="parts_left">部品<br>交換</td>
+<td colspan="3" class="parts_right"></td>
+</tr>
+</table>
+
+
+
+<div class="data">
+
+</div>
+
+</div>
+<script type="text/javascript">
+	//直前情報＆スタ展読み込み
+	Read_cyoku( '11' );
+</script>
+
+
+
+</div><!-- item end -->
+
+
+
+</div><!-- slide end -->
+
+
+<span id="id_midokoroyosokekka" style="display:none;">
+
+<!--みどころ-->
+<div id="today_tenbo">
+<dl id="backnumber" class="cf">
+<dt>バックナンバー</dt>
+<dd><ul>
+	<li id="id_midokoro">3日目</li>
+	<li>2日目</li>
+	<li>初日</li>
+
+</ul></dd>
+</dl>
+<div id="tenbo" name="tenbo">
+
+<!--みどころtoday-->
+<div class="box">
+
+<div id="ttl" class="cf">
+	<p class="ttl_1">3日目<span>のみどころ</span></p>
+    <p class="ttl_2">山田、鈴木智、坂元が９点アップ！</p>
+</div>
+
+<div class="racer cf">
+山田の津連勝は１１でストップとなったが、堅実にまとめて得点率トップへ立った。だが僅差で背後に迫っているのが鈴木智、坂元。着順一つで入れ替わる状況となっている。山田は２走とも４カド戦が見込める構成、取りこぼしはないと思うのだが…。４位野澤は機力的には自信のないコメントが続いているがレースは読めている。４戦３勝と力を見せているが勝負駆けは６枠。どうさばくか見ものだ。春園はセンター枠の２走と５位の位置から上を目指せそうな予感。川尻が６位を踏ん張っているが最終レースの５枠と条件は厳しい、彼の成績が他選手の泣き笑いとなりそうだ。逆転候補最有力なのが中野だ。９位と不本意な位置に停滞しているがここで２，１枠が回ってきた。連勝を決めて気持ち良くファイナルへ乗り込むか。
+<div class="clear"></div>
+</div>
+</div><!--/box-->
+
+<!--過去-->
+<div class="box back">
+
+<div id="ttl" class="cf">
+	<p class="ttl_1">2日目<span>のみどころ</span></p>
+    <p class="ttl_2">山田を追いかける坂元、鈴木智！</p>
+</div>
+
+<div class="racer cf">
+山田がドリームを含む連勝。前検は気配を見せなかった快速機は初日蓋を開けてみればやはり強烈だった。前回戦の９連勝Ｖから続く津連勝は１１まで伸びたが２日目は６枠の鬼門を迎える。どう攻略するのか？坂元、そして鈴木智も同じく連勝を飾った。坂元は持ち味の積極的なプレーが光り鈴木智は回り足が素晴らしかった。鈴木賢は伸びを発揮して２連対、４，１枠の２走なら得点加算は必至だ。彼も主役入りは確実視されるかも。春園がドリームで６枠ハンデを跳ね返して２着奪取、近況勝率アップに苦しんでいる印象だが今節はいつもの強いレースが見れそうだ。
+<div class="clear"></div>
+</div>
+</div><!--/box-->
+
+<!--過去-->
+<div class="box back">
+
+<div id="ttl" class="cf">
+	<p class="ttl_1">初日<span>のみどころ</span></p>
+    <p class="ttl_2">中野再びパワーダッシュ！</p>
+</div>
+
+<div class="racer cf">
+まだ鮮明に思い起こされる周年の時の中野。優勝こそ逃したものの主役級の存在感だった。当時はメーカー機を足重視に仕上げたが、その調整は今回も生きてくるか。主力は東京支部が占めるシリーズだが圧倒的な軸となるだろう。中野にとって最大の敵となるのは山田。前回戦は１１戦１０勝、オール２連対の優勝を飾った。初日は津１０連勝もかかる注目の一戦となる。角谷、坂元といった実力者も短期決戦を制圧にかかるが女子選手の参戦も楽しみだ。廣中、櫻本はドリームに抜てきされ期待度の高さが分かる。櫻本は前走地で準優勝と勢いにも乗っている一人だ。地元勢では黒崎と春園。黒崎は段々と持ち味の快スタートを取り戻しており山田に対抗する激発が飛び出すか。
+<div class="clear"></div>
+</div>
+</div><!--/box-->
+
+
+
+
+</div><!--/tenbo-->
+
+</div><!--today_tenbo-->
+
+<div id="konyoso" class="cf">
+<div class="tit">今節の予想結果</div>
+
+<div id="teki">
+<div class="kisya"><span>20.8</span>％<br>5/24R</div>
+<div class="vpower"><span>16.7</span>％<br>4/24R</div>
+</div>
+<div class="caution">※2日目終了時点</div>
+</div>
+
+</span>
+
+<span id="id_waku_ritsu" style="display:none;">
+<!--「出走データ」全ページ共通表示-->
+
+<div id="waku_ritsu">
+<table class="ta_shusso" id="id_ta_shusso1">
+  <tr>
+    <th colspan="5">枠番別入着データ</th>
+    </tr>
+  <tr>
+    <th class="first">1着</th>
+    <th colspan="2">2着</th>
+    <th colspan="2">3着</th>
+    </tr>
+  <tr>
+    <td rowspan="20" class="r1 first_box"><div id="b_waku" class="b_waku1 non">1</div>
+    <div id="b_waku" class="b_waku2"><a href="javascript:funcWaku_RitsuButton(2);">2</a></div>
+    <div id="b_waku" class="b_waku3"><a href="javascript:funcWaku_RitsuButton(3);">3</a></div>
+    <div id="b_waku" class="b_waku4"><a href="javascript:funcWaku_RitsuButton(4);">4</a></div>
+    <div id="b_waku" class="b_waku5"><a href="javascript:funcWaku_RitsuButton(5);">5</a></div>
+    <div id="b_waku" class="b_waku6"><a href="javascript:funcWaku_RitsuButton(6);">6</a></div>
+    </td>
+    <td rowspan="4" class="r2">2</td>
+    <td rowspan="4">42.4%</td>
+    <td class="r3">3</td>
+    <td class="percentage">36.0%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">20.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">34.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">10.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td rowspan="4">23.7%</td>
+    <td class="r2">2</td>
+    <td class="percentage">35.7%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">32.1%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">17.9%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">14.3%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td rowspan="4">22.9%</td>
+    <td class="r2">2</td>
+    <td class="percentage">37.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">22.2%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">33.3%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">7.4%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td rowspan="4">8.5%</td>
+    <td class="r2">2</td>
+    <td class="percentage">10.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">40.0%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">20.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">30.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td rowspan="4">2.5%</td>
+    <td class="r2">2</td>
+    <td class="percentage">66.7%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">33.3%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  </table>
+  
+<table class="ta_shusso" id="id_ta_shusso2" style="display:none;">
+  <tr>
+    <th colspan="5">枠番別入着データ</th>
+    </tr>
+  <tr>
+    <th class="first">1着</th>
+    <th colspan="2">2着</th>
+    <th colspan="2">3着</th>
+    </tr>
+  <tr>
+    <td rowspan="20" class="r2 first_box">    <div id="b_waku" class="b_waku1"><a href="javascript:funcWaku_RitsuButton(1);">1</a></div>
+<div id="b_waku" class="b_waku2 non">2</div>
+    <div id="b_waku" class="b_waku3"><a href="javascript:funcWaku_RitsuButton(3);">3</a></div>
+    <div id="b_waku" class="b_waku4"><a href="javascript:funcWaku_RitsuButton(4);">4</a></div>
+    <div id="b_waku" class="b_waku5"><a href="javascript:funcWaku_RitsuButton(5);">5</a></div>
+    <div id="b_waku" class="b_waku6"><a href="javascript:funcWaku_RitsuButton(6);">6</a></div>
+    </td>
+    <td rowspan="4" class="r1">1</td>
+    <td rowspan="4">59.1%</td>
+    <td class="r3">3</td>
+    <td class="percentage">30.8%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">38.5%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">30.8%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td rowspan="4">9.1%</td>
+    <td class="r1">1</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td rowspan="4">18.2%</td>
+    <td class="r1">1</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">25.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">25.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td rowspan="4">9.1%</td>
+    <td class="r1">1</td>
+    <td class="percentage">100%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td rowspan="4">4.5%</td>
+    <td class="r1">1</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">100%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  </table>
+  
+<table class="ta_shusso" id="id_ta_shusso3" style="display:none;">
+  <tr>
+    <th colspan="5">枠番別入着データ</th>
+    </tr>
+  <tr>
+    <th class="first">1着</th>
+    <th colspan="2">2着</th>
+    <th colspan="2">3着</th>
+    </tr>
+  <tr>
+    <td rowspan="20" class="r3 first_box">    <div id="b_waku" class="b_waku1"><a href="javascript:funcWaku_RitsuButton(1);">1</a></div>
+    <div id="b_waku" class="b_waku2"><a href="javascript:funcWaku_RitsuButton(2);">2</a></div>
+<div id="b_waku" class="b_waku3 non">3</div>
+    <div id="b_waku" class="b_waku4"><a href="javascript:funcWaku_RitsuButton(4);">4</a></div>
+    <div id="b_waku" class="b_waku5"><a href="javascript:funcWaku_RitsuButton(5);">5</a></div>
+    <div id="b_waku" class="b_waku6"><a href="javascript:funcWaku_RitsuButton(6);">6</a></div>
+    </td>
+    <td rowspan="4" class="r1">1</td>
+    <td rowspan="4">38.2%</td>
+    <td class="r2">2</td>
+    <td class="percentage">30.8%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">23.1%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">30.8%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">15.4%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td rowspan="4">26.5%</td>
+    <td class="r1">1</td>
+    <td class="percentage">22.2%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">44.4%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">33.3%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td rowspan="4">11.8%</td>
+    <td class="r1">1</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">25.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">25.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td rowspan="4">20.6%</td>
+    <td class="r1">1</td>
+    <td class="percentage">57.1%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">14.3%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">14.3%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">14.3%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td rowspan="4">2.9%</td>
+    <td class="r1">1</td>
+    <td class="percentage">100%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  </table>
+  
+<table class="ta_shusso" id="id_ta_shusso4" style="display:none;">
+  <tr>
+    <th colspan="5">枠番別入着データ</th>
+    </tr>
+  <tr>
+    <th class="first">1着</th>
+    <th colspan="2">2着</th>
+    <th colspan="2">3着</th>
+    </tr>
+  <tr>
+    <td rowspan="20" class="r4 first_box">    <div id="b_waku" class="b_waku1"><a href="javascript:funcWaku_RitsuButton(1);">1</a></div>
+    <div id="b_waku" class="b_waku2"><a href="javascript:funcWaku_RitsuButton(2);">2</a></div>
+    <div id="b_waku" class="b_waku3"><a href="javascript:funcWaku_RitsuButton(3);">3</a></div>
+<div id="b_waku" class="b_waku4 non">4</div>
+    <div id="b_waku" class="b_waku5"><a href="javascript:funcWaku_RitsuButton(5);">5</a></div>
+    <div id="b_waku" class="b_waku6"><a href="javascript:funcWaku_RitsuButton(6);">6</a></div>
+    </td>
+    <td rowspan="4" class="r1">1</td>
+    <td rowspan="4">7.1%</td>
+    <td class="r2">2</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">100%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td rowspan="4">35.7%</td>
+    <td class="r1">1</td>
+    <td class="percentage">20.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">40.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">40.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td rowspan="4">7.1%</td>
+    <td class="r1">1</td>
+    <td class="percentage">100%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td rowspan="4">35.7%</td>
+    <td class="r1">1</td>
+    <td class="percentage">60.0%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">40.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td rowspan="4">14.3%</td>
+    <td class="r1">1</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  </table>
+  
+<table class="ta_shusso" id="id_ta_shusso5" style="display:none;">
+  <tr>
+    <th colspan="5">枠番別入着データ</th>
+    </tr>
+  <tr>
+    <th class="first">1着</th>
+    <th colspan="2">2着</th>
+    <th colspan="2">3着</th>
+    </tr>
+  <tr>
+    <td rowspan="20" class="r5 first_box">    <div id="b_waku" class="b_waku1"><a href="javascript:funcWaku_RitsuButton(1);">1</a></div>
+    <div id="b_waku" class="b_waku2"><a href="javascript:funcWaku_RitsuButton(2);">2</a></div>
+    <div id="b_waku" class="b_waku3"><a href="javascript:funcWaku_RitsuButton(3);">3</a></div>
+    <div id="b_waku" class="b_waku4"><a href="javascript:funcWaku_RitsuButton(4);">4</a></div>
+<div id="b_waku" class="b_waku5 non">5</div>
+    <div id="b_waku" class="b_waku6"><a href="javascript:funcWaku_RitsuButton(6);">6</a></div>
+    </td>
+    <td rowspan="4" class="r1">1</td>
+    <td rowspan="4">0.0%</td>
+    <td class="r2">2</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td rowspan="4">50.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td rowspan="4">0.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td rowspan="4">50.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r6">6</td>
+    <td class="percentage">50.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r6">6</td>
+    <td rowspan="4">0.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">---</td>
+  </tr>
+  </table>
+  
+<table class="ta_shusso" id="id_ta_shusso6" style="display:none;">
+  <tr>
+    <th colspan="5">枠番別入着データ</th>
+    </tr>
+  <tr>
+    <th class="first">1着</th>
+    <th colspan="2">2着</th>
+    <th colspan="2">3着</th>
+    </tr>
+  <tr>
+    <td rowspan="20" class="r6 first_box">    <div id="b_waku" class="b_waku1"><a href="javascript:funcWaku_RitsuButton(1);">1</a></div>
+    <div id="b_waku" class="b_waku2"><a href="javascript:funcWaku_RitsuButton(2);">2</a></div>
+    <div id="b_waku" class="b_waku3"><a href="javascript:funcWaku_RitsuButton(3);">3</a></div>
+    <div id="b_waku" class="b_waku4"><a href="javascript:funcWaku_RitsuButton(4);">4</a></div>
+    <div id="b_waku" class="b_waku5"><a href="javascript:funcWaku_RitsuButton(5);">5</a></div>
+<div id="b_waku" class="b_waku6 non">6</div>
+    </td>
+    <td rowspan="4" class="r1">1</td>
+    <td rowspan="4">50.0%</td>
+    <td class="r2">2</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">100%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r2">2</td>
+    <td rowspan="4">0.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r3">3</td>
+    <td rowspan="4">0.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r4">4</td>
+    <td rowspan="4">0.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td class="r5">5</td>
+    <td class="percentage">---</td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="r5">5</td>
+    <td rowspan="4">50.0%</td>
+    <td class="r1">1</td>
+    <td class="percentage">100%</td>
+  </tr>
+  <tr>
+    <td class="r2">2</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r3">3</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  <tr>
+    <td class="r4">4</td>
+    <td class="percentage">0.0%</td>
+  </tr>
+  </table>
+  
+</div>
+
+</span>
+
+
+
+</div><!-- shusso end -->
+
+
+
+<!-- データリンク -->
+<script type="text/javascript">
+	funcTsuDataMenu();
+</script>
+
+</div><!-- main end -->
+
+
+<div id="footer"><!-- footer start -->
+<div id="page_top"><a href="#wrapper">▲ページ上部へ</a></div>
+<div id="b_top"><a href="/asp/tsu/sp/kyogi/index.asp">データ&amp;レース予想</a></div>
+<div id="copyright"><a href="/sp/">
+<div>&copy;BOAT RACE TSU All rights reserved.</div>
+</a></div>
+</div><!-- footer end -->
+</div><!-- wrapper end -->
+
+<!--<span id="id_owl"><span>-->
+
+</body>
+</html>

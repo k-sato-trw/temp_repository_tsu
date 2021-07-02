@@ -220,6 +220,112 @@ class SpKyogiService
         return $data;
     }
 
+    public function movie($request){
+        $data = [];
+
+        $movie_id = $request->input('MovieID') ?? false;
+        $data['movie_id'] = $movie_id;
+
+        $target_date = substr('$movie_id',0,8);
+        $data['target_date'] = $target_date;
+
+        $jyo = config("const.JYO_CODE");
+        $data['jyo'] = $jyo;
+
+        $race_num = (int)substr('$movie_id',12,2);
+        $data['race_num'] = $race_num;
+        
+
+        if(strlen($movie_id) == 14){
+            $strVODType = 1;
+        }else{
+            $strVODType = 2;
+        }
+        $data['strVODType'] = $strVODType;
+
+        return $data;
+    }
+
+    
+
+    public function movie_tenji($request){
+        $data = [];
+        $movie_id = $request->input('MovieID') ?? false;
+        $data['movie_id'] = $movie_id;
+
+        $target_date = substr('$movie_id',0,8);
+        $data['target_date'] = $target_date;
+
+        $jyo = config("const.JYO_CODE");
+        $data['jyo'] = $jyo;
+
+        $race_num = (int)substr('$movie_id',12,2);
+        $data['race_num'] = $race_num;
+        
+
+        if(strlen($movie_id) == 14){
+            $strVODType = 1;
+        }else{
+            $strVODType = 2;
+        }
+        $data['strVODType'] = $strVODType;
+        return $data;
+    }
+
+    public function movie_live($request){
+        $data = [];
+
+        $target_date = date('Ymd');
+        $data['target_date'] = $target_date;
+
+        $jyo = config("const.JYO_CODE");
+        $data['jyo'] = $jyo;
+
+        $target_time = date('Hi');
+        $target_time = '1000';
+        $data['target_time'] = $target_time;
+
+        $holding = $this->Holding->getFirstRecordForFront();
+        $data['holding'] = $holding;
+        
+
+        $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$target_date);
+        $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$target_date);
+        $chushi_junen = $this->ChushiJunen->getFirstRecordForFront($jyo,$target_date);
+
+        $kaisai_flg = false;
+        $chushi_flg = false;
+        $stop_race_num = 99;
+        $kaisai_days = "--";
+        if($kaisai_master && $race_header){
+            $kaisai_flg = true;
+
+            if($chushi_junen){
+                $chushi_flg = true;
+                $stop_race_num = $chushi_junen->中止開始レース番号;
+            }
+
+            //開催何日目
+            if($target_date == $kaisai_master->開始日付){
+                $kaisai_days = "初日";
+            }elseif($target_date == $kaisai_master->終了日付){
+                $kaisai_days = "最終日";
+            }else{
+                $kaisai_days = $race_header->KAISAI_DAYS."日目";
+            }
+
+        }
+
+        $data['kaisai_flg'] = $kaisai_flg;
+        $data['chushi_flg'] = $chushi_flg;
+        $data['stop_race_num'] = $stop_race_num;
+        $data['kaisai_days'] = $kaisai_days;
+
+
+        return $data;
+    }
+
+
     public function odds_search($request,$index_data){
         $data = $index_data;
 

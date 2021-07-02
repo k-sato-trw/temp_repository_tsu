@@ -25,11 +25,35 @@ class SpKyogiController extends Controller
         return view('front.sp.kaisai.index',$data);
     }
 
+    public function movie(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->movie($request);
+        return view('front.sp.kaisai.movie',$data);
+    }
+
+    public function movie_tenji(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->movie_tenji($request);
+        return view('front.sp.kaisai.movie_tenji',$data);
+    }
+
+    public function movie_live(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->movie_live($request);
+        return view('front.sp.kaisai.movie_live',$data);
+    }
+
+    /*
     public function odds_calc(Request $request)
     {
         //サービスクラスで処理。
         $data = $this->_service->odds_calc($request);
         return view('front.sp.kaisai.odds_calc',$data);
     }
+    */
+
 
 }

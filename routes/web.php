@@ -40,6 +40,7 @@ use App\Http\Controllers\ExportHtml\ExportTopDisplayController;
 use App\Http\Controllers\ExportHtml\ExportKaisaiController;
 use App\Http\Controllers\ExportHtml\ExportSuimenController;
 use App\Http\Controllers\ExportHtml\ExportEventController;
+use App\Http\Controllers\ExportHtml\ExportMeikanController;
 use App\Http\Controllers\ExportHtml\ExportInfoController;
 
 
@@ -270,6 +271,10 @@ Route::post('/asp/tsu/sp/kyogi/Odds_Calc.asp',        [SpKyogiController::class,
 Route::get('/asp/tsu/sp/kyogi/index.asp',        [SpKyogiController::class, 'index']);
 Route::post('/asp/tsu/sp/kyogi/index.asp',        [SpKyogiController::class, 'index']);
 
+Route::get('/asp/tsu/sp/kyogi/Movie.asp',        [SpKyogiController::class, 'movie']);
+Route::get('/asp/tsu/sp/kyogi/Movie_Tenji.asp',        [SpKyogiController::class, 'movie_tenji']);
+Route::get('/asp/tsu/sp/kyogi/Movie_Live.asp',        [SpKyogiController::class, 'movie_live']);
+
 
 Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
 Route::get('/asp/tsu/sp/info/info_SP.asp',        [SpInfoController::class, 'index']);
@@ -320,6 +325,7 @@ Route::get('/asp/tsu/kaisai/CreatePCtokuten.asp',        [ExportKaisaiController
     //その他　
 Route::get('/asp/tsu/02suimen/02suimen.asp',        [ExportSuimenController::class, 'index']);
 Route::get('/asp/tsu/04event/04event.asp',        [ExportEventController::class, 'index']);
+Route::get('/asp/tsu/06meikan/06meikan.asp',        [ExportMeikanController::class, 'index']);
 Route::get('/asp/tsu/info/ex_info.asp',        [ExportInfoController::class, 'index']);
 
 

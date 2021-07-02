@@ -93,4 +93,14 @@ interface TbBoatKekkainfoRepositoryInterface
      */
     public function getRecordForWakuritsu($jyo,$race_num,$start_date,$end_date);
 
+    /**
+     * 3連単着順有のレースで抽出
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @var string $race_num
+     * @return object
+     */
+    public function getRecordForKishaTenji($jyo,$target_date,$race_num);
+
 }
