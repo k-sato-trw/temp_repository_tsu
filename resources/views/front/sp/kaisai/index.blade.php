@@ -484,6 +484,7 @@ strAgent = funcJsLiveSmartAgentGetter();
 	<!--予想④/-->
 	<div class="item yoso4 cf" id="yoso4">
 		{{-- file_get_contents(config('const.EXPORT_PATH').'/asp/tsu/sp/kyogi/Yoso_MyData.asp') --}}
+		{!! $view_yoso_mydata !!}
 		<span id="id_myyoso"></span>
 	</div><!-- item end -->
 

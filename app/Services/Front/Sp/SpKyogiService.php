@@ -25,6 +25,7 @@ use App\Repositories\TbTsuYosoAshi\TbTsuYosoAshiRepositoryInterface;
 use App\Repositories\TbTsuYosoTenji\TbTsuYosoTenjiRepositoryInterface;
 use App\Repositories\TbGambooYosoSensyu\TbGambooYosoSensyuRepositoryInterface;
 use App\Repositories\TbGambooYosoRace\TbGambooYosoRaceRepositoryInterface;
+use App\Repositories\TbBoatsJyocourse\TbBoatsJyocourseRepositoryInterface;
 use App\Services\KyogiCommonService;
 
 class SpKyogiService
@@ -52,6 +53,7 @@ class SpKyogiService
     public $TbTsuYosoTenji;
     public $TbGambooYosoSensyu;
     public $TbGambooYosoRace;
+    public $TbBoatsJyocourse;
     public $KyogiCommon;
 
     public function __construct(
@@ -78,6 +80,7 @@ class SpKyogiService
         TbTsuYosoTenjiRepositoryInterface $TbTsuYosoTenji,
         TbGambooYosoSensyuRepositoryInterface $TbGambooYosoSensyu,
         TbGambooYosoRaceRepositoryInterface $TbGambooYosoRace,
+        TbBoatsJyocourseRepositoryInterface $TbBoatsJyocourse,
         KyogiCommonService $KyogiCommon
     ){
         $this->TbBoatSyussou = $TbBoatSyussou;
@@ -103,6 +106,7 @@ class SpKyogiService
         $this->TbTsuYosoTenji = $TbTsuYosoTenji;
         $this->TbGambooYosoSensyu = $TbGambooYosoSensyu;
         $this->TbGambooYosoRace = $TbGambooYosoRace;
+        $this->TbBoatsJyocourse = $TbBoatsJyocourse;
         $this->KyogiCommon = $KyogiCommon;
     }
 
@@ -213,6 +217,12 @@ class SpKyogiService
                     $view_odds_calc = view('front.sp.kaisai.odds_calc',$data_odds_calc);
                     $data['view_odds_calc'] = $view_odds_calc;
                 }
+                
+                //予想Mydata
+                $data_yoso_mydata = $this->yoso_mydata($request,$data);
+                $view_yoso_mydata = view('front.sp.kaisai.yoso_mydata',$data_yoso_mydata);
+                $data['view_yoso_mydata'] = $view_yoso_mydata;
+                
             }
         }
         
@@ -320,6 +330,405 @@ class SpKyogiService
         $data['chushi_flg'] = $chushi_flg;
         $data['stop_race_num'] = $stop_race_num;
         $data['kaisai_days'] = $kaisai_days;
+
+
+        return $data;
+    }
+
+    public function yoso_mydata($request,$index_data){
+        $data = $index_data;
+
+        //欠場情報
+        $ozz_info = $this->TbBoatOzzinfo->getFirstRecordByPK($data['jyo'],$data['target_date'],$data['race_num']);
+        $ozz_info_array = [1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => ''];
+        $ketujyo_teiban_list = [];
+        if ($ozz_info) {
+            for ($i = 1; $i <= 6; $i++) {
+                $prop_name = "KETUJO_HENKAN" . $i;
+                $ozz_info_array[$i] = $ozz_info->$prop_name;
+                if ($ozz_info->$prop_name == 2) {
+                    $ketujyo_teiban_list[] = $i;
+                }
+            }
+        }
+        $data['ozz_info_array'] = $ozz_info_array;
+
+        $strAryPriority = [];
+
+        //post値取得
+        for($intLoopCount = 1 ;$intLoopCount <= 5;$intLoopCount++){
+            $strAryPriority[$intLoopCount] = $request->input('priority0'.$intLoopCount) ?? 0;
+        }
+
+        $boolDataflg = False;
+
+        for($intLoopCount = 1 ;$intLoopCount <= 5;$intLoopCount++){
+            if($strAryPriority[$intLoopCount] != 0 && $strAryPriority[$intLoopCount] != ""){
+                $boolDataflg = true;
+            }else{
+                $strAryPriority[$intLoopCount] = "1";
+            }
+        }
+
+        $data['strAryPriority'] = $strAryPriority;
+        $data['boolDataflg'] = $boolDataflg;
+
+        if($boolDataflg){
+            //マイデータ予想実行時
+
+            //**********************************************
+            //集計説明
+            //① それぞれのデータが100.0を最大になるよう数値合わせて算出する(勝率は10.0以上は100超えるが）
+            //② ①のデータを重要度で掛ける。
+            //③ ②のデータ全て足す
+            //④ ③降順でランク付け、上から順に◎、○、△、×
+            //⑤ パターンに当てはめる
+            //   ◎-○-△
+            //   ◎-○-×
+            //   ◎-△-○
+            //   ◎-×-○
+            //   ○-◎-△
+            //   ○-◎-×
+            //   ○-△-◎
+            //   ○-×-◎
+            //   △-◎-○
+
+            //初期化
+            $strAryCalcData = [];
+            $intAryAllYosoData = [];
+            for($intLoopCount = 1 ;$intLoopCount <= 6;$intLoopCount++){
+                for($intLoopCount2 = 1 ;$intLoopCount2 <= 5;$intLoopCount2++){
+                    $strAryCalcData[$intLoopCount][$intLoopCount2] = "";
+                }
+
+                $intAryAllYosoData[$intLoopCount] = 0;
+            }
+
+            //+++++++++++++++++++++++++++++
+		    //平均ST取得
+            $strAryAvgst = [];
+            for($intLoopCount = 1 ;$intLoopCount <= 6;$intLoopCount++){
+                $strAryAvgst[$intLoopCount] = "0.99";
+            }
+
+            $syussou = $this->TbBoatSyussou->getRecordByPK($data['jyo'], $data['target_date'], $data['race_num']);
+
+            $syussou_array=[];
+            foreach($syussou as $item){
+                $syussou_array[$item->TEIBAN] = $item;
+                $strAryAvgst[$item->TEIBAN] = $item->ST_AVERAGE;
+            }
+
+            
+            $tyokuzen = $this->TbBoatTyokuzen->getRecordByPK($data['jyo'], $data['target_date'], $data['race_num']);
+            $tyokuzen_array=[];
+            foreach($tyokuzen as $item){
+                $tyokuzen_array[$item->TEIBAN] = $item;
+            }
+        
+
+            $jyo_course = $this->TbBoatsJyocourse->getFirstRecordForFront();
+
+            for($intLoopCount = 1 ;$intLoopCount <= 6;$intLoopCount++){
+                $prop_name = "COURSE_TYAKU".$intLoopCount."1";
+                $strAryCalcData[$intLoopCount][5] = $jyo_course->$prop_name;
+            }
+
+            //当地進入コース別成績取得
+            //+++++++++++++++++++++++++++++
+
+            //+++++++++++++++++++++++++++++
+            //予想マイデータ集計
+
+            //平均値を求める際に割る数
+            $intAllImportant = 0;
+
+            for($intLoopCount = 1 ;$intLoopCount <= 5;$intLoopCount++){
+                if($strAryPriority[$intLoopCount] == "1"){
+                    $strAryPriority[$intLoopCount] = "5";
+                }elseif($strAryPriority[$intLoopCount] == "2"){
+                    $strAryPriority[$intLoopCount] = "4";
+                }elseif($strAryPriority[$intLoopCount] == "4"){
+                    $strAryPriority[$intLoopCount] = "2";
+                }elseif($strAryPriority[$intLoopCount] == "5"){
+                    $strAryPriority[$intLoopCount] = "1";
+                }
+
+                //平均値合計
+				$intAllImportant = $intAllImportant + $strAryPriority[$intLoopCount];
+            }
+
+            $intAryTei = [];
+            // 各艇のデータ平均値を算出
+            for($intLoopCount = 1 ;$intLoopCount <= 6;$intLoopCount++){
+                // 6艇分ループ
+
+                //艇番号記憶
+                $intAryTei[$intLoopCount] = $intLoopCount;
+
+                if($ozz_info_array[$intLoopCount] == 2){
+                    //欠場
+                    $intAryAllYosoData[ $intLoopCount ] = 0;
+
+                }else{
+                    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    //① それぞれのデータを100.0が最大として数値合わせて算出する(勝率は10.0以上は100超えるが）
+
+                    // 選手全国勝率
+                    $strAryCalcData[$intLoopCount][1] = $syussou_array[$intLoopCount]->ALL_SHOURITU;
+
+                    if($strAryCalcData[$intLoopCount][1] != ""){
+                        // 空ではない
+
+                        if(is_numeric($strAryCalcData[$intLoopCount][1])){
+                            // 数字の時
+
+                            //型変換
+                            $strAryCalcData[$intLoopCount][1] = (double) $strAryCalcData[$intLoopCount][1];
+
+                            //100分率に
+                            $strAryCalcData[$intLoopCount][1] = $strAryCalcData[$intLoopCount][1] * 10;
+
+                            //② ①のデータを重要度で掛ける。
+                            $strAryCalcData[$intLoopCount][1] = $strAryCalcData[$intLoopCount][1] * $strAryPriority[1];
+
+                        }
+                    }
+
+                    // 選手当地勝率
+                    $strAryCalcData[$intLoopCount][2] = $syussou_array[$intLoopCount]->TOUTI_SHOURITU;
+
+                    if($strAryCalcData[$intLoopCount][2] != ""){
+                        // 空ではない
+
+                        if(is_numeric($strAryCalcData[$intLoopCount][2])){
+                            // 数字の時
+
+                            //型変換
+                            $strAryCalcData[$intLoopCount][2] = (double) $strAryCalcData[$intLoopCount][2];
+
+                            //100分率に
+                            $strAryCalcData[$intLoopCount][2] = $strAryCalcData[$intLoopCount][2] * 10;
+
+                            //② ①のデータを重要度で掛ける。
+                            $strAryCalcData[$intLoopCount][2] = $strAryCalcData[$intLoopCount][2] * $strAryPriority[2];
+
+                        }
+                    }
+
+                    // モーター2連率
+                    $strAryCalcData[$intLoopCount][3] = $tyokuzen_array[$intLoopCount]->MOTOR2RENTAIRITU;
+
+                    if($strAryCalcData[$intLoopCount][3] != ""){
+                        // 空ではない
+
+                        if(is_numeric($strAryCalcData[$intLoopCount][3])){
+                            // 数字の時
+
+                            //型変換
+                            $strAryCalcData[$intLoopCount][3] = (double) $strAryCalcData[$intLoopCount][3];
+
+                            //100分率に
+
+                            //② ①のデータを重要度で掛ける。
+                            $strAryCalcData[$intLoopCount][3] = $strAryCalcData[$intLoopCount][3] * $strAryPriority[3];
+
+                        }
+                    }
+
+                    //平均ST
+                    if($strAryAvgst[$intLoopCount] == "" || $strAryAvgst[$intLoopCount] == "0.00" || $strAryAvgst[$intLoopCount] == "-" ){
+                        //データ無系の場合
+                        
+                        //0.99
+                        $strAryAvgst[$intLoopCount] == "0.99";
+                    }
+
+                    $strAryCalcData[$intLoopCount][4] = $strAryAvgst[$intLoopCount];
+
+                    if($strAryCalcData[$intLoopCount][4] != ""){
+                        // データ有
+
+                        if(is_numeric($strAryCalcData[$intLoopCount][4])){
+                            // 数字の時
+
+                            //型変換
+                            $strAryCalcData[$intLoopCount][4] = (double) $strAryCalcData[$intLoopCount][4];
+
+                            //1引く
+                            $strAryCalcData[$intLoopCount][4] =  1 - $strAryCalcData[$intLoopCount][4];
+
+                            //100分率に
+                            $strAryCalcData[$intLoopCount][4] =  $strAryCalcData[$intLoopCount][4] * 100;
+
+                            //② ①のデータを重要度で掛ける。
+                            $strAryCalcData[$intLoopCount][4] = $strAryCalcData[$intLoopCount][4] * $strAryPriority[4];
+
+                        }
+                    }
+
+                    //当地進入コース別成績
+                    if($strAryCalcData[$intLoopCount][5] != ""){
+                        // データ有
+                        if(is_numeric($strAryCalcData[$intLoopCount][5])){
+                            // 数字の時
+
+                            //型変換
+                            $strAryCalcData[$intLoopCount][5] = (double) $strAryCalcData[$intLoopCount][5];
+
+                            //② ①のデータを重要度で掛ける。
+                            $strAryCalcData[$intLoopCount][5] = $strAryCalcData[$intLoopCount][5] * $strAryPriority[5];
+
+                        }
+                    
+                    }
+
+                    //① それぞれのデータを100.0が最大として数値合わせて算出する(勝率は10.0以上は100超えるが）
+                    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                    //③ ②のデータ全て足す
+                    for($intLoopCount2 = 1 ;$intLoopCount2 <= 5;$intLoopCount2++){
+                        
+                        if($strAryCalcData[$intLoopCount][$intLoopCount2] != ""){
+                            //空ではない
+                            if(is_numeric($strAryCalcData[$intLoopCount][$intLoopCount2])){
+                                // 数字の時
+                                $intAryAllYosoData[$intLoopCount] = $intAryAllYosoData[$intLoopCount] + $strAryCalcData[$intLoopCount][$intLoopCount2];
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            //予想印格納処理
+            for($intLoopCount = 1 ;$intLoopCount <= 6;$intLoopCount++){
+                // 6回繰り返す
+
+                for($intLoopCount2 = $intLoopCount + 1 ;$intLoopCount2 <= 6;$intLoopCount2++){
+                    // 繰り返す
+
+                    if($intAryAllYosoData[$intLoopCount] < $intAryAllYosoData[$intLoopCount2]){
+                        // 並び替え
+
+                        $strTempData = $intAryAllYosoData[ $intLoopCount ];
+                        $intAryAllYosoData[ $intLoopCount ] = $intAryAllYosoData[ $intLoopCount2 ];
+                        $intAryAllYosoData[ $intLoopCount2 ] = $strTempData;
+
+                        $strTempData = $intAryTei[ $intLoopCount ];
+                        $intAryTei[$intLoopCount] = $intAryTei[ $intLoopCount2 ];
+                        $intAryTei[$intLoopCount2] = $strTempData;
+                    }
+
+                }
+
+            }
+
+            //順位づけ
+            $intTempRank = 1;
+            $intTempRank2 = 1;
+            $strTempData = 0;
+            $strTempData2 = 0;
+
+            for($intLoopCount = 1 ;$intLoopCount <= 6;$intLoopCount++){
+                // 6回繰り返す
+
+                if($strTempData > $intAryAllYosoData[$intLoopCount]){
+
+                    $intTempRank = $intTempRank2;
+
+                }elseif($strTempData == $intAryAllYosoData[$intLoopCount]){
+                    //まさかの予想データ総数同じ場合(念のため)
+
+                    //艇番号若いほうが優先
+                    if($strTempData2 < $intAryTei[$intLoopCount]){
+                        $intTempRank = $intTempRank2;
+                    }
+                }
+
+                $intAryYosoRank[$intAryTei[$intLoopCount]] = $intTempRank;
+
+                $strTempData = $intAryAllYosoData[$intLoopCount];
+
+                $strTempData2 = $intAryTei[$intLoopCount];
+
+                $intTempRank2 = $intTempRank2 + 1;
+
+            }
+
+            $strAryTemp = [];
+            $strAryTemp[1] = "";
+            $strAryTemp[2] = "";
+            $strAryTemp[3] = "";
+            $strAryTemp[4] = "";
+
+            for($intLoopCount = 1 ;$intLoopCount <= 6;$intLoopCount++){
+                // 6回繰り返す
+
+                if($intAryYosoRank[$intLoopCount] == 1){
+                    $strAryTemp[1] = $intLoopCount;
+                }elseif($intAryYosoRank[$intLoopCount] == 2){
+                    $strAryTemp[2] = $intLoopCount;
+                }elseif($intAryYosoRank[$intLoopCount] == 3){
+                    $strAryTemp[3] = $intLoopCount;
+                }elseif($intAryYosoRank[$intLoopCount] == 4){
+                    $strAryTemp[4] = $intLoopCount;
+                }else{
+
+                }
+            }
+
+            //+++++++++++++++++++++++++++++
+            //組合せ算出
+
+            //④ 上から順番に1:◎、2:○、3:△、4:×
+            //⑤ パターンに当てはめる
+            //   1-2-3
+            $strAryKumi[1] = $strAryTemp[1] . $strAryTemp[2] . $strAryTemp[3];
+            //   1-2-4 
+            $strAryKumi[2] = $strAryTemp[1] . $strAryTemp[2] . $strAryTemp[4];
+            //   1-3-2 
+            $strAryKumi[3] = $strAryTemp[1] . $strAryTemp[3] . $strAryTemp[2];
+            //   1-4-2 
+            $strAryKumi[4] = $strAryTemp[1] . $strAryTemp[4] . $strAryTemp[2];
+            //   2-1-3 
+            $strAryKumi[5] = $strAryTemp[2] . $strAryTemp[1] . $strAryTemp[3];
+            //   2-1-4
+            $strAryKumi[6] = $strAryTemp[2] . $strAryTemp[1] . $strAryTemp[4];
+            //   2-3-1
+            $strAryKumi[7] = $strAryTemp[2] . $strAryTemp[3] . $strAryTemp[1];
+            //   2-4-1
+            $strAryKumi[8] = $strAryTemp[2] . $strAryTemp[4] . $strAryTemp[1];
+            //   3-1-2
+            $strAryKumi[9] = $strAryTemp[3] . $strAryTemp[1] . $strAryTemp[2];
+
+            
+
+
+            //組合せ算出
+            //+++++++++++++++++++++++++++++
+
+            $data['strAryKumi'] = $strAryKumi;
+
+            {
+                $ozz_3rentan = $this->TbBoatOzz->getRecord($data['jyo'],$data['target_date'],$data['race_num'], 3);
+    
+                $bairitu_3rentan = [];
+                foreach ($ozz_3rentan as $item) {
+                    if (in_array($item->NUMBER1, $ketujyo_teiban_list) || in_array($item->NUMBER2, $ketujyo_teiban_list) || in_array($item->NUMBER3, $ketujyo_teiban_list)) {
+                        $bairitu_3rentan[$item->NUMBER1][$item->NUMBER2][$item->NUMBER3] = "-";
+                    } else {
+                        $bairitu_3rentan[$item->NUMBER1][$item->NUMBER2][$item->NUMBER3] = $item->BAIRITU;
+                    }
+                }
+                $data['bairitu_3rentan'] = $bairitu_3rentan;
+            }
+
+        }
 
 
         return $data;
@@ -746,6 +1155,8 @@ class SpKyogiService
         
         return $data;
     }
+
+    
 
     //オッズ 艇画像置換
 	function funcOddsImageChange( $argData )

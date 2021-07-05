@@ -29,4 +29,13 @@ class ExportMeikanController extends Controller
     }
 
 
+    public function racer_data_create(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->racer_data_create($request);
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/06meikan/racer_data.htm', view('front.meikan.racer_data_create',$data));
+        return '書き出し完了<br><a href="/06meikan/racer_data.htm">/06meikan/racer_data.htm</a>';
+    }
+
 }

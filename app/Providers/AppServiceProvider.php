@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind(
+            \App\Repositories\TbBoatsJyocourse\TbBoatsJyocourseRepositoryInterface::class,
+            \App\Repositories\TbBoatsJyocourse\TbBoatsJyocourseRepository::class
+        ); 
+        
+        $this->app->bind(
             \App\Repositories\TbTsuYosoAshi\TbTsuYosoAshiRepositoryInterface::class,
             \App\Repositories\TbTsuYosoAshi\TbTsuYosoAshiRepository::class
         );
