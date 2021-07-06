@@ -567,7 +567,7 @@ class GeneralService
         $end_d = date('j',strtotime($end_date));
 
         $display_date = "";
-        if(substr(date('Y'),2,2) !== $start_y){
+        if(date('Y') !== $start_y){
             $display_date = $start_y."/";
         }
 

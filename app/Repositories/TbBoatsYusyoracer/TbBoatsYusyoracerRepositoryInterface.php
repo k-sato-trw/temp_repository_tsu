@@ -60,4 +60,13 @@ interface TbBoatsYusyoracerRepositoryInterface
      * @return object
      */
     public function getSgRecordForSgHistory($touban_list,$target_date);
+
+    /**
+     * 登録番号かつ指定日付より未来レコード取得
+     *
+     * @var string $touban
+     * @var string $target_date
+     * @return object
+     */
+    public function getFutureRecord($touban,$target_date);
 }

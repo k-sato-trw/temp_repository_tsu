@@ -125,4 +125,13 @@ interface TbBoatSyussouRepositoryInterface
      */
     public function getRecordBkDate($jyo,$target_date);
 
+
+    /**
+     * デビュー用データを取得
+     *
+     * @var string $touban
+     * @return object
+     */
+    public function getDebutRecordForProfile($touban);
+
 }

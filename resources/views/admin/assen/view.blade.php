@@ -34,7 +34,7 @@
             <p class="card-text">{{ $fandata->Kyu ?? '' }}</p>
         </div>
     </div>
-
+{{--
     <button type="button" class="btn btn-primary" onclick="location.href='/admin/assen/create_assen/{{ $touban }}'">新規作成</button>
     <table class="table table-hover">
         <thead>
@@ -65,7 +65,7 @@
         </tbody>
         </tr>
     </table>
-    
+    --}}
     <button type="button" class="btn btn-primary" onclick="location.href='/admin/assen/'">一覧に戻る</button>
 </div>
     

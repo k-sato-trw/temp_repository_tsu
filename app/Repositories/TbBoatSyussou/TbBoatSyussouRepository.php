@@ -325,4 +325,22 @@ class TbBoatSyussouRepository implements TbBoatSyussouRepositoryInterface
                     ->get();
     }
 
+
+    /**
+     * デビュー用データを取得
+     *
+     * @var string $touban
+     * @return object
+     */
+    public function getDebutRecordForProfile($touban)
+    {
+        return $this->TbBoatSyussou
+                    ////->select(['TARGET_DATE','RACE_NUMBER' , 'RACE_SYUBETU_CODE'])
+                    ->where("TOUBAN","=",$touban)
+                    ->orderBy("TARGET_DATE","ASC")
+                    ->orderByRaw('LENGTH(RACE_NUMBER)')
+                    ->orderBy('RACE_NUMBER','ASC')
+                    ->first();
+    }
+
 }

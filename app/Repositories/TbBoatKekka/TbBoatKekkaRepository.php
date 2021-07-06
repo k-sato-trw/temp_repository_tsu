@@ -105,4 +105,26 @@ class TbBoatKekkaRepository implements TbBoatKekkaRepositoryInterface
     }
 
 
+    /**
+     * デビューレースの開催分全結果を取得
+     *
+     * @var string $jyo
+     * @var string $touban
+     * @return object
+     */
+    public function getDebutRaceKekka($jyo,$touban,$start_date,$end_date)
+    {
+        return $this->TbBoatKekka
+                    ->where("JYO","=",$jyo)
+                    ->where("TARGET_DATE",">=",$start_date)
+                    ->where("TARGET_DATE","<=",$end_date)
+                    ->where("TOUBAN","=",$touban)
+                    ->orderBy('TARGET_DATE','ASC')
+                    ->orderByRaw('LENGTH(RACE_NUMBER) ASC')
+                    ->orderBy('RACE_NUMBER','ASC')
+                    ->get();
+    }
+
+
+
 }

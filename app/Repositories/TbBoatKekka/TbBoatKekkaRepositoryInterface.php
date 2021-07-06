@@ -47,4 +47,13 @@ interface TbBoatKekkaRepositoryInterface
      */
     public function getTopSt($jyo,$target_date,$race_num);
 
+    /**
+     * デビューレースの開催分全結果を取得
+     *
+     * @var string $jyo
+     * @var string $touban
+     * @return object
+     */
+    public function getDebutRaceKekka($jyo,$touban,$start_date,$end_date);
+
 }
