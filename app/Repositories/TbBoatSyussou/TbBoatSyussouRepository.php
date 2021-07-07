@@ -343,4 +343,71 @@ class TbBoatSyussouRepository implements TbBoatSyussouRepositoryInterface
                     ->first();
     }
 
+
+    /**
+     * ボートNOに基づいて期間中の出走データを取得
+     * boat_kekkaと一対一でjoinする。
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @var string $jyo
+     * @var string $motor_no
+     * @return object
+     */
+    public function getBoatSyussouCount($start_date,$end_date,$jyo,$boat_no)
+    {
+        return $this->TbBoatSyussou
+                    ->join('tb_boat_kekka',function($join){
+                        $join->on('tb_boat_syussou.JYO','=','tb_boat_kekka.JYO')
+                        ->on('tb_boat_syussou.TARGET_DATE','=','tb_boat_kekka.TARGET_DATE')
+                        ->on('tb_boat_syussou.RACE_NUMBER','=','tb_boat_kekka.RACE_NUMBER')
+                        ->on('tb_boat_syussou.TEIBAN','=','tb_boat_kekka.TEIBAN');
+                    })
+                    ->join('tb_boat_raceheader',function($join){
+                        $join->on('tb_boat_syussou.JYO','=','tb_boat_raceheader.JYO')
+                        ->on('tb_boat_syussou.TARGET_DATE','=','tb_boat_raceheader.TARGET_DATE');
+                    })
+                    ->where('tb_boat_syussou.TARGET_DATE','>=',$start_date)
+                    ->where('tb_boat_syussou.TARGET_DATE','<',$end_date)
+                    ->where('tb_boat_syussou.JYO','=',$jyo)
+                    ->where('tb_boat_syussou.BOAT_NO','=',$boat_no)
+                    ->orderBy('tb_boat_syussou.TARGET_DATE','ASC')
+                    ->orderByRaw('LENGTH(tb_boat_syussou.RACE_NUMBER) ASC')
+                    ->orderBy('tb_boat_syussou.RACE_NUMBER','ASC')
+                    ->get();
+    }
+
+
+    /**
+     * モーターNOに基づいて期間中の出走データを取得
+     * boat_kekkaと一対一でjoinする。
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @var string $jyo
+     * @var string $motor_no
+     * @return object
+     */
+    public function getMotorSyussouCount($start_date,$end_date,$jyo,$motor_no)
+    {
+        return $this->TbBoatSyussou
+                    ->join('tb_boat_kekka',function($join){
+                        $join->on('tb_boat_syussou.JYO','=','tb_boat_kekka.JYO')
+                        ->on('tb_boat_syussou.TARGET_DATE','=','tb_boat_kekka.TARGET_DATE')
+                        ->on('tb_boat_syussou.RACE_NUMBER','=','tb_boat_kekka.RACE_NUMBER')
+                        ->on('tb_boat_syussou.TEIBAN','=','tb_boat_kekka.TEIBAN');
+                    })
+                    ->join('tb_boat_raceheader',function($join){
+                        $join->on('tb_boat_syussou.JYO','=','tb_boat_raceheader.JYO')
+                        ->on('tb_boat_syussou.TARGET_DATE','=','tb_boat_raceheader.TARGET_DATE');
+                    })
+                    ->where('tb_boat_syussou.TARGET_DATE','>=',$start_date)
+                    ->where('tb_boat_syussou.TARGET_DATE','<',$end_date)
+                    ->where('tb_boat_syussou.JYO','=',$jyo)
+                    ->where('tb_boat_syussou.MOTOR_NO','=',$motor_no)
+                    ->orderBy('tb_boat_syussou.TARGET_DATE','ASC')
+                    ->orderByRaw('LENGTH(tb_boat_syussou.RACE_NUMBER) ASC')
+                    ->orderBy('tb_boat_syussou.RACE_NUMBER','ASC')
+                    ->get();
+    }
 }

@@ -43,7 +43,7 @@ $(window).on('load', function() {
 
 @foreach ($touban_array as $touban => $item)
 <!---▼▼▼--->
-<div id="d3268" class="data_box">
+<div id="d{{$touban}}" class="data_box">
 
 	<div class="personal">
     	<ul class="rank {{$item['fandata']->Kyu}}">
@@ -126,7 +126,11 @@ $(window).on('load', function() {
                     <tbody>
                         @foreach ($item['sg_g1'] as $sg_g1_row)
                         <tr>
-                            <td class="date G1">{{date('Y',strtotime($sg_g1_row['TARGET_DATE']))}}</td>
+                            @if($sg_g1_row['GRADE_CODE'] == "0")
+                                <td class="date SG">{{date('Y',strtotime($sg_g1_row['TARGET_DATE']))}}</td>
+                            @else
+                                <td class="date G1">{{date('Y',strtotime($sg_g1_row['TARGET_DATE']))}}</td>
+                            @endif
                             <td class="jyo">{{$general->jyocode_to_jyoname($sg_g1_row['JYO'])}}</td>
                             <td class="race">{{$sg_g1_row['RACE_TITLE']}}</td>
                         </tr>     

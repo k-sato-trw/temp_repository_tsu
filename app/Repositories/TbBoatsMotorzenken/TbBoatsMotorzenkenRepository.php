@@ -82,6 +82,23 @@ class TbBoatsMotorzenkenRepository implements TbBoatsMotorzenkenRepositoryInterf
     }
 
     /**
+     * ボート切り替え日検索用データを取得
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getBoatChangeCount($target_date)
+    {
+        return $this->TbBoatsMotorzenken
+                    ->selectRaw("TARGET_STARTDATE, COUNT(`BOAT_NIRENRITU` != '0.0' OR NULL ) as count")
+                    ->where('JYO',config('const.JYO_CODE'))
+                    ->where('TARGET_STARTDATE','<=',$target_date)
+                    ->groupBy('TARGET_STARTDATE')
+                    ->orderBy('TARGET_STARTDATE','DESC')
+                    ->get();
+    }
+
+    /**
      * 指定日のモーターリストを取得
      *
      * @var string $target_date
@@ -165,5 +182,24 @@ class TbBoatsMotorzenkenRepository implements TbBoatsMotorzenkenRepositoryInterf
         
         return $result;
     }
+
+
+    /**
+     * ボートNoリストデータを取得
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getBoatList($start_date,$end_date)
+    {
+        return $this->TbBoatsMotorzenken
+                    ->where('JYO',config('const.JYO_CODE'))
+                    ->where('TARGET_STARTDATE','>=',$start_date)
+                    ->where('TARGET_STARTDATE','<=',$end_date)
+                    ->orderBy('TARGET_STARTDATE','DESC')
+                    ->get();
+    }
+
 
 }

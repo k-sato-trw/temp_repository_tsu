@@ -169,11 +169,11 @@ class ExportMeikanService
         
         $assen_schedule = $this->AssenSchedule->getAllRecord();
 
-        $temp = $assen_schedule;
+        /*$temp = $assen_schedule;
         $assen_schedule = [];
         $assen_schedule[] = $temp[0];
         $assen_schedule[] = $temp[1];
-        $assen_schedule[] = $temp[2];
+        $assen_schedule[] = $temp[2];*/
 
         foreach($assen_schedule as $item){
             //$touban = $request->input('touban');

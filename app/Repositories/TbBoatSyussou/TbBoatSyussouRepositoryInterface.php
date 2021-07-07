@@ -134,4 +134,30 @@ interface TbBoatSyussouRepositoryInterface
      */
     public function getDebutRecordForProfile($touban);
 
+    
+    /**
+     * ボートNOに基づいて期間中の出走データを取得
+     * boat_kekkaと一対一でjoinする。
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @var string $jyo
+     * @var string $motor_no
+     * @return object
+     */
+    public function getBoatSyussouCount($start_date,$end_date,$jyo,$boat_no);
+
+
+    /**
+     * モーターNOに基づいて期間中の出走データを取得
+     * boat_kekkaと一対一でjoinする。
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @var string $jyo
+     * @var string $motor_no
+     * @return object
+     */
+    public function getMotorSyussouCount($start_date,$end_date,$jyo,$motor_no);
+
 }

@@ -120,7 +120,7 @@ class ExportKaisaiService
             //処理対象日を判定
             $tomorrow_flg = false;
             $today_date = date('Ymd');
-            $today_date = '20210524';
+            $today_date = '20210620';
             $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
 
             $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);

@@ -42,6 +42,7 @@ use App\Http\Controllers\ExportHtml\ExportSuimenController;
 use App\Http\Controllers\ExportHtml\ExportEventController;
 use App\Http\Controllers\ExportHtml\ExportMeikanController;
 use App\Http\Controllers\ExportHtml\ExportInfoController;
+use App\Http\Controllers\ExportHtml\ExportMotorController;
 
 
 
@@ -49,6 +50,7 @@ use App\Http\Controllers\ExportHtml\ExportInfoController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpKaisaiController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpSuimenController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpMeikanController;
+use App\Http\Controllers\ExportHtml\Sp\ExportSpMotorController;
 
 
 /*
@@ -326,10 +328,12 @@ Route::get('/asp/tsu/kaisai/CreatePCtokuten.asp',        [ExportKaisaiController
 
     //その他　
 Route::get('/asp/tsu/02suimen/02suimen.asp',        [ExportSuimenController::class, 'index']);
+Route::get('/asp/tsu/02motor/02motor.asp',        [ExportMotorController::class, 'motor']);
 Route::get('/asp/tsu/04event/04event.asp',        [ExportEventController::class, 'index']);
 Route::get('/asp/tsu/06meikan/06meikan.asp',        [ExportMeikanController::class, 'index']);
 Route::get('/asp/tsu/06meikan/racer_data_create.asp',        [ExportMeikanController::class, 'racer_data_create']);
 Route::get('/asp/tsu/info/ex_info.asp',        [ExportInfoController::class, 'index']);
+
 
 
 
@@ -352,6 +356,7 @@ Route::get('/asp/tsu/sp/kyogi/RacenumButton.asp',        [ExportSpKaisaiControll
 Route::get('/asp/tsu/sp/kyogi/Cyoku.asp',        [ExportSpKaisaiController::class, 'cyoku']);
 
 Route::get('/asp/tsu/sp/02suimen/02suimen_SP.asp',        [ExportSpSuimenController::class, 'index']);
+Route::get('/asp/tsu/sp/02motor/02motor.asp',        [ExportSpMotorController::class, 'motor']);
 Route::get('/asp/tsu/sp/06meikan/06meikan.asp',        [ExportSpMeikanController::class, 'index']);
 
 

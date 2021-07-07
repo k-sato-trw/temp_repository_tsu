@@ -154,19 +154,31 @@ function func_MotorRank(Yd,MotorNo)
         @else
             }else if( Yd === '{{$item}}'){
         @endif
-        if( MotorNo === '{{ $motor_ranking[0]->MOTOR_NO }}' ){
+        if( MotorNo === '{{ (int)$motor_ranking[0]->MOTOR_NO }}' ){
             strHTML = strHTML + "<span class='mt_ic01'>" + MotorNo + "</span>";
-        }else if( MotorNo === '{{ $motor_ranking[1]->MOTOR_NO }}' ){
+        }else if( MotorNo === '{{ (int)$motor_ranking[1]->MOTOR_NO }}' ){
             strHTML = strHTML + "<span class='mt_ic02'>" + MotorNo + "</span>";
-        }else if( MotorNo === '{{ $motor_ranking[2]->MOTOR_NO }}' ){
+        }else if( MotorNo === '{{ (int)$motor_ranking[2]->MOTOR_NO }}' ){
             strHTML = strHTML + "<span class='mt_ic03'>" + MotorNo + "</span>";
-        }else if( MotorNo === '{{ $motor_ranking[3]->MOTOR_NO }}' ){
+        }else if( MotorNo === '{{ (int)$motor_ranking[3]->MOTOR_NO }}' ){
             strHTML = strHTML + MotorNo;
         }else{
             strHTML = strHTML + MotorNo;
         }
     @endforeach
 
+    }else if( Yd === '99999999'){
+        if( MotorNo === '{{ (int)$motor_ranking[0]->MOTOR_NO }}' ){
+            strHTML = strHTML + "<span class='mt_ic01'>" + MotorNo + "</span>";
+        }else if( MotorNo === '{{ (int)$motor_ranking[1]->MOTOR_NO }}' ){
+            strHTML = strHTML + "<span class='mt_ic02'>" + MotorNo + "</span>";
+        }else if( MotorNo === '{{ (int)$motor_ranking[2]->MOTOR_NO }}' ){
+            strHTML = strHTML + "<span class='mt_ic03'>" + MotorNo + "</span>";
+        }else if( MotorNo === '{{ (int)$motor_ranking[3]->MOTOR_NO }}' ){
+            strHTML = strHTML + MotorNo;
+        }else{
+            strHTML = strHTML + MotorNo;
+        }
     
     }else{
         strHTML = strHTML + MotorNo;
@@ -185,18 +197,32 @@ function func_MotorRank2(Yd,MotorNo)
         @else
             }else if( Yd === '{{$item}}'){
         @endif
-        if( MotorNo === '{{ $motor_ranking[0]->MOTOR_NO }}' ){
+        if( MotorNo === '{{ (int)$motor_ranking[0]->MOTOR_NO }}' ){
             strHTML = strHTML + "<span class='mt_ic01'>" + MotorNo + "</span>";
-        }else if( MotorNo === '{{ $motor_ranking[1]->MOTOR_NO }}' ){
+        }else if( MotorNo === '{{ (int)$motor_ranking[1]->MOTOR_NO }}' ){
             strHTML = strHTML + "<span class='mt_ic02'>" + MotorNo + "</span>";
-        }else if( MotorNo === '{{ $motor_ranking[2]->MOTOR_NO }}' ){
+        }else if( MotorNo === '{{ (int)$motor_ranking[2]->MOTOR_NO }}' ){
             strHTML = strHTML + "<span class='mt_ic03'>" + MotorNo + "</span>";
-        }else if( MotorNo === '{{ $motor_ranking[3]->MOTOR_NO }}' ){
+        }else if( MotorNo === '{{ (int)$motor_ranking[3]->MOTOR_NO }}' ){
             strHTML = strHTML + MotorNo;
         }else{
             strHTML = strHTML + MotorNo;
         }
     @endforeach
+
+    }else if( Yd === '99999999'){
+        if( MotorNo === '{{ (int)$motor_ranking[0]->MOTOR_NO }}' ){
+            strHTML = strHTML + "<span class='mt_ic01'>" + MotorNo + "</span>";
+        }else if( MotorNo === '{{ (int)$motor_ranking[1]->MOTOR_NO }}' ){
+            strHTML = strHTML + "<span class='mt_ic02'>" + MotorNo + "</span>";
+        }else if( MotorNo === '{{ (int)$motor_ranking[2]->MOTOR_NO }}' ){
+            strHTML = strHTML + "<span class='mt_ic03'>" + MotorNo + "</span>";
+        }else if( MotorNo === '{{ (int)$motor_ranking[3]->MOTOR_NO }}' ){
+            strHTML = strHTML + MotorNo;
+        }else{
+            strHTML = strHTML + MotorNo;
+        }
+
     }else{
         strHTML = strHTML + MotorNo;
     }

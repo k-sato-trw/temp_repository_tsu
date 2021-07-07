@@ -38,6 +38,14 @@ interface TbBoatsMotorzenkenRepositoryInterface
     public function getMotorChangeCount($target_date);
 
     /**
+     * ボート切り替え日検索用データを取得
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getBoatChangeCount($target_date);
+
+    /**
      * 指定日のモーターリストを取得
      *
      * @var string $target_date
@@ -54,5 +62,14 @@ interface TbBoatsMotorzenkenRepositoryInterface
      * @return object
      */
     public function getMotorListForSp($target_date,$sort);
+
+    /**
+     * ボートNoリストデータを取得
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getBoatList($start_date,$end_date);
 
 }
