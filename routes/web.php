@@ -33,6 +33,7 @@ use App\Http\Controllers\Front\FrontInfoController;
 use App\Http\Controllers\Front\Sp\SpKyogiController;
 use App\Http\Controllers\Front\Sp\SpEventController;
 use App\Http\Controllers\Front\Sp\SpInfoController;
+use App\Http\Controllers\Front\Sp\SpCalController;
 
 
 //書き出しPC
@@ -43,6 +44,7 @@ use App\Http\Controllers\ExportHtml\ExportEventController;
 use App\Http\Controllers\ExportHtml\ExportMeikanController;
 use App\Http\Controllers\ExportHtml\ExportInfoController;
 use App\Http\Controllers\ExportHtml\ExportMotorController;
+use App\Http\Controllers\ExportHtml\ExportCalController;
 
 
 
@@ -281,6 +283,8 @@ Route::get('/asp/tsu/sp/kyogi/Movie_Live.asp',        [SpKyogiController::class,
 
 Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
 Route::get('/asp/tsu/sp/info/info_SP.asp',        [SpInfoController::class, 'index']);
+Route::get('/asp/tsu/sp/01cal/01cal.asp',        [SpCalController::class, 'index']);
+
     
 
 
@@ -333,6 +337,7 @@ Route::get('/asp/tsu/04event/04event.asp',        [ExportEventController::class,
 Route::get('/asp/tsu/06meikan/06meikan.asp',        [ExportMeikanController::class, 'index']);
 Route::get('/asp/tsu/06meikan/racer_data_create.asp',        [ExportMeikanController::class, 'racer_data_create']);
 Route::get('/asp/tsu/info/ex_info.asp',        [ExportInfoController::class, 'index']);
+Route::get('/asp/tsu/01cal/01cal.asp',        [ExportCalController::class, 'index']);
 
 
 

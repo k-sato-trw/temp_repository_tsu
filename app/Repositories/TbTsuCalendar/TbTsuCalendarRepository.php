@@ -354,20 +354,20 @@ class TbTsuCalendarRepository implements TbTsuCalendarRepositoryInterface
     /**
      * フロント用カレンダーの1ライン分を取得
      *
+     * @var string $type
      * @var int $line_count
      * @var array $jyo_array
      * @var array $race_type_array
-     * @var array $geki_jyo_array
      * @var string $now_year
      * @var string $now_month
      * @var string $is_preview
      * @return object
      */
     public function getLineForFront(
+        $type,
         $line_count,
         $jyo_array,
         $race_type_array,
-        $geki_jyo_array,
         $now_year,
         $now_month,
         $is_preview = false
@@ -375,7 +375,8 @@ class TbTsuCalendarRepository implements TbTsuCalendarRepositoryInterface
     {
 
         $holdentry = $this->TbTsuCalendar
-                        ->where('LINE','=',$line_count);
+                        ->where('TYPE','=',$type)
+                        ->where('VIEW_LINE','=',$line_count);
 
         if(!$is_preview){
             $holdentry->where('APPEAR_FLG','1');
@@ -385,10 +386,7 @@ class TbTsuCalendarRepository implements TbTsuCalendarRepositoryInterface
             $holdentry->whereIn('JYO',$jyo_array);
         }
         if($race_type_array){
-            $holdentry->whereIn('GEKI_RACETYPE',$race_type_array);
-        }
-        if($geki_jyo_array){
-            $holdentry->whereIn('GEKI_JYO',$geki_jyo_array);
+            $holdentry->whereIn('RACE_TYPE',$race_type_array);
         }
 
         $holdentry = $holdentry->where(function($query) use($now_year,$now_month) {

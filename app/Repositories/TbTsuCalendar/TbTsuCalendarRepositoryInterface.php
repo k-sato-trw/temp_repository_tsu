@@ -118,20 +118,20 @@ interface TbTsuCalendarRepositoryInterface
     /**
      * フロント用カレンダーの1ライン分を取得
      *
+     * @var string $type
      * @var int $line_count
      * @var array $jyo_array
      * @var array $race_type_array
-     * @var array $geki_jyo_array
      * @var string $now_year
      * @var string $now_month
      * @var string $is_preview
      * @return object
      */
     public function getLineForFront(
+        $type,
         $line_count,
         $jyo_array,
         $race_type_array,
-        $geki_jyo_array,
         $now_year,
         $now_month,
         $is_preview = false
