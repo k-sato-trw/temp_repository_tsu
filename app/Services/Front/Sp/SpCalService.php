@@ -80,7 +80,14 @@ class SpCalService
             $data['now_day'] = $now_day;
             $data['now_month_last_day'] = $now_month_last_day;
             $data['week_label'] = ['日','月','火','水','木','金','土',];
-            
+            $data['grade_exchange'] = [
+                0 =>'sg',
+                1 =>'g1',
+                2 =>'g2',
+                3 =>'g3',
+                4 =>'g0',
+                5 =>'g3',
+            ];
             $data['next_year_month'] = $next_year_month;
             $data['prev_year_month'] = $prev_year_month;
 
@@ -120,6 +127,14 @@ class SpCalService
 
             $data['honjyo_array'] = $lines[1];
 
+            //展望データも作成
+            $race_index = $this->TbRaceIndex->getTenboForCalendar($now_year,$now_month);
+            $race_index_tenbo = [];
+            foreach($race_index as $item){
+                $race_index_tenbo[$item->START_DATE] = $item;
+            }
+            $data['race_index_tenbo'] = $race_index_tenbo;
+
         }
 
         { //カレンダーデータ　TV
@@ -151,24 +166,6 @@ class SpCalService
                 $now_month,
                 $now_month_last_day
             );
-
-            $result_lines = [];
-            foreach($lines as $line_number => $line){
-                
-                //データが一つでもあるかの存在確認
-                $data_exists =  false;
-                for($day = 1; $day <= $now_month_last_day; $day++){
-                    if($line[$day]['type'] != "blank"){
-                        $data_exists =  true;
-                        break;
-                    }
-                }
-
-                if($data_exists){
-                    $result_lines[$line_number] = $line;
-                }
-            }
-            $lines = $result_lines;
             
             $lines = $this->insert_close_day(
                 3,
@@ -181,7 +178,32 @@ class SpCalService
             $data['honjyonai_lines'] = $lines;
 
         }
-        
+
+        { //カレンダーデータ　外向け
+                
+            $lines = $this->mold_calendar_layout(
+                $day_layout,
+                4,
+                11,
+                ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24",],
+                null,
+                $now_year,
+                $now_month,
+                $now_month_last_day
+            );
+            
+            
+            $lines = $this->insert_close_day(
+                4,
+                $lines,
+                $now_year,
+                $now_month,
+                $now_month_last_day
+            );
+            
+            $data['sotomuke_lines'] = $lines;
+
+        }
         
         { //月コメントデータを呼ぶ
             $month_info = $this->TbTsuMonthInfo->getFirstRecordByDate($now_date);
@@ -190,7 +212,8 @@ class SpCalService
                 $data['month_info'] = $month_info;
             }
         }
-        
+
+        $data['first_year_month'] = date('Ym');
 
         $last_record = $this->TbTsuCalendar->getLastRecordForCalendar();
         $data['last_date'] = $last_record->END_DATE;

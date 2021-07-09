@@ -504,7 +504,7 @@ strAgent = funcJsLiveSmartAgentGetter();
 		@endif
 	</div><!-- item end -->
 
-	@if($kekka_change_race_num < $race_num || true)
+	@if($kekka_change_race_num < $race_num)
 		<!--オッズ結果②/-->
 		<div class="item cont_odds">
 			{{-- file_get_contents(config('const.EXPORT_PATH').'/asp/tsu/sp/kyogi/Odds_Search.asp') --}}
@@ -529,7 +529,7 @@ strAgent = funcJsLiveSmartAgentGetter();
 		@endif
 	</div><!-- item end -->
 
-	@if($kekka_change_race_num < $race_num || true )
+	@if($kekka_change_race_num < $race_num)
 		<!--オッズ結果④/-->
 		<div class="item data calculate cf">
 			{!! $view_odds_calc !!}
@@ -539,11 +539,12 @@ strAgent = funcJsLiveSmartAgentGetter();
 
 	<!--オッズ結果⑤/-->
 	<div class="item data cf">
+		オッズ結果⑤
 		<span id="id_kekkalist"></span>
 		{{-- file_get_contents(config('const.EXPORT_PATH').'/asp/tsu/sp/kyogi/Kekka_List.asp') --}}
 	</div><!-- item end -->
 
-	@if($kekka_change_race_num < $race_num)
+	@if($kekka_change_race_num >= $race_num)
 		<!--オッズ結果⑤/-->
 		<div class="item data">
 			<span id="id_kekkaDetail"></span>

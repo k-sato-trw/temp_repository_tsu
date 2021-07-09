@@ -198,4 +198,27 @@ class TbRaceIndexRepository implements TbRaceIndexRepositoryInterface
                     ->get();
     }
 
+
+    /**
+     * カレンダー用に展望レコードとjoinしたものを取得
+     *
+     * @var string $now_year
+     * @var string $now_month
+     * @return object
+     */
+    public function getTenboForCalendar($now_year,$now_month)
+    {
+        return $this->TbRaceIndex
+                    ->join('tb_race_tenbo',function($join){
+                        $join->on('tb_race_index.JYO','=','tb_race_tenbo.JYO')
+                        ->on('tb_race_index.ID','=','tb_race_tenbo.ID');
+                    })
+                    ->where('tb_race_index.JYO',config("const.JYO_CODE"))
+                    ->where(function($query) use($now_year,$now_month) {
+                        $query->where('tb_race_index.START_DATE','like',$now_year.$now_month.'%')
+                            ->orWhere('tb_race_index.END_DATE','like',$now_year.$now_month.'%');
+                    })
+                    ->get();
+    }
+
 }

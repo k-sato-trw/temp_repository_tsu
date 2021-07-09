@@ -81,4 +81,14 @@ interface TbRaceIndexRepositoryInterface
      */
     public function getUnfinishedRecord($taget_date);
 
+
+    /**
+     * カレンダー用に展望レコードとjoinしたものを取得
+     *
+     * @var string $now_year
+     * @var string $now_month
+     * @return object
+     */
+    public function getTenboForCalendar($now_year,$now_month);
+
 }

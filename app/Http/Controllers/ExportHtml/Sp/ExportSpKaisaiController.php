@@ -753,6 +753,67 @@ class ExportSpKaisaiController extends Controller
         
     }
 
+    public function kekka_detail(Request $request)
+    {
+
+        //アクセスされた時点での日付から処理対象日を割り出し、その日付の12レース分処理(多分)
+        //締切時間を過ぎた場合は、処理対象外になるようだが、明確な条件を確かめる時間が無いので、その日一日の処理は継続するかも・・
+        $jyo = config('const.JYO_CODE');
+
+        {
+            //処理対象日を判定
+            $tomorrow_flg = false;
+            $today_date = date('Ymd');
+            $today_date = '20210524';
+            $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$tomorrow_date);
+
+            if($kaisai_master && $race_header){
+                //両方あれば、対象日確定
+                $tomorrow_flg = true;
+                $target_date = $tomorrow_date;
+            }else{
+                //無い場合は、当日判定
+                $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+                $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+                $target_date = $today_date;
+
+            }
+
+        }
+
+        $message = "";
+        if($kaisai_master){
+            for($race_num = 1;$race_num <= 12;$race_num++){
+                //サービスクラスで処理。
+                $data = $this->_service->kekka_detail($request,$target_date,$race_num,$tomorrow_flg);
+
+                $file_name = str_pad($data['race_num'], 2, '0', STR_PAD_LEFT);
+                //ソースを受け取り静的に書き出し処理
+                File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/Kekka_Detail'.$file_name.'.htm', view('front.sp.kaisai.kekka_detail',$data));
+                $message .= '書き出し完了<br><a href="/asp/kyogi/09/sp/Kekka_Detail'.$file_name.'.htm">/asp/kyogi/09/sp/Kekka_Detail'.$file_name.'.htm</a><br>';
+
+            }
+
+            return $message;
+        }else{
+            for($race_num = 1;$race_num <= 12;$race_num++){
+                //サービスクラスで処理。
+
+                $file_name = str_pad($race_num, 2, '0', STR_PAD_LEFT);
+                //ソースを受け取り静的に書き出し処理
+                File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/Kekka_Detail'.$file_name.'.htm', view('front.sp.kaisai.hikaisai',['title'=>'結果詳細']));
+                $message .= '書き出し完了<br><a href="/asp/kyogi/09/sp/Kekka_Detail'.$file_name.'.htm">/asp/kyogi/09/sp/Kekka_Detail'.$file_name.'.htm</a><br>';
+
+            }
+
+            return $message;
+        }
+        
+    }
+
     
 
     public function cyoku(Request $request)
@@ -831,6 +892,16 @@ class ExportSpKaisaiController extends Controller
         File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/racenum_btn.htm', view('front.sp.kaisai.race_num_button',$data));
         return '書き出し完了<br><a href="/asp/kyogi/09/sp/racenum_btn.htm">/asp/kyogi/09/sp/racenum_btn.htm</a>';
 
+    }
+
+    public function create_sp_tokuten(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->create_sp_tokuten($request);
+
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/yosen.htm', view('front.sp.kaisai.yosen',$data));
+        return '書き出し完了<br><a href="/asp/kyogi/09/sp/yosen.htm">/asp/kyogi/09/sp/yosen.htm</a><br>';
     }
 
 }

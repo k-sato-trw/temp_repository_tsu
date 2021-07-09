@@ -356,13 +356,18 @@ Route::get('/asp/tsu/sp/kyogi/Yoso_KishaTenji.asp',        [ExportSpKaisaiContro
 Route::get('/asp/tsu/sp/kyogi/Yoso_Vpower.asp',        [ExportSpKaisaiController::class, 'yoso_vpower']);
 Route::get('/asp/tsu/sp/kyogi/Odds_3RentanPuku.asp',        [ExportSpKaisaiController::class, 'odds_3rentanpuku']);
 Route::get('/asp/tsu/sp/kyogi/Odds_2RentanPuku.asp',        [ExportSpKaisaiController::class, 'odds_2rentanpuku']);
+Route::get('/asp/tsu/sp/kyogi/Kekka_Detail.asp',        [ExportSpKaisaiController::class, 'kekka_detail']);
 Route::get('/asp/tsu/sp/kyogi/RacenumButton.asp',        [ExportSpKaisaiController::class, 'race_num_button']);
 
-Route::get('/asp/tsu/sp/kyogi/Cyoku.asp',        [ExportSpKaisaiController::class, 'cyoku']);
+Route::get('/asp/tsu/sp/kyogi/CreateSPtokuten.asp',        [ExportSpKaisaiController::class, 'create_sp_tokuten']);
 
+
+
+Route::get('/asp/tsu/sp/kyogi/Cyoku.asp',        [ExportSpKaisaiController::class, 'cyoku']);
 Route::get('/asp/tsu/sp/02suimen/02suimen_SP.asp',        [ExportSpSuimenController::class, 'index']);
 Route::get('/asp/tsu/sp/02motor/02motor.asp',        [ExportSpMotorController::class, 'motor']);
 Route::get('/asp/tsu/sp/06meikan/06meikan.asp',        [ExportSpMeikanController::class, 'index']);
+
 
 
 //書き出しJS

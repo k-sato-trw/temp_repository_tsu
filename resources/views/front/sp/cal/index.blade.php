@@ -94,11 +94,20 @@ function Change(argData){
 <div id="hd_l">
 
 <div id="mo">
-<div id="mo_l"></div><!-- /#mo_l -->
-<div id="mo_m">7月</div><!-- /#mo_m -->
+<div id="mo_l">
+    @if($first_year_month <= $prev_year_month)
+        <a href="/asp/tsu/sp/01cal/01cal.asp?yd={{$prev_year_month}}01">
+          <img src="/sp/01cal/images/com_ic03.png" width="19" height="28">
+        </a>
+    @endif
+</div><!-- /#mo_l -->
+<div id="mo_m">{{ (int) $now_month}}月</div><!-- /#mo_m -->
 <div id="mo_r">
-<a href="/asp/tsu/sp/01cal/01cal.asp?yd=20210808">
-<img src="/sp/01cal/images/com_ic02.png" width="19" height="28"></a>
+    @if($last_date > $now_year.$now_month.$now_month_last_day)
+        <a href="/asp/tsu/sp/01cal/01cal.asp?yd={{$next_year_month}}01">
+          <img src="/sp/01cal/images/com_ic02.png" width="19" height="28">
+        </a>
+    @endif
 </div><!-- /#mo_r -->
 <div class="clear"></div>
 </div><!-- /#mo -->
@@ -123,8 +132,11 @@ function Change(argData){
 <img src="/sp/01cal/images/sp_mark_2.png" width="30" height="30">：女子戦
 <br>
 <img src="/sp/01cal/images/sp_mark_3.png" width="30" height="30">：薄暮　　　
-
-<div id="monthly">マンスリーボートレース</div>
+@if($month_info->PDF_FILE ?? false)
+    <div id="monthly"><a href="{{ config('const.IMAGE_PATH.MONTH_INFO') . $calendar_row['month_info']->PDF_FILE }}" target="_blank">マンスリーボートレース</div>
+@else
+    <div id="monthly">マンスリーボートレース</div>
+@endif
 </div><!-- /#note -->
 
 
@@ -159,7 +171,7 @@ function Change(argData){
                 {{ $week_label[date('w',strtotime($now_year . $now_month . $day))] }}
             </td>
             @if($honjyo_array[$day]['type'] == "head")
-                <td rowspan="{{ $honjyo_array[$day]['colspan'] }}" class="{{ $general->gradenumber_to_gradename_for_front_syussou($honjyo_array[$day]['record']['GRADE']) }}">
+                <td rowspan="{{ $honjyo_array[$day]['colspan'] }}" class="j{{ $grade_exchange[$honjyo_array[$day]['record']['GRADE']] }}">
                     @if($honjyo_array[$day]['record']['RACE_TITLE'])
                         {{ $honjyo_array[$day]['record']['RACE_TITLE'] }}                                       
                     @else
@@ -173,349 +185,55 @@ function Change(argData){
                     休館
                 </td>
             @endif
-            
-            @if($honjyonai_lines[1][$day]['type'] == "head")
-                <td rowspan="{{ $honjyonai_lines[1][$day]['colspan'] }}" class="jg{{ $honjyonai_lines[1][$day]['record']['GRADE'] }}">
-                    {{ $general->gradenumber_to_gradename_for_cms_calendar($honjyonai_lines[1][$day]['record']['GRADE']) }}
-                    @if($honjyonai_lines[1][$day]['record']['LADY_FLG'])
-                        <img src="/sp/01cal/images/sp_mark_2.png">
-                    @endif
-                    @if($honjyonai_lines[1][$day]['record']['RACE_TITLE'])
-                        {{ $general->jyocode_to_jyoname($honjyonai_lines[1][$day]['record']['JYO']) }}{{ $honjyonai_lines[1][$day]['record']['RACE_TITLE'] }}
-                    @elseif($honjyonai_lines[1][$day]['record']['CALENDAR_RACE_TITLE'])
-                        {{ $honjyonai_lines[1][$day]['record']['CALENDAR_RACE_TITLE'] }}                                           
-                    @else
-                        {{ $general->jyocode_to_jyoname($honjyonai_lines[1][$day]['record']['JYO']) }}
-                    @endif
-                </td>
-            @elseif($honjyonai_lines[1][$day]['type'] == "blank")
-                <td>&ensp;</td>
-            @elseif($honjyonai_lines[1][$day]['type'] == "close")
-                <td colspan="{{count($honjyonai_lines)}}" rowspan="{{ $honjyonai_lines[1][$day]['colspan'] }}" class="kyukan">
-                    休館
-                </td>
-            @endif
 
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            @for($i=1;$i<=4;$i++)
+                @if($honjyonai_lines[$i][$day]['type'] == "head")
+                    <td rowspan="{{ $honjyonai_lines[$i][$day]['colspan'] }}" class="j{{ $grade_exchange[$honjyonai_lines[$i][$day]['record']['GRADE']] }}">
+                        <?php
+                            $tenbo_url = "";
+                            if(isset($race_index_tenbo[$now_year . $now_month . $day])){
+                                $target_tenbo = $race_index_tenbo[$now_year . $now_month . $day];
+                                //indexiにURLが存在するかの確認
+                                if($target_tenbo->SP_TENBO_URL){
+                                    $tenbo_url = $target_tenbo->SP_TENBO_URL;
+                                }elseif(file_exists(config('const.EXPORT_PATH').'/asp/htmlmade/Race/Tenbo/09/SP/t'.$target_tenbo->ID.'.htm')){
+                                    //tenboIDのファイルが存在するかの確認
+                                    $tenbo_url = '/asp/htmlmade/Race/Tenbo/09/SP/t'.$target_tenbo->ID.'.htm';
+                                }
+                            }
+                        ?>
+                        @if($tenbo_url) <a href='{{$tenbo_url}}'> @endif
+                        {{ $general->gradenumber_to_gradename_for_cms_calendar($honjyonai_lines[$i][$day]['record']['GRADE']) }}<!--
+                        @if($honjyonai_lines[$i][$day]['record']['RACE_TYPE'] == 1)
+                          --><img src="/sp/01cal/images/sp_mark_1.png"><!--
+                        @endif
+                        @if($honjyonai_lines[$i][$day]['record']['LADY_FLG'])
+                          --><img src="/sp/01cal/images/sp_mark_2.png"><!--
+                        @endif
+                        @if($honjyonai_lines[$i][$day]['record']['RACE_TYPE'] == 2)
+                          --><img src="/sp/01cal/images/sp_mark_3.png"><!--
+                        @endif
+                          -->{{ $general->jyocode_to_jyoname($honjyonai_lines[$i][$day]['record']['JYO']) }}
+                        
+                        @if($tenbo_url) </a> @endif
+                    </td>
+                @elseif($honjyonai_lines[$i][$day]['type'] == "blank")
+                    <td>&ensp;</td>
+                @elseif($honjyonai_lines[$i][$day]['type'] == "close")
+                    <td colspan="4" rowspan="{{ $honjyonai_lines[$i][$day]['colspan'] }}" class="close">
+                        休館
+                    </td>
+                @endif
+            @endfor
+
+            @if($tv_lines[1][$day]['type'] == "head" || $tv_lines[1][$day]['type'] == "copy")
+                <td>{{ ($tv_lines[1][$day]['record']['JYO'] - 31) }}</td>
+            @elseif($tv_lines[1][$day]['type'] == "blank")
+                <td>&ensp;</td>
+            @endif
         </tr>
     @endfor
-  <tr>
-    <td>1</td>
-                    <td>木</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>2</td>
-                    <td>金</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>3</td>
-                    <td class="sat">土</td>
-                    <td>&nbsp;</td>
-                <td rowspan="2" class="jg2">
-G2<br>三国</td>
-                <td rowspan="2" class="jg0">
-常滑</td>
-                <td rowspan="2" class="jg0">
-宮島</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>4</td>
-                    <td class="sun">日</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>5</td>
-                    <td>月</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>6</td>
-                    <td>火</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>7</td>
-                    <td>水</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>8</td>
-                    <td>木</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>9</td>
-                    <td>金</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>10</td>
-                    <td class="sat">土</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>11</td>
-                    <td class="sun">日</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>12</td>
-                    <td>月</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>13</td>
-                    <td>火</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>14</td>
-                    <td>水</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>15</td>
-                    <td>木</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>16</td>
-                    <td>金</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>17</td>
-                    <td class="sat">土</td>
-                    <td>&nbsp;</td>
-                <td rowspan="2" class="jg2">
-G2<br>びわこ</td>
-                <td rowspan="2" class="jg3">
-G3<img src="/sp/01cal/images/sp_mark_2.png" width="30" height="30"><br>児島</td>
-                <td rowspan="2" class="jg0">
-常滑</td>
-                <td rowspan="1" class="jg0">
-唐津</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>18</td>
-                    <td class="sun">日</td>
-                    <td>&nbsp;</td>
-                <td rowspan="1" class="jg0">
-尼崎</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>19</td>
-                    <td>月</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>20</td>
-                    <td>火</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>21</td>
-                    <td>水</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>22</td>
-                    <td class="sun">木</td>
-                    <td>&nbsp;</td>
-                <td rowspan="4" class="jsg">
-SG<br>芦屋</td>
-                <td rowspan="4" class="jg0">
-戸田</td>
-                <td rowspan="1" class="jg0">
-宮島</td>
-                <td rowspan="1" class="jg0">
-徳山</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>23</td>
-                    <td class="sun">金</td>
-                    <td>&nbsp;</td>
-                <td rowspan="3" class="jg0">
-尼崎</td>
-                <td rowspan="2" class="jg0">
-江戸川</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>24</td>
-                    <td class="sat">土</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>25</td>
-                    <td class="sun">日</td>
-                    <td>&nbsp;</td>
-                <td rowspan="1" class="jg0">
-唐津</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>26</td>
-                    <td>月</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>27</td>
-                    <td>火</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>28</td>
-                    <td>水</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>29</td>
-                    <td>木</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>30</td>
-                    <td>金</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>31</td>
-                    <td class="sat">土</td>
-                    <td>&nbsp;</td>
-                <td rowspan="1" class="jg2">
-G2尼</td>
-                <td rowspan="1" class="jg3">
-G3宮</td>
-                <td rowspan="1" class="jg0">
-常滑</td>
-                <td rowspan="1" class="jg0">
-徳山</td>
-                    <td>&nbsp;</td>
-    </tr>
+  
 </table>
 </div><!-- /tab1 -->
 
@@ -536,218 +254,48 @@ G3宮</td>
     <th colspan="2">&nbsp;</th>
     <th colspan="4">津インクル（外向発売所）</th>
   </tr>
-  <tr>
-    <td>1</td>
-                    <td>木</td>
-                <td rowspan="4" class="jg2">
-G2<br>三国</td>
-                <td rowspan="6" class="jg3">
-G3<img src="/sp/01cal/images/sp_mark_2.png" width="30" height="30"><img src="/sp/01cal/images/sp_mark_3.png" width="30" height="30"><br>平和島</td>
-                <td rowspan="2" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>丸亀</td>
-                <td rowspan="6" class="jg3">
-G3<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>大村</td>
-    </tr>
-  <tr>
-    <td>2</td>
-                    <td>金</td>
-    </tr>
-  <tr>
-    <td>3</td>
-                    <td class="sat">土</td>
-                <td rowspan="2" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>住之江</td>
-    </tr>
-  <tr>
-    <td>4</td>
-                    <td class="sun">日</td>
-    </tr>
-  <tr>
-    <td>5</td>
-                    <td>月</td>
-                <td rowspan="1" class="jg0">
-常滑</td>
-                <td rowspan="1" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30">桐</td>
-    </tr>
-  <tr>
-    <td>6</td>
-                    <td>火</td>
-                <td rowspan="1" class="jg0">
-江戸川</td>
-                <td rowspan="6" class="jg2">
-G2<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>丸亀</td>
-    </tr>
-  <tr>
-    <td>7</td>
-                    <td>水</td>
-                <td rowspan="6" class="jg0">
-<img src="/sp/01cal/images/sp_mark_2.png" width="30" height="30"><br>尼崎</td>
-                <td rowspan="1" class="jg0">
-徳山</td>
-                <td rowspan="2" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>蒲郡</td>
-    </tr>
-  <tr>
-    <td>8</td>
-                    <td>木</td>
-                <td rowspan="1" class="jg0">
-<img src="/sp/01cal/images/sp_mark_3.png" width="30" height="30">浜</td>
-    </tr>
-  <tr>
-    <td>9</td>
-                    <td>金</td>
-                <td rowspan="1" class="jg0">
-びわこ</td>
-                <td rowspan="1" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30">若</td>
-    </tr>
-  <tr>
-    <td>10</td>
-                    <td class="sat">土</td>
-                <td rowspan="1" class="jg0">
-唐津</td>
-                <td rowspan="4" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>住之江</td>
-    </tr>
-  <tr>
-    <td>11</td>
-                    <td class="sun">日</td>
-                <td rowspan="2" class="jg0">
-<img src="/sp/01cal/images/sp_mark_3.png" width="30" height="30"><br>多摩川</td>
-    </tr>
-  <tr>
-    <td>12</td>
-                    <td>月</td>
-                <td rowspan="4" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>大村</td>
-    </tr>
-  <tr>
-    <td>13</td>
-                    <td>火</td>
-                <td rowspan="6" class="jg2">
-G2<br>びわこ</td>
-                <td rowspan="6" class="jg3">
-G3<img src="/sp/01cal/images/sp_mark_2.png" width="30" height="30"><br>児島</td>
-    </tr>
-  <tr>
-    <td>14</td>
-                    <td>水</td>
-                <td rowspan="6" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>桐生</td>
-    </tr>
-  <tr>
-    <td>15</td>
-                    <td>木</td>
-    </tr>
-  <tr>
-    <td>16</td>
-                    <td>金</td>
-                <td rowspan="1" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30">若</td>
-    </tr>
-  <tr>
-    <td>17</td>
-                    <td class="sat">土</td>
-                <td rowspan="2" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>下関</td>
-    </tr>
-  <tr>
-    <td>18</td>
-                    <td class="sun">日</td>
-    </tr>
-  <tr>
-    <td>19</td>
-                    <td>月</td>
-                <td rowspan="1" class="jg0">
-常滑</td>
-                <td rowspan="1" class="jg0">
-鳴門</td>
-                <td rowspan="6" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><img src="/sp/01cal/images/sp_mark_2.png" width="30" height="30"><br>住之江</td>
-    </tr>
-  <tr>
-    <td>20</td>
-                    <td>火</td>
-                <td rowspan="6" class="jsg">
-SG<br>芦屋</td>
-                <td rowspan="3" class="jg0">
-徳山</td>
-                <td rowspan="3" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>蒲郡</td>
-    </tr>
-  <tr>
-    <td>21</td>
-                    <td>水</td>
-    </tr>
-  <tr>
-    <td>22</td>
-                    <td class="sun">木</td>
-    </tr>
-  <tr>
-    <td>23</td>
-                    <td class="sun">金</td>
-                <td rowspan="2" class="jg0">
-江戸川</td>
-                <td rowspan="1" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30">大</td>
-    </tr>
-  <tr>
-    <td>24</td>
-                    <td class="sat">土</td>
-                <td rowspan="4" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>若松</td>
-    </tr>
-  <tr>
-    <td>25</td>
-                    <td class="sun">日</td>
-                <td rowspan="1" class="jg0">
-唐津</td>
-                <td rowspan="6" class="jg3">
-G3<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><img src="/sp/01cal/images/sp_mark_2.png" width="30" height="30"><br>下関</td>
-    </tr>
-  <tr>
-    <td>26</td>
-                    <td>月</td>
-                <td rowspan="1" class="jg0">
-常滑</td>
-                <td rowspan="2" class="jg0">
-戸田</td>
-    </tr>
-  <tr>
-    <td>27</td>
-                    <td>火</td>
-                <td rowspan="5" class="jg2">
-G2<br>尼崎</td>
-    </tr>
-  <tr>
-    <td>28</td>
-                    <td>水</td>
-                <td rowspan="1" class="jg0">
-三国</td>
-                <td rowspan="1" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30">桐</td>
-    </tr>
-  <tr>
-    <td>29</td>
-                    <td>木</td>
-                <td rowspan="3" class="jg3">
-G3<br>宮島</td>
-                <td rowspan="2" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30"><br>丸亀</td>
-    </tr>
-  <tr>
-    <td>30</td>
-                    <td>金</td>
-    </tr>
-  <tr>
-    <td>31</td>
-                    <td class="sat">土</td>
-                <td rowspan="1" class="jg3">
-G3<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30">若</td>
-                <td rowspan="1" class="jg0">
-<img src="/sp/01cal/images/sp_mark_1.png" width="30" height="30">大</td>
-    </tr>
+  @for($day = 1; $day <= $now_month_last_day; $day++)
+      <tr>
+          <td>{{$day}}</td>
+          @if(date('w',strtotime($now_year . $now_month . $day)) == 0)
+              <td class="sun">
+          @elseif(date('w',strtotime($now_year . $now_month . $day)) == 6)
+              <td class="sat">
+          @else
+              <td>
+          @endif
+              {{ $week_label[date('w',strtotime($now_year . $now_month . $day))] }}
+          </td>
+          @for($i=1;$i<=4;$i++)
+              @isset($sotomuke_lines[$i])
+                  @if($sotomuke_lines[$i][$day]['type'] == "head")
+                      <td rowspan="{{ $sotomuke_lines[$i][$day]['colspan'] }}" class="j{{ $grade_exchange[$sotomuke_lines[$i][$day]['record']['GRADE']] }}">
+                          {{ $general->gradenumber_to_gradename_for_cms_calendar($sotomuke_lines[$i][$day]['record']['GRADE']) }}<!--
+                          @if($sotomuke_lines[$i][$day]['record']['RACE_TYPE'] == 1)
+                            --><img src="/sp/01cal/images/sp_mark_1.png"><!--
+                          @endif
+                          @if($sotomuke_lines[$i][$day]['record']['LADY_FLG'])
+                            --><img src="/sp/01cal/images/sp_mark_2.png"><!--
+                          @endif
+                          @if($sotomuke_lines[$i][$day]['record']['RACE_TYPE'] == 2)
+                            --><img src="/sp/01cal/images/sp_mark_3.png"><!--
+                          @endif
+                            -->{{ $general->jyocode_to_jyoname($sotomuke_lines[$i][$day]['record']['JYO']) }}
+                      </td>
+                  @elseif($sotomuke_lines[$i][$day]['type'] == "blank")
+                      <td>&ensp;</td>
+                  @elseif($sotomuke_lines[$i][$day]['type'] == "close")
+                      <td colspan="{{count($sotomuke_lines)}}" rowspan="{{ $sotomuke_lines[$i][$day]['colspan'] }}" class="kyukan">
+                          休館
+                      </td>
+                  @endif
+              @else
+                  <td>&ensp;</td>
+              @endisset
+          @endfor
+      </tr>
+  @endfor
+  
 </table>
 </div><!-- /tab2 -->
 

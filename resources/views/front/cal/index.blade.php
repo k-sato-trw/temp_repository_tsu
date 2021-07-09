@@ -182,11 +182,26 @@
                     @foreach($calendar_row['honjyo_array'] as $day => $item)
                         @if($item['type'] == "head")
                             <td colspan="{{ $item['colspan'] }}" class="{{ $general->gradenumber_to_gradename_for_front_syussou($item['record']['GRADE']) }}">
+                                <?php
+                                    $tenbo_url = "";
+                                    if(isset($calendar_row['race_index_tenbo'][$calendar_row['now_year'] . $calendar_row['now_month'] . $day])){
+                                        $target_tenbo = $calendar_row['race_index_tenbo'][$calendar_row['now_year'] . $calendar_row['now_month'] . $day];
+                                        //indexiにURLが存在するかの確認
+                                        if($target_tenbo->PC_TENBO_URL){
+                                            $tenbo_url = $target_tenbo->PC_TENBO_URL;
+                                        }elseif(file_exists(config('const.EXPORT_PATH').'/asp/htmlmade/Race/Tenbo/09/PC/t'.$target_tenbo->ID.'.htm')){
+                                            //tenboIDのファイルが存在するかの確認
+                                            $tenbo_url = '/asp/htmlmade/Race/Tenbo/09/PC/t'.$target_tenbo->ID.'.htm';
+                                        }
+                                    }
+                                ?>
+                                @if($tenbo_url) <a href='{{$tenbo_url}}'> @endif
                                 @if($item['record']['RACE_TITLE'])
                                     {{ $item['record']['RACE_TITLE'] }}                                       
                                 @else
                                     {{ $general->jyocode_to_jyoname($item['record']['JYO']) }}
                                 @endif
+                                @if($tenbo_url) </a> @endif
                             </td>
                         @elseif($item['type'] == "blank")
                             <td>&ensp;</td>

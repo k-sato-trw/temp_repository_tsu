@@ -189,6 +189,14 @@ class ExportCalService
                 );
     
                 $data['calendar'][$now_date]['honjyonai_lines'] = $lines;
+
+                //展望データも作成
+                $race_index = $this->TbRaceIndex->getTenboForCalendar($now_year,$now_month);
+                $race_index_tenbo = [];
+                foreach($race_index as $item){
+                    $race_index_tenbo[$item->START_DATE] = $item;
+                }
+                $data['calendar'][$now_date]['race_index_tenbo'] = $race_index_tenbo;
     
             }
             
@@ -205,6 +213,8 @@ class ExportCalService
                     $now_month,
                     $now_month_last_day
                 );
+
+                $result_lines = [];
                 foreach($lines as $line_number => $line){
                     
                     //データが一つでもあるかの存在確認
