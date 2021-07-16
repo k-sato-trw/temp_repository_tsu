@@ -119,6 +119,14 @@ class ExportCalService
                     $now_month,
                     $now_month_last_day
                 );
+
+                //中止判定入れ込み
+                $lines = $this->insert_honjyo_chushi_day(
+                    $lines,
+                    $now_year,
+                    $now_month,
+                    $now_month_last_day
+                );
                 
                 $lines = $this->insert_close_day(
                     1,
@@ -157,6 +165,14 @@ class ExportCalService
                     5,
                     ["01","02","03","05","04","06","07","08","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24",],
                     null,
+                    $now_year,
+                    $now_month,
+                    $now_month_last_day
+                );
+
+                //中止判定入れ込み
+                $lines = $this->insert_honjyonai_chushi_day(
+                    $lines,
                     $now_year,
                     $now_month,
                     $now_month_last_day
@@ -213,6 +229,15 @@ class ExportCalService
                     $now_month,
                     $now_month_last_day
                 );
+
+                //中止判定入れ込み
+                $lines = $this->insert_sotomuke_chushi_day(
+                    $lines,
+                    $now_year,
+                    $now_month,
+                    $now_month_last_day
+                );
+
 
                 $result_lines = [];
                 foreach($lines as $line_number => $line){
@@ -462,6 +487,201 @@ class ExportCalService
 
             }
 
+        }
+        return $lines;
+
+    }
+
+
+    //本場中止日処理
+    public function insert_honjyo_chushi_day(
+        $lines,
+        $now_year,
+        $now_month,
+        $now_month_last_day)
+    {
+        $honjyo_chushi_day = $this->ChushiJunen->getHonjyoChushiRecordForClendar($now_year,$now_month);
+
+        $chushi_day_list = [];
+        foreach($honjyo_chushi_day as $item){
+            $chushi_day_list[] = $item->中止日付;
+        }
+        
+
+        //ライン変更処理
+        foreach($lines as $line_number => $line){
+            foreach($line as $day => $item){
+                
+                //中止にあてはまるか
+                $padding_day = str_pad($day, 2, '0', STR_PAD_LEFT);
+                if(in_array($now_year.$now_month.$padding_day,$chushi_day_list)){
+                    
+                    //中止が当てはまる場合
+                    if($line[$day]['type'] == "blank" || $day == $now_month_last_day){
+                        //元がblank →　上書きするだけ
+
+                    }else{
+
+                        //元がhead or copy
+                        if($line[$day + 1]['type'] == "copy" && $day < $now_month_last_day){
+                            //次の日がcopy →　次の日にheadを移す
+                            $lines[$line_number][$day + 1]['type'] = "head";
+                        }
+
+                        //元がcopyの場合かつ、休館初日の場合のみ　親のheadのcolspanを減らす
+                        if($lines[$line_number][$day]['type'] == "copy"){
+                            for($colspan_minus = 1;$colspan_minus < 32; $colspan_minus++){
+                                $lines[$line_number][$day - $colspan_minus]['colspan'] = $colspan_minus;
+                                if($lines[$line_number][$day - $colspan_minus]['type'] == "head"){
+                                    break;
+                                }
+                            }
+                        }
+
+                    
+                    }
+
+                    $lines[$line_number][$day]['type'] = "chushi";
+                    $lines[$line_number][$day]['colspan'] = 1;
+                        
+                }
+            }
+        }
+        return $lines;
+
+    }
+
+    //本場内　中止日処理
+    public function insert_honjyonai_chushi_day(
+        $lines,
+        $now_year,
+        $now_month,
+        $now_month_last_day)
+    {
+        $gekijyo_chushi_day = $this->ChushiJunen->getHonjyonaiChushiRecordForClendar($now_year,$now_month);
+
+        //array[中止日][区分→場コード]の形に成形
+        $chushi_day_list = [];
+        foreach($gekijyo_chushi_day as $item){
+            if($item->開催区分 == "0" || $item->開催区分 == "000" ){
+                $chushi_day_list[$item->中止日付]["09"] = $item;
+            }else{
+                $chushi_day_list[$item->中止日付][mb_substr($item->開催区分,-2)] = $item;
+            }
+        }
+        
+
+        //ライン変更処理
+        foreach($lines as $line_number => $line){
+            foreach($line as $day => $item){
+                
+                //中止にあてはまるか
+                $padding_day = str_pad($day, 2, '0', STR_PAD_LEFT);
+
+                if($item['type'] != 'blank'){
+                    if(isset($chushi_day_list[$now_year.$now_month.$padding_day][$item['record']['JYO']])){
+                        
+                        //中止が当てはまる場合
+                        if($line[$day]['type'] == "blank" || $day == $now_month_last_day){
+                            //元がblank →　上書きするだけ
+
+                        }else{
+
+                            //元がhead or copy
+                            if($line[$day + 1]['type'] == "copy" && $day < $now_month_last_day){
+                                //次の日がcopy →　次の日にheadを移す
+                                $lines[$line_number][$day + 1]['type'] = "head";
+                            }
+
+                            //元がcopyの場合かつ、休館初日の場合のみ　親のheadのcolspanを減らす
+                            if($lines[$line_number][$day]['type'] == "copy"){
+                            //if($line[$day]['type'] == "copy"){
+                                for($colspan_minus = 1;$colspan_minus < 32; $colspan_minus++){
+                                    $lines[$line_number][$day - $colspan_minus]['colspan'] = $colspan_minus;
+                                    if($lines[$line_number][$day - $colspan_minus]['type'] == "head"){
+                                        break;
+                                    }
+                                }
+                            }
+
+                        
+                        }
+
+                        
+                        $lines[$line_number][$day]['type'] = "chushi";
+                        $lines[$line_number][$day]['colspan'] = 1;
+
+                    }
+                }
+            }
+        }
+        return $lines;
+
+    }
+
+    //外向け　中止日処理
+    public function insert_sotomuke_chushi_day(
+        $lines,
+        $now_year,
+        $now_month,
+        $now_month_last_day)
+    {
+        $gekijyo_chushi_day = $this->ChushiJunen->getSotomukeChushiRecordForClendar($now_year,$now_month);
+
+        //array[中止日][区分→場コード]の形に成形
+        $chushi_day_list = [];
+        foreach($gekijyo_chushi_day as $item){
+            if($item->開催区分 == "0" || $item->開催区分 == "000" ){
+                $chushi_day_list[$item->中止日付]["09"] = $item;
+            }else{
+                $chushi_day_list[$item->中止日付][mb_substr($item->開催区分,-2)] = $item;
+            }
+        }
+        
+
+        //ライン変更処理
+        foreach($lines as $line_number => $line){
+            foreach($line as $day => $item){
+                
+                //中止にあてはまるか
+                $padding_day = str_pad($day, 2, '0', STR_PAD_LEFT);
+
+                if($item['type'] != 'blank'){
+                    if(isset($chushi_day_list[$now_year.$now_month.$padding_day][$item['record']['JYO']])){
+                        
+                        //中止が当てはまる場合
+                        if($line[$day]['type'] == "blank" || $day == $now_month_last_day){
+                            //元がblank →　上書きするだけ
+
+                        }else{
+
+                            //元がhead or copy
+                            if($line[$day + 1]['type'] == "copy" && $day < $now_month_last_day){
+                                //次の日がcopy →　次の日にheadを移す
+                                $lines[$line_number][$day + 1]['type'] = "head";
+                            }
+
+                            //元がcopyの場合かつ、休館初日の場合のみ　親のheadのcolspanを減らす
+                            if($lines[$line_number][$day]['type'] == "copy"){
+                            //if($line[$day]['type'] == "copy"){
+                                for($colspan_minus = 1;$colspan_minus < 32; $colspan_minus++){
+                                    $lines[$line_number][$day - $colspan_minus]['colspan'] = $colspan_minus;
+                                    if($lines[$line_number][$day - $colspan_minus]['type'] == "head"){
+                                        break;
+                                    }
+                                }
+                            }
+
+                        
+                        }
+
+                        
+                        $lines[$line_number][$day]['type'] = "chushi";
+                        $lines[$line_number][$day]['colspan'] = 1;
+
+                    }
+                }
+            }
         }
         return $lines;
 

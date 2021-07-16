@@ -32,22 +32,22 @@ interface ChushiJunenRepositoryInterface
     public function getHonjyoChushiRecordForClendar($now_year,$now_month);
 
     /**
-     * フロントカレンダー表示用に本場以外の中止レコードを取得
+     * フロントカレンダー表示用に本場内の中止レコードを取得
      *
      * @var int $now_year
      * @var int $now_month
      * @return object
      */
-    public function getJyogaiChushiRecordForClendar($now_year,$now_month);
+    public function getHonjyonaiChushiRecordForClendar($now_year,$now_month);
 
     /**
-     * フロントカレンダー表示用に劇場日中の中止レコードを取得
+     * フロントカレンダー表示用に外向けの中止レコードを取得
      *
      * @var int $now_year
      * @var int $now_month
      * @return object
      */
-    public function getGekijyoChushiRecordForClendar($now_year,$now_month);
+    public function getSotomukeChushiRecordForClendar($now_year,$now_month);
 
     /**
      * フロントTOP表示用に指定日の中止レコードをすべて取得

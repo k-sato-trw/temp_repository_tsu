@@ -207,7 +207,11 @@
                             <td>&ensp;</td>
                         @elseif($item['type'] == "close")
                             <td rowspan="1" colspan="{{ $item['colspan'] }}" class="kyukan">
-                                休<br>館<br>日
+                                休<br>館
+                            </td>
+                        @elseif($item['type'] == "chushi")
+                            <td class="chushi">
+                                中<br>止
                             </td>
                         @endif
                     @endforeach
@@ -255,7 +259,11 @@
                                     <td>&ensp;</td>
                                 @elseif($item['type'] == "close")
                                     <td rowspan="{{count($calendar_row['honjyonai_lines'])}}" colspan="{{ $item['colspan'] }}" class="kyukan">
-                                    休<br>館<br>日</td>
+                                    休<br>館</td>
+                                @elseif($item['type'] == "chushi")
+                                    <td class="chushi">
+                                        {{ mb_substr($general->jyocode_to_jyoname($item['record']['JYO']),0,1) }}<br>中止
+                                    </td>
                                 @endif
                             @endforeach
                         </tr>
@@ -310,7 +318,11 @@
                                 <td>&ensp;</td>
                             @elseif($item['type'] == "close")
                                 <td rowspan="{{count($calendar_row['sotomuke_lines'])}}" colspan="{{ $item['colspan'] }}" class="kyukan">
-                                休<br>館<br>日</td>
+                                休<br>館</td>
+                            @elseif($item['type'] == "chushi")
+                                <td class="chushi">
+                                    {{ mb_substr($general->jyocode_to_jyoname($item['record']['JYO']),0,1) }}<br>中止
+                                </td>
                             @endif
                         @endforeach
                     </tr>

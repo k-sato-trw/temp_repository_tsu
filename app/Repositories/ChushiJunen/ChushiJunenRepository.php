@@ -84,36 +84,13 @@ class ChushiJunenRepository implements ChushiJunenRepositoryInterface
     
 
     /**
-     * フロントカレンダー表示用に本場以外の中止レコードを取得
+     * フロントカレンダー表示用に本場内の中止レコードを取得
      *
      * @var int $now_year
      * @var int $now_month
      * @return object
      */
-    public function getJyogaiChushiRecordForClendar($now_year,$now_month)
-    {
-
-        $taget_year_month = date("Ym",strtotime($now_year."/".$now_month."/1"));
-
-        return $this->ChushiJunen
-                    ->where('場コード','=',config('const.JYO_CODE'))
-                    ->where(function($query) {
-                        $query->where('開催区分','LIKE', '1%')
-                              ->orWhere('開催区分','LIKE', '2%');
-                    })
-                    ->where('中止日付','LIKE',$taget_year_month."%")
-                    ->where('掲載フラグ','=','1')
-                    ->get();
-    }
-
-     /**
-     * フロントカレンダー表示用に劇場日中の中止レコードを取得
-     *
-     * @var int $now_year
-     * @var int $now_month
-     * @return object
-     */
-    public function getGekijyoChushiRecordForClendar($now_year,$now_month)
+    public function getHonjyonaiChushiRecordForClendar($now_year,$now_month)
     {
 
         $taget_year_month = date("Ym",strtotime($now_year."/".$now_month."/1"));
@@ -124,7 +101,34 @@ class ChushiJunenRepository implements ChushiJunenRepositoryInterface
                         $query->where('開催区分','LIKE', '1%')
                               ->orWhere('開催区分','LIKE', '2%')
                               ->orWhere('開催区分', '000')
-                              ->orWhere('開催区分', '0');
+                              ->orWhere('開催区分', '0')
+                              ->orWhere('開催区分', Null);
+                    })
+                    ->where('中止日付','LIKE',$taget_year_month."%")
+                    ->where('掲載フラグ','=','1')
+                    ->get();
+    }
+
+     /**
+     * フロントカレンダー表示用に外向けの中止レコードを取得
+     *
+     * @var int $now_year
+     * @var int $now_month
+     * @return object
+     */
+    public function getSotomukeChushiRecordForClendar($now_year,$now_month)
+    {
+
+        $taget_year_month = date("Ym",strtotime($now_year."/".$now_month."/1"));
+
+        return $this->ChushiJunen
+                    ->where('場コード','=',config('const.JYO_CODE'))
+                    ->where(function($query) {
+                        $query->where('開催区分','LIKE', '1%')
+                              ->orWhere('開催区分','LIKE', '2%')
+                              ->orWhere('開催区分', '000')
+                              ->orWhere('開催区分', '0')
+                              ->orWhere('開催区分', Null);
                     })
                     ->where('中止日付','LIKE',$taget_year_month."%")
                     ->where('掲載フラグ','=','1')

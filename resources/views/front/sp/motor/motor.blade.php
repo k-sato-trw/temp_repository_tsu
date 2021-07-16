@@ -148,6 +148,8 @@ $(document).ready(function(){
                             <div class="top">
                                 @if($motor_change_race->開始日付 == $latest_race->開始日付)
                                     -
+                                @elseif(!isset($item['motor_rireki_3'][1]))
+                                    -
                                 @else
                                     {{$item['record']->MOTOR_NIRENRITU}}%
                                 @endif
