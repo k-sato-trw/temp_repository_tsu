@@ -49,4 +49,13 @@ interface TbTsuKaimonRepositoryInterface
      */
     public function changeAppearFlg($target_year_month,$appear_flg);
 
+    /**
+     * フロント展望表示用データ呼び出し
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getOneMonthRecordForFront($start_date,$end_date);
+
 }

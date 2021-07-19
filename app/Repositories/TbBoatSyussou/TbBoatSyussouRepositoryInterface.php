@@ -80,6 +80,18 @@ interface TbBoatSyussouRepositoryInterface
     public function getKinkyoTouchiRirekiJoinKekka($target_date,$touban,$jyo);
 
     /**
+     * フロント直近当地の履歴 展望ページ出場リスト用　複数登録番号を一括で取得
+     * 登番に対して規定日より前のデータを降順で取得
+     * boat_kekkaとtb_boat_raceheaderで一対一対一でjoinする。
+     *
+     * @var string $target_date
+     * @var array $touban_list
+     * @var string $jyo
+     * @return object
+     */
+    public function getKinkyoTouchiRirekiJoinKekkaAll($target_date, $touban_list, $jyo);
+
+    /**
      * リプレイ用に複数の検索条件 で該当レコードを取得
      *
      * @var string $jyo

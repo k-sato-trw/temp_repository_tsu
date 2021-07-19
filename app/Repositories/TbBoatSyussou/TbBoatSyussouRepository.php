@@ -210,6 +210,42 @@ class TbBoatSyussouRepository implements TbBoatSyussouRepositoryInterface
                     ->get();
     }
 
+    
+
+    /**
+     * フロント直近当地の履歴 展望ページ出場リスト用　複数登録番号を一括で取得
+     * 登番に対して規定日より前のデータを降順で取得
+     * boat_kekkaとtb_boat_raceheaderで一対一対一でjoinする。
+     *
+     * @var string $target_date
+     * @var array $touban_list
+     * @var string $jyo
+     * @return object
+     */
+    public function getKinkyoTouchiRirekiJoinKekkaAll($target_date, $touban_list, $jyo)
+    {
+        return $this->TbBoatSyussou
+            ->join('tb_boat_kekka', function ($join) {
+                $join->on('tb_boat_syussou.JYO', '=', 'tb_boat_kekka.JYO')
+                    ->on('tb_boat_syussou.TARGET_DATE', '=', 'tb_boat_kekka.TARGET_DATE')
+                    ->on('tb_boat_syussou.RACE_NUMBER', '=', 'tb_boat_kekka.RACE_NUMBER')
+                    ->on('tb_boat_syussou.TEIBAN', '=', 'tb_boat_kekka.TEIBAN');
+            })
+            ->join('tb_boat_raceheader', function ($join) {
+                $join->on('tb_boat_syussou.JYO', '=', 'tb_boat_raceheader.JYO')
+                    ->on('tb_boat_syussou.TARGET_DATE', '=', 'tb_boat_raceheader.TARGET_DATE');
+            })
+            ->where('tb_boat_syussou.JYO', '=', $jyo)
+            ->where('tb_boat_syussou.TARGET_DATE', '<=', $target_date)
+            ->whereIn('tb_boat_syussou.TOUBAN', $touban_list)
+            ->orderBy('tb_boat_syussou.TARGET_DATE', 'DESC')
+            ->orderByRaw('LENGTH(tb_boat_syussou.RACE_NUMBER) DESC')
+            ->orderBy('tb_boat_syussou.RACE_NUMBER', 'DESC')
+            ->limit(count($touban_list) * 100)
+            ->get();
+    }
+
+
 
     /**
      * リプレイ用に複数の検索条件 で該当レコードを取得

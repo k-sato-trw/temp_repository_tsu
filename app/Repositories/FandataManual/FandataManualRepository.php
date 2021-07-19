@@ -18,6 +18,23 @@ class FandataManualRepository implements FandataManualRepositoryInterface
 
 
     /**
+     *  登録番号リストから指定した年と期に当てはまるレコードを取得
+     *
+     * @var array $touban_list
+     * @var int $year
+     * @var int $period
+     * @return object
+     */
+    public function getRecordByYearAndPeriod($touban_list,$year,$period)
+    {        
+        return $this->FandataManual
+                    ->whereIn("Touban",$touban_list)
+                    ->where("Nen",$year)
+                    ->where("Ki",$period)
+                    ->get();
+    }
+
+    /**
      * 最新1レコードを取得
      *
      * @return object

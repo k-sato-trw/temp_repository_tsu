@@ -117,4 +117,21 @@ class TbTsuKaimonRepository implements TbTsuKaimonRepositoryInterface
     }
 
 
+    /**
+     * フロント展望表示用データ呼び出し
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getOneMonthRecordForFront($start_date,$end_date)
+    {
+        return $this->TbTsuKaimon
+                    ->where('TARGET_DATE','>=',$start_date)
+                    ->where('TARGET_DATE','<=',$end_date)
+                    ->where('APPEAR_FLG','1')
+                    ->orderBy('TARGET_DATE','asc')
+                    ->get();
+    }
+
 }

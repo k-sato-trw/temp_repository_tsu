@@ -46,6 +46,9 @@ use App\Http\Controllers\ExportHtml\ExportInfoController;
 use App\Http\Controllers\ExportHtml\ExportMotorController;
 use App\Http\Controllers\ExportHtml\ExportCalController;
 
+use App\Http\Controllers\ExportHtml\ExportTenboController;
+use App\Http\Controllers\ExportHtml\ExportSyutujoController;
+
 
 
 //書き出しSP
@@ -53,6 +56,8 @@ use App\Http\Controllers\ExportHtml\Sp\ExportSpKaisaiController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpSuimenController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpMeikanController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpMotorController;
+
+use App\Http\Controllers\ExportHtml\Sp\ExportSpTenboController;
 
 
 /*
@@ -329,6 +334,12 @@ Route::get('/asp/tsu/kaisai/setu_kekka.asp',        [ExportKaisaiController::cla
 
 Route::get('/asp/tsu/kaisai/CreatePCtokuten.asp',        [ExportKaisaiController::class, 'create_pc_tokuten']);
 
+    //レースインデックス系
+Route::get('/export/tenbo/', [ExportTenboController::class, 'index']);
+Route::get('/asp/RaceView2/SelectJavascriptCreate.asp', [ExportTenboController::class, 'select_js_create']);
+Route::get('/export/syutujo/', [ExportSyutujoController::class, 'index']);
+Route::get('/auto_export/syutujo/', [ExportSyutujoController::class, 'auto_export']);
+
 
     //その他　
 Route::get('/asp/tsu/02suimen/02suimen.asp',        [ExportSuimenController::class, 'index']);
@@ -340,11 +351,7 @@ Route::get('/asp/tsu/info/ex_info.asp',        [ExportInfoController::class, 'in
 Route::get('/asp/tsu/01cal/01cal.asp',        [ExportCalController::class, 'index']);
 
 
-
-
 //書き出しSP
-
-
 Route::get('/asp/tsu/sp/kyogi/Syusso_Hyoka.asp',        [ExportSpKaisaiController::class, 'syusso_hyoka']);
 Route::get('/asp/tsu/sp/kyogi/Syusso_Seiseki.asp',        [ExportSpKaisaiController::class, 'syusso_seiseki']);
 Route::get('/asp/tsu/sp/kyogi/Syusso_AllPast.asp',        [ExportSpKaisaiController::class, 'syusso_all_past']);
@@ -367,6 +374,9 @@ Route::get('/asp/tsu/sp/kyogi/Cyoku.asp',        [ExportSpKaisaiController::clas
 Route::get('/asp/tsu/sp/02suimen/02suimen_SP.asp',        [ExportSpSuimenController::class, 'index']);
 Route::get('/asp/tsu/sp/02motor/02motor.asp',        [ExportSpMotorController::class, 'motor']);
 Route::get('/asp/tsu/sp/06meikan/06meikan.asp',        [ExportSpMeikanController::class, 'index']);
+
+//レースインデックス系
+Route::get('/export/sp/tenbo/', [ExportSpTenboController::class, 'index']);
 
 
 
