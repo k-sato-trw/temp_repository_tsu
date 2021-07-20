@@ -26,6 +26,21 @@ class ExportSpKaisaiController extends Controller
         $this->TbBoatRaceheader = $TbBoatRaceheader;
     }
 
+    public function motor(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->motor($request);
+
+        //ソースを受け取り静的に書き出し処理
+        if($data['sort'] == 0){
+            File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/motor/motor.htm', view('front.sp.kaisai.motor',$data));
+            return '書き出し完了<br><a href="/asp/kyogi/09/sp/motor/motor.htm">/asp/kyogi/09/sp/motor/motor.htm</a>';
+        }else{
+            File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/motor/motor0'.$data['sort'].'.htm', view('front.sp.kaisai.motor',$data));
+            return '書き出し完了<br><a href="/asp/kyogi/09/sp/motor/motor0'.$data['sort'].'.htm">/asp/kyogi/09/sp/motor/motor0'.$data['sort'].'.htm</a>';
+        }
+    }
 
     
     public function syusso_hyoka(Request $request)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\ExportHtml;
+namespace App\Services\ExportHtml\Sp;
 
 use App\Repositories\KaisaiMaster\KaisaiMasterRepositoryInterface;
 use App\Repositories\TbBoatRaceheader\TbBoatRaceheaderRepositoryInterface;
@@ -19,7 +19,7 @@ use App\Repositories\TbBoatsYusyoracer\TbBoatsYusyoracerRepositoryInterface;
 use App\Services\GeneralService;
 use App\Services\KyogiCommonService;
 
-class ExportSyutujoService
+class ExportSpSyutujoService
 {
     public $KaisaiMaster;
     public $TbBoatRaceheader;
@@ -72,7 +72,7 @@ class ExportSyutujoService
     }
 
 
-    public function index($request,$sort_condition=""){
+    public function index($request){
         $data = [];
 
         $id = $request->input('ID');
@@ -88,12 +88,11 @@ class ExportSyutujoService
 
         $race_syutujo = $this->TbRaceSyutujo->getFirstRecordByPK($id);
         $data['race_syutujo'] = $race_syutujo;
-        
+
         $race_syutujo_racer_add = $this->TbRaceSyutujoRacer->getRecordForRaceTenbo($id,1);
         $race_syutujo_racer_delete = $this->TbRaceSyutujoRacer->getRecordForRaceTenbo($id,0);
 
         $sensyu_syussou2 = $this->TbBoatsSensyusyussou2->get1SetuRecord($jyo,$race_index->START_DATE);
-
 
         //日付系データ
         $zenkoku_start = "";
@@ -124,7 +123,6 @@ class ExportSyutujoService
         $touban_list = [];
         $sensyu_syussou2_update_time = 0;//最も新しい日付のデータだけ使う
         foreach($sensyu_syussou2 as $item){
-
             if(!in_array($item->TOUBAN,$touban_list)){
                 $touban_list[] = $item->TOUBAN;
             }
@@ -168,7 +166,6 @@ class ExportSyutujoService
                 }
             }
         }
-
         $data['race_syutujo_racer_add_list'] = $race_syutujo_racer_add_list;
 
 
@@ -177,10 +174,8 @@ class ExportSyutujoService
 
         $result_table = [];
         foreach($fan_data as $item){
-            $item->Sttiming = $item->Sttiming == 0 ? 999 : $item->Sttiming; //0の場合ソート用で下に来るようにする
             $result_table[$item->Touban] = $item;
         }
-
 
         {
             //各登番ごとに当地の最新節の記録を呼び出し →処理負荷が高いため修正
@@ -213,10 +208,12 @@ class ExportSyutujoService
                     //配列格納ではなく、この段階で文字列作成まで進める
                     if($touchi_rireki_row->RACE_SYUBETU_CODE == '06' || $touchi_rireki_row->RACE_SYUBETU_CODE == '96' ){
                         //優勝
-                        $touchi_race_rireki_n = $this->KyogiCommon->yusho_tyakujun_to_image($touchi_rireki_row->TYAKUJUN).$touchi_race_rireki_n;
+                        //$touchi_race_rireki_n = $this->KyogiCommon->yusho_tyakujun_to_image($touchi_rireki_row->TYAKUJUN).$touchi_race_rireki_n;
+                        $touchi_race_rireki_n = '<img src="/sp/images/i_y0'.$touchi_rireki_row->TYAKUJUN.'.gif" width="20" height="20">' .$touchi_race_rireki_n;
                     }elseif($touchi_rireki_row->RACE_SYUBETU_CODE == '05'){
                         //準優勝
-                        $touchi_race_rireki_n = $this->KyogiCommon->junyu_tyakujun_to_image($touchi_rireki_row->TYAKUJUN).$touchi_race_rireki_n;
+                        //$touchi_race_rireki_n = $this->KyogiCommon->junyu_tyakujun_to_image($touchi_rireki_row->TYAKUJUN).$touchi_race_rireki_n;
+                        $touchi_race_rireki_n = '<img src="/sp/images/i_j0'.$touchi_rireki_row->TYAKUJUN.'.gif" width="20" height="20">' .$touchi_race_rireki_n;
                     }else{
                         $touchi_race_rireki_n = $touchi_rireki_row->TYAKUJUN.$touchi_race_rireki_n;
                     }
@@ -239,6 +236,7 @@ class ExportSyutujoService
                         $touchi_rireki['touchi_grade'] = $touchi_rireki_row->GRADE_CODE;
                         $touchi_rireki['touchi_target_date'] = $touchi_rireki_row->TARGET_DATE;
                         $touchi_rireki['touchi_tyakujun'] = $touchi_race_rireki_n;
+
                         break;
 
                     }
@@ -302,81 +300,12 @@ class ExportSyutujoService
 
         }
 
-        {
-            //ソート処理
-
-            if($sort_condition){
-                $sort_table = [];
-                $touban_table = [];
-                if($sort_condition == '_Win'){
-
-                    //ダミー作成
-                    foreach($result_table as $touban=>$item){
-                        $sort_table[$touban] = $item->Syoritu1;
-                        $touban_table[$touban] = $touban;
-                    }
-
-                    array_multisort($sort_table, SORT_DESC,
-                                    $touban_table, SORT_ASC,
-                                    $result_table );
-
-                }elseif($sort_condition == '_2Win'){
-
-                    foreach($result_table as $touban=>$item){
-                        $sort_table[$touban] = $item->Fukusyo1;
-                        $touban_table[$touban] = $touban;
-                    }
-
-                    array_multisort($sort_table, SORT_DESC,
-                                    $touban_table, SORT_ASC,
-                                    $result_table );
-
-                }elseif($sort_condition == '_ST'){
-
-                    foreach($result_table as $touban=>$item){
-                        $sort_table[$touban] = $item->Sttiming;
-                        $touban_table[$touban] = $touban;
-                    }
-
-                    array_multisort($sort_table, SORT_ASC,
-                                    $touban_table, SORT_ASC,
-                                    $result_table );
-                }
-
-                $result_table_array = [];
-                foreach($result_table as $item){
-                    $result_table_array[$item->Touban] = $item;
-                }
-                $result_table = $result_table_array;
-            }
-                
-
-        }
-
+        
         $data['touban_list'] = $touban_list;
         $data['result_table'] = $result_table;
 
         return $data;
     }
-
-
-    public function auto_export($request){
-        $data = [];
-
-        $taget_date = date('Ymd');
-
-        $race_index = $this->TbRaceIndex->getUnfinishedRecord($taget_date);
-
-        $id_list = [];
-        foreach($race_index as $item){
-            $id_list[] = $item->ID;
-        }
-
-        $data['index_id_list'] = $id_list;
-
-        return $data;
-    }
-
 
     
 

@@ -46,7 +46,7 @@ class ExportMotorService
     public function motor($request){
         $data = [];
 
-        $sort = 1;
+        $sort = 4;
         $jyo = config('const.JYO_CODE');
 
         $target_date = date('Ymd');

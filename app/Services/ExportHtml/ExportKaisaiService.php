@@ -182,6 +182,207 @@ class ExportKaisaiService
         return $data;
     }
 
+    
+
+    public function motor($request){
+        $data = [];
+
+        $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
+        $data['jyo'] = $jyo;
+        $target_time = date('Hi');
+        $data['target_time'] = $target_time;
+
+        $sort = $request->input('page') ?? 4;
+        
+
+        {
+            //処理対象日を判定
+            $tomorrow_flg = false;
+            $today_date = date('Ymd');
+            $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$tomorrow_date);
+
+            if($kaisai_master && $race_header){
+                //両方あれば、対象日確定
+                $tomorrow_flg = true;
+                $target_date = $tomorrow_date;
+            }else{
+                //無い場合は、当日判定
+                $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+                $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+                $target_date = $today_date;
+            }
+
+        }
+
+        if(!$kaisai_master){
+            //非開催は前節表示
+            $kaisai_master = $this->KaisaiMaster->getEndRecordByDate($jyo,$today_date);
+        }
+
+        {
+            //最後のレース算出(最新の一つ前)
+            $before_race = $this->KaisaiMaster->getEndRecordByDate($jyo, $kaisai_master->開始日付);
+        }
+
+        {
+            //モーター交換日を算出
+            //カウント0の日付がモーター交換日
+            $motor_change_count = $this->TbBoatsMotorzenken->getMotorChangeCount($target_date);
+
+            $motor_change_day = false;
+            foreach ($motor_change_count as $item) {
+                if ($item->count == 0) {
+                    $motor_change_day = $item->TARGET_STARTDATE;
+                    break;
+                }
+            }
+
+            $motor_change_race = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo, $motor_change_day);;
+        }
+
+        {
+            //対象のレースの開催日を基準にモーターリスト作成
+            $motor_list = $this->TbBoatsMotorzenken->getMotorList($kaisai_master->開始日付, $sort);
+            $motor_list_array = [];
+            //同率順位処理
+            $true_rank = 1;
+            $display_rank = 1;
+            $temp_data = 0;
+            foreach ($motor_list as $item) {
+                
+                /*
+                    1:機番 昇順
+                    2:使用者　昇順
+                    3:前検タイム　昇順
+                    4:2連率　降順
+                    5:優出　降順
+                    6:優勝　降順
+                */
+                $row = [];
+                if (in_array($sort, [3,4,5,6])) {
+                    if ($sort == 3) {
+                        $hikaku_target = $item->ZENKEN_TIME;
+                    } elseif ($sort == 4) {
+                        $hikaku_target = $item->MOTOR_NIRENRITU;
+                    } elseif ($sort == 5) {
+                        $hikaku_target = $item->YUSHUTU_CNT;
+                    } elseif ($sort == 6) {
+                        $hikaku_target = $item->YUSHO_CNT;
+                    }
+
+                    if ($temp_data != $hikaku_target) {
+                        $display_rank = $true_rank;
+                        $temp_data = $hikaku_target;
+                    }
+                }
+
+                $row['rank'] = $display_rank;
+                $row['record'] = $item; 
+                
+                { //モーターNOに基づいて3節前までの使用履歴を算出
+
+                    $motor_rireki_array = $this->TbBoatSyussou->getMotorRirekiJoinKekka($kaisai_master->開始日付, $jyo, $item->MOTOR_NO, $motor_change_day);
+
+                    //節間判定用レースタイトル
+                    $race_title = $motor_rireki_array[0]->RACE_TITLE ?? "";
+                    $motor_rireki_3 = [];
+                    $motor_end_date = $motor_rireki_array[0]->TARGET_DATE ?? "";
+                    //文字列にする
+                    $race_rireki_n = "";
+                    $rireki_count = 1;
+                    $setsukan_end = false;
+                    $rireki_array_end = false;
+
+                    foreach($motor_rireki_array as $key => $motor_rireki_row){
+
+
+                        //配列格納ではなく、この段階で文字列作成まで進める
+                        if ($motor_rireki_row->RACE_SYUBETU_CODE == '06' || $motor_rireki_row->RACE_SYUBETU_CODE == '92') {
+                            //優勝
+                            $race_rireki_n = $this->KyogiCommon->yusho_tyakujun_to_image_kaisai_motor_pc($motor_rireki_row->TYAKUJUN) . $race_rireki_n;
+                            
+                        } elseif ($motor_rireki_row->RACE_SYUBETU_CODE == '05') {
+                            //準優勝
+                            $race_rireki_n = $this->KyogiCommon->junyu_tyakujun_to_image_kaisai_motor_pc($motor_rireki_row->TYAKUJUN) . $race_rireki_n;
+                            
+                        } else {
+                            $race_rireki_n = $motor_rireki_row->TYAKUJUN . $race_rireki_n;
+                        }
+
+                        //次があるか、あった場合同じタイトルかのフラグチェック
+                        if (isset($motor_rireki_array[$key + 1])) {
+                            if ($race_title != $motor_rireki_array[$key + 1]->RACE_TITLE) {
+                                $setsukan_end = true;
+                                $rireki_array_end = false;
+                            } else {
+                                $setsukan_end = false;
+                                $rireki_array_end = false;
+                            }
+                        } else {
+                            $setsukan_end = true;
+                            $rireki_array_end = true;
+                        }
+
+
+                        if ($setsukan_end) {
+                            //節間が変わった場合、終了処理
+
+
+                            //履歴が1以上の場合は、$motor_rireki_3に$race_rireki_nを格納
+                            if ($rireki_count >= 1) {
+                                //名前、級、レース配列
+                                $motor_rireki_3[$rireki_count]['sensyu_name'] = str_replace('　', '', $motor_rireki_row->SENSYU_NAME);
+                                $motor_rireki_3[$rireki_count]['kyu_betu'] = $motor_rireki_row->KYU_BETU;
+                                $motor_rireki_3[$rireki_count]['tyakujun'] = $race_rireki_n;
+
+                                $motor_rireki_3[$rireki_count]['grade'] = $motor_rireki_row->GRADE_CODE;
+                                $motor_rireki_3[$rireki_count]['start_date'] = $motor_rireki_row->TARGET_DATE;
+                                $motor_rireki_3[$rireki_count]['end_date'] = $motor_end_date;
+
+                            }
+
+                            //履歴がすでに3ある場合、と配列が最終列の場合は終了
+                            if ($rireki_count >= 3 || $rireki_array_end) {
+                                break;
+                            }
+
+                            //次の節間の設定
+                            $rireki_count++;
+
+                            $motor_end_date = $motor_rireki_array[$key + 1]->TARGET_DATE;
+                            $race_title = $motor_rireki_array[$key + 1]->RACE_TITLE;
+                            $race_rireki_n = "";
+                        }
+                    }
+
+                    $row['motor_rireki_3'] = $motor_rireki_3;
+                }
+
+                $syussou_count_array = $this->TbBoatSyussou->getMotorSyussouCount($motor_change_day,$kaisai_master->開始日付,$jyo,$item->BOAT_NO);
+                $row['syussou_count'] = count($syussou_count_array);
+
+                $motor_list_array[] = $row;
+
+                $true_rank++;
+            }
+            $data['motor_list_array'] = $motor_list_array;
+        }
+
+        $data['motor_change_race'] = $motor_change_race;
+        $data['before_race'] = $before_race;
+        $data['sort'] = $sort;
+
+        $data['kaisai_master'] = $kaisai_master;
+        $data['target_date'] = $target_date;
+        $data['tomorrow_flg'] = $tomorrow_flg;
+
+        return $data;
+    }
+
 
     /**
      * htmlメーカーから必ずクエリパラメータ付きでリクエストされる

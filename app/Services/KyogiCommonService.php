@@ -206,6 +206,119 @@ class KyogiCommonService
             return $tyakujun;
         }
     }
+    
+
+    public function yusho_tyakujun_to_image_kaisai_motor_pc($tyakujun)
+    {
+        $array = [
+            "1" => "1",
+            "2" => "2",
+            "3" => "3",
+            "4" => "4",
+            "5" => "5",
+            "6" => "6",
+            "F" => "7",
+            "L" => "8",
+            "転" => "9",
+            "落" => "10",
+            "欠" => "11",
+            "妨" => "12",
+            "工" => "13",
+            "沈" => "14",
+            "失" => "15",
+            "不" => "16",
+        ];
+
+        if(isset($array[$tyakujun])){
+            return '<img src="/kaisai/motor_img/i_y0'.$array[$tyakujun].'.gif">';
+        }else{
+            return $tyakujun;
+        }
+    }
+
+    public function junyu_tyakujun_to_image_kaisai_motor_pc($tyakujun)
+    {
+        $array = [
+            "1" => "1",
+            "2" => "2",
+            "3" => "3",
+            "4" => "4",
+            "5" => "5",
+            "6" => "6",
+            "F" => "7",
+            "L" => "8",
+            "転" => "9",
+            "落" => "10",
+            "欠" => "11",
+            "妨" => "12",
+            "工" => "13",
+            "沈" => "14",
+            "失" => "15",
+            "不" => "16",
+        ];
+
+        if(isset($array[$tyakujun])){
+            return '<img src="/kaisai/motor_img/i_j0'.$array[$tyakujun].'.gif">';
+        }else{
+            return $tyakujun;
+        }
+    }
+
+    public function yusho_tyakujun_to_image_kaisai_motor_sp($tyakujun)
+    {
+        $array = [
+            "1" => "1",
+            "2" => "2",
+            "3" => "3",
+            "4" => "4",
+            "5" => "5",
+            "6" => "6",
+            "F" => "7",
+            "L" => "8",
+            "転" => "9",
+            "落" => "10",
+            "欠" => "11",
+            "妨" => "12",
+            "工" => "13",
+            "沈" => "14",
+            "失" => "15",
+            "不" => "16",
+        ];
+
+        if(isset($array[$tyakujun])){
+            return '<img src="/sp/motor/images/i_y0'.$array[$tyakujun].'.gif">';
+        }else{
+            return $tyakujun;
+        }
+    }
+
+    public function junyu_tyakujun_to_image_kaisai_motor_sp($tyakujun)
+    {
+        $array = [
+            "1" => "1",
+            "2" => "2",
+            "3" => "3",
+            "4" => "4",
+            "5" => "5",
+            "6" => "6",
+            "F" => "7",
+            "L" => "8",
+            "転" => "9",
+            "落" => "10",
+            "欠" => "11",
+            "妨" => "12",
+            "工" => "13",
+            "沈" => "14",
+            "失" => "15",
+            "不" => "16",
+        ];
+
+        if(isset($array[$tyakujun])){
+            return '<img src="/sp/motor/images/i_j0'.$array[$tyakujun].'.gif">';
+        }else{
+            return $tyakujun;
+        }
+    }
 
     function getNeerOzzRaceNumber($jyo,$target_date,$target_time){
         //objBoatData.getNeerOzzRaceNumber() の再現↓

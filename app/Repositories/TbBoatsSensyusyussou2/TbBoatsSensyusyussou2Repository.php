@@ -81,6 +81,7 @@ class TbBoatsSensyusyussou2Repository implements TbBoatsSensyusyussou2Repository
         return $this->TbBoatsSensyusyussou2
                     ->where('JYO','=',$jyo)
                     ->where('TARGET_STARTDATE','=',$target_start_date)
+                    ->orderBy('TARGET_DATE', 'DESC')
                     ->orderBy('TOUBAN', 'ASC')
                     ->get();
     }

@@ -108,13 +108,13 @@ class TbBoatsMotorzenkenRepository implements TbBoatsMotorzenkenRepositoryInterf
     public function getMotorList($target_date,$sort)
     {
         /**
-         * $sort 内訳
-         * 0:機番　昇順
-         * 1:2連率　降順(URL上は無印)
-         * 2:優出　降順
-         * 3:優勝　降順
-         * 4:登番　昇順
-         * 5:前検タイム　昇順
+         * 
+         * 1:機番 昇順
+         * 2:登番　昇順
+         * 3:前検タイム　昇順
+         * 4:2連率　降順
+         * 5:優出　降順
+         * 6:優勝　降順
          * 
          */
         $query = $this->TbBoatsMotorzenken
@@ -126,18 +126,18 @@ class TbBoatsMotorzenkenRepository implements TbBoatsMotorzenkenRepositoryInterf
                     ->where('tb_boats_motorzenken.JYO',config('const.JYO_CODE'))
                     ->where('TARGET_STARTDATE','=',$target_date);
 
-                if($sort == 0){
+                if($sort == 1){
                     $query->orderBy('tb_boats_motorzenken.MOTOR_NO','ASC');
-                }elseif($sort == 1){
-                    $query->orderBy('tb_boats_motorzenken.MOTOR_NIRENRITU','DESC');
                 }elseif($sort == 2){
-                    $query->orderBy('tb_motor_list.YUSHUTU_CNT','DESC');
-                }elseif($sort == 3){
-                    $query->orderBy('tb_motor_list.YUSHO_CNT','DESC');
-                }elseif($sort == 4){
                     $query->orderBy('tb_boats_motorzenken.TOUBAN','ASC');
-                }elseif($sort == 5){
+                }elseif($sort == 3){
                     $query->orderBy('tb_boats_motorzenken.ZENKEN_TIME','ASC');
+                }elseif($sort == 4){
+                    $query->orderBy('tb_boats_motorzenken.MOTOR_NIRENRITU','DESC');
+                }elseif($sort == 5){
+                    $query->orderBy('tb_motor_list.YUSHUTU_CNT','DESC');
+                }elseif($sort == 6){
+                    $query->orderBy('tb_motor_list.YUSHO_CNT','DESC');
                 }
 
         $result = $query->get();
@@ -171,9 +171,9 @@ class TbBoatsMotorzenkenRepository implements TbBoatsMotorzenkenRepositoryInterf
                     ->where('TARGET_STARTDATE','=',$target_date);
 
                 if($sort == 0){
-                    $query->orderBy('tb_boats_motorzenken.MOTOR_NO','ASC');
-                }elseif($sort == 1){
                     $query->orderBy('tb_boats_motorzenken.MOTOR_NIRENRITU','DESC');
+                }elseif($sort == 1){
+                    $query->orderBy('tb_boats_motorzenken.MOTOR_NO','ASC');
                 }elseif($sort == 2){
                     $query->orderBy('tb_boats_motorzenken.ZENKEN_TIME','ASC');
                 }

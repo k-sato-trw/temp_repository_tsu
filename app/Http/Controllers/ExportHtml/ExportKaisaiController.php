@@ -38,6 +38,18 @@ class ExportKaisaiController extends Controller
 
     }
 
+    public function motor(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->motor($request);
+
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/motor/motor0'.$data['sort'].'.htm', view('front.kaisai.motor',$data));
+        return '書き出し完了<br><a href="/asp/kyogi/09/pc/motor/motor0'.$data['sort'].'.htm">/asp/kyogi/09/pc/motor/motor0'.$data['sort'].'.htm</a>';
+
+    }
+
     public function syussou01(Request $request)
     {
 

@@ -257,6 +257,24 @@ class GeneralService
         }
     }
 
+    
+
+    public static function gradenumber_to_gradename_for_syutujo($gradenumber){
+        $array = [
+            0 => "SG",
+            1 => "G1",
+            2 => "G2",
+            3 => "G3",
+            5 => "G3",
+        ];
+
+        if(isset($array[$gradenumber])){
+            return $array[$gradenumber];
+        }else{
+            return "一般";
+        }
+    }
+
     public static function gradenumber_to_gradename_for_tokyo_next($gradenumber){
         $array = [
             0 => "SG",
@@ -284,7 +302,7 @@ class GeneralService
         if(isset($array[$gradenumber])){
             return $array[$gradenumber];
         }else{
-            return "ip";
+            return "g0";
         }
     }
 
