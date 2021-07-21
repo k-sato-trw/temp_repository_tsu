@@ -22,6 +22,10 @@ return [
         'YOSO_PDF' => "/asp/heiwajima/yoso/pdf/",
         */
     ],
+    'PDF_PATH' => [
+        'BANGUMIHYO' => "/pdf/tsu/bangumihyo/",
+        'YOSO_PDF' => "/asp/tsu/yoso_pdf/pdf/",
+    ],
     'CSV_PATH' => [
         'TOKUTEN' => "/asp/tsu/admin/cms/tokuten/csvdata/",
     ],

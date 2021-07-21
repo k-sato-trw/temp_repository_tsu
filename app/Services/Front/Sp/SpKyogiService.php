@@ -222,6 +222,11 @@ class SpKyogiService
                 $data_yoso_mydata = $this->yoso_mydata($request,$data);
                 $view_yoso_mydata = view('front.sp.kaisai.yoso_mydata',$data_yoso_mydata);
                 $data['view_yoso_mydata'] = $view_yoso_mydata;
+
+                //結果一覧
+                $data_kekka_list = $this->kekka_list($request,$data);
+                $view_kekka_list = view('front.sp.kaisai.kekka_list',$data_kekka_list);
+                $data['view_kekka_list'] = $view_kekka_list;
                 
             }
         }
@@ -1153,6 +1158,80 @@ class SpKyogiService
 
         $data['funcTest'] = $this;
         
+        return $data;
+    }
+
+    
+    public function kekka_list($request ,$data){
+
+        $jyo = $data['jyo'];
+        $target_date = $data['target_date'];
+        $kekka_date = $request->input('kekkayd') ?? $target_date;
+        $data['kekka_date'] = $kekka_date;
+        
+ 
+        //本日のレース結果用レコード配列
+        $kekka_info = $this->TbBoatKekkainfo->getRecordByDate($jyo,$kekka_date);
+        
+        $kekka_info_today_all = [];
+        foreach($kekka_info as $item){
+            $kekka_info_today_all[$item->RACE_NUMBER] = $item;
+        }
+        $data['kekka_info_today_all'] = $kekka_info_today_all;
+
+        $chushi_flg = $chushi_junen ?? false;
+        if($chushi_flg){
+            $stop_race_num = $chushi_junen->中止開始レース番号;
+        }else{
+            $stop_race_num = 99;
+        }
+
+        $data['chushi_flg'] = $chushi_flg;
+        $data['stop_race_num'] = $stop_race_num;
+
+        $kaisai_master = $data['kaisai_master'];
+        $kaisai_date_list = $data['kaisai_date_list'];
+
+        $other_date = [];
+        foreach($kaisai_date_list as $num => $kaisai_date){
+
+            //本日含め過去の日付かどうか
+            if($kaisai_date <= $target_date){
+
+                //結果表示日は非表示
+                if($kaisai_date != $kekka_date){
+                    //中止かつ、全日中止の場合非表示
+
+                    $other_chushi_junen = $this->ChushiJunen->getFirstRecordForFront($jyo,$kaisai_date);
+                    $other_chushi_flg = false;
+                    if($other_chushi_junen){
+                        if($other_chushi_junen->中止開始レース番号 == 0){
+                            $other_chushi_flg = true;
+                        }
+                    }
+
+                    $row = [];
+                    if(!$other_chushi_flg){
+                        $row['date'] = $kaisai_date;
+                        if( $num == 0){
+                            $row['display_date'] = '初日';
+                        }elseif( ($num + 1) == $kaisai_master->終了日付 ){
+                            $row['display_date'] = '最終日';
+                        }else{
+                            $row['display_date'] = ($num + 1).'日目';
+                        }
+                        $other_date[$num] = $row;
+                    }
+                    
+                }
+            }
+
+        }
+
+        krsort($other_date);
+
+        $data['other_date'] = $other_date;
+
         return $data;
     }
 

@@ -50,6 +50,18 @@ class ExportKaisaiController extends Controller
 
     }
 
+    public function s_pdf(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->s_pdf($request);
+
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/kaisai/s_pdf.htm', view('front.kaisai.s_pdf',$data));
+        return '書き出し完了<br><a href="/kaisai/s_pdf.htm">/kaisai/s_pdf.htm</a>';
+
+    }
+
     public function syussou01(Request $request)
     {
 

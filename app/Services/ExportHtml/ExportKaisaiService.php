@@ -383,6 +383,72 @@ class ExportKaisaiService
         return $data;
     }
 
+    public function s_pdf($request){
+        $data = [];
+
+        $jyo = config('const.JYO_CODE');
+        $data['jyo'] = $jyo;
+
+        $today_date = date('Ymd');
+        
+        $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
+
+        //番組表PDF処理
+        //明日の日付のファイルがあるか
+        $file_list = glob(public_path(config('const.PDF_PATH.BANGUMIHYO').$tomorrow_date."*.pdf"));
+        if($file_list){
+            $target_date = $tomorrow_date;
+        }else{
+            //明日の日付で無い場合今日の日付であるかどうか
+            $file_list = glob(public_path(config('const.PDF_PATH.BANGUMIHYO').$today_date."*.pdf"));
+            if($file_list){
+                $target_date = $today_date;
+            }
+        }
+
+        
+        //いずれかのファイルがある場合
+        $file_name_list = [];
+        $yoso_file_name = '';
+        if($file_list){
+            foreach($file_list as $file_name){
+                $file_name_list[] = preg_replace("|.*/|","",$file_name);
+            }
+            // ファイル名から何日目かを取得
+            $display_date =  (int) substr($file_name_list[0],8,2);
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$target_date);
+            $data['kaisai_master'] = $kaisai_master;
+
+            if($display_date == 1){
+                $display_date = '初日';
+            }elseif($target_date == $kaisai_master->終了日付){
+                $display_date = '最終日';
+            }else{
+                $display_date = $display_date.'日目';
+            }
+
+            //中止判定
+            $chushi_junen = $this->ChushiJunen->getFirstRecordForFront($jyo,$target_date);
+            $data['chushi_junen'] = $chushi_junen;
+
+            //予想PDF処理
+            $yoso_file_list = glob(public_path(config('const.PDF_PATH.YOSO_PDF').$target_date.".pdf"));
+            $yoso_file_name = '';
+            if($yoso_file_list){
+                $yoso_file_name = $target_date.".pdf";
+            }
+        }
+
+
+        $data['target_date'] = $target_date ?? false;
+        $data['file_name_list'] = $file_name_list;
+        $data['yoso_file_name'] = $yoso_file_name;
+        $data['display_date'] = $display_date ?? false;
+
+        return $data;
+    }
+
 
     /**
      * htmlメーカーから必ずクエリパラメータ付きでリクエストされる

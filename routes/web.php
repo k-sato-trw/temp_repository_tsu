@@ -286,6 +286,8 @@ Route::get('/asp/tsu/sp/kyogi/Movie.asp',        [SpKyogiController::class, 'mov
 Route::get('/asp/tsu/sp/kyogi/Movie_Tenji.asp',        [SpKyogiController::class, 'movie_tenji']);
 Route::get('/asp/tsu/sp/kyogi/Movie_Live.asp',        [SpKyogiController::class, 'movie_live']);
 
+//Route::get('/asp/tsu/sp/kyogi/Kekka_List.asp',        [SpKyogiController::class, 'kekka_list']);
+
 
 Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
 Route::get('/asp/tsu/sp/info/info_SP.asp',        [SpInfoController::class, 'index']);
@@ -319,20 +321,20 @@ Route::get('/asp/tsu/kaisai/yoso01.asp',          [ExportKaisaiController::class
 Route::get('/asp/tsu/kaisai/yoso01st.asp',        [ExportKaisaiController::class, 'yoso01st']);
 Route::get('/asp/tsu/kaisai/yoso02.asp',          [ExportKaisaiController::class, 'yoso02']);
 Route::get('/asp/tsu/kaisai/st01.asp',            [ExportKaisaiController::class, 'st01']);
-Route::get('/asp/tsu/kaisai/kekka01.asp',            [ExportKaisaiController::class, 'kekka01']);
+Route::get('/asp/tsu/kaisai/kekka01.asp',         [ExportKaisaiController::class, 'kekka01']);
 
 
-Route::get('/asp/tsu/kaisai/replay_list.asp',        [ExportKaisaiController::class, 'replay_list']);
+Route::get('/asp/tsu/kaisai/replay_list.asp',       [ExportKaisaiController::class, 'replay_list']);
 Route::get('/asp/tsu/kaisai/race_telop.asp',        [ExportKaisaiController::class, 'race_telop']);
-Route::get('/asp/tsu/kaisai/race_sub.asp',        [ExportKaisaiController::class, 'race_sub']);
-Route::get('/asp/tsu/kaisai/race_data.asp',        [ExportKaisaiController::class, 'race_data']);
+Route::get('/asp/tsu/kaisai/race_sub.asp',          [ExportKaisaiController::class, 'race_sub']);
+Route::get('/asp/tsu/kaisai/race_data.asp',         [ExportKaisaiController::class, 'race_data']);
 Route::get('/asp/tsu/kaisai/race_movie.asp',        [ExportKaisaiController::class, 'race_movie']);
-Route::get('/asp/tsu/kaisai/race_movie_reload.asp',        [ExportKaisaiController::class, 'race_movie_reload']);
+Route::get('/asp/tsu/kaisai/race_movie_reload.asp', [ExportKaisaiController::class, 'race_movie_reload']);
 
 
-Route::get('/asp/tsu/kaisai/setu_kekka.asp',        [ExportKaisaiController::class, 'setu_kekka']);
-
+Route::get('/asp/tsu/kaisai/setu_kekka.asp',   [ExportKaisaiController::class, 'setu_kekka']);
 Route::get('/asp/tsu/kaisai/motor.asp',        [ExportKaisaiController::class, 'motor']);
+Route::get('/asp/tsu/kaisai/s_pdf.asp',        [ExportKaisaiController::class, 's_pdf']);
 
 
 Route::get('/asp/tsu/kaisai/CreatePCtokuten.asp',        [ExportKaisaiController::class, 'create_pc_tokuten']);
@@ -377,6 +379,7 @@ Route::get('/asp/tsu/sp/motor/motor.asp',        [ExportSpKaisaiController::clas
 Route::get('/asp/tsu/sp/02suimen/02suimen_SP.asp',        [ExportSpSuimenController::class, 'index']);
 Route::get('/asp/tsu/sp/02motor/02motor.asp',        [ExportSpMotorController::class, 'motor']);
 Route::get('/asp/tsu/sp/06meikan/06meikan.asp',        [ExportSpMeikanController::class, 'index']);
+Route::get('/asp/tsu/sp/pdf/pdf.asp',        [ExportSpKaisaiController::class, 'pdf']);
 
 //レースインデックス系
 Route::get('/export/sp/tenbo/', [ExportSpTenboController::class, 'index']);

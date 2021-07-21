@@ -539,9 +539,8 @@ strAgent = funcJsLiveSmartAgentGetter();
 
 	<!--オッズ結果⑤/-->
 	<div class="item data cf">
-		オッズ結果⑤
 		<span id="id_kekkalist"></span>
-		{{-- file_get_contents(config('const.EXPORT_PATH').'/asp/tsu/sp/kyogi/Kekka_List.asp') --}}
+		{!! $view_kekka_list !!}
 	</div><!-- item end -->
 
 	@if($kekka_change_race_num >= $race_num)
