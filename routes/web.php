@@ -28,6 +28,7 @@ use App\Http\Controllers\Api\GetKinkyoController;
 //フロント
 use App\Http\Controllers\Front\FrontJsController;
 use App\Http\Controllers\Front\FrontInfoController;
+use App\Http\Controllers\Front\RedirectLogController;
 
 //フロントSP
 use App\Http\Controllers\Front\Sp\SpKyogiController;
@@ -273,6 +274,12 @@ Route::get('/admin_sekosya/kaimon/change_appear_flg/{target_year_month}/{appear_
 
 //フロントPC
 Route::get('/asp/tsu/info/info.asp',        [FrontInfoController::class, 'index']);
+
+    //ログ系
+Route::get('/asp/log/tsu_sp_kyogi.asp',        [RedirectLogController::class, 'tsu_sp_kyogi']);
+Route::get('/asp/log/tsu_sp_kyogi_pc.asp',        [RedirectLogController::class, 'tsu_sp_kyogi_pc']);
+Route::get('/asp/log/tsu_sp_kyogi_android.asp',        [RedirectLogController::class, 'tsu_sp_kyogi_android']);
+Route::get('/asp/log/tsu_sp_kyogi_iphone.asp',        [RedirectLogController::class, 'tsu_sp_kyogi_iphone']);
 
 
 //フロントSP
