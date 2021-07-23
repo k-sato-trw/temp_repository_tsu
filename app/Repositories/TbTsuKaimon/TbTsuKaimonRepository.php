@@ -134,4 +134,18 @@ class TbTsuKaimonRepository implements TbTsuKaimonRepositoryInterface
                     ->get();
     }
 
+    /**
+     * フロント表示用　IDで1レコードを取得
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getFirstRecordForFront($target_date)
+    {
+        return $this->TbTsuKaimon
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->where('APPEAR_FLG','1')
+                    ->first();
+    }
+
 }

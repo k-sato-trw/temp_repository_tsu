@@ -309,6 +309,8 @@ Route::get('/asp/tsu/sp/01cal/01cal.asp',        [SpCalController::class, 'index
 Route::get('/asp/tsu/topdisplay/indexRaceInfo.asp',        [ExportTopDisplayController::class, 'index_race_info']);
 Route::get('/asp/tsu/topdisplay/indexKaisaiJokyo.asp',        [ExportTopDisplayController::class, 'index_kaisai_jokyo']);
 Route::get('/asp/tsu/topdisplay/top_race_movie.asp',        [ExportTopDisplayController::class, 'top_race_movie']);
+Route::get('/asp/tsu/topdisplay/indexOutput.asp',        [ExportTopDisplayController::class, 'index']);
+
 
 
     //開催系

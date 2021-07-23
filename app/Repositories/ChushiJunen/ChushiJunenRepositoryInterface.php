@@ -50,7 +50,7 @@ interface ChushiJunenRepositoryInterface
     public function getSotomukeChushiRecordForClendar($now_year,$now_month);
 
     /**
-     * フロントTOP表示用に指定日の中止レコードをすべて取得
+     * フロントTOP表示用に場外の指定日の中止レコードをすべて取得
      *
      * @var string $target_date
      * @return object

@@ -58,4 +58,12 @@ interface TbTsuKaimonRepositoryInterface
      */
     public function getOneMonthRecordForFront($start_date,$end_date);
 
+    /**
+     * フロント表示用　IDで1レコードを取得
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getFirstRecordForFront($target_date);
+
 }

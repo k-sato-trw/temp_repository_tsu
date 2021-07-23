@@ -18,6 +18,18 @@ class ExportTopDisplayController extends Controller
         $this->_service = $ExportTopDisplayService;
     }
 
+    public function index(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->index($request);
+
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/index.htm', view('front.top_display.index',$data));
+        return '書き出し完了<br><a href="/index.htm">/index.htm</a>';
+
+    }
+
     public function index_race_info(Request $request)
     {
 

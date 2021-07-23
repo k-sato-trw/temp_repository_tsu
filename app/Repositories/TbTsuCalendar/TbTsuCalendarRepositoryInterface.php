@@ -144,51 +144,29 @@ interface TbTsuCalendarRepositoryInterface
      */
     public function getLastRecordForCalendar();
 
-    /**
-     * フロント表示用に指定の開始日の1レコードを取得
-     *
-     * @var string $jyo
-     * @var string $target_date
-     * @var string $is_preview
-     * @return object
-     */
-    public function getFirstRecordForFront($jyo,$target_date,$is_preview = false);
 
     /**
-     * フロントTOP表示用に場外発売レコードを取得
+     * TOP表示用にモーターチェック日付を取得
      *
      * @var string $target_date
-     * @var string $is_preview
      * @return object
      */
-    public function getJyogaiRecordForTop($target_date,$is_preview = false);
-    
-    /**
-     * フロントTOP表示用に劇場発売レコードを取得
-     *
-     * @var string $target_date
-     * @var string $geki_racetype
-     * @var string $is_preview
-     * @return object
-     */
-    public function getgekiJyoRecordForTop($target_date,$geki_racetype,$is_preview = false);
+    public function getMotorCheckDate($target_date,$is_kaisai = 1);
 
     /**
-     * フロントTOP表示用に指定日の休館レコードを取得
+     * TOP表示用に本場場外を取得
      *
      * @var string $target_date
-     * @var string $is_preview
      * @return object
      */
-    public function getKyukanRecordForTop($target_date,$is_preview = false);
+    public function getHonjyoJyogai($target_date);
 
     /**
-     * TOPニュース表示用にレコードを取得
+     * TOP表示用に外向け場外を取得
      *
      * @var string $target_date
-     * @var string $is_preview
      * @return object
      */
-    public function getRecordForNews($target_date,$is_preview = false);
+    public function getSotomukeJyogai($target_date);
 
 }

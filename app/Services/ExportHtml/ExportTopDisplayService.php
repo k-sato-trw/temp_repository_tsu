@@ -18,6 +18,7 @@ use App\Repositories\TbTsuEventfanmaster\TbTsuEventfanmasterRepositoryInterface;
 use App\Repositories\TbTsuEventfan\TbTsuEventfanRepositoryInterface;
 use App\Repositories\TbRaceSyutujoRacer\TbRaceSyutujoRacerRepositoryInterface;
 use App\Repositories\Holding\HoldingRepositoryInterface;
+use App\Repositories\TbTsuKaimon\TbTsuKaimonRepositoryInterface;
 use App\Library\ExchangeText;
 use App\Services\KyogiCommonService;
 
@@ -39,6 +40,7 @@ class ExportTopDisplayService
     public $TbTsuEventfan;
     public $TbRaceSyutujoRacer;
     public $Holding;
+    public $TbTsuKaimon;
     public $ExchangeText;
     public $KyogiCommon;
 
@@ -59,6 +61,7 @@ class ExportTopDisplayService
         TbTsuEventfanRepositoryInterface $TbTsuEventfan,
         TbRaceSyutujoRacerRepositoryInterface $TbRaceSyutujoRacer,
         HoldingRepositoryInterface $Holding,
+        TbTsuKaimonRepositoryInterface $TbTsuKaimon,
         ExchangeText $ExchangeText,
         KyogiCommonService $KyogiCommon
     ){
@@ -78,10 +81,64 @@ class ExportTopDisplayService
         $this->TbTsuEventfan = $TbTsuEventfan;
         $this->TbRaceSyutujoRacer = $TbRaceSyutujoRacer;
         $this->Holding = $Holding;
+        $this->TbTsuKaimon = $TbTsuKaimon;
         $this->ExchangeText = $ExchangeText;
         $this->KyogiCommon = $KyogiCommon;
     }
 
+    
+    public function index($request){
+        $data = [];
+        $jyo = config('const.JYO_CODE');
+        $data['jyo'] = $jyo;
+
+        $target_date = date('Ymd');
+        $target_time = date('Hi');
+        $data['target_date'] = $target_date;
+
+        $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$target_date);
+        $data['kaisai_master'] = $kaisai_master;
+
+        $chushi_junen = $this->ChushiJunen->getFirstRecordForFront($jyo,$target_date);
+        $data['chushi_junen'] = $chushi_junen;
+
+        $kaimon_time = "0730";
+        $st_time = '0000';
+        $kaimon = $this->TbTsuKaimon->getFirstRecordForFront($target_date);
+        if($kaimon){
+            $kaimon_time = $kaimon->KAIMON_TIME;
+            $st_time = $kaimon->ST_TIME;
+        }
+        $data['kaimon_time'] = $kaimon_time;
+        $data['st_time'] = $st_time;
+
+        //モーターチェック用日付呼び出し
+        if($kaisai_master){
+            $motor_check = $this->TbTsuCalendar->getMotorCheckDate($target_date);
+        }else{
+            $motor_check = $this->TbTsuCalendar->getMotorCheckDate($target_date,0);
+        }
+        $data['motor_check'] = $motor_check;
+
+        //本場
+        $honjyo_jyogai = $this->TbTsuCalendar->getHonjyoJyogai($target_date);
+        $data['honjyo_jyogai'] = $honjyo_jyogai;
+        
+        //津インクル
+        $sotomuke_jyogai = $this->TbTsuCalendar->getSotomukeJyogai($target_date);
+        $data['sotomuke_jyogai'] = $sotomuke_jyogai;
+
+        //場外の中止情報を取得
+        $jyogai_chushi = $this->ChushiJunen->getChushiRecordForTop($target_date);
+        $jyogai_chushi_array = [];
+        foreach($jyogai_chushi as $item){
+            $jyogai_chushi_array[substr($item->開催区分,1,2)] = $item;
+        }
+        $data['jyogai_chushi_array'] = $jyogai_chushi_array;
+
+
+        return $data;
+    }
 
     public function index_race_info($request){
         $data = [];

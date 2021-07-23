@@ -413,130 +413,69 @@ class TbTsuCalendarRepository implements TbTsuCalendarRepositoryInterface
 
 
     /**
-     * フロント表示用に指定の開始日の1レコードを取得
+     * TOP表示用にモーターチェック日付を取得
      *
-     * @var string $jyo
      * @var string $target_date
-     * @var string $is_preview
      * @return object
      */
-    public function getFirstRecordForFront($jyo,$target_date,$is_preview = false)
+    public function getMotorCheckDate($target_date,$is_kaisai = 1)
     {
-        $query = $this->TbTsuCalendar
-                    ->where('JYO',$jyo)
-                    ->where('START_DATE','>=',$target_date);
 
-                    if(!$is_preview){
-                        $query->where('APPEAR_FLG','1');
-                    }
-        return $query->orderBy('START_DATE', 'asc')
-                     ->first();
+        $query = $this->TbTsuCalendar
+                    ->where('TYPE','=',1)
+                    ->where('APPEAR_FLG','=',1);
+
+                if($is_kaisai){
+                    $query->where('START_DATE','<=',$target_date)
+                    ->where('END_DATE','>=',$target_date);
+                }else{
+                    $query->where('START_DATE','>',$target_date)
+                    ->orderBy('START_DATE');
+                }
+
+        
+        return $query->first();
     }
 
+
     /**
-     * フロントTOP表示用に場外発売レコードを取得
+     * TOP表示用に本場場外を取得
      *
      * @var string $target_date
-     * @var string $is_preview
      * @return object
      */
-    public function getJyogaiRecordForTop($target_date,$is_preview = false)
+    public function getHonjyoJyogai($target_date)
     {
-        $query = $this->TbTsuCalendar
-                    ->where('JYO',"!=","04")
-                    ->where('JYO',">=","01")
-                    ->where('JYO',"<=","24")
+        return $this->TbTsuCalendar
+                    ->where('TYPE',3)
+                    ->where('JYO','!=','99')
+                    ->where('APPEAR_FLG',1)
                     ->where('START_DATE','<=',$target_date)
-                    ->where('END_DATE','>=',$target_date);
-
-                    if(!$is_preview){
-                        $query->where('APPEAR_FLG','1');
-                    }
-        return $query->orderBy('GEKI_GRADE', 'asc')
+                    ->where('END_DATE','>=',$target_date)
+                    ->whereIn('VIEW_LINE',['1','2','3','4'])
+                    ->orderBy('GRADE', 'asc')
                     ->orderBy('JYO', 'asc')
                     ->get();
     }
 
     /**
-     * フロントTOP表示用に劇場発売レコードを取得
+     * TOP表示用に外向け場外を取得
      *
      * @var string $target_date
-     * @var string $geki_racetype
-     * @var string $is_preview
      * @return object
      */
-    public function getgekiJyoRecordForTop($target_date,$geki_racetype,$is_preview = false)
+    public function getSotomukeJyogai($target_date)
     {
-
-        if($geki_racetype == 3){ 
-            $max_line = 8;
-        }else{
-            $max_line = 18;
-        }
-        $query = $this->TbTsuCalendar
-                    ->where('JYO',"=","99")
-                    ->where('GEKI_JYO',">=","01")
-                    ->where('GEKI_JYO',"<=","24")
-                    ->where('GEKI_RACETYPE',"=",$geki_racetype)
+        return $this->TbTsuCalendar
+                    ->where('TYPE',4)
+                    ->where('APPEAR_FLG',1)
                     ->where('START_DATE','<=',$target_date)
-                    ->where('END_DATE','>=',$target_date);
-                    
-                    if(!$is_preview){
-                        $query->where('APPEAR_FLG','1');
-                    }
-        return $query->whereRaw('CAST(LINE as SIGNED) <= '.$max_line )
-                    ->orderBy('GEKI_GRADE', 'asc')
-                    ->orderBy('GEKI_JYO', 'asc')
-                    ->get();
-    }
-
-
-    /**
-     * フロントTOP表示用に指定日の休館レコードを取得
-     *
-     * @var string $target_date
-     * @var string $is_preview
-     * @return object
-     */
-    public function getKyukanRecordForTop($target_date,$is_preview = false)
-    {
-
-        $query = $this->TbTsuCalendar
-                    ->where('JYO',"=","99")
-                    ->where('GEKI_JYO',"=","99")
-                    ->where('START_DATE','<=',$target_date)
-                    ->where('END_DATE','>=',$target_date);
-                    
-                    if(!$is_preview){
-                        $query->where('APPEAR_FLG','1');
-                    }
-        return $query->orderBy('GEKI_GRADE', 'asc')
-                    ->orderBy('GEKI_JYO', 'asc')
-                    ->first();
-    }
-
-
-    /**
-     * TOPニュース表示用にレコードを取得
-     *
-     * @var string $target_date
-     * @var string $is_preview
-     * @return object
-     */
-    public function getRecordForNews($target_date,$is_preview = false)
-    {
-        $query = $this->TbTsuCalendar
                     ->where('END_DATE','>=',$target_date)
-                    ->where(function($query){
-                        $query->whereRaw("(JYO <= '24' AND JYO >= '01')")
-                        ->orWhere('JYO','77');
-                    });
-                    
-                    if(!$is_preview){
-                        $query->where('APPEAR_FLG','1');
-                    }
-        return $query->orderBy('UPDATE_TIME', 'asc')
+                    ->whereIn('VIEW_LINE',['1','2','3','4','5','6','7','8','9','10',])
+                    ->orderBy('GRADE', 'asc')
+                    ->orderBy('JYO', 'asc')
                     ->get();
     }
+
 
 }

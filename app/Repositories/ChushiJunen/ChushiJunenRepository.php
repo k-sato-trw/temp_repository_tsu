@@ -136,7 +136,7 @@ class ChushiJunenRepository implements ChushiJunenRepositoryInterface
     }
 
     /**
-     * フロントTOP表示用に指定日の中止レコードをすべて取得
+     * フロントTOP表示用に場外の指定日の中止レコードをすべて取得
      *
      * @var string $target_date
      * @return object
@@ -146,10 +146,7 @@ class ChushiJunenRepository implements ChushiJunenRepositoryInterface
 
         return $this->ChushiJunen
                     ->where('場コード','=',config('const.JYO_CODE'))
-                    ->where(function($query) {
-                        $query->where('開催区分','LIKE', '1%')
-                              ->orWhere('開催区分','LIKE', '2%');
-                    })
+                    ->where('開催区分','LIKE', '2%')
                     ->where('中止日付','=',$target_date."%")
                     ->where('掲載フラグ','=','1')
                     ->get();
