@@ -62,6 +62,29 @@ class ExportKaisaiController extends Controller
 
     }
 
+    public function highlight(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->highlight($request);
+
+        if($data['kaisai_master']){
+            $message = "";
+
+            //ソースを受け取り静的に書き出し処理
+            File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/highlight/highlight_'.$data['target_date'].'.htm', view('front.kaisai.highlight',$data));
+            $message .= '書き出し完了<br><a href="/asp/kyogi/09/pc/highlight/highlight_'.$data['target_date'].'.htm">/asp/kyogi/09/pc/highlight/highlight_'.$data['target_date'].'.htm</a><br>';
+
+            File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/highlight/highlight.js', view('front.kaisai.js_highlight',$data));
+            $message .= '書き出し完了<br><a href="/asp/kyogi/09/pc/highlight/highlight.js">/asp/kyogi/09/pc/highlight/highlight.js</a><br>';
+
+            return $message;
+        }else{
+            return '非開催のため処理中止';
+        }
+    }
+    
+
     public function syussou01(Request $request)
     {
 
@@ -756,31 +779,6 @@ class ExportKaisaiController extends Controller
         
     }
 
-/*
-    public function syussou_kinkyo(Request $request)
-    {
-        //サービスクラスで処理。
-        $data = $this->_service->syussou_kinkyo($request);
-
-        $file_name = $data['jyo'].str_pad($data['race_num'], 2, '0', STR_PAD_LEFT);
-        //ソースを受け取り静的に書き出し処理
-        File::put(config('const.EXPORT_PATH').'/asp/tbk/textvision/text/'.$file_name.'syussou_kinkyo.htm', view('front.text_vision.syussou_kinkyo',$data));
-        return '書き出し完了<br><a href="/asp/tbk/textvision/text/'.$file_name.'syussou_kinkyo.htm">/asp/tbk/textvision/text/'.$file_name.'syussou_kinkyo.htm</a>';
-            
-    }
-
-    public function syussou_motor(Request $request)
-    {
-        //サービスクラスで処理。
-        $data = $this->_service->syussou_motor($request);
-
-        $file_name = $data['jyo'].str_pad($data['race_num'], 2, '0', STR_PAD_LEFT);
-        //ソースを受け取り静的に書き出し処理
-        File::put(config('const.EXPORT_PATH').'/asp/tbk/textvision/text/'.$file_name.'syussou_motor.htm', view('front.text_vision.syussou_motor',$data));
-        return '書き出し完了<br><a href="/asp/tbk/textvision/text/'.$file_name.'syussou_motor.htm">/asp/tbk/textvision/text/'.$file_name.'syussou_motor.htm</a>';
-            
-    }
-*/
 
     public function replay_list(Request $request)
     {

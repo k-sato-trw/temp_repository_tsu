@@ -931,4 +931,17 @@ class ExportSpKaisaiController extends Controller
         return '書き出し完了<br><a href="/asp/kyogi/09/sp/yosen.htm">/asp/kyogi/09/sp/yosen.htm</a><br>';
     }
 
+    
+    public function Top_MidokotoYosokekka(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->Top_MidokotoYosokekka($request);
+
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/Top_MidokotoYosokekka.htm', view('front.sp.kaisai.top_midokoto_yosokekka',$data));
+        return '書き出し完了<br><a href="/asp/kyogi/09/sp/Top_MidokotoYosokekka.htm">/asp/kyogi/09/sp/Top_MidokotoYosokekka.htm</a>';
+
+    }
+
 }

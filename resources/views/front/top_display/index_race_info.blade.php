@@ -55,7 +55,7 @@ gtag('config', 'UA-161205184-3');
                 @endif
                 
                 <div id="right">
-                    <p class="name">{{$kaisai_master->開催名称}}</p>
+                    <p class="name">{{$kaisai->RACE_TITLE}}</p>
                     <p class="date">
                         @foreach($kaisai_day_list as $key=>$item)
                             <?php $tmp = "" ?>
@@ -125,7 +125,7 @@ gtag('config', 'UA-161205184-3');
                 <div id="left" class="g0"><span>次節告知</span>一般</div>
             @endif
             <div id="right">
-                <p class="name small">{{$next_kaisai->開催名称}}</p>
+                <p class="name small">{{$next_kaisai->RACE_TITLE}}</p>
                 <p class="date">
                     @foreach($kaisai_day_list as $key=>$item)
                         <?php $tmp = "" ?>
@@ -156,85 +156,95 @@ gtag('config', 'UA-161205184-3');
             <div class="clear"></div>
         </div><!--/#r_info-->
         
-        
-        <div id="r_tenbo">
-        
-            <div class="left">
-                <h3>{{ $race_tenbo->TITLE }}</h3>
-                @if(mb_strlen($race_tenbo->LETTER_BODY) >= 90)
-                    <p>{{mb_substr($race_tenbo->LETTER_BODY,0,83)."…"}}
-                        @if($race_index->PC_TENBO_URL)
-                            <a href="{{ $race_index->PC_TENBO_URL }}" @if(strpos($race_index->PC_TENBO_URL,"http") !== false) target="_blank" @else target="_parent" @endif >続きを読む</a>
-                        @elseif(file_exists("/asp/htmlmade/Race/Tenbo/09/PC/t{{ $race_index->ID }}.htm"))               
-                            <a href="/asp/htmlmade/Race/Tenbo/09/PC/t{{ $race_index->ID }}.htm" target="_parent" >続きを読む</a>                 
-                        @endif
-                        <div class="clear"></div>
-                    </p>                    
-                @else
-                    <p>{{$race_tenbo->LETTER_BODY}}<div class="clear"></div></p>
-                @endif
-                <ul class="btn">
-                    @if($race_index->PC_SYUTUJO_URL)
-                        <li class="b1"><a href="{{ $race_index->PC_SYUTUJO_URL }}" @if(strpos($race_index->PC_SYUTUJO_URL,"http") !== false) target="_blank" @else target="_parent" @endif >出場予定選手</a></li>
-                    @elseif(file_exists("/asp/htmlmade/Race/Tenbo/09/PC/s{{ $race_index->ID }}.htm"))               
-                        <li class="b1"><a href="/asp/htmlmade/Race/Tenbo/09/PC/s{{ $race_index->ID }}.htm" target="_parent" >出場予定選手</a></li>
-                    @else
-                        <li class="b1">出場予定選手</li>
-                    @endif
+        @if($today_date >= '20210620' && $today_date <= '20210901' )
+            <div id="r_tenbo" class="nodata">
+			
+				<p class="memo" style="line-height: 1.4em; margin-top: 110px;">次回の開催は9月12日からの<br>「津PR第2戦BR津ファン感謝オール津ター！」です</p>
+			
+			</div><!--/#r_tenbo-->
+        @else
 
-                    @if($race_tenbo)
-                        @if(file_exists("/asp/kyogi/09/motor_check/{{ $next_kaisai->開始日付 }}.htm"))
-                            <li class="b2"><a href="/asp/tsu/kaisai/kaisaiindex.htm?page=3" target="_parent">モーター抽選結果&amp;前検タイム</a></li>
+            <div id="r_tenbo">
+            
+                <div class="left">
+                    <h3>{{ $race_index->RACE_TITLE }}</h3>
+                    @if(mb_strlen($race_index->LETTER_BODY) >= 90)
+                        <p>{{mb_substr($race_index->LETTER_BODY,0,83)."…"}}
+                            @if($race_index->PC_TENBO_URL)
+                                <a href="{{ $race_index->PC_TENBO_URL }}" @if(strpos($race_index->PC_TENBO_URL,"http") !== false) target="_blank" @else target="_parent" @endif >続きを読む</a>
+                            @elseif(file_exists("/asp/htmlmade/Race/Tenbo/09/PC/t{{ $race_index->ID }}.htm"))               
+                                <a href="/asp/htmlmade/Race/Tenbo/09/PC/t{{ $race_index->ID }}.htm" target="_parent" >続きを読む</a>                 
+                            @endif
+                            <div class="clear"></div>
+                        </p>                    
+                    @else
+                        <p>{{$race_index->LETTER_BODY}}<div class="clear"></div></p>
+                    @endif
+                    <ul class="btn">
+                        @if($race_index->PC_SYUTUJO_URL)
+                            <li class="b1"><a href="{{ $race_index->PC_SYUTUJO_URL }}" @if(strpos($race_index->PC_SYUTUJO_URL,"http") !== false) target="_blank" @else target="_parent" @endif >出場予定選手</a></li>
+                        @elseif(file_exists("/asp/htmlmade/Race/Tenbo/09/PC/s{{ $race_index->ID }}.htm"))               
+                            <li class="b1"><a href="/asp/htmlmade/Race/Tenbo/09/PC/s{{ $race_index->ID }}.htm" target="_parent" >出場予定選手</a></li>
+                        @else
+                            <li class="b1">出場予定選手</li>
+                        @endif
+
+                        @if($race_tenbo)
+                            @if(file_exists("/asp/kyogi/09/motor_check/{{ $next_kaisai->開始日付 }}.htm"))
+                                <li class="b2"><a href="/asp/tsu/kaisai/kaisaiindex.htm?page=3" target="_parent">モーター抽選結果&amp;前検タイム</a></li>
+                            @else
+                                <li class="b2">モーター抽選結果&amp;前検タイム</li>
+                            @endif
+                            @if(file_exists("/pdf/tsu/bangumihyo/{{ $tomorrow_date }}0101.pdf"))
+                                <li class="b3"><a href="/asp/tsu/kaisai/kaisaiindex.htm?page=2" target="_parent"><span>出走表&amp;<br>前日記者予想PDF</span></a></li>
+                            @else
+                                <li class="b3"><span>出走表&amp;<br>前日記者予想PDF</span></li>
+                            @endif                    
                         @else
                             <li class="b2">モーター抽選結果&amp;前検タイム</li>
-                        @endif
-                        @if(file_exists("/pdf/tsu/bangumihyo/{{ $tomorrow_date }}0101.pdf"))
-                            <li class="b3"><a href="/asp/tsu/kaisai/kaisaiindex.htm?page=2" target="_parent"><span>出走表&amp;<br>前日記者予想PDF</span></a></li>
-                        @else
                             <li class="b3"><span>出走表&amp;<br>前日記者予想PDF</span></li>
-                        @endif                    
-                    @else
-                        <li class="b2">モーター抽選結果&amp;前検タイム</li>
-                        <li class="b3"><span>出走表&amp;<br>前日記者予想PDF</span></li>
-                    @endif
+                        @endif
 
-                    @if($event_fan && $event_fan_master)
-                        <li class="b4"><a href="/04event/04event.htm#id{{$calendar->ID}}" target="_parent"><span>イベント&amp;<br>ファンサービス</span></a></li>                    
-                    @else
-                        <li class="b4"><span>イベント&amp;<br>ファンサービス</span></li>
-                    @endif
-                </ul>
-            </div><!--/left-->
-                
-            @if($race_tenbo)
-                <div class="right">
-                    <h4>ピックアップレーサー</h4>
-                    <ul class="racer">
-                        @foreach($leader_array as $key=>$item) 
-                            @isset($fandata_manual_array[$item])
-                                <?php $fandata = $fandata_manual_array[$item]; ?>
-                            @else
-                                @isset($fandata_array[$item])
-                                    <?php $fandata = $fandata_array[$item];  ?>                                    
-                                @endisset
-                            @endisset
-                            <li @if( ($fandata->Sei ?? 1) == 2 ) class="lady" @endif >
-                                @isset($sensyu_image_array[$item])
-                                    <img src="/asp/htmlmade/raceview/{{$item}}.jpg" width="75" height="86">
-                                @endisset
-                                @isset($fandata)
-                                    <p>{{$item}} ({{$fandata->Kyu}})<span>{{str_replace("　","",$fandata->NameK)}}</span></p>
-                                @endisset
-                            </li>
-                        @endforeach
-                    <div class="clear"></div>
+                        @if($event_fan && $event_fan_master)
+                            <li class="b4"><a href="/04event/04event.htm#id{{$calendar->ID}}" target="_parent"><span>イベント&amp;<br>ファンサービス</span></a></li>                    
+                        @else
+                            <li class="b4"><span>イベント&amp;<br>ファンサービス</span></li>
+                        @endif
                     </ul>
-                </div><!--/right-->
-            @endif
+                </div><!--/left-->
+                    
+                @if($race_tenbo)
+                    <div class="right">
+                        <h4>ピックアップレーサー</h4>
+                        <ul class="racer">
+                            @foreach($leader_array as $key=>$item) 
+                                @isset($fandata_manual_array[$item])
+                                    <?php $fandata = $fandata_manual_array[$item]; ?>
+                                @else
+                                    @isset($fandata_array[$item])
+                                        <?php $fandata = $fandata_array[$item];  ?>                                    
+                                    @endisset
+                                @endisset
+                                <li @if( ($fandata->Sei ?? 1) == 2 ) class="lady" @endif >
+                                    @isset($sensyu_image_array[$item])
+                                        <img src="/asp/htmlmade/raceview/{{$item}}.jpg" width="75" height="86">
+                                    @endisset
+                                    @isset($fandata)
+                                        <p>{{$item}} ({{$fandata->Kyu}})<span>{{str_replace("　","",$fandata->NameK)}}</span></p>
+                                    @endisset
+                                </li>
+                            @endforeach
+                        <div class="clear"></div>
+                        </ul>
+                    </div><!--/right-->
+                @endif
+                
+                <div class="clear"></div>
             
-            <div class="clear"></div>
+            </div><!--/#r_tenbo-->
         
-        </div><!--/#r_tenbo-->
+			
+        @endif
         
         </div><!--/#r_main-->
         

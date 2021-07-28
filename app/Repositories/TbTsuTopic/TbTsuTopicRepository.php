@@ -207,4 +207,30 @@ class TbTsuTopicRepository implements TbTsuTopicRepositoryInterface
         return $check->count();
     }
 
+
+    /**
+     * フロント用日付基準で現在表示対象になっているレコード取得
+     *
+     * @var string $target_date
+     * @var string $device
+     * @return object
+     */
+    public function getAppearRecordForFront($target_date,$device)
+    {
+        $query = $this->TbTsuTopic
+                    ->where('START_DATE','<=',$target_date)
+                    ->where('END_DATE','>=',$target_date)
+                    ->where('VIEW_POINT','>=',1)
+                    ->where('VIEW_POINT','<=',18)
+                    ->where('APPEAR_FLG',1);
+        if($device == "pc"){
+            $query->where('PC_APPEAR_FLG',1);
+        }elseif($device == "sp"){
+            $query->where('SP_APPEAR_FLG',1);
+        }
+
+        return $query->orderBy('VIEW_POINT', 'asc')
+                    ->get();
+    }
+
 }

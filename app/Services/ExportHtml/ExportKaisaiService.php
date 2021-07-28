@@ -25,6 +25,7 @@ use App\Repositories\TbTsuYosoAshi\TbTsuYosoAshiRepositoryInterface;
 use App\Repositories\TbTsuYosoTenji\TbTsuYosoTenjiRepositoryInterface;
 use App\Repositories\TbGambooYosoSensyu\TbGambooYosoSensyuRepositoryInterface;
 use App\Repositories\TbGambooYosoRace\TbGambooYosoRaceRepositoryInterface;
+use App\Repositories\FanData\FanDataRepositoryInterface;
 use App\Services\KyogiCommonService;
 
 class ExportKaisaiService
@@ -52,6 +53,7 @@ class ExportKaisaiService
     public $TbTsuYosoTenji;
     public $TbGambooYosoSensyu;
     public $TbGambooYosoRace;
+    public $FanData;
     public $KyogiCommon;
 
     public function __construct(
@@ -78,6 +80,7 @@ class ExportKaisaiService
         TbTsuYosoTenjiRepositoryInterface $TbTsuYosoTenji,
         TbGambooYosoSensyuRepositoryInterface $TbGambooYosoSensyu,
         TbGambooYosoRaceRepositoryInterface $TbGambooYosoRace,
+        FanDataRepositoryInterface $FanData,
         KyogiCommonService $KyogiCommon
     ){
         $this->TbBoatSyussou = $TbBoatSyussou;
@@ -103,6 +106,7 @@ class ExportKaisaiService
         $this->TbTsuYosoTenji = $TbTsuYosoTenji;
         $this->TbGambooYosoSensyu = $TbGambooYosoSensyu;
         $this->TbGambooYosoRace = $TbGambooYosoRace;
+        $this->FanData = $FanData;
         $this->KyogiCommon = $KyogiCommon;
     }
 
@@ -445,6 +449,105 @@ class ExportKaisaiService
         $data['file_name_list'] = $file_name_list;
         $data['yoso_file_name'] = $yoso_file_name;
         $data['display_date'] = $display_date ?? false;
+
+        return $data;
+    }
+
+    public function highlight($request){
+        $data = [];
+
+        $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
+        $data['jyo'] = $jyo;
+        /*
+        $target_time = date('Hi');
+        $target_time = '1100';
+        $data['target_time'] = $target_time;
+        */
+
+        {
+            //処理対象日を判定
+            $tomorrow_flg = false;
+            $today_date = $request->input('yd') ?? date('Ymd');
+            //$today_date = '20210620';
+            $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$tomorrow_date);
+
+            if($kaisai_master && $race_header){
+                //両方あれば、対象日確定
+                $tomorrow_flg = true;
+                $target_date = $tomorrow_date;
+            }else{
+                //無い場合は、当日判定
+                $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+                $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+                $target_date = $today_date;
+            }
+
+            //開催マスターがある場合、開催日リスト作成
+            $temp_date = $kaisai_master->開始日付;
+            $end_date = $kaisai_master->終了日付;
+            $kaisai_date_list = [];
+            $day_count = 1;
+            while($temp_date <= $end_date){
+                if($temp_date == $kaisai_master->開始日付){
+                    $kaisai_date_list[$temp_date] = '初日';
+                }elseif($temp_date == $kaisai_master->終了日付){
+                    $kaisai_date_list[$temp_date] = '最終日';
+                }else{
+                    $kaisai_date_list[$temp_date] = $day_count.'日目';
+                }
+                $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
+                $day_count++;
+            }
+            krsort($kaisai_date_list);
+
+            $data['kaisai_master'] = $kaisai_master;
+            $data['race_header'] = $race_header;
+            $data['target_date'] = $target_date;
+            $data['today_date'] = $today_date;
+            $data['tomorrow_date'] = $tomorrow_date;
+            $data['kaisai_date_list'] = $kaisai_date_list;
+            $data['tomorrow_flg'] = $tomorrow_flg;
+        }
+
+
+        $yoso_highlight = $this->TbTsuYosoHighlight->getFirstRecordForFront($jyo,$target_date,$is_preview = false);
+        $touban_list = [];
+        for($i=1; $i<=4; $i++){
+            $prop_name = 'TOUBAN'.$i;
+            if($yoso_highlight->$prop_name){
+                $touban_list[] = $yoso_highlight->$prop_name;
+            }
+        }
+        $data['yoso_highlight'] = $yoso_highlight;
+
+
+        /*
+        $sensyu_image = $this->RaceTenboSensyuImage->getRecordByToubanList($touban_list);
+        $sensyu_image_array = [];
+        foreach($sensyu_image as $item){
+            $sensyu_image_array[$item->登番] = $item;
+        }
+        $data['sensyu_image_array'] = $sensyu_image_array;
+        */
+
+        
+        $fan_data =  $this->FanData->getRecordByToubanList($touban_list);
+        $fan_data_array = [];
+        foreach($fan_data as $item){
+            $fan_data_array[$item->Touban] = $item;
+            $fan_data_array[$item->Touban]->NameK = str_replace('　　',' ',$fan_data_array[$item->Touban]->NameK);
+            $fan_data_array[$item->Touban]->NameK = str_replace('　','',$fan_data_array[$item->Touban]->NameK);
+        }
+        $data['fan_data_array'] = $fan_data_array;
+
+
+        $yoso = $this->TbTsuYoso->getPushing($target_date);
+        $data['yoso'] = $yoso;
+
 
         return $data;
     }

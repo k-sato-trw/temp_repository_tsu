@@ -478,4 +478,39 @@ class TbTsuCalendarRepository implements TbTsuCalendarRepositoryInterface
     }
 
 
+    /**
+     * TOPインデックス用開催情報呼び出し
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getKaisai($target_date)
+    {
+        return $this->TbTsuCalendar
+                    ->where('JYO',config('const.JYO_CODE'))
+                    ->where('TYPE',1)
+                    ->where('APPEAR_FLG',1)
+                    ->where('START_DATE','<=',$target_date)
+                    ->where('END_DATE','>=',$target_date)
+                    ->first();
+    }
+
+    /**
+     * TOPインデックス用時節開催情報呼び出し
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getJisetsuKaisai($target_date)
+    {
+        return $this->TbTsuCalendar
+                    ->where('JYO',config('const.JYO_CODE'))
+                    ->where('TYPE',1)
+                    ->where('APPEAR_FLG',1)
+                    ->where('START_DATE','>',$target_date)
+                    ->orderBy('START_DATE')
+                    ->first();
+    }
+
+
 }

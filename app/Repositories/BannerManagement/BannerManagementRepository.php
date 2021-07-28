@@ -198,8 +198,8 @@ class BannerManagementRepository implements BannerManagementRepositoryInterface
             $banner->where('APPEAR_FLG','1');
         }*/
         
-        return $banner->orderBy('SORT', 'asc')
-                                        ->get();
+        return $banner->orderBy('縦軸', 'asc')
+                        ->orderBy('横軸', 'asc')->get();
         
 
     }

@@ -314,62 +314,76 @@ class TbTsuInformationRepository implements TbTsuInformationRepositoryInterface
     /**
      * フロント表示用レコードを取得
      *
-     * @var string $target_year
+     * @var string $target_datetime
      * @var string $is_preview
      * @return object
      */
-    public function getRecordForFront($target_year,$is_preview = false)
+    public function getRecordForPcTop($target_datetime,$is_preview = false)
     {
-        $new_datetime = date('YmdHi');
+
         $query = $this->TbTsuInformation
-            ->where('PC_APPEAR_FLG', '1')
-            ->where(function ($query) use ($new_datetime) {
-                $query->where('START_DATE', '')
-                    ->orWhere('START_DATE', '<=', $new_datetime);
-            })
-            ->where(function ($query) use ($new_datetime) {
-                $query->where('END_DATE', '')
-                    ->orWhere('END_DATE', '>=', $new_datetime);
-            })
-            ->where('START_DATE', '>', '201500000000')
-            ->where('VIEW_DATE','LIKE',$target_year.'%');
+            ->where('PC_APPEAR_FLG', '1');
+        
+        if (!$is_preview) {
+            $query->where(function ($query) use ($target_datetime) {
+                $query->where(function ($query) use ($target_datetime) {
+                    $query->where('START_DATE','<=', $target_datetime)
+                        ->where('END_DATE', '>=', $target_datetime);
+                })
+                ->orWhere(function ($query) use ($target_datetime) {
+                    $query->where('START_DATE','<=', $target_datetime)
+                        ->where('END_DATE', '=', '');
+                });
+            });
+        }else{
+            $query->where(function ($query) use ($target_datetime) {
+                $query->where('END_DATE','>=', $target_datetime)
+                    ->orWhere('END_DATE', '=', '');
+            });
+        }
 
         if (!$is_preview) {
             $query->where('APPEAR_FLG', '1');
         }
-        return $query->orderBy('VIEW_DATE', 'desc')
-            ->get();
+        return $query->orderBy('VIEW_DATE', 'desc')->get();
     }
 
 
     /**
      * SPフロント表示用レコードを取得
      *
-     * @var string $target_year
+     * @var string $target_datetime
      * @var string $is_preview
      * @return object
      */
-    public function getRecordForFrontSp($target_year,$is_preview = false)
+    public function getRecordForSpTop($target_datetime,$is_preview = false)
     {
-        $new_datetime = date('YmdHi');
+
         $query = $this->TbTsuInformation
-            ->where('SP_APPEAR_FLG', '1')
-            ->where(function ($query) use ($new_datetime) {
-                $query->where('START_DATE', '')
-                    ->orWhere('START_DATE', '<=', $new_datetime);
-            })
-            ->where(function ($query) use ($new_datetime) {
-                $query->where('END_DATE', '')
-                    ->orWhere('END_DATE', '>=', $new_datetime);
-            })
-            ->where('START_DATE', '>', '201500000000')
-            ->where('VIEW_DATE','LIKE',$target_year.'%');
+            ->where('SP_APPEAR_FLG', '1');
+        
+        if (!$is_preview) {
+            $query->where(function ($query) use ($target_datetime) {
+                $query->where(function ($query) use ($target_datetime) {
+                    $query->where('START_DATE','<=', $target_datetime)
+                        ->where('END_DATE', '>=', $target_datetime);
+                })
+                ->orWhere(function ($query) use ($target_datetime) {
+                    $query->where('START_DATE','<=', $target_datetime)
+                        ->where('END_DATE', '=', '');
+                });
+            });
+        }else{
+            $query->where(function ($query) use ($target_datetime) {
+                $query->where('END_DATE','>=', $target_datetime)
+                    ->orWhere('END_DATE', '=', '');
+            });
+        }
 
         if (!$is_preview) {
             $query->where('APPEAR_FLG', '1');
         }
-        return $query->orderBy('VIEW_DATE', 'desc')
-            ->get();
+        return $query->orderBy('VIEW_DATE', 'desc')->get();
     }
 
 
@@ -423,6 +437,62 @@ class TbTsuInformationRepository implements TbTsuInformationRepositoryInterface
             $query->where('APPEAR_FLG', '1');
 
         return $query->orderBy('VIEW_DATE', 'desc')->get();
+    }
+
+
+
+    /**
+     * ヘッドライン呼び出し
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getFirstHeadlinePc($target_date)
+    {
+        return $this->TbTsuInformation
+                    ->where('PC_APPEAR_FLG','1')
+                    ->where('APPEAR_FLG','1')
+                    ->where(function ($query) use ($target_date) {
+                        $query->where(function ($query) use ($target_date) {
+                            $query->where('START_DATE','<=', $target_date)
+                                ->where('END_DATE', '>=', $target_date);
+                        })
+                        ->orWhere(function ($query) use ($target_date) {
+                            $query->where('START_DATE','<=', $target_date)
+                                ->where('END_DATE', '=', '');
+                        });
+                    })
+                    ->where('HEADLINE_TITLE','!=','')
+                    ->orderBy('VIEW_DATE','DESC')
+                    ->orderBy('UPDATE_TIME','DESC')
+                    ->first();
+    }
+
+    /**
+     * ヘッドライン呼び出しSP
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getFirstHeadlineSp($target_date)
+    {
+        return $this->TbTsuInformation
+                    ->where('SP_APPEAR_FLG','1')
+                    ->where('APPEAR_FLG','1')
+                    ->where(function ($query) use ($target_date) {
+                        $query->where(function ($query) use ($target_date) {
+                            $query->where('START_DATE','<=', $target_date)
+                                ->where('END_DATE', '>=', $target_date);
+                        })
+                        ->orWhere(function ($query) use ($target_date) {
+                            $query->where('START_DATE','<=', $target_date)
+                                ->where('END_DATE', '=', '');
+                        });
+                    })
+                    ->where('HEADLINE_TITLE','!=','')
+                    ->orderBy('VIEW_DATE','DESC')
+                    ->orderBy('UPDATE_TIME','DESC')
+                    ->first();
     }
 
 

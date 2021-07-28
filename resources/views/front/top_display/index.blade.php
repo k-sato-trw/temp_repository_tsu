@@ -101,7 +101,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <!--緊急告知-->
-<!--#exec cgi="/asp/tsu/admin/cms/kinkyu/kinkyu_message.asp?jyo=09&device=0"-->
+<script>
+    $.ajax({url: '/asp/tsu/admin/cms/kinkyu/kinkyu_message.asp'}).done(function(data){$("#wrapper").before(data)});
+</script>
 <!-- 緊急告知終了 -->
 
 
@@ -110,7 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-<div id="wrapper" class=" @if($kaisai_master) kaisai @else hikaisai @endif">
+<div id="wrapper" class=" @if($kaisai) kaisai @else hikaisai @endif">
 
 
 
@@ -136,9 +138,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <dl>
             <dt class="open">開門時間</dt>
-            <dd class="open">{{(int)substr($kaimon_time,0,2)}}:{{substr($kaimon_time,2,2)}}</dd>
+            @if($kaimon_time == '----')
+                <dd class="open">--:--</dd>
+            @else
+                <dd class="open">{{(int)substr($kaimon_time,0,2)}}:{{substr($kaimon_time,2,2)}}</dd>
+            @endif
             <dt class="start">第1Rスタート展示</dt>
-            <dd class="start">{{(int)substr($st_time,0,2)}}:{{substr($st_time,2,2)}}</dd>
+            @if($st_time == '----')
+                <dd class="start">--:--</dd>
+            @else
+                <dd class="start">{{(int)substr($st_time,0,2)}}:{{substr($st_time,2,2)}}</dd>
+            @endif
         </dl>
         <div class="clear"></div>
     </div><!--/#today_info-->
@@ -155,12 +165,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <tr>
           <th class="honjyo">本場</th>
           <td class="honjyo"><!--
+            @if(count($honjyo_jyogai))
               @foreach ($honjyo_jyogai as $cnt => $item)
                 @if($cnt != 0)
                     -->／<!--
                 @endif
                     --><p class="{{$general->gradenumber_to_gradename_for_front_syussou($item->GRADE)}} @isset($jyogai_chushi_array[$item->JYO]) chushi @endisset"><!--
                     --><span>{{$general->gradenumber_to_gradename_for_syutujo($item->GRADE)}}<!--
+                    --></span>{{$general->jyocode_to_jyoname($item->JYO)}}</p><!--
                         @if($item->LADY_FLG)
                             --><img src="/images/jyogai_lady.png"><!--
                         @endif
@@ -169,29 +181,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         @elseif($item->RACE_TYPE == 2)
                             --><img src="/images/jyogai_hakubo.png"><!--
                         @endif
-                    --></span>{{$general->jyocode_to_jyoname($item->JYO)}}</p><!--
               @endforeach
+            @else
+                -->本日の発売はございません<!--
+            @endif
         --></td>
           </tr>
           <tr>
           <th class="soto">津<br>インクル</th>
           <td class="soto"><!--
-            @foreach ($sotomuke_jyogai as $cnt => $item)
-              @if($cnt != 0)
-                  -->／<!--
-              @endif
-                  --><p class="{{$general->gradenumber_to_gradename_for_front_syussou($item->GRADE)}} @isset($jyogai_chushi_array[$item->JYO]) chushi @endisset"><!--
-                  --><span>{{$general->gradenumber_to_gradename_for_syutujo($item->GRADE)}}<!--
-                      @if($item->LADY_FLG)
-                          --><img src="/images/jyogai_lady.png"><!--
-                      @endif
-                      @if($item->RACE_TYPE == 1)
-                          --><img src="/images/jyogai_night.png"><!--
-                      @elseif($item->RACE_TYPE == 2)
-                          --><img src="/images/jyogai_hakubo.png"><!--
-                      @endif
-                  --></span>{{$general->jyocode_to_jyoname($item->JYO)}}</p><!--
-            @endforeach
+            @if(count($sotomuke_jyogai))
+                @foreach ($sotomuke_jyogai as $cnt => $item)
+                    @if($cnt != 0)
+                        -->／<!--
+                    @endif
+                    --><p class="{{$general->gradenumber_to_gradename_for_front_syussou($item->GRADE)}} @isset($jyogai_chushi_array[$item->JYO]) chushi @endisset"><!--
+                    --><span>{{$general->gradenumber_to_gradename_for_syutujo($item->GRADE)}}<!-- 
+                    --></span>{{$general->jyocode_to_jyoname($item->JYO)}}</p><!--
+                        
+                        @if($item->LADY_FLG)
+                            --><img src="/images/jyogai_lady.png"><!-- 
+                        @endif
+                        @if($item->RACE_TYPE == 1)
+                            --><img src="/images/jyogai_night.png"><!-- 
+                        @elseif($item->RACE_TYPE == 2)
+                            --><img src="/images/jyogai_hakubo.png"><!-- 
+                        @endif
+                @endforeach
+            @else
+                -->本日の発売はございません<!--
+            @endif
       --></tr>
           </tbody>
           </table>
@@ -199,7 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     
     <div id="race_info">
-        @if($kaisai_master)
+        @if($kaisai)
             <iframe src="/race_info_kaisai_btn.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_btn" id="race_btn"></iframe>
             <iframe src="/asp/kyogi/09/pc/top_race_movie.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_movie" id="race_movie" allowfullscreen></iframe>
             <iframe src="/asp/tsu/topdisplay/indexKaisaiJokyo.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_info_now" id="race_info_now"></iframe>
@@ -215,20 +234,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-<!--■■■ ホットニュース ■■■-->
-<div id="hotnews_wrap">
-<div id="hotnews">
-	
-<h3>ホットニュース</h3>
-<div class="ticker" rel="slide">
-<ul>
-<li><a href="/info/info.htm#id657">非開催日の単独場外発売日程について</a></li>
-</ul>
-</div>
-<div class="clear"></div>
+@if($headline)
+    <!--■■■ ホットニュース ■■■-->
+    <div id="hotnews_wrap">
+    <div id="hotnews">
+        
+    <h3>ホットニュース</h3>
+    <div class="ticker" rel="slide">
+    <ul>
+    <li>
+        @if($headline->PC_LINK)
+            <a href="{{$headline->PC_LINK}}" @if($headline->PC_LINK_WINDOW_FLG == 1) target="_blank" @endif >
+        @elseif($headline->HEADLINE_FLG != '1' && $headline->TEXT)
+            <a href="/asp/tsu/info/info.asp?year={{substr($headline->VIEW_DATE,0,4)}}" @if($headline->PC_LINK_WINDOW_FLG == 1) target="_blank" @endif >
+        @else
+            <a href="javascript:void(0);">
+        @endif
+                {{$headline->HEADLINE_TITLE}}
+            </a>
+    </li>
+    </ul>
+    </div>
+    <div class="clear"></div>
 
-</div><!--/#hotnews-->
-</div><!--/#hotnews_wrap-->
+    </div><!--/#hotnews-->
+    </div><!--/#hotnews_wrap-->
+@else
+    <!--■■■ ホットニュース ■■■-->
+    <div id="hotnews_wrap">
+    <div id="hotnews">
+
+    <div class="clear"></div>
+    
+    </div><!--/#hotnews-->
+    </div><!--/#hotnews_wrap-->
+@endif
 
 
 
@@ -239,22 +279,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <div id="topics_slider">
-<ul class="bxslider">
-<li>
-	<a href="https://boatdebatchkoi-x.com/" target="_blank"><img alt="" src="/asp/htmlmade/tsu/topic/67.jpg" width="340" height="160"></a>
-	<a href="https://special.janbari.com/lovers-boat/" target="_blank"><img alt="" src="/asp/htmlmade/tsu/topic/102.jpg" width="340" height="160"></a>
-	<a href="http://www.boatrace-tsu.com/06topic/vol20.htm"><img alt="" src="/asp/htmlmade/tsu/topic/51.jpg" width="340" height="160"></a>
-</li>
-<li>
-	<a href="http://www.boatrace-tsu.com/info/info.htm#id630"><img alt="" src="/asp/htmlmade/tsu/topic/95.jpg" width="340" height="160"></a>
-	<a href="https://www.facebook.com/boatrace.tsu.jp/" target="_blank"><img alt="" src="/asp/htmlmade/tsu/topic/9.jpg" width="340" height="160"></a>
-	<a href="http://www.boatrace-tsu.com/asp/tsu/info/info.asp?Year=2018#id276"><img alt="" src="/asp/htmlmade/tsu/topic/36.jpg" width="340" height="160"></a>
-</li>
-<li>
-	<a href="http://www.boatrace-tsu.com/04cashless/04cashless.htm"><img alt="" src="/asp/htmlmade/tsu/topic/61.jpg" width="340" height="160"></a>
-	<a href="http://tsu-pointclub.jp/" target="_blank"><img alt="" src="/asp/htmlmade/tsu/topic/6.png" width="340" height="160"></a>
-	<a href="http://www.boatrace-tsu.com/asp/tsu/info/info.asp?Year=2018#id335"><img alt="" src="/asp/htmlmade/tsu/topic/52.jpg" width="340" height="160"></a>
-</li>
+<ul class="@if($box_count > 3) bxslider @else bxslider_no @endif">
+    @foreach ($topic_array as $topic_row)
+        <li>
+            @foreach ($topic_row as $key => $item)
+                @if($item->BIG_FLAG)
+                    <a href="{{$item->PC_URL}}" @if($item->PC_BLANK_FLG == 1) target="_blank" @endif ><img alt="" src="{{config('const.IMAGE_PATH.TOPIC').$item->IMAGE}}" width="1050" height="160"></a>
+                @else
+                    <a href="{{$item->PC_URL}}" @if($item->PC_BLANK_FLG == 1) target="_blank" @endif ><img alt="" src="{{config('const.IMAGE_PATH.TOPIC').$item->IMAGE}}" width="340" height="160"></a>
+                @endif
+            @endforeach
+        </li>
+    @endforeach
 </ul>
 </div><!--/topics_slider-->
 
@@ -282,16 +318,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="clear"></div>
             </div>
             <ul>
-                <li class="update"><img src="/images/info_new.png" alt="new">
-        	<a href="/asp/tsu/kaisai/kaisaiindex.htm?page=4">
-<p>5/24<span>更新情報</span></p>得点率｜中日スポーツ津ボート大賞(4日目)</a></li>
-                <li class="news"><img src="/images/info_new.png" alt="new">
-<a href="/info/info.htm#id658"><p>5/23<span>お知らせ</span></p>はずれ抽選機当選券の有効期限の一部変更について</a></li>
-                <li class="news">
-<a href="/info/info.htm#id657"><p>5/22<span>お知らせ</span></p>非開催日の単独場外発売日程について</a></li>
-                <li class="update">
-        	<a href="/asp/tsu/kaisai/kaisaiindex.htm?page=3">
-<p>5/20<span>更新情報</span></p>モーター抽選結果｜中日スポーツ津ボート大賞</a></li>
+                <?php $news_count = 0;?>
+                @foreach ($news_all as $item)
+                    @if($item['TYPE'] == 1)
+                        <?php $news_class = 'update'; ?>
+                        <?php $news_type = '更新情報'; ?>
+                    @elseif($item['TYPE'] == 2)
+                        <?php $news_class = 'news'; ?>
+                        <?php $news_type = 'お知らせ'; ?>
+                    @elseif($item['TYPE'] == 3)
+                        <?php $news_class = 'impo'; ?>
+                        <?php $news_type = '重要'; ?>
+                    @endif
+
+                    <li class="{{$news_class}}">
+                        @if($item['NEW_FLG'] && date('Ymd',strtotime('-3 day',$target_date)) <= $item['VIEW_DATE'])
+                            <img src="/images/info_new.png" alt="new">
+                        @endif
+
+                        @if($item['PC_LINK'])
+                            <a href="{{ $item['PC_LINK'] }}" @if($item['PC_LINK_WINDOW_FLG'] == 1) target="_blank" @endif >
+                        @elseif( $item['TEXT'] || $item['IMAGE_1'] || $item['IMAGE_2'] || $item['IMAGE_3'] )
+                            <a href="/asp/tsu/info/info.asp?year={{ substr($item['VIEW_DATE'],0,4) }}#id{{$item['ID']}}" @if($item['PC_LINK_WINDOW_FLG'] == 1) target="_blank" @endif >
+                        @else
+                            <a href="javascript:void(0);">
+                        @endif
+                            <p>{{ date('n/j',strtotime($item['VIEW_DATE'])) }}<span>{{$news_type}}</span></p>{{$item['TITLE']}}
+                        </a>
+                    </li>
+
+                    <?php $news_count++; ?>
+                    @if($news_count == 4)
+                        <?php break; ?>
+                    @endif
+                @endforeach
                 <div class="clear"></div>
             </ul>
         </div><!--/#information-->
@@ -329,20 +389,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <div id="banner_wrap">
         <ul id="banner">
-            <li><a href="https://allstar2021.jp/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20210427093256.gif" width="160" height="40"></a></li>
-            <li><a href="http://www.br-special.jp/202106GI22/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20210521110504.gif" width="160" height="40"></a></li>
-            <li><a href="https://boatrace-sp.jp/2021aquaqueen/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20210521110559.jpg" width="160" height="40"></a></li>
-            <li><a href="http://www.nta.go.jp/publication/pamph/shotoku/kakuteishinkokukankei/koueikyougi/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20191124115729.jpg" width="160" height="40"></a></li>
-            <li><a href="http://www.boatrace.jp/bosyu/?utm_source=link&utm_medium=tb09&utm_campaign=tbnew" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20191106120347.jpg" width="160" height="40"></a></li>
-            <li><a href="http://www.boatrace.jp/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20151109154526.png" width="160" height="40"></a></li>
-            <li><a href="http://www.rakuten-bank.co.jp/koueirace/boatrace/?scid=we_brc_koueirace_010" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20151114121035.gif" width="160" height="40"></a></li>
-            <li><a href="https://www.facebook.com/boatracePR" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20151114121111.jpg" width="160" height="40"></a></li>
-            <li><a href="http://sup.jlc.ne.jp/index.php" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20180627134602.jpg" width="160" height="40"></a></li>
-            <li><a href="http://www.infoworld.co.jp/nabari/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20171207123145.png" width="160" height="40"></a></li>
-            <li><a href="http://www.bts-yoro.com/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20171207123221.png" width="160" height="40"></a></li>
-            <li><a href="http://www.smartboat.jp/data24/index_pc.htm" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20151114121212.jpg" width="160" height="40"></a></li>
-            <li><a href="http://www.nippon-foundation.or.jp/" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20160609122525.png" width="160" height="40"></a></li>
-            <li><a href="http://www.boatrace-tsu.com/asp/tsu/info/info.asp?Year=2018#id276" target="_blank"><img src="/asp/htmlmade/tsu/banner/images/20170704165155.jpg" width="160" height="40"></a></li>
+            @foreach ($banner as $item)
+                <li>
+                    @if($item->リンク先URL)
+                        <a href="{{$item->リンク先URL}}"  @if($item->別画面 == 1) target="_blank" @endif >
+                    @else
+                        <a href="javascript:void(0);"  @if($item->別画面 == 1) target="_blank" @endif >
+                    @endif
+                        <img src="{{ config('const.IMAGE_PATH.BANNER') . $item->イメージURL}}" width="{{$item->イメージの幅}}" height="{{$item->イメージの高さ}}">
+                    </a>
+                </li>
+            @endforeach
             <div class="clear"></div>
         </ul><!--/#banner-->
     </div><!--/#banner_wrap-->

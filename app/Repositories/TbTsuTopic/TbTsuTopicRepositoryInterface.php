@@ -85,4 +85,14 @@ interface TbTsuTopicRepositoryInterface
      */
     public function checkDuplicate($target_datetime,$view_point,$id);
 
+    
+    /**
+     * フロント用日付基準で現在表示対象になっているレコード取得
+     *
+     * @var string $target_date
+     * @var string $device
+     * @return object
+     */
+    public function getAppearRecordForFront($target_date,$device);
+
 }

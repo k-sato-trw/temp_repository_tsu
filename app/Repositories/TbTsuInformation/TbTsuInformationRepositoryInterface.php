@@ -102,21 +102,21 @@ interface TbTsuInformationRepositoryInterface
     /**
      * フロント表示用レコードを取得
      *
-     * @var string $target_year
+     * @var string $target_datetime
      * @var string $is_preview
      * @return object
      */
-    public function getRecordForFront($target_year,$is_preview = false);
+    public function getRecordForPcTop($target_datetime,$is_preview = false);
 
 
     /**
      * SPフロント表示用レコードを取得
      *
-     * @var string $target_year
+     * @var string $target_datetime
      * @var string $is_preview
      * @return object
      */
-    public function getRecordForFrontSp($target_year,$is_preview = false);
+    public function getRecordForSpTop($target_datetime,$is_preview = false);
 
 
     /**
@@ -133,6 +133,22 @@ interface TbTsuInformationRepositoryInterface
      * @return object
      */
     public function getDisplayYearListSp();
+
+
+    /**
+     * ヘッドライン呼び出し
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getFirstHeadlinePc($target_date);
     
+    /**
+     * ヘッドライン呼び出しSP
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getFirstHeadlineSp($target_date);
 
 }

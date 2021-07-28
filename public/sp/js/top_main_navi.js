@@ -1,110 +1,110 @@
 
 //**************************************************************
-// * ’ÃƒXƒ}ƒzƒgƒbƒvƒƒCƒ“ƒƒjƒ…[—p‚Ìjavascript
+// * æ´¥ã‚¹ãƒãƒ›ãƒˆãƒƒãƒ—ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”¨ã®javascript
 // * top_main_navi.js
 //**************************************************************
-// * g—p•û–@
+// * ä½¿ç”¨æ–¹æ³•
 //**************************************************************
-//Ÿ—pˆÓ
-//<head></head>“à‚É‰º‹L‚ğw’è‚·‚é
+//â—†ç”¨æ„
+//<head></head>å†…ã«ä¸‹è¨˜ã‚’æŒ‡å®šã™ã‚‹
 //<script type="text/javascript" src="/sp/js/top_main_navi.js"></script>
-//Ÿ•\¦
-//•\¦‚µ‚½‚¢‰ÓŠ‚É‰º‹L‚ğw’è‚·‚é
+//â—†è¡¨ç¤º
+//è¡¨ç¤ºã—ãŸã„ç®‡æ‰€ã«ä¸‹è¨˜ã‚’æŒ‡å®šã™ã‚‹
 //<script type="text/javascript">
 //funcTsuMainMenu();
 //</script>
 //**************************************************************
-// * •ÒW•û–@ ƒƒ•K‚¸ƒeƒXƒgƒTƒCƒg‚Å–â‘è‚È‚¢‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢„„
+// * ç·¨é›†æ–¹æ³• ï¼œï¼œå¿…ãšãƒ†ã‚¹ãƒˆã‚µã‚¤ãƒˆã§å•é¡Œãªã„ã‹ç¢ºèªã—ã¦ãã ã•ã„ï¼ï¼
 //**************************************************************
-//	strMenuHTML = strMenuHTML + "[‚±‚ÌŠÔ‚ÉHTML•¶‘}“ü‚·‚é]";
-//	ƒ’ˆÓI„
-//	u"v(ƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“)‚ğg—p‚¹‚¸A
-//	u'v(ƒVƒ“ƒOƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
-//	‚Ü‚½Ajs‚Ì‹K‘¥ŠO‚Ì‚±‚Æ‚ğ‚·‚é‚ÆA‘S‚Ä•\¦‚³‚ê‚È‚­‚È‚è‚Ü‚·B
-//	ƒ”õl„
-//	•ÒW‚É©M‚ª‚È‚¢ê‡‚ÍƒVƒXƒeƒ€‚Ü‚Å•ÏX‚µ‚Ä‚Ù‚µ‚¢‰ÓŠ‚ğ˜A—‚µ‚Ä‚­‚¾‚³‚¢B
+//	strMenuHTML = strMenuHTML + "[ã“ã®é–“ã«HTMLæ–‡æŒ¿å…¥ã™ã‚‹]";
+//	ï¼œæ³¨æ„ï¼ï¼
+//	ã€Œ"ã€(ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³)ã‚’ä½¿ç”¨ã›ãšã€
+//	ã€Œ'ã€(ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
+//	ã¾ãŸã€jsã®è¦å‰‡å¤–ã®ã“ã¨ã‚’ã™ã‚‹ã¨ã€å…¨ã¦è¡¨ç¤ºã•ã‚Œãªããªã‚Šã¾ã™ã€‚
+//	ï¼œå‚™è€ƒï¼
+//	ç·¨é›†ã«è‡ªä¿¡ãŒãªã„å ´åˆã¯ã‚·ã‚¹ãƒ†ãƒ ã¾ã§å¤‰æ›´ã—ã¦ã»ã—ã„ç®‡æ‰€ã‚’é€£çµ¡ã—ã¦ãã ã•ã„ã€‚
 // **************************************************************
-// * XV—š—ğ
+// * æ›´æ–°å±¥æ­´
 // **************************************************************
 // *
 // **************************************************************
 
 
-	function funcTsuMainMenu()
-	{
+function funcTsuMainMenu()
+{
 
-		var strMenuHTML = '';
-		strMenuHTML = strMenuHTML + "<dl id='top_nav_main' class='accordion_box'>";
-		strMenuHTML = strMenuHTML + "<dt class='nav1 plus'><span>ƒŒ[ƒXî•ñ</span></dt>";
-		strMenuHTML = strMenuHTML + "<dd class='nav1'><ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/01cal/01cal.asp'>ŠJÃ“ú’ö</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/htmlmade/Race/Tenbo/09/SP/jumper.htm'>“W–]Eoê—\’è‘Iè</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='https://secure.webkyotei.jp/asp/mform/09/mail/form.asp' target='_blank'>ƒ[ƒ‹ƒ}ƒKƒWƒ“</a></li>";
-		strMenuHTML = strMenuHTML + "</ul></dd>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<dt class='nav2 plus'><span>ƒf[ƒ^W</span></dt>";
-		strMenuHTML = strMenuHTML + "<dd class='nav2'><ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/02suimen/02suimen.htm'>…–Ê•ƒR[ƒX•Êƒf[ƒ^</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/kyogi/09/sp/02motor/02motor.htm'>ƒ‚[ƒ^[•ƒ{[ƒgƒf[ƒ^</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/02deme/02deme.htm	'>o–ÚE‚”z“–ƒ‰ƒ“ƒLƒ“ƒO</a></li>";
-		strMenuHTML = strMenuHTML + "</ul></dd>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<dt class='nav3 plus'><span>ƒtƒ@ƒ“ƒT[ƒrƒX</span></dt>";
-		strMenuHTML = strMenuHTML + "<dd class='nav3'><ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/04event/04event_SP.asp'>ƒCƒxƒ“ƒg•ƒtƒ@ƒ“ƒT[ƒrƒX</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/04cashless/04cashless.htm'>ƒLƒƒƒbƒVƒ…ƒŒƒXƒJ[ƒh</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/t_jump/jump_pointclub.htm' target='_blank'>’Ãƒ|ƒCƒ“ƒg‹äŠy•”</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/04fanclub/04fanclub.htm'>ƒ{[ƒgƒŒ[ƒX’Ãƒtƒ@ƒ“ƒNƒ‰ƒu</a></li>";
-		strMenuHTML = strMenuHTML + "<li class='small'><a href='/sp/04group/04group.htm'>‚¨“yY‚Â‚« ƒOƒ‹[ƒv—ˆê\‚µ‚İ</a></li>";
-		strMenuHTML = strMenuHTML + "</ul></dd>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<dt class='nav4 plus'><span>Œ‹‰ÊƒT[ƒ`</span></dt>";
-		strMenuHTML = strMenuHTML + "<dd class='nav4'><ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/03result_tsu/03result_tsu.asp'>ƒŒ[ƒXŒ‹‰ÊŒŸõ</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=1&page=15'>ßŠÔƒŒ[ƒXŒ‹‰Ê</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/kyogi/09/sp/yosen.htm'>“¾“_—¦î•ñ</a></li>		";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/03play_b/03play_b.asp'>—DŸíƒvƒŒƒCƒoƒbƒN</a></li>";
-		strMenuHTML = strMenuHTML + "</ul></dd>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<dt class='nav5 plus'><span>Œğ’Ê•{İ</span></dt>";
-		strMenuHTML = strMenuHTML + "<dd class='nav5'><ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/05access/05access.htm'>Œğ’ÊƒAƒNƒZƒX</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/05facility/05facility.htm'>{İƒKƒCƒh</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/05history/05history.htm'>ƒ{[ƒgƒŒ[ƒX’Ã‚Ì‚ ‚ä‚İ</a></li>";
-		strMenuHTML = strMenuHTML + "</ul></dd>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<dt class='nav6 plus'><span>Odx•”î•ñ</span></dt>";
-		strMenuHTML = strMenuHTML + "<dd class='nav6'><ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/06meikan/06meikan.htm'>Odx•”–¼ŠÓ</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/sp/06topic/06topic.htm'>Od's TOPIC</a></li>";
-		strMenuHTML = strMenuHTML + "</ul></dd>";
-		strMenuHTML = strMenuHTML + "</dl><!--/#top_nav_main-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<ul id='top_sub_nav1'>";
-		strMenuHTML = strMenuHTML + "<li id='facebook'><a href='/sp/t_jump/jump_facebook.htm' target='_blank'>facebook</a></li>";
-		strMenuHTML = strMenuHTML + "<li id='twitter'><a href='/sp/t_jump/jump_twitter.htm' target='_blank'>twitter</a></li>";
-//‘½Œ¾ŒêƒTƒCƒg
-		strMenuHTML = strMenuHTML + "<li id='lan_en'><a href='/en/' target='_blank'>English</a></li>";
-		strMenuHTML = strMenuHTML + "<li id='lan_ch1'><a href='/cn/' target='_blank'>Chinese</a></li>";
-		strMenuHTML = strMenuHTML + "<li id='lan_ch2'><a href='/tw/' target='_blank'>Chinese</a></li>";
-		strMenuHTML = strMenuHTML + "<li id='lan_ko'><a href='/ko/' target='_blank'>Korean</a></li>";
-		strMenuHTML = strMenuHTML + "<div class='clear'></div>";
-		strMenuHTML = strMenuHTML + "</ul><!--/#top_sub_nav1-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<ul id='top_sub_nav2'>";
-		strMenuHTML = strMenuHTML + "<li class='b1'><a href='/sp/policy/policy.htm'>ŒÂlî•ñ‚Ìæ‚èˆµ‚¢</a></li>";
-		strMenuHTML = strMenuHTML + "<li class='b2'><a href='/sp/faq/faq.htm'>‚æ‚­‚ ‚é¿–â</a></li>";
-		strMenuHTML = strMenuHTML + "<li class='b3'><a href='/sp/help/help.htm'>ƒwƒ‹ƒv</a></li>";
-		strMenuHTML = strMenuHTML + "<li class='b4'><a href='https://secure.webkyotei.jp/asp/mform/09/inquiry/form.asp' target='_blank'>‚¨–â‚¢‡‚í‚¹</a></li>";
-		strMenuHTML = strMenuHTML + "<div class='clear'></div>";
-		strMenuHTML = strMenuHTML + "</ul><!--/#top_sub_nav2-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<div id='btn_pc'><a href='/'>PCƒTƒCƒg‚Ö</a></div>";
+	var strMenuHTML = '';
+	strMenuHTML = strMenuHTML + "<dl id='top_nav_main' class='accordion_box'>";
+	strMenuHTML = strMenuHTML + "<dt class='nav1 plus'><span>ãƒ¬ãƒ¼ã‚¹æƒ…å ±</span></dt>";
+	strMenuHTML = strMenuHTML + "<dd class='nav1'><ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/01cal/01cal.asp'>é–‹å‚¬æ—¥ç¨‹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/htmlmade/Race/Tenbo/09/SP/jumper.htm'>å±•æœ›ãƒ»å‡ºå ´äºˆå®šé¸æ‰‹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='https://secure.webkyotei.jp/asp/mform/09/mail/form.asp' target='_blank'>ãƒ¡ãƒ¼ãƒ«ãƒã‚¬ã‚¸ãƒ³</a></li>";
+	strMenuHTML = strMenuHTML + "</ul></dd>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<dt class='nav2 plus'><span>ãƒ‡ãƒ¼ã‚¿é›†</span></dt>";
+	strMenuHTML = strMenuHTML + "<dd class='nav2'><ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/02suimen/02suimen.htm'>æ°´é¢ï¼†ã‚³ãƒ¼ã‚¹åˆ¥ãƒ‡ãƒ¼ã‚¿</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/kyogi/09/sp/02motor/02motor.htm'>ãƒ¢ãƒ¼ã‚¿ãƒ¼ï¼†ãƒœãƒ¼ãƒˆãƒ‡ãƒ¼ã‚¿</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/02deme/02deme.htm	'>å‡ºç›®ãƒ»é«˜é…å½“ãƒ©ãƒ³ã‚­ãƒ³ã‚°</a></li>";
+	strMenuHTML = strMenuHTML + "</ul></dd>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<dt class='nav3 plus'><span>ãƒ•ã‚¡ãƒ³ã‚µãƒ¼ãƒ“ã‚¹</span></dt>";
+	strMenuHTML = strMenuHTML + "<dd class='nav3'><ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/04event/04event_SP.asp'>ã‚¤ãƒ™ãƒ³ãƒˆï¼†ãƒ•ã‚¡ãƒ³ã‚µãƒ¼ãƒ“ã‚¹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/04cashless/04cashless.htm'>ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ¬ã‚¹ã‚«ãƒ¼ãƒ‰</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/t_jump/jump_pointclub.htm' target='_blank'>æ´¥ãƒã‚¤ãƒ³ãƒˆå€¶æ¥½éƒ¨</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/04fanclub/04fanclub.htm'>ãƒœãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ´¥ãƒ•ã‚¡ãƒ³ã‚¯ãƒ©ãƒ–</a></li>";
+	strMenuHTML = strMenuHTML + "<li class='small'><a href='/sp/04group/04group.htm'>ãŠåœŸç”£ã¤ã ã‚°ãƒ«ãƒ¼ãƒ—æ¥å ´ç”³ã—è¾¼ã¿</a></li>";
+	strMenuHTML = strMenuHTML + "</ul></dd>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<dt class='nav4 plus'><span>çµæœã‚µãƒ¼ãƒ</span></dt>";
+	strMenuHTML = strMenuHTML + "<dd class='nav4'><ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/03result_tsu/03result_tsu.asp'>ãƒ¬ãƒ¼ã‚¹çµæœæ¤œç´¢</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=1&page=15'>ç¯€é–“ãƒ¬ãƒ¼ã‚¹çµæœ</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/kyogi/09/sp/yosen.htm'>å¾—ç‚¹ç‡æƒ…å ±</a></li>		";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/sp/03play_b/03play_b.asp'>å„ªå‹æˆ¦ãƒ—ãƒ¬ã‚¤ãƒãƒƒã‚¯</a></li>";
+	strMenuHTML = strMenuHTML + "</ul></dd>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<dt class='nav5 plus'><span>äº¤é€šï¼†æ–½è¨­</span></dt>";
+	strMenuHTML = strMenuHTML + "<dd class='nav5'><ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/05access/05access.htm'>äº¤é€šã‚¢ã‚¯ã‚»ã‚¹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/05facility/05facility.htm'>æ–½è¨­ã‚¬ã‚¤ãƒ‰</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/05history/05history.htm'>ãƒœãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ´¥ã®ã‚ã‚†ã¿</a></li>";
+	strMenuHTML = strMenuHTML + "</ul></dd>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<dt class='nav6 plus'><span>ä¸‰é‡æ”¯éƒ¨æƒ…å ±</span></dt>";
+	strMenuHTML = strMenuHTML + "<dd class='nav6'><ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/06meikan/06meikan.htm'>ä¸‰é‡æ”¯éƒ¨åé‘‘</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/sp/06topic/06topic.htm'>ä¸‰é‡'s TOPIC</a></li>";
+	strMenuHTML = strMenuHTML + "</ul></dd>";
+	strMenuHTML = strMenuHTML + "</dl><!--/#top_nav_main-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<ul id='top_sub_nav1'>";
+	strMenuHTML = strMenuHTML + "<li id='facebook'><a href='/sp/t_jump/jump_facebook.htm' target='_blank'>facebook</a></li>";
+	strMenuHTML = strMenuHTML + "<li id='twitter'><a href='/sp/t_jump/jump_twitter.htm' target='_blank'>twitter</a></li>";
+//å¤šè¨€èªã‚µã‚¤ãƒˆ
+	strMenuHTML = strMenuHTML + "<li id='lan_en'><a href='/en/' target='_blank'>English</a></li>";
+	strMenuHTML = strMenuHTML + "<li id='lan_ch1'><a href='/cn/' target='_blank'>Chinese</a></li>";
+	strMenuHTML = strMenuHTML + "<li id='lan_ch2'><a href='/tw/' target='_blank'>Chinese</a></li>";
+	strMenuHTML = strMenuHTML + "<li id='lan_ko'><a href='/ko/' target='_blank'>Korean</a></li>";
+	strMenuHTML = strMenuHTML + "<div class='clear'></div>";
+	strMenuHTML = strMenuHTML + "</ul><!--/#top_sub_nav1-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<ul id='top_sub_nav2'>";
+	strMenuHTML = strMenuHTML + "<li class='b1'><a href='/sp/policy/policy.htm'>å€‹äººæƒ…å ±ã®å–ã‚Šæ‰±ã„</a></li>";
+	strMenuHTML = strMenuHTML + "<li class='b2'><a href='/sp/faq/faq.htm'>ã‚ˆãã‚ã‚‹è³ªå•</a></li>";
+	strMenuHTML = strMenuHTML + "<li class='b3'><a href='/sp/help/help.htm'>ãƒ˜ãƒ«ãƒ—</a></li>";
+	strMenuHTML = strMenuHTML + "<li class='b4'><a href='https://secure.webkyotei.jp/asp/mform/09/inquiry/form.asp' target='_blank'>ãŠå•ã„åˆã‚ã›</a></li>";
+	strMenuHTML = strMenuHTML + "<div class='clear'></div>";
+	strMenuHTML = strMenuHTML + "</ul><!--/#top_sub_nav2-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<div id='btn_pc'><a href='/'>PCã‚µã‚¤ãƒˆã¸</a></div>";
 
-		//‘‚«o‚µ
-		document.write(strMenuHTML);
+	//æ›¸ãå‡ºã—
+	document.write(strMenuHTML);
 
-	}
+}

@@ -28,6 +28,7 @@ use App\Http\Controllers\Api\GetKinkyoController;
 //フロント
 use App\Http\Controllers\Front\FrontJsController;
 use App\Http\Controllers\Front\FrontInfoController;
+use App\Http\Controllers\Front\FrontKinkyuController;
 use App\Http\Controllers\Front\RedirectLogController;
 
 //フロントSP
@@ -53,6 +54,7 @@ use App\Http\Controllers\ExportHtml\ExportSyutujoController;
 
 
 //書き出しSP
+use App\Http\Controllers\ExportHtml\Sp\ExportSpTopDisplayController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpKaisaiController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpSuimenController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpMeikanController;
@@ -274,6 +276,8 @@ Route::get('/admin_sekosya/kaimon/change_appear_flg/{target_year_month}/{appear_
 
 //フロントPC
 Route::get('/asp/tsu/info/info.asp',        [FrontInfoController::class, 'index']);
+Route::get('/asp/tsu/admin/cms/kinkyu/kinkyu_message.asp',        [FrontKinkyuController::class, 'message']);
+
 
     //ログ系
 Route::get('/asp/log/tsu_sp_kyogi.asp',        [RedirectLogController::class, 'tsu_sp_kyogi']);
@@ -344,9 +348,11 @@ Route::get('/asp/tsu/kaisai/race_movie_reload.asp', [ExportKaisaiController::cla
 Route::get('/asp/tsu/kaisai/setu_kekka.asp',   [ExportKaisaiController::class, 'setu_kekka']);
 Route::get('/asp/tsu/kaisai/motor.asp',        [ExportKaisaiController::class, 'motor']);
 Route::get('/asp/tsu/kaisai/s_pdf.asp',        [ExportKaisaiController::class, 's_pdf']);
+Route::get('/asp/tsu/kaisai/highlight.asp',    [ExportKaisaiController::class, 'highlight']);
 
 
 Route::get('/asp/tsu/kaisai/CreatePCtokuten.asp',        [ExportKaisaiController::class, 'create_pc_tokuten']);
+
 
     //レースインデックス系
 Route::get('/export/tenbo/', [ExportTenboController::class, 'index']);
@@ -366,6 +372,9 @@ Route::get('/asp/tsu/01cal/01cal.asp',        [ExportCalController::class, 'inde
 
 
 //書き出しSP
+Route::get('/asp/tsu/sp/topdisplay/indexRaceInfo.asp',        [ExportSpTopDisplayController::class, 'index_race_info']);
+Route::get('/asp/tsu/sp/topdisplay/indexSPOutput.asp',        [ExportSpTopDisplayController::class, 'index']);
+
 Route::get('/asp/tsu/sp/kyogi/Syusso_Hyoka.asp',        [ExportSpKaisaiController::class, 'syusso_hyoka']);
 Route::get('/asp/tsu/sp/kyogi/Syusso_Seiseki.asp',        [ExportSpKaisaiController::class, 'syusso_seiseki']);
 Route::get('/asp/tsu/sp/kyogi/Syusso_AllPast.asp',        [ExportSpKaisaiController::class, 'syusso_all_past']);
@@ -381,8 +390,9 @@ Route::get('/asp/tsu/sp/kyogi/Kekka_Detail.asp',        [ExportSpKaisaiControlle
 Route::get('/asp/tsu/sp/kyogi/RacenumButton.asp',        [ExportSpKaisaiController::class, 'race_num_button']);
 
 Route::get('/asp/tsu/sp/kyogi/CreateSPtokuten.asp',        [ExportSpKaisaiController::class, 'create_sp_tokuten']);
-Route::get('/asp/tsu/sp/kyogi/Cyoku.asp',        [ExportSpKaisaiController::class, 'cyoku']);
-Route::get('/asp/tsu/sp/motor/motor.asp',        [ExportSpKaisaiController::class, 'motor']);
+Route::get('/asp/tsu/sp/kyogi/Cyoku.asp',                  [ExportSpKaisaiController::class, 'cyoku']);
+Route::get('/asp/tsu/sp/kyogi/Top_MidokotoYosokekka.asp',  [ExportSpKaisaiController::class, 'Top_MidokotoYosokekka']);
+Route::get('/asp/tsu/sp/motor/motor.asp',                  [ExportSpKaisaiController::class, 'motor']);
 
 
 Route::get('/asp/tsu/sp/02suimen/02suimen_SP.asp',        [ExportSpSuimenController::class, 'index']);

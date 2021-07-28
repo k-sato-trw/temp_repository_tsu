@@ -254,4 +254,39 @@ class TbTsuKinkyuKokutiRepository implements TbTsuKinkyuKokutiRepositoryInterfac
     }
 
 
+
+    /**
+     * フロント表示用にデータ取得
+     *
+     * @var string $target_datetime
+     * @var string $device
+     * @var string $is_preview
+     * @var string $preview_id
+     * @return object
+     */
+    public function getFirstRecordForFront($target_datetime,$device , $is_preview = false ,$preview_id = false)
+    {
+
+        if($device == 0){
+            $query = $this->TbTsuKinkyuKokuti->where('PC_FLG',1);
+        }elseif($device == 1){
+            $query = $this->TbTsuKinkyuKokuti->where('SP_FLG',1);
+        }else{
+            $query = $this->TbTsuKinkyuKokuti->where('PC_FLG',1);
+        }
+
+        if($is_preview){
+            // プレビュー時、期間指定除き、IDを指定
+            $query->where('ID','=',$preview_id);
+
+        }else{
+            $query->where('START_DATE','<=',$target_datetime)
+                    ->where('END_DATE','>=',$target_datetime)
+                    ->where('APPEAR_FLG','1');
+        }
+
+        return $query->first();
+    }
+
+
 }

@@ -94,4 +94,15 @@ interface TbTsuKinkyuKokutiRepositoryInterface
      */
     public function changeAppearFlg($id,$appear_flg);
 
+    /**
+     * フロント表示用にデータ取得
+     *
+     * @var string $target_datetime
+     * @var string $device
+     * @var string $is_preview
+     * @var string $preview_id
+     * @return object
+     */
+    public function getFirstRecordForFront($target_datetime,$device , $is_preview = false ,$preview_id = false);
+
 }

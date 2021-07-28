@@ -15,4 +15,24 @@ interface TbTsuYosoHighlightRepositoryInterface
      */
     public function getRecordBitweenDate($jyo,$start_date,$end_date);
 
+    /**
+     * フロント表示用　指定日付のデータを取得
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @var string $is_preview
+     * @return object
+     */
+    public function getFirstRecordForFront($jyo,$target_date,$is_preview = false);
+
+    /**
+     * SPフロント表示用　節間日付のデータを全て取得
+     *
+     * @var string $jyo
+     * @var array $target_date_list
+     * @var string $is_preview
+     * @return object
+     */
+    public function getRecordForFront($jyo,$target_date_list,$is_preview = false);
+
 }
