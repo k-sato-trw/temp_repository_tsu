@@ -258,4 +258,23 @@ class TbBoatKekkainfoRepository implements TbBoatKekkainfoRepositoryInterface
 
     }
 
+    /**
+     * 一定期間のレースを抽出
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getRecordForTekichuritsu($jyo,$start_date,$end_date)
+    {
+        return $this->TbBoatKekkainfo
+                    ->where('JYO','=',$jyo)
+                    ->where('TARGET_DATE','>=',$start_date)
+                    ->where('TARGET_DATE','<=',$end_date)
+                    ->where('SANRENTAN1','!=','')
+                    ->get();
+
+    }
+
 }

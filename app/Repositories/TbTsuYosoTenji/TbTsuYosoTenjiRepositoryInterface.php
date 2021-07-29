@@ -14,4 +14,13 @@ interface TbTsuYosoTenjiRepositoryInterface
      */
     public function getFirstRecordByDate($target_date,$race_num);
 
+    /**
+     * 指定期間の全レースのレコードを取得
+     *
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getRecordForTekichuritsu($start_date,$end_date);
+
 }

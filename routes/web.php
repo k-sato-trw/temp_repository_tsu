@@ -297,14 +297,10 @@ Route::get('/asp/tsu/sp/kyogi/Movie.asp',        [SpKyogiController::class, 'mov
 Route::get('/asp/tsu/sp/kyogi/Movie_Tenji.asp',        [SpKyogiController::class, 'movie_tenji']);
 Route::get('/asp/tsu/sp/kyogi/Movie_Live.asp',        [SpKyogiController::class, 'movie_live']);
 
-//Route::get('/asp/tsu/sp/kyogi/Kekka_List.asp',        [SpKyogiController::class, 'kekka_list']);
-
 
 Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
 Route::get('/asp/tsu/sp/info/info_SP.asp',        [SpInfoController::class, 'index']);
 Route::get('/asp/tsu/sp/01cal/01cal.asp',        [SpCalController::class, 'index']);
-
-    
 
 
 //書き出しPC

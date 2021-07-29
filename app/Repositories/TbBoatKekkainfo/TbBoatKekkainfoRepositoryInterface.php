@@ -103,4 +103,14 @@ interface TbBoatKekkainfoRepositoryInterface
      */
     public function getRecordForKishaTenji($jyo,$target_date,$race_num);
 
+    /**
+     * 一定期間のレースを抽出
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getRecordForTekichuritsu($jyo,$start_date,$end_date);
+
 }

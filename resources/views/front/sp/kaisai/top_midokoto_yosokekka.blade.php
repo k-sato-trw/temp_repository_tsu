@@ -63,14 +63,24 @@
 	</div><!--/tenbo-->
 	
 	</div><!--today_tenbo-->
-	
-	<div id="konyoso" class="cf">
-	<div class="tit">今節の予想結果</div>
-	
-	<div id="teki">
-	<div class="kisya"><span>23.3</span>％<br>14/60R</div>
-	<div class="vpower"><span>21.7</span>％<br>13/60R</div>
-	</div>
-	<div class="caution">※{{$kaisai_date_list[$target_date]}}終了時点</div>
-	</div>
+	@if($kaisai_master->開始日付 <= $strYosoDate)
+        <div id="konyoso" class="cf">
+            <div class="tit">今節の予想結果</div>
+            @if($hit_count_display_flg)
+                <div id="teki">
+                    <div class="kisya"><span>{{ round($kisya_hit_count / count($kekka_info) , 3) * 100 }}</span>％<br>{{$kisya_hit_count}}/{{count($kekka_info)}}R</div>
+                    <div class="vpower"><span>{{ round($v_power_hit_count / count($kekka_info) , 3) * 100 }}</span>％<br>{{$v_power_hit_count}}/{{count($kekka_info)}}R</div>
+                </div>
+            @endif
+
+            @if($mansyu_count_display_flg)
+                <div id="man">
+                    <div class="kisya"><span>{{$kisya_mansyu_count}}</span>回<br>{{$kisya_mansyu_count}}/{{count($kekka_info)}}R</div>
+                    <div class="vpower"><span>{{$v_power_mansyu_count}}</span>回<br>{{$v_power_mansyu_count}}/{{count($kekka_info)}}R</div>
+                </div>
+            @endif
+
+            <div class="caution">※{{$kaisai_date_list[$target_date]}}終了時点</div>
+        </div>
+    @endif
 @endif

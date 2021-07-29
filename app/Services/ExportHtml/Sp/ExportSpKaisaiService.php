@@ -26,6 +26,7 @@ use App\Repositories\TbTsuYosoTenji\TbTsuYosoTenjiRepositoryInterface;
 use App\Repositories\TbGambooYosoSensyu\TbGambooYosoSensyuRepositoryInterface;
 use App\Repositories\TbGambooYosoRace\TbGambooYosoRaceRepositoryInterface;
 use App\Services\KyogiCommonService;
+use App\Services\FuncYosoTekichuritsuService;
 
 class ExportSpKaisaiService
 {
@@ -53,6 +54,7 @@ class ExportSpKaisaiService
     public $TbGambooYosoSensyu;
     public $TbGambooYosoRace;
     public $KyogiCommon;
+    public $FuncYosoTekichuritsu;
 
     public function __construct(
         TbBoatSyussouRepositoryInterface $TbBoatSyussou,
@@ -78,7 +80,8 @@ class ExportSpKaisaiService
         TbTsuYosoTenjiRepositoryInterface $TbTsuYosoTenji,
         TbGambooYosoSensyuRepositoryInterface $TbGambooYosoSensyu,
         TbGambooYosoRaceRepositoryInterface $TbGambooYosoRace,
-        KyogiCommonService $KyogiCommon
+        KyogiCommonService $KyogiCommon,
+        FuncYosoTekichuritsuService $FuncYosoTekichuritsu
     ){
         $this->TbBoatSyussou = $TbBoatSyussou;
         $this->KaisaiMaster = $KaisaiMaster;
@@ -104,6 +107,7 @@ class ExportSpKaisaiService
         $this->TbGambooYosoSensyu = $TbGambooYosoSensyu;
         $this->TbGambooYosoRace = $TbGambooYosoRace;
         $this->KyogiCommon = $KyogiCommon;
+        $this->FuncYosoTekichuritsu = $FuncYosoTekichuritsu;
     }
 
     public function motor($request){
@@ -2776,7 +2780,7 @@ class ExportSpKaisaiService
             //処理対象日を判定
             $tomorrow_flg = false;
             $today_date = $request->input('yd') ?? date('Ymd');
-            $today_date = '20210620';
+            $today_date = '20210619';
             $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
 
             $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
@@ -2830,6 +2834,187 @@ class ExportSpKaisaiService
 
         $yoso = $this->TbTsuYoso->getPushing($target_date);
         $data['yoso'] = $yoso;
+
+
+        //的中率処理
+        
+        if($kaisai_master){
+            $neer_kekka_race_number = $this->KyogiCommon->getNeerKekkaRaceNumber($jyo,$target_date);
+
+            if($tomorrow_flg){
+
+                $strYosoDate = $today_date;
+            
+            }else{
+
+                // 表示日付の直近レース結果が12レースの時
+                if($neer_kekka_race_number == 12){
+                    
+                    //表示日付含む
+                    $strYosoDate = $today_date;
+                
+                }else{
+
+                    //前日分まで
+                    $strYosoDate = date('Ymd',strtotime('-1 day',strtotime($today_date)));
+
+                }
+
+            }
+
+            $data['strYosoDate'] = $strYosoDate;
+
+            $strAryYosoKumi = [];
+
+            if($kaisai_master->開始日付 <= $strYosoDate){
+            //初日以降で集計できる時
+            
+                $yoso_tenji = $this->TbTsuYosoTenji->getRecordForTekichuritsu($kaisai_master->開始日付 , $strYosoDate);
+
+                foreach($yoso_tenji as $item){
+                    
+                    //$type は1=本命か2=穴かの選択
+                    $type = 1;
+                    $strAryYosoKumi[$item->TARGET_DATE][$item->RACE_NUM][$type] = $this->FuncYosoTekichuritsu->FuncYosoTekichuritsu($item,$type);
+
+                    $type = 2;
+                    $strAryYosoKumi[$item->TARGET_DATE][$item->RACE_NUM][$type] = $this->FuncYosoTekichuritsu->FuncYosoTekichuritsu($item,$type);
+                }
+        
+
+                $kekka_info = $this->TbBoatKekkainfo->getRecordForTekichuritsu($jyo,$kaisai_master->開始日付 , $strYosoDate);
+                $data['kekka_info'] = $kekka_info;
+
+                //記者予想の的中カウント
+                $kisya_hit_count = 0;
+                $kisya_mansyu_count = 0;
+                
+                foreach($kekka_info as $test_key => $kekka_info_row){
+
+                    if(strpos($kekka_info_row->SANRENTAN1,'MS') === false){
+                    
+                    
+                        if(isset($strAryYosoKumi[$kekka_info_row->TARGET_DATE][$kekka_info_row->RACE_NUMBER])){
+
+                            $target_kumi = $strAryYosoKumi[$kekka_info_row->TARGET_DATE][$kekka_info_row->RACE_NUMBER];
+
+
+                            foreach($target_kumi as $type => $kumi_array){
+                                //大穴と本命
+                                
+                                foreach($kumi_array as $kumi_array2){
+                                    //予想の数
+                                    
+                                    foreach($kumi_array2 as $kumi){
+                                        //予想一つから想定される当選パターン
+
+                                        //予想をすべてチェック
+                                        if($kekka_info_row->SANRENTAN1 == $kumi){
+                                            $kisya_hit_count++;
+                                            
+                                            //万舟チェック
+                                            if($kekka_info_row->SANRENTAN_MONEY1 >= 10000){
+                                                $kisya_mansyu_count++;
+                                            }
+                                        }
+
+                                        //同着だった場合
+                                        if($kekka_info_row->SANRENTAN2 == $kumi){
+                                            $kisya_hit_count++;
+
+                                            //万舟チェック
+                                            if($kekka_info_row->SANRENTAN_MONEY2 >= 10000){
+                                                $kisya_mansyu_count++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //var_dump($kisya_hit_count);
+                //var_dump(count($kekka_info));
+
+
+                //v-power予想
+                $v_power = $this->TbGambooYosoRace->getRecordForTekichuritsu($jyo,$kaisai_master->開始日付 , $strYosoDate);
+                
+                $strAryYosoKumi = [];
+                foreach($v_power as $item){
+
+                    //6カラム集計
+                    $row = [];
+                    for($i=1;$i<=6;$i++){
+                        $prop_name = 'SANRENTAN_'.$i;
+                        $row[] = $item->$prop_name;
+                    }
+
+                    $strAryYosoKumi[$item->TARGET_DATE][$item->RACE_NUMBER] = $row;
+                }
+                
+                
+                //vpower予想の的中カウント
+                $v_power_hit_count = 0;
+                $v_power_mansyu_count = 0;
+                foreach($kekka_info as $kekka_info_row){
+                    if(isset($strAryYosoKumi[$kekka_info_row->TARGET_DATE][$kekka_info_row->RACE_NUMBER])){ 
+
+                        $target_kumi = $strAryYosoKumi[$kekka_info_row->TARGET_DATE][$kekka_info_row->RACE_NUMBER];
+
+                        foreach($target_kumi as $kumi){
+                            //予想をすべてチェック
+
+                            if($kekka_info_row->SANRENTAN1 == $kumi){
+                                $v_power_hit_count++;
+
+                                //万舟チェック
+                                if($kekka_info_row->SANRENTAN_MONEY1 >= 10000){
+                                    $v_power_mansyu_count++;
+                                }
+                            }
+
+                            //同着だった場合
+                            if($kekka_info_row->SANRENTAN2 == $kumi){
+                                $v_power_hit_count++;
+
+                                //万舟チェック
+                                if($kekka_info_row->SANRENTAN_MONEY2 >= 10000){
+                                    $v_power_mansyu_count++;
+                                }
+                            }
+                            
+                        }
+
+                    }
+                }
+                
+                $data['kisya_hit_count'] = $kisya_hit_count;
+                $data['v_power_hit_count'] = $v_power_hit_count;
+                $data['kisya_mansyu_count'] = $kisya_mansyu_count;
+                $data['v_power_mansyu_count'] = $v_power_mansyu_count;
+
+                //表示可否判定
+                //記者かV_powerどちらか確率10%を超えていたら、表示
+                if( ($kisya_hit_count / count($kekka_info)) >= 0.1 || ($v_power_hit_count / count($kekka_info)) >= 0.1 ){
+                    $data['hit_count_display_flg'] = true; 
+                }else{
+                    $data['hit_count_display_flg'] = false; 
+                }
+
+                //万舟の場合、一つでもあれば
+                if($kisya_mansyu_count || $v_power_mansyu_count){
+                    $data['mansyu_count_display_flg'] = true; 
+                }else{
+                    $data['mansyu_count_display_flg'] = false; 
+                }
+        
+            }
+
+        }
+    
+        
 
         return $data;
     }
