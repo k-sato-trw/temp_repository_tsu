@@ -2661,20 +2661,23 @@ class ExportSpKaisaiService
                 $target_date = $today_date;
             }
 
-            //開催マスターがある場合、開催日リスト作成
-            $temp_date = $kaisai_master->開始日付;
-            $end_date = $kaisai_master->終了日付;
-            $kaisai_date_list = [];
-            while($temp_date <= $end_date){
-                $kaisai_date_list[] = $temp_date;
-                $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
-            }
-
             $data['kaisai_master'] = $kaisai_master;
             $data['race_header'] = $race_header;
             $data['target_date'] = $target_date;
-            $data['kaisai_date_list'] = $kaisai_date_list;
             $data['tomorrow_flg'] = $tomorrow_flg;
+
+            if($kaisai_master){
+                //開催マスターがある場合、開催日リスト作成
+                $temp_date = $kaisai_master->開始日付;
+                $end_date = $kaisai_master->終了日付;
+                $kaisai_date_list = [];
+                while($temp_date <= $end_date){
+                    $kaisai_date_list[] = $temp_date;
+                    $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
+                }
+
+                $data['kaisai_date_list'] = $kaisai_date_list;
+            }
         }
 
         {
@@ -2722,35 +2725,38 @@ class ExportSpKaisaiService
 
                 $target_date = $today_date;
             }
-            
-            $yesterday_date = date('Ymd',strtotime('-1 day',strtotime($target_date)));
-
-            //開催マスターがある場合、開催日リスト作成
-            $temp_date = $kaisai_master->開始日付;
-            $end_date = $kaisai_master->終了日付;
-            $kaisai_date_list = [];
-            $kaisai_date_label_list = [];
-            $day_count = 1;
-            while($temp_date <= $end_date){
-                $kaisai_date_list[] = $temp_date;
-                if($temp_date == $kaisai_master->開始日付){
-                    $kaisai_date_label_list[$temp_date] = '初日';
-                }elseif($temp_date == $kaisai_master->終了日付){
-                    $kaisai_date_label_list[$temp_date] = '最終日';
-                }else{
-                    $kaisai_date_label_list[$temp_date] = $day_count.'日目';
-                }
-                $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
-                $day_count++;
-            }
-
             $data['kaisai_master'] = $kaisai_master;
             $data['race_header'] = $race_header;
             $data['target_date'] = $target_date;
-            $data['kaisai_date_list'] = $kaisai_date_list;
-            $data['kaisai_date_label_list'] = $kaisai_date_label_list;
             $data['tomorrow_flg'] = $tomorrow_flg;
+            
+            $yesterday_date = date('Ymd',strtotime('-1 day',strtotime($target_date)));
             $data['yesterday_date'] = $yesterday_date;
+
+            //開催マスターがある場合、開催日リスト作成
+            if($kaisai_master){
+                $temp_date = $kaisai_master->開始日付;
+                $end_date = $kaisai_master->終了日付;
+                $kaisai_date_list = [];
+                $kaisai_date_label_list = [];
+                $day_count = 1;
+                while($temp_date <= $end_date){
+                    $kaisai_date_list[] = $temp_date;
+                    if($temp_date == $kaisai_master->開始日付){
+                        $kaisai_date_label_list[$temp_date] = '初日';
+                    }elseif($temp_date == $kaisai_master->終了日付){
+                        $kaisai_date_label_list[$temp_date] = '最終日';
+                    }else{
+                        $kaisai_date_label_list[$temp_date] = $day_count.'日目';
+                    }
+                    $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
+                    $day_count++;
+                }
+
+                
+                $data['kaisai_date_list'] = $kaisai_date_list;
+                $data['kaisai_date_label_list'] = $kaisai_date_label_list;
+            }
         }
 
         {
@@ -2798,47 +2804,48 @@ class ExportSpKaisaiService
                 $target_date = $today_date;
             }
 
-            //開催マスターがある場合、開催日リスト作成
-            $temp_date = $kaisai_master->開始日付;
-            $end_date = $kaisai_master->終了日付;
-            $kaisai_date_list = [];
-            $kaisai_date_list_date_onry = [];
-            $day_count = 1;
-            while($temp_date <= $end_date){
-                if($temp_date == $kaisai_master->開始日付){
-                    $kaisai_date_list[$temp_date] = '初日';
-                }elseif($temp_date == $kaisai_master->終了日付){
-                    $kaisai_date_list[$temp_date] = '最終日';
-                }else{
-                    $kaisai_date_list[$temp_date] = $day_count.'日目';
-                }
-                $kaisai_date_list_date_onry[] = $temp_date;
-                $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
-                $day_count++;
-            }
-            krsort($kaisai_date_list);
-
             $data['kaisai_master'] = $kaisai_master;
             $data['race_header'] = $race_header;
             $data['target_date'] = $target_date;
             $data['today_date'] = $today_date;
             $data['tomorrow_date'] = $tomorrow_date;
-            $data['kaisai_date_list'] = $kaisai_date_list;
             $data['tomorrow_flg'] = $tomorrow_flg;
+
+            //開催マスターがある場合、開催日リスト作成
+            if($kaisai_master){
+                $temp_date = $kaisai_master->開始日付;
+                $end_date = $kaisai_master->終了日付;
+                $kaisai_date_list = [];
+                $kaisai_date_list_date_onry = [];
+                $day_count = 1;
+                while($temp_date <= $end_date){
+                    if($temp_date == $kaisai_master->開始日付){
+                        $kaisai_date_list[$temp_date] = '初日';
+                    }elseif($temp_date == $kaisai_master->終了日付){
+                        $kaisai_date_list[$temp_date] = '最終日';
+                    }else{
+                        $kaisai_date_list[$temp_date] = $day_count.'日目';
+                    }
+                    $kaisai_date_list_date_onry[] = $temp_date;
+                    $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
+                    $day_count++;
+                }
+                krsort($kaisai_date_list);
+
+                $data['kaisai_date_list'] = $kaisai_date_list;
+            }
         }
-
-        //pcと異なり、今節レースを全て収集
-        $yoso_highlight = $this->TbTsuYosoHighlight->getRecordForFront($jyo,$kaisai_date_list_date_onry,$is_preview = false);        
-        $data['yoso_highlight'] = $yoso_highlight;
-
-
-        $yoso = $this->TbTsuYoso->getPushing($target_date);
-        $data['yoso'] = $yoso;
 
 
         //的中率処理
-        
         if($kaisai_master){
+            //pcと異なり、今節レースを全て収集
+            $yoso_highlight = $this->TbTsuYosoHighlight->getRecordForFront($jyo,$kaisai_date_list_date_onry,$is_preview = false);        
+            $data['yoso_highlight'] = $yoso_highlight;
+
+            $yoso = $this->TbTsuYoso->getPushing($target_date);
+            $data['yoso'] = $yoso;
+
             $neer_kekka_race_number = $this->KyogiCommon->getNeerKekkaRaceNumber($jyo,$target_date);
 
             if($tomorrow_flg){
@@ -3014,9 +3021,125 @@ class ExportSpKaisaiService
 
         }
     
+        return $data;
+    }
+
+    public function top_contents($request){
+        $data = [];
+
+        $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
+        $data['jyo'] = $jyo;
+
+        {
+            //処理対象日を判定
+            $tomorrow_flg = false;
+            $today_date = $request->input('yd') ?? date('Ymd');
+            $today_date = '20210619';
+            $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$tomorrow_date);
+
+            if($kaisai_master && $race_header){
+                //両方あれば、対象日確定
+                $tomorrow_flg = true;
+                $target_date = $tomorrow_date;
+            }else{
+                //無い場合は、当日判定
+                $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+                $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+                $target_date = $today_date;
+            }
+
+            
+            $data['kaisai_master'] = $kaisai_master;
+            $data['race_header'] = $race_header;
+            $data['target_date'] = $target_date;
+            $data['today_date'] = $today_date;
+            $data['tomorrow_date'] = $tomorrow_date;
+            $data['tomorrow_flg'] = $tomorrow_flg;
+
+
+            //開催マスターがある場合、開催日リスト作成
+            if($kaisai_master){
+                $temp_date = $kaisai_master->開始日付;
+                $end_date = $kaisai_master->終了日付;
+                $kaisai_date_list = [];
+                $kaisai_date_list_date_onry = [];
+                $day_count = 1;
+                while($temp_date <= $end_date){
+                    if($temp_date == $kaisai_master->開始日付){
+                        $kaisai_date_list[$temp_date] = '初日';
+                    }elseif($temp_date == $kaisai_master->終了日付){
+                        $kaisai_date_list[$temp_date] = '最終日';
+                    }else{
+                        $kaisai_date_list[$temp_date] = $day_count.'日目';
+                    }
+                    $kaisai_date_list_date_onry[] = $temp_date;
+                    $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
+                    $day_count++;
+                }
+                krsort($kaisai_date_list);
+                $data['kaisai_date_list'] = $kaisai_date_list;
+            
+                $chushi_junen = $this->ChushiJunen->getFirstRecordForFront($jyo,$target_date);
+                $data['chushi_junen'] = $chushi_junen;
+
+                //全レース出走データ呼び出し
+                $syussou_all = [];
+                $ozz_info_all = [];
+                for($race_num = 1;$race_num <= 12;$race_num++){
+                    $syussou_all[$race_num] = $this->KyogiCommon->create_syussou_array($jyo,$target_date,$race_num);
+
+                    //欠場情報
+                    $ozz_info = $this->TbBoatOzzinfo->getFirstRecordByPK($jyo,$target_date,$race_num);
+                    $ozz_info_array = [1=>'',2=>'',3=>'',4=>'',5=>'',6=>''];
+                    if($ozz_info){
+                        for($i = 1; $i <= 6; $i++){
+                            $prop_name = "KETUJO_HENKAN".$i;
+                            $ozz_info_array[$i] = $ozz_info->$prop_name;
+                        }
+                    }
+                    $ozz_info_all[$race_num] = $ozz_info_array;
+                }
+                $data['syussou_all'] = $syussou_all;
+                $data['ozz_info_all'] = $ozz_info_all;
+
+
+                $highlight = $this->TbTsuYosoHighlight->getFirstRecordForFront($jyo,$target_date,$is_preview = false);
+                $highlight_array = [];
+                for($i=1;$i<=4;$i++){
+                    $prop_name = 'TOUBAN'.$i;
+                    $highlight_array[$highlight->$prop_name] = $highlight->$prop_name;
+                }
+                $data['highlight_array'] = $highlight_array;
+
+                $yoso = $this->TbTsuYoso->getPushing($target_date);
+                $push_yoso = [];
+                foreach($yoso as $item){
+                    $push_yoso[$item->RACE_NUM] = $item;
+                }
+                $data['push_yoso'] = $push_yoso;
+
+
+                {
+                    $neer_kekka_race_number = $this->KyogiCommon->getNeerKekkaRaceNumber($jyo,$target_date);
+                    $neer_kekka_race_number_tfinfo = $this->KyogiCommon->getNeerKekkaRaceNumberTfinfo($jyo,$target_date);
+                    
+                    $data['neer_kekka_race_number'] = $neer_kekka_race_number;
+                    $data['neer_kekka_race_number_tfinfo'] = $neer_kekka_race_number_tfinfo;
+                }
         
+
+            }
+            
+        }
+
 
         return $data;
     }
+
+
 
 }

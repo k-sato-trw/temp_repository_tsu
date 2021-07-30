@@ -728,6 +728,57 @@ class GeneralService
         return $display_date;
     }
 
+    public static function create_display_date_for_pc_result($start_date,$end_date,$holiday_array,$week_class_flg=false){
+
+        $week = self::create_week_label();
+        
+        $start_y = date('Y',strtotime($start_date));
+        $start_m = date('n',strtotime($start_date));
+        $start_d = date('j',strtotime($start_date));
+        
+        $end_y = date('Y',strtotime($end_date));
+        $end_m = date('n',strtotime($end_date));
+        $end_d = date('j',strtotime($end_date));
+
+        $display_date = "";
+
+        $start_week_class = "";
+        $end_week_class = "";
+        if($week_class_flg){
+            if(isset($holiday_array[$start_date])){
+                $start_week_class = "class='sun'";
+            }else{
+
+                if(date("w",strtotime($start_date)) == 0){
+                    $start_week_class = "class='sun'";
+                }elseif(date("w",strtotime($start_date)) == 6){
+                    $start_week_class = "class='sat'";
+                }
+            }
+
+            if(isset($holiday_array[$end_date])){
+                $end_week_class = "class='sun'";
+            }else{
+                if(date("w",strtotime($end_date)) == 0){
+                    $end_week_class = "class='sun'";
+                }elseif(date("w",strtotime($end_date)) == 6){
+                    $end_week_class = "class='sat'";
+                }
+            }
+            
+        }
+
+
+        if( $start_m != $end_m){
+            $display_date .= $start_m."/".$start_d."<span ".$start_week_class." >(".$week[date("w",strtotime($start_date))].")</span>～".$end_m."/".$end_d."<span ".$end_week_class." >(".$week[date("w",strtotime($end_date))].")</span>";
+        }else{
+            $display_date .= $start_m."/".$start_d."<span ".$start_week_class." >(".$week[date("w",strtotime($start_date))].")</span>～".$end_d."<span ".$end_week_class." >(".$week[date("w",strtotime($end_date))].")</span>";
+        }
+        
+
+        return $display_date;
+    }
+
     public static function number_to_month_name($number){
         $array = [
             1 => "January",

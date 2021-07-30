@@ -944,4 +944,16 @@ class ExportSpKaisaiController extends Controller
 
     }
 
+    public function top_contents(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->top_contents($request);
+
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/sp/Top_Contents.htm', view('front.sp.kaisai.top_contents',$data));
+        return '書き出し完了<br><a href="/asp/kyogi/09/sp/Top_Contents.htm">/asp/kyogi/09/sp/Top_Contents.htm</a>';
+
+    }
+
 }

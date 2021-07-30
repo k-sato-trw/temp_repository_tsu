@@ -223,4 +223,24 @@ class KaisaiMasterRepository implements KaisaiMasterRepositoryInterface
                     ->get();
     }
 
+
+    /**
+     * 結果検索用　一定期間の開催レースを取得
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getRecordForResult($jyo,$start_date,$end_date)
+    {        
+        return $this->KaisaiMaster
+                    ->where("場コード","=",$jyo)
+                    ->where("終了日付",">=",$start_date)
+                    ->where("開始日付","<=",$end_date)
+                    ->whereIn("開催区分",['000','0',null])
+                    ->orderBy("開始日付","DESC")
+                    ->get();
+    }
+
 }

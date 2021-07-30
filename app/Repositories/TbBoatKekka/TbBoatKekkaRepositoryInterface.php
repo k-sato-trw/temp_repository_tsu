@@ -56,4 +56,13 @@ interface TbBoatKekkaRepositoryInterface
      */
     public function getDebutRaceKekka($jyo,$touban,$start_date,$end_date);
 
+    /**
+     * 結果検索用、最新結果が存在する日付のレコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @return object
+     */
+    public function getLastRecord($jyo,$target_date);
+
 }

@@ -125,6 +125,22 @@ class TbBoatKekkaRepository implements TbBoatKekkaRepositoryInterface
                     ->get();
     }
 
+    /**
+     * 結果検索用、最新結果が存在する日付のレコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @return object
+     */
+    public function getLastRecord($jyo,$target_date)
+    {
+        return $this->TbBoatKekka
+                    ->where("JYO","=",$jyo)
+                    ->where("TARGET_DATE","<=",$target_date)
+                    ->orderBy('TARGET_DATE','DESC')
+                    ->first();
+    }
+
 
 
 }

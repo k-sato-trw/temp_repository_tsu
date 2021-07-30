@@ -113,4 +113,14 @@ interface KaisaiMasterRepositoryInterface
      */
     public function get2RecordForReplay($jyo,$target_date);
 
+    /**
+     * 結果検索用　一定期間の開催レースを取得
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getRecordForResult($jyo,$start_date,$end_date);
+
 }
