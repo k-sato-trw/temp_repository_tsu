@@ -1,4 +1,4 @@
-//Xƒ}[ƒN•Ï‰»—p
+//Xãƒãƒ¼ã‚¯å¤‰åŒ–ç”¨
 $(function(){
 	$('#nav_btn').on('click', function() {
 		$(this).toggleClass('open');
@@ -8,25 +8,25 @@ $(function(){
 
 
 
-//‘åƒƒjƒ…[ƒXƒ‰ƒCƒh
+//å¤§ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¹ãƒ©ã‚¤ãƒ‰
 $(function(){
-var menu1 = $('#nav_main'), // ƒXƒ‰ƒCƒhƒCƒ“‚·‚éƒƒjƒ…[‚ğw’è
-	menu1Btn = $('#nav_btn'); // ƒƒjƒ…[ƒ{ƒ^ƒ“‚ğw’è
+var menu1 = $('#nav_main'), // ã‚¹ãƒ©ã‚¤ãƒ‰ã‚¤ãƒ³ã™ã‚‹ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’æŒ‡å®š
+	menu1Btn = $('#nav_btn'); // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒœã‚¿ãƒ³ã‚’æŒ‡å®š
 
-    // ƒƒjƒ…[ƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚½‚Ì“®‚«
+    // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸæ™‚ã®å‹•ã
     menu1Btn.on('click', function(){
 
-    // menu ‚É open ƒNƒ‰ƒX‚ğ•t—^‚·‚é
+    // menu ã« open ã‚¯ãƒ©ã‚¹ã‚’ä»˜ä¸ã™ã‚‹
     menu1.toggleClass('open');
 
         if(menu1.hasClass('open')){
-            // open ƒNƒ‰ƒX‚ª menu ‚É‚Â‚¢‚Ä‚¢‚½‚çƒƒjƒ…[‚ğƒXƒ‰ƒCƒhƒCƒ“‚·‚é
+            // open ã‚¯ãƒ©ã‚¹ãŒ menu ã«ã¤ã„ã¦ã„ãŸã‚‰ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’ã‚¹ãƒ©ã‚¤ãƒ‰ã‚¤ãƒ³ã™ã‚‹
 			menu1.animate({ top:'110px', opacity:'toggle' },400);
 			$('#nav_fb').animate({top: '590px'});
 			$('#nav_twi').animate({top: '630px'});
             $('#nav_yt').animate({top: '670px'});
         } else {
-            // open ƒNƒ‰ƒX‚ª menu ‚É‚Â‚¢‚Ä‚¢‚È‚©‚Á‚½‚çƒXƒ‰ƒCƒhƒAƒEƒg‚·‚é
+            // open ã‚¯ãƒ©ã‚¹ãŒ menu ã«ã¤ã„ã¦ã„ãªã‹ã£ãŸã‚‰ã‚¹ãƒ©ã‚¤ãƒ‰ã‚¢ã‚¦ãƒˆã™ã‚‹
 			menu1.animate({ top:'-300px', opacity:'toggle' },300);
 			$('#nav_fb').animate({top: '120px'});
 			$('#nav_twi').animate({top: '160px'});
@@ -37,10 +37,10 @@ var menu1 = $('#nav_main'), // ƒXƒ‰ƒCƒhƒCƒ“‚·‚éƒƒjƒ…[‚ğw’è
 
 
 
-//¬ƒƒjƒ…[ƒXƒ‰ƒCƒh
+//å°ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¹ãƒ©ã‚¤ãƒ‰
 $(function(){
 
-	//ƒƒjƒ…[ƒAƒCƒRƒ“‚ğƒNƒŠƒbƒN‚µ‚½‚Ì“®‚«
+	//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸæ™‚ã®å‹•ã
 	$('.btn_img').mouseover(function(){
 		$('div.menu2').removeClass('open');
 		$(this).next('div.menu2').addClass('open');
@@ -64,7 +64,7 @@ $(function(){
 
 
 //$(document).click(function(event) {
-  // ƒNƒŠƒbƒN‚µ‚½êŠ‚ª#nav(—Ìˆæ“à‚Æ‚İ‚È‚·”ÍˆÍ)‚É–³‚¯‚ê‚Îmenu‚ğÁ‚·
+  // ã‚¯ãƒªãƒƒã‚¯ã—ãŸå ´æ‰€ãŒ#nav(é ˜åŸŸå†…ã¨ã¿ãªã™ç¯„å›²)ã«ç„¡ã‘ã‚Œã°menuã‚’æ¶ˆã™
 //  if(!$.contains($('#nav')[0], event.target)){
 //	  $('.menu2').removeClass('open');
 //	  alert('click');

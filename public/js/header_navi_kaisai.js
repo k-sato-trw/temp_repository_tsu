@@ -1,47 +1,46 @@
 
 //**************************************************************
-// * ’ÃƒTƒCƒhƒƒjƒ…[—p‚Ìjavascript
+// * æ´¥ã‚µã‚¤ãƒ‰ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”¨ã®javascript
 // * header_navi_kaisai.js
 //**************************************************************
-// * Žg—p•û–@ 
+// * ä½¿ç”¨æ–¹æ³• 
 //**************************************************************
-//Ÿ—pˆÓ
-//<head></head>“à‚É‰º‹L‚ðŽw’è‚·‚é
+//â—†ç”¨æ„
+//<head></head>å†…ã«ä¸‹è¨˜ã‚’æŒ‡å®šã™ã‚‹
 //<script type="text/javascript" src="/jsheader_navi.js"></script>
-//Ÿ•\Ž¦
-//•\Ž¦‚µ‚½‚¢‰ÓŠ‚É‰º‹L‚ðŽw’è‚·‚é
+//â—†è¡¨ç¤º
+//è¡¨ç¤ºã—ãŸã„ç®‡æ‰€ã«ä¸‹è¨˜ã‚’æŒ‡å®šã™ã‚‹
 //<script type="text/javascript">
 //funcTsuHeaderMenu();
 //</script>
 //**************************************************************
-// * •ÒW•û–@ ƒƒ•K‚¸ƒeƒXƒgƒTƒCƒg‚Å–â‘è‚È‚¢‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢„„
+// * ç·¨é›†æ–¹æ³• ï¼œï¼œå¿…ãšãƒ†ã‚¹ãƒˆã‚µã‚¤ãƒˆã§å•é¡Œãªã„ã‹ç¢ºèªã—ã¦ãã ã•ã„ï¼žï¼ž
 //**************************************************************
-//	strMenuHTML = strMenuHTML + "[‚±‚ÌŠÔ‚ÉHTML•¶‘}“ü‚·‚é]";
-//	ƒ’ˆÓI„
-//	u"v(ƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“)‚ðŽg—p‚¹‚¸A
-//	u'v(ƒVƒ“ƒOƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“)‚ðŽg—p‚µ‚Ä‚­‚¾‚³‚¢B
-//	‚Ü‚½Ajs‚Ì‹K‘¥ŠO‚Ì‚±‚Æ‚ð‚·‚é‚ÆA‘S‚Ä•\Ž¦‚³‚ê‚È‚­‚È‚è‚Ü‚·B
-//	ƒ”õl„
-//	•ÒW‚ÉŽ©M‚ª‚È‚¢ê‡‚ÍƒVƒXƒeƒ€‚Ü‚Å•ÏX‚µ‚Ä‚Ù‚µ‚¢‰ÓŠ‚ð˜A—‚µ‚Ä‚­‚¾‚³‚¢B
+//	strMenuHTML = strMenuHTML + "[ã“ã®é–“ã«HTMLæ–‡æŒ¿å…¥ã™ã‚‹]";
+//	ï¼œæ³¨æ„ï¼ï¼ž
+//	ã€Œ"ã€(ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³)ã‚’ä½¿ç”¨ã›ãšã€
+//	ã€Œ'ã€(ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
+//	ã¾ãŸã€jsã®è¦å‰‡å¤–ã®ã“ã¨ã‚’ã™ã‚‹ã¨ã€å…¨ã¦è¡¨ç¤ºã•ã‚Œãªããªã‚Šã¾ã™ã€‚
+//	ï¼œå‚™è€ƒï¼ž
+//	ç·¨é›†ã«è‡ªä¿¡ãŒãªã„å ´åˆã¯ã‚·ã‚¹ãƒ†ãƒ ã¾ã§å¤‰æ›´ã—ã¦ã»ã—ã„ç®‡æ‰€ã‚’é€£çµ¡ã—ã¦ãã ã•ã„ã€‚
 // **************************************************************
-// * XV—š—ð
+// * æ›´æ–°å±¥æ­´
 // **************************************************************
 // * 
 // **************************************************************
 
 
 
-	function funcTsuHeaderMenu()
-	{
+function funcTsuHeaderMenu()
+{
 
-		var strMenuHTML = '';
-		strMenuHTML = strMenuHTML + "<li class='b1'><a href='/asp/tsu/kaisai/kaisaiindex.htm'>ƒ‰ƒCƒu&amp;ƒŠƒvƒŒƒC</a></li>";
-		strMenuHTML = strMenuHTML + "<li class='b2'><a href='/asp/tsu/kaisai/kaisaiindex.htm?page=6'>ƒŒ[ƒX—\‘z</a></li>";
-		strMenuHTML = strMenuHTML + "<li class='b3'><a href='/asp/log/tsu_top.asp' target='_blank'>MŒ”“Š•[</a></li>";
-		strMenuHTML = strMenuHTML + "<div class='clear'></div>";
+	var strMenuHTML = '';
+	strMenuHTML = strMenuHTML + "<li class='b1'><a href='/asp/tsu/kaisai/kaisaiindex.htm'>ãƒ©ã‚¤ãƒ–&amp;ãƒªãƒ—ãƒ¬ã‚¤</a></li>";
+	strMenuHTML = strMenuHTML + "<li class='b2'><a href='/asp/tsu/kaisai/kaisaiindex.htm?page=6'>ãƒ¬ãƒ¼ã‚¹äºˆæƒ³</a></li>";
+	strMenuHTML = strMenuHTML + "<li class='b3'><a href='/asp/log/tsu_top.asp' target='_blank'>èˆŸåˆ¸æŠ•ç¥¨</a></li>";
+	strMenuHTML = strMenuHTML + "<div class='clear'></div>";
 
-		//‘‚«o‚µ
-		document.write(strMenuHTML);
+	//æ›¸ãå‡ºã—
+	document.write(strMenuHTML);
 
-	}
-	
+}

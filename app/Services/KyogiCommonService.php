@@ -64,7 +64,10 @@ class KyogiCommonService
             }
 
             //展示タイム追加
+            $syssou_array[$item->TEIBAN]->ST_COURSE = $tyokuzen[$key]->ST_COURSE;
+            $syssou_array[$item->TEIBAN]->ST_TIMING = $tyokuzen[$key]->ST_TIMING;
             $syssou_array[$item->TEIBAN]->TENJI_TIME = $tyokuzen[$key]->TENJI_TIME;
+            $syssou_array[$item->TEIBAN]->TILT_KAKUDO = $tyokuzen[$key]->TILT_KAKUDO;
 
             {//出力用にデータ成形 デザイン依存度の高いものは呼び出し元で、改めて成形
                 $syssou_array[$item->TEIBAN]->SENSYU_NAME = str_replace("　　"," ", $syssou_array[$item->TEIBAN]->SENSYU_NAME);

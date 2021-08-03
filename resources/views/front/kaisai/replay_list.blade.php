@@ -1,39 +1,42 @@
 
 <div id="replay_list">
-    <h3 id="today">TODAY'S RACE</h3>
-    <div id="today_rep">
-        <h4>{{$kaisai_master->開催名称}}</h4>
-        <div class="list">
-            <p>{{ date('n/j',strtotime($target_date)) }}
-                <span>
-                    @if($kaisai_master)
-                        
-                        @if($kaisai_master->開始日付 == $target_date)
-                            初日
-                        @elseif($kaisai_master->終了日付 == $target_date)
-                            最終日                
-                        @else
-                            {{$race_header->KAISAI_DAYS}}日目
+    @if($kaisai_master)
+        <h3 id="today">TODAY'S RACE</h3>
+        <div id="today_rep">
+            <h4>{{$kaisai_master->開催名称}}</h4>
+            <div class="list">
+                <p>{{ date('n/j',strtotime($target_date)) }}
+                    <span>
+                        @if($kaisai_master)
+                            
+                            @if($kaisai_master->開始日付 == $target_date)
+                                初日
+                            @elseif($kaisai_master->終了日付 == $target_date)
+                                最終日                
+                            @else
+                                {{$race_header->KAISAI_DAYS}}日目
+                            @endif
+                            
                         @endif
-                        
-                    @endif
-                </span>
-            </p>
-            <ul>
-                @for($loop_race_num = 1;$loop_race_num <= 12 ; $loop_race_num++)
-                    @isset($vod_array[$target_date][$target_date.'09'.str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)])
-                        <li class="rep_btn b{{$loop_race_num}}"><a href="javascript:parent.func_replaylink('/asp/tsu/kaisai/replay_movie.htm?movieid={{$target_date}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}','/asp/kyogi/09/pc/replay_sub/replay_sub_{{$target_date}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm','/asp/kyogi/09/pc/replay_syusso/replay_syusso_{{$target_date}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm',1);">{{$loop_race_num}}R</a></li>
-                    @else
-                        <li class="rep_btn b{{$loop_race_num}}">{{$loop_race_num}}R</li>
-                    @endisset
-                @endfor
-                <div class="clear"></div>
-            </ul>                            
-        </div><!--/list-->
-    </div><!--/today_rep-->
-    
+                    </span>
+                </p>
+                <ul>
+                    @for($loop_race_num = 1;$loop_race_num <= 12 ; $loop_race_num++)
+                        @isset($vod_array[$target_date][$target_date.'09'.str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)])
+                            <li class="rep_btn b{{$loop_race_num}}"><a href="javascript:parent.func_replaylink('/asp/tsu/kaisai/replay_movie.htm?movieid={{$target_date}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}','/asp/kyogi/09/pc/replay_sub/replay_sub_{{$target_date}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm','/asp/kyogi/09/pc/replay_syusso/replay_syusso_{{$target_date}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm',1);">{{$loop_race_num}}R</a></li>
+                        @else
+                            <li class="rep_btn b{{$loop_race_num}}">{{$loop_race_num}}R</li>
+                        @endisset
+                    @endfor
+                    <div class="clear"></div>
+                </ul>                            
+            </div><!--/list-->
+        </div><!--/today_rep-->        
+    @else
+        <h3>RACE REPLAY</h3>
+    @endif
     <dl>
-        @foreach($kisai_2record as $kisai_2record_row)
+        @foreach($kisai_2record as $key=> $kisai_2record_row)
             <?php
                 $tmp_date = $kisai_2record_row->開始日付;
                 $end_date = $kisai_2record_row->終了日付;
@@ -47,7 +50,7 @@
                     $tmp_date = date("Ymd",strtotime("+1 day",strtotime($tmp_date)));
                 }
             ?>
-            <dt>
+            <dt @if(!$kaisai_master && $key==0) class="open" @endif >
                 <table><tbody>
                 <tr>
                     <td class="date"><span>{{date('n/j',strtotime($kisai_2record_row->開始日付))}}～{{date('n/j',strtotime($kisai_2record_row->終了日付))}}</span></td>
@@ -70,7 +73,7 @@
                     @foreach ( $kaisai_day_list as $kaisai_day_key => $kaisai_day)
                         <ul class="race_num select" id="tab{{$kaisai_day_key + 1}}">
                             @for($loop_race_num = 1;$loop_race_num <= 12 ; $loop_race_num++)
-                                @isset($vod_array[$target_date][$target_date.'09'.str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)])
+                                @isset($vod_array[$kaisai_day][$kaisai_day.'09'.str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)])
                                     <li class="rep_btn b{{$loop_race_num }}"><a href="javascript:parent.func_replaylink('/asp/tsu/kaisai/replay_movie.htm?movieid={{$kaisai_day}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}','/asp/kyogi/09/pc/replay_sub/replay_sub_{{$kaisai_day}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm','/asp/kyogi/09/pc/replay_syusso/replay_syusso_{{$kaisai_day}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm',1);">{{$loop_race_num }}R</a></li>
                                 @else
                                     <li class="rep_btn b{{$loop_race_num }}">{{$loop_race_num }}R</li>

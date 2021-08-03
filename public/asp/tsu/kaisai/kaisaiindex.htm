@@ -88,45 +88,7 @@ function funcTenjiMovie( argIDData , argMovieid )
 function func_onload(){
 	funcExec();
 
-
-	if( intPage == 1 ){
-
-        		    document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/highlight/highlight_20210525.htm";
-		        
-        func_syussobtn( 1 );
-		location.hash ='';
-		location.hash ='kyogi';
-	}
-	else if( intPage == 2 ){
-		document.getElementById("id_kyogi_data").src = "/kaisai/s_pdf.htm";
-		func_syussobtn( 1 );
-		location.hash ='';
-		location.hash ='kyogi';
-	}
-	else if( intPage == 3 ){
-		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/motor/motor04.htm";
-		func_syussobtn( 1 );
-		location.hash ='';
-		location.hash ='kyogi';
-	}
-	else if( intPage == 4 ){
-		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/yosen.htm";
-		func_syussobtn( 1 );
-		location.hash ='';
-		location.hash ='kyogi';
-	}
-	else if( intPage == 5 ){
-		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/setu_kekka/setu_kekka01.htm";
-		func_syussobtn( 1 );
-		location.hash ='';
-		location.hash ='kyogi';
-	}
-	else if( intPage == 6 ){
-		document.getElementById("id_kyogi_data").src = "/asp/kyogi/09/pc/yoso01/yoso0112_20210525.htm";
-		location.hash ='';
-		location.hash ='kyogi';
-	}
-
+    
 }
 	function func_replaylink(argurl,argurl2,argurl3,argtype){
 		document.getElementById("race_movie").src = argurl;
@@ -203,8 +165,7 @@ function func_syussobtn( argdata ){
 
 <div id="insertTenjiMovie"><a class="TenjiMovie" id="TenjiMovie" href="#"></a></div>
 
-                        <div id="wrapper" class="replay">
-                
+    <div id="wrapper" class="replay">
 
 <div id="header_wrap">
     <div id="header">
@@ -247,27 +208,23 @@ function func_syussobtn( argdata ){
                 <div class="date">
                 	<span class="d1">
                                                     
-                            <img src="/kaisai/images/d1_5.png">
+                            <img src="/kaisai/images/d1_8.png">
                                                 <img src="/kaisai/images/d1_sla.png">
                                                     
-                            <img src="/kaisai/images/d1_2.png">
-                            <img src="/kaisai/images/d1_5.png">
+                            <img src="/kaisai/images/d1_3.png">
                                                                             
                             <img src="/kaisai/images/d1_tue.png">
                         
                     </span>
 
-                                                                                                        <span class="d2"><img src="/kaisai/images/d2_day5.png"></span>
-                                                    
-                        
-                                                    <span class="d3 G0">一般</span>
-                                                                
+                                            <span class="d2"><img src="/kaisai/images/d2_day_no.png"></span>
+                                        
                 </div><!--/date-->
                 <div class="name">
                 
                                     
-                                            <span>中日スポーツ津ボート大賞</span><!-- class="small" でサイズ小 -->
-                                    
+                    <span></span><!-- class=""small"" でサイズ小 -->
+                
                     <iframe src="/asp/tsu/kaisai/race_telop_read.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_telop" id="race_telop"></iframe>
                 </div><!--/name-->
                 <div class="clear"></div>
@@ -285,15 +242,13 @@ function func_syussobtn( argdata ){
         
     	<div id="contents_right">
                                                 <iframe src="dammy.htm" frameborder="0" allowtransparency="true" scrolling="no" name="race_data" id="race_data" class="auto-height"></iframe>
-                                
-                    </div><!--/#contents_right-->
+                                    </div><!--/#contents_right-->
         
         
         <!--◆◆◆リプレイ◆◆◆-->
         <div id="replay_wrap">
-            
-                                    <div id="btn_rep" onclick="parent.replay_list.load();" style="display:none;">レースリプレイ</div>
-                    
+                                                <div id="btn_rep" onclick="parent.replay_list.load();" style="display:none;">レースリプレイ</div>
+                        
                     <div id="replay_main" style="display:block; left:-399px;">
                     
                         <div class="left">
@@ -307,8 +262,7 @@ function func_syussobtn( argdata ){
                         
                         <div class="clear"></div>
                     </div><!--/#replay_main-->
-                                
-                        
+                                        
         </div><!--/#replay_wrap-->
         
         
@@ -331,41 +285,8 @@ function func_syussobtn( argdata ){
 
 <div id="kyogi_wrap">
     <div id="kyogi">
-                    <div id="kyogi_data">
-            
-                            
-
-                                    
-                    <iframe src="/asp/kyogi/09/pc/syusso01/syusso0112_20210525.htm" frameborder="0" allowtransparency="true" scrolling="no" name="kyogi_data" id="id_kyogi_data" class="auto-height"></iframe>
-                
-                                                    
-                        </div><!--/#kyogi_data-->
         
-            <div id="kyogi_subnav">
-            <ul>
-        	<!--初日[day1]、2日目[day2]、3日目[day3]、4日目[day4]、5日目[day5]、6日目[day6]、7日目[day7]、最終日[day0]-->
-                            <li class="b1 day5"><a href="/asp/kyogi/09/pc/highlight/highlight_20210525.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">
-                
-                                    5日目
-                                    の見どころ</a></li>
-                
-                        
-            
-            <li class="b2"><a href="/kaisai/s_pdf.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">出走表PDF</a></li>
-            <li class="b3"><a href="/asp/kyogi/09/pc/motor/motor04.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">モーター抽選結果&amp;前検タイム</a></li>
-            
-                            <li class="b4"><a href="/asp/kyogi/09/pc/yosen.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">得点率情報</a></li>                
-                        
-                <li class="b5"><a href="/asp/kyogi/09/pc/setu_kekka/setu_kekka01.htm" target="kyogi_data" onclick="func_syussobtn( 1 );">節間レース結果</a></li>
-            </ul>
-        
-            <div class="back"><span id="span_syussobtn">出走表を表示</span></div>
-            </div><!--/#kyogi_subnav-->
-            
-            <div class="clear"></div>
-        
-            <div id="page_top"><a href="#wrapper">UP</a></div>
-
+                    
          
     </div><!--/#kyogi-->
 </div><!--/#kyogi_wrap-->

@@ -26,5 +26,13 @@ class FrontResultController extends Controller
         return view('front.result.result_race',$data);
     }
 
+    public function result_detail(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->result_detail($request);
+        return view('front.result.result_detail',$data);
+    }
+
+
 
 }

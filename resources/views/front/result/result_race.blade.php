@@ -44,6 +44,9 @@ function funcRaceSelect( argNum ){
 <span class="race_name">
 <p>
 {{$kaisai_master->開催名称}}
+@foreach ($chushi_junen_array as $item)
+    <span class="tyushi">※{{ date('n/j',$item->中止日付) }}は中止となりました。</span>
+@endforeach
 </p>
 </span>
 
@@ -78,27 +81,142 @@ function funcRaceSelect( argNum ){
 <th colspan="2" class="ttl05"><img src="/03result_tsu/images/h_ttl_2p.png" alt="2連複" width="60" height="25" /></th>
 </tr>
 
-@foreach ($kekka_info_today_all as $item)
+@foreach ($kekka_info_today_all as  $item)
+    <?php
+        if($item->RACE_NUMBER % 2 == 0){
+            $strClassName = "odd_r";
+			$strClassName2 = "bg_o";
+        }else{
+            $strClassName = "even_r";
+			$strClassName2 = "bg_e";
+        }
+    ?>
     <!--{{$item->RACE_NUMBER}}R-->
-    <tr>
-        <td class="even_r col-1"><div class="r{{str_pad($item->RACE_NUMBER, 2, 0, STR_PAD_LEFT)}}"><a href="javascript:void(0)" onClick="funcRaceSelect( '{{$item->RACE_NUMBER}}' )">{{$item->RACE_NUMBER}}R</a></div></td>
-        <td class="bg_e">
-            <img src="/03result_tsu/images/num{{ substr($item->SANRENTAN1,0,1) }}.png" alt="{{ substr($item->SANRENTAN1,0,1) }}" /><img src="/03result_tsu/images/num.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENTAN1,1,1) }}.png" alt="{{ substr($item->SANRENTAN1,1,1) }}" /><img src="/03result_tsu/images/num.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENTAN1,2,1) }}.png" alt="{{ substr($item->SANRENTAN1,2,1) }}" />
-        </td>
-        <td class="bg_e col-3">{{ number_format($item->SANRENTAN_MONEY1) }}円</td>
-        <td class="bg_e">
-            <img src="/03result_tsu/images/num{{ substr($item->SANRENFUKU1,0,1) }}.png" alt="{{ substr($item->SANRENFUKU1,0,1) }}" /><img src="/03result_tsu/images/equal.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENFUKU1,1,1) }}.png" alt="{{ substr($item->SANRENFUKU1,1,1) }}" /><img src="/03result_tsu/images/equal.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENFUKU1,2,1) }}.png" alt="{{ substr($item->SANRENFUKU1,2,1) }}" />
-        </td>
-        <td class="bg_e col-5">{{ number_format($item->SANRENFUKU_MONEY1) }}円</td>
-        <td class="bg_e">
-            <img src="/03result_tsu/images/num{{ substr($item->NIRENTAN1,0,1) }}.png" alt="{{ substr($item->NIRENTAN1,0,1) }}" /><img src="/03result_tsu/images/num.png" alt="-" /><img src="/03result_tsu/images/num{{ substr($item->NIRENTAN1,1,1) }}.png" alt="{{ substr($item->NIRENTAN1,1,1) }}" />
-        </td>
-        <td class="bg_e col-7">{{ number_format($item->NIRENTAN_MONEY1) }}円</td>
-        <td class="bg_e">
-            <img src="/03result_tsu/images/num{{ substr($item->NIRENFUKU1,0,1) }}.png" alt="{{ substr($item->NIRENFUKU1,0,1) }}" /><img src="/03result_tsu/images/equal.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->NIRENFUKU1,1,1) }}.png" alt="{{ substr($item->NIRENFUKU1,1,1) }}" />
-        </td>
-        <td class="bg_e">{{ number_format($item->NIRENFUKU_MONEY1) }}円</td>
-    </tr>
+    @if($stop_race_num == $item->RACE_NUMBER)
+        <tr>
+            <td colspan="8" class="{{ $strClassName2 }}"><span class="date_cyushi">第{{$item->RACE_NUMBER}}レース以降は中止となりました</span></td>
+        </tr>
+    @elseif($stop_race_num < $item->RACE_NUMBER)
+
+    @else
+        <tr>
+            <td class="{{ $strClassName }} col-1"><div class="r{{str_pad($item->RACE_NUMBER, 2, 0, STR_PAD_LEFT)}}">
+                @if($item->SANRENTAN_MONEY1)
+                    <a href="javascript:void(0)" onClick="funcRaceSelect( '{{$item->RACE_NUMBER}}' )">{{$item->RACE_NUMBER}}R</a>
+                @else
+                    {{$item->RACE_NUMBER}}R
+                @endif
+            </div></td>
+            <td class="{{ $strClassName2 }}">
+                @if(substr($item->FUSEIRITU,4,1) == 1)
+                    {{--不成立--}}
+                    不成立
+                @elseif(!$item->SANRENTAN_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @elseif($item->SANRENTAN_MONEY1 == '70')
+                    {{--特払い--}}
+                    特払い
+                @else
+                    {{--通常--}}
+                    <img src="/03result_tsu/images/num{{ substr($item->SANRENTAN1,0,1) }}.png" alt="{{ substr($item->SANRENTAN1,0,1) }}" /><img src="/03result_tsu/images/num.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENTAN1,1,1) }}.png" alt="{{ substr($item->SANRENTAN1,1,1) }}" /><img src="/03result_tsu/images/num.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENTAN1,2,1) }}.png" alt="{{ substr($item->SANRENTAN1,2,1) }}" />
+                @endif
+            </td>
+            <td class="{{ $strClassName2 }} col-3">
+                @if(substr($item->FUSEIRITU,4,1) == 1)
+                    {{--不成立--}}
+                    ---円
+                @elseif(!$item->SANRENTAN_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @else
+                    {{--金額有り--}}
+                    {{ number_format($item->SANRENTAN_MONEY1) }}円
+                @endif
+            </td>
+            <td class="{{ $strClassName2 }}">
+                @if(substr($item->FUSEIRITU,5,1) == 1)
+                    {{--不成立--}}
+                    不成立
+                @elseif(!$item->SANRENFUKU_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @elseif($item->SANRENFUKU_MONEY1 == '70')
+                    {{--特払い--}}
+                    特払い
+                @else
+                    {{--通常--}}
+                    <img src="/03result_tsu/images/num{{ substr($item->SANRENFUKU1,0,1) }}.png" alt="{{ substr($item->SANRENFUKU1,0,1) }}" /><img src="/03result_tsu/images/equal.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENFUKU1,1,1) }}.png" alt="{{ substr($item->SANRENFUKU1,1,1) }}" /><img src="/03result_tsu/images/equal.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->SANRENFUKU1,2,1) }}.png" alt="{{ substr($item->SANRENFUKU1,2,1) }}" />
+                @endif
+            </td>
+            <td class="{{ $strClassName2 }} col-5">
+                @if(substr($item->FUSEIRITU,5,1) == 1)
+                    {{--不成立--}}
+                    ---円
+                @elseif(!$item->SANRENFUKU_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @else
+                    {{--金額有り--}}
+                    {{ number_format($item->SANRENFUKU_MONEY1) }}円
+                @endif
+            </td>
+            <td class="{{ $strClassName2 }}">
+                @if(substr($item->FUSEIRITU,2,1) == 1)
+                    {{--不成立--}}
+                    不成立
+                @elseif(!$item->NIRENTAN_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @elseif($item->NIRENTAN_MONEY1 == '70')
+                    {{--特払い--}}
+                    特払い
+                @else
+                    {{--通常--}}
+                    <img src="/03result_tsu/images/num{{ substr($item->NIRENTAN1,0,1) }}.png" alt="{{ substr($item->NIRENTAN1,0,1) }}" /><img src="/03result_tsu/images/num.png" alt="-" /><img src="/03result_tsu/images/num{{ substr($item->NIRENTAN1,1,1) }}.png" alt="{{ substr($item->NIRENTAN1,1,1) }}" />
+                @endif
+            </td>
+            <td class="{{ $strClassName2 }} col-7">
+                @if(substr($item->FUSEIRITU,2,1) == 1)
+                    {{--不成立--}}
+                    ---円
+                @elseif(!$item->NIRENTAN_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @else
+                    {{--金額有り--}}
+                    {{ number_format($item->NIRENTAN_MONEY1) }}円
+                @endif
+            </td>
+            <td class="{{ $strClassName2 }}">
+                @if(substr($item->FUSEIRITU,3,1) == 1)
+                    {{--不成立--}}
+                    不成立
+                @elseif(!$item->NIRENFUKU_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @elseif($item->NIRENFUKU_MONEY1 == '70')
+                    {{--特払い--}}
+                    特払い
+                @else
+                    {{--通常--}}
+                    <img src="/03result_tsu/images/num{{ substr($item->NIRENFUKU1,0,1) }}.png" alt="{{ substr($item->NIRENFUKU1,0,1) }}" /><img src="/03result_tsu/images/equal.png" alt="=" /><img src="/03result_tsu/images/num{{ substr($item->NIRENFUKU1,1,1) }}.png" alt="{{ substr($item->NIRENFUKU1,1,1) }}" />
+                @endif
+            </td>
+            <td class="{{ $strClassName2 }}">
+                @if(substr($item->FUSEIRITU,3,1) == 1)
+                    {{--不成立--}}
+                    ---円
+                @elseif(!$item->NIRENFUKU_MONEY1)
+                    {{--金額無し--}}
+                    &nbsp;
+                @else
+                    {{--金額有り--}}
+                    {{ number_format($item->NIRENFUKU_MONEY1) }}円
+                @endif
+            </td>
+        </tr>
+    @endif
 @endforeach
 
 </table>

@@ -118,7 +118,7 @@ function func_RepLink(Yd)
                 }else if( Yd === '{{$kaisai_day}}'){
             @endif
             @for($loop_race_num = 1;$loop_race_num <= 12 ; $loop_race_num++)
-                @isset($vod_array[$target_date][$target_date.'09'.str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)])
+                @isset($vod_array[$kaisai_day][$kaisai_day.'09'.str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)])
                     strJsHTML = strJsHTML + '<li class="rep_btn b{{$loop_race_num }}"><a href="javascript:parent.func_replaylink(\'/asp/tsu/kaisai/replay_movie.htm?movieid={{$kaisai_day}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}\',\'/asp/kyogi/09/pc/replay_sub/replay_sub_{{$kaisai_day}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm\',\'/asp/kyogi/09/pc/replay_syusso/replay_syusso_{{$kaisai_day}}09{{str_pad($loop_race_num, 2, '0', STR_PAD_LEFT)}}.htm\',0);">{{$loop_race_num }}R</a></li>'
                 @else
                     strJsHTML = strJsHTML + '<li class="rep_btn b{{$loop_race_num }}">{{$loop_race_num }}R</li>'

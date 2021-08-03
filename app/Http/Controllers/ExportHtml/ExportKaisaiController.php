@@ -796,6 +796,154 @@ class ExportKaisaiController extends Controller
         return $message;
     }
 
+
+    public function replay_syusso(Request $request)
+    {
+
+        $jyo = config('const.JYO_CODE');
+
+        {
+            //処理対象日を判定
+            $today_date = date('Ymd');
+            $today_date = '20210620';
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+        }
+
+        $message = "";
+        if($kaisai_master){
+            for($race_num = 1;$race_num <= 12;$race_num++){
+                //サービスクラスで処理。
+                $data = $this->_service->replay_syusso($request,$today_date,$race_num);
+
+                $file_name = $data['target_date'].'09'.str_pad($data['race_num'], 2, '0', STR_PAD_LEFT);
+                //ソースを受け取り静的に書き出し処理
+                File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/replay_syusso/replay_syusso_'.$file_name.'.htm', view('front.kaisai.replay_syusso',$data));
+                $message .= '書き出し完了<br><a href="/asp/kyogi/09/pc/replay_syusso/replay_syusso_'.$file_name.'.htm">/asp/kyogi/09/pc/replay_syusso/replay_syusso_'.$file_name.'.htm</a><br>';
+
+
+            }
+
+            return $message;
+        }else{
+            return '処理対象データなし';
+        }
+        
+    }
+
+    public function replay_harai(Request $request)
+    {
+
+        
+        $jyo = config('const.JYO_CODE');
+
+        {
+            //処理対象日を判定
+            $today_date = date('Ymd');
+            $today_date = '20210615';
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+        }
+
+        $message = "";
+        if($kaisai_master){
+            for($race_num = 1;$race_num <= 12;$race_num++){
+                //サービスクラスで処理。
+                $data = $this->_service->replay_harai($request,$today_date,$race_num);
+
+                $file_name = $data['target_date'].'09'.str_pad($data['race_num'], 2, '0', STR_PAD_LEFT);
+                //ソースを受け取り静的に書き出し処理
+                File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/replay_harai/replay_harai_'.$file_name.'.htm', view('front.kaisai.replay_harai',$data));
+                $message .= '書き出し完了<br><a href="/asp/kyogi/09/pc/replay_harai/replay_harai_'.$file_name.'.htm">/asp/kyogi/09/pc/replay_harai/replay_harai_'.$file_name.'.htm</a><br>';
+
+
+            }
+
+            return $message;
+        }else{
+            return '処理対象データなし';
+        }
+        
+    }
+
+    public function replay_kekka(Request $request)
+    {
+
+        
+        $jyo = config('const.JYO_CODE');
+
+        {
+            //処理対象日を判定
+            $today_date = date('Ymd');
+            $today_date = '20210615';
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+        }
+
+        $message = "";
+        if($kaisai_master){
+            for($race_num = 1;$race_num <= 12;$race_num++){
+                //サービスクラスで処理。
+                $data = $this->_service->replay_kekka($request,$today_date,$race_num);
+
+                $file_name = $data['target_date'].'09'.str_pad($data['race_num'], 2, '0', STR_PAD_LEFT);
+                //ソースを受け取り静的に書き出し処理
+                File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/replay_kekka/replay_kekka_'.$file_name.'.htm', view('front.kaisai.replay_kekka',$data));
+                $message .= '書き出し完了<br><a href="/asp/kyogi/09/pc/replay_kekka/replay_kekka_'.$file_name.'.htm">/asp/kyogi/09/pc/replay_kekka/replay_kekka_'.$file_name.'.htm</a><br>';
+
+
+            }
+
+            return $message;
+        }else{
+            return '処理対象データなし';
+        }
+        
+    }
+
+    public function replay_sub(Request $request)
+    {
+
+        
+        $jyo = config('const.JYO_CODE');
+
+        {
+            //処理対象日を判定
+            $today_date = date('Ymd');
+            $today_date = '20210620';
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+        }
+
+        $message = "";
+        if($kaisai_master){
+            for($race_num = 1;$race_num <= 12;$race_num++){
+                //サービスクラスで処理。
+                $data = $this->_service->replay_sub($request,$today_date,$race_num);
+
+                $file_name = $data['target_date'].'09'.str_pad($data['race_num'], 2, '0', STR_PAD_LEFT);
+                //ソースを受け取り静的に書き出し処理
+                File::put(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/replay_sub/replay_sub_'.$file_name.'.htm', view('front.kaisai.replay_sub',$data));
+                $message .= '書き出し完了<br><a href="/asp/kyogi/09/pc/replay_sub/replay_sub_'.$file_name.'.htm">/asp/kyogi/09/pc/replay_sub/replay_sub_'.$file_name.'.htm</a><br>';
+
+            }
+
+            return $message;
+        }else{
+            return '処理対象データなし';
+        }
+        
+    }
+
+
     public function race_telop(Request $request)
     {
         //サービスクラスで処理。

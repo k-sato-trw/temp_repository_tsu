@@ -137,7 +137,7 @@ function funcRace( argNum , argDate ){
     <span class="year">{{$kaisai_year}}年</span>
     @foreach ($kaisai_one_year as $kaisai)
         <!-- RACE CELECT-->
-        <li class="select" id="race1">
+        <li @if($loop_count == 1) class="select" @endif id="race{{$loop_count}}">
             @if($target_date > $kaisai->終了日付) {{--レースが終了した場合--}}
                 <a href="javascript:void(0);" onClick="funcRace( {{$loop_count}} , '{{$kaisai->終了日付}}' )">
             @else
@@ -158,7 +158,13 @@ function funcRace( argNum , argDate ){
                 ?>
                 <div id="result_nav_waku">
                 <span class="r_day">{!! $general->create_display_date_for_pc_result($kaisai->開始日付,$kaisai->終了日付,$holiday_array,true) !!}【{{$grade}}】</span>
-                <span class="r_name">{{$kaisai->開催名称}}</span>
+                <span class="r_name">
+                    @if(mb_strlen($kaisai->開催名称) > 12)
+                        {{ mb_substr($kaisai->開催名称,0,12)."…" }}
+                    @else
+                        {{$kaisai->開催名称}}
+                    @endif
+                </span>
                 </div>
             </a>
         </li>

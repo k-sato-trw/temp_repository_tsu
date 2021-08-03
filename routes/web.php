@@ -30,6 +30,7 @@ use App\Http\Controllers\Front\FrontJsController;
 use App\Http\Controllers\Front\FrontInfoController;
 use App\Http\Controllers\Front\FrontKinkyuController;
 use App\Http\Controllers\Front\FrontResultController;
+use App\Http\Controllers\Front\FrontReplayController;
 use App\Http\Controllers\Front\RedirectLogController;
 
 //フロントSP
@@ -37,6 +38,7 @@ use App\Http\Controllers\Front\Sp\SpKyogiController;
 use App\Http\Controllers\Front\Sp\SpEventController;
 use App\Http\Controllers\Front\Sp\SpInfoController;
 use App\Http\Controllers\Front\Sp\SpCalController;
+use App\Http\Controllers\Front\Sp\SpResultController;
 
 
 //書き出しPC
@@ -280,6 +282,8 @@ Route::get('/admin_sekosya/kaimon/change_appear_flg/{target_year_month}/{appear_
 Route::get('/asp/tsu/info/info.asp',        [FrontInfoController::class, 'index']);
 Route::get('/asp/tsu/admin/cms/kinkyu/kinkyu_message.asp',        [FrontKinkyuController::class, 'message']);
 Route::get('/asp/tsu/03result_tsu/result_race.asp',        [FrontResultController::class, 'result_race']);
+Route::get('/asp/tsu/03result_tsu/result_detail.asp',        [FrontResultController::class, 'result_detail']);
+Route::get('/asp/tsu/kaisai/replay_movie.asp',    [FrontReplayController::class, 'replay_movie']);
 
 
     //ログ系
@@ -290,6 +294,10 @@ Route::get('/asp/log/tsu_sp_kyogi_iphone.asp',        [RedirectLogController::cl
 
 
 //フロントSP
+Route::get('/asp/tsu/sp/03result_tsu/03result_tsu.asp',        [SpResultController::class, 'result']);
+Route::get('/asp/tsu/sp/03result_tsu/03result_01.asp',        [SpResultController::class, 'result_01']);
+Route::get('/asp/tsu/sp/03result_tsu/03result_02.asp',        [SpResultController::class, 'result_02']);
+
 Route::get('/asp/tsu/sp/kyogi/Odds_Calc.asp',        [SpKyogiController::class, 'odds_calc']);
 Route::post('/asp/tsu/sp/kyogi/Odds_Calc.asp',        [SpKyogiController::class, 'odds_calc']);
 
@@ -337,6 +345,10 @@ Route::get('/asp/tsu/kaisai/kekka01.asp',         [ExportKaisaiController::class
 
 
 Route::get('/asp/tsu/kaisai/replay_list.asp',       [ExportKaisaiController::class, 'replay_list']);
+Route::get('/asp/tsu/kaisai/replay_syusso.asp',    [ExportKaisaiController::class, 'replay_syusso']);
+Route::get('/asp/tsu/kaisai/replay_harai.asp',    [ExportKaisaiController::class, 'replay_harai']);
+Route::get('/asp/tsu/kaisai/replay_kekka.asp',    [ExportKaisaiController::class, 'replay_kekka']);
+Route::get('/asp/tsu/kaisai/replay_sub.asp',    [ExportKaisaiController::class, 'replay_sub']);
 Route::get('/asp/tsu/kaisai/race_telop.asp',        [ExportKaisaiController::class, 'race_telop']);
 Route::get('/asp/tsu/kaisai/race_sub.asp',          [ExportKaisaiController::class, 'race_sub']);
 Route::get('/asp/tsu/kaisai/race_data.asp',         [ExportKaisaiController::class, 'race_data']);
@@ -363,7 +375,7 @@ Route::get('/auto_export/syutujo/', [ExportSyutujoController::class, 'auto_expor
     //その他　
 Route::get('/asp/tsu/02suimen/02suimen.asp',        [ExportSuimenController::class, 'index']);
 Route::get('/asp/tsu/02motor/02motor.asp',        [ExportMotorController::class, 'motor']);
-Route::get('/asp/tsu/03result/03result.asp',        [ExportResultController::class, 'result']);
+Route::get('/asp/tsu/03result_tsu/03result_tsu.asp',        [ExportResultController::class, 'result']);
 Route::get('/asp/tsu/04event/04event.asp',        [ExportEventController::class, 'index']);
 Route::get('/asp/tsu/06meikan/06meikan.asp',        [ExportMeikanController::class, 'index']);
 Route::get('/asp/tsu/06meikan/racer_data_create.asp',        [ExportMeikanController::class, 'racer_data_create']);

@@ -1,130 +1,130 @@
 
 //**************************************************************
-// * ’ÃƒTƒCƒhƒƒjƒ…[—p‚Ìjavascript
+// * æ´¥ã‚µã‚¤ãƒ‰ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”¨ã®javascript
 // * contents_navi_main.js
 //**************************************************************
-// * g—p•û–@
+// * ä½¿ç”¨æ–¹æ³•
 //**************************************************************
-//Ÿ—pˆÓ
-//<head></head>“à‚É‰º‹L‚ğw’è‚·‚é
+//â—†ç”¨æ„
+//<head></head>å†…ã«ä¸‹è¨˜ã‚’æŒ‡å®šã™ã‚‹
 //<script type="text/javascript" src="/js/contents_navi_main.js"></script>
-//Ÿ•\¦
-//•\¦‚µ‚½‚¢‰ÓŠ‚É‰º‹L‚ğw’è‚·‚é
+//â—†è¡¨ç¤º
+//è¡¨ç¤ºã—ãŸã„ç®‡æ‰€ã«ä¸‹è¨˜ã‚’æŒ‡å®šã™ã‚‹
 //<script type="text/javascript">
 //funcTsuMenu();
 //</script>
 //**************************************************************
-// * •ÒW•û–@ ƒƒ•K‚¸ƒeƒXƒgƒTƒCƒg‚Å–â‘è‚È‚¢‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢„„
+// * ç·¨é›†æ–¹æ³• ï¼œï¼œå¿…ãšãƒ†ã‚¹ãƒˆã‚µã‚¤ãƒˆã§å•é¡Œãªã„ã‹ç¢ºèªã—ã¦ãã ã•ã„ï¼ï¼
 //**************************************************************
-//	strMenuHTML = strMenuHTML + "[‚±‚ÌŠÔ‚ÉHTML•¶‘}“ü‚·‚é]";
-//	ƒ’ˆÓI„
-//	u"v(ƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“)‚ğg—p‚¹‚¸A
-//	u'v(ƒVƒ“ƒOƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“)‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
-//	‚Ü‚½Ajs‚Ì‹K‘¥ŠO‚Ì‚±‚Æ‚ğ‚·‚é‚ÆA‘S‚Ä•\¦‚³‚ê‚È‚­‚È‚è‚Ü‚·B
-//	ƒ”õl„
-//	•ÒW‚É©M‚ª‚È‚¢ê‡‚ÍƒVƒXƒeƒ€‚Ü‚Å•ÏX‚µ‚Ä‚Ù‚µ‚¢‰ÓŠ‚ğ˜A—‚µ‚Ä‚­‚¾‚³‚¢B
+//	strMenuHTML = strMenuHTML + "[ã“ã®é–“ã«HTMLæ–‡æŒ¿å…¥ã™ã‚‹]";
+//	ï¼œæ³¨æ„ï¼ï¼
+//	ã€Œ"ã€(ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³)ã‚’ä½¿ç”¨ã›ãšã€
+//	ã€Œ'ã€(ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³)ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
+//	ã¾ãŸã€jsã®è¦å‰‡å¤–ã®ã“ã¨ã‚’ã™ã‚‹ã¨ã€å…¨ã¦è¡¨ç¤ºã•ã‚Œãªããªã‚Šã¾ã™ã€‚
+//	ï¼œå‚™è€ƒï¼
+//	ç·¨é›†ã«è‡ªä¿¡ãŒãªã„å ´åˆã¯ã‚·ã‚¹ãƒ†ãƒ ã¾ã§å¤‰æ›´ã—ã¦ã»ã—ã„ç®‡æ‰€ã‚’é€£çµ¡ã—ã¦ãã ã•ã„ã€‚
 // **************************************************************
-// * XV—š—ğ
+// * æ›´æ–°å±¥æ­´
 // **************************************************************
 // *
 // **************************************************************
 
 
 
-	function funcTsuMenu()
-	{
+function funcTsuMenu()
+{
 
-		var strMenuHTML = '';
-		strMenuHTML = strMenuHTML + "<div id='nav_btn' class='icon menu1'>";
-		strMenuHTML = strMenuHTML + "<span class='border1'></span>";
-		strMenuHTML = strMenuHTML + "<span class='border2'></span>";
-		strMenuHTML = strMenuHTML + "<span class='border3'></span>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<div id='nav_main'>";
-		strMenuHTML = strMenuHTML + "<ul id='menu1'>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<li class='b1'>";
-		strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b1.png' class='btn_img'>";
-		strMenuHTML = strMenuHTML + "<div class='menu2'>";
-		strMenuHTML = strMenuHTML + "<h4>ƒŒ[ƒXî•ñ</h4>";
-		strMenuHTML = strMenuHTML + "<ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/kaisai/kaisaiindex.htm'>ƒŒ[ƒXƒ‰ƒCƒu•ƒŠƒvƒŒƒC</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/01cal/01cal.htm'>ŠJÃ“ú’ö</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/htmlmade/Race/Tenbo/09/PC/jumper.htm'>“W–]Eoê—\’è‘Iè</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='javascript:MultiOpen(\"https://secure.webkyotei.jp/asp/mform/09/mail/form.asp\",\"mail\",\"800\",\"800\");'>ƒ[ƒ‹ƒ}ƒKƒWƒ“</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/01mobile/01mobile.htm'>ƒ‚ƒoƒCƒ‹ƒT[ƒrƒX</a></li>";
-		strMenuHTML = strMenuHTML + "</ul>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "</li><!--/b1-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<li class='b2'>";
-		strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b2.png' class='btn_img'>";
-		strMenuHTML = strMenuHTML + "<div class='menu2'>";
-		strMenuHTML = strMenuHTML + "<h4>ƒf[ƒ^W</h4>";
-		strMenuHTML = strMenuHTML + "<ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/02suimen/02suimen.htm'>…–Ê•ƒR[ƒX•Êƒf[ƒ^</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/asp/kyogi/09/pc/02motor/02motor.htm'>ƒ‚[ƒ^[•ƒ{[ƒgƒf[ƒ^</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/02deme/02deme.htm'>o–ÚE‚”z“–ƒ‰ƒ“ƒLƒ“ƒO</a></li>";
-		strMenuHTML = strMenuHTML + "</ul>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "</li><!--/b2-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<li class='b3'>";
-		strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b3.png' class='btn_img'>";
-		strMenuHTML = strMenuHTML + "<div class='menu2'>";
-		strMenuHTML = strMenuHTML + "<h4>ƒtƒ@ƒ“ƒT[ƒrƒX</h4>";
-		strMenuHTML = strMenuHTML + "<ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/04event/04event.htm'>ƒCƒxƒ“ƒg•ƒtƒ@ƒ“ƒT[ƒrƒX</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/04cashless/04cashless.htm'>ƒLƒƒƒbƒVƒ…ƒŒƒXƒJ[ƒh</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/t_jump/jump_pointclub.htm' target='_blank'>’Ãƒ|ƒCƒ“ƒg‹äŠy•”</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/04fanclub/04fanclub.htm'>ƒ{[ƒgƒŒ[ƒX’Ãƒtƒ@ƒ“ƒNƒ‰ƒu</a></li>";
-		strMenuHTML = strMenuHTML + "<li class='small'><a href='/04group/04group.htm'><span>‚¨“yY‚Â‚«</span> ƒOƒ‹[ƒv—ˆê\‚µ‚İ</a></li>";
-		strMenuHTML = strMenuHTML + "</ul>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "</li><!--/b3-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<li class='b4'>";
-		strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b4.png' class='btn_img'>";
-		strMenuHTML = strMenuHTML + "<div class='menu2'>";
-		strMenuHTML = strMenuHTML + "<h4>Œ‹‰ÊƒT[ƒ`</h4>";
-		strMenuHTML = strMenuHTML + "<ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/03result_tsu/03result_tsu.htm'>ƒŒ[ƒXŒ‹‰ÊŒŸõ</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/03play_b/03play_b.htm'>—DŸíƒvƒŒƒCƒoƒbƒN</a></li>";
-		strMenuHTML = strMenuHTML + "</ul>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "</li><!--/b4-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<li class='b5'>";
-		strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b5.png' class='btn_img'>";
-		strMenuHTML = strMenuHTML + "<div class='menu2'>";
-		strMenuHTML = strMenuHTML + "<h4>Œğ’Ê•{İ</h4>";
-		strMenuHTML = strMenuHTML + "<ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/05access/05access.htm'>Œğ’ÊƒAƒNƒZƒX</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/05facility/05facility.htm'>{İƒKƒCƒh</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/05history/05history.htm'>ƒ{[ƒgƒŒ[ƒX’Ã‚Ì‚ ‚ä‚İ</a></li>";
-		strMenuHTML = strMenuHTML + "</ul>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "</li><!--/b5-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<li class='b6'>";
-		strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b6.png' class='btn_img'>";
-		strMenuHTML = strMenuHTML + "<div class='menu2'>";
-		strMenuHTML = strMenuHTML + "<h4>Odx•”î•ñ</h4>";
-		strMenuHTML = strMenuHTML + "<ul>";
-		strMenuHTML = strMenuHTML + "<li><a href='/06meikan/06meikan.htm'>Odx•”–¼ŠÓ</a></li>";
-		strMenuHTML = strMenuHTML + "<li><a href='/06topic/06topic.htm'>Od's TOPIC</a></li>";
-		strMenuHTML = strMenuHTML + "</ul>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "</li><!--/b6-->";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "</ul>";
-		strMenuHTML = strMenuHTML + "</div>";
-		strMenuHTML = strMenuHTML + "";
-		strMenuHTML = strMenuHTML + "<a href='/t_jump/jump_facebook.htm' target='_blank' id='nav_fb'>ƒ{[ƒgƒŒ[ƒX’ÃŒö®facebook</a>";
-		strMenuHTML = strMenuHTML + "<a href='/t_jump/jump_twitter.htm' target='_blank' id='nav_twi'>ƒ{[ƒgƒŒ[ƒX’ÃŒö®twitter</a>";		strMenuHTML = strMenuHTML + "<a href='/t_jump/jump_youtube.htm' target='_blank' id='nav_yt'>ƒ{[ƒgƒŒ[ƒX’ÃŒö®YouTube</a>";
+	var strMenuHTML = '';
+	strMenuHTML = strMenuHTML + "<div id='nav_btn' class='icon menu1'>";
+	strMenuHTML = strMenuHTML + "<span class='border1'></span>";
+	strMenuHTML = strMenuHTML + "<span class='border2'></span>";
+	strMenuHTML = strMenuHTML + "<span class='border3'></span>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<div id='nav_main'>";
+	strMenuHTML = strMenuHTML + "<ul id='menu1'>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<li class='b1'>";
+	strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b1.png' class='btn_img'>";
+	strMenuHTML = strMenuHTML + "<div class='menu2'>";
+	strMenuHTML = strMenuHTML + "<h4>ãƒ¬ãƒ¼ã‚¹æƒ…å ±</h4>";
+	strMenuHTML = strMenuHTML + "<ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/tsu/kaisai/kaisaiindex.htm'>ãƒ¬ãƒ¼ã‚¹ãƒ©ã‚¤ãƒ–ï¼†ãƒªãƒ—ãƒ¬ã‚¤</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/01cal/01cal.htm'>é–‹å‚¬æ—¥ç¨‹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/htmlmade/Race/Tenbo/09/PC/jumper.htm'>å±•æœ›ãƒ»å‡ºå ´äºˆå®šé¸æ‰‹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='javascript:MultiOpen(\"https://secure.webkyotei.jp/asp/mform/09/mail/form.asp\",\"mail\",\"800\",\"800\");'>ãƒ¡ãƒ¼ãƒ«ãƒã‚¬ã‚¸ãƒ³</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/01mobile/01mobile.htm'>ãƒ¢ãƒã‚¤ãƒ«ã‚µãƒ¼ãƒ“ã‚¹</a></li>";
+	strMenuHTML = strMenuHTML + "</ul>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "</li><!--/b1-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<li class='b2'>";
+	strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b2.png' class='btn_img'>";
+	strMenuHTML = strMenuHTML + "<div class='menu2'>";
+	strMenuHTML = strMenuHTML + "<h4>ãƒ‡ãƒ¼ã‚¿é›†</h4>";
+	strMenuHTML = strMenuHTML + "<ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/02suimen/02suimen.htm'>æ°´é¢ï¼†ã‚³ãƒ¼ã‚¹åˆ¥ãƒ‡ãƒ¼ã‚¿</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/asp/kyogi/09/pc/02motor/02motor.htm'>ãƒ¢ãƒ¼ã‚¿ãƒ¼ï¼†ãƒœãƒ¼ãƒˆãƒ‡ãƒ¼ã‚¿</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/02deme/02deme.htm'>å‡ºç›®ãƒ»é«˜é…å½“ãƒ©ãƒ³ã‚­ãƒ³ã‚°</a></li>";
+	strMenuHTML = strMenuHTML + "</ul>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "</li><!--/b2-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<li class='b3'>";
+	strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b3.png' class='btn_img'>";
+	strMenuHTML = strMenuHTML + "<div class='menu2'>";
+	strMenuHTML = strMenuHTML + "<h4>ãƒ•ã‚¡ãƒ³ã‚µãƒ¼ãƒ“ã‚¹</h4>";
+	strMenuHTML = strMenuHTML + "<ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/04event/04event.htm'>ã‚¤ãƒ™ãƒ³ãƒˆï¼†ãƒ•ã‚¡ãƒ³ã‚µãƒ¼ãƒ“ã‚¹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/04cashless/04cashless.htm'>ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ¬ã‚¹ã‚«ãƒ¼ãƒ‰</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/t_jump/jump_pointclub.htm' target='_blank'>æ´¥ãƒã‚¤ãƒ³ãƒˆå€¶æ¥½éƒ¨</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/04fanclub/04fanclub.htm'>ãƒœãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ´¥ãƒ•ã‚¡ãƒ³ã‚¯ãƒ©ãƒ–</a></li>";
+	strMenuHTML = strMenuHTML + "<li class='small'><a href='/04group/04group.htm'><span>ãŠåœŸç”£ã¤ã</span> ã‚°ãƒ«ãƒ¼ãƒ—æ¥å ´ç”³ã—è¾¼ã¿</a></li>";
+	strMenuHTML = strMenuHTML + "</ul>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "</li><!--/b3-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<li class='b4'>";
+	strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b4.png' class='btn_img'>";
+	strMenuHTML = strMenuHTML + "<div class='menu2'>";
+	strMenuHTML = strMenuHTML + "<h4>çµæœã‚µãƒ¼ãƒ</h4>";
+	strMenuHTML = strMenuHTML + "<ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/03result_tsu/03result_tsu.htm'>ãƒ¬ãƒ¼ã‚¹çµæœæ¤œç´¢</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/03play_b/03play_b.htm'>å„ªå‹æˆ¦ãƒ—ãƒ¬ã‚¤ãƒãƒƒã‚¯</a></li>";
+	strMenuHTML = strMenuHTML + "</ul>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "</li><!--/b4-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<li class='b5'>";
+	strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b5.png' class='btn_img'>";
+	strMenuHTML = strMenuHTML + "<div class='menu2'>";
+	strMenuHTML = strMenuHTML + "<h4>äº¤é€šï¼†æ–½è¨­</h4>";
+	strMenuHTML = strMenuHTML + "<ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/05access/05access.htm'>äº¤é€šã‚¢ã‚¯ã‚»ã‚¹</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/05facility/05facility.htm'>æ–½è¨­ã‚¬ã‚¤ãƒ‰</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/05history/05history.htm'>ãƒœãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ´¥ã®ã‚ã‚†ã¿</a></li>";
+	strMenuHTML = strMenuHTML + "</ul>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "</li><!--/b5-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<li class='b6'>";
+	strMenuHTML = strMenuHTML + "<img src='/common_img/menu1_b6.png' class='btn_img'>";
+	strMenuHTML = strMenuHTML + "<div class='menu2'>";
+	strMenuHTML = strMenuHTML + "<h4>ä¸‰é‡æ”¯éƒ¨æƒ…å ±</h4>";
+	strMenuHTML = strMenuHTML + "<ul>";
+	strMenuHTML = strMenuHTML + "<li><a href='/06meikan/06meikan.htm'>ä¸‰é‡æ”¯éƒ¨åé‘‘</a></li>";
+	strMenuHTML = strMenuHTML + "<li><a href='/06topic/06topic.htm'>ä¸‰é‡'s TOPIC</a></li>";
+	strMenuHTML = strMenuHTML + "</ul>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "</li><!--/b6-->";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "</ul>";
+	strMenuHTML = strMenuHTML + "</div>";
+	strMenuHTML = strMenuHTML + "";
+	strMenuHTML = strMenuHTML + "<a href='/t_jump/jump_facebook.htm' target='_blank' id='nav_fb'>ãƒœãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ´¥å…¬å¼facebook</a>";
+	strMenuHTML = strMenuHTML + "<a href='/t_jump/jump_twitter.htm' target='_blank' id='nav_twi'>ãƒœãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ´¥å…¬å¼twitter</a>";		strMenuHTML = strMenuHTML + "<a href='/t_jump/jump_youtube.htm' target='_blank' id='nav_yt'>ãƒœãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ´¥å…¬å¼YouTube</a>";
 
-		//‘‚«o‚µ
-		document.write(strMenuHTML);
+	//æ›¸ãå‡ºã—
+	document.write(strMenuHTML);
 
-	}
+}
