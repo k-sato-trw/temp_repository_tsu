@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta charset="UTF-8">
+<title></title>
+
+<link href="/kaisai/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/kaisai/css/kaisai.css" rel="stylesheet" type="text/css">
+<link href="/kaisai/css/common.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/asp/SmartAgentGetter.js"></script>
+<script type="text/javascript" src="/asp/FlashPlayerCheck.js"></script>
+
+
+</head>
+
+<body>
+
+<script type="text/JavaScript">
+
+
+	function GetFileName(file_url){
+
+		file_url = file_url.substring(file_url.indexOf('=')+1,file_url.length);
+		return file_url;
+
+	}
+
+	var strSmartAgent;
+
+	strURL = location.search;
+	strMovieID = GetFileName(strURL);
+
+	strMovieID = strMovieID.substring( 0 , 12 );
+
+	var strStop;
+	if(location.href.indexOf('stop')<0){
+		strStop = "true";
+
+		//ジャンパー
+		location.href='replay_movie.asp?MovieID=' + strMovieID + '&width=720&height=405';
+
+	}else{
+		strStop = "false";
+
+		//ジャンパー
+		location.href='replay_movie.asp?MovieID=' + strMovieID + '&width=720&height=405&stop';
+
+	}
+
+
+
+/*
+	strSmartAgent = funcJsSmartAgentGetter();
+	if(strSmartAgent == "PC"){
+		document.write('<object width="720" height="405">')
+		document.write('<param name="movie" value="/asp/FlashMediaPlayback_101.swf"></param>')
+		document.write('<param name="flashvars" value="src=http%3A%2F%2Fkyotei-vod-adb.trw.co.jp%2Fkyotei-vod-adb%2F' + strMovieID + '.mp4.f4m&controlBarMode=floating&autoPlay=' + strStop + '&streamType=recorded&volume=0.5&bufferingOverlay=false">')
+		document.write('</param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>')
+		document.write('<param name="wmode" value="transparent"></param>');
+		document.write('<embed src="/asp/FlashMediaPlayback_101.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="405" wmode="transparent" flashvars="src=http%3A%2F%2Fkyotei-vod-adb.trw.co.jp%2Fkyotei-vod-adb%2F' + strMovieID + '.mp4.f4m&controlBarMode=floating&autoPlay=' + strStop + '&streamType=recorded&volume=0.5&bufferingOverlay=false"></embed>')
+		document.write('</object>')
+	}else if(strSmartAgent == "Android"){
+
+		if( funcJsFlashPlayerCheck().player ){
+		//FlashPlayerがインストールされているとき
+			document.write('<object width="720" height="405">')
+			document.write('<param name="movie" value="/asp/FlashMediaPlayback_101.swf"></param>')
+			document.write('<param name="flashvars" value="src=http%3A%2F%2Fkyotei-vod-adb.trw.co.jp%2Fkyotei-vod-adb%2F' + strMovieID + '_sb.mp4.f4m&controlBarMode=floating&autoPlay=' + strStop + '&streamType=recorded&volume=0.5&bufferingOverlay=false">')
+			document.write('</param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>')
+			document.write("<param name='wmode' value='transparent'></param>");
+			document.write('<embed src="/asp/FlashMediaPlayback_101.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="405" wmode="transparent" flashvars="src=http%3A%2F%2Fkyotei-vod-adb.trw.co.jp%2Fkyotei-vod-adb%2F' + strMovieID + '_sb.mp4.f4m&controlBarMode=floating&autoPlay=' + strStop + '&streamType=recorded&volume=0.5&bufferingOverlay=false"></embed>')
+			document.write('</object>')
+		}else{
+			document.write('<video id="ondemand" name="ondemand" width="720" height="405" src="http://kyotei-vod-adb.trw.co.jp/kyotei-vod-hls/' + strMovieID + '_sb.mp4.m3u8" controls autobuffer onclick="this.play()">');
+			document.write('</video>');
+		}
+	}else if( strSmartAgent =="iPhone" || strSmartAgent =="iPod" || strSmartAgent =="iPad"){
+			document.write('<video id="ondemand" name="ondemand" width="720" height="405" src="http://kyotei-vod-adb.trw.co.jp/kyotei-vod-hls/' + strMovieID + '_sb.mp4.m3u8" controls autobuffer onclick="this.play()">');
+			document.write('</video>');
+	}else{
+		document.write('<object width="720" height="405">')
+		document.write('<param name="movie" value="/asp/FlashMediaPlayback_101.swf"></param>')
+		document.write('<param name="flashvars" value="src=http%3A%2F%2Fkyotei-vod-adb.trw.co.jp%2Fkyotei-vod-adb%2F' + strMovieID + '.mp4.f4m&controlBarMode=floating&autoPlay=' + strStop + '&streamType=recorded&volume=0.5&bufferingOverlay=false">')
+		document.write('</param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>')
+		document.write('<param name="wmode" value="transparent"></param>');
+		document.write('<embed src="/asp/FlashMediaPlayback_101.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="720" height="405" wmode="transparent" flashvars="src=http%3A%2F%2Fkyotei-vod-adb.trw.co.jp%2Fkyotei-vod-adb%2F' + strMovieID + '.mp4.f4m&controlBarMode=floating&autoPlay=' + strStop + '&streamType=recorded&volume=0.5&bufferingOverlay=false"></embed>')
+		document.write('</object>')
+	}
+*/
+</script>
+
+</body>
+</html>

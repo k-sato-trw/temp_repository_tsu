@@ -5,7 +5,7 @@
         
 
         <meta name="viewport" content="width=720px" />
-    '	<meta name="viewport" content="user-scalable=no" />
+    	<meta name="viewport" content="user-scalable=no" />
 
         <meta name="format-detection" content="telephone=no" />
         

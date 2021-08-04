@@ -50,6 +50,7 @@ use App\Http\Controllers\ExportHtml\ExportMeikanController;
 use App\Http\Controllers\ExportHtml\ExportInfoController;
 use App\Http\Controllers\ExportHtml\ExportMotorController;
 use App\Http\Controllers\ExportHtml\ExportResultController;
+use App\Http\Controllers\ExportHtml\ExportPlaybackController;
 use App\Http\Controllers\ExportHtml\ExportCalController;
 
 use App\Http\Controllers\ExportHtml\ExportTenboController;
@@ -284,6 +285,7 @@ Route::get('/asp/tsu/admin/cms/kinkyu/kinkyu_message.asp',        [FrontKinkyuCo
 Route::get('/asp/tsu/03result_tsu/result_race.asp',        [FrontResultController::class, 'result_race']);
 Route::get('/asp/tsu/03result_tsu/result_detail.asp',        [FrontResultController::class, 'result_detail']);
 Route::get('/asp/tsu/kaisai/replay_movie.asp',    [FrontReplayController::class, 'replay_movie']);
+Route::get('/asp/tsu/kaisai/tenji_movie.asp',    [FrontReplayController::class, 'tenji_movie']);
 
 
     //ログ系
@@ -308,7 +310,10 @@ Route::get('/asp/tsu/sp/kyogi/Movie.asp',        [SpKyogiController::class, 'mov
 Route::get('/asp/tsu/sp/kyogi/Movie_Tenji.asp',        [SpKyogiController::class, 'movie_tenji']);
 Route::get('/asp/tsu/sp/kyogi/Movie_Live.asp',        [SpKyogiController::class, 'movie_live']);
 
+Route::get('/asp/tsu/sp/kyogi/Replay_Race.asp',        [SpKyogiController::class, 'replay_race']);
+Route::get('/asp/tsu/sp/kyogi/replay_race.asp',        [SpKyogiController::class, 'replay_race']);
 
+Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
 Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
 Route::get('/asp/tsu/sp/info/info_SP.asp',        [SpInfoController::class, 'index']);
 Route::get('/asp/tsu/sp/01cal/01cal.asp',        [SpCalController::class, 'index']);
@@ -376,6 +381,7 @@ Route::get('/auto_export/syutujo/', [ExportSyutujoController::class, 'auto_expor
 Route::get('/asp/tsu/02suimen/02suimen.asp',        [ExportSuimenController::class, 'index']);
 Route::get('/asp/tsu/02motor/02motor.asp',        [ExportMotorController::class, 'motor']);
 Route::get('/asp/tsu/03result_tsu/03result_tsu.asp',        [ExportResultController::class, 'result']);
+Route::get('/asp/tsu/03play_b/03play_b.asp',        [ExportPlaybackController::class, 'play_back']);
 Route::get('/asp/tsu/04event/04event.asp',        [ExportEventController::class, 'index']);
 Route::get('/asp/tsu/06meikan/06meikan.asp',        [ExportMeikanController::class, 'index']);
 Route::get('/asp/tsu/06meikan/racer_data_create.asp',        [ExportMeikanController::class, 'racer_data_create']);
@@ -401,6 +407,8 @@ Route::get('/asp/tsu/sp/kyogi/Odds_3RentanPuku.asp',        [ExportSpKaisaiContr
 Route::get('/asp/tsu/sp/kyogi/Odds_2RentanPuku.asp',        [ExportSpKaisaiController::class, 'odds_2rentanpuku']);
 Route::get('/asp/tsu/sp/kyogi/Kekka_Detail.asp',        [ExportSpKaisaiController::class, 'kekka_detail']);
 Route::get('/asp/tsu/sp/kyogi/RacenumButton.asp',        [ExportSpKaisaiController::class, 'race_num_button']);
+Route::get('/asp/tsu/sp/kyogi/Replay_List.asp',        [ExportSpKaisaiController::class, 'replay_list']);
+
 
 Route::get('/asp/tsu/sp/kyogi/CreateSPtokuten.asp',        [ExportSpKaisaiController::class, 'create_sp_tokuten']);
 Route::get('/asp/tsu/sp/kyogi/Cyoku.asp',                  [ExportSpKaisaiController::class, 'cyoku']);
@@ -409,9 +417,9 @@ Route::get('/asp/tsu/sp/motor/motor.asp',                  [ExportSpKaisaiContro
 
 
 Route::get('/asp/tsu/sp/02suimen/02suimen_SP.asp',        [ExportSpSuimenController::class, 'index']);
-Route::get('/asp/tsu/sp/02motor/02motor.asp',        [ExportSpMotorController::class, 'motor']);
-Route::get('/asp/tsu/sp/06meikan/06meikan.asp',        [ExportSpMeikanController::class, 'index']);
-Route::get('/asp/tsu/sp/pdf/pdf.asp',        [ExportSpKaisaiController::class, 'pdf']);
+Route::get('/asp/tsu/sp/02motor/02motor.asp',             [ExportSpMotorController::class, 'motor']);
+Route::get('/asp/tsu/sp/06meikan/06meikan.asp',           [ExportSpMeikanController::class, 'index']);
+Route::get('/asp/tsu/sp/pdf/pdf.asp',                     [ExportSpKaisaiController::class, 'pdf']);
 
 //レースインデックス系
 Route::get('/export/sp/tenbo/', [ExportSpTenboController::class, 'index']);

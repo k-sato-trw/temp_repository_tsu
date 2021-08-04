@@ -371,6 +371,77 @@ class ExportSpKaisaiService
         return $data;
     }
 
+
+    
+    public function replay_list($request){
+        $data = [];
+
+    
+        $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
+        $target_date = date('Ymd');
+        //$target_date = "20210525";
+        $target_time = date('Hi',strtotime($target_date));
+
+
+        $data['jyo'] = $jyo;
+        $data['target_date'] = $target_date;
+
+        $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$target_date);
+        $data['kaisai_master'] = $kaisai_master;
+
+        $chushi_junen = $this->ChushiJunen->getFirstRecordForFront($jyo,$target_date);
+        $data['chushi_junen'] = $chushi_junen;
+
+        
+        $chushi_flg = false;
+        $chushi_kaishi_race_num = 99;
+        if($kaisai_master){
+            //開催
+            $kaisai_flg = true;
+
+            if($chushi_junen){
+                $chushi_flg = true;
+                $chushi_kaishi_race_num = $chushi_junen->中止開始レース番号;
+
+                if($chushi_kaishi_race_num <= 1){
+                    $kaisai_flg = false;
+                }
+            }
+
+        }else{
+            //非開催
+            $kaisai_flg = false;
+
+        }
+
+
+        //開催データ直近2節分(本日開催も含む)
+        $kisai_2record = $this->KaisaiMaster->get2RecordForReplay($jyo,$target_date);
+        
+        $data['kaisai_flg'] = $kaisai_flg;
+        $data['chushi_flg'] = $chushi_flg;
+        $data['chushi_kaishi_race_num'] = $chushi_kaishi_race_num;
+        $data['kisai_2record'] = $kisai_2record;
+        
+
+
+        $vod = $this->TbVodManagement->getReplayRecordByDate($jyo,$kisai_2record[1]->開始日付,$kisai_2record[0]->終了日付);
+        $vod_array = [];
+        foreach($vod as $item){
+            $vod_array[$item->TARGET_DATE][$item->MOVIE_ID] = $item; 
+        }
+
+        $data['vod_array'] = $vod_array;
+
+
+
+        //日付表示用
+        $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$target_date);
+        $data['race_header'] = $race_header;
+
+        return $data;
+    }
+
     public function syusso_hyoka($request,$target_date,$race_num,$tomorrow_flg){
         $data = [];
         $is_preview = false;

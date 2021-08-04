@@ -805,7 +805,7 @@ class ExportKaisaiController extends Controller
         {
             //処理対象日を判定
             $today_date = date('Ymd');
-            $today_date = '20210620';
+            $today_date = '20210615';
 
             $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
             $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
@@ -916,7 +916,7 @@ class ExportKaisaiController extends Controller
         {
             //処理対象日を判定
             $today_date = date('Ymd');
-            $today_date = '20210620';
+            $today_date = '20210615';
 
             $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
             $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);

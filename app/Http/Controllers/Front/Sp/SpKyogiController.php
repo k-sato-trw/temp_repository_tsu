@@ -46,6 +46,13 @@ class SpKyogiController extends Controller
         return view('front.sp.kaisai.movie_live',$data);
     }
 
+    public function replay_race(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->replay_race($request);
+        return view('front.sp.kaisai.replay_race',$data);
+    }
+
     /*
     public function odds_calc(Request $request)
     {

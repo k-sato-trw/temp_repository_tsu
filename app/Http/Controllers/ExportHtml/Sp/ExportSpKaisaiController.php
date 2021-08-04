@@ -55,6 +55,19 @@ class ExportSpKaisaiController extends Controller
     }
 
     
+    public function replay_list(Request $request)
+    {
+
+        //サービスクラスで処理。
+        $data = $this->_service->replay_list($request);
+
+        //ソースを受け取り静的に書き出し処理
+        File::put(config('const.EXPORT_PATH').'/sp/kyogi/replay.htm', view('front.sp.kaisai.replay_list',$data));
+        return '書き出し完了<br><a href="/sp/kyogi/replay.htm">/sp/kyogi/replay.htm</a>';
+
+    }
+
+    
     public function syusso_hyoka(Request $request)
     {
 

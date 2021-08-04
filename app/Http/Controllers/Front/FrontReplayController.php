@@ -26,4 +26,12 @@ class FrontReplayController extends Controller
         return view('front.replay.replay_movie',$data);
     }
 
+
+    public function tenji_movie(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->tenji_movie($request);
+        return view('front.replay.tenji_movie',$data);
+    }
+
 }
