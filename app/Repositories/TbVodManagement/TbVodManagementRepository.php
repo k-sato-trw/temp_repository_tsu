@@ -34,6 +34,23 @@ class TbVodManagementRepository implements TbVodManagementRepositoryInterface
     }
 
     /**
+     * 優勝プレイバックの為にレコード取得(優勝戦が複数ある可能性)
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @return object
+     */
+    public function getYusyoRecordForPlayback($jyo,$target_date)
+    {
+        return $this->TbVodManagement
+                    ->where('JYO','=',$jyo)
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->where('CHECK_FLG','1')
+                    ->where('YUSHO_FLG','1')
+                    ->get();
+    }
+
+    /**
      * 出走書き出しの為にレコード取得、IDのルールが特殊なため、IDリストで指定
      *
      * @var string $jyo
@@ -140,10 +157,11 @@ class TbVodManagementRepository implements TbVodManagementRepositoryInterface
      */
     public function getYushoRecord($jyo)
     {
+        $target_date = date('Ymd',strtotime('-1 year',strtotime(date('Ymd'))));
         return $this->TbVodManagement
                     ->selectRaw(' * , SUBSTRING(MOVIE_ID,-2) as RACE_NUMBER')
                     ->where('JYO','=',$jyo)
-                    ->where('TARGET_DATE','>=','20160101')
+                    ->where('TARGET_DATE','>=',$target_date)
                     ->where('MOVIE_ID','NOT LIKE','%99%')
                     ->where('MOVIE_ID','NOT LIKE','Interview%')
                     ->where('MOVIE_ID','NOT LIKE','%test')

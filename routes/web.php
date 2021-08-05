@@ -39,6 +39,7 @@ use App\Http\Controllers\Front\Sp\SpEventController;
 use App\Http\Controllers\Front\Sp\SpInfoController;
 use App\Http\Controllers\Front\Sp\SpCalController;
 use App\Http\Controllers\Front\Sp\SpResultController;
+use App\Http\Controllers\Front\Sp\SpPlaybackController;
 
 
 //書き出しPC
@@ -55,6 +56,7 @@ use App\Http\Controllers\ExportHtml\ExportCalController;
 
 use App\Http\Controllers\ExportHtml\ExportTenboController;
 use App\Http\Controllers\ExportHtml\ExportSyutujoController;
+use App\Http\Controllers\ExportHtml\ExportOtherController;
 
 
 
@@ -313,7 +315,8 @@ Route::get('/asp/tsu/sp/kyogi/Movie_Live.asp',        [SpKyogiController::class,
 Route::get('/asp/tsu/sp/kyogi/Replay_Race.asp',        [SpKyogiController::class, 'replay_race']);
 Route::get('/asp/tsu/sp/kyogi/replay_race.asp',        [SpKyogiController::class, 'replay_race']);
 
-Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
+Route::get('/asp/tsu/sp/03play_b/03play_b.asp',        [SpPlaybackController::class, 'play_back']);
+Route::get('/asp/tsu/sp/03play_b/03play_b_race.asp',   [SpPlaybackController::class, 'play_back_race']);
 Route::get('/asp/tsu/sp/04event/04event_SP.asp',        [SpEventController::class, 'index']);
 Route::get('/asp/tsu/sp/info/info_SP.asp',        [SpInfoController::class, 'index']);
 Route::get('/asp/tsu/sp/01cal/01cal.asp',        [SpCalController::class, 'index']);
@@ -382,6 +385,7 @@ Route::get('/asp/tsu/02suimen/02suimen.asp',        [ExportSuimenController::cla
 Route::get('/asp/tsu/02motor/02motor.asp',        [ExportMotorController::class, 'motor']);
 Route::get('/asp/tsu/03result_tsu/03result_tsu.asp',        [ExportResultController::class, 'result']);
 Route::get('/asp/tsu/03play_b/03play_b.asp',        [ExportPlaybackController::class, 'play_back']);
+Route::get('/asp/tsu/03play_b/play_b_mov_create.asp',        [ExportPlaybackController::class, 'play_b_mov_create']);
 Route::get('/asp/tsu/04event/04event.asp',        [ExportEventController::class, 'index']);
 Route::get('/asp/tsu/06meikan/06meikan.asp',        [ExportMeikanController::class, 'index']);
 Route::get('/asp/tsu/06meikan/racer_data_create.asp',        [ExportMeikanController::class, 'racer_data_create']);
@@ -429,3 +433,8 @@ Route::get('/export/sp/syutujo/', [ExportSpSyutujoController::class, 'index']);
 
 //書き出しJS
 Route::get('/asp/tsu/kaisai/Jsinfo.asp',        [ExportKaisaiController::class, 'js_info']);
+
+
+//出元不明の書き出しファイル処理
+Route::get('/export/syusso_jumper',        [ExportOtherController::class, 'syusso_jumper']);
+Route::get('/export/sitemap_jumper',        [ExportOtherController::class, 'sitemap_jumper']); //処理不明

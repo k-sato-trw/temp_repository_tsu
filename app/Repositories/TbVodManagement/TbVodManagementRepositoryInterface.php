@@ -14,6 +14,17 @@ interface TbVodManagementRepositoryInterface
      */
     public function getYusyoRecordForSyussou($jyo,$target_date);
 
+
+    /**
+     * 優勝プレイバックの為にレコード取得(優勝戦が複数ある可能性)
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @return object
+     */
+    public function getYusyoRecordForPlayback($jyo,$target_date);
+
+
     /**
      * 出走書き出しの為にレコード取得、IDのルールが特殊なため、IDリストで指定
      *

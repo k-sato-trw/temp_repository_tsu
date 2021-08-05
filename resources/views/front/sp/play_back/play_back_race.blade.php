@@ -1,152 +1,115 @@
-@inject('general', 'App\Services\GeneralService')
-<!DOCTYPE HTML>
+
+<!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="cache-control" content="no-cache" />
-<meta http-equiv="expires" content="0" />
-<meta name="format-detection" content="telephone=no"/>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=720px" />
 
-<title>レースリプレイ｜ボートレース津</title>
+<title>ボートレース津｜優勝戦プレイバック</title>
 
-<meta name="Keywords" content="ボートレース津,ボートレース,津,動画,リプレイ,結果" />
-<meta name="Description" content="ボートレース津が開催したレースのリプレイ動画、レース結果がご覧いただけます。" />
-
+<meta name="Keywords" content="BOAT RACE津,津,優勝,優勝戦,結果,プレイバック">
+<meta name="Description" content="BOAT RACE津の優勝戦結果を掲載しています。">
 
 <link rel="apple-touch-icon-precomposed" href="/sp/apple-touch-icon-precomposed.png" />
+<link href="/sp/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/sp/css/common.css" rel="stylesheet" type="text/css">
+<link href="/sp/css/03play_b.css" rel="stylesheet" type="text/css">
+
 <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/sp/kyogi/css/reset.css" />
-<link rel="stylesheet" href="/sp/kyogi/css/kyogi.css" />
-<link rel="stylesheet" href="/sp/kyogi/css/style.css" />
-<link rel="stylesheet" href="/sp/kyogi/css/custom.css" />
-
 <script type="text/javascript" src="/sp/js/jquery-1.8.3.min.js"></script>
-
-<script type="text/javascript">
-function play( argNum ){
-	if( argNum == 1 ){
-		document.movie.play();
-	}else{
-		document.movie2.play();
-	}
-}
-</script>
-
-<!-- 共通 -->
-<script type="text/javascript" src="/sp/kyogi/js/common.js"></script>
-
-<!-- アコーディオン -->
-<script type="text/javascript" src="/sp/kyogi/js/jquery.accordion.js"></script>
-
-<!-- フォーム -->
-<script type="text/javascript" src="/sp/kyogi/js/custom-form-elements.js"></script>
+<script type="text/javascript" src="/sp/js/common.js"></script>
 
 
-<script type="text/javascript" src="/asp/FlashPlayerCheck.js"></script>
-<script type="text/javascript" src="/asp/SmartAgentGetter.js"></script>
+
+<!--ヘッダーメニューjs-->
+<script type="text/javascript" src="/sp/js/header_navi.js"></script>
+
+
+
+
+<!-- 動画タブ -->
 <script type="text/javascript" src="/sp/kyogi/js/jquery.new_tabs_movie.js"></script>
 
 <!-- リプレイ結果タブ -->
 <script type="text/javascript" src="/sp/kyogi/js/jquery.tabs_kekka.js"></script>
+<script type="text/javascript" src="/asp/FlashPlayerCheck.js"></script>
+<script type="text/javascript" src="/asp/SmartAgentGetter.js"></script>
 
 <script type="text/javascript">
 function funcFlag(){
 
 	var Flag;
-	Flag = 1;
+	Flag = '';
 	return Flag;
 
 }
 </script>
-<script type="text/javascript" src="/sp/kyogi/js/link.js"></script>
-<script type="text/javascript">
-function funcDefaultSeledted(){
 
-	for( var intLoopCount = 0 ; intLoopCount < document.racenum.select.options.length ; intLoopCount++ ){
-		if( document.racenum.select.options[ intLoopCount ].value == '1'){
-			document.racenum.select.options[ intLoopCount ].selected = true;
-			alert( document.racenum.select.options[ intLoopCount ].value )
-		}
-	}
-}
-</script>
-<script type="text/javascript" src="/sp/js/data_navi.js"></script>
 </head>
 
-
 <body>
+<div id="wrapper">
 
-<div id="wrapper"><!-- wrapper start -->
+<!--◆◆◆header◆◆◆-->
+
+<div id="header_wrap">
+<div id="header">
+<h1><a href="/sp/">BOATRACE 津 #09</a></h1>
+</div><!--/#header-->
+<h2>優勝戦プレイバック</h2>
+
+<div id="nav">
+<script type="text/javascript">
+            funcTsuMenu();
+            </script>
+</div><!--/#nav-->
+</div><!--/#header_wrap-->
 
 
-<div id="header"><!-- header start -->
 
-<h1><a href="/sp/"><div>BOAT RACE 津 09#</div></a></h1>
-
-<a href="javascript:history.back();" id="replay_back"><div>戻る</div></a>
-
-</div><!-- header end -->
-
-
-<div id="main"><!-- main start -->
-
-
-<div id="race">
-
-<table>
-<tr>
-<td class="date">{{ date('n/j',strtotime($target_date)) }}</td>
-<td class="name">{{$kaisai_master->開催名称}}</td>
-<td class="day">{{$kaisai_date_list_label[$target_date]}}</td>
-</tr>
-</table>
-
+<!--◆◆◆レース名◆◆◆-->
+<div id="result_kekka_day">
+{{ date('Y/n/j',strtotime($target_date)) }}
+<span class="back_b"><a href="javascript:history.back();">戻る</a></span>
+<div class="clear"></div>
 </div>
+<div id="result_rn">
+    @if(strpos($kaisai_master->開催名称,"SG") !== false)
+        <span class="grade_sg">SG</span>
+    @elseif(strpos($kaisai_master->開催名称,"G1") !== false)
+        <span class="grade_g1">G1</span>
+    @elseif(strpos($kaisai_master->開催名称,"G2") !== false)
+        <span class="grade_g2">G2</span>
+    @elseif(strpos($kaisai_master->開催名称,"G3") !== false)
+        <span class="grade_g3">G3</span>
+    @else
+        <span class="grade_00">一般</span>
+    @endif
+<span class="race_name">
+<p>
+{{$kaisai_master->開催名称}}
+</p>
+</span>
 
-<!--動画エリア-->
-<div id="movie_player">
-<div id="player"></div>
-<div id="edit"></div>
-</div>
+<div class="clear"></div>
+</div><!--/#result_rn--> 
 
-
-<div id="race_select" class="cf">
-
-<div id="num_select" class="old">
-<form name="racenum">
-<select id="select" name="select" class="styled" >
-<option value="1R" @if($race_num==1)selected @endif>1R</option>
-<option value="2R" @if($race_num==2)selected @endif>2R</option>
-<option value="3R" @if($race_num==3)selected @endif>3R</option>
-<option value="4R" @if($race_num==4)selected @endif>4R</option>
-<option value="5R" @if($race_num==5)selected @endif>5R</option>
-<option value="6R" @if($race_num==6)selected @endif>6R</option>
-<option value="7R" @if($race_num==7)selected @endif>7R</option>
-<option value="8R" @if($race_num==8)selected @endif>8R</option>
-<option value="9R" @if($race_num==9)selected @endif>9R</option>
-<option value="10R" @if($race_num==10)selected @endif>10R</option>
-<option value="11R" @if($race_num==11)selected @endif>11R</option>
-<option value="12R" @if($race_num==12)selected @endif>12R</option>
-</select>
-</form>
-</div>
-
-<table id="class">
-<tr>
-<td>{{$syussou[1]->RACE_NAME}}</td>
-</tr>
-</table>
+<!--◆◆◆レース番号◆◆◆-->
+<div id="result02_ttl">
+<h2 class="h_r{{$race_num}}">{{$race_num}}R</h2>
+<span class="race_cl">{{$syussou[1]->RACE_NAME}}</span>
+<div class="clear"></div>
+</div><!--/result02_ttl-->
 
 
-<div id="dento"></div>
 
-</div>
-
+<!--◆◆◆コンテンツ◆◆◆-->	
 
 <div id="replay_movie">
-
 <script type="text/javascript">
 	strSmartAgent = funcJsSmartAgentGetter();
 	var flag  = { os : false, player: false }; 
@@ -154,26 +117,17 @@ function funcDefaultSeledted(){
 	if(strSmartAgent == "PC"){
 		document.write('<ul id="tab_movie" class="cf">');
 		document.write('<li id="race">リプレイ</li>');
-		document.write('<li id="interview"  >展示リプレイ</li>');
 		document.write('</ul>');
 		document.write('<div class="cont_movie">');
-		document.write('<iframe src="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}09{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" frameborder="0" allowtransparency="true" scrolling="no" name="movie" id="movie" allowfullscreen></iframe>');
-		document.write('</div>');
-		document.write('<div class="cont_movie">');
-		document.write('<iframe src="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}9909{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" frameborder="0" allowtransparency="true" scrolling="no" name="movie2" id="movie2" allowfullscreen></iframe>');
+		document.write('<iframe src="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{$movie_id}}" frameborder="0" allowtransparency="true" scrolling="no" name="movie" id="movie" allowfullscreen></iframe>');
 		document.write('</div>');
 	}else if(strSmartAgent == "Android"){
 		if( funcJsFlashPlayerCheck().player && ( !!userAgent && (userAgent[1] < 4.0 ) ) ) 
 		{// FlashPlayerがあり4.0未満の端末のとき
 			document.write('<ul id="tab_movie" class="cf">');
-			document.write('<a href="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}09{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" target="_blank">');
+			document.write('<a href="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{$movie_id}}" target="_blank">');
 			document.write('<li id="race">');
 			document.write('リプレイ');
-			document.write('</li>');
-			document.write('</a>');
-			document.write('<a href="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}9909{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" target="_blank">');
-			document.write('<li id="interview"  >');
-			document.write('展示リプレイ');
 			document.write('</li>');
 			document.write('</a>');
 			document.write('</ul>');
@@ -183,25 +137,16 @@ function funcDefaultSeledted(){
 			//FlashPlayerがインストールされていない場合
 			document.write('<ul id="tab_movie" class="cf">');
 			document.write('<li id="race">リプレイ</li>');
-			document.write('<li id="interview"  >展示リプレイ</li>');
 			document.write('</ul>');
 			document.write('<div class="cont_movie">');
-			document.write('<iframe src="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}09{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" frameborder="0" allowtransparency="true" scrolling="no" name="movie" id="movie" allowfullscreen></iframe>');
-			document.write('</div>');
-			document.write('<div class="cont_movie">');
-			document.write('<iframe src="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}9909{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" frameborder="0" allowtransparency="true" scrolling="no" name="movie2" id="movie2" allowfullscreen></iframe>');
+			document.write('<iframe src="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{$movie_id}}" frameborder="0" allowtransparency="true" scrolling="no" name="movie" id="movie" allowfullscreen></iframe>');
 			document.write('</div>');
 		}
 	}else if( strSmartAgent == "iPhone" || strSmartAgent == "iPad" || strSmartAgent == "iPod"){
 			document.write('<ul id="tab_movie" class="cf">');
-			document.write('<a href="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}09{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" target="_blank">');
+			document.write('<a href="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{$movie_id}}" target="_blank">');
 			document.write('<li id="race">');
 			document.write('リプレイ');
-			document.write('</li>');
-			document.write('</a>');
-			document.write('<a href="/asp/tsu/sp/kyogi/Movie.asp?MovieID={{ $target_date }}9909{{ str_pad($race_num, 2, '0', STR_PAD_LEFT) }}" target="_blank">');
-			document.write('<li id="interview"  >');
-			document.write('展示リプレイ');
 			document.write('</li>');
 			document.write('</a>');
 			document.write('</ul>');
@@ -215,7 +160,6 @@ function funcDefaultSeledted(){
 </script>
 
 </div>
-
 
 
 
@@ -226,8 +170,8 @@ function funcDefaultSeledted(){
 
 
 <ul id="tab_kekka" class="cf">
-<li id="shusso" >出走表</li>
-<li id="selected" >レース結果</li>
+<li id="shusso" class="selected">出走表</li>
+<li id="kekka">レース結果</li>
 </ul>
 
 
@@ -236,11 +180,11 @@ function funcDefaultSeledted(){
 <!--出走表-->
 <table id="ta_result" class="replay">
 <tr>
-    <th class="header1">枠番</th>
-    <th class="header1">選手名</th>
-    <th class="header1">級別</th>
-    <th class="header1">年齢</th>
-    <th class="header1">支部</th>
+<th class="header1">枠番</th>
+<th class="header1">選手名</th>
+<th class="header1">級別</th>
+<th class="header1">年齢</th>
+<th class="header1">支部</th>
 </tr>
     @foreach ($syussou as $teiban => $item)
         @if($ozz_info_array[$teiban] != 2)
@@ -468,15 +412,14 @@ function funcDefaultSeledted(){
         @endif
     </tr>
 @endforeach
-
 </table>
 
 <!--スタート展示-->
 <table id="ta_shusso" class="start">
 <tr>
-    <th class="header1">CGスリット</th>
-    <th class="header1">ST</th>
-    <th class="header1">決まり手</th>
+  <th class="header1">CGスリット</th>
+<th class="header1">ST</th>
+<th class="header1">決まり手</th>
 </tr>
 @foreach($kekka_array as $teiban=>$item)
     <tr>
@@ -494,14 +437,14 @@ function funcDefaultSeledted(){
     </tr>
 @endforeach
 </table>
-<div id="syosai_kikou" class="cf">
-    @if($kekka_info)
-        <div class="kikou_left"><span class="gray">天候:</span>{{ str_replace('　','',$kekka_info->TENKOU) }}　<span class="gray">波高:</span>{{$kekka_info->HAKO}}cm　<span class="gray">風:</span>{{$kekka_info->KAZAMUKI2}}&nbsp;{{$kekka_info->FUSOKU}}m/秒</div>    
-    @else
-        <div class="kikou_left"><span class="gray">天候:</span>-　<span class="gray">波高:</span>-　<span class="gray">風:</span>-</div>
-    @endif
+<div id="weather" class="kekka cf">
+@if($kekka_info)
+    <div id="info"><span>天候:</span>{{ str_replace('　','',$kekka_info->TENKOU) }}<span>波高:</span>{{$kekka_info->HAKO}}cm<span>風向:</span>{{$kekka_info->KAZAMUKI2}}<span>風速:</span>{{$kekka_info->FUSOKU}}m</div>    
+@else
+    <div id="info"><span>天候:</span>-<span>波高:</span>-<span>風向:</span>-<span>風速:</span>-</div>
+@endif
 </div><!-- weather end -->
-</div>
+</div><!-- cont_kekka end -->
 
 </div>
 
@@ -511,33 +454,18 @@ function funcDefaultSeledted(){
 
 
 
-<!-- データリンク -->
-<script type="text/javascript">
-	funcTsuDataMenu();
-</script>
 
 
 
-</div><!-- main end -->
 
 
-<div id="footer"><!-- footer start -->
-
-<div id="page_top"><a href="#wrapper">▲ページ上部へ</a></div>
-
-<div id="b_top"><a href="/sp/kyogi/replay.htm">レースリプレイTOP</a><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09">データ＆予想</a></div>
-
-<div id="copyright"><a href="/sp/">
-<div>&copy;BOAT RACE TSU All rights reserved.</div>
-</a></div>
-
-</div><!-- footer end -->
+<!--◆◆◆フッター◆◆◆-->
+<div id="footer_wrap">
+<div id="ft_logo">BOAT RACE TSU</div>
+<div id="ft_credit">&copy;BOAT RACE TSU All rights reserved.</div></div>
 
 
-</div><!-- wrapper end -->
-
-
+</div><!--/#wrapper-->
 
 </body>
-
 </html>
