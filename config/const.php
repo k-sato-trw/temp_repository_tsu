@@ -32,6 +32,7 @@ return [
     'ID' => [
         'ADMIN' => 'admin',
         'ADMIN_SEKOSYA' => 'admin',
+        'ADMIN_KISYA' => 'admin',
         /*
         'ADMIN_PDF' => 'admin',
         'ADMIN_YOSO' => 'admin',
@@ -41,6 +42,7 @@ return [
     'PASSWORD' => [
         'ADMIN' => 'password',
         'ADMIN_SEKOSYA' => 'password',
+        'ADMIN_KISYA' => 'password',
         /*
         'ADMIN_PDF' => 'password',
         'ADMIN_YOSO' => 'password',

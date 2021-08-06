@@ -38,85 +38,59 @@ class TbTsuYosoAshiRepository implements TbTsuYosoAshiRepositoryInterface
     }
 
     /**
-     * 最大IDのレコードを取得
+     * IDリストと日付でレコードを取得
      *
+     * @var array $touban_list
+     * @var string $target_date
      * @return object
      */
-    public function getLastRecord()
+    public function getRecordByToubanList($touban_list,$target_date)
     {
         return $this->TbTsuYosoAshi
-                    ->orderBy('ID', 'desc')
-                    ->first();
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->where('KIKYO_FLG','=',0)
+                    ->whereIn('TOUBAN',$touban_list)
+                    ->where('JYO','=',config('const.JYO_CODE'))
+                    ->orderBy('TOUBAN', 'asc')
+                    ->get();
     }
 
     /**
-     * インサート処理
+     * IDリスト除外と日付でレコードを取得
      *
-     * @var object  $request
+     * @var array $touban_list
+     * @var string $target_date
      * @return object
      */
-    public function insertRecord($request)
-    {
-        //既存データ確認
-        {
-            $last_ID = $this->getLastRecord();
-            $next_ID = $last_ID->ID + 1;
-        }
-
-        $new_datetime = date('YmdHis');
-
-        //新規作成
-        $affected = $this->TbTsuYosoAshi
-                        ->insert([
-                            'ID' => $next_ID,
-                            'START_DATE' => $request->input('START_DATE'),
-                            'END_DATE' => $request->input('END_DATE'),
-                            'TEXT' => $request->input('TEXT'),
-                            'APPEAR_FLG' => $request->input('APPEAR_FLG'),
-                            'EDITOR_NAME' => $request->input('EDITOR_NAME'),
-                            'RESIST_TIME' => $new_datetime,
-                            'UPDATE_TIME' => $new_datetime,
-                        ]);
-
-        return $affected;
-    }
-
-    /**
-     * IDをキーにしてアップデート
-     *
-     * @var object  $request
-     * @var string $id
-     * @return object
-     */
-    public function UpdateRecordByPK($request,$id)
-    {
-
-        $new_datetime = date('YmdHis');
-
-        $affected = $this->TbTsuYosoAshi
-                            ->where('ID', $id)
-                            ->update([
-                                'START_DATE' => $request->input('START_DATE'),
-                                'END_DATE' => $request->input('END_DATE'),
-                                'TEXT' => $request->input('TEXT'),
-                                'APPEAR_FLG' => $request->input('APPEAR_FLG'),
-                                'EDITOR_NAME' => $request->input('EDITOR_NAME'),
-                                'UPDATE_TIME' => $new_datetime,
-                            ]);
-        return $affected;
-    }
-
-    /**
-     * IDで1レコードを削除
-     *
-     * @var string $id
-     * @return object
-     */
-    public function deleteFirstRecordByPK($id)
+    public function getRecordNotToubanList($touban_list,$target_date)
     {
         return $this->TbTsuYosoAshi
-                    ->where('ID', $id)
-                    ->delete();
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->where('KIKYO_FLG','=',0)
+                    ->whereNotIn('TOUBAN',$touban_list)
+                    ->where('JYO','=',config('const.JYO_CODE'))
+                    ->orderBy('TOUBAN', 'asc')
+                    ->get();
     }
 
+    /**
+     * 帰郷フラグと日付でレコードを取得
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getKikyouRecordByToubanList($target_date)
+    {
+        return $this->TbTsuYosoAshi
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->where('KIKYO_FLG','=',1)
+                    ->where('JYO','=',config('const.JYO_CODE'))
+                    ->orderBy('TOUBAN', 'asc')
+                    ->get();
+    }
+
+
+
+
+    
 }

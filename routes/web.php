@@ -22,6 +22,10 @@ use App\Http\Controllers\AdminSekosya\SekosyaInformationController;
 use App\Http\Controllers\AdminSekosya\SekosyaKinkyuKokutiController;
 use App\Http\Controllers\AdminSekosya\KaimonController;
 
+
+use App\Http\Controllers\AdminKisyaController;
+use App\Http\Controllers\AdminKisya\DeashiController;
+
 //use App\Http\Controllers\Api\GetDateTextController;
 use App\Http\Controllers\Api\GetKinkyoController;
 
@@ -279,6 +283,25 @@ Route::get('/admin_sekosya/kaimon/create/{target_date}', [KaimonController::clas
 Route::post('/admin_sekosya/kaimon/create/{target_date}', [KaimonController::class, 'create']);
 Route::post('/admin_sekosya/kaimon/delete', [KaimonController::class, 'delete']);
 Route::get('/admin_sekosya/kaimon/change_appear_flg/{target_year_month}/{appear_flg}', [KaimonController::class, 'change_appear_flg']);
+
+
+//admin_kisya系
+Route::get('/admin_kisya', [AdminKisyaController::class, 'index']);
+Route::get('/admin_kisya/index', [AdminKisyaController::class, 'index']);
+Route::get('/admin_kisya/login', [AdminKisyaController::class, 'login']);
+Route::post('/admin_kisya/login', [AdminKisyaController::class, 'login']);
+Route::get('/admin_kisya/logout', [AdminKisyaController::class, 'logout']);
+
+
+//admin_kisya系 出足伸び足
+Route::get('/admin_kisya/deashi', [DeashiController::class, 'index']);
+
+Route::get('/admin_kisya/deashi/edit/{id}', [DeashiController::class, 'edit']);
+Route::post('/admin_kisya/deashi/edit/{id}', [DeashiController::class, 'edit']);
+Route::get('/admin_kisya/deashi/create', [DeashiController::class, 'create']);
+Route::post('/admin_kisya/deashi/create', [DeashiController::class, 'create']);
+Route::get('/admin_kisya/deashi/delete/{id}', [DeashiController::class, 'delete']);
+
 
 
 //フロントPC

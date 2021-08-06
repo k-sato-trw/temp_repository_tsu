@@ -103,7 +103,7 @@ class ExportPlaybackService
                 if($neer_kekka_race_number >=  (int)substr($item->MOVIE_ID,-2) ){
 
                     //該当のHTMLがまだ出力されていない
-                    //if(!file_exists(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/play_b_mov/play_b_mov_'.$item->MOVIE_ID.'.htm')){
+                    if(!file_exists(config('const.EXPORT_PATH').'/asp/kyogi/09/pc/play_b_mov/play_b_mov_'.$item->MOVIE_ID.'.htm')){
                         $write_flg = true;
                         $output_vod[$item->MOVIE_ID]['vod'] = $item;
 
@@ -120,7 +120,7 @@ class ExportPlaybackService
                         $output_vod[$item->MOVIE_ID]['data_harai'] = $data_harai;
                         $output_vod[$item->MOVIE_ID]['data_kekka'] = $data_kekka;
                         $output_vod[$item->MOVIE_ID]['data_sub'] = $data_sub;
-                    //}
+                    }
 
                 }   
             }

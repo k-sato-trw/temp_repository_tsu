@@ -34,6 +34,24 @@ class TbBoatSyussouRepository implements TbBoatSyussouRepositoryInterface
                     ->get();
     }
 
+    /**
+     * 記者CMS 出足データの該当レコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @return object
+     */
+    public function getRecordByDate($jyo,$target_date)
+    {
+        return $this->TbBoatSyussou
+                    ->select("TOUBAN","SENSYU_NAME","HOME_TOWN","KYU_BETU","MOTOR_NO")
+                    ->where("JYO","=",$jyo)
+                    ->where("TARGET_DATE","=",$target_date)
+                    ->groupBy("TOUBAN","SENSYU_NAME","HOME_TOWN","KYU_BETU","MOTOR_NO")
+                    ->orderBy("TOUBAN","ASC")
+                    ->get();
+    }
+
 
     /**
      * プロフィール出力用優勝データを取得
@@ -446,4 +464,7 @@ class TbBoatSyussouRepository implements TbBoatSyussouRepositoryInterface
                     ->orderBy('tb_boat_syussou.RACE_NUMBER','ASC')
                     ->get();
     }
+
+
+
 }

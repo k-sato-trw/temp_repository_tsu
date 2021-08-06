@@ -15,6 +15,15 @@ interface TbBoatSyussouRepositoryInterface
     public function getRecordByPK($jyo,$target_date,$race_num);
 
     /**
+     * 記者CMS 出足データの該当レコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @return object
+     */
+    public function getRecordByDate($jyo,$target_date);
+
+    /**
      * プロフィール出力用優勝データを取得
      *
      * @var string $jyo
