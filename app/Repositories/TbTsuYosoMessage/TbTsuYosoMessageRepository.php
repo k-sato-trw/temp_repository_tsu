@@ -36,85 +36,69 @@ class TbTsuYosoMessageRepository implements TbTsuYosoMessageRepositoryInterface
     }
 
     /**
-     * 最大IDのレコードを取得
+     * 一つのレコードを取得
      *
      * @return object
      */
-    public function getLastRecord()
+    public function getFirstRecord()
     {
         return $this->TbTsuYosoMessage
-                    ->orderBy('ID', 'desc')
                     ->first();
     }
 
+
     /**
-     * インサート処理
+     * アップデート処理
      *
      * @var object  $request
      * @return object
      */
-    public function insertRecord($request)
+    public function updateRecord($request)
     {
-        //既存データ確認
-        {
-            $last_ID = $this->getLastRecord();
-            $next_ID = $last_ID->ID + 1;
-        }
 
         $new_datetime = date('YmdHis');
 
-        //新規作成
+
+        //編集
         $affected = $this->TbTsuYosoMessage
-                        ->insert([
-                            'ID' => $next_ID,
-                            'START_DATE' => $request->input('START_DATE'),
-                            'END_DATE' => $request->input('END_DATE'),
-                            'TEXT' => $request->input('TEXT'),
-                            'APPEAR_FLG' => $request->input('APPEAR_FLG'),
-                            'EDITOR_NAME' => $request->input('EDITOR_NAME'),
-                            'RESIST_TIME' => $new_datetime,
-                            'UPDATE_TIME' => $new_datetime,
-                        ]);
+                    ->where([
+                        'JYO' => config('const.JYO_CODE'),
+                    ])
+                    ->update([
+                        'START_DATE' => $request->input('START_DATE'),
+                        'END_DATE' => $request->input('END_DATE'),
+                        'SAMPLE1' => $request->input('SAMPLE1'),
+                        'SAMPLE2' => $request->input('SAMPLE2'),
+                        'SAMPLE3' => $request->input('SAMPLE3'),
+                        'COMMENT' => $request->input('COMMENT'),
+                        'PC_APPEAR_FLG' => $request->input('PC_APPEAR_FLG'),
+                        'SP_APPEAR_FLG' => $request->input('SP_APPEAR_FLG'),
+                        'UPDATE_TIME' => $new_datetime,
+                    ]);
+        
 
         return $affected;
     }
 
     /**
-     * IDをキーにしてアップデート
+     * 公開フラグ変更
      *
-     * @var object  $request
-     * @var string $id
+     * @var object $request
      * @return object
      */
-    public function UpdateRecordByPK($request,$id)
+    public function changeAppearFlg($request)
     {
-
         $new_datetime = date('YmdHis');
 
-        $affected = $this->TbTsuYosoMessage
-                            ->where('ID', $id)
-                            ->update([
-                                'START_DATE' => $request->input('START_DATE'),
-                                'END_DATE' => $request->input('END_DATE'),
-                                'TEXT' => $request->input('TEXT'),
-                                'APPEAR_FLG' => $request->input('APPEAR_FLG'),
-                                'EDITOR_NAME' => $request->input('EDITOR_NAME'),
-                                'UPDATE_TIME' => $new_datetime,
-                            ]);
-        return $affected;
-    }
-
-    /**
-     * IDで1レコードを削除
-     *
-     * @var string $id
-     * @return object
-     */
-    public function deleteFirstRecordByPK($id)
-    {
         return $this->TbTsuYosoMessage
-                    ->where('ID', $id)
-                    ->delete();
+                    ->where([
+                        'JYO' => config('const.JYO_CODE'),
+                    ])
+                    ->update([
+                        'APPEAR_FLG' => $request->input('APPEAR_FLG'),
+                        'UPDATE_TIME' => $new_datetime,
+                    ]);
     }
 
+    
 }

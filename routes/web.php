@@ -25,6 +25,7 @@ use App\Http\Controllers\AdminSekosya\KaimonController;
 
 use App\Http\Controllers\AdminKisyaController;
 use App\Http\Controllers\AdminKisya\DeashiController;
+use App\Http\Controllers\AdminKisya\MessageController;
 
 //use App\Http\Controllers\Api\GetDateTextController;
 use App\Http\Controllers\Api\GetKinkyoController;
@@ -295,12 +296,14 @@ Route::get('/admin_kisya/logout', [AdminKisyaController::class, 'logout']);
 
 //admin_kisya系 出足伸び足
 Route::get('/admin_kisya/deashi', [DeashiController::class, 'index']);
-
-Route::get('/admin_kisya/deashi/edit/{id}', [DeashiController::class, 'edit']);
-Route::post('/admin_kisya/deashi/edit/{id}', [DeashiController::class, 'edit']);
-Route::get('/admin_kisya/deashi/create', [DeashiController::class, 'create']);
+Route::post('/admin_kisya/deashi/upsert', [DeashiController::class, 'upsert']);
 Route::post('/admin_kisya/deashi/create', [DeashiController::class, 'create']);
-Route::get('/admin_kisya/deashi/delete/{id}', [DeashiController::class, 'delete']);
+Route::get('/admin_kisya/deashi/delete', [DeashiController::class, 'delete']);
+Route::get('/admin_kisya/deashi/change_appear_flg', [DeashiController::class, 'change_appear_flg']);
+
+Route::get('/admin_kisya/message', [MessageController::class, 'edit']);
+Route::post('/admin_kisya/message', [MessageController::class, 'edit']);
+Route::get('/admin_kisya/message/change_appear_flg', [MessageController::class, 'change_appear_flg']);
 
 
 

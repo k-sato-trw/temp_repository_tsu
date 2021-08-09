@@ -42,4 +42,20 @@ interface TbTsuYosoAshiRepositoryInterface
      */
     public function getKikyouRecordByToubanList($target_date);
 
+    /**
+     * 新規作成処理
+     *
+     * @var object  $request
+     * @return object
+     */
+    public function insertRecord($request);
+
+    /**
+     * アップサート処理
+     *
+     * @var array  $insert_data
+     * @return object
+     */
+    public function upsertRecord($insert_data);
+
 }

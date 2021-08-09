@@ -52,6 +52,26 @@ class TbBoatSyussouRepository implements TbBoatSyussouRepositoryInterface
                     ->get();
     }
 
+    /**
+     * 記者CMS 節間出足データの該当レコードを取得
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getSetsukanRecord($jyo,$start_date,$end_date)
+    {
+        return $this->TbBoatSyussou
+                    ->select("TOUBAN","SENSYU_NAME","HOME_TOWN","KYU_BETU","MOTOR_NO")
+                    ->where("JYO","=",$jyo)
+                    ->where("TARGET_DATE",">=",$start_date)
+                    ->where("TARGET_DATE","<=",$end_date)
+                    ->groupBy("TOUBAN","SENSYU_NAME","HOME_TOWN","KYU_BETU","MOTOR_NO")
+                    ->orderBy("TOUBAN","ASC")
+                    ->get();
+    }
+
 
     /**
      * プロフィール出力用優勝データを取得

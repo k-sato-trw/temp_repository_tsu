@@ -27,34 +27,41 @@
 @endsection
 
 @section('content')
-    
+
+@if(count($syussou_ashi_array) == 0)
+    <div class="new_tit" style="margin-left:auto;margin-right:auto;">新規入力</div><!--/#new_tit-->
+@else
+    @if($appear_flg)
+        <div class="open_tit" style="margin-left:auto;margin-right:auto;">公開中</div><!--/#open_tit-->
+    @else
+        <div class="save_tit" style="margin-left:auto;margin-right:auto;">保存中</div>
+    @endif
+@endif
+
 <div id="header2">
     <div id="day">
         <span class="day_tit">日<br>程</span>
-        <select id="day_select" name="TARGET_DATE" onChange="funcChangeDate();">
-            <option value="20210620" selected>6日目（6/20）</option>
-            <option value="20210619">5日目（6/19）</option>
-            <option value="20210618">4日目（6/18）</option>
-            <option value="20210617">3日目（6/17）</option>
-            <option value="20210616">2日目（6/16）</option>
-            <option value="20210615">1日目（6/15）</option>
+        <select id="day_select" name="TARGET_DATE" onChange="location.href='/admin_kisya/deashi?yd='+$(this).val()">
+            @foreach($kaisai_date_list as $key => $item)
+                <option value="{{$key}}" @if($target_date == $key) selected @endif>{{$item}}（{{date('n/j',strtotime($key))}}）</option>
+            @endforeach
         </select>
     </div><!--/#day-->
 
     <div id="race_name">
     <span class="race_n_tit">対象開催</span>
-    <span class="race_n">次節開催は9月だよ！BR津競技棟工事記念</span>
+    <span class="race_n">{{ $kaisai_master->開催名称 }}</span>
     
     </div><!--/#race_name-->
     <div class="clear"></div>
     </div><!--/#header2-->
-    <div id="info01" style="margin-left:auto;margin-right:auto;">◆帰郷 @foreach($kikyo_ashi_array as $item) {{str_replace('　','',$fan_data_array[$item->TOUBAN]->NameK)}}選手@endforeach
+    <div id="info01" style="margin-left:auto;margin-right:auto;">◆帰郷 @foreach($display_kikyo_ashi_array as $item) {{str_replace('　','',$fan_data_array[$item->TOUBAN]->NameK)}}選手@endforeach
     </div>
     
     
     
     <!--▼▼▼本文▼▼▼-->
-    
+<form name="deashi_form" method="post" action="/admin_kisya/deashi/upsert">    
     <table id="ta_deashi" style="margin-left:auto;margin-right:auto;">
     <tr>
     <th>No.</th>
@@ -66,27 +73,28 @@
     <th class="deashi">出足</th>
     <th class="deashi2">
     
-    <select name="ALL_DEASHI" tabindex="4" class="fm_deashi_yoso_pd">
+    <select name="ALL_DEASHI" tabindex="4" class="fm_deashi_yoso_pd" onchange="ikkatsu('DEASHI',this)">
     <option value="0" selected>--</option>
     <option value="1">◎</option>
     <option value="2">○</option>
     <option value="3">△</option>
     </select>
-    <input type="button" value="一括反映" onClick="funcSave( '3' )" class="fm_deashi_yoso_pd_bt">
-    
+    {{--<input type="button" value="一括反映" onClick="funcSave( '3' )" class="fm_deashi_yoso_pd_bt">--}}
+    選択後「保存」してください
     </th>
     <th class="nobiashi">伸足</th>
     <th class="nobiashi2">
     
-    <select name="ALL_NOBIASHI" tabindex="4" class="fm_deashi_yoso_pd">
+    <select name="ALL_NOBIASHI" tabindex="4" class="fm_deashi_yoso_pd" onchange="ikkatsu('NOBIASHI',this)">
     <option value="0" selected>--</option>
     <option value="1">◎</option>
     <option value="2">○</option>
     <option value="3">△</option>
     </select>
-    <input type="button" value="一括反映" onClick="funcSave( '4' )" class="fm_deashi_yoso_pd_bt">
-    
+    {{--<input type="button" value="一括反映" onClick="funcSave( '4' )" class="fm_deashi_yoso_pd_bt">--}}
+    選択後「保存」してください
     </th>
+    <th>削除</th>
     </tr>
     
     <!--/#情報-->
@@ -136,6 +144,7 @@
                 <span class="ic_c">△</span></label>
                 
                 </td>
+                <td></td>
             </tr>
             <?php $loop_count ++; ?>
         @endif
@@ -145,7 +154,7 @@
     
     {{--追配↓--}}
     @foreach ($tsuihai_ashi_array as $item)
-        <tr>
+        <tr class="info01">
             <td>{{$loop_count}}
             <br><select name="KIKYO_FLG_{{$loop_count}}" tabindex="2" class="fm_kt" onfocus="funcForcus();">
             <option value="0" selected>--</option>
@@ -187,13 +196,14 @@
             <span class="ic_c">△</span></label>
             
             </td>
+            <td><a href="javascript:if(confirm('選択したレコードを削除します。よろしいですか?')){location.href='/admin_kisya/deashi/delete?TARGET_DATE={{$target_date}}&TOUBAN={{$item->TOUBAN}}'}" >削除</a></td>
         </tr>
         <?php $loop_count ++; ?>
     @endforeach
     {{--追配↑--}}
 
     
-    {{--帰郷↓--
+    {{--帰郷↓--}}
     @foreach ($kikyo_ashi_array as $item)
         <tr>
             <td>{{$loop_count}}
@@ -237,6 +247,7 @@
             <span class="ic_c">△</span></label>
             
             </td>
+            <td></td>
         </tr>
         <?php $loop_count ++; ?>
     @endforeach
@@ -245,12 +256,24 @@
       
     </table>
     
-        <!--▼▼▼選手追加▼▼▼-->
-        <div style="margin:0px auto 40px;width:980px;">
-            <h2>【選手を手動追加】</h2>
-            <input type="text" id="TOUBAN" name="TOUBAN" size="6" maxlength="4" value="登 番" onfocus="funcOnCursol( );" onblur="funcOnBlur( );" class="fm_tuika01">
-            <input type="text" id="KIBAN" name="KIBAN" size="6" maxlength="3" value="モーター機番" onfocus="funcOnCursol2( );" onblur="funcOnBlur2( );" class="fm_tuika02"><input type="button" value="追加" class="fm_deashi_yoso_pd_bt" onClick="javascript:funcSave( '5' );"><input type="button" value="削除" class="fm_deashi_yoso_pd_bt" onClick="javascript:funcSave( '6' );">
-        </div>
+    <input type="hidden" name="APPEAR_FLG" value="0">
+    <input type="hidden" name="MODE" value="0">
+    <input type="hidden" name='TARGET_DATE' value="{{$target_date}}">
+    @csrf
+</form>
+        <form name="deashi_create_form" method="post" action="/admin_kisya/deashi/create">  
+            <!--▼▼▼選手追加▼▼▼-->
+            <div style="margin:0px auto 40px;width:980px;">
+                <h2>【選手を手動追加】</h2>
+                <input type="text" id="TOUBAN" name="TOUBAN" size="6" maxlength="4" value="登 番" onfocus="funcOnCursol( );" onblur="funcOnBlur( );" class="fm_tuika01">
+                <input type="text" id="KIBAN" name="KIBAN" size="6" maxlength="3" value="モーター機番" onfocus="funcOnCursol2( );" onblur="funcOnBlur2( );" class="fm_tuika02">
+                <input type="button" value="追加" class="fm_deashi_yoso_pd_bt" onClick="document.deashi_create_form.submit();">
+            </div>
+            <input type="hidden" name="APPEAR_FLG" value="0">
+            <input type="hidden" name='TARGET_DATE' value="{{$target_date}}">
+            @csrf
+        </form>
+    
     </div><!--/#wrapper-->
     
     
@@ -260,7 +283,7 @@
     <div id="footer_in">
     <div id="footer_in_l">
     <ul>
-    <li class="save"><input type="button" onClick="javascript:funcSave( '0' );" value="保存"></li>
+    <li class="save"><input type="button" onClick="document.deashi_form.submit()" value="保存"></li>
     <div class="clear"></div>
     </ul>
     </div><!--/#fotter_in_l-->
@@ -268,8 +291,8 @@
     <div id="footer_in_r">
     
     <div id="action_c">
-    <span class="open_b"><input type="button" onClick="javascript:funcSave( '1' );" value="公開"></span>
-    <span class="close_b"><input type="button" onClick="javascript:funcSave( '2' );" value="非公開"></span>
+        <span class="open_b"><input type="button" onClick="location.href='/admin_kisya/deashi/change_appear_flg?TARGET_DATE={{$target_date}}&APPEAR_FLG=1'" value="公開"></span>
+        <span class="close_b"><input type="button" onClick="location.href='/admin_kisya/deashi/change_appear_flg?TARGET_DATE={{$target_date}}&APPEAR_FLG=0'" value="非公開"></span>
     <div class="clear"></div>
     </div><!--/#action_c-->
     
@@ -281,9 +304,6 @@
     
     </div><!--/#footer-->
     
-    <input type="hidden" name="APPEAR_FLG" value="0">
-    <input type="hidden" name="MODE" value="0">
-    </form>
 @endsection
 
 
@@ -423,39 +443,39 @@
             }
         }
         function funcOnCursol( ){
-            if( document.form.TOUBAN.value == '登 番' ){
+            if( document.deashi_create_form.TOUBAN.value == '登 番' ){
             // 初期値の場合
                 // 入力値を空にする
-                document.form.TOUBAN.value = '';
+                document.deashi_create_form.TOUBAN.value = '';
             }
             // クラスを変更
             document.getElementById( 'TOUBAN' ).className = 'fm_tuika01_2';
         }
         function funcOnBlur( ){
-            if( document.form.TOUBAN.value == '' ){
+            if( document.deashi_create_form.TOUBAN.value == '' ){
             // 値が空の場合初期値に戻す
-                document.form.TOUBAN.value = '登 番';
+                document.deashi_create_form.TOUBAN.value = '登 番';
                 document.getElementById( 'TOUBAN' ).className = 'fm_tuika01';
-            }else if( document.form.TOUBAN.value == '登 番' ){
+            }else if( document.deashi_create_form.TOUBAN.value == '登 番' ){
             // 値に変更がない場合、クラスを初期に戻す
                 document.getElementById( 'TOUBAN' ).className = 'fm_tuika01';
             }
         }
             function funcOnCursol2( ){
-                if( document.form.KIBAN.value == 'モーター機番' ){
+                if( document.deashi_create_form.KIBAN.value == 'モーター機番' ){
                 // 初期値の場合
                     // 入力値を空にする
-                    document.form.KIBAN.value = '';
+                    document.deashi_create_form.KIBAN.value = '';
                 }
                 // クラスを変更
                 document.getElementById( 'KIBAN' ).className = 'fm_tuika02_2';
             }
             function funcOnBlur2( ){
-                if( document.form.KIBAN.value == '' ){
+                if( document.deashi_create_form.KIBAN.value == '' ){
                 // 値が空の場合初期値に戻す
-                    document.form.KIBAN.value = 'モーター機番';
+                    document.deashi_create_form.KIBAN.value = 'モーター機番';
                     document.getElementById( 'KIBAN' ).className = 'fm_tuika02';
-                }else if( document.form.KIBAN.value == 'モーター機番' ){
+                }else if( document.deashi_create_form.KIBAN.value == 'モーター機番' ){
                 // 値に変更がない場合、クラスを初期に戻す
                     document.getElementById( 'KIBAN' ).className = 'fm_tuika02';
                 }
@@ -469,6 +489,15 @@
                 intjudge = true;
             }
             return intjudge;
+        }
+
+        function ikkatsu(type,target_element){
+            //alert($(target_element).val());
+            $("[name^='" + type + "_']").each(function(i,elm){
+               if($(elm).val() == $(target_element).val()){
+                    $(elm).prop("checked",true);
+               }
+            });
         }
     </script>
 @endsection

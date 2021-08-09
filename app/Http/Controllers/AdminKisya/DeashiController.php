@@ -48,21 +48,28 @@ class DeashiController extends AdminKisyaController
     }
 
 
-    public function edit($id,Request $request)
+    public function upsert(Request $request)
     {
         //サービスクラスで処理。getの場合はアサイン変数作成。postの場合は成否問わずリダイレクト
-        $data = $this->_service->edit($id,$request);
+        $data = $this->_service->upsert($request);
         if(isset($data['redirect_url'])){
             return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
         }
-        return view('admin_kisya.deashi.edit',$data);
+        //return view('admin_kisya.deashi.edit',$data);
     }
 
 
-    public function delete($id)
+    public function delete(Request $request)
     {
         //サービスクラスで処理。処理後リダイレクト
-        $data = $this->_service->delete($id);
+        $data = $this->_service->delete($request);
+        return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
+    }
+
+    public function change_appear_flg(Request $request)
+    {
+        //サービスクラスで処理。処理後リダイレクト
+        $data = $this->_service->change_appear_flg($request);
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
     }
 

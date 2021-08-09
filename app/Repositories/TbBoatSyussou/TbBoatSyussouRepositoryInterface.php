@@ -24,6 +24,16 @@ interface TbBoatSyussouRepositoryInterface
     public function getRecordByDate($jyo,$target_date);
 
     /**
+     * 記者CMS 節間出足データの該当レコードを取得
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getSetsukanRecord($jyo,$start_date,$end_date);
+
+    /**
      * プロフィール出力用優勝データを取得
      *
      * @var string $jyo

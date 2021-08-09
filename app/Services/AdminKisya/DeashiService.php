@@ -42,16 +42,31 @@ class DeashiService
     public function index($request){
         $data = [];
 
-        $today_date = $request->input('yd') ?? date('Ymd');
+        $today_date = $request->input('yd') ?? false;
         $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
+        $zenken_flg = false;
+        
 
-        {
+        if($today_date){
+            //日付指定がある場合は固定
+
+            $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+            $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+            $target_date = $today_date;
+            if($kaisai_master && $race_header){
+                $kaisai_flg = true;
+            }else{
+                $kaisai_flg = false;
+            }
+        }else{
             //処理対象日を判定
+            $today_date = date('Ymd');
             $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
 
             $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
             $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
-            $zenken_flg = false;
+            
 
             if($kaisai_master && $race_header){
                 //当日であれば開催
@@ -79,6 +94,26 @@ class DeashiService
             }
         }
 
+
+        //日付リスト作成
+        $temp_date = $kaisai_master->開始日付;
+        $end_date = $kaisai_master->終了日付;
+        $kaisai_date_list = [];
+        $day_count = 1;
+        while($temp_date <= $end_date){
+            if($temp_date == $kaisai_master->開始日付){
+                $kaisai_date_list[$temp_date] = '初日';
+            }elseif($temp_date == $kaisai_master->終了日付){
+                $kaisai_date_list[$temp_date] = '最終日';
+            }else{
+                $kaisai_date_list[$temp_date] = $day_count.'日目';
+            }
+            $temp_date = date("Ymd",strtotime('+1 day',strtotime($temp_date)));
+            $day_count++;
+        }
+        krsort($kaisai_date_list);
+
+
         //当日の出走者を取得
         $syussou = $this->TbBoatSyussou->getRecordByDate($jyo,$target_date);
 
@@ -92,8 +127,12 @@ class DeashiService
 
         $syussou_ashi = $this->TbTsuYosoAshi->getRecordByToubanList($touban_list,$target_date);
         $syussou_ashi_array = [];
+        $appear_flg = false; 
         foreach($syussou_ashi as $item){
             $syussou_ashi_array[$item->TOUBAN] = $item;
+            if($item->APPEAR_FLG){
+                $appear_flg = true;
+            }
         }
 
 
@@ -104,20 +143,77 @@ class DeashiService
             $tsuihai_ashi_array[$item->TOUBAN] = $item;
         }
 
-        //帰郷の出足データ　
-        $kikyo_ashi = $this->TbTsuYosoAshi->getKikyouRecordByToubanList($target_date);
         $kikyo_ashi_array = [];
+        $display_kikyo_ashi_array = [];
+
+        
+
+        //出走データから本日帰郷となったデータ
+        //昨日の出場者を取得
+        $yesterday_date = date('Ymd',strtotime('-1 day',strtotime($target_date)));
+        $yesterday_syussou = $this->TbBoatSyussou->getRecordByDate($jyo,$yesterday_date);
+        $yesterday_syussou_array = [];
+        foreach($yesterday_syussou as $item){
+            $yesterday_syussou_array[$item->TOUBAN] = $item;
+        }
+
+        foreach($yesterday_syussou_array as $key=>$item){
+            if(!in_array($key,$touban_list)){
+
+                if(!isset($kikyo_ashi_array[$key])){
+                    $kikyo_ashi_array[$key] = $item;
+                    $display_kikyo_ashi_array[$key] = $item;
+                }
+            }
+        }
+
+        //出走データから本日より前に帰郷となったデータ
+        //全レースの出場者を取得
+        $setsukan_syussou = $this->TbBoatSyussou->getSetsukanRecord($jyo,$kaisai_master->開始日付,$target_date);
+        $setsukan_syussou_array = [];
+        foreach($setsukan_syussou as $item){
+            $setsukan_syussou_array[$item->TOUBAN] = $item;
+        }
+
+        foreach($setsukan_syussou_array as $key=>$item){
+            if(!in_array($key,$touban_list)){
+                if(!isset($kikyo_ashi_array[$key])){
+                    $kikyo_ashi_array[$key] = $item;
+                }
+            }
+        }
+
+        //帰郷データ
+        $kikyo_ashi = $this->TbTsuYosoAshi->getKikyouRecordByToubanList($target_date);
         foreach($kikyo_ashi as $item){
             $kikyo_ashi_array[$item->TOUBAN] = $item;
         }
 
+
+        //出走や追配データに帰郷該当者が含まれる場合除外
+        foreach($syussou_array as $item){
+            if(isset($kikyo_ashi_array[$item->TOUBAN])){
+                unset($syussou_array[$item->TOUBAN]);
+            }
+        }
+
+        foreach($tsuihai_ashi_array as $item){
+            if(isset($kikyo_ashi_array[$item->TOUBAN])){
+                unset($tsuihai_ashi_array[$item->TOUBAN]);
+            }
+        }
         
+
+        $data['target_date'] = $target_date;
         $data['kaisai_master'] = $kaisai_master;
         $data['race_header'] = $race_header;
         $data['syussou_array'] = $syussou_array;
         $data['syussou_ashi_array'] = $syussou_ashi_array;
         $data['tsuihai_ashi_array'] = $tsuihai_ashi_array;
         $data['kikyo_ashi_array'] = $kikyo_ashi_array;
+        $data['display_kikyo_ashi_array'] = $display_kikyo_ashi_array;
+        $data['kaisai_date_list'] = $kaisai_date_list;
+        $data['appear_flg'] = $appear_flg;
 
 
         //ファンデータ
@@ -130,12 +226,6 @@ class DeashiService
         
         $data['fan_data_array'] = $fan_data_array;
 
-        return $data;
-    }
-
-    public function view(){
-        $deashi = $this->KaisaiMaster->getFirstRecordByPK($id);
-        $data['deashi'] = $deashi;
         return $data;
     }
 
@@ -154,10 +244,10 @@ class DeashiService
             );
 
             //保存処理
-            $post_result = $this->KaisaiMaster->insertRecord($request);
+            $post_result = $this->TbTsuYosoAshi->insertRecord($request);
 
             $data['post_result'] = $post_result;
-            $data['redirect_url'] = 'admin_kisya/deashi/';
+            $data['redirect_url'] = 'admin_kisya/deashi/?yd='.$request->input('TARGET_DATE');
             if($post_result){
                 $data['redirect_message'] = 'データを更新しました';
             }else{
@@ -169,43 +259,61 @@ class DeashiService
         return $data;
     }
 
-    public function edit($id,$request){
-
-        $deashi = $this->KaisaiMaster->getFirstRecordByPK($id);
-
-        $data['deashi'] = $deashi;
+    public function upsert($request){
+        $data = [];
 
         if($request->isMethod('post')){
             //POST処理
 
             //バリデーション処理。失敗した場合は自動リダイレクト
+            /*
             $validate_config = $this->create_validate_config();
             $request->validate(
                 $validate_config['config'],
                 $validate_config['message']
             );
+            */
 
-            //保存処理
-            $post_result = $this->KaisaiMaster->UpdateRecordByPK($request,$id);
+            //全データを収集しアップサート処理
+            for($num = 1;$num < 1000; $num++){
+                if(!($request->input('TOUBAN_'.$num) ?? false)){
+                    //データが無くなったと見なして処理終了
+                    break;
+                }
 
-            $data['post_result'] = $post_result;
-            $data['redirect_url'] = 'admin_kisya/deashi/';
-            if($post_result){
-                $data['redirect_message'] = 'データを更新しました';
-            }else{
-                $data['redirect_message'] = 'データに変更が無いか、もしくは処理を実行しませんでした';
+                $insert_data = [
+                    "TARGET_DATE" => $request->input('TARGET_DATE'),
+                    "TOUBAN" => $request->input('TOUBAN_'.$num),
+                    "MOTOR_NO" => $request->input('MOTOR_'.$num),
+                    "DEASHI" => $request->input('DEASHI_'.$num),
+                    "NOBIASHI" => $request->input('NOBIASHI_'.$num),
+                    "KIKYO_FLG" => $request->input('KIKYO_FLG_'.$num),
+                ];
+
+                //保存処理
+                $post_result = $this->TbTsuYosoAshi->upsertRecord($insert_data);
+
             }
+
+
+            //$data['post_result'] = $post_result;
+            $data['redirect_url'] = 'admin_kisya/deashi?yd='.$request->input('TARGET_DATE');
+            //if($post_result){
+                $data['redirect_message'] = 'データを更新しました';
+            /*}else{
+                $data['redirect_message'] = 'データに変更が無いか、もしくは処理を実行しませんでした';
+            }*/
 
         }
 
         return $data;
     }
 
-    public function delete($id){
-        $post_result = $this->KaisaiMaster->deleteFirstRecordByPK($id);
+    public function delete($request){
+        $post_result = $this->TbTsuYosoAshi->deleteFirstRecordByPK($request);
 
         $data['post_result'] = $post_result;
-        $data['redirect_url'] = 'admin_kisya/deashi/';
+        $data['redirect_url'] = 'admin_kisya/deashi/?yd='.$request->input('TARGET_DATE');
         if($post_result){
             $data['redirect_message'] = 'データを削除しました';
         }else{
@@ -215,15 +323,26 @@ class DeashiService
         return $data;
     }
 
+    public function change_appear_flg($request){
+        $post_result = $this->TbTsuYosoAshi->changeAppearFlg($request);
+
+        $data['post_result'] = $post_result;
+        $data['redirect_url'] = 'admin_kisya/deashi/?yd='.$request->input('TARGET_DATE');
+        if($post_result){
+            $data['redirect_message'] = 'データを更新しました';
+        }else{
+            $data['redirect_message'] = 'データの更新に失敗しました';
+        }
+
+        return $data;
+    }
+
     public function create_validate_config()
     {
         return [
             'config' => [
-                'START_DATE' => ['nullable','max:12','min:12'],
-                'END_DATE' => ['nullable','max:12','min:12'],
-                'TEXT' => ['required','max:140'],
-                'APPEAR_FLG' => [],
-                'EDITOR_NAME' => ['required','max:64'],
+                'TOUBAN' => ['required','max:4','min:4'],
+                'KIBAN' => ['required','max:3','min:3'],
             ],
             'message' => [
             ],

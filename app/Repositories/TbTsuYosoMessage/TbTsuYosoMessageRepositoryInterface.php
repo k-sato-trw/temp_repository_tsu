@@ -14,4 +14,19 @@ interface TbTsuYosoMessageRepositoryInterface
      */
     public function getRecordByDatetime($jyo,$target_datetime);
 
+    /**
+     * 一つのレコードを取得
+     *
+     * @return object
+     */
+    public function getFirstRecord();
+
+    /**
+     * アップデート処理
+     *
+     * @var object  $request
+     * @return object
+     */
+    public function updateRecord($request);
+
 }

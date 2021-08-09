@@ -30,6 +30,10 @@
                         <a class="nav-link" href="/admin_kisya/deashi">出足・伸び足評価</a>
                     </li>
                     
+                    <li class="nav-item {{ request()->is('*/message*') ? "active":"" }}">
+                        <a class="nav-link" href="/admin_kisya/message">メッセージ表示</a>
+                    </li>
+                    
                     <li class="nav-item {{ request()->is('*/kaimon*') ? "active":"" }}">
                         <a class="nav-link" href="/admin_kisya/kaimon">開門 & 第1Rスタート展示時刻</a>
                     </li>
