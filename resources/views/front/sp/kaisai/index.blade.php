@@ -56,7 +56,7 @@
 <link rel="stylesheet" href="/sp/kyogi/css/owl.carousel.css" />
 <link rel="stylesheet" href="/sp/kyogi/css/owl.theme.css" />
 
-@if($kekka_change_race_num >= $race_num)
+@if(($kekka_change_race_num ?? 0) >= $race_num)
 <script type="text/javascript" src="/sp/kyogi/js/owl.carousel_index_kekka.js"></script>	
 @else
 <script type="text/javascript" src="/sp/kyogi/js/owl.carousel_index.js"></script>
@@ -302,25 +302,41 @@ strAgent = funcJsLiveSmartAgentGetter();
 <td class="date">{{ date('n/j',strtotime($target_date)) }}</td>
 
 
-
-<td class="name">{{$kaisai_master->開催名称}}</td>
-<td class="day">
-	@if($kaisai_master->開始日付 == $target_date)
-		初日
-	@elseif($kaisai_master->終了日付 == $target_date)
-		最終日                
-	@else
-		{{$race_header->KAISAI_DAYS}}日目
-	@endif
-</td>
+@isset($kaisai_master)
+	<td class="name">{{$kaisai_master->開催名称}}</td>
+	<td class="day">
+		@if($kaisai_master->開始日付 == $target_date)
+			初日
+		@elseif($kaisai_master->終了日付 == $target_date)
+			最終日                
+		@else
+			{{$race_header->KAISAI_DAYS}}日目
+		@endif
+	</td>	
+@else
+	<td class="name">---</td>
+	<td class="day">---</td>
+@endisset
 </tr>
 </table>
 </div><!-- race end -->
 
+@if($yoso_message)
+<!-- 記者用メッセージ-->
+<div id="message01" class="cf">
+	<ul id="marquee" class="marquee">
+	<li>{{$yoso_message->COMMENT ?? ""}}</li>
+	</ul>
+</div>
+@endif
+
+@if($kekka_info)
 <div id="kikou" class="cf">
-<div class="kikou_left"><span class="gray">天候</span>:くもり　<span class="gray">波高:</span>2cm　<span class="gray">風:</span>追い風 3m/秒</div>
-<div class="kikou_right">{{$neer_kekka_race_number}}R終了時点</div>
+	<div class="kikou_left"><span class="gray">天候</span>:{{$kekka_info->TENKOU}}　<span class="gray">波高:</span>{{$kekka_info->HAKO}}cm　<span class="gray">風:</span>{{$kekka_info->KAZAMUKI2}} {{$kekka_info->FUSOKU}}m/秒</div>
+	<div class="kikou_right">{{$neer_kekka_race_number ?? "---"}}R終了時点</div>
 </div><!-- kikou end -->
+@endif
+
 <div id="race_select" class="cf">
 @if($race_num == 1)
 	<div id="back"></div>
@@ -339,7 +355,7 @@ strAgent = funcJsLiveSmartAgentGetter();
 <tr>
 <td class="class">{{ $syussou[1]->RACE_NAME ?? "" }}</td>
 <td class="dento"><span>発売<br>締切</span></td>
-<td class="time">{{substr($shimekiri_jikoku,0,2)}}:{{substr($shimekiri_jikoku,2,2)}}</td>
+<td class="time">{{substr(($shimekiri_jikoku ?? "--"),0,2)}}:{{substr(($shimekiri_jikoku ?? "----"),2,2)}}</td>
 </tr>
 </table>
 
@@ -371,7 +387,7 @@ strAgent = funcJsLiveSmartAgentGetter();
 <li id="tab01" class="tap"><div class="page1"></div></li>
 <li id="tab02" class="tap"><div class="page5"></div></li>
 <li id="tab03" class="tap"><div class="page4"></div></li>
-@if($kekka_change_race_num >= $race_num)
+@if(($kekka_change_race_num ?? 0) >= $race_num)
 <li id="tab04" class="tap"><div class="page4"></div></li>
 @else
 <li id="tab04" class="tap"><div class="page5"></div></li>
@@ -484,7 +500,7 @@ strAgent = funcJsLiveSmartAgentGetter();
 	<!--予想④/-->
 	<div class="item yoso4 cf" id="yoso4">
 		{{-- file_get_contents(config('const.EXPORT_PATH').'/asp/tsu/sp/kyogi/Yoso_MyData.asp') --}}
-		{!! $view_yoso_mydata !!}
+		{!! $view_yoso_mydata ?? "" !!}
 		<span id="id_myyoso"></span>
 	</div><!-- item end -->
 
@@ -504,11 +520,11 @@ strAgent = funcJsLiveSmartAgentGetter();
 		@endif
 	</div><!-- item end -->
 
-	@if($kekka_change_race_num < $race_num)
+	@if(($kekka_change_race_num ?? 0) < $race_num)
 		<!--オッズ結果②/-->
 		<div class="item cont_odds">
 			{{-- file_get_contents(config('const.EXPORT_PATH').'/asp/tsu/sp/kyogi/Odds_Search.asp') --}}
-			{!! $view_odds_search !!}
+			{!! $view_odds_search ?? "" !!}
 			<span id="id_oddsSearch"></span>
 		</div><!-- item end -->
 	@endif
@@ -529,10 +545,10 @@ strAgent = funcJsLiveSmartAgentGetter();
 		@endif
 	</div><!-- item end -->
 
-	@if($kekka_change_race_num < $race_num)
+	@if(($kekka_change_race_num ?? 0) < $race_num)
 		<!--オッズ結果④/-->
 		<div class="item data calculate cf">
-			{!! $view_odds_calc !!}
+			{!! $view_odds_calc ?? "" !!}
 			<span id="id_oddsCalc"></span>
 		</div><!-- item end -->
 	@endif
@@ -540,10 +556,10 @@ strAgent = funcJsLiveSmartAgentGetter();
 	<!--オッズ結果⑤/-->
 	<div class="item data cf">
 		<span id="id_kekkalist"></span>
-		{!! $view_kekka_list !!}
+		{!! $view_kekka_list ?? "" !!}
 	</div><!-- item end -->
 
-	@if($kekka_change_race_num >= $race_num)
+	@if(($kekka_change_race_num ?? 0) >= $race_num)
 		<!--オッズ結果⑤/-->
 		<div class="item data">
 			<span id="id_kekkaDetail"></span>

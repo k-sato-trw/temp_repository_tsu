@@ -29,23 +29,18 @@
                     <li class="nav-item {{ request()->is('*/deashi*') ? "active":"" }}">
                         <a class="nav-link" href="/admin_kisya/deashi">出足・伸び足評価</a>
                     </li>
+
+                    <li class="nav-item {{ request()->is('*/zenya*') ? "active":"" }}">
+                        <a class="nav-link" href="/admin_kisya/zenya">前夜予想</a>
+                    </li>
+
+                    <li class="nav-item {{ request()->is('*/midokoro*') ? "active":"" }}">
+                        <a class="nav-link" href="/admin_kisya/midokoro">みどころ</a>
+                    </li>
                     
                     <li class="nav-item {{ request()->is('*/message*') ? "active":"" }}">
                         <a class="nav-link" href="/admin_kisya/message">メッセージ表示</a>
-                    </li>
-                    
-                    <li class="nav-item {{ request()->is('*/kaimon*') ? "active":"" }}">
-                        <a class="nav-link" href="/admin_kisya/kaimon">開門 & 第1Rスタート展示時刻</a>
-                    </li>
-
-                    <li class="nav-item {{ request()->is('*/information*') ? "active":"" }}">
-                        <a class="nav-link" href="/admin_kisya/information">インフォメーション</a>
-                    </li>
-
-                    <li class="nav-item {{ request()->is('*/kinkyu_kokuti*') ? "active":"" }}">
-                        <a class="nav-link" href="/admin_kisya/kinkyu_kokuti">緊急告知</a>
-                    </li>
-                    
+                    </li>                   
                     
 
                     <li class="nav-item">

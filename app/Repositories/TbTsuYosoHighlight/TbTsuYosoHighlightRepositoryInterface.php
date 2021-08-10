@@ -6,6 +6,22 @@ interface TbTsuYosoHighlightRepositoryInterface
 {
 
     /**
+     * 管理サイト表示用　指定日付のデータを取得
+     *
+     * @var string $target_date
+     * @return object
+     */
+    public function getFirstRecordByDate($target_date);
+
+    /**
+     * アップサート処理
+     *
+     * @var object  $request
+     * @return object
+     */
+    public function upsertRecord($request);
+
+    /**
      * 一定範囲の日付のデータを取得
      *
      * @var string $jyo

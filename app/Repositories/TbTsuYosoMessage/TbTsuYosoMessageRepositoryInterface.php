@@ -6,13 +6,22 @@ interface TbTsuYosoMessageRepositoryInterface
 {
 
     /**
-     * 日付をもとにレコードを取得
+     * PC用レコードを取得
      *
      * @var string $jyo
      * @var string $target_datetime
      * @return object
      */
-    public function getRecordByDatetime($jyo,$target_datetime);
+    public function getFirstRecordForPc($jyo,$target_datetime,$is_preview = false);
+
+    /**
+     * SP用レコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_datetime
+     * @return object
+     */
+    public function getFirstRecordForSp($jyo,$target_datetime,$is_preview = false);
 
     /**
      * 一つのレコードを取得

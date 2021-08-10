@@ -1365,7 +1365,7 @@ class ExportSpKaisaiService
     }
 
 
-    public function yoso_kisha_eve($request,$target_date,$race_num,$tomorrow_flg){
+    public function yoso_kisha_eve($request,$target_date,$race_num,$tomorrow_flg,$is_preview = false){
         $data = [];
         $is_preview = false;
     
@@ -1400,10 +1400,10 @@ class ExportSpKaisaiService
             $yoso_tenji = $this->TbTsuYosoTenji->getFirstRecordByDate($target_date,$race_num);
             $data['yoso_tenji'] = $yoso_tenji;
 
-            $yoso = $this->TbTsuYoso->getFirstRecordByDate($target_date,$race_num);
+            $yoso = $this->TbTsuYoso->getFirstRecordByDate($target_date,$race_num,$is_preview);
             $data['yoso'] = $yoso;
 
-            $push = $this->TbTsuYoso->getPushing($target_date);
+            $push = $this->TbTsuYoso->getPushing($target_date,$is_preview);
             $push_text = "";
             foreach($push as $item){
                 if($push_text){
@@ -2847,7 +2847,7 @@ class ExportSpKaisaiService
         return $data;
     }
 
-    public function Top_MidokotoYosokekka($request){
+    public function Top_MidokotoYosokekka($request,$is_preview = false){
         $data = [];
 
         $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
@@ -2857,7 +2857,7 @@ class ExportSpKaisaiService
             //処理対象日を判定
             $tomorrow_flg = false;
             $today_date = $request->input('yd') ?? date('Ymd');
-            $today_date = '20210619';
+            //$today_date = '20210619';
             $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
 
             $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
@@ -2869,6 +2869,13 @@ class ExportSpKaisaiService
                 $target_date = $tomorrow_date;
             }else{
                 //無い場合は、当日判定
+                $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+                $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+                $target_date = $today_date;
+            }
+
+            if($is_preview){
                 $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
                 $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
 
@@ -2911,7 +2918,7 @@ class ExportSpKaisaiService
         //的中率処理
         if($kaisai_master){
             //pcと異なり、今節レースを全て収集
-            $yoso_highlight = $this->TbTsuYosoHighlight->getRecordForFront($jyo,$kaisai_date_list_date_onry,$is_preview = false);        
+            $yoso_highlight = $this->TbTsuYosoHighlight->getRecordForFront($jyo,$kaisai_date_list_date_onry,$is_preview);        
             $data['yoso_highlight'] = $yoso_highlight;
 
             $yoso = $this->TbTsuYoso->getPushing($target_date);

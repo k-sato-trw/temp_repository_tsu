@@ -18,21 +18,47 @@ class TbTsuYosoMessageRepository implements TbTsuYosoMessageRepositoryInterface
 
 
     /**
-     * 日付をもとにレコードを取得
+     * PC用レコードを取得
      *
      * @var string $jyo
      * @var string $target_datetime
      * @return object
      */
-    public function getRecordByDatetime($jyo,$target_datetime)
+    public function getFirstRecordForPc($jyo,$target_datetime,$is_preview = false)
     {
-        return $this->TbTsuYosoMessage
+        $query = $this->TbTsuYosoMessage
                     ->where('JYO','=',$jyo)
-                    ->where('PC_APPEAR_FLG','=',1)
-                    ->where('APPEAR_FLG','=',1)
-                    ->where('START_DATE','<=',$target_datetime)
-                    ->where('END_DATE','>=',$target_datetime)
-                    ->get();
+                    ->where('PC_APPEAR_FLG','=',1);
+
+        if(!$is_preview){
+            $query->where('APPEAR_FLG','=',1)
+            ->where('START_DATE','<=',$target_datetime)
+            ->where('END_DATE','>=',$target_datetime);
+        }     
+        
+        return $query->first();
+    }
+
+    /**
+     * SP用レコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_datetime
+     * @return object
+     */
+    public function getFirstRecordForSp($jyo,$target_datetime,$is_preview = false)
+    {
+        $query = $this->TbTsuYosoMessage
+                    ->where('JYO','=',$jyo)
+                    ->where('SP_APPEAR_FLG','=',1);
+
+        if(!$is_preview){
+            $query->where('APPEAR_FLG','=',1)
+            ->where('START_DATE','<=',$target_datetime)
+            ->where('END_DATE','>=',$target_datetime);
+        }     
+        
+        return $query->first();
     }
 
     /**

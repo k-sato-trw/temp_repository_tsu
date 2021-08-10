@@ -25,7 +25,9 @@ use App\Http\Controllers\AdminSekosya\KaimonController;
 
 use App\Http\Controllers\AdminKisyaController;
 use App\Http\Controllers\AdminKisya\DeashiController;
+use App\Http\Controllers\AdminKisya\ZenyaController;
 use App\Http\Controllers\AdminKisya\MessageController;
+use App\Http\Controllers\AdminKisya\MidokoroController;
 
 //use App\Http\Controllers\Api\GetDateTextController;
 use App\Http\Controllers\Api\GetKinkyoController;
@@ -301,9 +303,30 @@ Route::post('/admin_kisya/deashi/create', [DeashiController::class, 'create']);
 Route::get('/admin_kisya/deashi/delete', [DeashiController::class, 'delete']);
 Route::get('/admin_kisya/deashi/change_appear_flg', [DeashiController::class, 'change_appear_flg']);
 
+
+
+//admin_kisya系 前夜予想
+Route::get('/admin_kisya/zenya', [ZenyaController::class, 'index']);
+Route::post('/admin_kisya/zenya/upsert', [ZenyaController::class, 'upsert']);
+Route::get('/admin_kisya/zenya/change_appear_flg_all', [ZenyaController::class, 'change_appear_flg_all']);
+Route::get('/admin_kisya/zenya/change_appear_flg', [ZenyaController::class, 'change_appear_flg']);
+Route::get('/admin_kisya/zenya/preview_pc', [ZenyaController::class, 'preview_pc']);
+Route::get('/admin_kisya/zenya/preview_sp', [ZenyaController::class, 'preview_sp']);
+
+
+//admin_kisya系 みどころ
+Route::get('/admin_kisya/midokoro', [MidokoroController::class, 'index']);
+Route::post('/admin_kisya/midokoro/upsert', [MidokoroController::class, 'upsert']);
+Route::get('/admin_kisya/midokoro/change_appear_flg', [MidokoroController::class, 'change_appear_flg']);
+Route::get('/admin_kisya/midokoro/preview_pc', [MidokoroController::class, 'preview_pc']);
+Route::get('/admin_kisya/midokoro/preview_sp', [MidokoroController::class, 'preview_sp']);
+
+//admin_kisya系 メッセージ
 Route::get('/admin_kisya/message', [MessageController::class, 'edit']);
 Route::post('/admin_kisya/message', [MessageController::class, 'edit']);
 Route::get('/admin_kisya/message/change_appear_flg', [MessageController::class, 'change_appear_flg']);
+Route::get('/admin_kisya/message/preview_pc', [MessageController::class, 'preview_pc']);
+Route::get('/admin_kisya/message/preview_sp', [MessageController::class, 'preview_sp']);
 
 
 

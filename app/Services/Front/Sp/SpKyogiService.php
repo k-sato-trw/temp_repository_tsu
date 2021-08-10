@@ -112,7 +112,7 @@ class SpKyogiService
 
 
     
-    public function index($request){
+    public function index($request,$is_preview){
         $data = [];
         $jyo = config('const.JYO_CODE');
         $data['jyo'] = $jyo;
@@ -121,14 +121,14 @@ class SpKyogiService
         $data['race_num'] = $race_num;
         
         $target_time = date('Hi');
-        $target_time = '1100';
+        //$target_time = '1100';
         $data['target_time'] = $target_time;
 
         
         //処理対象日を判定
         $tomorrow_flg = false;
         $today_date = date('Ymd');
-        $today_date = '20210524';
+        //$today_date = '20210524';
         $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
 
         $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
@@ -231,6 +231,11 @@ class SpKyogiService
             }
         }
         
+        $yoso_message = $this->TbTsuYosoMessage->getFirstRecordForSp($jyo,$target_date.$target_time,$is_preview);
+        $data['yoso_message'] = $yoso_message ?? [];        
+    
+        $kekka_info =  $this->TbBoatKekkainfo->getLastRaceNumberRecordByPK($jyo,$target_date);
+        $data['kekka_info'] = $kekka_info ?? [];
         
         return $data;
     }

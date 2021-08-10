@@ -190,7 +190,7 @@ func_RaceNumList('{{$target_date}}' , {{$race_num}}, 'yoso01' );
             </td>
             <td rowspan="4" class="hyoka2">
                 <?php $prop_name = "EVALUATION".$teiban; ?>
-                {{ $yoso_tenji->$prop_name }}
+                {{ $yoso_tenji->$prop_name ?? "" }}
             </td>
 
             <td class="seiseki">R</td>

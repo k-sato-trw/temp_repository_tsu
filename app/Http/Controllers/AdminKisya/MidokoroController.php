@@ -5,41 +5,49 @@ namespace App\Http\Controllers\AdminKisya;
 use App\Http\Controllers\AdminKisyaController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use App\Services\AdminKisya\MessageService;
+use App\Services\AdminKisya\MidokoroService;
 use App\Services\ExportHtml\ExportKaisaiService;
-use App\Services\Front\Sp\SpKyogiService;
+use App\Services\ExportHtml\Sp\ExportSpKaisaiService;
 
-class MessageController extends AdminKisyaController
+class MidokoroController extends AdminKisyaController
 {
     public $_service;
     public $ExportKaisaiService;
-    public $SpKyogiService;
+    public $ExportSpKaisaiService;
 
 
     public function __construct(
         Route $route,
-        MessageService $MessageService,
+        MidokoroService $MidokoroService,
         ExportKaisaiService $ExportKaisaiService,
-        SpKyogiService $SpKyogiService
+        ExportSpKaisaiService $ExportSpKaisaiService
     ){
         parent::__construct($route);
-        $this->_service = $MessageService;
+        $this->_service = $MidokoroService;
         $this->ExportKaisaiService = $ExportKaisaiService;
-        $this->SpKyogiService = $SpKyogiService;
+        $this->ExportSpKaisaiService = $ExportSpKaisaiService;
     }
 
 
-    public function edit(Request $request)
+    public function index(Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->index($request);
+        return view('admin_kisya.midokoro.index',$data);
+    }
+
+
+    public function upsert(Request $request)
     {
         //サービスクラスで処理。getの場合はアサイン変数作成。postの場合は成否問わずリダイレクト
-        $data = $this->_service->edit($request);
+        $data = $this->_service->upsert($request);
         if(isset($data['redirect_url'])){
             return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
         }
-        return view('admin_kisya.message.edit',$data);
+        //return view('admin_kisya.midokoro.edit',$data);
     }
 
-    
+
     public function change_appear_flg(Request $request)
     {
         //サービスクラスで処理。処理後リダイレクト
@@ -47,19 +55,18 @@ class MessageController extends AdminKisyaController
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
     }
 
-    
     public function preview_pc(Request $request)
     {
         //サービスクラスで処理。
-        $data = $this->ExportKaisaiService->kaisai_index($request,true);
-        return view('front.kaisai.kaisai_index',$data);
+        $data = $this->ExportKaisaiService->highlight($request,true);
+        return view('front.kaisai.highlight',$data);
     }
 
     public function preview_sp(Request $request)
     {
         //サービスクラスで処理。
-        $data = $this->SpKyogiService->index($request,true);
-        return view('front.sp.kaisai.index',$data);
+        $data = $this->ExportSpKaisaiService->Top_MidokotoYosokekka($request,true);
+        return view('front.sp.kaisai.top_midokoto_yosokekka_preview',$data);
     }
 
 

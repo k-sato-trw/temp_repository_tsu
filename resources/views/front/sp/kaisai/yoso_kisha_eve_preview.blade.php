@@ -1,3 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="viewport" content="width=720px">
+
+
+<title>競技情報｜ボートレース津</title>
+<meta name="Keywords" content="BOAT RACE津,ボートレース,津,ライブ,リプレイ,予想,動画" />
+<meta name="Description" content="BOAT RACE津が開催するレースの動画（ライブおよびリプレイ）をはじめ出走表など各種情報、予想に役立つデータを掲載しています。" />
+
+<link rel="apple-touch-icon-precomposed" href="/sp/apple-touch-icon-precomposed.png" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/sp/kyogi/css/reset.css" />
+<link rel="stylesheet" href="/sp/kyogi/css/kyogi.css" />
+<link rel="stylesheet" href="/sp/kyogi/css/style.css" />
+<link rel="stylesheet" href="/sp/kyogi/css/custom.css" />
+</head>
+<body>
+<div id="shusso" class="cf">
 <div class="page_tit">記者前夜版@if($tomorrow_flg)（明日）@endif</div>
 
 @if( ($chushi_junen->中止開始レース番号 ?? 99) <= $race_num )
@@ -143,3 +167,5 @@
 @endif
 
 </div><!-- data end -->
+</body>
+<html>

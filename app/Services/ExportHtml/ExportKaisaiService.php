@@ -453,7 +453,7 @@ class ExportKaisaiService
         return $data;
     }
 
-    public function highlight($request){
+    public function highlight($request,$is_preview = false){
         $data = [];
 
         $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
@@ -480,6 +480,13 @@ class ExportKaisaiService
                 $target_date = $tomorrow_date;
             }else{
                 //無い場合は、当日判定
+                $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
+                $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
+
+                $target_date = $today_date;
+            }
+
+            if($is_preview){
                 $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$today_date);
                 $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$today_date);
 
@@ -514,7 +521,7 @@ class ExportKaisaiService
         }
 
 
-        $yoso_highlight = $this->TbTsuYosoHighlight->getFirstRecordForFront($jyo,$target_date,$is_preview = false);
+        $yoso_highlight = $this->TbTsuYosoHighlight->getFirstRecordForFront($jyo,$target_date,$is_preview);
         $touban_list = [];
         for($i=1; $i<=4; $i++){
             $prop_name = 'TOUBAN'.$i;
@@ -1475,7 +1482,7 @@ class ExportKaisaiService
 
 
 
-    public function yoso01($request,$target_date,$race_num,$tomorrow_flg){
+    public function yoso01($request,$target_date,$race_num,$tomorrow_flg,$is_preview = false){
         $data = [];
         $is_preview = false;
     
@@ -1510,11 +1517,11 @@ class ExportKaisaiService
             $yoso_tenji = $this->TbTsuYosoTenji->getFirstRecordByDate($target_date,$race_num);
             $data['yoso_tenji'] = $yoso_tenji;
 
-            $yoso = $this->TbTsuYoso->getFirstRecordByDate($target_date,$race_num);
+            $yoso = $this->TbTsuYoso->getFirstRecordByDate($target_date,$race_num,$is_preview);
             $data['yoso'] = $yoso;
 
 
-            {
+            if($yoso_tenji){
                 $loop_count1 = 0;
                 $loop_count2 = 0;
                 $loop_count3 = 0;
@@ -1633,7 +1640,7 @@ class ExportKaisaiService
                 $data['favolite_flg'] = $favolite_flg;
             }
 
-            {
+            if($yoso_tenji){
                 $loop_count1 = 0;
                 $loop_count2 = 0;
                 $loop_count3 = 0;
@@ -3036,13 +3043,13 @@ class ExportKaisaiService
     }
 
 
-    public function kaisai_index($request){
+    public function kaisai_index($request,$is_preview = false){
         $data = [];
         $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
         $target_date = date('Ymd');
         //$target_date = "20210525";
         $target_time = date('Hi');
-        $target_time = "1100";
+        //$target_time = "1100";
 
         $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($target_date)));
         $data['tomorrow_date'] = $tomorrow_date;
@@ -3151,8 +3158,8 @@ class ExportKaisaiService
         $neer_kekka_race_number = $this->KyogiCommon->getNeerKekkaRaceNumber($jyo,$target_date);
         $data['neer_kekka_race_number'] = $neer_kekka_race_number;
 
-        $yoso_message = $this->TbTsuYosoMessage->getRecordByDatetime($jyo,$target_date.$target_time);
-        $data['yoso_message'] = $yoso_message[0] ?? [];
+        $yoso_message = $this->TbTsuYosoMessage->getFirstRecordForPc($jyo,$target_date.$target_time,$is_preview);
+        $data['yoso_message'] = $yoso_message ?? [];
 
         $holiday = $this->Holiday->getFirstRecordByDate($target_date);
         $data['holiday'] = $holiday;

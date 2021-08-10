@@ -32,7 +32,7 @@
     </div><!--/#msg_l-->
 
     <div id="msg_r">
-    <input type="text" onfocus="funcForcus();" name="START_DATE" value="{{$message->START_DATE}}" maxlength="12" class="fm_date" onBlur="funcStartDate();">
+    <input type="text" onfocus="funcForcus();" name="START_DATE" value="{{old('START_DATE',$message->START_DATE)}}" maxlength="12" class="fm_date" onBlur="funcStartDate();">
     <span class="date01" id="date01">　</span>
     </div><!--/#msg_r-->
     <div class="clear"></div>
@@ -44,7 +44,7 @@
     </div><!--/#msg_l-->
 
     <div id="msg_r">
-    <input type="text" onfocus="funcForcus();" name="END_DATE" value="{{$message->END_DATE}}" maxlength="12" class="fm_date" onBlur="funcEndDate();">
+    <input type="text" onfocus="funcForcus();" name="END_DATE" value="{{old('END_DATE',$message->END_DATE)}}" maxlength="12" class="fm_date" onBlur="funcEndDate();">
     <span class="date01" id="date02">　</span>
     </div><!--/#msg_l-->
     <div class="clear"></div>
@@ -58,9 +58,9 @@
 
     <div id="msg_cb01">
     <p>テキスト<br>サンプルNo.</p>
-    <input type="text" onfocus="funcForcus();" name="SAMPLE1" value="{{$message->SAMPLE1}}" class="fm_txno" onKeyUp="funcSample('1');"><br>+<br>
-    <input type="text" onfocus="funcForcus();" name="SAMPLE2" value="{{$message->SAMPLE2}}" class="fm_txno" onKeyUp="funcSample('2');"><br>+<br>
-    <input type="text" onfocus="funcForcus();" name="SAMPLE3" value="{{$message->SAMPLE3}}" class="fm_txno" onKeyUp="funcSample('3');"><br>
+    <input type="text" onfocus="funcForcus();" name="SAMPLE1" value="{{old('SAMPLE1',$message->SAMPLE1)}}" class="fm_txno" onKeyUp="funcSample('1');"><br>+<br>
+    <input type="text" onfocus="funcForcus();" name="SAMPLE2" value="{{old('SAMPLE2',$message->SAMPLE2)}}" class="fm_txno" onKeyUp="funcSample('2');"><br>+<br>
+    <input type="text" onfocus="funcForcus();" name="SAMPLE3" value="{{old('SAMPLE3',$message->SAMPLE3)}}" class="fm_txno" onKeyUp="funcSample('3');"><br>
 
     </div><!--/#msg_cb01-->
 
@@ -70,7 +70,7 @@
 
     <div class="letters"><span id="count">現在0字</span><span>（最大表示70字）</span></div>
 
-    <textarea rows="6" onfocus="funcForcus();" class="fm_msg" type="text" name="COMMENT" onKeyUp="funcTextCount();" maxlength="70">{{$message->COMMENT}}
+    <textarea rows="6" onfocus="funcForcus();" class="fm_msg" type="text" name="COMMENT" onKeyUp="funcTextCount();" maxlength="70">{{ old('COMMENT',$message->COMMENT) }}
     </textarea>
     <p>
     <span class="sample_tx">【テキストサンプル】</span>
@@ -88,10 +88,10 @@
 
     <div id="msg_r">
         PC<label @if($message->PC_APPEAR_FLG)class="c_on"@endif>
-            <input onfocus="funcForcus();" type="checkbox" name="PC_APPEAR_FLG" value="1" @if($message->PC_APPEAR_FLG) checked @endif>
+            <input onfocus="funcForcus();" type="checkbox" name="PC_APPEAR_FLG" value="1" @if(old('PC_APPEAR_FLG',$message->PC_APPEAR_FLG)) checked @endif>
         </label>
         スマホ<label  @if($message->SP_APPEAR_FLG)class="c_on"@endif>
-            <input onfocus="funcForcus();" type="checkbox" name="SP_APPEAR_FLG" value="1" @if($message->SP_APPEAR_FLG) checked @endif>
+            <input onfocus="funcForcus();" type="checkbox" name="SP_APPEAR_FLG" value="1" @if(old('SP_APPEAR_FLG',$message->SP_APPEAR_FLG)) checked @endif>
         </label>
         {{--
         携帯<label class="c_on">
@@ -114,9 +114,9 @@
     <ul>
     <li class="save"><input type="button" onClick="document.form.submit()" value="保存"></li>
     <li class="preview">プレビュー</li>
-    <li class="pv_b"><a href="/asp/tsu/kaisai/kaisaiindex.asp?preview=1" target="_blank">PC</a></li>
-    <li class="pv_b"><a href="/asp/tsu/sp/kyogi/index.asp?jyo=09&racenum=1&preview=1" target="_blank">スマホ</a></li>
-    <li class="pv_b"><a href="/k/index.asp?preview=1" target="_blank">携帯</a></li>
+    <li class="pv_b"><a href="/admin_kisya/message/preview_pc" target="_blank">PC</a></li>
+    <li class="pv_b"><a href="/admin_kisya/message/preview_sp" target="_blank">スマホ</a></li>
+    {{--<li class="pv_b"><a href="/k/index.asp?preview=1" target="_blank">携帯</a></li>--}}
     <div class="clear"></div>
     </ul>
     </div><!--/#fotter_in_l-->
