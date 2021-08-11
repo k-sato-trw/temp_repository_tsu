@@ -1514,7 +1514,7 @@ class ExportKaisaiService
             }
             $data['yoso_ashi_array'] = $yoso_ashi_array;
 
-            $yoso_tenji = $this->TbTsuYosoTenji->getFirstRecordByDate($target_date,$race_num);
+            $yoso_tenji = $this->TbTsuYosoTenji->getFirstRecordByDate($target_date,$race_num,$is_preview);
             $data['yoso_tenji'] = $yoso_tenji;
 
             $yoso = $this->TbTsuYoso->getFirstRecordByDate($target_date,$race_num,$is_preview);
@@ -1840,8 +1840,6 @@ class ExportKaisaiService
         return $data;
     }
 
-
-    
 
 
     public function st01($request,$target_date,$race_num,$tomorrow_flg){

@@ -33,6 +33,10 @@
                     <li class="nav-item {{ request()->is('*/zenya*') ? "active":"" }}">
                         <a class="nav-link" href="/admin_kisya/zenya">前夜予想</a>
                     </li>
+                    
+                    <li class="nav-item {{ request()->is('*/tenji*') ? "active":"" }}">
+                        <a class="nav-link" href="/admin_kisya/tenji">展示後評価</a>
+                    </li>
 
                     <li class="nav-item {{ request()->is('*/midokoro*') ? "active":"" }}">
                         <a class="nav-link" href="/admin_kisya/midokoro">みどころ</a>

@@ -117,12 +117,12 @@
                 <td rowspan="4" class="hyoka">
                     <?php $prop_name = "EVALUATION".$teiban; ?>
                     <select name="EVALUATION{{$teiban}}" onfocus="funcForcus();" id="EVALUATION{{$teiban}}" onChange="funcPush();"tabindex="6" class="fm_deashi_yoso_pd2">
-                        <option value="0" @if(($yoso->$prop_name ?? 6) == 0) selected @endif>--</option>
-                        <option value="1" @if(($yoso->$prop_name ?? 6) == 1) selected @endif>★</option>
-                        <option value="2" @if(($yoso->$prop_name ?? 6) == 2) selected @endif>◎</option>
-                        <option value="3" @if(($yoso->$prop_name ?? 6) == 3) selected @endif>○</option>
-                        <option value="4" @if(($yoso->$prop_name ?? 6) == 4) selected @endif>△</option>
-                        <option value="5" @if(($yoso->$prop_name ?? 6) == 5) selected @endif>×</option>
+                        <option value="0" @if((old($prop_name,$yoso->$prop_name) ?? 6) == 0) selected @endif>--</option>
+                        <option value="1" @if((old($prop_name,$yoso->$prop_name) ?? 6) == 1) selected @endif>★</option>
+                        <option value="2" @if((old($prop_name,$yoso->$prop_name) ?? 6) == 2) selected @endif>◎</option>
+                        <option value="3" @if((old($prop_name,$yoso->$prop_name) ?? 6) == 3) selected @endif>○</option>
+                        <option value="4" @if((old($prop_name,$yoso->$prop_name) ?? 6) == 4) selected @endif>△</option>
+                        <option value="5" @if((old($prop_name,$yoso->$prop_name) ?? 6) == 5) selected @endif>×</option>
                     </select>
                 </td>
                 <td rowspan="4" class="waku w{{$item->TEIBAN}}">{{$item->TEIBAN}}</td>
@@ -256,7 +256,7 @@
 
         <div id="oshi">
         <div id="check_b">
-        <label class="c_on" id="RACE_FLG_CLASS"><input type="checkbox" onfocus="funcForcus();" name="RACE_FLG" id="RACE_FLG" value="1" @if(old('RACE_FLG_CLASS',$yoso->RACE_FLG_CLASS ?? false)) checked @endif>
+        <label @if(old('RACE_FLG_CLASS',$yoso->RACE_FLG_CLASS ?? false)) class="c_on" @endif id="RACE_FLG_CLASS"><input type="checkbox" onfocus="funcForcus();" name="RACE_FLG" id="RACE_FLG" value="1" @if(old('RACE_FLG_CLASS',$yoso->RACE_FLG_CLASS ?? false)) checked @endif>
         </label>
         </div>
         <div id="check_r">
@@ -330,7 +330,7 @@
         function funcLink( argURL , argPage ){
             if( boolCursorFlg ){ 
                 if( window.confirm( 'データは保存されていません。\n保存して移動しますか？' ) ){
-                    document.form.action = 'yoso2_execute.asp?ret=' + argPage;
+                    //document.form.action = 'yoso2_execute.asp?ret=' + argPage;
                     funcSave( '0' );
                 }else{
                     document.location.href= argURL;
@@ -467,7 +467,7 @@
             if( boolJudge ){
                 document.form.submit()
             }else{
-                document.form.action='yoso2_execute.asp';
+                //document.form.action='yoso2_execute.asp';
                 alert( strMessage );
             }
         }

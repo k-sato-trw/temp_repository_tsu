@@ -26,6 +26,7 @@ use App\Http\Controllers\AdminSekosya\KaimonController;
 use App\Http\Controllers\AdminKisyaController;
 use App\Http\Controllers\AdminKisya\DeashiController;
 use App\Http\Controllers\AdminKisya\ZenyaController;
+use App\Http\Controllers\AdminKisya\TenjiController;
 use App\Http\Controllers\AdminKisya\MessageController;
 use App\Http\Controllers\AdminKisya\MidokoroController;
 
@@ -312,6 +313,14 @@ Route::get('/admin_kisya/zenya/change_appear_flg_all', [ZenyaController::class, 
 Route::get('/admin_kisya/zenya/change_appear_flg', [ZenyaController::class, 'change_appear_flg']);
 Route::get('/admin_kisya/zenya/preview_pc', [ZenyaController::class, 'preview_pc']);
 Route::get('/admin_kisya/zenya/preview_sp', [ZenyaController::class, 'preview_sp']);
+
+//admin_kisya系 展示後評価
+Route::get('/admin_kisya/tenji', [TenjiController::class, 'index']);
+Route::post('/admin_kisya/tenji/upsert', [TenjiController::class, 'upsert']);
+Route::get('/admin_kisya/tenji/change_appear_flg_all', [TenjiController::class, 'change_appear_flg_all']);
+Route::get('/admin_kisya/tenji/change_appear_flg', [TenjiController::class, 'change_appear_flg']);
+Route::get('/admin_kisya/tenji/preview_pc', [TenjiController::class, 'preview_pc']);
+Route::get('/admin_kisya/tenji/preview_sp', [TenjiController::class, 'preview_sp']);
 
 
 //admin_kisya系 みどころ

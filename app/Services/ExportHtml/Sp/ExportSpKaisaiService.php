@@ -1499,7 +1499,7 @@ class ExportSpKaisaiService
     }
 
     
-    public function yoso_kisha_tenji($request,$target_date,$race_num,$tomorrow_flg){
+    public function yoso_kisha_tenji($request,$target_date,$race_num,$tomorrow_flg,$is_preview = false){
         $data = [];
         $is_preview = false;
     
@@ -1526,10 +1526,10 @@ class ExportSpKaisaiService
             $vod_manegiment = $this->TbVodManagement->getFirstRecordByMovieId($jyo,$target_date."99".$jyo.str_pad($race_num, 2, '0', STR_PAD_LEFT));
             $data['vod_manegiment'] = $vod_manegiment;
 
-            $yoso_tenji = $this->TbTsuYosoTenji->getFirstRecordByDate($target_date,$race_num);
+            $yoso_tenji = $this->TbTsuYosoTenji->getFirstRecordByDate($target_date,$race_num,$is_preview);
             $data['yoso_tenji'] = $yoso_tenji;
 
-            $yoso = $this->TbTsuYoso->getFirstRecordByDate($target_date,$race_num);
+            $yoso = $this->TbTsuYoso->getFirstRecordByDate($target_date,$race_num,$is_preview);
             $data['yoso'] = $yoso;
 
 
