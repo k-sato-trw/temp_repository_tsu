@@ -8,6 +8,7 @@ use App\Repositories\TbRaceIndex\TbRaceIndexRepositoryInterface;
 use App\Repositories\KaisaiMaster\KaisaiMasterRepositoryInterface;
 use App\Repositories\TbTsuKaimon\TbTsuKaimonRepositoryInterface;
 use App\Repositories\TbBoatRaceheader\TbBoatRaceheaderRepositoryInterface;
+use App\Repositories\FanData\FanDataRepositoryInterface;
 use App\Services\Admin\CalendarService;
 use App\Services\KyogiCommonService;
 
@@ -19,6 +20,7 @@ class MailMagazineService
     public $KaisaiMaster;
     public $TbTsuKaimon;
     public $TbBoatRaceheader;
+    public $FanData;
     public $CalendarService;
     public $KyogiCommon;
 
@@ -29,6 +31,7 @@ class MailMagazineService
         KaisaiMasterRepositoryInterface $KaisaiMaster,
         TbTsuKaimonRepositoryInterface $TbTsuKaimon,
         TbBoatRaceheaderRepositoryInterface $TbBoatRaceheader,
+        FanDataRepositoryInterface $FanData,
         CalendarService $CalendarService,
         KyogiCommonService $KyogiCommon
     ){
@@ -38,6 +41,7 @@ class MailMagazineService
         $this->KaisaiMaster = $KaisaiMaster;
         $this->TbTsuKaimon = $TbTsuKaimon;
         $this->TbBoatRaceheader = $TbBoatRaceheader;
+        $this->FanData = $FanData;
         $this->CalendarService = $CalendarService;
         $this->KyogiCommon = $KyogiCommon;
     }
@@ -248,6 +252,7 @@ class MailMagazineService
         $data['race_index'] = $race_index[0];
 
         $data['target_date'] = $target_date;
+        $data['id'] = $id;
 
         if($request->isMethod('post')){
             //POST処理
@@ -274,6 +279,88 @@ class MailMagazineService
 
         return $data;
     }
+
+    
+    public function yoyaku($target_date,$id,$request){
+
+        $mail_magazine = $this->TbTsuMailmagazine->getFirstRecordByPK($target_date,$id);
+
+        $data['mail_magazine'] = $mail_magazine;
+        $data['week_label'] = ['日','月','火','水','木','金','土',];
+
+
+        //直近カレンダー
+        $calendar = $this->TbTsuCalendar->getRecentRecordByDate($target_date);
+        $data['calendar'] = $calendar;
+
+        
+        //直近レースインデックス
+        $race_index = $this->TbRaceIndex->getUnfinishedRecord($target_date);
+        //複数取得なので、先頭のレコードのみ
+        $data['race_index'] = $race_index[0];
+
+        $data['target_date'] = $target_date;
+        $data['id'] = $id;
+
+        if($request->isMethod('post')){
+            //POST処理
+
+            //バリデーション処理。失敗した場合は自動リダイレクト
+            /*$validate_config = $this->create_validate_config();
+            $request->validate(
+                $validate_config['config'],
+                $validate_config['message']
+            );*/
+
+            //保存処理
+            $post_result = $this->TbTsuMailmagazine->UpdateRecordByPK($request,$target_date,$id);
+
+            $data['post_result'] = $post_result;
+            $data['redirect_url'] = 'admin/mail_magazine/';
+            if($post_result){
+                $data['redirect_message'] = 'データを更新しました';
+            }else{
+                $data['redirect_message'] = 'データに変更が無いか、もしくは処理を実行しませんでした';
+            }
+
+        }
+
+        return $data;
+    }
+
+
+    public function preview($target_date,$id,$request){
+
+        $mail_magazine = $this->TbTsuMailmagazine->getFirstRecordByPK($target_date,$id);
+
+        $data['mail_magazine'] = $mail_magazine;
+        $data['week_label'] = ['日','月','火','水','木','金','土',];
+
+
+        //直近カレンダー
+        $calendar = $this->TbTsuCalendar->getRecentRecordByDate($target_date);
+        $data['calendar'] = $calendar;
+
+        
+        //直近レースインデックス
+        $race_index = $this->TbRaceIndex->getUnfinishedRecord($target_date);
+        //複数取得なので、先頭のレコードのみ
+        $data['race_index'] = $race_index[0];
+
+        $data['target_date'] = $target_date;
+        $data['id'] = $id;
+
+
+        $fan_data = $this->FanData->getAllRecord();
+        $fan_data_array = [];
+        foreach($fan_data as $item){
+            $fan_data_array[$item->Touban] = $item;
+        }
+        $data['fan_data_array'] = $fan_data_array;
+
+        return $data;
+    }
+
 
     public function delete($target_date,$id){
         $post_result = $this->TbTsuMailmagazine->deleteFirstRecordByPK($target_date,$id);

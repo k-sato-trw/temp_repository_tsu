@@ -8,11 +8,10 @@
     <h1>津 イベントファンマスタ登録ページ</h1>
     <h2>カレンダーID:{{ $id }}</h2>
     <div style="margin:40px 0;">
-        <!--div style="margin:20px 0;">
-            <a href='/admin/event_fan_master/preview' target="_blank">PC 一覧プレビュー</a>　|　
-            <a href='/admin/event_fan_master/preview_top' target="_blank">PC TOPプレビュー</a>　|　
-            <a href='/admin/event_fan_master/preview_sp' target="_blank">SP 一覧プレビュー</a>
-        </div-->
+        <div style="margin:20px 0;">
+            <a href='/admin/event_fan_master/preview/pc' target="_blank">PCプレビュー</a>　|　
+            <a href='/admin/event_fan_master/preview/sp' target="_blank">SPプレビュー</a>
+        </div>
         
         <button type="button" class="btn btn-primary" onclick="location.href='/admin/event_fan_master/create/{{$id}}'">イベントファンマスタ新規作成</button>
 

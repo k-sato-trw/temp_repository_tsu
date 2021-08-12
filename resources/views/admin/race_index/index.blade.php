@@ -66,8 +66,7 @@
                         <td style="background-color: #fdd">
                             @isset($tenbo[$item->ID])
                                 <a href='/admin/race_index/preview/tenbo/pc/{{$item->ID}}' target='_blank' >PC<br>
-                                <a href='/admin/race_index/preview/tenbo/sp/{{$item->ID}}' target='_blank' >SP<br>
-                                <a href='/admin/race_index/preview/tenbo/mb/{{$item->ID}}' target='_blank' >MB
+                                <a href='/admin/race_index/preview/tenbo/sp/{{$item->ID}}' target='_blank' >SP
                             @endif
                         </td>
                         <td style="background-color: #fdd">
@@ -75,8 +74,6 @@
                                 <a href="/export/tenbo/?ID={{$item->ID}}" target="_blank">PC書出</a>
                                 <br>
                                 <a href="/export/sp/tenbo/?ID={{$item->ID}}" target="_blank">SP書出</a>
-                                <br>
-                                <a href="/export/mb/tenbo/?ID={{$item->ID}}" target="_blank">MB書出</a>
                             @endif
                             
                         </td>
@@ -116,14 +113,11 @@
                             <a href='/admin/race_index/preview/syutujo/pc/{{$item->ID}}' target='_blank' >PC</a><br>
                             <a href='/admin/race_index/preview/syutujo/pc/{{$item->ID}}?toku' target='_blank' >PC特</a><br>
                             <a href='/admin/race_index/preview/syutujo/sp/{{$item->ID}}' target='_blank' >SP</a><br>
-                            <a href='/admin/race_index/preview/syutujo/mb/{{$item->ID}}' target='_blank' >MB</a>
                         </td>
                         <td style="background-color: #ddf">
                             <a href="/export/syutujo/?ID={{$item->ID}}" target="_blank">PC書出</a>
                             <br>
                             <a href="/export/sp/syutujo/?ID={{$item->ID}}" target="_blank">SP書出</a>
-                            <br>
-                            <a href="/export/mb/syutujo/?ID={{$item->ID}}" target="_blank">MB書出</a>
                         </td>
                         <td style="background-color: #ddf">
                             {{-- ファイルの有り無しで書き出しソースの表示を判定 --}}
@@ -134,10 +128,6 @@
                             <br>
                             @if(file_exists(config('const.EXPORT_PATH').'/asp/htmlmade/Race/Syutujo/'.config('const.JYO_CODE').'/SP/s'.$item->ID.'.htm'))
                                 <a href="/asp/htmlmade/Race/Syutujo/04/SP/s{{$item->ID}}.htm" target="_blank">SP</a>
-                            @endif
-                            <br>
-                            @if(file_exists(config('const.EXPORT_PATH').'/asp/htmlmade/Race/Syutujo/'.config('const.JYO_CODE').'/MB/s'.$item->ID.'.htm'))
-                                <a href="/asp/htmlmade/Race/Syutujo/04/MB/s{{$item->ID}}.htm" target="_blank">SP</a>
                             @endif
                         </td>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminSekosyaController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\AdminSekosya\SekosyaKinkyuKokutiService;
+use App\Services\Front\FrontKinkyuService;
 
 class SekosyaKinkyuKokutiController extends AdminSekosyaController
 {
@@ -72,6 +73,30 @@ class SekosyaKinkyuKokutiController extends AdminSekosyaController
         //サービスクラスで処理。処理後リダイレクト
         $data = $this->_service->change_appear_flg($id,$appear_flg);
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
+    }
+
+
+    public function preview_pc($id,FrontKinkyuService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $request->merge([
+            'device' => 0,
+            'preview_id' => $id,
+        ]);
+        $data = $_service->message($request,true);
+        return view('front.kinkyu.message',$data);
+    }
+
+   
+    public function preview_sp($id,FrontKinkyuService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $request->merge([
+            'device' => 1,
+            'preview_id' => $id,
+        ]);
+        $data = $_service->message($request,true);
+        return view('front.kinkyu.message',$data);
     }
 
 

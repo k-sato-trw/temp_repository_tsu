@@ -26,7 +26,7 @@ class FrontInfoService
     }
 
 
-    public function index($request){
+    public function index($request,$is_preview=false){
 
         if(strpos(url()->current(),'/admin/') !== false){
             $is_preview = true;
@@ -39,7 +39,7 @@ class FrontInfoService
         $target_year = $request->input('Year') ?? date('Y');
         $data['target_year'] = $target_year;
 
-        $information = $this->TbTsuInformation->getRecordForFront($target_year,$is_preview);
+        $information = $this->TbTsuInformation->getRecordForPcTop($target_year,$is_preview);
         $information_array = [];
         foreach($information as $key=>$item){
             //ソートのため、表示日付と更新時間でキーを作成。　のちのモーターリストと更新時間の桁数が違うので、二桁増やす

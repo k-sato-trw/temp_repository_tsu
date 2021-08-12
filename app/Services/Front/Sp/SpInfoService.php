@@ -26,7 +26,7 @@ class SpInfoService
     }
 
 
-    public function index($request){
+    public function index($request,$is_preview=false){
 
         if(strpos(url()->current(),'/admin/') !== false){
             $is_preview = true;
@@ -40,7 +40,7 @@ class SpInfoService
         $target_year = $request->input('Year') ?? date('Y');
         $data['target_year'] = $target_year;
 
-        $information = $this->TbTsuInformation->getRecordForFrontSp($target_year,$is_preview);
+        $information = $this->TbTsuInformation->getRecordForSpTop($target_year,$is_preview);
         $information_array = [];
         foreach($information as $key=>$item){
             //ソートのため、表示日付と更新時間でキーを作成。　のちのモーターリストと更新時間の桁数が違うので、二桁増やす

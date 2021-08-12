@@ -2765,7 +2765,7 @@ class ExportSpKaisaiService
     }
     
     
-    public function create_sp_tokuten($request){
+    public function create_sp_tokuten($request,$is_preview = false){
         $data = [];
 
         $jyo = $request->input('jyo') ?? config('const.JYO_CODE');
@@ -2779,7 +2779,7 @@ class ExportSpKaisaiService
             //処理対象日を判定
             $tomorrow_flg = false;
             $today_date = date('Ymd');
-            $today_date = '20210524';
+            //$today_date = '20210524';
             $tomorrow_date = date('Ymd',strtotime('+1 day',strtotime($today_date)));
 
             $kaisai_master = $this->KaisaiMaster->getFirstRecordByDateBitween($jyo,$tomorrow_date);
@@ -2831,7 +2831,7 @@ class ExportSpKaisaiService
         }
 
         {
-            $tokutenritu = $this->TbTsuTokutenritu->getRankingByDate($target_date);
+            $tokutenritu = $this->TbTsuTokutenritu->getRankingByDate($target_date,$is_preview);
             $data['tokutenritu'] = $tokutenritu;
 
             $syussou = $this->TbBoatSyussou->getRecordBkDate($jyo,$target_date);

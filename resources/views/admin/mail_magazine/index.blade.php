@@ -140,11 +140,9 @@
                             @if(in_array($day,$zenken))
                                 <div>
                                     <a href="/admin/mail_magazine/create/{{date('Ymd',strtotime($now_year.'/'.$now_month.'/'.$day))}}" style="display:block; width:36px; height:36px; background-image:url('/cms/CMS_Mail/images/icon_mail.png'); background-size:auto 59px;background-position-x:0px;"></a>
-                                    @if($item->TARGET_TIME)
-                                        {{date('H:i' , strtotime($item->TARGET_DATE.$item->TARGET_TIME))}}                                        
-                                    @else
+
                                         --:--
-                                    @endif
+
                                 </div>
                             @endif
                         @endisset

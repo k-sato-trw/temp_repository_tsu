@@ -114,6 +114,8 @@ Route::post('/admin/information/edit/{id}', [InformationController::class, 'edit
 Route::get('/admin/information/create', [InformationController::class, 'create']);
 Route::post('/admin/information/create', [InformationController::class, 'create']);
 Route::get('/admin/information/delete/{id}', [InformationController::class, 'delete']);
+Route::get('/admin/information/preview_pc', [InformationController::class, 'preview_pc']);
+Route::get('/admin/information/preview_sp', [InformationController::class, 'preview_sp']);
 
 
 //admin 緊急告知管理ページ
@@ -124,6 +126,8 @@ Route::post('/admin/kinkyu_kokuti/edit/{id}', [KinkyuKokutiController::class, 'e
 Route::get('/admin/kinkyu_kokuti/create', [KinkyuKokutiController::class, 'create']);
 Route::post('/admin/kinkyu_kokuti/create', [KinkyuKokutiController::class, 'create']);
 Route::get('/admin/kinkyu_kokuti/delete/{id}', [KinkyuKokutiController::class, 'delete']);
+Route::get('/admin/kinkyu_kokuti/preview_pc/{id}', [KinkyuKokutiController::class, 'preview_pc']);
+Route::get('/admin/kinkyu_kokuti/preview_sp/{id}', [KinkyuKokutiController::class, 'preview_sp']);
 
 
 //admin 選手管理ページ
@@ -145,12 +149,12 @@ Route::post('/admin/race_index/edit/{id}', [RaceIndexController::class, 'edit'])
 Route::get('/admin/race_index/create', [RaceIndexController::class, 'create']);
 Route::post('/admin/race_index/create', [RaceIndexController::class, 'create']);
 Route::get('/admin/race_index/delete/{id}', [RaceIndexController::class, 'delete']);
-/*
+
 Route::get('/admin/race_index/preview/tenbo/pc/{id}', [RaceIndexController::class, 'preview_tenbo_pc']);
 Route::get('/admin/race_index/preview/tenbo/sp/{id}', [RaceIndexController::class, 'preview_tenbo_sp']);
 Route::get('/admin/race_index/preview/syutujo/pc/{id}', [RaceIndexController::class, 'preview_syutujo_pc']);
 Route::get('/admin/race_index/preview/syutujo/sp/{id}', [RaceIndexController::class, 'preview_syutujo_sp']);
-*/
+
 
 //admin レース展望
 Route::get('/admin/race_tenbo/edit/{id}', [RaceTenboController::class, 'edit']);
@@ -194,7 +198,7 @@ Route::get('/admin/banner/delete/{id}', [BannerController::class, 'delete']);
 //Route::get('/admin/banner/preview', [BannerController::class, 'preview']);
 
 
-//admin バナー登録ページ
+//admin トピックスページ
 Route::get('/admin/topic', [TopicController::class, 'index']);
 Route::get('/admin/topic/view/{id}', [TopicController::class, 'view']);
 Route::get('/admin/topic/edit/{id}', [TopicController::class, 'edit']);
@@ -202,6 +206,8 @@ Route::post('/admin/topic/edit/{id}', [TopicController::class, 'edit']);
 Route::get('/admin/topic/create', [TopicController::class, 'create']);
 Route::post('/admin/topic/create', [TopicController::class, 'create']);
 Route::get('/admin/topic/delete/{id}', [TopicController::class, 'delete']);
+Route::get('/admin/topic/preview_pc', [TopicController::class, 'preview_pc']);
+Route::get('/admin/topic/preview_sp', [TopicController::class, 'preview_sp']);
 
 
 
@@ -214,11 +220,9 @@ Route::post('/admin/calendar/edit/{mode}/{id}', [CalendarController::class, 'edi
 Route::get('/admin/calendar/delete/{id}', [CalendarController::class, 'delete']);
 Route::post('/admin/calendar/change_appear_flg', [CalendarController::class, 'change_appear_flg']);
 Route::post('/admin/calendar/upsert_month_info', [CalendarController::class, 'upsert_month_info']);
-/*
-Route::get('/admin/calendar/preview', [CalendarController::class, 'preview']);
-Route::get('/admin/calendar/preview_middle', [CalendarController::class, 'preview_middle']);
+Route::get('/admin/calendar/preview_pc', [CalendarController::class, 'preview_pc']);
 Route::get('/admin/calendar/preview_sp', [CalendarController::class, 'preview_sp']);
-*/
+
 
 //admin イベントファンマスター
 Route::get('/admin/event_fan_master/{id}', [EventFanMasterController::class, 'index_view']);
@@ -234,6 +238,9 @@ Route::get('/admin/event_fan_master/create_event_fan/{id}/{sub_id}', [EventFanMa
 Route::post('/admin/event_fan_master/create_event_fan/{id}/{sub_id}', [EventFanMasterController::class, 'create_event_fan']);
 Route::get('/admin/event_fan_master/delete_event_fan/{id}/{sub_id}/{third_id}', [EventFanMasterController::class, 'delete_event_fan']);
 
+Route::get('/admin/event_fan_master/preview/pc', [EventFanMasterController::class, 'preview_pc']);
+Route::get('/admin/event_fan_master/preview/sp', [EventFanMasterController::class, 'preview_sp']);
+
 
 //admin メールマガジン
 Route::get('/admin/mail_magazine', [MailMagazineController::class, 'index']);
@@ -241,6 +248,9 @@ Route::get('/admin/mail_magazine/edit/{target_date}/{id}', [MailMagazineControll
 Route::post('/admin/mail_magazine/edit/{target_date}/{id}', [MailMagazineController::class, 'edit']);
 Route::get('/admin/mail_magazine/create/{target_date}', [MailMagazineController::class, 'create']);
 Route::post('/admin/mail_magazine/create/{target_date}', [MailMagazineController::class, 'create']);
+Route::get('/admin/mail_magazine/yoyaku/{target_date}/{id}', [MailMagazineController::class, 'yoyaku']);
+Route::post('/admin/mail_magazine/yoyaku/{target_date}/{id}', [MailMagazineController::class, 'yoyaku']);
+Route::get('/admin/mail_magazine/preview/{target_date}/{id}', [MailMagazineController::class, 'preview']);
 
 Route::get('/asp/tbk/racersearch/js/makePlayerJS.js', [FrontJsController::class, 'make_player']);
 
@@ -257,6 +267,8 @@ Route::get('/admin_sekosya/logout', [AdminSekosyaController::class, 'logout']);
 Route::get('/admin_sekosya/tokuten', [TokutenController::class, 'index']);
 Route::post('/admin_sekosya/tokuten', [TokutenController::class, 'index']);
 Route::post('/admin_sekosya/tokuten/change_appear_flg/{appear_flg}', [TokutenController::class, 'change_appear_flg']);
+Route::get('/admin_sekosya/tokuten/preview_pc', [TokutenController::class, 'preview_pc']);
+Route::get('/admin_sekosya/tokuten/preview_sp', [TokutenController::class, 'preview_sp']);
 
 
 //admin_sekosya系 インフォメーションページ
@@ -267,6 +279,8 @@ Route::get('/admin_sekosya/information/create', [SekosyaInformationController::c
 Route::post('/admin_sekosya/information/create', [SekosyaInformationController::class, 'create']);
 Route::get('/admin_sekosya/information/delete/{id}', [SekosyaInformationController::class, 'delete']);
 Route::get('/admin_sekosya/information/change_appear_flg/{id}/{appear_flg}', [SekosyaInformationController::class, 'change_appear_flg']);
+Route::get('/admin_sekosya/information/preview_pc', [SekosyaInformationController::class, 'preview_pc']);
+Route::get('/admin_sekosya/information/preview_sp', [SekosyaInformationController::class, 'preview_sp']);
 
 
 //admin_sekosya系 緊急告知管理ページ
@@ -277,6 +291,8 @@ Route::get('/admin_sekosya/kinkyu_kokuti/create', [SekosyaKinkyuKokutiController
 Route::post('/admin_sekosya/kinkyu_kokuti/create', [SekosyaKinkyuKokutiController::class, 'create']);
 Route::get('/admin_sekosya/kinkyu_kokuti/delete/{id}', [SekosyaKinkyuKokutiController::class, 'delete']);
 Route::get('/admin_sekosya/kinkyu_kokuti/change_appear_flg/{id}/{appear_flg}', [SekosyaKinkyuKokutiController::class, 'change_appear_flg']);
+Route::get('/admin_sekosya/kinkyu_kokuti/preview_pc/{id}', [SekosyaKinkyuKokutiController::class, 'preview_pc']);
+Route::get('/admin_sekosya/kinkyu_kokuti/preview_sp/{id}', [SekosyaKinkyuKokutiController::class, 'preview_sp']);
 
 
 //admin_sekosya系 開門時間
@@ -287,6 +303,8 @@ Route::get('/admin_sekosya/kaimon/create/{target_date}', [KaimonController::clas
 Route::post('/admin_sekosya/kaimon/create/{target_date}', [KaimonController::class, 'create']);
 Route::post('/admin_sekosya/kaimon/delete', [KaimonController::class, 'delete']);
 Route::get('/admin_sekosya/kaimon/change_appear_flg/{target_year_month}/{appear_flg}', [KaimonController::class, 'change_appear_flg']);
+Route::get('/admin_sekosya/kaimon/preview_pc', [KaimonController::class, 'preview_pc']);
+Route::get('/admin_sekosya/kaimon/preview_sp', [KaimonController::class, 'preview_sp']);
 
 
 //admin_kisya系
@@ -336,7 +354,6 @@ Route::post('/admin_kisya/message', [MessageController::class, 'edit']);
 Route::get('/admin_kisya/message/change_appear_flg', [MessageController::class, 'change_appear_flg']);
 Route::get('/admin_kisya/message/preview_pc', [MessageController::class, 'preview_pc']);
 Route::get('/admin_kisya/message/preview_sp', [MessageController::class, 'preview_sp']);
-
 
 
 //フロントPC

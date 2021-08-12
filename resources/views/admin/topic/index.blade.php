@@ -5,20 +5,14 @@
 @section('content')
     <h1>BR津 CMS TOPIC</h1>
     <div style="margin:40px 0;">
-        {{--
-        <div style="margin:20px 0;">
-            <a href='/admin/topic/preview' target="_blank">PC 競技プレビュー</a>
-        </div>
-
-        <div class="card bg-secondary mb-3">
-            <div class="card-header">絞り込み</div>
-            <div class="card-body">
-                <form>
-                    {{ \Form::select('status', [1=>"表示中",0=>"すべて"] , $status , ["class" => "form-control","style"=>"width:100px;  display:inline-block;"]) }}
-                    <button type="submit" class="btn btn-success">検索</button>
-                </form>
+        <form method="get" name="preview_form" action="/admin/topic/preview_pc" target="_blank">
+            <div style="margin:20px 0;">
+                プレビュー時間設定<input name="preDate" value="{{date('YmdHi')}}" >　|　
+                <a href="javascript:document.preview_form.action='/admin/topic/preview_pc';document.preview_form.submit()" >PCプレビュー</a>　|　
+                <a href="javascript:document.preview_form.action='/admin/topic/preview_sp';document.preview_form.submit()" >SPプレビュー</a>
             </div>
-        </div>--}}
+        </form>
+        
         <div style="margin:20px 0;">
             <button type="button" class="btn btn-primary" onclick="display_change('pc_display')">PC現在表示</button>
             <button type="button" class="btn btn-primary" onclick="display_change('sp_display')">SP現在表示</button>

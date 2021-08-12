@@ -105,8 +105,8 @@
         <ul>
         <li class="save"><input type="button" onClick="javascript:Check('1');" value="保存"></li>
         <li class="preview">プレビュー</li>
-        <li class="pv_b"><a href="javascript:funcPreview('pc');">PC</a></li>
-        <li class="pv_b"><a href="javascript:funcPreview('sp');">スマホ</a></li>
+        <li class="pv_b"><a href="/admin_sekosya/tokuten/preview_pc" target="_blank">PC</a></li>
+        <li class="pv_b"><a href="/admin_sekosya/tokuten/preview_sp" target="_blank">スマホ</a></li>
         <div class="clear"></div>
         </ul>
         </div><!--/#fotter_in_l-->

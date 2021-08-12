@@ -160,9 +160,9 @@
 		<ul>
 		<li class="save"><input type="button" onClick="javascript:funcSave('1');" value="保存"></li>
 		<li class="preview">プレビュー</li>
-		<li class="pv_b"><a href="javascript:funcPreview('1');">PC</a></li>
-		<li class="pv_b"><a href="javascript:funcPreview('2');">スマホ</a></li>
-		<li class="pv_b"><a href="javascript:funcPreview('3');">携帯</a></li>
+		<li class="pv_b"><a href="/admin_sekosya/kinkyu_kokuti/preview_pc/{{$kinkyu_kokuti->ID}}" target="_blank">PC</a></li>
+		<li class="pv_b"><a href="/admin_sekosya/kinkyu_kokuti/preview_sp/{{$kinkyu_kokuti->ID}}" target="_blank">スマホ</a></li>
+		{{--<li class="pv_b"><a href="javascript:funcPreview('3');">携帯</a></li>--}}
 		<div class="clear"></div>
 		</ul>
 		</div><!--/#fotter_in_l-->

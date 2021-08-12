@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\Admin\TopicService;
+use App\Services\ExportHtml\ExportTopDisplayService;
+use App\Services\ExportHtml\Sp\ExportSpTopDisplayService;
 
 class TopicController extends AdminController
 {
@@ -57,6 +59,23 @@ class TopicController extends AdminController
         $data = $this->_service->delete($id);
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
     }
+
+
+    public function preview_pc(ExportTopDisplayService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.top_display.index',$data);
+    }
+
+   
+    public function preview_sp(ExportSpTopDisplayService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.sp.top_display.index',$data);
+    }
+
 
 
 }

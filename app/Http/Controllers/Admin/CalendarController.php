@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\Admin\CalendarService;
 //プレビュー
-use App\Services\ExportHtml\ExportCalendarService;
-use App\Services\Front\Sp\SpCalendarService;
+use App\Services\ExportHtml\ExportCalService;
+use App\Services\Front\Sp\SpCalService;
 
 class CalendarController extends AdminController
 {
@@ -78,26 +78,19 @@ class CalendarController extends AdminController
     }
 
 
-    public function preview(ExportCalendarService $_service ,Request $request)
+    public function preview_pc(ExportCalService $_service ,Request $request)
     {
         //サービスクラスで処理。
         $data = $_service->index($request);
-        $data['calendar'] = $data['calendar_array'][0];
-        return view('front.calendar.top_display',$data);
+        return view('front.cal.index',$data);
     }
+    
 
-    public function preview_middle(ExportCalendarService $_service ,Request $request)
+    public function preview_sp(SpCalService $_service ,Request $request)
     {
         //サービスクラスで処理。
         $data = $_service->index($request);
-        return view('front.calendar.index',$data);
-    }
-
-    public function preview_sp(SpCalendarService $_service ,Request $request)
-    {
-        //サービスクラスで処理。
-        $data = $_service->index($request);
-        return view('front.sp.calendar.index',$data);
+        return view('front.sp.cal.index',$data);
     }
 
 

@@ -292,9 +292,9 @@
 			<ul>
 			<li class="save"><input type="button" onclick="javascript:Check('1');" value="保存"></li>
 			<li class="preview">プレビュー</li>
-			<li class="pv_b"><a href="/asp/tsu/info/info.asp?check=1&amp;year=2021" target="_blank">PC</a></li>
-			<li class="pv_b"><a href="/asp/tsu/sp/info/info_SP.asp?check=1&amp;year=2021" target="_blank">スマホ</a></li>
-			<li class="pv_b"><a href="/k/k_guide/whatsnew.asp?no=09&amp;jyo=09&amp;check=1" target="_blank">携帯</a></li>
+			<li class="pv_b"><a href="/admin_sekosya/information/preview_pc" target="_blank">PC</a></li>
+			<li class="pv_b"><a href="/admin_sekosya/information/preview_sp" target="_blank">スマホ</a></li>
+			{{--<li class="pv_b"><a href="/k/k_guide/whatsnew.asp?no=09&amp;jyo=09&amp;check=1" target="_blank">携帯</a></li>--}}
 			<div class="clear"></div>
 			</ul>
 			</div><!--/#fotter_in_l-->

@@ -324,7 +324,7 @@ class TbTsuInformationRepository implements TbTsuInformationRepositoryInterface
         $query = $this->TbTsuInformation
             ->where('PC_APPEAR_FLG', '1');
         
-        if (!$is_preview) {
+        /*if (!$is_preview) {
             $query->where(function ($query) use ($target_datetime) {
                 $query->where(function ($query) use ($target_datetime) {
                     $query->where('START_DATE','<=', $target_datetime)
@@ -335,12 +335,12 @@ class TbTsuInformationRepository implements TbTsuInformationRepositoryInterface
                         ->where('END_DATE', '=', '');
                 });
             });
-        }else{
+        }else{*/
             $query->where(function ($query) use ($target_datetime) {
                 $query->where('END_DATE','>=', $target_datetime)
                     ->orWhere('END_DATE', '=', '');
             });
-        }
+        //}
 
         if (!$is_preview) {
             $query->where('APPEAR_FLG', '1');
@@ -362,7 +362,7 @@ class TbTsuInformationRepository implements TbTsuInformationRepositoryInterface
         $query = $this->TbTsuInformation
             ->where('SP_APPEAR_FLG', '1');
         
-        if (!$is_preview) {
+        /*if (!$is_preview) {
             $query->where(function ($query) use ($target_datetime) {
                 $query->where(function ($query) use ($target_datetime) {
                     $query->where('START_DATE','<=', $target_datetime)
@@ -373,12 +373,12 @@ class TbTsuInformationRepository implements TbTsuInformationRepositoryInterface
                         ->where('END_DATE', '=', '');
                 });
             });
-        }else{
+        }else{*/
             $query->where(function ($query) use ($target_datetime) {
                 $query->where('END_DATE','>=', $target_datetime)
                     ->orWhere('END_DATE', '=', '');
             });
-        }
+        //}
 
         if (!$is_preview) {
             $query->where('APPEAR_FLG', '1');

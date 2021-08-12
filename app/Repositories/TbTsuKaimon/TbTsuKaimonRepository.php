@@ -138,14 +138,19 @@ class TbTsuKaimonRepository implements TbTsuKaimonRepositoryInterface
      * フロント表示用　IDで1レコードを取得
      *
      * @var string $target_date
+     * @var string $is_preview
      * @return object
      */
-    public function getFirstRecordForFront($target_date)
+    public function getFirstRecordForFront($target_date,$is_preview=false)
     {
-        return $this->TbTsuKaimon
-                    ->where('TARGET_DATE','=',$target_date)
-                    ->where('APPEAR_FLG','1')
-                    ->first();
+        $query = $this->TbTsuKaimon
+                    ->where('TARGET_DATE','=',$target_date);
+        
+        if(!$is_preview){
+            $query->where('APPEAR_FLG','1');
+        }
+
+        return $query->first();
     }
 
 }

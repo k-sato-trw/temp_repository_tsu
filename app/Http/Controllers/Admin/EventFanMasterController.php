@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\Admin\EventFanMasterService;
+use App\Services\ExportHtml\ExportEventService;
+use App\Services\Front\Sp\SpEventService;
 
 class EventFanMasterController extends AdminController
 {
@@ -85,6 +87,22 @@ class EventFanMasterController extends AdminController
         //サービスクラスで処理。処理後リダイレクト
         $data = $this->_service->delete_event_fan($id,$sub_id,$third_id);
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
+    }
+
+    
+    public function preview_pc(ExportEventService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.event.index',$data);
+    }
+    
+
+    public function preview_sp(SpEventService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.sp.event.index',$data);
     }
 
 

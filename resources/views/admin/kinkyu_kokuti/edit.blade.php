@@ -6,6 +6,10 @@
 
     <h1>津 緊急告知編集 ID:{{ $kinkyu_kokuti->ID }}</h1>
     <div style="margin:40px 0;">
+        <div style="margin:20px 0;">
+            <a href='/admin/kinkyu_kokuti/preview_pc/{{ $kinkyu_kokuti->ID }}' target="_blank">PCプレビュー</a>　|　
+            <a href='/admin/kinkyu_kokuti/preview_sp/{{ $kinkyu_kokuti->ID }}' target="_blank">SPプレビュー</a>
+        </div>
         <form method="post" enctype="multipart/form-data">
             
             <div class="card bg-secondary mb-3" >

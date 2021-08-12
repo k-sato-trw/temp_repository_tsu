@@ -15,11 +15,10 @@ class FrontKinkyuService
     }
 
 
-    public function message($request){
+    public function message($request,$is_preview = false){
 
         $target_datetime = date('Ymdhi');
         $device = $request->input('device') ?? 0;
-        $is_preview = $request->input('preview') ?? false;
         $preview_id = $request->input('preview_id') ?? false;
 
 

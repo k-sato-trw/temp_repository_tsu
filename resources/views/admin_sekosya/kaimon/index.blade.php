@@ -167,7 +167,7 @@
                         @if($item['type'] == "head")
                             <td colspan="{{ $item['colspan'] }}" 
                             class="day_block grade_{{ $item['record']['GRADE'] }} @if($item['record']['APPEAR_FLG']) appear_true @endif" 
-                            onClick="location.href='/admin/calendar/edit/honjyonai/{{ $item['record']['ID'] }}'">
+                            {{--onClick="location.href='/admin/calendar/edit/honjyonai/{{ $item['record']['ID'] }}'"--}}>
 
                                 {{ $general->gradenumber_to_gradename_for_cms_calendar($item['record']['GRADE']) }}
                                 @if($item['record']['RACE_TITLE'])
@@ -184,14 +184,14 @@
                         @elseif($item['type'] == "blank")
                             <td 
                             class="day_block" 
-                            onClick="location.href='/admin/calendar/create/honjyonai/{{ $now_year . $now_month . str_pad($day, 2, '0', STR_PAD_LEFT) }}/{{$line_count}}'">
+                            {{--onClick="location.href='/admin/calendar/create/honjyonai/{{ $now_year . $now_month . str_pad($day, 2, '0', STR_PAD_LEFT) }}/{{$line_count}}'"--}}>
                             </td>
                         
                         @elseif($item['type'] == "close")
                             <td colspan="{{ $item['colspan'] }}" 
                             rowspan="5" 
                             class="close_block @if($item['record']['APPEAR_FLG']) appear_true @endif" 
-                            onClick="location.href='/admin/calendar/edit/close/{{ $item['record']['ID'] }}'">
+                            {{--onClick="location.href='/admin/calendar/edit/close/{{ $item['record']['ID'] }}'"--}}>
                                 休館日
                             </td>
                         @endif
@@ -211,14 +211,16 @@
 
         <div id="footer_in">
         <div id="footer_in_l_km">
-        <ul>
-        <li class="preview">プレビュー</li>
-        <li class="pv_time"><input name="preDate" type="text" value="{{date('Ymd')}}" size="14" maxlength="8">を指定</li>
-        <li class="pv_b"><a href="javascript:funcPreview(1);">PC</a></li>
-        <li class="pv_b"><a href="javascript:funcPreview(2);">スマホ</a></li>
-        <li class="pv_b"><a href="javascript:funcPreview(3);">携帯</a></li>
-        <div class="clear"></div>
-        </ul>
+		<form name="preview_form" action="/admin_sekosya/kaimon/preview_pc" target="_blank">
+			<ul>
+				<li class="preview">プレビュー</li>
+				<li class="pv_time"><input name="preDate" type="text" value="{{date('Ymd')}}" size="14" maxlength="8">を指定</li>
+				<li class="pv_b"><a href="javascript:document.preview_form.action='/admin_sekosya/kaimon/preview_pc';document.preview_form.submit()">PC</a></li>
+				<li class="pv_b"><a href="javascript:document.preview_form.action='/admin_sekosya/kaimon/preview_sp';document.preview_form.submit()">スマホ</a></li>
+				{{--<li class="pv_b"><a href="javascript:funcPreview(3);">携帯</a></li>--}}
+				<div class="clear"></div>
+			</ul>
+		</form>
         </div><!--/#fotter_in_l-->
         
         

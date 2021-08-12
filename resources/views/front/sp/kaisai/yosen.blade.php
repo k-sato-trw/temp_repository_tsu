@@ -68,193 +68,193 @@ monaca.viewport({
 
 <div id="main"><!-- main start -->
 
+@if($kaisai_master && $race_header)
 
+    <div id="race">
 
-<div id="race">
-
-<table>
-<tr>
-<td class="date">{{ date('n/j',strtotime($target_date)) }}</td>
-<td class="name">{{$kaisai_master->開催名称}}</td>
-<td class="day">
-    @if($kaisai_master->開始日付 == $target_date)
-        初日
-    @elseif($kaisai_master->終了日付 == $target_date)
-        最終日                
-    @else
-        {{$race_header->KAISAI_DAYS}}日目
-    @endif
-</td>
-</tr>
-</table>
-
-</div>
-
-
-
-
-
-
-<div id="race_select">
-<div id="yosen_title">
-得点率情報
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="data"><!-- data start -->
-
-
-<div id="yosen">
-<p class="memo">※優勝戦日の前日まで更新。</p>
-
-
-<p class="yosen">【@isset($kaisai_date_label_list[$yesterday_date]){{$kaisai_date_label_list[$yesterday_date]}}@endisset<span class="date">({{date('n/j',strtotime($yesterday_date))}})</span>終了時点】</p>
-
-<table>
-<tr>
-<th rowspan="2">順<br>位</th>
-<th rowspan="2">登番</th>
-<th rowspan="2">選手名</th>
-<th rowspan="2">級<br>別</th>
-<th rowspan="2">得点率</th>
-<th colspan="7" class="T">日別成績</th>
-</tr>
-<tr>
-    @for($i=0;$i<=6;$i++)
-        @isset($kaisai_date_list[$i])
-            <th class="motor B">{{$kaisai_date_label_list[$kaisai_date_list[$i]] ?? ""}}</th>
-        @else
-            <th class="motor B">&nbsp;</th>
-        @endisset
-    @endfor
-</tr>
-@foreach($tokutenritu as $item)
+    <table>
     <tr>
-        <td rowspan="2" class="rank">{{$item->RANK}}</td>
-        <td rowspan="2" class="number">{{$item->TOUBAN}}@if(($syussou_array[$item->TOUBAN]->SEX ?? "") == 2)<br><img src="/sp/kaisai/images/ico_lady.png"  width="24" class="i_lady" />@endif</td>
-        <td rowspan="2" class="name">{{ str_replace('　','',$syussou_array[$item->TOUBAN]->SENSYU_NAME)}}</td>
-        <td rowspan="2" class="class">{{$syussou_array[$item->TOUBAN]->KYU_BETU ?? ""}}</td>
-        <td rowspan="2" class="rate">{{$item->TOKUTENRITU}}</td>
+    <td class="date">{{ date('n/j',strtotime($target_date)) }}</td>
+    <td class="name">{{$kaisai_master->開催名称}}</td>
+    <td class="day">
+        @if($kaisai_master->開始日付 == $target_date)
+            初日
+        @elseif($kaisai_master->終了日付 == $target_date)
+            最終日                
+        @else
+            {{$race_header->KAISAI_DAYS}}日目
+        @endif
+    </td>
+    </tr>
+    </table>
 
-        @isset($syussou_array[$item->TOUBAN])
-            @if( $syussou_array[$item->TOUBAN]->KONSETU11_DATE != "" )
-                <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU11_TYAKUJUN}}</td>
+    </div>
+
+
+
+
+
+
+    <div id="race_select">
+    <div id="yosen_title">
+    得点率情報
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div class="data"><!-- data start -->
+
+
+    <div id="yosen">
+    <p class="memo">※優勝戦日の前日まで更新。</p>
+
+
+    <p class="yosen">【@isset($kaisai_date_label_list[$yesterday_date]){{$kaisai_date_label_list[$yesterday_date]}}@endisset<span class="date">({{date('n/j',strtotime($yesterday_date))}})</span>終了時点】</p>
+
+    <table>
+    <tr>
+    <th rowspan="2">順<br>位</th>
+    <th rowspan="2">登番</th>
+    <th rowspan="2">選手名</th>
+    <th rowspan="2">級<br>別</th>
+    <th rowspan="2">得点率</th>
+    <th colspan="7" class="T">日別成績</th>
+    </tr>
+    <tr>
+        @for($i=0;$i<=6;$i++)
+            @isset($kaisai_date_list[$i])
+                <th class="motor B">{{$kaisai_date_label_list[$kaisai_date_list[$i]] ?? ""}}</th>
+            @else
+                <th class="motor B">&nbsp;</th>
+            @endisset
+        @endfor
+    </tr>
+    @foreach($tokutenritu as $item)
+        <tr>
+            <td rowspan="2" class="rank">{{$item->RANK}}</td>
+            <td rowspan="2" class="number">{{$item->TOUBAN}}@if(($syussou_array[$item->TOUBAN]->SEX ?? "") == 2)<br><img src="/sp/kaisai/images/ico_lady.png"  width="24" class="i_lady" />@endif</td>
+            <td rowspan="2" class="name">{{ str_replace('　','',$syussou_array[$item->TOUBAN]->SENSYU_NAME)}}</td>
+            <td rowspan="2" class="class">{{$syussou_array[$item->TOUBAN]->KYU_BETU ?? ""}}</td>
+            <td rowspan="2" class="rate">{{$item->TOKUTENRITU}}</td>
+
+            @isset($syussou_array[$item->TOUBAN])
+                @if( $syussou_array[$item->TOUBAN]->KONSETU11_DATE != "" )
+                    <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU11_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_T"></td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU21_DATE != "" )
+                    <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU21_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_T">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU31_DATE != "" )
+                    <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU31_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_T">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU41_DATE != "" )
+                    <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU41_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_T">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU51_DATE != "" )
+                    <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU51_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_T">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU61_DATE != "" )
+                    <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU61_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_T">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU71_DATE != "" )
+                    <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU71_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_T">　</td>
+                @endif
+
             @else
                 <td class="seiseki_T"></td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU21_DATE != "" )
-                <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU21_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_T">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU31_DATE != "" )
-                <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU31_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_T">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU41_DATE != "" )
-                <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU41_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_T">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU51_DATE != "" )
-                <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU51_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_T">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU61_DATE != "" )
-                <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU61_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_T">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU71_DATE != "" )
-                <td class="seiseki_T">{{$syussou_array[$item->TOUBAN]->KONSETU71_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_T">　</td>
-            @endif
+                <td class="seiseki_T"></td>
+                <td class="seiseki_T"></td>
+                <td class="seiseki_T"></td>
+                <td class="seiseki_T"></td>
+                <td class="seiseki_T"></td>
+                <td class="seiseki_T"></td>
+            @endisset
+        </tr>
+        <tr>
+            @isset($syussou_array[$item->TOUBAN])
+                @if( $syussou_array[$item->TOUBAN]->KONSETU12_DATE != "" )
+                    <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU12_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_B"></td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU22_DATE != "" )
+                    <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU22_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_B">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU32_DATE != "" )
+                    <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU32_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_B">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU42_DATE != "" )
+                    <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU42_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_B">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU52_DATE != "" )
+                    <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU52_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_B">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU62_DATE != "" )
+                    <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU62_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_B">　</td>
+                @endif
+                @if( $syussou_array[$item->TOUBAN]->KONSETU72_DATE != "" )
+                    <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU72_TYAKUJUN}}</td>
+                @else
+                    <td class="seiseki_B">　</td>
+                @endif
 
-        @else
-            <td class="seiseki_T"></td>
-            <td class="seiseki_T"></td>
-            <td class="seiseki_T"></td>
-            <td class="seiseki_T"></td>
-            <td class="seiseki_T"></td>
-            <td class="seiseki_T"></td>
-            <td class="seiseki_T"></td>
-        @endisset
-    </tr>
-    <tr>
-        @isset($syussou_array[$item->TOUBAN])
-            @if( $syussou_array[$item->TOUBAN]->KONSETU12_DATE != "" )
-                <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU12_TYAKUJUN}}</td>
             @else
                 <td class="seiseki_B"></td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU22_DATE != "" )
-                <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU22_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_B">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU32_DATE != "" )
-                <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU32_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_B">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU42_DATE != "" )
-                <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU42_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_B">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU52_DATE != "" )
-                <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU52_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_B">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU62_DATE != "" )
-                <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU62_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_B">　</td>
-            @endif
-            @if( $syussou_array[$item->TOUBAN]->KONSETU72_DATE != "" )
-                <td class="seiseki_B">{{$syussou_array[$item->TOUBAN]->KONSETU72_TYAKUJUN}}</td>
-            @else
-                <td class="seiseki_B">　</td>
-            @endif
+                <td class="seiseki_B"></td>
+                <td class="seiseki_B"></td>
+                <td class="seiseki_B"></td>
+                <td class="seiseki_B"></td>
+                <td class="seiseki_B"></td>
+                <td class="seiseki_B"></td>
+            @endisset
+        </tr>
+    @endforeach
 
-        @else
-            <td class="seiseki_B"></td>
-            <td class="seiseki_B"></td>
-            <td class="seiseki_B"></td>
-            <td class="seiseki_B"></td>
-            <td class="seiseki_B"></td>
-            <td class="seiseki_B"></td>
-            <td class="seiseki_B"></td>
-        @endisset
-    </tr>
-@endforeach
+    </table>
 
-</table>
+    <div id="memo">
+    日別成績 ＞＞ <span class="jun">○</span>：準優出、<span class="yu">●</span>：優出 
+    </div><!--/memo-->
+    <div class="clear"></div>
 
-<div id="memo">
-日別成績 ＞＞ <span class="jun">○</span>：準優出、<span class="yu">●</span>：優出 
-</div><!--/memo-->
-<div class="clear"></div>
-
-<p id="note">遠藤晃司:帰郷、荒川健太:賞除、江夏満:4-12R不良航法、川島圭司:帰郷、岡祐臣:2-4R不良航法、眞鳥章太:1-8R不良航法 2-1R待機行動違、中野孝二:帰郷</p>
+    <p id="note">遠藤晃司:帰郷、荒川健太:賞除、江夏満:4-12R不良航法、川島圭司:帰郷、岡祐臣:2-4R不良航法、眞鳥章太:1-8R不良航法 2-1R待機行動違、中野孝二:帰郷</p>
 
 
-</div>
+    </div>
 
 
 
-</div><!-- data end -->
+    </div><!-- data end -->
 
 
 
@@ -263,12 +263,53 @@ monaca.viewport({
 
 
 
+    
+@else
+
+    <div id="race">
+
+        <table>
+        <tr>
+        <td class="date">{{ date('n/j',strtotime($target_date)) }}</td>
+        <td class="name">---</td>
+        <td class="day">---</td>
+        </tr>
+        </table>
+
+        </div>
+
+
+
+
+
+
+        <div id="race_select">
+        <div id="yosen_title">
+        得点率情報
+        </div>
+
+        </div>
+
+
+
+
+        <div class="data cf">
+        <!-- data start -->
+
+
+        <!---データ無し--->
+        <table id="nodata">
+        <tr>
+        <td>ただいまデータはございません</td>
+        </tr>
+        </table>
+
+    </div>
+@endif
 <!-- データリンク -->
 <script type="text/javascript">
-	funcTsuDataMenu();
+    funcTsuDataMenu();
 </script>
-
-
 </div><!-- main end -->
 
 

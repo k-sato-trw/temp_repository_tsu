@@ -86,14 +86,19 @@ class TbTsuTokutenrituRepository implements TbTsuTokutenrituRepositoryInterface
      * 指定した日付のデータをランク順に取得
      *
      * @var string $target_date
+     * @var string $is_preview
      * @return object
      */
-    public function getRankingByDate($target_date)
+    public function getRankingByDate($target_date,$is_preview = false)
     {
-        return $this->TbTsuTokutenritu
-                    ->where('TARGET_DATE','=', $target_date)
-                    ->where('APPEAR_FLG','=', "1")
-                    ->orderByRaw('LENGTH(`RANK`)')
+        $query = $this->TbTsuTokutenritu
+                    ->where('TARGET_DATE','=', $target_date);
+
+        if(!$is_preview){
+            $query->where('APPEAR_FLG','=', "1");
+        }
+
+        return $query->orderByRaw('LENGTH(`RANK`)')
                     ->orderBy('RANK','ASC')
                     ->get();
     }

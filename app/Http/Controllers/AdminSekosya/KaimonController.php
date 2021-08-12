@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\AdminSekosya\KaimonService;
 //プレビュー
-use App\Services\ExportHtml\ExportCalendarService;
-use App\Services\Front\Sp\SpCalendarService;
+use App\Services\ExportHtml\ExportTopDisplayService;
+use App\Services\ExportHtml\Sp\ExportSpTopDisplayService;
 
 class KaimonController extends AdminSekosyaController
 {
@@ -69,45 +69,20 @@ class KaimonController extends AdminSekosyaController
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
     }
 
-/*
-    
-    public function change_appear_flg(Request $request)
-    {
-        //サービスクラスで処理。処理後リダイレクト
-        $data = $this->_service->change_appear_flg($request);
-        return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
-    }
-
-
-    public function upsert_month_info(Request $request)
-    {
-        //サービスクラスで処理。処理後リダイレクト
-        $data = $this->_service->upsert_month_info($request);
-        return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
-    }
-
-
-    public function preview(ExportCalendarService $_service ,Request $request)
+    public function preview_pc(ExportTopDisplayService $_service ,Request $request)
     {
         //サービスクラスで処理。
-        $data = $_service->index($request);
-        $data['calendar'] = $data['calendar_array'][0];
-        return view('front.calendar.top_display',$data);
+        $data = $_service->index($request,true);
+        return view('front.top_display.index',$data);
     }
 
-    public function preview_middle(ExportCalendarService $_service ,Request $request)
+   
+    public function preview_sp(ExportSpTopDisplayService $_service ,Request $request)
     {
         //サービスクラスで処理。
-        $data = $_service->index($request);
-        return view('front.calendar.index',$data);
+        $data = $_service->index($request,true);
+        return view('front.sp.top_display.index',$data);
     }
 
-    public function preview_sp(SpCalendarService $_service ,Request $request)
-    {
-        //サービスクラスで処理。
-        $data = $_service->index($request);
-        return view('front.sp.calendar.index',$data);
-    }
-*/
 
 }

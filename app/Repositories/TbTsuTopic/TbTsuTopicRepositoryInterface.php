@@ -93,6 +93,6 @@ interface TbTsuTopicRepositoryInterface
      * @var string $device
      * @return object
      */
-    public function getAppearRecordForFront($target_date,$device);
+    public function getAppearRecordForFront($target_date,$device,$is_preview=false);
 
 }

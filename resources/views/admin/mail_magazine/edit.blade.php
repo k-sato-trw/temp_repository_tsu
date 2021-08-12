@@ -342,6 +342,8 @@
         <div id="footer" class="page02">
             <ul>
                 <li class="btn01"><a href="javascript:void(0);" onClick="check();">保存</a></li>
+                <br>
+                <li class="btn02"><a href="/admin/mail_magazine/yoyaku/{{$target_date}}/{{$id}}" >配信予約</a></li>
             </ul>
         </div><!--/#footer-->
         @csrf

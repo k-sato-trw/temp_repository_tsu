@@ -7,11 +7,10 @@
 @section('content')
     <h1>津 インフォメーション登録一覧ページ</h1>
     <div style="margin:40px 0;">
-        <!--div style="margin:20px 0;">
-            <a href='/admin/information/preview' target="_blank">PC 一覧プレビュー</a>　|　
-            <a href='/admin/information/preview_top' target="_blank">PC TOPプレビュー</a>　|　
-            <a href='/admin/information/preview_sp' target="_blank">SP 一覧プレビュー</a>
-        </div-->
+        <div style="margin:20px 0;">
+            <a href='/admin/information/preview_pc' target="_blank">PCプレビュー</a>　|　
+            <a href='/admin/information/preview_sp' target="_blank">SPプレビュー</a>
+        </div>
         <button type="button" class="btn btn-primary" onclick="location.href='/admin/information/create'">新規作成</button>
         
         <div style="float:right;">全{{ $information->total() }}件　現在{{ $information->currentPage() }}ページ/全{{ $information->lastPage() }}ページ</div>

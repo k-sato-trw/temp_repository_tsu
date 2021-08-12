@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminSekosyaController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\AdminSekosya\SekosyaInformationService;
+use App\Services\Front\FrontInfoService;
+use App\Services\Front\Sp\SpInfoService;
 
 class SekosyaInformationController extends AdminSekosyaController
 {
@@ -64,6 +66,21 @@ class SekosyaInformationController extends AdminSekosyaController
         //サービスクラスで処理。処理後リダイレクト
         $data = $this->_service->change_appear_flg($id,$appear_flg);
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
+    }
+
+    public function preview_pc(FrontInfoService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.info.index',$data);
+    }
+
+   
+    public function preview_sp(SpInfoService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.sp.info.index',$data);
     }
 
 

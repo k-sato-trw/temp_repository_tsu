@@ -59,4 +59,22 @@ class MailMagazineController extends AdminController
     }
 
 
+    //予約画面
+    public function yoyaku($target_date,$id,Request $request)
+    {
+        //サービスクラスで処理。getの場合はアサイン変数作成。postの場合は成否問わずリダイレクト
+        $data = $this->_service->yoyaku($target_date,$id,$request);
+        if(isset($data['redirect_url'])){
+            return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
+        }
+        return view('admin.mail_magazine.yoyaku',$data);
+    }
+
+    public function preview($target_date,$id,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $this->_service->preview($target_date,$id,$request);
+        return view('admin.mail_magazine.preview',$data);
+    }
+
 }

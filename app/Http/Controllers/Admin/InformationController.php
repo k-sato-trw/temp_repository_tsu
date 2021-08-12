@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\Admin\InformationService;
+use App\Services\Front\FrontInfoService;
+use App\Services\Front\Sp\SpInfoService;
 
 class InformationController extends AdminController
 {
@@ -64,6 +66,22 @@ class InformationController extends AdminController
         //サービスクラスで処理。処理後リダイレクト
         $data = $this->_service->delete($id);
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
+    }
+
+    
+    public function preview_pc(FrontInfoService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.info.index',$data);
+    }
+
+   
+    public function preview_sp(SpInfoService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $data = $_service->index($request,true);
+        return view('front.sp.info.index',$data);
     }
 
 

@@ -359,14 +359,13 @@
                     </form>
                 </div>
             </div>
-            <!--div class="card bg-secondary mb-3"  >
+            <div class="card bg-secondary mb-3"  >
                 <div class="card-header">プレビュー</div>
                 <div class="card-body">
-                    <a href='/admin/calendar/preview?target_date={{$now_date}}' target="_blank">PCプレビュー</a>　|　
-                    <a href='/admin/calendar/preview_middle?target_date={{$now_date}}' target="_blank">PC中プレビュー</a>　|　
+                    <a href='/admin/calendar/preview_pc' target="_blank">PCプレビュー</a>　|　
                     <a href='/admin/calendar/preview_sp?yd={{$now_date}}' target="_blank">SPプレビュー</a>      
                 </div>
-            </div-->
+            </div>
         </div>
         <div class="card bg-secondary mb-3"  style="width: 48%; margin:20px 1% 10px 0; float:left;" >
             <div class="card-header">月コメント</div>

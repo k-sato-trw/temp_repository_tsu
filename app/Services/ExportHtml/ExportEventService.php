@@ -35,7 +35,6 @@ class ExportEventService
         }
 
         $target_date = date('Ymd');
-        $target_date = "20210525";
 
         //カレンダー
         $calendar= $this->TbTsuCalendar->getRecordForEvent($target_date,$is_preview);

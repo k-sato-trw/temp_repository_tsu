@@ -99,12 +99,12 @@ class ExportSpTopDisplayService
     }
 
     
-    public function index($request){
+    public function index($request,$is_preview=false){
         $data = [];
         $jyo = config('const.JYO_CODE');
         $data['jyo'] = $jyo;
 
-        $target_date = date('Ymd');
+        $target_date = $request->input('preDate') ?? date('Ymd');
         $target_time = date('Hi');
         $data['target_date'] = $target_date;
 
@@ -193,7 +193,7 @@ class ExportSpTopDisplayService
 
         $kaimon_time = "0730";
         $st_time = '0000';
-        $kaimon = $this->TbTsuKaimon->getFirstRecordForFront($target_date);
+        $kaimon = $this->TbTsuKaimon->getFirstRecordForFront($target_date,$is_preview);
         if($kaimon){
             $kaimon_time = $kaimon->KAIMON_TIME;
             $st_time = $kaimon->ST_TIME;

@@ -215,14 +215,18 @@ class TbTsuTopicRepository implements TbTsuTopicRepositoryInterface
      * @var string $device
      * @return object
      */
-    public function getAppearRecordForFront($target_date,$device)
+    public function getAppearRecordForFront($target_date,$device,$is_preview=false)
     {
         $query = $this->TbTsuTopic
                     ->where('START_DATE','<=',$target_date)
                     ->where('END_DATE','>=',$target_date)
                     ->where('VIEW_POINT','>=',1)
-                    ->where('VIEW_POINT','<=',18)
-                    ->where('APPEAR_FLG',1);
+                    ->where('VIEW_POINT','<=',18);
+
+        if(!$is_preview){
+            $query->where('APPEAR_FLG',1);
+        }
+
         if($device == "pc"){
             $query->where('PC_APPEAR_FLG',1);
         }elseif($device == "sp"){

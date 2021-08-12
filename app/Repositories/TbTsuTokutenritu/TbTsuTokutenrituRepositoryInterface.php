@@ -45,8 +45,9 @@ interface TbTsuTokutenrituRepositoryInterface
      * 指定した日付のデータをランク順に取得
      *
      * @var string $target_date
+     * @var string $is_preview
      * @return object
      */
-    public function getRankingByDate($target_date);
+    public function getRankingByDate($target_date,$is_preview = false);
 
 }

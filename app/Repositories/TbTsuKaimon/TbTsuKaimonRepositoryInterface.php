@@ -62,8 +62,9 @@ interface TbTsuKaimonRepositoryInterface
      * フロント表示用　IDで1レコードを取得
      *
      * @var string $target_date
+     * @var string $is_preview
      * @return object
      */
-    public function getFirstRecordForFront($target_date);
+    public function getFirstRecordForFront($target_date,$is_preview=false);
 
 }

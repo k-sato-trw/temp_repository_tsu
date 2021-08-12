@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Services\Admin\KinkyuKokutiService;
+use App\Services\Front\FrontKinkyuService;
 
 class KinkyuKokutiController extends AdminController
 {
@@ -64,6 +65,30 @@ class KinkyuKokutiController extends AdminController
         //サービスクラスで処理。処理後リダイレクト
         $data = $this->_service->delete($id);
         return redirect($data['redirect_url'])->with('flash_message', $data['redirect_message']);
+    }
+
+
+    public function preview_pc($id,FrontKinkyuService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $request->merge([
+            'device' => 0,
+            'preview_id' => $id,
+        ]);
+        $data = $_service->message($request,true);
+        return view('front.kinkyu.message',$data);
+    }
+
+   
+    public function preview_sp($id,FrontKinkyuService $_service ,Request $request)
+    {
+        //サービスクラスで処理。
+        $request->merge([
+            'device' => 1,
+            'preview_id' => $id,
+        ]);
+        $data = $_service->message($request,true);
+        return view('front.kinkyu.message',$data);
     }
 
 
