@@ -54,6 +54,7 @@ use App\Http\Controllers\Front\Sp\SpPlaybackController;
 use App\Http\Controllers\ExportHtml\ExportTopDisplayController;
 use App\Http\Controllers\ExportHtml\ExportKaisaiController;
 use App\Http\Controllers\ExportHtml\ExportSuimenController;
+use App\Http\Controllers\ExportHtml\ExportDemeController;
 use App\Http\Controllers\ExportHtml\ExportEventController;
 use App\Http\Controllers\ExportHtml\ExportMeikanController;
 use App\Http\Controllers\ExportHtml\ExportInfoController;
@@ -457,6 +458,7 @@ Route::get('/auto_export/syutujo/', [ExportSyutujoController::class, 'auto_expor
 
     //その他　
 Route::get('/asp/tsu/02suimen/02suimen.asp',        [ExportSuimenController::class, 'index']);
+Route::get('/asp/tsu/02deme/02deme.asp',        [ExportDemeController::class, 'index']);
 Route::get('/asp/tsu/02motor/02motor.asp',        [ExportMotorController::class, 'motor']);
 Route::get('/asp/tsu/03result_tsu/03result_tsu.asp',        [ExportResultController::class, 'result']);
 Route::get('/asp/tsu/03play_b/03play_b.asp',        [ExportPlaybackController::class, 'play_back']);

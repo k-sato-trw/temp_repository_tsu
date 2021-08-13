@@ -277,4 +277,52 @@ class TbBoatKekkainfoRepository implements TbBoatKekkainfoRepositoryInterface
 
     }
 
+    /**
+     * 出目集計用　一定期間のレースを抽出
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getRecordForDeme($jyo,$start_date,$end_date)
+    {
+        return $this->TbBoatKekkainfo
+                    ->where('JYO','=',$jyo)
+                    ->where('TARGET_DATE','>=',$start_date)
+                    ->where('TARGET_DATE','<=',$end_date)
+                    ->where(function($query){
+                        $query->where('TYAKU11','!=','')
+                            ->orWhere('TANSYO1','not like','M%');
+                    })
+                    ->get();
+
+    }
+
+    /**
+     * 配当金集計用　一定期間のレースを抽出
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getRecordForHaito($jyo,$start_date,$end_date)
+    {
+        return $this->TbBoatKekkainfo
+                    ->where('JYO','=',$jyo)
+                    ->where('TARGET_DATE','>=',$start_date)
+                    ->where('TARGET_DATE','<=',$end_date)
+                    ->where(function($query){
+                        $query->where('TYAKU11','!=','')
+                            ->orWhere('TANSYO1','not like','M%');
+                    })
+                    ->orderByRaw('LENGTH(SANRENTAN_MONEY1) DESC')
+                    ->orderBy('SANRENTAN_MONEY1','DESC')
+                    ->limit(10)
+                    ->get();
+
+    }
+
+
 }
