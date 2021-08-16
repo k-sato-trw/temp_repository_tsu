@@ -75,6 +75,7 @@ use App\Http\Controllers\ExportHtml\Sp\ExportSpKaisaiController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpSuimenController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpMeikanController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpMotorController;
+use App\Http\Controllers\ExportHtml\Sp\ExportSpDemeController;
 
 use App\Http\Controllers\ExportHtml\Sp\ExportSpTenboController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpSyutujoController;
@@ -499,6 +500,7 @@ Route::get('/asp/tsu/sp/motor/motor.asp',                  [ExportSpKaisaiContro
 
 Route::get('/asp/tsu/sp/02suimen/02suimen_SP.asp',        [ExportSpSuimenController::class, 'index']);
 Route::get('/asp/tsu/sp/02motor/02motor.asp',             [ExportSpMotorController::class, 'motor']);
+Route::get('/asp/tsu/sp/02deme/02deme_SP.asp',            [ExportSpDemeController::class, 'index']);
 Route::get('/asp/tsu/sp/06meikan/06meikan.asp',           [ExportSpMeikanController::class, 'index']);
 Route::get('/asp/tsu/sp/pdf/pdf.asp',                     [ExportSpKaisaiController::class, 'pdf']);
 

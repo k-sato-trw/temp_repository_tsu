@@ -1,0 +1,35 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#topi_main #text {
+	width: 900px;
+	padding: 0 90px;
+	
+	line-height: 1.6em;
+}
+#topi_main #text.mb90 { margin-bottom: 90px;}
+#topi_main  #text.bg01 {
+	background: url(../vol02_img/vol_02_p01.jpg) no-repeat right bottom;
+}
+
+#topi_main  #text h3 {
+	margin: 0;
+	padding:0 0 20px 0;
+	}
+#topi_main  #text span {
+	display: block;
+	padding: 12px 0 8px 0;
+	color: #46008C;
+}
+#topi_main  #text span .dsp_non { display: inline !important;}
+#topi_main  #text .space01 {
+	width: 420px;
+	height: 500px;
+	float: right;
+	
+}
+#topi_main #photo { padding: 40px 0 40px 0;}
+
+#topi_main #text .fr { float: right; padding-left: 10px;}
+
+#topi_main #text .fl { float: left; padding-right: 10px;}

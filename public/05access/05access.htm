@@ -1,0 +1,615 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="/asp/ga_tag/ga_tag_09_pc.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta name="format-detection" content="telephone=no">
+
+<title>ボートレース津｜交通アクセス</title>
+
+<meta name="Keywords" content="BOAT RACE津,交通,ルート,アクセス,行き方,乗換">
+<meta name="Description" content="BOAT RACE津へのアクセス方法、本場および場外発売所の場所などを掲載しています。">
+<meta name="viewport" content="width=1280px">
+
+<link href="/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/css/common.css" rel="stylesheet" type="text/css">
+<link href="/css/05access.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+
+<!--コンテンツメニューjs-->
+<script type="text/javascript" src="/js/contents_navi_slide.js"></script>
+<script type="text/javascript" src="/js/contents_navi_main.js"></script>
+
+<!--ヘッダーメニューjs-->
+<script type="text/javascript" src="/js/header_navi.js"></script>
+
+
+<!--地図-->
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyD64OIjtGKA1Fn03CLZqI4gnSqlqQImFww"></script>
+<script src="/js/GoogleMap.js"></script>
+
+
+
+<!--交通アクセスjs-->
+<script type="text/javascript" src="/js/05access.js"></script>
+
+
+
+
+</head>
+
+
+
+
+
+<body onLoad="initialize()">
+
+
+<div id="wrapper">
+
+
+
+
+<div id="header_wrap">
+    <div id="header">
+    <div id="header_img">
+
+        <h1><a href="/">BOATRACE 津 #09</a></h1>
+        <h2>交通アクセス</h2>
+
+        <div id="nav">
+			<script type="text/javascript">
+            funcTsuMenu();
+            </script>
+        </div><!--/#nav-->
+
+        <ul id="header_nav">
+            <script type="text/javascript">
+            funcTsuHeaderMenu();
+            </script>
+        </ul><!--/#header_nav-->
+
+    </div><!--/#header_img-->
+    </div><!--/#header-->
+</div><!--/#header_wrap-->
+
+
+
+
+<!--◆◆◆コンテンツ◆◆◆-->
+
+<div id="contents_wrap">
+<div id="contents">
+
+    <div id="main">
+
+
+
+
+        <div id="map">
+
+            <dl id="tsu">
+                <dt>BOATRACE 津</dt>
+                <dd>
+                <p><span>住所</span>〒514-0815 三重県津市藤方637</p>
+                <p><span class="small">TEL</span>059-224-5105</p>
+                </dd>
+            </dl><!--/tsu-->
+
+            <div id="map_canvas"></div>
+
+
+        </div><!--/map-->
+
+
+
+
+
+
+        <div id="access">
+<!--バス運行の注意文-->
+<!--
+<div class="chui">▼▼▼<br>
+無料サービスバスは7月3日より運行開始します。</div>
+-->
+<!---->
+            <ul id="btn" class="tabs map">
+                <li class="b1">電車</li>
+                <li class="b2">バス</li>
+                <li class="b3">車</li>
+                <li class="b4">船</li>
+                <div class="clear"></div>
+            </ul>
+
+
+            <div id="train" class="tab_content">
+            	<a href="#access" id="btn_time">時刻表はコチラ</a>
+                <img src="/05access/images/train_img.png">
+                <div id="content_bot"></div>
+            </div><!--/train-->
+
+
+            <div id="bus" class="tab_content">
+
+
+                <!--市内サービスバス-->
+                <div id="bus1">
+                	<h4><p>市内サービスバス<span class="price">無料</span></p></h4>
+
+                  <div class="text">道路事情等により運行に遅れが発生する場合があります。<br>予めご了承ください。<br>
+					無料サービスバスは本場開催日のみの運行となります。
+				  </div>
+                    <dl id="bus_map">
+                    	<dt>
+                        	<ul class="map">
+                            	<li class="b1 active">津駅前乗車場所 栄町三丁目バス停（ホテルサンルート津前）</li>
+                                <li class="b2">津新町駅前乗車場所 5番のりば</li>
+                            </ul>
+                        </dt>
+                        <dd>
+                            <iframe src="/05access/bus_map1.htm" frameborder="0" allowtransparency="true" scrolling="no" id="ifrm_bus1" name="bus_map" class="bus_map"></iframe>
+                            <iframe src="/05access/bus_map2.htm" frameborder="0" allowtransparency="true" scrolling="no" id="ifrm_bus2" name="bus_map" class="bus_map"></iframe>
+                        </dd>
+                    </dl>
+
+                    <div class="clear"></div>
+
+                    <ul id="bus_time_btn">
+                   	  <li class="b1" style="pointer-events: none;">本場開催日</li>
+                      <!--li class="b2">場外専売日</li-->
+                      <div class="clear"></div>
+                    </ul>
+
+                    <!--本場開催時-->
+                    <div id="honjyo" class="content_wrap">
+
+                        <table class="left">
+                          <tbody>
+                            <tr>
+                              <th colspan="2" scope="col">津駅前発<span>(栄町3丁目バス停)</span></th>
+                            </tr>
+                            <tr>
+                              <td rowspan="10" class="sta1">
+                              	<h5></h5>
+                                津駅前発<br>
+                                (栄町3丁目バス停)<br>
+                                <span>▼</span>
+                                旧大井町バス停<br>
+                                <span>▼</span>
+                                乙部朝日バス停<br>
+                                <span>▼</span>
+                                三重町バス停<br>
+                                <span>▼</span>
+                                下弁財バス停<br>
+                                <span>▼</span>
+                                ボートレース津
+
+                              </td>
+                              <td class="mida">往路</td>
+
+                            </tr>
+                            <tr>
+                              <td class="time1">9:20</td>
+                            </tr>
+                              <tr>
+                              <td class="time1">9:40</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">10:40</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">11:40</td>
+                            </tr>
+                              <tr>
+                              <td class="time1">12:00</td>
+                            </tr>
+                            <tr>
+                              <td class="mida">復路</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">13:30</td>
+                            </tr>
+                              <tr>
+                              <td class="time1">14:30</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">BR津の第12R終了後 </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+
+
+
+                        <table class="right">
+                          <tbody>
+                            <tr>
+                              <th colspan="2" scope="col">津新町駅前発<span>(5番のりば)</span></th>
+                            </tr>
+                            <tr>
+                              <td rowspan="9" class="sta1">
+
+                                津新町駅前発<br>
+                                （5番のりば）<br>
+                                <span>▼</span>
+                                三重会館バス停<br>
+                                <span>▼</span>
+                                伊予町バス停<br>
+								<span class="tyui">※往路のみ<br>
+								復路は岩田橋バス停に<br>停車します</span>
+                                <span>▼</span>
+                                立合町バス停<br>
+                                <span>▼</span>
+                                垂水北町バス停<br>
+                                <span>▼</span>
+                                ボートレース津<br>
+
+                              </td>
+                              <td class="mida">往路</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">9:30</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">10:45</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">11:45</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">12:00</td>
+                            </tr>
+                            <tr>
+                              <td class="mida">復路 </td>
+                            </tr>
+                            <tr>
+                              <td class="time1">13:30</td>
+                            </tr>
+                              <tr>
+                              <td class="time1">14:30</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">BR津の第12R終了後</td>
+                            </tr>
+                          </tbody>
+                      </table>
+					  <!--<table class="left2">
+                          <tbody>
+                            <tr>
+                              <td rowspan="4" class="sta1">
+								  <h5>直行便<span style="font-size:16px; font-weight: normal;">※近鉄平田町駅前発のバスが経由します。</span></h5>
+                                津駅前発(栄町3丁目バス停)<br>
+                                <span>▼</span>
+                                ボートレース津
+
+                              </td>
+                              <td class="mida">往路</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">9:40</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">10:00</td>
+                            </tr>
+                            <tr>
+                              <td class="time1"><span>※復路はありません</span></td>
+                            </tr>
+                          </tbody>
+                        </table>-->
+                      <div class="ta_memo">
+                      	<table id="bus_memo">
+  <tbody>
+    <tr>
+     <!-- <td class="bus_memo01">（※）平成30年6月3日より運行経路や発車時間が変更となりました。</td>-->
+      <td class="bus_memo02">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+                      </div>
+
+                    	<div class="clear"></div>
+                  </div><!--/honjyo-->
+
+
+                    <!--場外専売日
+                    <div id="jyogai" class="content_wrap">
+
+<table class="left">
+                          <tbody>
+                            <tr>
+                              <th colspan="2" scope="col">津駅前発<span>(栄町3丁目バス停)</span></th>
+                            </tr>
+                            <tr>
+                              <td rowspan="7" class="sta1">
+                                  津駅前発<br>
+                                (栄町3丁目バス停)<br>
+                                  <span>▼</span>
+                                  旧大井町バス停<br>
+                                  <span>▼</span>
+                                  乙部朝日バス停<br>
+                                  <span>▼</span>
+                                  三重町バス停<br>
+                                  <span>▼</span>
+                                  下弁財バス停<br>
+                                  <span>▼</span>
+                                  ボートレース津
+
+                              </td>
+                              <td class="mida">往路</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">9:40</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">10:40</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">11:40</td>
+                            </tr>
+                            <tr>
+                              <td class="mida">復路</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">14:30</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">第12R終了後 </td>
+                            </tr>
+                          </tbody>
+                        </table>
+<table class="right">
+                          <tbody>
+                            <tr>
+                              <th colspan="2" scope="col">津新町駅前発<span>(5番のりば)</span></th>
+                            </tr>
+                            <tr>
+                              <td rowspan="7" class="sta1">
+
+                                  津新町駅前発<br>
+                                (5番のりば)<br>
+                                  <span>▼</span>
+                                  三重会館バス停<br>
+                                  <span>▼</span>
+                                  伊予町バス停<br>
+								  <span class="tyui">※往路のみ<br>
+								復路は岩田橋バス停に<br>停車します</span>
+                                  <span>▼</span>
+                                  立合町バス停<br>
+                                  <span>▼</span>
+                                  垂水北町バス停<br>
+                                  <span>▼</span>
+                                  ボートレース津
+
+                              </td>
+                              <td class="mida">往路</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">9:45</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">10:45</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">11:45</td>
+                            </tr>
+                            <tr>
+                              <td class="mida">復路 </td>
+                            </tr>
+                            <tr>
+                              <td class="time1">14:30</td>
+                            </tr>
+                            <tr>
+                              <td class="time1">第12R終了後</td>
+                            </tr>
+                  </tbody>
+                      </table>
+
+                    <div class="clear"></div>
+                  </div>--><!--/jyogai-->
+
+
+              </div><!--/bus1-->
+
+
+                <!--郊外サービスバス-->
+                <div id="bus2">
+                	<h4><p>郊外サービスバス<span class="price">無料</span><span>～本場開催日のみ運行～</span></p></h4>
+
+                    <div class="text">※経由場所および発車時間は都合により変更する場合があります。予めご了承ください。</div>
+
+                    <div class="box">
+                    	<h5>近鉄平田町駅前発</h5>
+                        <table>
+                          <tbody>
+                              <tr><th scope="row">近鉄平田町駅前2番のりば</th><td>8:40</td></tr>
+                              <tr><th scope="row"><span>▼</span>近鉄鈴鹿市駅前バス停</th><td>8:50</td></tr>
+                              <tr><th scope="row"><span>▼</span>近鉄白子駅東口バス停</th><td>9:05</td></tr>
+                              <tr><th scope="row"><span>▼</span>千里バス停(河芸町)</th><td>9:15</td></tr>
+                              <tr><th scope="row"><span>▼</span>南上野バス停</th><td>9:20</td></tr>
+                              <tr><th scope="row"><span>▼</span>白塚口北バス停</th><td>9:30</td></tr>
+                              <tr><th scope="row"><span>▼</span>大学病院前バス停</th><td>9:35</td></tr>
+							  <tr><th scope="row" class="bot"><span>▼</span>津駅前バス停</th><td class="bot">9:40</td></tr>
+                              <tr><th colspan="2" class="end" scope="row">ボートレース津</th></tr>
+                          </tbody>
+                        </table>
+                    </div><!--/box-->
+
+                    <div class="box">
+                   	  <h5>伊勢市駅前発</h5>
+                        <table>
+                          <tbody>
+                              <tr><th scope="row">伊勢市駅前バス停</th><td>8:30</td></tr>
+                              <tr><th scope="row"><span>▼</span>金剛団地前バス停</th><td>8:50</td></tr>
+                              <tr><th scope="row"><span>▼</span>松阪駅西口バス停</th><td class="">9:10</td></tr>
+							  <tr><th scope="row"  class="bot"><span>▼</span>久居駅西口バス停</th><td>9:45</td></tr>
+                              <tr><th colspan="2" class="end" scope="row">ボートレース津</th></tr>
+                          </tbody>
+                        </table>
+                    </div><!--/box-->
+
+
+
+                    <div class="clear"></div>
+
+
+
+                    <dl id="other">
+                        <dt>復　路</dt>
+                        <dd>
+                        ボートレース津の第12R終了後に出発いたします。<br>
+
+近鉄平田町駅方面、伊勢市駅方面は席数に限りがありますので、
+事前に1F案内所にて「バス整理券」を<br>お受け取りください。<br>
+近鉄平田町駅前発のバスは、往路のみ津駅前バス停を経由します。復路は経由しません。
+                        </dd>
+                    </dl>
+					<div class="add_memo">（※）平成30年6月3日より運行経路や発車時間が変更となりました。</div>
+
+
+
+
+
+
+                </div><!--/bus2-->
+
+
+                <!--路線バス-->
+                <div id="bus3">
+                  <h4><p>路線バス<span class="price">有料</span></p></h4>
+
+                  <div class="text">
+                    <b>津駅前バス停</b>から<span>約20分</span>でボートレース津の<br />最寄り・<b>米津バス停</b>へ到着します。<br />
+                    道路事情等により運行に遅れが発生する場合があります。予めご了承ください。
+
+                    <table>
+                      <tbody>
+                        <tr>
+                          <th colspan="4" scope="col">普通片道運賃</th>
+                        </tr>
+                        <tr>
+                          <td class="sta1 mida">大人</td>
+                          <td class="time1">250円</td>
+                          <td class="sta1 mida">小児</td>
+                          <td class="time1">130円</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <a href="http://www.sanco.co.jp/krs/dep_time_table.php?week=4&dep=4001&arr=4353" target="_blank" id="btn_time">時刻表はコチラ</a>
+                  </div>
+
+                    <dl id="bus_map">
+                      <dt>
+                          <ul class="map">
+                              <li class="b3 active">津駅前乗車場所 津駅前バス停</li>
+                              <li class="b4">ボートレース津最寄り降車場所 米津バス停</li>
+                            </ul>
+                        </dt>
+                        <dd>
+                            <iframe src="/05access/bus_map3.htm" frameborder="0" allowtransparency="true" scrolling="no" id="ifrm_bus3" name="bus_map" class="bus_map"></iframe>
+                            <iframe src="/05access/bus_map4.htm" frameborder="0" allowtransparency="true" scrolling="no" id="ifrm_bus4" name="bus_map" class="bus_map"></iframe>
+                        </dd>
+                    </dl>
+
+                    <div class="clear"></div>
+                  </div><!--/bus3-->
+
+
+                <div id="content_bot"></div>
+            </div><!--/bus-->
+
+
+            <div id="car" class="tab_content">
+                <img src="/05access/images/car_img.png">
+                <div id="content_bot"></div>
+            </div><!--/car-->
+
+
+            <div id="ship" class="tab_content">
+<!--船の注意文-->
+<div class="chui">高速船特別割引サービスは当面の間、実施を見合わせております。</div>
+                <img src="/05access/images/ship_img.png">
+                <div id="content_bot"></div>
+            </div><!--/ship-->
+
+
+
+
+
+
+            <!--津インクル-->
+            <div id="soto">
+                <div id="head"><p id="soto_logo">〒514 - 0815 三重県津市藤方658-1</p></div>
+
+                <div id="detail">
+
+                    <div class="left">
+                      <p id="txt"> ボートレース津の「外向発売所」です。ボートレース津が開催する全レースをはじめ、全国で開催されるSGやG1、<br>
+                        ナイターレースなどの最大8場の舟券を発売しています。<br>
+                        <span>&gt;&gt;<a href="/01cal/01cal.htm">発売スケジュールをCHECK！</a>&lt;&lt;</span>
+                      </p>
+                      <ul>
+                        <li><span>窓口数</span>17窓<br><span class="subdata">（発売・払戻）</span></li>
+                        <li><span class="bot">座席数</span>81席</li>
+                        <li><span class="bot">駐車場</span>84台</li>
+                    </ul>
+                    </div>
+
+                    <img src="/05access/images/tsuink_img.png" id="tsu_img">
+
+                    <div class="clear"></div>
+
+                    <dl id="other">
+                        <dt>その他</dt>
+                        <dd>
+                        場内には売店を併設しており、軽食や飲み物などを販売しています。<br>
+                        施設の内外部とも床に段差の無い構造を採用したほか、自動ドアや「誰でもトイレ」を設置し、<br>
+                        高齢者や車椅子利用者にも気軽に来場していただける環境を整備しました。
+                        </dd>
+                    </dl>
+                </div>
+
+            </div><!--/soto-->
+            <!--津インクル-->
+
+
+
+
+
+
+        </div><!--/access-->
+
+
+    <div id="page_top"><a href="#wrapper">UP</a></div>
+    </div><!--/#main-->
+
+</div><!--/#contents-->
+</div><!--/#contents_wrap-->
+
+
+
+
+<!--◆◆◆フッター◆◆◆-->
+<div id="footer_wrap">
+    <div id="footer">
+    	<iframe src="/footer.htm" frameborder="0" allowtransparency="true" scrolling="no" name="footer"></iframe>
+    </div><!--/#footer-->
+</div><!--/#footer_wrap-->
+
+
+
+</div><!--/#wrapper-->
+
+
+
+
+</body>
+</html>

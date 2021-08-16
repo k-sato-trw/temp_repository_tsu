@@ -1,0 +1,148 @@
+
+body {
+	font-family: Roboto, Arial, "ÉqÉâÉMÉmäpÉS Pro W3", "Hiragino Kaku Gothic Pro", "ÉÅÉCÉäÉI", Meiryo, sans-serif;
+	font-size: 16px;
+	line-height: 100%;
+	
+}
+
+/*
+==========================================================
+
+			ògëgÇ›
+
+==========================================================
+*/
+#wrapper {
+	background:none;
+	width:100%;
+	height:100%;
+	min-width:1180px;
+	background: url(../images/header_wrap_bg.png) top center repeat-x;
+	}
+
+#header {
+	width: 1180px;
+	height: 155px;
+	margin: 0 auto;
+	background: url(../images/header_bg.png) no-repeat;
+}
+#header #logo {
+	width: 560px;
+	height: 70px;
+	margin: 35px 0 0 50px;
+	float: left;
+	text-indent: -9999px;
+	background: url(../images/logo.png) no-repeat;
+}
+#header #bt_jp {
+	width: 60px;
+	height: 58px;
+	margin-right: 25px;
+	float: right;
+	text-indent: -9999px;
+}
+
+#header #bt_jp a {
+	height: 58px;
+	background: url(../images/bt_jp.png) 0 0 no-repeat;
+	display: block;
+}
+
+#header #bt_jp a:hover {
+	background: url(../images/bt_jp.png) 0 -58px no-repeat;
+}
+
+#header_deco {
+	width: 100%;
+	height: 20px;
+	background: url(../images/header_deco.gif) repeat-x;
+}
+
+#main {
+	width: 1080px;
+	margin: 0 auto;
+	padding: 40px 50px 0 50px;
+}
+
+#footer {
+	width: 1180px;
+	height: 208px;
+	margin: 0 auto;
+	background: url(../images/ft_back.png) no-repeat;
+}
+
+#credit {
+	padding: 144px 0 0 660px;
+}
+
+/*
+==========================================================
+
+			ÉRÉìÉeÉìÉc
+
+==========================================================
+*/
+
+#menu {
+	width: 888px;
+	margin: 0 auto;
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+#menu li {
+	margin: 12px;
+	text-indent: -9999px;
+	float: left;
+}
+
+#menu li.bt01 a {
+	width: 264px;
+	height: 264px;
+	background: url(../images/top_b1.png) no-repeat 0 0;
+	display: block;
+}
+#menu li.bt02 a {
+	width: 264px;
+	height: 264px;
+	background: url(../images/top_b2.png) no-repeat 0 0;
+	display: block;
+}
+#menu li.bt03 a {
+	width: 264px;
+	height: 264px;
+	background: url(../images/top_b3.png) no-repeat 0 0;
+	display: block;
+}
+#menu li.bt04 a {
+	width: 264px;
+	height: 264px;
+	background: url(../images/top_b4.png) no-repeat 0 0;
+	display: block;
+}
+#menu li.bt05 a {
+	width: 264px;
+	height: 264px;
+	background: url(../images/top_b5.png) no-repeat 0 0;
+	display: block;
+}
+#menu li.bt06 a {
+	width: 264px;
+	height: 264px;
+	background: url(../images/top_b6.png) no-repeat 0 0;
+	display: block;
+}
+#menu li.bt01 a:hover,
+#menu li.bt02 a:hover,
+#menu li.bt03 a:hover,
+#menu li.bt04 a:hover,
+#menu li.bt05 a:hover,
+#menu li.bt06 a:hover {
+	background-position: 0 -271px;
+}
+
+
+
+
+

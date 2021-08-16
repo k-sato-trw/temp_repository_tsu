@@ -1,0 +1,61 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#topi_main #text {
+	width: 900px;
+	padding: 0 90px;
+	line-height: 1.6em;
+}
+#topi_main #text.mb90 { margin-bottom: 90px;}
+#topi_main #text.mb120 { margin-bottom: 120px;}
+#topi_main  #text.bg01 {
+	background: url(../vol13_img/vol_01_p01.jpg) no-repeat 90px 80px;
+}
+#topi_main  #text.bg02 {
+	background: url(../vol13_img/vol_13_p02.jpg) no-repeat 560px 125px;
+}
+
+#topi_main  #text.bg04 {
+	background: url(../vol13_img/vol_13_p04-2.jpg) no-repeat 90px 125px;
+}
+
+#topi_main  #text h3 {
+	margin: 0;
+	padding:0 0 20px 0;
+	}
+#topi_main  #text span {
+	display: block;
+	padding: 12px 0 8px 0;
+	color: #8C0000;
+}
+#topi_main  #text .space01 {
+	width: 470px;
+	height: 630px;
+	float: left;
+	/*background: #16CD5E;*/
+
+}
+#topi_main  #text .space02 {
+	width: 450px;
+	height: 650px;
+	float: right;
+
+}
+#topi_main  #text .space03 {
+	width: 445px;
+	height: 560px;
+	float: left;
+}
+#topi_main  #text .space04 {
+	width: 470px;
+	height: 640px;
+	float: left;
+}
+
+
+#topi_main #photo { /*width: 900px; margin-left: 90px;*/ padding: 20px 0 20px 0;}
+
+#topi_main #text .fr { float: right; padding-left: 10px;}
+
+
+.name{color: #6A2EA7;}

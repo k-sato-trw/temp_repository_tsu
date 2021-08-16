@@ -1,0 +1,124 @@
+/*========================================
+ +styles
+========================================*/
+@charset "UTF-8";
+/* ■■■■■CSS リセット■■■■■ */
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, iframe, object, embed {
+    margin: 0;
+    padding: 0;
+}
+html {
+	height: 100%;
+	width: 100%;
+}
+body {
+	height: 100%;
+	width: 100%;
+	-webkit-text-size-adjust: none;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+h1, h2, h3, h4, h5, h6{
+    font-size: 100%;
+    font-weight: normal;
+}
+ol, ul{
+    list-style:none;
+}
+fieldset, img{
+     border:0;
+}
+table{
+    border-collapse: collapse;
+    border-spacing:0;
+}
+caption, th{
+    text-align: left;
+}
+address, caption, cite, code, dfn, em, strong, th, var{
+    font-style: normal;
+    font-weight: normal;
+}
+img {
+	vertical-align: middle;
+}
+a:focus {
+	outline:none;
+}
+.clear,
+.cf {
+	clear: both;
+}
+/* ■■■■■CSS リセット■■■■■ */
+
+body {
+	font-size: 18px;
+	color: #FFF;
+	font-family: 'ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	background-color:#FFF;
+	}
+#wrapper {width:100%;}
+#contents {
+  padding-bottom: 60px;
+  position:relative;
+}
+h1{
+  width: 100%;
+  height: 205px;
+  background: url(../images/title.png) no-repeat center top;
+  text-indent: -9999px;
+}
+.box{
+  width: 100%;
+  margin-top: 60px;
+}
+#gaiyo{
+  width: 900px;
+  height: 606px;
+  margin: -16px auto 0;
+  background: url(../images/gaiyo.png) no-repeat center top;
+  position: relative;
+}
+#gaiyo a:first-of-type{
+  top:552px;
+  left: 469px;
+  position: absolute;
+}
+#gaiyo a:last-of-type{
+  top:552px;
+  left: 635px;
+  position: absolute;
+}
+#gaiyo a:hover{opacity: 0.8;}
+#kino{
+  height: 1067px;
+  background: url(../images/kino.png) no-repeat center top;
+}
+#game{
+  height: 844px;
+  background: url(../images/game.png) no-repeat center top;
+}
+
+#footer{
+  line-height: 84px;
+  text-align: center;
+  background: url(../images/footer.png) repeat-x center bottom;
+}
+
+#page_top {
+  position: fixed;
+  width: 90px;
+  height: 90px;
+  right: 40px;
+  bottom: 60px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  font-size: 36px;
+  text-align: center;
+  color: #FFF;
+  line-height: 15px;
+  background-color: #0000B2;
+  border-radius: 10px;
+  opacity: 1;
+}
+#page_top:hover{ opacity: 0.7;}

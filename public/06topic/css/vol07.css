@@ -1,0 +1,38 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#topi_main #text {
+	width: 900px;
+	padding: 0 90px;
+	
+	line-height: 1.6em;
+}
+#topi_main #text.mb90 { margin-bottom: 90px;}
+#topi_main  #text.bg01 {
+	background: url(../vol07_img/vol_07_p01.jpg) no-repeat 0 80px;
+}
+
+#topi_main  #text h3 {
+	margin: 0;
+	padding:0 0 20px 0;
+	}
+#topi_main  #text span {
+	display: block;
+	padding: 12px 0 8px 0;
+	color: #CE4800;
+}
+
+#topi_main  #text span a {
+	color: #969696;
+}
+
+#topi_main  #text .space01 {
+	width: 400px;
+	height: 500px;
+	float: left;
+}
+#topi_main #photo { padding: 20px 0 20px 0;}
+
+#topi_main #text .fr { float: right; padding-left: 10px;}
+
+.name{color: #CE4800;}

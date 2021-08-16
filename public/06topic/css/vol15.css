@@ -1,0 +1,66 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#topi_main #text {
+	width: 900px;
+	padding: 0 90px;
+	line-height: 1.6em;
+}
+#topi_main #text.mb90 { margin-bottom: 90px;}
+#topi_main #text.mb120 { margin-bottom: 120px;}
+#topi_main  #text.bg01 {
+	background: url(../vol15_img/vol_15_p01.jpg) no-repeat 90px 80px;
+}
+#topi_main  #text.bg02 {
+	background: url(../vol15_img/vol_15_p02.jpg) no-repeat 560px 100px;
+}
+
+#topi_main  #text.bg04 {
+	background: url(../vol15_img/vol_15_p04.jpg) no-repeat 90px 180px;
+	
+}
+
+#topi_main  #text h3 {
+	margin: 0;
+	padding:0 0 20px 0;
+	}
+#topi_main  #text span {
+	display: block;
+	padding: 12px 0 8px 0;
+	color: /*#04CCA4*/#844100;
+}
+
+#topi_main #text span.text_s,
+#topi_main .text_s{ color:#666; font-size: 14px;padding: 0; line-height: 1.4em;}
+
+
+#topi_main  #text .space01 {
+	width: 500px;
+	height: 660px;
+	float: left;
+
+}
+#topi_main  #text .space02 {
+	width: 500px;
+	height: 642px;
+	float: right;
+
+}
+#topi_main  #text .space03 {
+	width: 445px;
+	height: 560px;
+	float: left;
+}
+#topi_main  #text .space04 {
+	width: 460px;
+	height: 900px;
+	float: left;
+}
+
+
+#topi_main #photo { /*width: 900px; margin-left: 90px;*/ padding: 20px 0 20px 0;}
+
+#topi_main #text .fr { float: right; padding-left: 10px;}
+
+
+.name{color: #6A2EA7;}

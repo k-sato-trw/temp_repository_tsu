@@ -1,0 +1,32 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#topi_main #text {
+	width: 900px;
+	padding: 0 90px;
+	
+	line-height: 1.6em;
+}
+#topi_main #text.mb90 { margin-bottom: 90px;}
+#topi_main  #text.bg01 {
+	background: url(../vol01_img/vol_01_p01.jpg) no-repeat 0 80px;
+}
+
+#topi_main  #text h3 {
+	margin: 0;
+	padding:0 0 20px 0;
+	}
+#topi_main  #text span {
+	display: block;
+	padding: 12px 0 8px 0;
+	color: #8B005A;
+}
+#topi_main  #text .space01 {
+	width: 400px;
+	height: 500px;
+	float: left;
+	
+}
+#topi_main #photo { padding: 20px 0 90px 0;}
+
+#topi_main #text .fr { float: right; padding-left: 10px;}

@@ -1,0 +1,72 @@
+@charset "shift_jis";
+/* CSS Document */
+
+#topi_main #text {
+	width: 900px;
+	padding: 0 90px;
+	line-height: 1.6em;
+}
+#kanki {
+    width: 900px;
+    padding: 0 0 30px 140px;
+    margin-top: -20px;
+    line-height: 1.6em;
+}
+#topi_main #text.mb90 { margin-bottom: 90px;}
+#topi_main #text.mb120 { margin-bottom: 120px;}
+#topi_main  #text.bg01 {
+	background: url(../vol19_img/vol_19_p01.jpg) no-repeat 90px 80px;
+}
+#topi_main  #text.bg02 {
+	background: url(../vol19_img/vol_19_p02.jpg) no-repeat 550px 90px;
+}
+
+#topi_main  #text.bg04 {
+	background: url(../vol19_img/vol_19_p04.jpg) no-repeat 80px 80px;
+	
+}
+
+#topi_main  #text h3 {
+	margin: 0;
+	padding:0 0 20px 0;
+	}
+#topi_main  #text span {
+	display: block;
+	padding: 12px 0 8px 0;
+	color:#00228C;
+}
+
+#topi_main #text span.text_s,
+#topi_main .text_s{ color:#666; font-size: 14px;padding: 0; line-height: 1.4em;}
+
+
+#topi_main  #text .space01 {
+	width: 540px;
+	height: 530px;
+	float: left;
+
+}
+#topi_main  #text .space02 {
+	width: 450px;
+	height: 530px;
+	float: right;
+
+}
+#topi_main  #text .space03 {
+	width: 445px;
+	height: 560px;
+	float: left;
+}
+#topi_main  #text .space04 {
+	width: 540px;
+	height:480px;
+	float: left;
+}
+
+
+#topi_main #photo { /*width: 900px; margin-left: 90px;*/ padding: 20px 0 20px 0;}
+
+#topi_main #text .fr { float: right; padding-left: 10px;}
+
+
+.name{color: #6A2EA7;}

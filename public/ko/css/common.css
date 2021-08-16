@@ -1,0 +1,282 @@
+
+body {
+	font-family:  'Gulim' , 'Apple Gothic' , Roboto, Arial, "ÉqÉâÉMÉmäpÉS Pro W3", "Hiragino Kaku Gothic Pro", "ÉÅÉCÉäÉI", Meiryo, sans-serif;
+	font-size: 16px;
+	line-height: 100%;
+	
+}
+
+/*
+==========================================================
+
+			ògëgÇ›
+
+==========================================================
+*/
+#wrapper {
+	background:none;
+	width:100%;
+	height:100%;
+	min-width:1180px;
+	background: url(../images/header2_wrap_bg.png) top center repeat-x;
+	}
+
+#header {
+	width: 1180px;
+	height: 89px;
+	margin: 0 auto;
+	background: url(../images/header2_bg.png) no-repeat;
+}
+#header #logo {
+	width: 312px;
+	height: 40px;
+	margin: 34px 0 0 50px;
+	float: left;
+	text-indent: -9999px;
+	background: url(../images/logo2.png) no-repeat;
+}
+#header #logo a {
+	width: 312px;
+	height: 40px;
+	display: block;
+	}
+#header #bt_home {
+	width: 35px;
+	height: 37px;
+	margin-top: 18px;
+	margin-right: 35px;
+	float: right;
+	text-indent: -9999px;
+}
+
+#header #bt_home a {
+	height: 37px;
+	background: url(../images/bt_home.png) 0 0 no-repeat;
+	display: block;
+}
+
+#header #bt_home a:hover {
+	background: url(../images/bt_home.png) 0 -37px no-repeat;
+}
+
+#header_deco {
+	width: 100%;
+	height: 20px;
+	background: url(../images/header_deco.gif) repeat-x;
+}
+#menu {
+	background: #333;
+	font-size: 14px;
+	line-height: 34px;
+	height: 34px;
+	text-align: center;
+}
+#menu a { color: #FFF; text-decoration: none;}
+#menu a:hover { color: #FF0;}
+#menu li { padding: 0 10px; display: inline-block;}
+
+h1 {
+	background: #00698C url(../images/menu_bg.png) no-repeat top center;
+	height: 50px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFF;
+	line-height: 50px;
+	text-align: center;
+}
+
+#main {
+	width: 1080px;
+	margin: 0 auto;
+	padding: 40px 50px 0 50px;
+}
+
+#footer {
+	width: 1180px;
+	height: 208px;
+	margin: 0 auto;
+	background: url(../images/ft_back.png) no-repeat;
+}
+
+#credit {
+	padding: 40px 0 0 660px;
+}
+
+/*UPÉ{É^Éì*/
+#page_top {
+padding: 40px 160px 0 0;
+	height:60px;
+	margin:0 auto;
+	clear:both;
+}
+	
+#page_top a {
+	width:60px;
+	height:60px;
+	background-image:url(../images/up.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	border-radius:5px;
+	background-color:#CCCCCC;
+	display:block;
+	text-indent:-9999px;
+	float:right;
+		/**/
+		-webkit-transition: 0.2s ease-in-out;
+		-moz-transition: 0.2s ease-in-out;
+		-o-transition: 0.2s ease-in-out;
+		transition: 0.2s ease-in-out;
+	}
+
+/*
+==========================================================
+
+			contents | basics
+
+==========================================================
+*/
+
+#cont01 { clear: both;}
+#cont01 #text { width: 490px; float: left;}
+#cont01 #text h2 { padding: 0; margin: 0;}
+#cont01 #text p { padding-left: 36px; line-height: 1.6em;}
+#cont01 .fig{ padding: 15px 0 0 0; float: right;}
+
+/*
+==========================================================
+
+			contents | race
+
+==========================================================
+*/
+
+#cont02 {
+	width: 520px;
+	margin-bottom: 40px;
+	float: left;
+}
+#cont02 h2 { padding: 0; margin: 0;}
+#cont02 p { padding-left: 48px; line-height: 1.6em;}
+.pr40 { padding-right: 40px;}
+.cont02_fig { margin-bottom: 30px;}
+
+/*
+==========================================================
+
+			contents | tickets
+
+==========================================================
+*/
+
+#cont03 { width: 900px; margin: 0 auto;}
+
+
+#cont03 table {	width: 100%; margin-bottom: 20px;}
+
+#cont03 th {
+	height: 40px;
+	background: #0059B2 url(../images/th_bg.jpg) repeat-x;
+	color: #FFF;
+	text-align: center;
+}
+
+#cont03 td { border-bottom: dotted 1px #000;}
+
+#cont03 .type { border-right: solid 1px #999;}
+#cont03 .terms { border-right: solid 1px #999;}
+#cont03 .odds { border-right: solid 1px #999;}
+#cont03 .win {}
+
+#cont03 td.type1 {
+	 width: 300px;
+	padding: 5px 5px 5px 20px;
+	text-align: left;
+}
+#cont03 td.terms1 {
+	padding: 0 0 0 10px;
+	line-height: 1.6em;
+	text-align: left;
+}
+#cont03 td.odds1 { text-align: center;}
+#cont03 td.win1 { padding: 10px 0; text-align: center;}
+
+
+/*
+==========================================================
+
+			contents | play
+
+==========================================================
+*/
+
+#cont04 { padding-bottom: 40px;}
+#cont04 #title01,
+#cont04 #title02,
+#cont04 #title03 {
+	width: 1080px;
+	height: 90px;
+}
+
+#cont04 #title01 {
+	background: url(../images/cont04_t01.jpg) no-repeat;
+}
+#cont04 #title02 {
+	background: url(../images/cont04_t02.jpg) no-repeat;
+}
+#cont04 #title03 {
+	background: url(../images/cont04_t03.jpg) no-repeat;
+}
+
+#cont04 #title01 p,
+#cont04 #title02 p,
+#cont04 #title03 p { padding: 50px 0 0 60px;}
+
+#cont04 img { padding-bottom: 20px;}
+
+#cont04 #text { width: 900px; margin: auto;}
+#cont04 #text_l { float: left;}
+#cont04 #text_r { float: right;}
+
+#cont04 #step {
+	width: 358px;
+	border-bottom: dotted 1px #000;
+	margin-top: 15px;
+	line-height: 1.6em;
+}
+#cont04 #step h4 {
+	width: 358px;
+	height: 30px;
+	 text-indent: -9999px;}
+	 
+#cont04 #step h4.t01 { background: url(../images/cont04_t02_t01.gif) no-repeat;}	 
+#cont04 #step h4.t02 { background: url(../images/cont04_t02_t02.gif) no-repeat;}
+#cont04 #step h4.t03 { background: url(../images/cont04_t02_t03.gif) no-repeat;}
+#cont04 #step h4.t04 { background: url(../images/cont04_t02_t04.gif) no-repeat;}
+#cont04 #step h4.t05 { background: url(../images/cont04_t02_t05.gif) no-repeat;}
+#cont04 #step h4.t06 { background: url(../images/cont04_t02_t06.gif) no-repeat;}
+#cont04 #step h4.t07 { background: url(../images/cont04_t02_t07.gif) no-repeat;}	 
+	 
+
+#cont04 #step .tc01 { color: #00F; font-weight: bold;}
+#cont04 #step .tc02 { color: #59B200; font-weight: bold;}
+
+#cont04 #note {
+	width: 180px;
+	height: 180px;
+	display: table-cell;
+	vertical-align: middle;
+	line-height: 1.6em;
+	text-align: center;
+	color: #FF0;
+	background-color: #D262EA;
+}
+#cont04 #come { width: 692px;}
+#cont04 #come h4 {
+	border-left: 4px solid #D262EA;
+	padding-left: 10px;
+	color: #D262EA;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#cont04 #come p { padding-bottom: 30px; font-size: 14px; line-height: 1.4em;}

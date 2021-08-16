@@ -1,0 +1,94 @@
+/*========================================
+ +styles
+========================================*/
+
+body {
+	font-size: 14px;
+	line-height: 1.5;
+	color: #000;
+	font-family: 'ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	background-color: #DEE2F0;
+	background-image:url(../images/bk_quiz.png);
+	background-repeat:repeat-y;
+	background-position:center;
+	}
+		
+#wrapper {
+	margin: 0 auto;
+	width: 1000px;
+
+	}
+
+.clear { clear: both; }
+
+/*========================================
+ +contents styles
+========================================*/
+#contents {
+	width: 868px;
+	margin: 0 auto;
+	}
+#contents #lead {
+	width: 830px;
+	margin: 0 auto;
+	font-size: 18px;
+	line-height: 1.5em;
+	font-weight:bold;
+	padding-bottom:20px;
+	color:#001A66;
+	}
+
+#contents .goods,
+#contents .tosen {
+	padding-bottom:10px;
+	}
+#contents .date {
+	padding-bottom:20px;
+	}
+#contents .tosen_txt {
+	width: 868px;
+	font-size: 16px;
+	line-height: 1.5em;
+	text-align:center;
+	}
+
+#btn {
+	width: 308px;
+	margin:0 auto;
+	padding-top:20px;
+	padding-bottom:50px;
+	}
+#caution {
+	width:700px;
+	margin:0 auto;
+	font-size:14px;
+	line-height:1.5em;
+	padding-top:5px;
+	padding-bottom:20px;
+	text-align:center;
+	}
+.pink{color:#FF007F;}
+	
+/*========================================
+ +footer styles
+========================================*/
+
+#footer {
+	width:1000px;
+	margin:0 auto;
+	}
+#logo {
+	width:1000px;
+	background-color:#001A66;
+	text-align:center;
+	padding-top:5px;
+}
+#copyright {
+	width:1000px;
+	font-size:12px;
+	color:#FFF;
+	line-height:2.2em;
+	text-align:center;
+	padding-bottom:10px;
+	background-color:#001A66;
+}
