@@ -105,6 +105,18 @@ interface TbTsuCalendarRepositoryInterface
      */
     public function getRecentRecordByDate($target_date);
 
+
+    /**
+     * メールマガジンCMS表示用　月の開催レースを取得
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getOneMonthRecord($jyo,$start_date,$end_date);
+
+
     
     /**
      * イベントページのフロント表示用データを取得

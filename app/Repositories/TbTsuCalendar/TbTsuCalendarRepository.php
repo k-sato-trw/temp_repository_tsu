@@ -326,6 +326,26 @@ class TbTsuCalendarRepository implements TbTsuCalendarRepositoryInterface
                     ->first();
     }
 
+
+    /**
+     * メールマガジンCMS表示用　月の開催レースを取得
+     *
+     * @var string $jyo
+     * @var string $start_date
+     * @var string $end_date
+     * @return object
+     */
+    public function getOneMonthRecord($jyo,$start_date,$end_date)
+    {        
+        return $this->TbTsuCalendar
+                    ->where("JYO","=",$jyo)
+                    ->where("START_DATE",">=",$start_date)
+                    ->where("START_DATE","<=",$end_date)
+                    ->orderBy("START_DATE","ASC")
+                    ->get();
+    }
+
+
     /**
      * イベントページのフロント表示用データを取得
      *
@@ -350,6 +370,7 @@ class TbTsuCalendarRepository implements TbTsuCalendarRepositoryInterface
                     ->limit(15)
                     ->get();
     }
+
 
     /**
      * フロント用カレンダーの1ライン分を取得

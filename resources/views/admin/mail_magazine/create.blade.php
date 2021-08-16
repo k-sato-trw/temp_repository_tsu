@@ -278,12 +278,27 @@
                                 <div class="box_no"><label>非掲載<input name="A_no5" id="A_no" class="checkbox" value="1" type="checkbox" onClick="D_Disable();" @if(old('A_no5')) checked @endif ></label></div>
                                 
                                 <dl id="D_01d">
-                                    <dt><input name="D_01_1" id="D_01_1" class="textbox" type="text" value="{{ old('D_01_1',$general->create_display_date($race_index[1]->START_DATE,$race_index[1]->END_DATE)) }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
-                                    <dd><input name="D_01_2" id="D_01_2" class="textbox" type="text" value="{{ old('D_01_2',$race_index[1]->RACE_TITLE) }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
-                                    <dt><input name="D_02_1" id="D_02_1" class="textbox" type="text" value="{{ old('D_02_1',$general->create_display_date($race_index[2]->START_DATE,$race_index[2]->END_DATE)) }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
-                                    <dd><input name="D_02_2" id="D_02_2" class="textbox" type="text" value="{{ old('D_02_2',$race_index[2]->RACE_TITLE) }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
-                                    <dt><input name="D_03_1" id="D_03_1" class="textbox" type="text" value="{{ old('D_03_1',$general->create_display_date($race_index[3]->START_DATE,$race_index[3]->END_DATE)) }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
-                                    <dd><input name="D_03_2" id="D_03_2" class="textbox" type="text" value="{{ old('D_03_2',$race_index[3]->RACE_TITLE) }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
+                                    @isset($race_index[1])
+                                        <dt><input name="D_01_1" id="D_01_1" class="textbox" type="text" value="{{ old('D_01_1',$general->create_display_date($race_index[1]->START_DATE,$race_index[1]->END_DATE)) }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
+                                        <dd><input name="D_01_2" id="D_01_2" class="textbox" type="text" value="{{ old('D_01_2',$race_index[1]->RACE_TITLE) }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
+                                    @else
+                                        <dt><input name="D_01_1" id="D_01_1" class="textbox" type="text" value="{{ old('D_01_1') }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
+                                        <dd><input name="D_01_2" id="D_01_2" class="textbox" type="text" value="{{ old('D_01_2') }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
+                                    @endisset
+                                    @isset($race_index[2])
+                                        <dt><input name="D_02_1" id="D_02_1" class="textbox" type="text" value="{{ old('D_02_1',$general->create_display_date($race_index[2]->START_DATE,$race_index[2]->END_DATE)) }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
+                                        <dd><input name="D_02_2" id="D_02_2" class="textbox" type="text" value="{{ old('D_02_2',$race_index[2]->RACE_TITLE) }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
+                                    @else
+                                        <dt><input name="D_02_1" id="D_02_1" class="textbox" type="text" value="{{ old('D_02_1') }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
+                                        <dd><input name="D_02_2" id="D_02_2" class="textbox" type="text" value="{{ old('D_02_2') }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
+                                    @endisset
+                                    @isset($race_index[3])
+                                        <dt><input name="D_03_1" id="D_03_1" class="textbox" type="text" value="{{ old('D_03_1',$general->create_display_date($race_index[3]->START_DATE,$race_index[3]->END_DATE)) }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
+                                        <dd><input name="D_03_2" id="D_03_2" class="textbox" type="text" value="{{ old('D_03_2',$race_index[3]->RACE_TITLE) }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
+                                    @else
+                                        <dt><input name="D_03_1" id="D_03_1" class="textbox" type="text" value="{{ old('D_03_1') }}" maxlength="18" onKeyUp="D_WrapChange();"></dt>
+                                        <dd><input name="D_03_2" id="D_03_2" class="textbox" type="text" value="{{ old('D_03_2') }}" maxlength="128" onKeyUp="D_WrapChange();"></dd>
+                                    @endisset
                                     <div class="clear"></div>
                                 </dl>
                             </div>
@@ -2247,12 +2262,30 @@
         document.MailForm.E_01.disabled = false;
     }
     function RaceReload(){
-        document.MailForm.D_01_1.value='{{ $general->create_display_date($race_index[1]->START_DATE,$race_index[1]->END_DATE) }}';
-        document.MailForm.D_01_2.value='{{ $race_index[1]->RACE_TITLE }}';
-        document.MailForm.D_02_1.value='{{ $general->create_display_date($race_index[2]->START_DATE,$race_index[2]->END_DATE) }}';
-        document.MailForm.D_02_2.value='{{ $race_index[2]->RACE_TITLE }}';
-        document.MailForm.D_03_1.value='{{ $general->create_display_date($race_index[3]->START_DATE,$race_index[3]->END_DATE) }}';
-        document.MailForm.D_03_2.value='{{ $race_index[3]->RACE_TITLE }}';
+        @isset($race_index[1])
+            document.MailForm.D_01_1.value='{{ $general->create_display_date($race_index[1]->START_DATE,$race_index[1]->END_DATE) }}';
+            document.MailForm.D_01_2.value='{{ $race_index[1]->RACE_TITLE }}';
+        @else
+            document.MailForm.D_01_1.value='';
+            document.MailForm.D_01_2.value='';
+        @endisset
+
+        @isset($race_index[2])
+            document.MailForm.D_02_1.value='{{ $general->create_display_date($race_index[2]->START_DATE,$race_index[2]->END_DATE) }}';
+            document.MailForm.D_02_2.value='{{ $race_index[2]->RACE_TITLE }}';
+        @else
+            document.MailForm.D_02_1.value='';
+            document.MailForm.D_02_2.value='';
+        @endisset
+
+        @isset($race_index[3])
+            document.MailForm.D_03_1.value='{{ $general->create_display_date($race_index[3]->START_DATE,$race_index[3]->END_DATE) }}';
+            document.MailForm.D_03_2.value='{{ $race_index[3]->RACE_TITLE }}';
+        @else
+            document.MailForm.D_03_1.value='';
+            document.MailForm.D_03_2.value='';
+        @endisset
+
         D_WrapChange();
     }
     function SesnyuReload(){

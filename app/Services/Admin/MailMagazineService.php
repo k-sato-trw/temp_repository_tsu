@@ -130,11 +130,12 @@ class MailMagazineService
         }
 
         //前検日の日程を抽出
-        $one_month_kaisai = $this->KaisaiMaster->getOneMonthRecord($jyo,date('Ymd',strtotime($now_year.'/'.$now_month.'/1')),date('Ymd',strtotime($now_year.'/'.$now_month.'/'.$now_month_last_day)));
+        //$one_month_kaisai = $this->KaisaiMaster->getOneMonthRecord($jyo,date('Ymd',strtotime($now_year.'/'.$now_month.'/1')),date('Ymd',strtotime($now_year.'/'.$now_month.'/'.$now_month_last_day)));
+        $one_month_kaisai = $this->TbTsuCalendar->getOneMonthRecord($jyo,date('Ymd',strtotime($now_year.'/'.$now_month.'/1')),date('Ymd',strtotime($now_year.'/'.$now_month.'/'.$now_month_last_day)));
 
         $zenken = [];
         foreach($one_month_kaisai as $item){
-            $zenken[] = (date('d',strtotime($item->開始日付)) - 1);
+            $zenken[] = date('d',strtotime('-1 day',strtotime($item->START_DATE) ));
         }
         $data['zenken'] = $zenken;
 
