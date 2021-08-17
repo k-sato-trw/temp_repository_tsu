@@ -417,7 +417,6 @@ Route::get('/asp/tsu/kaisai/syusso01.asp',        [ExportKaisaiController::class
 Route::get('/asp/tsu/kaisai/syusso02.asp',        [ExportKaisaiController::class, 'syussou02']);
 Route::get('/asp/tsu/kaisai/syusso03.asp',        [ExportKaisaiController::class, 'syussou03']);
 Route::get('/asp/tsu/kaisai/syusso04.asp',        [ExportKaisaiController::class, 'syussou04']);
-Route::get('/asp/tsu/kaisai/syusso04.asp',        [ExportKaisaiController::class, 'syussou04']);
 Route::get('/asp/tsu/kaisai/odds01.asp',          [ExportKaisaiController::class, 'odds01']);
 Route::get('/asp/tsu/kaisai/odds02.asp',          [ExportKaisaiController::class, 'odds02']);
 Route::get('/asp/tsu/kaisai/odds03.asp',          [ExportKaisaiController::class, 'odds03']);

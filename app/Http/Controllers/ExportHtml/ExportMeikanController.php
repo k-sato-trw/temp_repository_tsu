@@ -36,8 +36,8 @@ class ExportMeikanController extends Controller
         //サービスクラスで処理。
         $data = $this->_service->racer_data_create($request);
         //ソースを受け取り静的に書き出し処理
-        File::put(config('const.EXPORT_PATH').'/06meikan/racer_data.htm', view('front.meikan.racer_data_create',$data));
-        $message .= '書き出し完了<br><a href="/06meikan/racer_data.htm">/06meikan/racer_data.htm</a><br>';
+        File::put(config('const.EXPORT_PATH').'/asp/htmlmade/tsu/06meikan/racer_data.htm', view('front.meikan.racer_data_create',$data));
+        $message .= '書き出し完了<br><a href="/asp/htmlmade/tsu/06meikan/racer_data.htm">/asp/htmlmade/tsu/06meikan/racer_data.htm</a><br>';
 
         foreach($data['touban_array'] as $touban => $item){
 
