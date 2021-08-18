@@ -51,4 +51,14 @@ interface TbTsuYosoHighlightRepositoryInterface
      */
     public function getRecordForFront($jyo,$target_date_list,$is_preview = false);
 
+
+    /**
+     * コピー自動処理用呼び出し　翌日データが無い場合、今日用のデータを明日にコピーする
+     *
+     * @var string $target_date
+     * @var string $tomorrow_date
+     * @return object
+     */
+    public function copyTomorrow($target_date,$tomorrow_date);
+
 }

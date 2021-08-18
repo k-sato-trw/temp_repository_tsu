@@ -66,6 +66,7 @@ use App\Http\Controllers\ExportHtml\ExportCalController;
 use App\Http\Controllers\ExportHtml\ExportTenboController;
 use App\Http\Controllers\ExportHtml\ExportSyutujoController;
 use App\Http\Controllers\ExportHtml\ExportOtherController;
+use App\Http\Controllers\ExportHtml\ExportPdfController;
 
 
 
@@ -79,6 +80,8 @@ use App\Http\Controllers\ExportHtml\Sp\ExportSpDemeController;
 
 use App\Http\Controllers\ExportHtml\Sp\ExportSpTenboController;
 use App\Http\Controllers\ExportHtml\Sp\ExportSpSyutujoController;
+
+use App\Http\Controllers\CopyYosoController;
 
 
 /*
@@ -439,12 +442,10 @@ Route::get('/asp/tsu/kaisai/race_data.asp',         [ExportKaisaiController::cla
 Route::get('/asp/tsu/kaisai/race_movie.asp',        [ExportKaisaiController::class, 'race_movie']);
 Route::get('/asp/tsu/kaisai/race_movie_reload.asp', [ExportKaisaiController::class, 'race_movie_reload']);
 
-
 Route::get('/asp/tsu/kaisai/setu_kekka.asp',   [ExportKaisaiController::class, 'setu_kekka']);
 Route::get('/asp/tsu/kaisai/motor.asp',        [ExportKaisaiController::class, 'motor']);
 Route::get('/asp/tsu/kaisai/s_pdf.asp',        [ExportKaisaiController::class, 's_pdf']);
 Route::get('/asp/tsu/kaisai/highlight.asp',    [ExportKaisaiController::class, 'highlight']);
-
 
 Route::get('/asp/tsu/kaisai/CreatePCtokuten.asp',        [ExportKaisaiController::class, 'create_pc_tokuten']);
 
@@ -468,6 +469,7 @@ Route::get('/asp/tsu/06meikan/06meikan.asp',        [ExportMeikanController::cla
 Route::get('/asp/tsu/06meikan/racer_data_create.asp',        [ExportMeikanController::class, 'racer_data_create']);
 Route::get('/asp/tsu/info/ex_info.asp',        [ExportInfoController::class, 'index']);
 Route::get('/asp/tsu/01cal/01cal.asp',        [ExportCalController::class, 'index']);
+Route::get('/asp/tsu/yoso_pdf/yoso01pdf.asp',        [ExportPdfController::class, 'yoso_pdf']);
 
 
 //書き出しSP
@@ -516,3 +518,6 @@ Route::get('/asp/tsu/kaisai/Jsinfo.asp',        [ExportKaisaiController::class, 
 //出元不明の書き出しファイル処理
 Route::get('/export/syusso_jumper',        [ExportOtherController::class, 'syusso_jumper']);
 Route::get('/export/sitemap_jumper',        [ExportOtherController::class, 'sitemap_jumper']); //処理不明
+
+//自動処理
+Route::get('/asp/tsu/admin/cms/yoso/CopyYosoToNextDay.asp',        [CopyYosoController::class, 'copy']);

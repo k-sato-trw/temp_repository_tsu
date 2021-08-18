@@ -171,6 +171,46 @@ class TbTsuYosoHighlightRepository implements TbTsuYosoHighlightRepositoryInterf
     }
 
 
+    /**
+     * コピー自動処理用呼び出し　翌日データが無い場合、今日用のデータを明日にコピーする
+     *
+     * @var string $target_date
+     * @var string $tomorrow_date
+     * @return object
+     */
+    public function copyTomorrow($target_date,$tomorrow_date)
+    {
+        $result = false;
+        $new_datetime = date('YmdHis');
+        $yoso_highlight = $this->TbTsuYosoHighlight
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->get();
+        
+        foreach($yoso_highlight as $item){
+        
+            $exist = $this->TbTsuYosoHighlight
+                        ->where('TARGET_DATE', $tomorrow_date)
+                        ->first();
+            
+            //明日無い場合コピー
+            if(!$exist){
+                $result = $this->TbTsuYosoHighlight->insert([
+                    'JYO' => config('const.JYO_CODE'),
+                    'TARGET_DATE' => $tomorrow_date,
+                    'HEAD' => $item->HEAD,
+                    'TEXT' => $item->TEXT,
+                    'TOUBAN1' => $item->TOUBAN1,
+                    'TOUBAN2' => $item->TOUBAN2,
+                    'TOUBAN3' => $item->TOUBAN3,
+                    'TOUBAN4' => $item->TOUBAN4,
+                    'APPEAR_FLG' => 0,
+                    'RESIST_TIME' => $new_datetime,
+                    'UPDATE_TIME' => $new_datetime,
+                ]);
+            }
+        }
 
+        return $result;
+    }    
 
 }

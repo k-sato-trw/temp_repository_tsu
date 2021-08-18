@@ -486,5 +486,25 @@ class TbBoatSyussouRepository implements TbBoatSyussouRepositoryInterface
     }
 
 
+    /**
+     * JYO, TARGET_DATE, RACE_NUM 艇番 で該当レコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @var string $race_num
+     * @var string $teiban
+     * @return object
+     */
+    public function getFirstRecordByPK($jyo,$target_date,$race_num,$teiban)
+    {
+        return $this->TbBoatSyussou
+                    ->where("JYO","=",$jyo)
+                    ->where("TARGET_DATE","=",$target_date)
+                    ->where("RACE_NUMBER","=",$race_num)
+                    ->where("TEIBAN","=",$teiban)
+                    ->first();
+    }
+
+
 
 }

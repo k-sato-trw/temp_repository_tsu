@@ -191,4 +191,15 @@ interface TbBoatSyussouRepositoryInterface
      */
     public function getMotorSyussouCount($start_date,$end_date,$jyo,$motor_no);
 
+    /**
+     * JYO, TARGET_DATE, RACE_NUM 艇番 で該当レコードを取得
+     *
+     * @var string $jyo
+     * @var string $target_date
+     * @var string $race_num
+     * @var string $teiban
+     * @return object
+     */
+    public function getFirstRecordByPK($jyo,$target_date,$race_num,$teiban);
+
 }

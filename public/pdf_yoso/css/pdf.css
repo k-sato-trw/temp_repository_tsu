@@ -1,0 +1,322 @@
+body {
+	font-size: 16px;
+	line-height: 120%;
+	font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka－等幅", Osaka-mono, monospace;
+	color: #000;
+}
+
+#wrapper {
+	width: 1280px;
+	margin-right: auto;
+	margin-left: auto;
+	page-break-after: always;
+	padding: 0px;
+	word-break: break-all;
+}
+.end#wrapper {
+	page-break-after: avoid;
+}
+
+/*-----------------------
+　　　　ヘッダー
+-----------------------*/
+#header01,
+#header02 {
+	height: 125px;
+	margin-bottom: 6px;
+	font-size: 20px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: relative;
+}
+#header01 {
+	background-image: url(../images/header01.png);
+}
+#header02 {
+	background-image: url(../images/header02.png);
+}
+
+#header01 .today span,
+#header01 .date span,
+#header02 .today span,
+#header02 .date span{
+	display: inline-block;
+	border-radius: 30%;
+	color: #fff;
+}
+span.week{background: #000;}
+span.week_hol{background: #FF4D4D;}
+span.week_sat{background: #0080FF;}
+
+#header01 .today{
+	width: 160px;
+	top: 66px;
+	left: 224px;
+	padding-top: 5px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	position: absolute;
+}
+#header01 .today span{
+	width: 26px;
+	height: 26px;
+	margin-left: 10px;
+	font-size: 16px;
+	line-height: 26px;
+	vertical-align: 5px;
+}
+#header02 .today{
+	display: inline;
+	font-size: 26px;
+	font-weight: bold;
+}
+#header02 .today span{
+	width: 24px;
+	height: 24px;
+	margin-left: 7px;
+	font-size: 14px;
+	line-height: 24px;
+	vertical-align: 5px;
+	text-align: center;
+}
+
+.title_s{
+	height: 60px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	line-height: 150%;
+	position: absolute;
+}
+#header01 .title_s{
+	width: 505px;
+	 left: 450px;
+ }
+#header02 .title_s{
+	width: 870px;
+	left: 85px;
+}
+.title_s span{
+	font-size: 26px;
+	font-weight: bold;
+}
+/*header01:レースタイトルが16～34文字の場合
+ header02:レースタイトルが24文字以上の場合*/
+.title_s.long{
+	height: 90px;
+}
+/*header01:レースタイトルが35文字以上の場合*/
+#header01 .title_s.long2{
+	width: 515px;
+	top: 10px;
+	font-size: 18px;
+	height: 90px;
+}
+.title_s.long2 span{
+	font-size: 18px;
+}
+
+.date{
+	font-weight: bold;
+}
+.date span{
+	width: 18px;
+	height: 18px;
+	margin-left: 2px;
+	font-size: 14px;
+	line-height: 18px;
+	text-align: center;
+	vertical-align: 3px;
+}
+/*中止*/
+#header01 .date span.stop,
+#header02 .date span.stop{
+	color: #000;
+	font-size: 20px;
+	display: inline;
+	vertical-align: 0;
+	background: #888;
+	border-radius: 0;
+}
+#header01 .date span.stop span,
+#header02 .date span.stop span{
+	color: #888;
+}
+
+/*-----------------------
+　　　　各レース
+-----------------------*/
+#main {width: 1280px; position:relative;}
+
+#race{
+	width:1200px;
+	height: 276px;
+	margin: 0 auto;
+}
+
+/*-- 第○R　【○○○】--*/
+#race_title{
+	height:30px;
+	background:url(../images/bg_race.png) no-repeat left top;
+	position:relative;
+}
+.race_num{
+	margin-left: 60px;
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 30px;
+}
+.race_num span{	font-size: 20px; vertical-align: 2px;}
+.race_num img{ margin: -24px 15px 0;}
+.chushaku{
+	top: 8px;
+	right: 285px;
+	margin-left: 0px;
+	font-size: 14px;
+	position: absolute;
+}
+.chushaku img{ vertical-align: -2px;}
+.time{
+	top: 8px;
+	right: 5px;
+	padding-left: 22px;
+	font-size: 20px;
+	line-height: 20px;
+	background: url(../images/dento1.png) no-repeat left center;
+	position:absolute;
+}
+.time img{
+	margin: -6px 8px 0;
+}
+
+.box{	float: left;}
+.box th{
+	color: #FFF;
+	background-color: #0044A7;
+	text-align: center;
+	border: 1px solid #CCCCCC;
+	line-height: 100%;
+}
+/*-----------------------
+　　　　　left
+-----------------------*/
+colgroup.ko_01{ width:39px; background-color:#FFDDDD;}
+colgroup.ko_02{ width:39px;}
+colgroup.ko_03{ width:123px;}
+colgroup.ko_04{ width:49px;}
+colgroup.ko_05{ width:49px; background-color:#FFDDDD;}
+colgroup.ko_06{ width:39px; background-color:#FF9797;}
+colgroup.ko_07{ width:175px;}
+
+.left{
+	margin-bottom: 5px;
+}
+.left table{
+	width:760px;
+	height:240px;
+	text-align:center;
+}
+
+.left th{
+	/* height: 18px; */
+	border-top: none;
+	border-left: none;
+}
+.left th.second{
+	font-size: 14px;
+	border-top: 1px solid #CCCCCC;
+}
+.left th.borderless{
+	border: none;
+	border-right: 1px solid #CCCCCC;
+}
+.left td {
+	border: 1px solid #CCCCCC;
+	height:33px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.left td.waku {	font-size: 20px;}
+.w1 {	background-color: #DEE8EF;}
+.w2 {	background-color: #000;	color: #FFFFFF;}
+.w3 {	background-color: #C00;	color: #FFFFFF;}
+.w4 {	background-color: #06C;	color: #FFFFFF;}
+.w5 {	background-color: #FFE600;}
+.w6 {	background-color: #090;	color: #FFFFFF;}
+
+.left td.name {font-size: 16px; font-weight: bold; line-height: 16px;}
+.left td.name span{font-size: 13px; font-weight: normal; line-height: 13px;}
+.left td.name img{margin-top: -6px;}
+.left td.no {font-weight: bold;}
+.left td.fl{font-size:14px; line-height:15px;}
+.left td.seiseki{width: 175px; text-align: left; padding-left: 5px;}
+.left td.seiseki span{font-size: 15px;}
+.left td.seiseki img{margin-top: -8px;}
+
+/*-----------------------
+　　　　　middle/right共通
+-----------------------*/
+.middle,
+.right{
+	margin-left: 10px;
+}
+.middle th,
+.right th{
+	height: 35px;
+	border-top: none;
+	border-left: none;
+}
+.middle td,
+.right td{	border: 1px solid #CCCCCC;}
+
+/*-----------------------
+　　　　　middle
+-----------------------*/
+.middle table{
+	width: 148px;
+	height:240px;
+}
+.middle ul{
+	background: url(../images/bg_sinnyu.png) no-repeat 30px center;
+}
+.middle li{
+	line-height: 28px;
+}
+.middle li.slow{
+	padding-left:74px;
+	background: url(../images/s.png) no-repeat 10px center;
+}
+.middle li.dash{
+	padding-left:54px;
+	background: url(../images/d.png) no-repeat 10px center;
+}
+
+/*-----------------------
+　　　　　right
+-----------------------*/
+.right table{
+	width: 270px;
+	height:240px;
+}
+.right td{
+	padding: 5px 12px 2px;
+	text-align: center;
+	position: relative;
+}
+.right p{
+	height: 134px;
+	text-align: left;
+}
+.right div{
+	height: 30px;
+	padding-top: 27px;
+	text-align: center;
+	color: #fff;
+	background: url(../images/bg_jishin.png) no-repeat 10px center;
+}
+.right div span{
+	margin-left: 12px;
+	font-size: 26px;
+	font-weight: bold;
+	vertical-align: -4px;
+}

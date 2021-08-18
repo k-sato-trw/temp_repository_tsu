@@ -323,6 +323,34 @@ class KyogiCommonService
         }
     }
 
+    public function tyakujun_to_number($tyakujun)
+    {
+        $array = [
+            "1" => "1",
+            "2" => "2",
+            "3" => "3",
+            "4" => "4",
+            "5" => "5",
+            "6" => "6",
+            "F" => "7",
+            "L" => "8",
+            "転" => "9",
+            "落" => "10",
+            "欠" => "11",
+            "妨" => "12",
+            "工" => "13",
+            "沈" => "14",
+            "失" => "15",
+            "不" => "16",
+        ];
+
+        if(isset($array[$tyakujun])){
+            return $array[$tyakujun];
+        }else{
+            return $tyakujun;
+        }
+    }
+
     function getNeerOzzRaceNumber($jyo,$target_date,$target_time){
         //objBoatData.getNeerOzzRaceNumber() の再現↓
         $race_header = $this->TbBoatRaceheader->getFirstRecordByPK($jyo,$target_date);

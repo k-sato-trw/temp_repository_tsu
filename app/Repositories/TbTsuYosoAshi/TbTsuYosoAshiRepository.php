@@ -220,4 +220,48 @@ class TbTsuYosoAshiRepository implements TbTsuYosoAshiRepositoryInterface
     }
 
     
+
+    /**
+     * コピー自動処理用呼び出し　翌日データが無い場合、今日用のデータを明日にコピーする
+     *
+     * @var string $target_date
+     * @var string $tomorrow_date
+     * @return object
+     */
+    public function copyTomorrow($target_date,$tomorrow_date)
+    {
+        $result = false;
+        $new_datetime = date('YmdHis');
+        $yoso_ashi = $this->TbTsuYosoAshi
+                    ->where('TARGET_DATE','=',$target_date)
+                    ->get();
+        
+        foreach($yoso_ashi as $item){
+        
+            $exist = $this->TbTsuYosoAshi
+                        ->where('TARGET_DATE', $tomorrow_date)
+                        ->where('TOUBAN', $item->TOUBAN)
+                        ->first();
+            
+            //明日無い場合コピー
+            if(!$exist){
+                $result = $this->TbTsuYosoAshi->insert([
+                    'JYO' => config('const.JYO_CODE'),
+                    'TARGET_DATE' => $tomorrow_date,
+                    'TOUBAN' => $item->TOUBAN,
+                    'MOTOR_NO' => $item->MOTOR_NO,
+                    'DEASHI' => $item->DEASHI,
+                    'NOBIASHI' => $item->NOBIASHI,
+                    'KIKYO_FLG' => $item->KIKYO_FLG,
+                    'APPEAR_FLG' => $item->APPEAR_FLG,
+                    'RESIST_TIME' => $new_datetime,
+                    'UPDATE_TIME' => $new_datetime,
+                ]);
+            }
+        }
+
+        return $result;
+
+        
+    }
 }
